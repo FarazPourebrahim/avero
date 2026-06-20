@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# The reference snapshot is the visual source of truth and must stay byte-exact.
+reference/** -text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff binary
+*.woff2 binary

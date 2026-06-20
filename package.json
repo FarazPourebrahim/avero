@@ -1,0 +1,36 @@
+{
+  "name": "avero-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "docs-dev": "cd apps/docs && pnpm run dev",
+    "storybook-dev": "cd apps/storybook && pnpm run dev",
+    "replica-dev": "cd apps/replica && pnpm run dev",
+    "docs-build": "cd apps/docs && pnpm run build",
+    "storybook-build": "cd apps/storybook && pnpm run build",
+    "replica-build": "cd apps/replica && pnpm run build",
+    "docs-start": "cd apps/docs && pnpm run start",
+    "replica-start": "cd apps/replica && pnpm run start",
+    "packages-build": "pnpm --filter \"./packages/**\" run build",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
+    "test": "pnpm -r run test",
+    "storybook-test-visual": "cd apps/storybook && pnpm run test-visual",
+    "size": "cd packages/react && pnpm run size",
+    "changeset": "changeset"
+  },
+  "devDependencies": {
+    "@avero/config": "workspace:^",
+    "@changesets/cli": "^3.0.2",
+    "eslint": "^10",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "~6.0.3"
+  }
+}

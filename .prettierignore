@@ -1,0 +1,14 @@
+reference/
+pnpm-lock.yaml
+dist/
+.next/
+.source/
+storybook-static/
+coverage/
+playwright-report/
+test-results/
+**/__snapshots__/
+Avero-plan.md
+.claude/
+packages/tokens/src/generated/
+packages/tokens/reference/

@@ -39,3 +39,6 @@ Thumbs.db
 # Size-limit / turbo caches
 .turbo/
 .cache/
+
+# Next.js generated types
+next-env.d.ts

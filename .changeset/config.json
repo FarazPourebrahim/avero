@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "linked": [["@avero/tokens", "@avero/react", "@avero/font", "@avero/charts", "@avero/editor"]],
+  "access": "restricted",
+  "baseBranch": "dev",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@avero/storybook-app", "@avero/replica", "@avero/docs"]
+}
