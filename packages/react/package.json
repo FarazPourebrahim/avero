@@ -1,0 +1,62 @@
+{
+  "name": "@avero/react",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Avero React components.",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "@avero/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "@avero/source": "./src/components/*/index.ts",
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "pnpm run clean && tsc -p tsconfig.build.json && node scripts/verify-build.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test-watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "size": "size-limit"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@avero/config": "workspace:^",
+    "@size-limit/preset-small-lib": "^12.1.0",
+    "@storybook/react-vite": "^10.6.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^22.20.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/coverage-v8": "^5.0.0",
+    "axe-core": "^4.13.0",
+    "jsdom": "^28.1.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "size-limit": "^12.1.0",
+    "storybook": "^10.6.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.0"
+  }
+}
