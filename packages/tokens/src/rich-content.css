@@ -1,13 +1,22 @@
 /*
  * Rich content (D-12, F-13): typography for rendered HTML such as articles, service and project
- * descriptions. Reproduces the reference's `.content-area` renderer (R-01, R-05, R-07).
+ * descriptions, plus the editor preview and Tiptap editing surface.
+ *
+ * Values reproduce what the reference renders (decision D-11), not just the classes it applies:
+ * the reference's global `.content-area ul/ol/li` rules override the list classes on the elements,
+ * so lists get `padding-inline-start: 1.5rem`, `.5rem` block margins and a 1.8 line height.
  *
  * The reference is RTL, so its physical `pr-*` / `border-r-*` / `rounded-l-*` map to the logical
  * `ps-*` / `border-s-*` / `rounded-e-*` here. The reference's h2 color class (`text-gray-850`) does
  * not exist in Tailwind, so h2 inherits the body color (defect R-05, reproduced as rendered).
+ *
+ * The editor surfaces use literal colors because the reference hardcodes Tailwind v3 palette values
+ * there, which differ from Tailwind v4's palette.
  */
 
 @layer components {
+  /* ---------------------------------------------------------------- Rendered content (.content-area) */
+
   .avero-rich-content {
     @apply max-w-full space-y-3 overflow-hidden text-base leading-8 break-words text-gray-700;
     word-break: break-word;
@@ -36,7 +45,7 @@
 
     & ol,
     & ul {
-      @apply my-3 list-outside space-y-2 ps-6 text-gray-700 sm:ps-7;
+      @apply my-2 list-outside space-y-2 ps-6 text-gray-700;
     }
 
     & ol {
@@ -48,7 +57,7 @@
     }
 
     & li {
-      @apply my-1 text-base leading-8;
+      @apply leading-prose my-1 text-base;
     }
 
     & li > p,
@@ -69,7 +78,7 @@
     }
 
     & table {
-      @apply min-w-full border-collapse divide-y divide-gray-200 text-start text-sm;
+      @apply w-full min-w-full border-collapse divide-y divide-gray-200 text-start text-sm;
     }
 
     & tbody {
@@ -86,6 +95,232 @@
 
     & td {
       @apply border border-gray-200 p-2.5 text-start align-top text-gray-700;
+    }
+  }
+
+  /* ---------------------------------------------------------------- Editor preview (.editor) */
+
+  .avero-rich-content-editor {
+    & h1 {
+      margin: 1rem 0;
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    & h2 {
+      margin: 0.9rem 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    & p {
+      margin: 0.5rem 0;
+      line-height: 1.8rem;
+    }
+
+    & ul,
+    & ol {
+      margin-block: 0.5rem;
+      padding-inline-start: 1.5rem;
+      list-style-position: outside;
+    }
+
+    & ul {
+      list-style-type: disc;
+    }
+
+    & ol {
+      list-style-type: decimal;
+    }
+
+    & li {
+      margin-block: 0.25rem;
+      line-height: 1.8;
+    }
+
+    & li > p,
+    & li > div {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
+
+    & a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    & blockquote {
+      color: #6b7280;
+      border-inline-start: 3px solid #3b82f6;
+      padding-inline-start: 1rem;
+      font-style: italic;
+    }
+  }
+
+  /* ---------------------------------------------------------------- Tiptap editing surface (.tiptap-content) */
+
+  .avero-editor-content .tiptap {
+    min-height: inherit;
+    text-align: start;
+    outline: none;
+    padding: 1rem 1.25rem;
+
+    & > * + * {
+      margin-top: 0.5em;
+    }
+
+    & p {
+      color: #374151;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    & h1 {
+      color: #111827;
+      margin-top: 0.75em;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    & h2 {
+      color: #1f2937;
+      margin-top: 0.75em;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    & h3 {
+      color: #374151;
+      margin-top: 0.5em;
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    & ul {
+      padding-inline-start: 1.5rem;
+      list-style-type: disc;
+    }
+
+    & ol {
+      padding-inline-start: 1.5rem;
+      list-style-type: decimal;
+    }
+
+    & li {
+      margin-bottom: 0.25rem;
+      line-height: 1.8;
+    }
+
+    & li p {
+      margin: 0;
+    }
+
+    & blockquote {
+      color: #6b7280;
+      border-inline-start: 4px solid #d1d5db;
+      margin: 1rem 0;
+      padding-inline-start: 1rem;
+      font-style: italic;
+    }
+
+    & pre {
+      color: #86efac;
+      text-align: left;
+      direction: ltr;
+      background: #1e293b;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    & code {
+      color: #dc2626;
+      background: #f3f4f6;
+      border-radius: 0.25rem;
+      padding: 0.15rem 0.4rem;
+      font-family: var(--font-code);
+      font-size: 0.85em;
+    }
+
+    & pre code {
+      color: inherit;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    & hr {
+      border: none;
+      border-top: 2px solid #e5e7eb;
+      margin: 1.5rem 0;
+    }
+
+    & img {
+      border-radius: 0.75rem;
+      max-width: 100%;
+      margin: 0.75rem 0;
+    }
+
+    & a {
+      color: #2563eb;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    & table {
+      border-collapse: collapse;
+      table-layout: auto;
+      width: 100%;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    & th {
+      text-align: start;
+      color: #111827;
+      background-color: #f3f4f6;
+      border: 1px solid #d1d5db;
+      padding: 0.6rem 0.75rem;
+      font-weight: 700;
+      position: relative;
+    }
+
+    & td {
+      vertical-align: top;
+      text-align: start;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+      padding: 0.5rem 0.75rem;
+      position: relative;
+    }
+
+    & .selectedCell::after {
+      z-index: 2;
+      content: "";
+      pointer-events: none;
+      background: #6366f126;
+      position: absolute;
+      inset: 0;
+    }
+
+    & p.is-editor-empty:first-child::before {
+      content: attr(data-placeholder);
+      float: inline-start;
+      color: #9ca3af;
+      pointer-events: none;
+      height: 0;
+    }
+
+    & .ProseMirror-selectednode {
+      outline-offset: 2px;
+      border-radius: 0.5rem;
+      outline: 2px solid #6366f1;
     }
   }
 }

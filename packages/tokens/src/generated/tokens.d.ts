@@ -113,5 +113,20 @@ export type Token = { readonly cssVar: `--${string}`; readonly value: string };
 
 export declare const tokens: Readonly<Record<TokenName, Token>>;
 
+/** Class-name suffixes per token group (e.g. `fontSize` → `text-<suffix>`), plus Avero `@utility` names. */
+export declare const tokenGroups: Readonly<{
+  color: readonly string[];
+  fontFamily: readonly string[];
+  fontSize: readonly string[];
+  lineHeight: readonly string[];
+  radius: readonly string[];
+  shadow: readonly string[];
+  dropShadow: readonly string[];
+  blur: readonly string[];
+  animation: readonly string[];
+  zIndex: readonly string[];
+  utility: readonly string[];
+}>;
+
 /** Returns the CSS `var()` reference for a token, for use in style props. */
 export declare function tokenVar(name: TokenName): string;

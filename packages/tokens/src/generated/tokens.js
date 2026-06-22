@@ -434,6 +434,154 @@ export const tokens = {
   }
 };
 
+export const tokenGroups = {
+  "color": [
+    "primary",
+    "primary-hover",
+    "secondary",
+    "background",
+    "foreground",
+    "surface",
+    "surface-glass",
+    "surface-muted",
+    "surface-sunken",
+    "border-subtle",
+    "text-strong",
+    "text-chrome",
+    "text-chrome-hover",
+    "text-subtle",
+    "text-muted",
+    "accent-social",
+    "warning",
+    "warning-hover",
+    "shadow-brand",
+    "shadow-box",
+    "hero-skin",
+    "hero-skin-shadow",
+    "hero-hair",
+    "hero-tshirt",
+    "hero-tshirt-shadow",
+    "hero-headphones",
+    "hero-headphones-detail",
+    "hero-laptop-body",
+    "hero-laptop-screen",
+    "hero-laptop-glow",
+    "hero-mug",
+    "hero-coffee-steam",
+    "hero-desk-wood",
+    "hero-pot",
+    "hero-plant-leaf-1",
+    "hero-plant-leaf-2",
+    "hero-keyboard-keys"
+  ],
+  "fontFamily": [
+    "sans",
+    "code"
+  ],
+  "fontSize": [
+    "4xs",
+    "3xs",
+    "2xs",
+    "sm-plus",
+    "md",
+    "xl-plus"
+  ],
+  "lineHeight": [
+    "prose",
+    "airy"
+  ],
+  "radius": [
+    "huge",
+    "leaf"
+  ],
+  "shadow": [
+    "brand-soft",
+    "brand-md",
+    "brand-lg",
+    "brand-hover",
+    "brand-drop",
+    "box",
+    "card-soft",
+    "card-ambient",
+    "card-faint",
+    "card-subtle",
+    "card-hairline",
+    "card-raised",
+    "elevated",
+    "elevated-soft",
+    "elevated-tight",
+    "float",
+    "float-hover",
+    "float-wide",
+    "float-strong",
+    "pop",
+    "pop-wide",
+    "modal",
+    "lightbox"
+  ],
+  "dropShadow": [
+    "soft",
+    "amber-sm",
+    "amber-md"
+  ],
+  "blur": [
+    "hair",
+    "thin",
+    "mist",
+    "orb",
+    "haze"
+  ],
+  "animation": [
+    "slide-up",
+    "fade-in",
+    "fade",
+    "blink",
+    "blink-caret",
+    "sway",
+    "shimmer",
+    "spin-glow",
+    "typing-left",
+    "typing-right",
+    "steam",
+    "leaf-sway",
+    "leaf-sway-alt",
+    "monitor-glow"
+  ],
+  "zIndex": [
+    "raised",
+    "sticky",
+    "drawer",
+    "dropdown",
+    "overlay",
+    "overlay-content",
+    "modal",
+    "modal-content",
+    "modal-nested",
+    "popover",
+    "top-layer",
+    "top-layer-content",
+    "toast",
+    "max"
+  ],
+  "utility": [
+    "scrollbar-fancy",
+    "scrollbar-slim",
+    "scrollbar-hidden",
+    "skeleton-shimmer",
+    "glow-ring",
+    "typing-caret",
+    "gradient-cover",
+    "gradient-cover-shade",
+    "gradient-media-shade",
+    "gradient-night",
+    "gradient-accent-bar",
+    "gradient-label",
+    "gradient-premium",
+    "gradient-art-frame",
+    "gradient-brand"
+  ]
+};
+
 /** Returns the CSS `var()` reference for a token, for use in style props. */
 export function tokenVar(name) {
   return `var(${tokens[name].cssVar})`;

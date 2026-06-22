@@ -42,11 +42,15 @@ function toCamelCase(name) {
   return name.replace(/-([a-z0-9])/g, (_, char) => char.toUpperCase());
 }
 
+const UTILITIES_FILE = join(PACKAGE_DIR, "src", "utilities.css");
+
 const properties = readCustomProperties(stripComments(readFileSync(THEME_FILE, "utf8")));
 const dtcg = {
   $description: "Avero design tokens. Generated from @avero/tokens/src/theme.css; do not edit.",
 };
 const flat = {};
+// Class-name suffixes per token group, e.g. fontSize: ["4xs", …] → `text-4xs`. Used by tailwind-merge.
+const groups = Object.fromEntries(GROUPS.map(({ group }) => [group, []]));
 
 for (const [name, value] of properties) {
   const spec = GROUPS.find(({ prefix }) => name.startsWith(prefix));
@@ -55,12 +59,18 @@ for (const [name, value] of properties) {
   dtcg[spec.group] ??= { $type: spec.type };
   dtcg[spec.group][key] = { $value: value };
   flat[toCamelCase(`${spec.group}-${key}`)] = { cssVar: name, value };
+  groups[spec.group].push(key);
 }
+
+groups.utility = [
+  ...readFileSync(UTILITIES_FILE, "utf8").matchAll(/@utility\s+([\w-]+)\s*\{/g),
+].map((match) => match[1]);
 
 const json = `${JSON.stringify(dtcg, null, 2)}\n`;
 const js =
   "// Generated from @avero/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.\n" +
   `export const tokens = ${JSON.stringify(flat, null, 2)};\n\n` +
+  `export const tokenGroups = ${JSON.stringify(groups, null, 2)};\n\n` +
   "/** Returns the CSS `var()` reference for a token, for use in style props. */\n" +
   "export function tokenVar(name) {\n  return `var(${tokens[name].cssVar})`;\n}\n";
 const dts =
@@ -72,6 +82,10 @@ const dts =
   ";\n\n" +
   "export type Token = { readonly cssVar: `--${string}`; readonly value: string };\n\n" +
   "export declare const tokens: Readonly<Record<TokenName, Token>>;\n\n" +
+  "/** Class-name suffixes per token group (e.g. `fontSize` → `text-<suffix>`), plus Avero `@utility` names. */\n" +
+  "export declare const tokenGroups: Readonly<{\n" +
+  [...Object.keys(groups)].map((group) => `  ${group}: readonly string[];`).join("\n") +
+  "\n}>;\n\n" +
   "/** Returns the CSS `var()` reference for a token, for use in style props. */\n" +
   "export declare function tokenVar(name: TokenName): string;\n";
 
