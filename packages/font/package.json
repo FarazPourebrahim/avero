@@ -1,0 +1,20 @@
+{
+  "name": "@avero/font",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Lahzeh font faces for Avero (licensed for redistribution, decision O-02).",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    "./lahzeh.css": "./src/lahzeh.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "files"
+  ],
+  "scripts": {
+    "test": "node scripts/check-font-files.mjs"
+  }
+}
