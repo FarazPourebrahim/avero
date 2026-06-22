@@ -1,0 +1,36 @@
+{
+  "name": "@avero/tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Avero design tokens: Tailwind CSS v4 theme, base styles, utilities and token data.",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    "./theme.css": "./src/theme.css",
+    "./base.css": "./src/base.css",
+    "./utilities.css": "./src/utilities.css",
+    "./rich-content.css": "./src/rich-content.css",
+    "./compat.css": "./src/compat.css",
+    "./tokens.json": "./src/generated/tokens.json",
+    ".": {
+      "types": "./src/generated/tokens.d.ts",
+      "import": "./src/generated/tokens.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "extract-reference": "node scripts/extract-reference-tokens.mjs",
+    "generate": "node scripts/generate-token-data.mjs",
+    "test": "node scripts/generate-token-data.mjs --check && node scripts/check-token-coverage.mjs"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.3.3"
+  }
+}

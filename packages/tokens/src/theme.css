@@ -1,0 +1,337 @@
+/*
+ * Avero theme tokens for Tailwind CSS v4.
+ *
+ * Every value is extracted from the reference site (packages/tokens/reference/tokens.extracted.json).
+ * The default Tailwind palette, spacing, radius and type scale are kept unchanged because the reference
+ * uses them verbatim; this file only adds what the reference defines on top of them.
+ */
+
+@theme {
+  /* ---------------------------------------------------------------- Typography */
+  --font-sans:
+    Lahzeh, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans",
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-code:
+    "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Micro sizes used as arbitrary values in the reference. No line-height is defined, so, like the
+     reference's text-[11px] etc., they inherit the surrounding line-height. */
+  --text-4xs: 0.5625rem; /* 9px  */
+  --text-3xs: 0.625rem; /* 10px */
+  --text-2xs: 0.6875rem; /* 11px */
+  --text-sm-plus: 0.8125rem; /* 13px */
+  --text-md: 0.9375rem; /* 15px */
+  --text-xl-plus: 1.375rem; /* 22px */
+
+  --leading-prose: 1.8;
+  --leading-airy: 2.2;
+
+  /* ---------------------------------------------------------------- Brand and semantic colors */
+  --color-primary: #0a66c2;
+  --color-primary-hover: #004182;
+  --color-secondary: #f15928;
+
+  --color-background: #f4f4f4;
+  --color-foreground: #464646;
+
+  --color-surface: #ffffff;
+  --color-surface-glass: #ffffff6b;
+  --color-surface-muted: #f9fafc;
+  --color-surface-sunken: #e7e9ec;
+
+  --color-border-subtle: #d5d9df;
+
+  --color-text-strong: #242424;
+  --color-text-chrome: #8390a2;
+  --color-text-chrome-hover: #242424;
+  --color-text-subtle: #54595f;
+  /* Decision O-04: the reference's muted meta text; consumers may darken it for stricter contrast. */
+  --color-text-muted: var(--color-gray-400);
+
+  --color-accent-social: #ff9606;
+
+  /* Literal warning CTA colors used by the reference. They are Tailwind v3's amber values, not
+     v4's (v4 amber-500 is #f99c00), so they need their own tokens. */
+  --color-warning: #f59e0b;
+  --color-warning-hover: #d97706;
+
+  --color-shadow-brand: #0a66c205;
+  --color-shadow-box: #0f172a14;
+
+  /* Hero illustration palette (X-03). */
+  --color-hero-skin: #ffd1b3;
+  --color-hero-skin-shadow: #e0b496;
+  --color-hero-hair: #4e3629;
+  --color-hero-tshirt: #4f46e5;
+  --color-hero-tshirt-shadow: #3b31c9;
+  --color-hero-headphones: #1e293b;
+  --color-hero-headphones-detail: #f15928;
+  --color-hero-laptop-body: #e2e8f0;
+  --color-hero-laptop-screen: #0f172a;
+  --color-hero-laptop-glow: #6366f140;
+  --color-hero-mug: #f15928;
+  --color-hero-coffee-steam: #78787840;
+  --color-hero-desk-wood: #a16207;
+  --color-hero-pot: #cbd5e1;
+  --color-hero-plant-leaf-1: #10b981;
+  --color-hero-plant-leaf-2: #047857;
+  --color-hero-keyboard-keys: #94a3b8;
+
+  /* ---------------------------------------------------------------- Radius */
+  --radius-huge: 1.75rem; /* 28px */
+  --radius-leaf: 2.5rem; /* 40px, asymmetric "leaf" corners */
+
+  /* ---------------------------------------------------------------- Elevation */
+  --shadow-brand-soft: 0 0 20px 0 var(--color-shadow-brand);
+  --shadow-brand-md: 0 0 35px 0 var(--color-shadow-brand);
+  --shadow-brand-lg: 0 0 40px 0 var(--color-shadow-brand);
+  --shadow-brand-hover: 0 2px 35px 0 var(--color-shadow-brand);
+  --shadow-brand-drop: 0 20px 0 0 var(--color-shadow-brand);
+  --shadow-box: 0 2px 4px var(--color-shadow-box);
+
+  --shadow-card-soft: 0 4px 25px rgba(0, 0, 0, 0.04);
+  --shadow-card-ambient: 0 0 25px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card-faint: 0 4px 20px rgba(0, 0, 0, 0.02);
+  --shadow-card-subtle: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-card-hairline: 0 2px 16px rgba(15, 23, 42, 0.06);
+  --shadow-card-raised: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
+
+  --shadow-elevated: 0 10px 40px rgba(15, 23, 42, 0.08);
+  --shadow-elevated-soft: 0 10px 40px rgba(15, 23, 42, 0.06);
+  --shadow-elevated-tight: 0 10px 35px rgba(15, 23, 42, 0.08);
+
+  --shadow-float: 0 20px 80px rgba(15, 23, 42, 0.08);
+  --shadow-float-hover: 0 20px 60px rgba(15, 23, 42, 0.12);
+  --shadow-float-wide: 0 8px 40px rgba(15, 23, 42, 0.12);
+  --shadow-float-strong: 0 16px 35px rgba(15, 23, 42, 0.22);
+
+  --shadow-pop: 0 4px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-pop-wide: 0 8px 40px rgba(0, 0, 0, 0.08);
+
+  --shadow-modal: 0 25px 80px rgba(15, 23, 42, 0.2);
+  --shadow-lightbox: 0 25px 70px rgba(0, 0, 0, 0.35);
+
+  --drop-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --drop-shadow-amber-sm: 0 1px 4px rgba(251, 191, 36, 0.35);
+  --drop-shadow-amber-md: 0 2px 8px rgba(234, 179, 8, 0.45);
+
+  /* ---------------------------------------------------------------- Blur */
+  --blur-hair: 1px;
+  --blur-thin: 2px;
+  --blur-mist: 50px;
+  --blur-orb: 70px;
+  --blur-haze: 200px;
+
+  /* ---------------------------------------------------------------- Motion */
+  --animate-slide-up: slide-up 0.25s ease-out;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-fade: fade 0.5s;
+  --animate-blink: blink 1s step-end infinite;
+  --animate-blink-caret: blink-caret 0.75s step-end infinite;
+  --animate-sway: sway 3s ease-in-out forwards;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-spin-glow: spin-glow 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  --animate-typing-left: typing-left-hand 0.22s ease-in-out infinite;
+  --animate-typing-right: typing-right-hand 0.18s ease-in-out infinite;
+  --animate-steam: coffee-steam-rise 3.5s ease-in-out infinite;
+  --animate-leaf-sway: leaf-sway 6s ease-in-out infinite;
+  --animate-leaf-sway-alt: leaf-sway-alt 7.5s ease-in-out infinite;
+  --animate-monitor-glow: monitor-light-pulse 4s ease-in-out infinite;
+
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    to {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes blink-caret {
+    0%,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: var(--color-secondary);
+    }
+  }
+
+  @keyframes sway {
+    0% {
+      opacity: 0;
+      transform: translateY(0) rotate(0);
+    }
+    10% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-6px) rotate(2deg);
+    }
+    90% {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      transform: translateY(0) rotate(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes spin-glow {
+    0% {
+      transform: rotate(0);
+      box-shadow: 0 0 15px color-mix(in srgb, var(--color-indigo-500) 20%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 25px color-mix(in srgb, var(--color-indigo-500) 40%, transparent);
+    }
+    to {
+      transform: rotate(360deg);
+      box-shadow: 0 0 15px color-mix(in srgb, var(--color-indigo-500) 20%, transparent);
+    }
+  }
+
+  @keyframes typing-left-hand {
+    0%,
+    to {
+      transform: translateY(0) rotate(0);
+    }
+    33% {
+      transform: translateY(-2px) rotate(-1deg);
+    }
+    66% {
+      transform: translateY(1px) rotate(1deg);
+    }
+  }
+
+  @keyframes typing-right-hand {
+    0%,
+    to {
+      transform: translateY(0) rotate(0);
+    }
+    33% {
+      transform: translateY(1.5px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(-2.5px) rotate(-1deg);
+    }
+  }
+
+  @keyframes coffee-steam-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scaleX(1);
+    }
+    15% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 0.25;
+      transform: translateY(-8px) scaleX(1.2) skew(4deg);
+    }
+    80% {
+      opacity: 0.1;
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px) scaleX(0.7) skew(-4deg);
+    }
+  }
+
+  @keyframes leaf-sway {
+    0%,
+    to {
+      transform: rotate(0);
+    }
+    50% {
+      transform: rotate(1.5deg);
+    }
+  }
+
+  @keyframes leaf-sway-alt {
+    0%,
+    to {
+      transform: rotate(0);
+    }
+    50% {
+      transform: rotate(-1.5deg);
+    }
+  }
+
+  @keyframes monitor-light-pulse {
+    0%,
+    to {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.55;
+    }
+  }
+}
+
+/*
+ * Layering. Tailwind v4 has no z-index theme namespace, so named layers are plain custom properties
+ * used as `z-(--z-modal)`. Values are provisional until the Tier B overlay captures (plan §5.8).
+ */
+@layer theme {
+  :root,
+  :host {
+    --z-raised: 10;
+    --z-sticky: 50;
+    --z-drawer: 50;
+    --z-dropdown: 60;
+    --z-overlay: 100;
+    --z-overlay-content: 105;
+    --z-modal: 110;
+    --z-modal-content: 115;
+    --z-modal-nested: 120;
+    --z-popover: 999;
+    --z-top-layer: 2000;
+    --z-top-layer-content: 3000;
+    --z-toast: 9999;
+    --z-max: 10001;
+  }
+}

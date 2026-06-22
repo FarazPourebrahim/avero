@@ -1,0 +1,54 @@
+/*
+ * Avero document defaults (opt-in).
+ *
+ * Import this file in applications that should look like the reference end to end. It sets the
+ * page background, text color and font on <body>. Hosts with their own chrome (such as a docs
+ * site) should import only theme.css and utilities.css.
+ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a,
+  button {
+    font-family: var(--font-sans);
+  }
+
+  /* The reference shows a pointer on every link and enabled button. Its global `outline: none`
+     is intentionally not reproduced (deviation V-04): focus indication stays intact. */
+  a,
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+}
+
+/* Deviation V-06: honour reduced-motion preferences for every animation and transition. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
