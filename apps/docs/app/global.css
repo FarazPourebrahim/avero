@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "@avero/tokens/theme.css";
+
+/* Avero components ship as compiled JS; Tailwind scans them for the classes they use. */
+@source "../node_modules/@avero/react/dist";
+@source "../content";
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
