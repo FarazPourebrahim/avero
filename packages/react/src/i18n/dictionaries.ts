@@ -1,0 +1,56 @@
+/**
+ * Built-in user-facing strings. Components never hardcode copy: they read it from the active
+ * dictionary, and every entry can be overridden through `AveroProvider` or per-component props.
+ * Persian strings are taken verbatim from the reference site.
+ */
+export type AveroDictionary = {
+  back: string;
+  close: string;
+  loading: string;
+  openMenu: string;
+  closeMenu: string;
+  previous: string;
+  next: string;
+  currencyToman: string;
+  pricePrefixFrom: string;
+  heatmapLess: string;
+  heatmapMore: string;
+};
+
+export type AveroLanguage = "fa" | "en";
+
+export const fa: AveroDictionary = {
+  back: "بازگشت",
+  close: "بستن",
+  loading: "در حال بارگذاری",
+  openMenu: "باز کردن منو",
+  closeMenu: "بستن منو",
+  previous: "قبلی",
+  next: "بعدی",
+  currencyToman: "تومان",
+  pricePrefixFrom: "از",
+  heatmapLess: "کمتر",
+  heatmapMore: "بیشتر",
+};
+
+export const en: AveroDictionary = {
+  back: "Back",
+  close: "Close",
+  loading: "Loading",
+  openMenu: "Open menu",
+  closeMenu: "Close menu",
+  previous: "Previous",
+  next: "Next",
+  currencyToman: "Toman",
+  pricePrefixFrom: "From",
+  heatmapLess: "Less",
+  heatmapMore: "More",
+};
+
+export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
+
+/** Returns the built-in dictionary for a locale tag, falling back to English for unknown languages. */
+export function getDictionary(locale: string): AveroDictionary {
+  const language = locale.toLowerCase().split("-")[0];
+  return language === "fa" ? fa : en;
+}
