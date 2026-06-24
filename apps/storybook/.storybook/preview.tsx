@@ -1,3 +1,4 @@
+import { AveroProvider } from "@avero/react";
 import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/styles.css";
 
@@ -7,9 +8,11 @@ const withDirection: Decorator = (Story, context) => {
   document.documentElement.dir = dir;
   document.documentElement.lang = lang;
   return (
-    <div dir={dir} lang={lang} className="p-6">
-      <Story />
-    </div>
+    <AveroProvider dir={dir} locale={lang === "fa" ? "fa-IR" : "en-US"}>
+      <div dir={dir} lang={lang} className="p-6">
+        <Story />
+      </div>
+    </AveroProvider>
   );
 };
 

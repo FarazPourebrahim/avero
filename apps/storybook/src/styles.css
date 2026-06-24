@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "@avero/tokens/theme.css";
 @import "@avero/tokens/base.css";
+@import "@avero/tokens/utilities.css";
+@import "@avero/tokens/rich-content.css";
 
 @source "../../../packages/react/src";
 @source "./";
