@@ -208,6 +208,9 @@ importers:
       '@avero/tokens':
         specifier: workspace:^
         version: link:../tokens
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -260,6 +263,9 @@ importers:
       jsdom:
         specifier: ^28.1.0
         version: 28.1.0
+      lucide-react:
+        specifier: ^1.45.0
+        version: 1.45.0(react@19.3.0)
       react:
         specifier: ^19.3.0
         version: 19.3.0
