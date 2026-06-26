@@ -104,6 +104,10 @@ export const tokens = {
     "cssVar": "--color-accent-social",
     "value": "#ff9606"
   },
+  "colorIconMuted": {
+    "cssVar": "--color-icon-muted",
+    "value": "#c1c3c8"
+  },
   "colorWarning": {
     "cssVar": "--color-warning",
     "value": "#f59e0b"
@@ -452,6 +456,7 @@ export const tokenGroups = {
     "text-subtle",
     "text-muted",
     "accent-social",
+    "icon-muted",
     "warning",
     "warning-hover",
     "shadow-brand",

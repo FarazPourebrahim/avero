@@ -26,6 +26,7 @@ export type TokenName =
   | "colorTextSubtle"
   | "colorTextMuted"
   | "colorAccentSocial"
+  | "colorIconMuted"
   | "colorWarning"
   | "colorWarningHover"
   | "colorShadowBrand"

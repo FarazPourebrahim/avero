@@ -49,6 +49,8 @@
   --color-text-muted: var(--color-gray-400);
 
   --color-accent-social: #ff9606;
+  /* Resting color of the footer social icons (inline `color="#C1C3C8"` in the reference). */
+  --color-icon-muted: #c1c3c8;
 
   /* Literal warning CTA colors used by the reference. They are Tailwind v3's amber values, not
      v4's (v4 amber-500 is #f99c00), so they need their own tokens. */
