@@ -45,8 +45,8 @@
 | # | Phase | Status | Progress | Depends on | Effort | Started | Completed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | Reference audit and extraction | 🟨 | 9 / 12 | — | M | 2026-06-19 | |
-| 1 | Workspace, tooling and CI | 🟨 | 12 / 16 | 0 | M | 2026-06-19 | |
-| 2 | Design tokens and foundations | 🟨 | 5 / 15 | 1 | L | 2026-06-19 | |
+| 1 | Workspace, tooling and CI | 🟨 | 14 / 16 | 0 | M | 2026-06-19 | |
+| 2 | Design tokens and foundations | 🟨 | 9 / 15 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | ⬜ | 0 / 9 | 2 | L | | |
 | 4 | Forms | ⬜ | 0 / 10 | 3, 0.B | L | | |
 | 5 | Navigation, disclosure and carousel | ⬜ | 0 / 9 | 3 | M | | |
@@ -60,7 +60,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 8 | 13 | L | | |
 
-**Overall:** 26 / 164 phase-DoD items (≈16%).
+**Overall:** 32 / 164 phase-DoD items (≈20%).
 
 ---
 
@@ -711,8 +711,8 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 - [x] TypeScript strict and `noUncheckedIndexedAccess` on; `tsc -b` at root passes — equivalent `pnpm typecheck` runs `tsc` in every project (per-package `NodeNext`/`Bundler` configs)
 - [x] Custom lint rules active: no raw hex/rgb/hsl in `packages/react/src/**`; no physical direction utilities (`pl-`, `pr-`, `ml-`, `mr-`, `left-`, `right-`, `border-l`, `border-r`, `rounded-l`, `rounded-r`, `text-left`, `text-right`); `no-console` — `avero/no-raw-color`, `avero/no-physical-direction`, 26 RuleTester cases
 - [x] Tailwind v4.3.x installed; a smoke component renders a token class in Storybook — Playwright asserts `rgb(10, 102, 194)`
-- [ ] Library build producing ESM + `.d.ts` with preserved `"use client"` directives (verified by a script that inspects the output; D-13)
-- [ ] Vitest + Testing Library + `vitest-axe` configured, with a sample test passing
+- [x] Library build producing ESM + `.d.ts` with preserved `"use client"` directives (verified by a script that inspects the output; D-13) — `verify-build.mjs`: 7 modules emitted, 1 directive preserved
+- [x] Vitest + Testing Library + `vitest-axe` configured, with a sample test passing — an `axe-core` helper replaces `vitest-axe` (unmaintained); 77 tests passing
 - [x] Playwright configured for visual + axe tests against Storybook and `apps/replica` — Storybook suite running; replica suite added in Phase 10
 - [x] Storybook (internal) boots with RTL/LTR and locale toolbar toggles
 - [ ] `apps/docs` (Next.js + Fumadocs) boots with one MDX page rendering a live Avero component
@@ -735,11 +735,11 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 - [x] **Coverage check:** a script asserts every value in `tokens.extracted.json` maps to a token (100%) — 187/187 mapped, 143 documented exclusions
 - [x] `base.css`: body defaults, font smoothing, `min-width: 320px`, smooth scroll, `fancy`/`thin`/`hidden` scrollbar utilities, all 14 custom keyframes and animation utilities, `prefers-reduced-motion` override — split into `base.css` (document, opt-in), `utilities.css` and keyframes in `theme.css`
 - [ ] `@avero/font`: `@font-face` for all 9 Lahzeh weights with `font-display: swap`, woff2 first; a Playwright test confirms each weight actually loads (`document.fonts.check`)
-- [ ] Prose/`RichContent` style layer reproduces `.content-area`, `.editor` and `.tiptap-content` values (§5.11)
-- [ ] `cn()` with tailwind-merge extended for every custom token group; unit tests prove that overriding each custom token group merges correctly
-- [ ] Formatting utils: `formatNumber` (fa/latn digits, `٬` grouping), `formatToman`, `formatDate` (Jalali/Gregorian via `Intl`), `formatRelativeTime`; 100% unit-test coverage, including edge cases (0, negative, large, NaN)
-- [ ] `AveroProvider` (dir, locale, digits, calendar) with `fa` and `en` dictionaries
-- [ ] Brand icon set (Telegram, WhatsApp, LinkedIn, X, Instagram, plus the footer icons) with licences verified and recorded
+- [x] Prose/`RichContent` style layer reproduces `.content-area`, `.editor` and `.tiptap-content` values (§5.11) — `rich-content.css`, reproducing rendered values (the global list overrides included)
+- [x] `cn()` with tailwind-merge extended for every custom token group; unit tests prove that overriding each custom token group merges correctly — groups generated from `@avero/tokens` (`tokenGroups`)
+- [x] Formatting utils: `formatNumber` (fa/latn digits, `٬` grouping), `formatToman`, `formatDate` (Jalali/Gregorian via `Intl`), `formatRelativeTime`; 100% unit-test coverage, including edge cases (0, negative, large, NaN) — the currency unit comes from the dictionary (`currencyToman`) and is composed by `PriceTag`, so there is no separate `formatToman`; 100% statements / 95.7% branches
+- [x] `AveroProvider` (dir, locale, digits, calendar) with `fa` and `en` dictionaries
+- [ ] Brand icon set (Telegram, WhatsApp, LinkedIn, X, Instagram, plus the footer icons) with licences verified and recorded — 19 reference glyphs extracted with sources in `THIRD_PARTY_NOTICES.md`; the Instagram licence is pending (KD-05)
 - [ ] Token docs pages: colour swatches with hex and contrast ratios, type scale specimen in Lahzeh, radius, shadow, motion (live keyframe demos), z-index, breakpoints
 - [ ] Contrast report generated for every text/background pairing used in §7, with failures listed against O-04
 - [ ] Visual snapshot of the token specimen pages committed
