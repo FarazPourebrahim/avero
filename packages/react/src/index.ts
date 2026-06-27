@@ -37,3 +37,12 @@ export {
 // Icons
 export { createIcon, type IconDefinition, type IconProps } from "./icons/createIcon.js";
 export * from "./icons/referenceIcons.generated.js";
+
+// Primitives
+export * from "./components/badge/index.js";
+export * from "./components/button/index.js";
+export * from "./components/chip/index.js";
+export * from "./components/divider/index.js";
+export * from "./components/icon-button/index.js";
+export * from "./components/progress/index.js";
+export * from "./components/visually-hidden/index.js";
