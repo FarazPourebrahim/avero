@@ -39,10 +39,15 @@ export { createIcon, type IconDefinition, type IconProps } from "./icons/createI
 export * from "./icons/referenceIcons.generated.js";
 
 // Primitives
+export * from "./components/avatar/index.js";
 export * from "./components/badge/index.js";
 export * from "./components/button/index.js";
 export * from "./components/chip/index.js";
 export * from "./components/divider/index.js";
 export * from "./components/icon-button/index.js";
+export * from "./components/icon-tile/index.js";
+export * from "./components/image/index.js";
+export * from "./components/link/index.js";
 export * from "./components/progress/index.js";
+export * from "./components/typography/index.js";
 export * from "./components/visually-hidden/index.js";
