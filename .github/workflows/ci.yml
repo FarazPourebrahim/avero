@@ -51,8 +51,9 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm --filter @avero/storybook-app exec playwright install --with-deps chromium
 
+      # Visual baselines are platform-specific; Linux baselines are not committed yet (KD-06).
       - name: Storybook browser tests
-        run: pnpm run storybook-test-visual
+        run: pnpm run storybook-test-visual -- --grep-invert @visual
 
       - name: Build replica
         run: pnpm run replica-build

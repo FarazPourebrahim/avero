@@ -14,8 +14,12 @@ export default defineConfig({
     baseURL: BASE_URL,
     trace: "on-first-retry",
   },
+  // Baselines are per platform because font rasterisation differs between operating systems.
+  snapshotPathTemplate: "{testDir}/__screenshots__/{platform}/{arg}{ext}",
+  // Locally, missing baselines are written on first run; CI only compares (see known debt KD-06).
+  updateSnapshots: process.env.CI ? "none" : "missing",
   expect: {
-    toHaveScreenshot: { maxDiffPixelRatio: 0.01 },
+    toHaveScreenshot: { maxDiffPixelRatio: 0.01, animations: "disabled", caret: "hide" },
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
