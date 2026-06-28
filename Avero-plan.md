@@ -45,9 +45,9 @@
 | # | Phase | Status | Progress | Depends on | Effort | Started | Completed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | Reference audit and extraction | 🟨 | 9 / 12 | — | M | 2026-06-19 | |
-| 1 | Workspace, tooling and CI | 🟨 | 14 / 16 | 0 | M | 2026-06-19 | |
+| 1 | Workspace, tooling and CI | 🟨 | 15 / 16 | 0 | M | 2026-06-19 | |
 | 2 | Design tokens and foundations | 🟨 | 9 / 15 | 1 | L | 2026-06-19 | |
-| 3 | Core primitives | ⬜ | 0 / 9 | 2 | L | | |
+| 3 | Core primitives | 🟨 | 0 / 9 | 2 | L | 2026-06-19 | |
 | 4 | Forms | ⬜ | 0 / 10 | 3, 0.B | L | | |
 | 5 | Navigation, disclosure and carousel | ⬜ | 0 / 9 | 3 | M | | |
 | 6 | Overlays and feedback | ⬜ | 0 / 10 | 3, 0.B | L | | |
@@ -60,7 +60,9 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 8 | 13 | L | | |
 
-**Overall:** 32 / 164 phase-DoD items (≈20%).
+**Overall:** 33 / 164 phase-DoD items (≈20%).
+
+> Phase 3 note (2026-06-19): 13 primitives are implemented, unit/SSR/axe-tested (255 tests, 100% statements) and visually baselined locally, but no Phase 3 item is ticked yet: each also needs its docs page (Global DoD 9) and cross-platform baselines with the Lahzeh font (KD-02, KD-06).
 
 ---
 
@@ -715,7 +717,7 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 - [x] Vitest + Testing Library + `vitest-axe` configured, with a sample test passing — an `axe-core` helper replaces `vitest-axe` (unmaintained); 77 tests passing
 - [x] Playwright configured for visual + axe tests against Storybook and `apps/replica` — Storybook suite running; replica suite added in Phase 10
 - [x] Storybook (internal) boots with RTL/LTR and locale toolbar toggles
-- [ ] `apps/docs` (Next.js + Fumadocs) boots with one MDX page rendering a live Avero component
+- [x] `apps/docs` (Next.js + Fumadocs) boots with one MDX page rendering a live Avero component — Button, Badge, Chip on the introduction page
 - [x] `apps/replica` (Vite) boots
 - [x] Changesets initialised; `size-limit` configured
 - [ ] CI pipeline runs all gates in §8.5 on every PR to `dev` and is green
@@ -978,23 +980,23 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 
 | ID | Component | Tier | Phase | Impl | Test | A11y | Vis | Docs | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| F-01…F-13 | Foundations (tokens, type, motion, …) | A | 2 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-01 | Button | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-02 | IconButton | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-03 | Link | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-04 | Badge | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-05 | Chip / Tag | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-06 | Avatar | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| F-01…F-13 | Foundations (tokens, type, motion, …) | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
+| P-01 | Button | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-02 | IconButton | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-03 | Link | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-04 | Badge | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-05 | Chip / Tag | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-06 | Avatar | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
 | P-06b | AvatarGroup | B | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| P-07 | IconTile | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-08 | Icon + brand icons | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-09 | Divider | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-10 | Heading / Text / Eyebrow | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| P-07 | IconTile | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-08 | Icon + brand icons | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-09 | Divider | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-10 | Heading / Text / Eyebrow | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
 | P-11 | Spinner | B | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | P-12 | Skeleton | B | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| P-13 | Progress | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-14 | VisuallyHidden / LiveRegion | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-15 | Image / Figure | A | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| P-13 | Progress | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-14 | VisuallyHidden / LiveRegion | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-15 | Image / Figure | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
 | FM-01 | Field | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-02 | Input | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | FM-03 | Textarea | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
@@ -1061,7 +1063,7 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | C-04 | ChartTooltip / palette | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | E-01 | Editor content styles | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | E-02 | Editor toolbar | B | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| X-01 | Animation utilities | A | 2 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| X-01 | Animation utilities | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
 | X-02 | GlowOrbs | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | X-03 | Hero illustration | B | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | T-01…T-09 | Shells and layouts | A | 8 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
