@@ -25,7 +25,8 @@
   "scripts": {
     "extract-reference": "node scripts/extract-reference-tokens.mjs",
     "generate": "node scripts/generate-token-data.mjs",
-    "test": "node scripts/generate-token-data.mjs --check && node scripts/check-token-coverage.mjs"
+    "test": "node scripts/generate-token-data.mjs --check && node scripts/check-token-coverage.mjs",
+    "contrast": "node scripts/contrast-report.mjs"
   },
   "peerDependencies": {
     "tailwindcss": "^4.3.0"
