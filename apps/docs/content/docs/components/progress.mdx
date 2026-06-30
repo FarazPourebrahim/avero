@@ -1,0 +1,58 @@
+---
+title: Progress
+description: A linear progress bar, as used for the project capacity meters.
+---
+
+**Reference:** "ظرفیت دریافت رزومه" capacity bars (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/progress)
+
+```tsx
+import { Progress } from "@avero/react";
+```
+
+<ComponentPreview name="progress/capacity" />
+
+## Anatomy
+
+| Part      | Slot                             | Notes                                     |
+| --------- | -------------------------------- | ----------------------------------------- |
+| Track     | `data-slot="progress"`           | Radix Progress root, `role="progressbar"` |
+| Indicator | `data-slot="progress-indicator"` | Width animates over 500ms                 |
+
+## Examples
+
+### Sizes, tones and indeterminate
+
+<ComponentPreview name="progress/variants" />
+
+## Right-to-left
+
+The fill grows from the inline start: right to left in RTL, left to right in LTR.
+
+## Composition
+
+- Pair it with a label row above, as in the capacity example; `CapacityMeter` (D-16) composes this for you.
+
+## Accessibility
+
+- Exposes `role="progressbar"` with `aria-valuenow` and `aria-valuemax`; `value={null}` is indeterminate.
+- Always give it an accessible name with `aria-label` or `aria-labelledby`.
+
+## API reference
+
+`Progress` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/progress/Progress.tsx" name="ProgressOwnProps" />
+
+## Theming
+
+| Token             | Used by      |
+| ----------------- | ------------ |
+| `--color-primary` | Default fill |
+
+## Do and don't
+
+- **Do** show the numbers next to the bar; the bar alone is imprecise.
+
+## Related
+
+[Badge](./badge)

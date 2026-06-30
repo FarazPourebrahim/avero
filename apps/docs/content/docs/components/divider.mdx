@@ -1,0 +1,52 @@
+---
+title: Divider
+description: A horizontal or vertical rule in the reference's three tones.
+---
+
+**Reference:** card section borders, footer rule (R-01, R-04, shared footer) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/divider)
+
+```tsx
+import { Divider } from "@avero/react";
+```
+
+<ComponentPreview name="divider/basic" />
+
+## Anatomy
+
+| Part | Slot                  | Notes                                     |
+| ---- | --------------------- | ----------------------------------------- |
+| Root | `data-slot="divider"` | `data-orientation` reflects the direction |
+
+## Examples
+
+Horizontal dividers separate card sections; vertical ones separate inline items (they stretch to the row height).
+
+## Right-to-left
+
+Dividers have no direction-specific styling.
+
+## Composition
+
+- Add spacing with `className` (e.g. `my-4`).
+
+## Accessibility
+
+- Decorative by default (`role="none"`). Set `decorative={false}` when the divider separates meaningful groups; it then becomes a `separator` with `aria-orientation`.
+
+## API reference
+
+`Divider` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/divider/Divider.tsx" name="DividerOwnProps" />
+
+## Theming
+
+Uses `gray-100`, `slate-100` and `gray-200` from the Tailwind palette.
+
+## Do and don't
+
+- **Do** prefer spacing over dividers where grouping is already clear.
+
+## Related
+
+[Typography](./typography)

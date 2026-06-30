@@ -1,0 +1,61 @@
+---
+title: Image and Figure
+description: Lazy images with the reference's radii and hover zooms, a graceful fallback, and a clipping frame.
+---
+
+**Reference:** article cover, service gallery, listing and showcase card media (R-01, R-05, R-06, R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/image)
+
+```tsx
+import { Figure, Image } from "@avero/react";
+```
+
+<ComponentPreview name="image/cover" />
+
+## Anatomy
+
+| Part     | Slot                         | Notes                                              |
+| -------- | ---------------------------- | -------------------------------------------------- |
+| Image    | `data-slot="image"`          | `loading="lazy"` and `decoding="async"` by default |
+| Fallback | `data-slot="image-fallback"` | Replaces a broken image                            |
+| Figure   | `data-slot="figure"`         | Clips zoom effects to its rounded corners          |
+
+## Examples
+
+### Card media and fallback
+
+`zoom="group"` zooms when a parent with the `group` class is hovered; a broken image becomes a neutral block.
+
+<ComponentPreview name="image/card-and-fallback" />
+
+## Right-to-left
+
+Images have no direction-specific styling.
+
+## Composition
+
+- Wrap zoomable images in `Figure` (or any `overflow-hidden` rounded box) so the zoom stays inside the corners.
+- Pass `loading="eager"` for the main above-the-fold image.
+
+## Accessibility
+
+- `alt` is required. Use an empty string only for decorative images; the fallback then stays hidden too.
+
+## API reference
+
+`Image` accepts every native `<img>` attribute plus:
+
+<PropsTable file="components/image/Image.tsx" name="ImageOwnProps" />
+
+<PropsTable file="components/image/Image.tsx" name="FigureOwnProps" />
+
+## Theming
+
+Uses `gray-100` for the fallback.
+
+## Do and don't
+
+- **Do** set explicit dimensions (width/height or an aspect) to avoid layout shift.
+
+## Related
+
+[Avatar](./avatar)

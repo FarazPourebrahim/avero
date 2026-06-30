@@ -1,0 +1,66 @@
+---
+title: Badge
+description: A small, non-interactive label for statuses, counts and highlights.
+---
+
+**Reference:** project status and capacity badges, category pills, premium badge, media overlays (R-01, R-03, R-04, R-05, R-07, R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/badge)
+
+```tsx
+import { Badge } from "@avero/react";
+```
+
+<ComponentPreview name="badge/status" />
+
+## Anatomy
+
+| Part | Slot                | Notes                                          |
+| ---- | ------------------- | ---------------------------------------------- |
+| Root | `data-slot="badge"` | An inline `<span>`; icons can be placed inside |
+
+## Examples
+
+### Outline
+
+Bordered soft pills from the service page header.
+
+<ComponentPreview name="badge/outline" />
+
+### Highlights and overlays
+
+`premium`, `label`, and the `overlay` / `solid` badges placed on media.
+
+<ComponentPreview name="badge/highlights" />
+
+## Right-to-left
+
+Badges are inline-flex with logical gaps, so icons stay before the text in both directions.
+
+## Composition
+
+- Place an icon before the text; size it with `size-3.5` or `size-4`.
+- Adjust padding with `className` (e.g. the reference's `py-1` capacity badge).
+
+## Accessibility
+
+- Badges are plain text, not interactive, and aren't focusable.
+- Don't rely on color alone: the text itself must convey the status.
+- `solid` danger (white on red-500) is below AA contrast for small text; see the [contrast report](https://github.com/FarazPourebrahim/avero/blob/dev/packages/tokens/reference/contrast-report.md).
+
+## API reference
+
+`Badge` accepts every native `<span>` attribute plus:
+
+<PropsTable file="components/badge/Badge.tsx" name="BadgeOwnProps" />
+
+## Theming
+
+Uses the Tailwind palette (`green`, `red`, `indigo`, `emerald`, `amber`) and the `gradient-premium` / `gradient-label` utilities from `@avero/tokens/utilities.css`.
+
+## Do and don't
+
+- **Do** keep badge text to a word or two.
+- **Don't** make a badge clickable; use a [Chip](./chip) link instead.
+
+## Related
+
+[Chip](./chip) · [Button](./button)

@@ -1,0 +1,59 @@
+---
+title: Avatar
+description: A person's picture with an initials fallback, in every size, shape and border the reference uses.
+---
+
+**Reference:** header, author, listing, provider, dashboard and profile avatars (R-01, R-02, R-04, R-05, R-06) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/avatar)
+
+```tsx
+import { Avatar } from "@avero/react";
+```
+
+<ComponentPreview name="avatar/usages" />
+
+## Anatomy
+
+| Part     | Slot                 | Notes                                                    |
+| -------- | -------------------- | -------------------------------------------------------- |
+| Root     | `data-slot="avatar"` | Radix Avatar root                                        |
+| Image    | —                    | Shown once loaded                                        |
+| Fallback | —                    | Initials by default; `role="img"` with the name as label |
+
+## Examples
+
+### Fallback
+
+Without an image, or when it fails, the initials of `name` are shown (Persian names included).
+
+<ComponentPreview name="avatar/fallback" />
+
+## Right-to-left
+
+Initials take the first letter of the first and last word in reading order, in any script.
+
+## Composition
+
+- `size="3xl"` with `border="ring"` is the profile header avatar that overlaps the cover.
+- Add hover effects to the image with `imageClassName`.
+
+## Accessibility
+
+- The image uses `name` as its alternative text; the fallback carries the same name as its label.
+
+## API reference
+
+`Avatar` accepts every native `<span>` attribute plus:
+
+<PropsTable file="components/avatar/Avatar.tsx" name="AvatarOwnProps" />
+
+## Theming
+
+Uses `slate-200` for the fallback background and `slate-600` for the initials.
+
+## Do and don't
+
+- **Do** always pass the person's real name, even when an image is present.
+
+## Related
+
+[Image](./image)

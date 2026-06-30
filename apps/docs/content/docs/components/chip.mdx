@@ -1,0 +1,60 @@
+---
+title: Chip
+description: A compact tag for categories, skills and filter links. Renders a link with asChild.
+---
+
+**Reference:** listing categories, blog category links, related-category tags, footer link chips, skills and technology tags (R-01, R-04, R-06, R-07, R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/chip)
+
+```tsx
+import { Chip } from "@avero/react";
+```
+
+<ComponentPreview name="chip/static" />
+
+## Anatomy
+
+| Part | Slot               | Notes                                   |
+| ---- | ------------------ | --------------------------------------- |
+| Root | `data-slot="chip"` | A `<span>`, or your link with `asChild` |
+
+## Examples
+
+### Links
+
+`link`, `tag` (with a leading icon that turns blue on hover) and `footer` are meant for links.
+
+<ComponentPreview name="chip/links" />
+
+## Right-to-left
+
+The `tag` variant's icon sits at the inline start in both directions.
+
+## Composition
+
+- Use `asChild` with your router's link component for navigation chips.
+- For the `tag` variant, put the icon first; it's sized and colored automatically.
+
+## Accessibility
+
+- Static chips are plain text. Link chips keep the link's semantics and focus behavior.
+
+## API reference
+
+`Chip` accepts every native `<span>` attribute plus:
+
+<PropsTable file="components/chip/Chip.tsx" name="ChipOwnProps" />
+
+## Theming
+
+| Token                                               | Used by  |
+| --------------------------------------------------- | -------- |
+| `--color-text-chrome` / `--color-text-chrome-hover` | `footer` |
+
+## Do and don't
+
+- **Do** use `asChild` + a real link whenever a chip navigates.
+- **Don't** use chips for statuses; use a [Badge](./badge).
+
+## Related
+
+[Badge](./badge) · [Link](./link)

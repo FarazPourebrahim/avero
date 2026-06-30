@@ -1,0 +1,59 @@
+---
+title: Typography
+description: Heading, Text and Eyebrow, with the reference's heading scale and body styles.
+---
+
+**Reference:** service, article, page, section and card titles; body, lead and caption text (R-01, R-02, R-03, R-05, R-06) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/typography)
+
+```tsx
+import { Eyebrow, Heading, Text } from "@avero/react";
+```
+
+<ComponentPreview name="typography/headings" />
+
+## Anatomy
+
+| Part    | Slot                  | Notes                                          |
+| ------- | --------------------- | ---------------------------------------------- |
+| Heading | `data-slot="heading"` | Picks `h1`–`h4` from `size` unless `as` is set |
+| Text    | `data-slot="text"`    | A `<p>` by default                             |
+| Eyebrow | `data-slot="eyebrow"` | Small uppercase label                          |
+
+## Examples
+
+### Body text and eyebrow
+
+<ComponentPreview name="typography/text" />
+
+## Right-to-left
+
+Text aligns to the inline start. The `lead` variant is justified, as in the reference's story page.
+
+## Composition
+
+- Keep the visual `size` and the semantic level independent: use `as` to fix the outline without changing the look.
+
+## Accessibility
+
+- Choose `as` so heading levels don't skip in the page outline.
+
+## API reference
+
+<PropsTable file="components/typography/Typography.tsx" name="HeadingOwnProps" />
+
+<PropsTable file="components/typography/Typography.tsx" name="TextOwnProps" />
+
+<PropsTable file="components/typography/Typography.tsx" name="EyebrowOwnProps" />
+
+## Theming
+
+Uses the Lahzeh font via `--font-sans` and the Tailwind type scale; `lead` uses the `text-md` (15px) token.
+
+## Do and don't
+
+- **Do** use one `h1` per page.
+- **Don't** use headings just to make text bold.
+
+## Related
+
+[Link](./link)

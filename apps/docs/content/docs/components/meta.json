@@ -1,4 +1,18 @@
 {
   "title": "Components",
-  "pages": ["button"]
+  "pages": [
+    "avatar",
+    "badge",
+    "button",
+    "chip",
+    "divider",
+    "icon-button",
+    "icon-tile",
+    "icons",
+    "image",
+    "link",
+    "progress",
+    "typography",
+    "visually-hidden"
+  ]
 }

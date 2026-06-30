@@ -1,0 +1,64 @@
+---
+title: Link
+description: Text links for navigation, prose, the footer and back links, with safe external handling.
+---
+
+**Reference:** header and drawer navigation, article links, footer and contact links, back-to-list links (R-01, R-07, shared chrome) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/link)
+
+```tsx
+import { Link } from "@avero/react";
+```
+
+<ComponentPreview name="link/navigation" />
+
+## Anatomy
+
+| Part | Slot               | Notes                                        |
+| ---- | ------------------ | -------------------------------------------- |
+| Root | `data-slot="link"` | An `<a>`, or your router link with `asChild` |
+
+## Examples
+
+### Inline, footer, back and external links
+
+<ComponentPreview name="link/inline" />
+
+## Right-to-left
+
+Links are inline text. Flip direction-bearing icons (like the back arrow) with `ltr:-scale-x-100`.
+
+## Composition
+
+- Use `asChild` with your framework's link (`next/link`, React Router) to keep client-side navigation.
+- `current` marks the active navigation item and colors it with the primary token.
+
+## Accessibility
+
+| Key              | Action                  |
+| ---------------- | ----------------------- |
+| <kbd>Tab</kbd>   | Moves focus to the link |
+| <kbd>Enter</kbd> | Follows the link        |
+
+- `current` sets `aria-current="page"`.
+- `external` opens a new tab with `rel="noopener noreferrer"`; mention that it opens a new tab in the text if it's not obvious.
+
+## API reference
+
+`Link` accepts every native `<a>` attribute plus:
+
+<PropsTable file="components/link/Link.tsx" name="LinkOwnProps" />
+
+## Theming
+
+| Token                                               | Used by                                     |
+| --------------------------------------------------- | ------------------------------------------- |
+| `--color-primary`                                   | `nav` hover and current page, `brand` hover |
+| `--color-text-chrome` / `--color-text-chrome-hover` | `chrome`                                    |
+
+## Do and don't
+
+- **Do** use links for navigation and [Button](./button) for actions.
+
+## Related
+
+[Button](./button) · [Chip](./chip)

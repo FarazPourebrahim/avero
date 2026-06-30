@@ -1,0 +1,58 @@
+---
+title: IconTile
+description: A tinted square that frames an icon in stat cards, feature cards and quick actions.
+---
+
+**Reference:** dashboard stats, achievements and quick actions, profile stats, feature cards (R-02, R-03, R-04) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/icon-tile)
+
+```tsx
+import { IconTile } from "@avero/react";
+```
+
+<ComponentPreview name="icon-tile/variants" />
+
+## Anatomy
+
+| Part | Slot                    | Notes                               |
+| ---- | ----------------------- | ----------------------------------- |
+| Root | `data-slot="icon-tile"` | Decorative `<span>` (`aria-hidden`) |
+| Icon | —                       | Passed as children                  |
+
+## Examples
+
+### Sizes
+
+Sizes are responsive exactly as in the reference (e.g. `xs` grows from 28px to 32px at `sm`).
+
+<ComponentPreview name="icon-tile/sizes" />
+
+## Right-to-left
+
+Tiles have no direction-specific styling.
+
+## Composition
+
+- Use it inside [StatCard](#), [FeatureCard](#) and [ActionTile](#) (data display components).
+- The `gradient` variant's quick-action hover effect comes from the parent card.
+
+## Accessibility
+
+- The tile is decorative. Put the meaning in the adjacent text.
+
+## API reference
+
+`IconTile` accepts every native `<span>` attribute plus:
+
+<PropsTable file="components/icon-tile/IconTile.tsx" name="IconTileOwnProps" />
+
+## Theming
+
+Uses the Tailwind palette families listed in `tone`; `primary` uses `--color-primary`.
+
+## Do and don't
+
+- **Do** keep one tone per meaning across a screen (e.g. purple for portfolio).
+
+## Related
+
+[Badge](./badge) · [Icons](./icons)

@@ -1,0 +1,54 @@
+---
+title: VisuallyHidden and LiveRegion
+description: Content for assistive technology only, and an invisible announcer for status updates.
+---
+
+**Reference:** the article's screen-reader announcer `#blog-action-live` (R-01) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/visually-hidden)
+
+```tsx
+import { LiveRegion, VisuallyHidden } from "@avero/react";
+```
+
+<ComponentPreview name="visually-hidden/live-region" />
+
+## Anatomy
+
+| Part           | Slot                          | Notes                                    |
+| -------------- | ----------------------------- | ---------------------------------------- |
+| VisuallyHidden | `data-slot="visually-hidden"` | A `sr-only` `<span>`                     |
+| LiveRegion     | `data-slot="live-region"`     | A `sr-only` `status` (or `alert`) region |
+
+## Examples
+
+Press the button above: the new text is announced by screen readers through the live region.
+
+## Right-to-left
+
+Hidden content follows the surrounding direction.
+
+## Composition
+
+- Add context that sighted users get visually, e.g. `کپی لینک <VisuallyHidden>این مقاله</VisuallyHidden>`.
+- Keep one `LiveRegion` mounted and change its text; mounting a new region each time may not be announced.
+
+## Accessibility
+
+- `LiveRegion` uses `aria-live="polite"` and `aria-atomic="true"`; `politeness="assertive"` uses `role="alert"` for urgent messages only.
+
+## API reference
+
+<PropsTable file="components/visually-hidden/VisuallyHidden.tsx" name="LiveRegionOwnProps" />
+
+`VisuallyHidden` accepts every native `<span>` attribute.
+
+## Theming
+
+None.
+
+## Do and don't
+
+- **Don't** hide essential content that sighted users also need.
+
+## Related
+
+[IconButton](./icon-button)

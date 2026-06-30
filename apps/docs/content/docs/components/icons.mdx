@@ -1,0 +1,64 @@
+---
+title: Icons
+description: The reference's non-Lucide glyphs as React components, plus createIcon for your own.
+---
+
+**Reference:** blog meta, share, footer social and chart empty-state icons (R-01, R-02, R-05, shared footer) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/icons)
+
+```tsx
+import { TelegramIcon, createIcon } from "@avero/react";
+```
+
+Avero uses [Lucide](https://lucide.dev) for general icons, like the reference. The glyphs below are the reference's other icons (Font Awesome Free 5 and Heroicons), extracted from the snapshot so they match exactly.
+
+<ComponentPreview name="icons/gallery" />
+
+## Anatomy
+
+| Part | Slot               | Notes                                    |
+| ---- | ------------------ | ---------------------------------------- |
+| Root | `data-slot="icon"` | An inline `<svg>` sized `1em` by default |
+
+## Examples
+
+Create an icon from path data:
+
+```tsx
+const Square = createIcon("SquareIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M4 4h16v16H4z"],
+});
+```
+
+## Right-to-left
+
+Icons don't flip automatically. Add `ltr:-scale-x-100` (or `rtl:`) to direction-bearing icons.
+
+## Composition
+
+- Icons inherit `currentColor`; set the color with a text utility.
+
+## Accessibility
+
+- Icons are decorative (`aria-hidden`) unless you pass `title`, which makes them `role="img"` with that name.
+
+## API reference
+
+<PropsTable file="icons/createIcon.tsx" name="IconProps" />
+
+## Theming
+
+Icons use `currentColor`.
+
+## Do and don't
+
+- **Do** give standalone meaningful icons a `title`, or put them inside a labelled [IconButton](./icon-button).
+
+## Licences
+
+Font Awesome Free icons are CC BY 4.0; Heroicons are MIT. See `THIRD_PARTY_NOTICES.md` in `@avero/react`. The Instagram glyph's licence is pending verification (KD-05).
+
+## Related
+
+[IconButton](./icon-button) · [IconTile](./icon-tile)
