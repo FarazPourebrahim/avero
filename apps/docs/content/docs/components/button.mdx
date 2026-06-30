@@ -1,0 +1,97 @@
+---
+title: Button
+description: Triggers an action. Covers every button style in the reference, from the primary call to action to the tinted share and report buttons.
+---
+
+**Reference:** primary CTA, drawer CTA, share, report and profile buttons (R-01, R-03, R-05, R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/button)
+
+```tsx
+import { Button } from "@avero/react";
+```
+
+<ComponentPreview name="button/primary" />
+
+## Anatomy
+
+A single `<button>` (or, with `asChild`, your own element) with an optional leading spinner.
+
+| Part    | Slot                         | Notes                               |
+| ------- | ---------------------------- | ----------------------------------- |
+| Root    | `data-slot="button"`         | `<button type="button">` by default |
+| Spinner | `data-slot="button-spinner"` | Shown while `loading`               |
+
+## Examples
+
+### Variants
+
+<ComponentPreview name="button/variants" />
+
+### Soft tones
+
+The `soft` variant takes its color from `tone`. These are the reference's share, report and certificate buttons.
+
+<ComponentPreview name="button/tones" />
+
+### Sizes
+
+<ComponentPreview name="button/sizes" />
+
+### States
+
+`loading` shows a spinner, sets `aria-busy` and blocks clicks. `block` fills the container width.
+
+<ComponentPreview name="button/states" />
+
+### As a link
+
+Use `asChild` to give a link (or a router link) button styles. The child keeps its own semantics.
+
+<ComponentPreview name="button/as-link" />
+
+## Right-to-left
+
+Buttons use logical spacing, so they mirror automatically. Flip direction-bearing icons with `ltr:-scale-x-100`,
+as in the first example. Use the RTL/LTR switch above each preview to compare.
+
+## Composition
+
+- Put icons before or after the label as children; size them with `size-4`.
+- Override any utility with `className`. It's merged with `cn()`, so `className="px-6"` replaces the default padding.
+- Reuse the styles on other elements with the exported `buttonVariants()`.
+
+## Accessibility
+
+| Key                                 | Action                                                  |
+| ----------------------------------- | ------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus to the button; a visible focus ring appears |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates the button                                    |
+
+- Renders a native `<button>` with `type="button"` by default, so it never submits forms by accident.
+- `disabled` and `loading` remove the button from interaction; `loading` also sets `aria-busy="true"`.
+- Icon-only buttons should use [`IconButton`](#), which requires an accessible label.
+
+## API reference
+
+`Button` accepts every native `<button>` attribute plus:
+
+<PropsTable file="components/button/Button.tsx" name="ButtonOwnProps" />
+
+## Theming
+
+| Token                                       | Used by                          |
+| ------------------------------------------- | -------------------------------- |
+| `--color-primary` / `--color-primary-hover` | `primary`, `inverse`, focus ring |
+| `--color-secondary`                         | `secondary`                      |
+| `--color-warning` / `--color-warning-hover` | `warning`                        |
+| `--color-surface-glass`                     | `inverse` hover                  |
+
+## Do and don't
+
+- **Do** use one `primary` button per section for the main action.
+- **Do** use `soft` tones for secondary actions such as sharing or reporting.
+- **Don't** use a `Button` for navigation without `asChild` and a real link.
+- **Don't** put a `loading` button's only label inside the spinner; keep the text.
+
+## Related
+
+`IconButton` · `Link` · `Chip`

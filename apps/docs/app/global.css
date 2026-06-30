@@ -7,6 +7,8 @@
 /* Avero components ship as compiled JS; Tailwind scans them for the classes they use. */
 @source "../node_modules/@avero/react/dist";
 @source "../content";
+@source "../demos";
+@source "../components";
 
 html {
   scrollbar-gutter: stable;
