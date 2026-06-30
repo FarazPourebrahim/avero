@@ -52,13 +52,26 @@ export const imageVariants = cva("block max-w-full", {
   },
 });
 
-export type ImageProps = ImgHTMLAttributes<HTMLImageElement> &
-  VariantProps<typeof imageVariants> & {
-    /** Alternative text. Pass an empty string for purely decorative images. */
-    alt: string;
-    /** Rendered in place of the image when it fails to load. Defaults to a neutral block. */
-    fallback?: ReactNode;
-  };
+type ImageVariantProps = VariantProps<typeof imageVariants>;
+
+/** Props specific to `Image`. It also accepts every native `<img>` attribute. */
+export type ImageOwnProps = {
+  /** Alternative text. Pass an empty string for purely decorative images. */
+  alt: string;
+  /** Rendered in place of the image when it fails to load. @defaultValue a neutral gray block */
+  fallback?: ReactNode;
+  /** How the image fills its box. @defaultValue "cover" */
+  fit?: ImageVariantProps["fit"];
+  /** Corner radius. @defaultValue "none" */
+  radius?: ImageVariantProps["radius"];
+  /** Hover zoom: `subtle` (article cover), `hover` or `group` (zooms when a parent `group` is hovered). @defaultValue "none" */
+  zoom?: ImageVariantProps["zoom"];
+  /** Fixed aspect ratio at full width. @defaultValue "auto" */
+  aspect?: ImageVariantProps["aspect"];
+};
+
+export type ImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, keyof ImageOwnProps> &
+  ImageOwnProps;
 
 export const Image = forwardRef<HTMLImageElement, ImageProps>(function Image(
   {
@@ -112,11 +125,15 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(function Image(
 
 Image.displayName = "Image";
 
-export type FigureProps = HTMLAttributes<HTMLElement> & {
+/** Props specific to `Figure`. It also accepts every native `<figure>` attribute. */
+export type FigureOwnProps = {
+  /** Optional caption rendered in a `<figcaption>`. */
   caption?: ReactNode;
-  /** Clips zoomed media to the figure's rounded corners. Defaults to `true`. */
+  /** Clips zoomed media to the figure's rounded corners. @defaultValue true */
   clip?: boolean;
 };
+
+export type FigureProps = Omit<HTMLAttributes<HTMLElement>, keyof FigureOwnProps> & FigureOwnProps;
 
 /** Wraps media, clipping zoom effects to rounded corners (the article cover frame, R-01). */
 export const Figure = forwardRef<HTMLElement, FigureProps>(function Figure(

@@ -37,12 +37,18 @@ const DEFAULT_LEVEL = {
 
 type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-export type HeadingProps = HTMLAttributes<HTMLHeadingElement> &
-  VariantProps<typeof headingVariants> & {
-    /** The heading element. Defaults to the level that fits the size (e.g. `page` → `h1`). */
-    as?: HeadingLevel;
-    asChild?: boolean;
-  };
+/** Props specific to `Heading`. It also accepts every native heading attribute. */
+export type HeadingOwnProps = {
+  /** Visual scale, from `display` (service title) to `subsection` (panel title). @defaultValue "section" */
+  size?: VariantProps<typeof headingVariants>["size"];
+  /** The heading element. @defaultValue the level that fits the size (e.g. `page` → `h1`) */
+  as?: HeadingLevel;
+  /** Renders the child element with heading styles instead. @defaultValue false */
+  asChild?: boolean;
+};
+
+export type HeadingProps = Omit<HTMLAttributes<HTMLHeadingElement>, keyof HeadingOwnProps> &
+  HeadingOwnProps;
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Heading(
   { as, asChild = false, size, className, ...props },
@@ -80,11 +86,18 @@ export const textVariants = cva("", {
   defaultVariants: { variant: "body" },
 });
 
-export type TextProps = HTMLAttributes<HTMLParagraphElement> &
-  VariantProps<typeof textVariants> & {
-    as?: "p" | "span" | "div";
-    asChild?: boolean;
-  };
+/** Props specific to `Text`. It also accepts every native paragraph attribute. */
+export type TextOwnProps = {
+  /** Text style. @defaultValue "body" */
+  variant?: VariantProps<typeof textVariants>["variant"];
+  /** The element to render. @defaultValue "p" */
+  as?: "p" | "span" | "div";
+  /** Renders the child element with text styles instead. @defaultValue false */
+  asChild?: boolean;
+};
+
+export type TextProps = Omit<HTMLAttributes<HTMLParagraphElement>, keyof TextOwnProps> &
+  TextOwnProps;
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
   { as = "p", asChild = false, variant, className, ...props },
@@ -118,7 +131,14 @@ export const eyebrowVariants = cva("block tracking-wider uppercase", {
   defaultVariants: { tone: "onLight" },
 });
 
-export type EyebrowProps = HTMLAttributes<HTMLSpanElement> & VariantProps<typeof eyebrowVariants>;
+/** Props specific to `Eyebrow`. It also accepts every native `<span>` attribute. */
+export type EyebrowOwnProps = {
+  /** Color for light or dark backgrounds. @defaultValue "onLight" */
+  tone?: VariantProps<typeof eyebrowVariants>["tone"];
+};
+
+export type EyebrowProps = Omit<HTMLAttributes<HTMLSpanElement>, keyof EyebrowOwnProps> &
+  EyebrowOwnProps;
 
 export const Eyebrow = forwardRef<HTMLSpanElement, EyebrowProps>(function Eyebrow(
   { tone, className, ...props },

@@ -30,17 +30,23 @@ export const progressIndicatorVariants = cva(
   },
 );
 
+/** Props specific to `Progress`. It also accepts every native `<div>` attribute. */
+export type ProgressOwnProps = {
+  /** Current value, clamped to `0…max`. `null` renders an indeterminate bar. */
+  value: number | null;
+  /** Maximum value. Invalid values (≤ 0) fall back to 100. @defaultValue 100 */
+  max?: number;
+  /** Track height: `sm` (6px) or `md` (8px). @defaultValue "md" */
+  size?: VariantProps<typeof progressVariants>["size"];
+  /** Fill color. @defaultValue "primary" */
+  tone?: VariantProps<typeof progressIndicatorVariants>["tone"];
+};
+
 export type ProgressProps = Omit<
   ComponentPropsWithoutRef<typeof RadixProgress.Root>,
-  "value" | "max"
+  keyof ProgressOwnProps
 > &
-  VariantProps<typeof progressVariants> &
-  VariantProps<typeof progressIndicatorVariants> & {
-    /** Current value. `null` renders an indeterminate bar. */
-    value: number | null;
-    /** Maximum value. Defaults to 100. */
-    max?: number;
-  };
+  ProgressOwnProps;
 
 function clamp(value: number, max: number): number {
   return Math.min(Math.max(value, 0), max);

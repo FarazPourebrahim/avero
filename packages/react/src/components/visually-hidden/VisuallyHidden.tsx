@@ -14,10 +14,14 @@ export const VisuallyHidden = forwardRef<HTMLSpanElement, VisuallyHiddenProps>(
 
 VisuallyHidden.displayName = "VisuallyHidden";
 
-export type LiveRegionProps = HTMLAttributes<HTMLDivElement> & {
-  /** `polite` waits for the user to be idle; `assertive` interrupts. Defaults to `polite`. */
+/** Props specific to `LiveRegion`. It also accepts every native `<div>` attribute. */
+export type LiveRegionOwnProps = {
+  /** `polite` waits for the user to be idle; `assertive` interrupts. @defaultValue "polite" */
   politeness?: "polite" | "assertive";
 };
+
+export type LiveRegionProps = Omit<HTMLAttributes<HTMLDivElement>, keyof LiveRegionOwnProps> &
+  LiveRegionOwnProps;
 
 /**
  * An invisible announcer for status updates such as "link copied" or "liked"

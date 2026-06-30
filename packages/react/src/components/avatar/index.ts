@@ -1,1 +1,7 @@
-export { Avatar, avatarVariants, getInitials, type AvatarProps } from "./Avatar.js";
+export {
+  Avatar,
+  avatarVariants,
+  getInitials,
+  type AvatarOwnProps,
+  type AvatarProps,
+} from "./Avatar.js";

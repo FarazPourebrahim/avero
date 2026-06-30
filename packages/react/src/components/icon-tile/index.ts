@@ -1,1 +1,6 @@
-export { IconTile, iconTileVariants, type IconTileProps } from "./IconTile.js";
+export {
+  IconTile,
+  iconTileVariants,
+  type IconTileOwnProps,
+  type IconTileProps,
+} from "./IconTile.js";

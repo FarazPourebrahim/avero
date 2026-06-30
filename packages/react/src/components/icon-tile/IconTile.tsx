@@ -81,7 +81,20 @@ export const iconTileVariants = cva(
   },
 );
 
-export type IconTileProps = HTMLAttributes<HTMLSpanElement> & VariantProps<typeof iconTileVariants>;
+type IconTileVariantProps = VariantProps<typeof iconTileVariants>;
+
+/** Props specific to `IconTile`. It also accepts every native `<span>` attribute. */
+export type IconTileOwnProps = {
+  /** Fill style: `soft` (-50), `muted` (-100), `tint` (translucent -600) or `gradient`. @defaultValue "soft" */
+  variant?: IconTileVariantProps["variant"];
+  /** Color family. @defaultValue "blue" */
+  tone?: IconTileVariantProps["tone"];
+  /** Tile size, responsive as in the reference; `padded` wraps the icon with 12px padding. @defaultValue "xs" */
+  size?: IconTileVariantProps["size"];
+};
+
+export type IconTileProps = Omit<HTMLAttributes<HTMLSpanElement>, keyof IconTileOwnProps> &
+  IconTileOwnProps;
 
 /** A decorative, tinted square that holds an icon. Place the icon as its child. */
 export const IconTile = forwardRef<HTMLSpanElement, IconTileProps>(function IconTile(

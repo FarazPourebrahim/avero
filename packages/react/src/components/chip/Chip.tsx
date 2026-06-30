@@ -3,11 +3,17 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 import { chipVariants, type ChipVariantProps } from "./chip.variants.js";
 
-export type ChipProps = HTMLAttributes<HTMLSpanElement> &
-  ChipVariantProps & {
-    /** Renders the child element (usually a link) with chip styles instead of a `<span>`. */
-    asChild?: boolean;
-  };
+/** Props specific to `Chip`. It also accepts every native `<span>` attribute. */
+export type ChipOwnProps = {
+  /** Visual style. @defaultValue "category" */
+  variant?: ChipVariantProps["variant"];
+  /** Size. Only the `category` variant has a smaller `sm` size. @defaultValue "md" */
+  size?: ChipVariantProps["size"];
+  /** Renders the child element (usually a link) with chip styles instead of a `<span>`. @defaultValue false */
+  asChild?: boolean;
+};
+
+export type ChipProps = Omit<HTMLAttributes<HTMLSpanElement>, keyof ChipOwnProps> & ChipOwnProps;
 
 /** A compact tag for categories, skills and filter links. Use `asChild` to make it a link. */
 export const Chip = forwardRef<HTMLSpanElement, ChipProps>(function Chip(

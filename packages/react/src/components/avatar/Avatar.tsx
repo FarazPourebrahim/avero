@@ -45,16 +45,31 @@ export const avatarVariants = cva(
   },
 );
 
-export type AvatarProps = Omit<ComponentPropsWithoutRef<typeof RadixAvatar.Root>, "children"> &
-  VariantProps<typeof avatarVariants> & {
-    src?: string;
-    /** The person's name. Used as the image's alternative text and to derive fallback initials. */
-    name: string;
-    /** Content shown while the image loads or when it fails. Defaults to the name's initials. */
-    fallback?: ReactNode;
-    /** Classes for the `<img>` element, e.g. hover zoom. */
-    imageClassName?: string;
-  };
+type AvatarVariantProps = VariantProps<typeof avatarVariants>;
+
+/** Props specific to `Avatar`. It also accepts every native `<span>` attribute. */
+export type AvatarOwnProps = {
+  /** Image URL. Without it, or when it fails to load, the fallback is shown. */
+  src?: string;
+  /** The person's name. Used as the image's alternative text and to derive fallback initials. */
+  name: string;
+  /** Content shown while the image loads or when it fails. @defaultValue the name's initials */
+  fallback?: ReactNode;
+  /** Diameter, from 28px (`xs`) to the responsive 112→176px profile avatar (`3xl`). @defaultValue "sm" */
+  size?: AvatarVariantProps["size"];
+  /** Circle or rounded square. @defaultValue "circle" */
+  shape?: AvatarVariantProps["shape"];
+  /** Border treatment, e.g. the profile header's white `ring`. @defaultValue "none" */
+  border?: AvatarVariantProps["border"];
+  /** Classes for the `<img>` element, e.g. hover zoom. */
+  imageClassName?: string;
+};
+
+export type AvatarProps = Omit<
+  ComponentPropsWithoutRef<typeof RadixAvatar.Root>,
+  keyof AvatarOwnProps | "children"
+> &
+  AvatarOwnProps;
 
 /** Returns up to two initials from a name, e.g. "Faraz Pourebrahim" → "FP", "زینب فلاح" → "زف". */
 export function getInitials(name: string): string {

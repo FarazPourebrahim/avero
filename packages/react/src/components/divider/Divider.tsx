@@ -21,11 +21,20 @@ export const dividerVariants = cva("shrink-0 border-0", {
   },
 });
 
-export type DividerProps = HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof dividerVariants> & {
-    /** Decorative dividers are hidden from assistive technology. Defaults to `true`. */
-    decorative?: boolean;
-  };
+type DividerVariantProps = VariantProps<typeof dividerVariants>;
+
+/** Props specific to `Divider`. It also accepts every native `<div>` attribute. */
+export type DividerOwnProps = {
+  /** Line direction. @defaultValue "horizontal" */
+  orientation?: DividerVariantProps["orientation"];
+  /** Line color: `gray` (cards), `slate` (profile), `strong` (footer). @defaultValue "gray" */
+  tone?: DividerVariantProps["tone"];
+  /** Decorative dividers are hidden from assistive technology; otherwise it is a `separator`. @defaultValue true */
+  decorative?: boolean;
+};
+
+export type DividerProps = Omit<HTMLAttributes<HTMLDivElement>, keyof DividerOwnProps> &
+  DividerOwnProps;
 
 export const Divider = forwardRef<HTMLDivElement, DividerProps>(function Divider(
   { className, orientation, tone, decorative = true, ...props },

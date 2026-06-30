@@ -1,1 +1,9 @@
-export { Figure, Image, imageVariants, type FigureProps, type ImageProps } from "./Image.js";
+export {
+  Figure,
+  Image,
+  imageVariants,
+  type FigureOwnProps,
+  type FigureProps,
+  type ImageOwnProps,
+  type ImageProps,
+} from "./Image.js";

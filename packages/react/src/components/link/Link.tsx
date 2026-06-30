@@ -33,15 +33,20 @@ export const linkVariants = cva(
   },
 );
 
-export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
-  VariantProps<typeof linkVariants> & {
-    /** Renders the child element (e.g. a router link) with link styles instead of an `<a>`. */
-    asChild?: boolean;
-    /** Opens in a new tab with `rel="noopener noreferrer"` (see docs/SECURITY.md). */
-    external?: boolean;
-    /** Marks the link as the current page (`aria-current="page"`). */
-    current?: boolean;
-  };
+/** Props specific to `Link`. It also accepts every native `<a>` attribute. */
+export type LinkOwnProps = {
+  /** Visual style. @defaultValue "prose" */
+  variant?: VariantProps<typeof linkVariants>["variant"];
+  /** Renders the child element (e.g. a router link) with link styles instead of an `<a>`. @defaultValue false */
+  asChild?: boolean;
+  /** Opens in a new tab with `rel="noopener noreferrer"` (see docs/SECURITY.md). @defaultValue false */
+  external?: boolean;
+  /** Marks the link as the current page (`aria-current="page"`). @defaultValue false */
+  current?: boolean;
+};
+
+export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkOwnProps> &
+  LinkOwnProps;
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
   { asChild = false, external = false, current = false, className, variant, rel, ...props },

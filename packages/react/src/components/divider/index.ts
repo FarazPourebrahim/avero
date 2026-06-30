@@ -1,1 +1,1 @@
-export { Divider, dividerVariants, type DividerProps } from "./Divider.js";
+export { Divider, dividerVariants, type DividerOwnProps, type DividerProps } from "./Divider.js";
