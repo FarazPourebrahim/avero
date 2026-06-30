@@ -17,6 +17,13 @@ The icons in `src/icons/referenceIcons.generated.tsx` whose source says "Font Aw
 - Copyright: Tailwind Labs, Inc. (https://heroicons.com)
 - Licence: MIT
 
+## Lucide
+
+`src/icons/internalIcons.tsx` vendors a few Lucide glyphs (arrow and chevron icons, the close icon) that Avero components render internally, so `lucide-react` stays an optional peer dependency.
+
+- Copyright: Lucide Contributors (https://lucide.dev)
+- Licence: ISC
+
 ## Pending verification
 
 - `InstagramIcon`: the glyph comes from the reference site's icon library, and its source icon set has not been identified yet. Its licence must be verified before release (tracked in `docs/known-debts.md`, KD-05).
