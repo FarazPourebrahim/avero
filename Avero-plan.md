@@ -55,14 +55,14 @@
 | 8 | Layout shells and site chrome | ⬜ | 0 / 9 | 5, 6, 7 | M | | |
 | 9 | Charts and editor packages | ⬜ | 0 / 10 | 7 | M | | |
 | 10 | Blocks, templates and replica pages (visual parity gate) | ⬜ | 0 / 10 | 4–9 | L | | |
-| 11 | Documentation site | ⬜ | 0 / 14 | 3 (can start in parallel) | L | | |
+| 11 | Documentation site | 🟨 | 0 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 8 | 13 | L | | |
 
 **Overall:** 33 / 164 phase-DoD items (≈20%).
 
-> Phase 3 note (2026-06-19): 13 primitives are implemented, unit/SSR/axe-tested (255 tests, 100% statements) and visually baselined locally, but no Phase 3 item is ticked yet: each also needs its docs page (Global DoD 9) and cross-platform baselines with the Lahzeh font (KD-02, KD-06).
+> Phase 3 note (2026-06-19): 13 primitives are implemented, unit/SSR/axe-tested (255 tests, 100% statements) and visually baselined locally, but no Phase 3 item is ticked yet. Docs pages with live RTL/LTR previews and generated props tables now exist for all 13; what remains is cross-platform visual baselines rendered with the Lahzeh font (KD-02, KD-06).
 
 ---
 
@@ -981,22 +981,22 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | ID | Component | Tier | Phase | Impl | Test | A11y | Vis | Docs | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | F-01…F-13 | Foundations (tokens, type, motion, …) | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
-| P-01 | Button | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-02 | IconButton | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-03 | Link | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-04 | Badge | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-05 | Chip / Tag | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-06 | Avatar | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-01 | Button | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-02 | IconButton | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-03 | Link | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-04 | Badge | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-05 | Chip / Tag | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-06 | Avatar | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | P-06b | AvatarGroup | B | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| P-07 | IconTile | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-08 | Icon + brand icons | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-09 | Divider | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-10 | Heading / Text / Eyebrow | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-07 | IconTile | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-08 | Icon + brand icons | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-09 | Divider | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-10 | Heading / Text / Eyebrow | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | P-11 | Spinner | B | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | P-12 | Skeleton | B | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| P-13 | Progress | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-14 | VisuallyHidden / LiveRegion | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
-| P-15 | Image / Figure | A | 3 | ✅ | ✅ | ✅ | 🟨 | ⬜ | 🟨 |
+| P-13 | Progress | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-14 | VisuallyHidden / LiveRegion | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| P-15 | Image / Figure | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | FM-01 | Field | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-02 | Input | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | FM-03 | Textarea | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
