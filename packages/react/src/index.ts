@@ -34,6 +34,10 @@ export {
   type AveroLanguage,
 } from "./i18n/dictionaries.js";
 
+// Hooks
+export { useControllableState } from "./hooks/useControllableState.js";
+export { mergeRefs } from "./utils/refs.js";
+
 // Icons
 export { createIcon, type IconDefinition, type IconProps } from "./icons/createIcon.js";
 export * from "./icons/referenceIcons.generated.js";
@@ -51,3 +55,10 @@ export * from "./components/link/index.js";
 export * from "./components/progress/index.js";
 export * from "./components/typography/index.js";
 export * from "./components/visually-hidden/index.js";
+
+// Navigation
+export * from "./components/back-link/index.js";
+export * from "./components/pill-tabs/index.js";
+export * from "./components/segmented-control/index.js";
+export * from "./components/sidebar-nav/index.js";
+export * from "./components/toggle-chip-group/index.js";
