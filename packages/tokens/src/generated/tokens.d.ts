@@ -95,6 +95,8 @@ export type TokenName =
   | "animationLeafSway"
   | "animationLeafSwayAlt"
   | "animationMonitorGlow"
+  | "animationAccordionDown"
+  | "animationAccordionUp"
   | "zIndexRaised"
   | "zIndexSticky"
   | "zIndexDrawer"

@@ -139,6 +139,31 @@
   --animate-leaf-sway: leaf-sway 6s ease-in-out infinite;
   --animate-leaf-sway-alt: leaf-sway-alt 7.5s ease-in-out infinite;
   --animate-monitor-glow: monitor-light-pulse 4s ease-in-out infinite;
+  /* Accordion open/close (N-08): the reference animates height and opacity over 300ms ease-in-out. */
+  --animate-accordion-down: accordion-down 0.3s ease-in-out;
+  --animate-accordion-up: accordion-up 0.3s ease-in-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
 
   @keyframes slide-up {
     0% {

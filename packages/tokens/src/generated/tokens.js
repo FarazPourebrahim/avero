@@ -380,6 +380,14 @@ export const tokens = {
     "cssVar": "--animate-monitor-glow",
     "value": "monitor-light-pulse 4s ease-in-out infinite"
   },
+  "animationAccordionDown": {
+    "cssVar": "--animate-accordion-down",
+    "value": "accordion-down 0.3s ease-in-out"
+  },
+  "animationAccordionUp": {
+    "cssVar": "--animate-accordion-up",
+    "value": "accordion-up 0.3s ease-in-out"
+  },
   "zIndexRaised": {
     "cssVar": "--z-raised",
     "value": "10"
@@ -550,7 +558,9 @@ export const tokenGroups = {
     "steam",
     "leaf-sway",
     "leaf-sway-alt",
-    "monitor-glow"
+    "monitor-glow",
+    "accordion-down",
+    "accordion-up"
   ],
   "zIndex": [
     "raised",
