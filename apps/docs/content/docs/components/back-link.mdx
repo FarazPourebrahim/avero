@@ -1,0 +1,62 @@
+---
+title: BackLink
+description: A "back" link or button whose arrow points to the reading start and flips in LTR.
+---
+
+**Reference:** article back button, service back button, back-to-list link (R-01, R-05, R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/back-link)
+
+```tsx
+import { BackLink } from "@avero/react";
+```
+
+<ComponentPreview name="back-link/usages" />
+
+## Anatomy
+
+| Part  | Slot                    | Notes                                      |
+| ----- | ----------------------- | ------------------------------------------ |
+| Root  | `data-slot="back-link"` | A link with `href`, otherwise a button     |
+| Arrow | —                       | Points to the inline start; flipped in LTR |
+| Label | —                       | Defaults to the dictionary's `back` string |
+
+## Examples
+
+The three variants above are the reference's article (`text`), service page (`soft`) and project page (`subtle`) back controls.
+
+## Right-to-left
+
+In RTL the arrow points right, toward where reading started; in LTR it points left. Switch the preview direction to compare.
+
+## Composition
+
+- Without `href`, pass `onClick` (for example `() => history.back()`).
+- With a router, use `asChild` and put your link inside; provide the label as its content.
+
+## Accessibility
+
+| Key              | Action                                                  |
+| ---------------- | ------------------------------------------------------- |
+| <kbd>Tab</kbd>   | Moves focus to the control                              |
+| <kbd>Enter</kbd> | Activates it (and <kbd>Space</kbd> for the button form) |
+
+- The arrow is decorative; the visible label is the accessible name.
+
+## API reference
+
+`BackLink` accepts every native link or button attribute plus:
+
+<PropsTable file="components/back-link/BackLink.tsx" name="BackLinkOwnProps" />
+
+## Theming
+
+| Token             | Used by      |
+| ----------------- | ------------ |
+| `--color-primary` | `text` hover |
+
+## Do and don't
+
+- **Do** prefer a real `href` when the previous page has a stable URL.
+
+## Related
+
+[Link](./link) · [Button](./button)

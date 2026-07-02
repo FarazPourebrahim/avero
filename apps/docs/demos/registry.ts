@@ -4,6 +4,7 @@ import AvatarUsages from "./avatar/usages";
 import BadgeHighlights from "./badge/highlights";
 import BadgeOutline from "./badge/outline";
 import BadgeStatus from "./badge/status";
+import BackLinkUsages from "./back-link/usages";
 import ButtonAsLink from "./button/as-link";
 import ButtonPrimary from "./button/primary";
 import ButtonSizes from "./button/sizes";
@@ -23,8 +24,12 @@ import ImageCardAndFallback from "./image/card-and-fallback";
 import ImageCover from "./image/cover";
 import LinkInline from "./link/inline";
 import LinkNavigation from "./link/navigation";
+import PillTabsProfile from "./pill-tabs/profile";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
+import SegmentedControlAnalytics from "./segmented-control/analytics";
+import SidebarNavDashboard from "./sidebar-nav/dashboard";
+import ToggleChipGroupMetrics from "./toggle-chip-group/metrics";
 import TypographyHeadings from "./typography/headings";
 import TypographyText from "./typography/text";
 import VisuallyHiddenLiveRegion from "./visually-hidden/live-region";
@@ -36,6 +41,7 @@ export const demos = {
   "badge/status": BadgeStatus,
   "badge/outline": BadgeOutline,
   "badge/highlights": BadgeHighlights,
+  "back-link/usages": BackLinkUsages,
   "button/primary": ButtonPrimary,
   "button/variants": ButtonVariants,
   "button/tones": ButtonTones,
@@ -57,6 +63,10 @@ export const demos = {
   "link/inline": LinkInline,
   "progress/capacity": ProgressCapacity,
   "progress/variants": ProgressVariants,
+  "pill-tabs/profile": PillTabsProfile,
+  "segmented-control/analytics": SegmentedControlAnalytics,
+  "sidebar-nav/dashboard": SidebarNavDashboard,
+  "toggle-chip-group/metrics": ToggleChipGroupMetrics,
   "typography/headings": TypographyHeadings,
   "typography/text": TypographyText,
   "visually-hidden/live-region": VisuallyHiddenLiveRegion,

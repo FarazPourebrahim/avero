@@ -1,0 +1,62 @@
+---
+title: ToggleChipGroup
+description: A multi-select row of small chips that fill with their own color, like the chart metric toggles.
+---
+
+**Reference:** metric toggles above the dashboard charts, "بازدید / لایک / کلیک / نظر" (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/toggle-chip-group)
+
+```tsx
+import { ToggleChip, ToggleChipGroup } from "@avero/react";
+```
+
+<ComponentPreview name="toggle-chip-group/metrics" />
+
+## Anatomy
+
+| Part | Slot                            | Notes                                          |
+| ---- | ------------------------------- | ---------------------------------------------- |
+| Root | `data-slot="toggle-chip-group"` | Radix ToggleGroup (multiple), `role="toolbar"` |
+| Chip | `data-slot="toggle-chip"`       | A toggle button with `aria-pressed`            |
+
+## Examples
+
+Pass each chip the color of the chart series it controls; selected chips fill with it.
+
+## Right-to-left
+
+Arrow-key navigation follows reading direction.
+
+## Composition
+
+- Keep `value` in sync with which series your chart renders.
+
+## Accessibility
+
+| Key                                 | Action                                        |
+| ----------------------------------- | --------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus into and out of the toolbar       |
+| <kbd>←</kbd> / <kbd>→</kbd>         | Moves between chips (reading direction aware) |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Toggles the focused chip                      |
+
+- Color is not the only cue: each chip exposes its state with `aria-pressed`.
+
+## API reference
+
+<PropsTable
+  file="components/toggle-chip-group/ToggleChipGroup.tsx"
+  name="ToggleChipGroupOwnProps"
+/>
+
+Each `ToggleChip` takes a required `value`, an optional `color` (any CSS color; defaults to `--color-primary`) and every native `<button>` attribute.
+
+## Theming
+
+Unselected chips use `gray-50` / `gray-400`. The selected fill comes from each chip's `color`.
+
+## Do and don't
+
+- **Don't** use very light colors for `color`; the chip text is white.
+
+## Related
+
+[SegmentedControl](./segmented-control)

@@ -1,6 +1,7 @@
 {
   "title": "Components",
   "pages": [
+    "---Primitives---",
     "avatar",
     "badge",
     "button",
@@ -13,6 +14,12 @@
     "link",
     "progress",
     "typography",
-    "visually-hidden"
+    "visually-hidden",
+    "---Navigation---",
+    "back-link",
+    "pill-tabs",
+    "segmented-control",
+    "sidebar-nav",
+    "toggle-chip-group"
   ]
 }

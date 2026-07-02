@@ -1,0 +1,54 @@
+---
+title: PillTabs
+description: Link-based tabs in a horizontally scrollable row, like the profile section tabs.
+---
+
+**Reference:** freelancer profile tabs "درباره من / خدمات / نمونه کار / نظرات" (R-04, R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/pill-tabs)
+
+```tsx
+import { PillTab, PillTabs } from "@avero/react";
+```
+
+<ComponentPreview name="pill-tabs/profile" />
+
+## Anatomy
+
+| Part     | Slot                    | Notes                                                            |
+| -------- | ----------------------- | ---------------------------------------------------------------- |
+| PillTabs | `data-slot="pill-tabs"` | A labelled `<nav>`; scrolls horizontally with a hidden scrollbar |
+| PillTab  | `data-slot="pill-tab"`  | A link; `current` fills it blue                                  |
+
+## Examples
+
+On narrow screens the row scrolls horizontally, and the current tab is scrolled into view automatically without moving the page vertically.
+
+## Right-to-left
+
+Tabs flow from the inline start; the scroll-into-view logic works in both directions.
+
+## Composition
+
+- Each tab is a page link. For in-page content switching, use [SegmentedControl](./segmented-control).
+- Use `asChild` with your router's link.
+
+## Accessibility
+
+- Rendered as navigation links with `aria-current="page"` on the current one, which suits page-level sections better than ARIA tabs.
+
+## API reference
+
+<PropsTable file="components/pill-tabs/PillTabs.tsx" name="PillTabOwnProps" />
+
+<PropsTable file="components/pill-tabs/PillTabs.tsx" name="PillTabsOwnProps" />
+
+## Theming
+
+Uses `blue-600` for the current tab and `slate-50` / `slate-100` for idle tabs.
+
+## Do and don't
+
+- **Do** show counts in the label, as the reference does ("نمونه کار (4)").
+
+## Related
+
+[SegmentedControl](./segmented-control) · [SidebarNav](./sidebar-nav)

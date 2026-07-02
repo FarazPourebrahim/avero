@@ -1,0 +1,61 @@
+---
+title: SidebarNav
+description: The dashboard's vertical navigation, with a filled current item and a danger logout action.
+---
+
+**Reference:** freelancer dashboard sidebar and mobile drawer menu (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/sidebar-nav)
+
+```tsx
+import { SidebarNav, SidebarNavItem } from "@avero/react";
+```
+
+<ComponentPreview name="sidebar-nav/dashboard" />
+
+## Anatomy
+
+| Part           | Slot                           | Notes                                  |
+| -------------- | ------------------------------ | -------------------------------------- |
+| SidebarNav     | `data-slot="sidebar-nav"`      | A labelled `<nav>` with a list         |
+| SidebarNavItem | `data-slot="sidebar-nav-item"` | A link with `href`, otherwise a button |
+
+## Examples
+
+The current page is a filled primary pill; idle items tint on hover; `tone="danger"` is the logout action.
+
+## Right-to-left
+
+Icons sit at the inline start and the layout mirrors automatically.
+
+## Composition
+
+- Use `asChild` with your router's link; pass the icon and label inside it yourself in that case.
+- The same items work inside a drawer for the mobile menu (see Drawer, Phase 6).
+
+## Accessibility
+
+| Key              | Action                              |
+| ---------------- | ----------------------------------- |
+| <kbd>Tab</kbd>   | Moves through the items             |
+| <kbd>Enter</kbd> | Follows the link or runs the action |
+
+- `current` sets `aria-current="page"`; give the navigation a name with `aria-label`.
+
+## API reference
+
+<PropsTable file="components/sidebar-nav/SidebarNav.tsx" name="SidebarNavItemOwnProps" />
+
+<PropsTable file="components/sidebar-nav/SidebarNav.tsx" name="SidebarNavOwnProps" />
+
+## Theming
+
+| Token             | Used by                       |
+| ----------------- | ----------------------------- |
+| `--color-primary` | Current item fill, hover tint |
+
+## Do and don't
+
+- **Do** keep logout as the last item with `tone="danger"`.
+
+## Related
+
+[PillTabs](./pill-tabs) · [Link](./link)

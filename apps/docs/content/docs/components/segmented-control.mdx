@@ -1,0 +1,60 @@
+---
+title: SegmentedControl
+description: A single-choice switch on a gray track, like the dashboard analytics switcher.
+---
+
+**Reference:** "آنالیتیکس" switcher (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/segmented-control)
+
+```tsx
+import { SegmentedControl, SegmentedControlItem } from "@avero/react";
+```
+
+<ComponentPreview name="segmented-control/analytics" />
+
+## Anatomy
+
+| Part | Slot                                 | Notes                                                      |
+| ---- | ------------------------------------ | ---------------------------------------------------------- |
+| Root | `data-slot="segmented-control"`      | Radix ToggleGroup, `role="radiogroup"`                     |
+| Item | `data-slot="segmented-control-item"` | `role="radio"`; the checked item is white with indigo text |
+
+## Examples
+
+Unlike a plain toggle group, a segment can't be deselected: clicking the selected segment keeps it selected.
+
+## Right-to-left
+
+Arrow keys follow reading direction: in RTL, <kbd>←</kbd> moves to the next segment.
+
+## Composition
+
+- Use `value` / `onValueChange` to switch the content below it (for example, which chart is shown).
+
+## Accessibility
+
+| Key                                 | Action                                           |
+| ----------------------------------- | ------------------------------------------------ |
+| <kbd>Tab</kbd>                      | Moves focus into and out of the group            |
+| <kbd>←</kbd> / <kbd>→</kbd>         | Moves between segments (reading direction aware) |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Selects the focused segment                      |
+
+## API reference
+
+<PropsTable
+  file="components/segmented-control/SegmentedControl.tsx"
+  name="SegmentedControlOwnProps"
+/>
+
+Each `SegmentedControlItem` takes a required `value` and accepts every native `<button>` attribute.
+
+## Theming
+
+Uses `gray-100` for the track and `indigo-600` for the checked text.
+
+## Do and don't
+
+- **Do** keep it to two to four short options.
+
+## Related
+
+[ToggleChipGroup](./toggle-chip-group) · [PillTabs](./pill-tabs)
