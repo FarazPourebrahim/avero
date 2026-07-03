@@ -1,7 +1,11 @@
 import { tokens } from "@avero/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-const animations = Object.values(tokens).filter((token) => token.cssVar.startsWith("--animate-"));
+// Accordion animations depend on a Radix-provided height variable, so they are component internals.
+const animations = Object.values(tokens).filter(
+  (token) =>
+    token.cssVar.startsWith("--animate-") && !token.cssVar.startsWith("--animate-accordion"),
+);
 
 function MotionSpecimen() {
   return (
