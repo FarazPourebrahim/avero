@@ -29,6 +29,7 @@ export {
   dictionaries,
   en,
   fa,
+  formatMessage,
   getDictionary,
   type AveroDictionary,
   type AveroLanguage,
@@ -59,6 +60,7 @@ export * from "./components/visually-hidden/index.js";
 // Navigation
 export * from "./components/accordion/index.js";
 export * from "./components/back-link/index.js";
+export * from "./components/carousel/index.js";
 export * from "./components/table-of-contents/index.js";
 export * from "./components/pill-tabs/index.js";
 export * from "./components/segmented-control/index.js";

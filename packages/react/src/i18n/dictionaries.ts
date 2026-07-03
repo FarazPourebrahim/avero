@@ -16,6 +16,8 @@ export type AveroDictionary = {
   heatmapLess: string;
   heatmapMore: string;
   tocTitle: string;
+  /** Accessible label of a carousel pagination dot. `{index}` is replaced with the slide number. */
+  goToSlide: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -33,6 +35,7 @@ export const fa: AveroDictionary = {
   heatmapLess: "کمتر",
   heatmapMore: "بیشتر",
   tocTitle: "در این مقاله",
+  goToSlide: "اسلاید {index}",
 };
 
 export const en: AveroDictionary = {
@@ -48,9 +51,17 @@ export const en: AveroDictionary = {
   heatmapLess: "Less",
   heatmapMore: "More",
   tocTitle: "On this page",
+  goToSlide: "Go to slide {index}",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
+
+/** Replaces `{name}` placeholders in a dictionary string, e.g. `formatMessage("اسلاید {index}", { index: 2 })`. */
+export function formatMessage(template: string, values: Record<string, string | number>): string {
+  return template.replace(/\{(\w+)\}/g, (placeholder, name: string) =>
+    name in values ? String(values[name]) : placeholder,
+  );
+}
 
 /** Returns the built-in dictionary for a locale tag, falling back to English for unknown languages. */
 export function getDictionary(locale: string): AveroDictionary {
