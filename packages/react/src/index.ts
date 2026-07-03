@@ -57,7 +57,9 @@ export * from "./components/typography/index.js";
 export * from "./components/visually-hidden/index.js";
 
 // Navigation
+export * from "./components/accordion/index.js";
 export * from "./components/back-link/index.js";
+export * from "./components/table-of-contents/index.js";
 export * from "./components/pill-tabs/index.js";
 export * from "./components/segmented-control/index.js";
 export * from "./components/sidebar-nav/index.js";

@@ -15,6 +15,7 @@ export type AveroDictionary = {
   pricePrefixFrom: string;
   heatmapLess: string;
   heatmapMore: string;
+  tocTitle: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -31,6 +32,7 @@ export const fa: AveroDictionary = {
   pricePrefixFrom: "از",
   heatmapLess: "کمتر",
   heatmapMore: "بیشتر",
+  tocTitle: "در این مقاله",
 };
 
 export const en: AveroDictionary = {
@@ -45,6 +47,7 @@ export const en: AveroDictionary = {
   pricePrefixFrom: "From",
   heatmapLess: "Less",
   heatmapMore: "More",
+  tocTitle: "On this page",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };

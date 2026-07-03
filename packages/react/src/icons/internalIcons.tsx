@@ -8,6 +8,12 @@ export const ArrowRightIcon = createIcon("ArrowRightIcon", {
   paths: ["M5 12h14", "m12 5 7 7-7 7"],
 });
 
+export const ArrowDownIcon = createIcon("ArrowDownIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M12 5v14", "m19 12-7 7-7-7"],
+});
+
 export const ChevronDownIcon = createIcon("ChevronDownIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",
