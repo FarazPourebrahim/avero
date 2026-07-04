@@ -12,6 +12,8 @@ import ButtonSizes from "./button/sizes";
 import ButtonStates from "./button/states";
 import ButtonTones from "./button/tones";
 import ButtonVariants from "./button/variants";
+import CarouselPill from "./carousel/pill";
+import CarouselRelatedProjects from "./carousel/related-projects";
 import ChipLinks from "./chip/links";
 import ChipStatic from "./chip/static";
 import DividerBasic from "./divider/basic";
@@ -39,6 +41,8 @@ import VisuallyHiddenLiveRegion from "./visually-hidden/live-region";
 /** Every live demo, keyed by its file path under `demos/` (without extension). */
 export const demos = {
   "accordion/footer": AccordionFooter,
+  "carousel/related-projects": CarouselRelatedProjects,
+  "carousel/pill": CarouselPill,
   "table-of-contents/article": TableOfContentsArticle,
   "avatar/usages": AvatarUsages,
   "avatar/fallback": AvatarFallback,

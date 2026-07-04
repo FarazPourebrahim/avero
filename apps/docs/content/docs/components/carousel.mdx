@@ -1,0 +1,78 @@
+---
+title: Carousel
+description: A swipeable, snap-scrolling carousel with circular previous/next buttons and dot or pill pagination.
+---
+
+**Reference:** related-projects slider (R-07); pill pagination from the home page swiper (CSS-only) · **Tier:** A (dots) / B (pill) · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/carousel)
+
+```tsx
+import {
+  Carousel,
+  CarouselDots,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselSlide,
+  CarouselViewport,
+} from "@avero/react";
+```
+
+<ComponentPreview name="carousel/related-projects" />
+
+## Anatomy
+
+| Part                            | Slot                                                | Notes                                                         |
+| ------------------------------- | --------------------------------------------------- | ------------------------------------------------------------- |
+| Carousel                        | `data-slot="carousel"`                              | A labelled `<section>` with `aria-roledescription="carousel"` |
+| CarouselViewport                | `data-slot="carousel-viewport"`                     | Clips the track; slides go directly inside                    |
+| CarouselSlide                   | `data-slot="carousel-slide"`                        | 85% wide on mobile, half the track from `md`                  |
+| CarouselPrevious / CarouselNext | `data-slot="carousel-previous"` / `"carousel-next"` | Circular buttons, disabled at the ends                        |
+| CarouselDots                    | `data-slot="carousel-dots"`                         | One button per snap position                                  |
+
+## Examples
+
+### Pill pagination
+
+The home page's swiper bullets: the active one stretches to 28px.
+
+<ComponentPreview name="carousel/pill" />
+
+## Right-to-left
+
+The carousel scrolls in reading direction (Embla's `direction` follows `AveroProvider`), the previous button points to the inline start, and arrow keys follow reading direction.
+
+## Composition
+
+- Put the previous/next buttons anywhere inside `Carousel`, for example next to a section heading.
+- Change slide widths with `className` on `CarouselSlide` (e.g. `basis-full` for one slide per view).
+- Pass Embla options through `opts`, and get the Embla API with `setApi` for custom controls.
+
+## Accessibility
+
+| Key                         | Action                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------- |
+| <kbd>Tab</kbd>              | Moves through the controls and slide content                                          |
+| <kbd>←</kbd> / <kbd>→</kbd> | Scrolls to the next or previous slide (reading direction aware) while focus is inside |
+
+- The carousel is a named region; slides are groups with `aria-roledescription="slide"`. Give each slide an `aria-label` such as "1 از 3".
+- The current pagination dot has `aria-current="true"`.
+
+## API reference
+
+`Carousel` accepts every native `<section>` attribute plus:
+
+<PropsTable file="components/carousel/Carousel.tsx" name="CarouselOwnProps" />
+
+<PropsTable file="components/carousel/Carousel.tsx" name="CarouselDotsOwnProps" />
+
+## Theming
+
+Dots use `indigo-500` / `gray-300`; pills use `indigo-600` / `slate-300`.
+
+## Do and don't
+
+- **Do** show part of the next slide (the default 85% width does) so users know they can swipe.
+- **Don't** autoplay; the reference doesn't, and it hurts accessibility.
+
+## Related
+
+[IconButton](./icon-button) · [PillTabs](./pill-tabs)
