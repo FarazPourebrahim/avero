@@ -1,0 +1,73 @@
+---
+title: Accordion
+description: Collapsible sections in the reference's mobile-footer style, with a rotating arrow and animated panels.
+---
+
+**Reference:** mobile footer link groups "درباره ما / مهارت ها / دسترسی سریع" (shared footer) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/accordion)
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionLink,
+  AccordionTrigger,
+} from "@avero/react";
+```
+
+<ComponentPreview name="accordion/footer" />
+
+## Anatomy
+
+| Part             | Slot                            | Notes                                                         |
+| ---------------- | ------------------------------- | ------------------------------------------------------------- |
+| Accordion        | `data-slot="accordion"`         | Radix Accordion root (`type="single"` or `"multiple"`)        |
+| AccordionItem    | `data-slot="accordion-item"`    | One section                                                   |
+| AccordionTrigger | `data-slot="accordion-trigger"` | Muted rounded button with a down arrow that rotates when open |
+| AccordionContent | `data-slot="accordion-content"` | Panel; height and opacity animate over 300ms                  |
+| AccordionLink    | `data-slot="accordion-link"`    | A link row inside a panel                                     |
+
+## Examples
+
+`type="single" collapsible` keeps one section open at a time and lets it close again, like the reference footer.
+
+## Right-to-left
+
+The arrow sits at the inline end. Link rows shift their end padding on hover in both directions.
+
+## Composition
+
+- Use `type="multiple"` to allow several open sections.
+- Put any content inside `AccordionContent`; `AccordionLink` matches the footer's link rows.
+
+## Accessibility
+
+| Key                                 | Action                                             |
+| ----------------------------------- | -------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves between triggers and focusable panel content |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Opens or closes the focused section                |
+| <kbd>↓</kbd> / <kbd>↑</kbd>         | Moves focus to the next or previous trigger        |
+| <kbd>Home</kbd> / <kbd>End</kbd>    | Moves focus to the first or last trigger           |
+
+- Triggers expose `aria-expanded` and control their panel; animations respect reduced-motion preferences.
+
+## API reference
+
+`Accordion`, `AccordionItem`, `AccordionTrigger` and `AccordionContent` take the [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion) props. `AccordionLink` accepts every native `<a>` attribute plus `asChild`.
+
+## Theming
+
+| Token                                                 | Used by                      |
+| ----------------------------------------------------- | ---------------------------- |
+| `--color-surface-muted`                               | Trigger and panel background |
+| `--color-text-chrome` / `--color-text-chrome-hover`   | Trigger and link text        |
+| `--animate-accordion-down` / `--animate-accordion-up` | Panel animation              |
+
+## Do and don't
+
+- **Do** keep trigger labels short; they're the section names.
+- **Don't** hide content users need at a glance inside collapsed sections.
+
+## Related
+
+[TableOfContents](./table-of-contents) · [Link](./link)

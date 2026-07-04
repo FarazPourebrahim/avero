@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import AccordionFooter from "./accordion/footer";
 import AvatarFallback from "./avatar/fallback";
 import AvatarUsages from "./avatar/usages";
 import BadgeHighlights from "./badge/highlights";
@@ -29,6 +30,7 @@ import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
 import SegmentedControlAnalytics from "./segmented-control/analytics";
 import SidebarNavDashboard from "./sidebar-nav/dashboard";
+import TableOfContentsArticle from "./table-of-contents/article";
 import ToggleChipGroupMetrics from "./toggle-chip-group/metrics";
 import TypographyHeadings from "./typography/headings";
 import TypographyText from "./typography/text";
@@ -36,6 +38,8 @@ import VisuallyHiddenLiveRegion from "./visually-hidden/live-region";
 
 /** Every live demo, keyed by its file path under `demos/` (without extension). */
 export const demos = {
+  "accordion/footer": AccordionFooter,
+  "table-of-contents/article": TableOfContentsArticle,
   "avatar/usages": AvatarUsages,
   "avatar/fallback": AvatarFallback,
   "badge/status": BadgeStatus,

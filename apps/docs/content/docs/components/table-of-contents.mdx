@@ -1,0 +1,63 @@
+---
+title: TableOfContents
+description: The article's "در این مقاله" card, with heading links and a scroll-spy highlight.
+---
+
+**Reference:** blog article table of contents (R-01) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/table-of-contents)
+
+```tsx
+import { TableOfContents, type TocItem } from "@avero/react";
+```
+
+<ComponentPreview name="table-of-contents/article" />
+
+## Anatomy
+
+| Part       | Slot                            | Notes                                                     |
+| ---------- | ------------------------------- | --------------------------------------------------------- |
+| Root       | `data-slot="table-of-contents"` | White card with a title and a list icon                   |
+| Navigation | —                               | A `<nav>` labelled by the title                           |
+| Entry      | —                               | An `#id` link; the current one has an indigo start border |
+
+## Examples
+
+Level-3 entries render smaller as sub-items. With `spy` (on by default), the entry whose heading is at the top of the viewport is highlighted while scrolling.
+
+## Right-to-left
+
+The active border sits at the inline start, on the right in RTL.
+
+## Composition
+
+- Give every heading an `id` and pass the same ids in `items`.
+- Place it in a sticky aside, e.g. `sticky top-28` as in the reference article layout.
+
+## Accessibility
+
+| Key              | Action                    |
+| ---------------- | ------------------------- |
+| <kbd>Tab</kbd>   | Moves through the entries |
+| <kbd>Enter</kbd> | Jumps to the heading      |
+
+- Entries are real links, so they work without JavaScript; the current entry has `aria-current="location"`.
+
+## API reference
+
+`TableOfContents` accepts every native `<div>` attribute plus:
+
+<PropsTable
+  file="components/table-of-contents/TableOfContents.tsx"
+  name="TableOfContentsOwnProps"
+/>
+
+## Theming
+
+Uses `indigo-500` / `indigo-600` for the current entry.
+
+## Do and don't
+
+- **Do** include only h2 and h3 headings; deeper levels make the list hard to scan.
+
+## Related
+
+[Accordion](./accordion) · [Link](./link)

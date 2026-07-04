@@ -16,10 +16,12 @@
     "typography",
     "visually-hidden",
     "---Navigation---",
+    "accordion",
     "back-link",
     "pill-tabs",
     "segmented-control",
     "sidebar-nav",
+    "table-of-contents",
     "toggle-chip-group"
   ]
 }
