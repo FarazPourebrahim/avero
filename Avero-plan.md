@@ -49,7 +49,7 @@
 | 2 | Design tokens and foundations | 🟨 | 9 / 15 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | 🟨 | 0 / 9 | 2 | L | 2026-06-19 | |
 | 4 | Forms | ⬜ | 0 / 10 | 3, 0.B | L | | |
-| 5 | Navigation, disclosure and carousel | ⬜ | 0 / 9 | 3 | M | | |
+| 5 | Navigation, disclosure and carousel | 🟨 | 0 / 9 | 3 | M | 2026-06-19 | |
 | 6 | Overlays and feedback | ⬜ | 0 / 10 | 3, 0.B | L | | |
 | 7 | Data display | ⬜ | 0 / 9 | 3 | L | | |
 | 8 | Layout shells and site chrome | ⬜ | 0 / 9 | 5, 6, 7 | M | | |
@@ -1012,15 +1012,15 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | FM-13 | DatePicker (Jalali) | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-14 | OtpInput | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-15 | FormActions | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-01 | NavLink | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-02 | SidebarNav | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-03 | BackLink | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-04 | PillTabs | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-05 | SegmentedControl | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-06 | ToggleChipGroup | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-07 | TableOfContents | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-08 | Accordion / Collapsible | A | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-09 | Carousel | A/B | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| N-01 | NavLink (provided by `Link` `nav` / `drawer` variants) | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-02 | SidebarNav | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-03 | BackLink | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-04 | PillTabs | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-05 | SegmentedControl | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-06 | ToggleChipGroup | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-07 | TableOfContents | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-08 | Accordion / Collapsible | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| N-09 | Carousel | A/B | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | N-10 | Pagination | B | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | N-11 | InfiniteScroll | B | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-01 | Drawer / Sheet | A | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
