@@ -1,0 +1,63 @@
+---
+title: Card
+description: The reference's card surfaces, with title, header and footer parts.
+---
+
+**Reference:** content, dashboard, listing and profile cards (R-01 to R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/card)
+
+```tsx
+import { Card, CardFooter, CardHeader, CardTitle } from "@avero/react";
+```
+
+<ComponentPreview name="card/surfaces" />
+
+## Anatomy
+
+| Part       | Slot                      | Notes                                                                                 |
+| ---------- | ------------------------- | ------------------------------------------------------------------------------------- |
+| Card       | `data-slot="card"`        | A `<div>`, or your element with `asChild`                                             |
+| CardHeader | `data-slot="card-header"` | Title at the start, meta or actions at the end                                        |
+| CardTitle  | `data-slot="card-title"`  | An `h3` by default; an icon before the text gets the reference's icon + title pattern |
+| CardFooter | `data-slot="card-footer"` | A row separated by a top border                                                       |
+
+## Examples
+
+- `surface` is the white `rounded-3xl` content card; `flat` the dashboard's `rounded-2xl` card.
+- `glass` is the translucent listing card that turns white on hover; `muted` is the slate tile surface.
+- `elevation` reproduces each reference shadow, from the hairline `xs` to the soft `ambient` and `soft` card shadows.
+
+## Right-to-left
+
+Cards have no direction-specific styling; headers and footers mirror automatically.
+
+## Composition
+
+- Use `asChild` to render an `<article>` or make the whole card a link.
+- `interactive` adds the hover shadow used by clickable cards.
+
+## Accessibility
+
+- Choose `CardTitle`'s `as` so heading levels follow the page outline.
+- When the whole card is a link, keep a single link and don't nest other interactive elements.
+
+## API reference
+
+<PropsTable file="components/card/Card.tsx" name="CardOwnProps" />
+
+<PropsTable file="components/card/Card.tsx" name="CardTitleOwnProps" />
+
+## Theming
+
+| Token                                                                                       | Used by     |
+| ------------------------------------------------------------------------------------------- | ----------- |
+| `--color-surface-glass`                                                                     | `glass`     |
+| `--shadow-card-soft`, `--shadow-card-ambient`, `--shadow-card-faint`, `--shadow-brand-soft` | `elevation` |
+
+## Do and don't
+
+- **Do** keep one visual style per list of cards.
+- **Don't** stack shadows and borders beyond what a variant provides.
+
+## Related
+
+[Stats](./stats) · [FeatureCard](./feature-card)

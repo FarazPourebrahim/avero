@@ -1,0 +1,66 @@
+---
+title: FeatureCard and ActionTile
+description: Feature highlights with an icon tile, and gradient quick-action tiles.
+---
+
+**Reference:** "چرا دورلنسر انتخابی متفاوت است؟" features (R-03), dashboard quick actions (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/feature-card)
+
+```tsx
+import { ActionTile, FeatureCard } from "@avero/react";
+```
+
+<ComponentPreview name="feature-card/grid" />
+
+## Anatomy
+
+| Part        | Slot                       | Notes                                              |
+| ----------- | -------------------------- | -------------------------------------------------- |
+| FeatureCard | `data-slot="feature-card"` | Icon tile, title (`h4` by default) and description |
+| ActionTile  | `data-slot="action-tile"`  | A button with a gradient icon tile and a label     |
+
+## Examples
+
+### Quick actions
+
+On hover the whole tile fills with its gradient, lifts slightly and the label turns white.
+
+<ComponentPreview name="feature-card/actions" />
+
+## Right-to-left
+
+Both components are centered or start-aligned and mirror automatically.
+
+## Composition
+
+- Set `FeatureCard`'s `titleAs` to follow your page's heading outline.
+- Use `ActionTile asChild` with a link when the action navigates.
+
+## Accessibility
+
+| Key                                 | Action                        |
+| ----------------------------------- | ----------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus to an action tile |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates it                  |
+
+- The action tile's label is its accessible name; the icon and the hover overlay are decorative.
+
+## API reference
+
+<PropsTable file="components/feature-card/FeatureCard.tsx" name="FeatureCardOwnProps" />
+
+<PropsTable file="components/action-tile/ActionTile.tsx" name="ActionTileOwnProps" />
+
+## Theming
+
+| Token                 | Used by                   |
+| --------------------- | ------------------------- |
+| `--color-primary`     | Feature card hover border |
+| `--shadow-card-faint` | Feature card shadow       |
+
+## Do and don't
+
+- **Do** keep action labels to two or three words.
+
+## Related
+
+[IconTile](./icon-tile) · [Card](./card)

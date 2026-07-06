@@ -1,0 +1,59 @@
+---
+title: PriceTag
+description: Prices in the reference's three styles, formatted for the active locale.
+---
+
+**Reference:** service price card and related services (R-05), listing card footer (R-06) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/price-tag)
+
+```tsx
+import { PriceTag } from "@avero/react";
+```
+
+<ComponentPreview name="price-tag/variants" />
+
+## Anatomy
+
+| Part     | Slot                             | Notes                                      |
+| -------- | -------------------------------- | ------------------------------------------ |
+| Root     | `data-slot="price-tag"`          | `display`, `inline` or `compact`           |
+| Prefix   | `data-slot="price-tag-prefix"`   | "از" / "From", `inline` variant by default |
+| Amount   | `data-slot="price-tag-amount"`   | Formatted with the locale's digits         |
+| Currency | `data-slot="price-tag-currency"` | "تومان" / "Toman" by default               |
+
+## Right-to-left
+
+The amount is formatted with `Intl`, so Persian locales get Persian digits and the `٬` separator
+(`۲۰٬۰۰۰٬۰۰۰`) and English locales get `20,000,000`. Order follows the reading direction.
+
+## Composition
+
+- Wrap `display` in a card with its own label ("قیمت پایه خدمت"), as the reference does.
+- `amountClassName` adjusts only the number, e.g. a smaller size inside a dense listing card.
+
+## Accessibility
+
+- The price is plain text, so it is announced with its currency; no extra ARIA is needed.
+- Don't remove the currency: an amount alone is ambiguous.
+
+## API reference
+
+`PriceTag` accepts every native `<span>` attribute plus:
+
+<PropsTable file="components/price-tag/PriceTag.tsx" name="PriceTagOwnProps" />
+
+## Theming
+
+| Token                 | Used by                        |
+| --------------------- | ------------------------------ |
+| `--color-primary`     | `display` and `compact` amount |
+| `--color-text-chrome` | `inline` text                  |
+| `--text-sm-plus`      | `inline` size                  |
+
+## Do and don't
+
+- **Do** pass the raw number and let the component format it.
+- **Don't** pre-format the amount into a string; that loses locale digits.
+
+## Related
+
+[Stats](./stats) · [Rating](./rating)

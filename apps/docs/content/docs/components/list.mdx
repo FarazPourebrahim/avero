@@ -1,0 +1,60 @@
+---
+title: List and Blockquote
+description: Ordered and bulleted article lists, plus the indigo pull quote.
+---
+
+**Reference:** article prose (R-01), project description (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/list)
+
+```tsx
+import { Blockquote, List, ListItem } from "@avero/react";
+```
+
+<ComponentPreview name="list/prose" />
+
+## Anatomy
+
+| Part       | Slot                     | Notes                                          |
+| ---------- | ------------------------ | ---------------------------------------------- |
+| List       | `data-slot="list"`       | `<ul>`, or `<ol>` with `ordered`               |
+| ListItem   | `data-slot="list-item"`  | 8-unit line height, matching the article prose |
+| Blockquote | `data-slot="blockquote"` | Start border, faint indigo ground, quote mark  |
+
+## Right-to-left
+
+Markers sit outside the text at the inline start (`ps-6`), so they follow the reading direction.
+The blockquote's accent border is a `border-s`, and its corners round on the inline end.
+
+## Composition
+
+- Wrap emphasised lead-ins in `<strong>`, as the reference article does.
+- `Blockquote` renders its own decorative quote mark; don't add another.
+
+## Accessibility
+
+- `List` renders real `<ul>`/`<ol>` elements, so item counts are announced.
+- The quote mark is `aria-hidden`; pass `cite` with the source URL when you have one.
+
+## API reference
+
+`List` accepts every native list attribute plus:
+
+<PropsTable file="components/list/List.tsx" name="ListOwnProps" />
+
+`ListItem` accepts every native `<li>` attribute, and `Blockquote` every native `<blockquote>`
+attribute.
+
+## Theming
+
+| Token                | Used by                  |
+| -------------------- | ------------------------ |
+| `--color-indigo-500` | Blockquote accent border |
+| `--color-gray-700`   | List text                |
+
+## Do and don't
+
+- **Do** use `ordered` for steps and sequences.
+- **Don't** fake a list with paragraphs and bullet characters.
+
+## Related
+
+[Typography](./typography) · [Table](./table)

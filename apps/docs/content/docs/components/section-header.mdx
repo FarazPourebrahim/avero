@@ -1,0 +1,59 @@
+---
+title: SectionHeader and GlowOrbs
+description: Page and section headings in the reference's four styles, plus the dark banner's glow decoration.
+---
+
+**Reference:** story page header (R-03), profile "درباره من" (R-04), features heading (R-03), listing and related headings (R-06, R-07), mission banner (R-03) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/section-header)
+
+```tsx
+import { GlowOrbs, SectionHeader } from "@avero/react";
+```
+
+<ComponentPreview name="section-header/variants" />
+
+## Anatomy
+
+| Part          | Slot                         | Notes                                                              |
+| ------------- | ---------------------------- | ------------------------------------------------------------------ |
+| SectionHeader | `data-slot="section-header"` | Heading (`h2` by default) with optional subtitle, icon and actions |
+| GlowOrbs      | `data-slot="glow-orbs"`      | Two blurred decorative circles                                     |
+
+## Examples
+
+### Dark banner with glow orbs
+
+<ComponentPreview name="section-header/dark-banner" />
+
+## Right-to-left
+
+The accent bar, dot and icon sit at the inline start; actions at the inline end. The orbs sit at the logical corners.
+
+## Composition
+
+- Pass carousel controls or counts through `actions`.
+- Put `GlowOrbs` inside a `relative overflow-hidden` container and lift the content with `relative z-10`.
+
+## Accessibility
+
+- Use `as` to keep heading levels in order. The bar, dot and orbs are decorative.
+
+## API reference
+
+<PropsTable file="components/section-header/SectionHeader.tsx" name="SectionHeaderOwnProps" />
+
+`GlowOrbs` accepts every native `<div>` attribute.
+
+## Theming
+
+| Token                         | Used by                |
+| ----------------------------- | ---------------------- |
+| `gradient-accent-bar` utility | Accent bar             |
+| `--color-primary`             | Icon variant, glow orb |
+
+## Do and don't
+
+- **Do** use `accentBar` once per page, for the page title.
+
+## Related
+
+[Typography](./typography) · [Card](./card)

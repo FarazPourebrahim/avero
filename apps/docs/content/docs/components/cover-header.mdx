@@ -1,0 +1,60 @@
+---
+title: CoverHeader
+description: The profile header — gradient cover, overlapping avatar and a footer bar.
+---
+
+**Reference:** freelancer profile header (R-04, R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/cover-header)
+
+```tsx
+import { CoverHeader } from "@avero/react";
+```
+
+<ComponentPreview name="cover-header/profile" />
+
+## Anatomy
+
+| Part    | Slot                               | Notes                                             |
+| ------- | ---------------------------------- | ------------------------------------------------- |
+| Root    | `data-slot="cover-header"`         | White card, ambient shadow, `rounded-3xl`         |
+| Cover   | `data-slot="cover-header-cover"`   | Gradient by default, with a bottom shade overlay  |
+| Avatar  | `data-slot="cover-header-avatar"`  | White ring overlapping the cover, scales on hover |
+| Content | `data-slot="cover-header-content"` | Name, badges and meta (the children)              |
+| Footer  | `data-slot="cover-header-footer"`  | Divider plus tabs and social buttons              |
+
+## Right-to-left
+
+The avatar sits at the inline start from `lg` up and is centred below it; the default gradient
+flips with direction, so it runs blue → purple along the reading direction.
+
+## Composition
+
+- Pass an `<img>` as `avatar`; the ring sizes and crops it.
+- Pass an `<img>` as `cover` to replace the gradient — it is cropped to the cover box.
+- Put [PillTabs](./pill-tabs) and social [IconButtons](./icon-button) in `footer`.
+
+## Accessibility
+
+- The header is a plain container: put the page's `<h1>` in `children` so the heading order is right.
+- The cover shade is decorative and `pointer-events-none`.
+
+## API reference
+
+`CoverHeader` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/cover-header/CoverHeader.tsx" name="CoverHeaderOwnProps" />
+
+## Theming
+
+| Token                   | Used by          |
+| ----------------------- | ---------------- |
+| `--shadow-card-ambient` | Card shadow      |
+| `--color-blue-600`      | Default gradient |
+
+## Do and don't
+
+- **Do** keep the identity block short: name, tagline, a meta line.
+- **Don't** stack two headings inside the content block.
+
+## Related
+
+[Avatar](./avatar) · [PillTabs](./pill-tabs) · [Meta](./meta)

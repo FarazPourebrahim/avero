@@ -1,0 +1,58 @@
+---
+title: CapacityMeter
+description: A labelled capacity bar with a count, or a status pill and captions.
+---
+
+**Reference:** project capacity (R-07) and related-project cards (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/capacity-meter)
+
+```tsx
+import { CapacityMeter } from "@avero/react";
+```
+
+<ComponentPreview name="capacity-meter/usages" />
+
+## Anatomy
+
+| Part   | Slot                                | Notes                                     |
+| ------ | ----------------------------------- | ----------------------------------------- |
+| Root   | `data-slot="capacity-meter"`        | `data-state` is `available` or `full`     |
+| Label  | —                                   | Also labels the bar via `aria-labelledby` |
+| Count  | —                                   | `detail`: "۳ از ۱۲" from the dictionary   |
+| Status | `data-slot="capacity-meter-status"` | `card`: green pill, red once full         |
+| Bar    | `data-slot="progress"`              | [Progress](./progress)                    |
+
+## Right-to-left
+
+The bar fills from the inline start, and the captions sit at the start and end of the bar.
+
+## Composition
+
+- `detail` is the project page's own meter; `card` is the compact one on related-project cards.
+- The status tone is derived from `value >= max`, so pass the reference's own wording as `status`.
+
+## Accessibility
+
+- The bar is labelled by the visible label, so it is never an unnamed `progressbar`.
+- `data-state="full"` lets you style or announce a full meter without re-deriving the maths.
+
+## API reference
+
+`CapacityMeter` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/capacity-meter/CapacityMeter.tsx" name="CapacityMeterOwnProps" />
+
+## Theming
+
+| Token             | Used by       |
+| ----------------- | ------------- |
+| `--color-primary` | Bar fill      |
+| `--text-2xs`      | Card captions |
+
+## Do and don't
+
+- **Do** show both numbers; a bar alone is imprecise.
+- **Don't** exceed `max` to fake a full bar — the value is clamped anyway.
+
+## Related
+
+[Progress](./progress) · [Stats](./stats)

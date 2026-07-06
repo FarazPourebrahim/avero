@@ -1,0 +1,56 @@
+---
+title: ZoomFrame
+description: A clickable image frame that dims and offers a "view larger" pill.
+---
+
+**Reference:** service gallery (R-05) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/zoom-frame)
+
+```tsx
+import { ZoomFrame } from "@avero/react";
+```
+
+<ComponentPreview name="zoom-frame/gallery" />
+
+## Anatomy
+
+| Part    | Slot                             | Notes                                          |
+| ------- | -------------------------------- | ---------------------------------------------- |
+| Root    | `data-slot="zoom-frame"`         | `<button type="button">`, `cursor-zoom-in`     |
+| Overlay | `data-slot="zoom-frame-overlay"` | Dims on hover and focus; not interactive       |
+| Pill    | —                                | Slides in with the zoom icon and the hint text |
+
+## Right-to-left
+
+The pill is centred and the icon leads at the inline start, so the layout is direction-agnostic.
+
+## Composition
+
+- Put your `<img>` (or the [Image](./image) component) inside; any nested image gets the hover scale.
+- Open your lightbox from `onClick`; `ZoomFrame` only provides the affordance.
+
+## Accessibility
+
+- A real button, so it is focusable and activates with Enter and Space.
+- The hint text is part of the accessible name, alongside the image's `alt`.
+- The dim and pill also appear on keyboard focus, not only on hover.
+
+## API reference
+
+`ZoomFrame` accepts every native `<button>` attribute plus:
+
+<PropsTable file="components/zoom-frame/ZoomFrame.tsx" name="ZoomFrameOwnProps" />
+
+## Theming
+
+| Token             | Used by    |
+| ----------------- | ---------- |
+| `--color-primary` | Focus ring |
+
+## Do and don't
+
+- **Do** give the image a meaningful `alt`; it names the button.
+- **Don't** nest another interactive element inside the frame.
+
+## Related
+
+[Image](./image) · [Card](./card)

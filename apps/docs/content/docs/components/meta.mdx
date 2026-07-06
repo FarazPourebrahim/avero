@@ -1,0 +1,77 @@
+---
+title: Meta
+description: Icon, label and value metadata — bars, key/value rows and contact chips.
+---
+
+**Reference:** article meta bar (R-01), profile meta (R-04), service stats and contacts (R-05), project meta row (R-07), footer contact rows (R-03) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/meta)
+
+```tsx
+import { ContactMethod, KeyValueRow, MetaBar, MetaItem } from "@avero/react";
+```
+
+<ComponentPreview name="meta/article" />
+
+## Anatomy
+
+| Part          | Slot                         | Notes                                             |
+| ------------- | ---------------------------- | ------------------------------------------------- |
+| MetaBar       | `data-slot="meta-bar"`       | `panel`, `row` or `inline` container              |
+| MetaItem      | `data-slot="meta-item"`      | `plain`, `compact`, `pill` or `chip`              |
+| KeyValueRow   | `data-slot="key-value-row"`  | Label at the start, value (or link) at the end    |
+| ContactMethod | `data-slot="contact-method"` | Anchor chip with a monospace, left-to-right value |
+
+## Examples
+
+### Contacts and key/value rows
+
+<ComponentPreview name="meta/contacts" />
+
+## Right-to-left
+
+Icons lead at the inline start and values follow. Contact values — emails, phone numbers, URLs —
+stay `dir="ltr"` inside RTL text so their punctuation doesn't reorder.
+
+## Composition
+
+- `MetaBar` only lays out its children; mix item variants inside it freely.
+- Pass any icon element; the components size `pill` and `chip` icons for you.
+
+## Accessibility
+
+- `ContactMethod` with `external` sets `target="_blank"` and `rel="noopener noreferrer"`.
+- Keep labels ("انتشار:", "email:") as real text so the value is never announced without context.
+
+## API reference
+
+### MetaItem
+
+<PropsTable file="components/meta/Meta.tsx" name="MetaItemOwnProps" />
+
+### MetaBar
+
+<PropsTable file="components/meta/Meta.tsx" name="MetaBarOwnProps" />
+
+### KeyValueRow
+
+<PropsTable file="components/meta/Meta.tsx" name="KeyValueRowOwnProps" />
+
+### ContactMethod
+
+<PropsTable file="components/meta/Meta.tsx" name="ContactMethodOwnProps" />
+
+## Theming
+
+| Token                       | Used by                  |
+| --------------------------- | ------------------------ |
+| `--color-text-chrome`       | `KeyValueRow` text       |
+| `--color-text-chrome-hover` | `KeyValueRow` link hover |
+| `--text-sm-plus`            | `MetaBar` row variant    |
+
+## Do and don't
+
+- **Do** keep one `MetaBar` per block of metadata.
+- **Don't** put interactive controls inside `MetaItem`; use `Chip` or `Button`.
+
+## Related
+
+[Chip](./chip) · [Stats](./stats) · [Rating](./rating)

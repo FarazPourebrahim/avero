@@ -1,0 +1,75 @@
+---
+title: Table
+description: The bordered data table used inside article content.
+---
+
+**Reference:** article comparison table (R-01) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/table)
+
+```tsx
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@avero/react";
+```
+
+<ComponentPreview name="table/article" />
+
+## Anatomy
+
+| Part         | Slot                          | Notes                                             |
+| ------------ | ----------------------------- | ------------------------------------------------- |
+| Container    | `data-slot="table-container"` | Rounded, bordered, horizontally scrollable        |
+| Table        | `data-slot="table"`           | `min-w-full`, collapsed borders                   |
+| TableHeader  | `data-slot="table-header"`    | `<thead>`                                         |
+| TableBody    | `data-slot="table-body"`      | Divided rows on white                             |
+| TableRow     | `data-slot="table-row"`       | Hover tints the row                               |
+| TableHead    | `data-slot="table-head"`      | `<th>`, `scope="col"` by default, gray-100 ground |
+| TableCell    | `data-slot="table-cell"`      | `<td>`, top-aligned                               |
+| TableCaption | `data-slot="table-caption"`   | `<caption>`                                       |
+
+## Right-to-left
+
+Cells align to the inline start, so the table reads correctly in both directions. The container
+scrolls horizontally when the table is wider than its column.
+
+## Composition
+
+- `Table` renders its own scroll container; style it with `containerClassName`, not `className`.
+- Row headers: pass `scope="row"` to `TableHead` inside a `TableRow` in the body.
+
+## Accessibility
+
+- Give every table a `TableCaption` or an `aria-label` so its purpose is announced.
+- Header cells carry `scope`, which is what lets a screen reader associate each cell with its column.
+
+## API reference
+
+`Table` accepts every native `<table>` attribute plus:
+
+| Prop                 | Type     | Default | Description                      |
+| -------------------- | -------- | ------- | -------------------------------- |
+| `containerClassName` | `string` | —       | Classes for the scroll container |
+
+`TableHeader`, `TableBody`, `TableRow`, `TableHead`, `TableCell` and `TableCaption` accept every
+native attribute of the element they render.
+
+## Theming
+
+| Token              | Used by                    |
+| ------------------ | -------------------------- |
+| `--color-gray-200` | Container and cell borders |
+| `--shadow-2xs`     | Container                  |
+
+## Do and don't
+
+- **Do** keep tables for tabular data; use `List` for sequences.
+- **Don't** nest a table inside a fixed-width card without letting the container scroll.
+
+## Related
+
+[List](./list) · [Typography](./typography)

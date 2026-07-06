@@ -1,0 +1,57 @@
+---
+title: Rating
+description: A filled amber star with a score, announced as one labelled image.
+---
+
+**Reference:** service stats chip and provider card (R-05), profile stats (R-04) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/rating)
+
+```tsx
+import { Rating } from "@avero/react";
+```
+
+<ComponentPreview name="rating/usages" />
+
+## Anatomy
+
+| Part  | Slot                 | Notes                                            |
+| ----- | -------------------- | ------------------------------------------------ |
+| Root  | `data-slot="rating"` | `role="img"` labelled from the dictionary        |
+| Star  | —                    | Amber filled star, `aria-hidden`                 |
+| Score | —                    | Formatted with the locale's digits, `0.00` style |
+
+## Right-to-left
+
+The star leads at the inline start. The score uses the locale's decimal separator: `۴٫۵۰` in
+Persian, `4.50` in English.
+
+## Composition
+
+- Add chip styling through `className`, as the service stats chip does.
+- Pass `label` for a visible prefix like "امتیاز:"; the accessible name stays the dictionary string.
+
+## Accessibility
+
+- Exposed as a single `role="img"` labelled "امتیاز ۴٫۵۰" / "Rating 4.50", so the star is never
+  read as decoration-plus-number.
+- Override the wording with the provider's `dictionary.rating`.
+
+## API reference
+
+`Rating` accepts every native `<span>` attribute plus:
+
+<PropsTable file="components/rating/Rating.tsx" name="RatingOwnProps" />
+
+## Theming
+
+| Token               | Used by |
+| ------------------- | ------- |
+| `--color-amber-400` | Star    |
+
+## Do and don't
+
+- **Do** keep `fractionDigits` consistent across a page.
+- **Don't** use it for a rating input; this is display-only.
+
+## Related
+
+[Meta](./meta) · [Stats](./stats)

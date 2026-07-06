@@ -23,6 +23,20 @@
     "segmented-control",
     "sidebar-nav",
     "table-of-contents",
-    "toggle-chip-group"
+    "toggle-chip-group",
+    "---Data display---",
+    "capacity-meter",
+    "card",
+    "cover-header",
+    "feature-card",
+    "list",
+    "match-score",
+    "meta",
+    "price-tag",
+    "rating",
+    "section-header",
+    "stats",
+    "table",
+    "zoom-frame"
   ]
 }

@@ -1,0 +1,71 @@
+---
+title: Stats
+description: StatCard, StatTile, StatStrip, MiniStat, InfoRow and HighlightPanel for numbers and achievements.
+---
+
+**Reference:** dashboard counters and achievements (R-02), profile statistics strip (R-04), provider mini stats (R-05) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/stat)
+
+```tsx
+import { HighlightPanel, InfoRow, MiniStat, StatCard, StatStrip, StatTile } from "@avero/react";
+```
+
+<ComponentPreview name="stats/dashboard" />
+
+## Anatomy
+
+| Part           | Slot                          | Notes                                                    |
+| -------------- | ----------------------------- | -------------------------------------------------------- |
+| StatCard       | `data-slot="stat-card"`       | Label + icon tile, big value below                       |
+| StatTile       | `data-slot="stat-tile"`       | Translucent icon tile, big value, small label            |
+| StatStrip      | `data-slot="stat-strip"`      | White strip of tiles with blue accent bars on both edges |
+| MiniStat       | `data-slot="mini-stat"`       | Centered label over a bold value                         |
+| InfoRow        | `data-slot="info-row"`        | Tinted row with an icon tile                             |
+| HighlightPanel | `data-slot="highlight-panel"` | Amber gradient panel for a headline figure               |
+
+## Examples
+
+### Profile statistics
+
+<ComponentPreview name="stats/profile" />
+
+### Achievements and mini stats
+
+<ComponentPreview name="stats/achievements" />
+
+## Right-to-left
+
+The strip's accent bars sit at the inline start and end; the highlight panel's gradient mirrors in LTR.
+
+## Composition
+
+- Format numbers with `useAveroFormatter()` so they follow the active digits.
+- Put stat cards in a grid such as `grid-cols-2 sm:grid-cols-3 lg:grid-cols-5`, as on the dashboard.
+
+## Accessibility
+
+- These are presentational; make sure the label text explains the number.
+- Icons are decorative.
+
+## API reference
+
+<PropsTable file="components/stat/Stat.tsx" name="StatCardOwnProps" />
+
+<PropsTable file="components/stat/Stat.tsx" name="StatTileOwnProps" />
+
+<PropsTable file="components/stat/Stat.tsx" name="InfoRowOwnProps" />
+
+<PropsTable file="components/stat/Stat.tsx" name="HighlightPanelOwnProps" />
+
+<PropsTable file="components/stat/Stat.tsx" name="MiniStatOwnProps" />
+
+## Theming
+
+Tones use the Tailwind palette families shared with [IconTile](./icon-tile).
+
+## Do and don't
+
+- **Do** show an explicit placeholder such as "—" for missing values.
+
+## Related
+
+[IconTile](./icon-tile) · [Card](./card)

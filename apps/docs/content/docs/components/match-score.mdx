@@ -1,0 +1,55 @@
+---
+title: MatchScore
+description: A percentage and caption beside a suggested project.
+---
+
+**Reference:** dashboard suggested projects (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/match-score)
+
+```tsx
+import { MatchScore } from "@avero/react";
+```
+
+<ComponentPreview name="match-score/suggested" />
+
+## Anatomy
+
+| Part    | Slot                      | Notes                                     |
+| ------- | ------------------------- | ----------------------------------------- |
+| Root    | `data-slot="match-score"` | `shrink-0`, centred                       |
+| Percent | —                         | Formatted with `Intl`, rounded to a whole |
+| Caption | —                         | "تطابق" / "Match" from the dictionary     |
+
+## Right-to-left
+
+The percentage is formatted for the locale: `۸٪` in Persian, `8%` in English.
+
+## Composition
+
+- Place it at the end of a card row; it never shrinks, so the title truncates instead.
+
+## Accessibility
+
+- Percentage and caption are plain text and read together ("۸٪ تطابق").
+- Don't rely on colour alone to convey a weak match.
+
+## API reference
+
+`MatchScore` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/match-score/MatchScore.tsx" name="MatchScoreOwnProps" />
+
+## Theming
+
+| Token        | Used by          |
+| ------------ | ---------------- |
+| `--text-4xs` | Caption (mobile) |
+| `--text-3xs` | Caption (≥ sm)   |
+
+## Do and don't
+
+- **Do** pass the percentage as `0…100`; values outside are clamped.
+- **Don't** show a match score without the caption; a bare number is meaningless.
+
+## Related
+
+[Stats](./stats) · [Card](./card)
