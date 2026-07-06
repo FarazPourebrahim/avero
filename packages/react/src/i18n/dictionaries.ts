@@ -18,6 +18,14 @@ export type AveroDictionary = {
   tocTitle: string;
   /** Accessible label of a carousel pagination dot. `{index}` is replaced with the slide number. */
   goToSlide: string;
+  /** "{value} of {max}", e.g. for capacity counts. */
+  ofTotal: string;
+  /** Caption under a match percentage. */
+  matchLabel: string;
+  /** Hint shown when hovering a zoomable image. */
+  zoomHint: string;
+  /** Accessible label of a rating. `{value}` is replaced with the score. */
+  rating: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -36,6 +44,10 @@ export const fa: AveroDictionary = {
   heatmapMore: "بیشتر",
   tocTitle: "در این مقاله",
   goToSlide: "اسلاید {index}",
+  ofTotal: "{value} از {max}",
+  matchLabel: "تطابق",
+  zoomHint: "مشاهده بزرگ‌نمایی",
+  rating: "امتیاز {value}",
 };
 
 export const en: AveroDictionary = {
@@ -52,6 +64,10 @@ export const en: AveroDictionary = {
   heatmapMore: "More",
   tocTitle: "On this page",
   goToSlide: "Go to slide {index}",
+  ofTotal: "{value} of {max}",
+  matchLabel: "Match",
+  zoomHint: "View larger",
+  rating: "Rating {value}",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };

@@ -59,6 +59,26 @@ describe("formatNumber", () => {
     expect(formatNumber(0.123456, { locale: "en-US", maximumFractionDigits: 3 })).toBe("0.123");
   });
 
+  it("pads to a minimum number of fraction digits", () => {
+    expect(formatNumber(0, { locale: "en-US", minimumFractionDigits: 2 })).toBe("0.00");
+    expect(formatNumber(4.5, { minimumFractionDigits: 2 })).toBe("۴٫۵۰");
+  });
+
+  it("raises the maximum to the minimum fraction digits", () => {
+    expect(
+      formatNumber(1.23456, {
+        locale: "en-US",
+        minimumFractionDigits: 4,
+        maximumFractionDigits: 1,
+      }),
+    ).toBe("1.2346");
+  });
+
+  it("formats percentages with the locale's percent sign", () => {
+    expect(formatNumber(0.08, { style: "percent" })).toBe("۸٪");
+    expect(formatNumber(0.08, { locale: "en-US", style: "percent" })).toBe("8%");
+  });
+
   it("returns an empty string for non-finite values", () => {
     expect(formatNumber(Number.NaN)).toBe("");
     expect(formatNumber(Number.POSITIVE_INFINITY)).toBe("");

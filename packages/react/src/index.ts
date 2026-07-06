@@ -59,11 +59,20 @@ export * from "./components/visually-hidden/index.js";
 
 // Data display
 export * from "./components/action-tile/index.js";
+export * from "./components/capacity-meter/index.js";
 export * from "./components/card/index.js";
+export * from "./components/cover-header/index.js";
 export * from "./components/feature-card/index.js";
 export * from "./components/glow-orbs/index.js";
+export * from "./components/list/index.js";
+export * from "./components/match-score/index.js";
+export * from "./components/meta/index.js";
+export * from "./components/price-tag/index.js";
+export * from "./components/rating/index.js";
 export * from "./components/section-header/index.js";
 export * from "./components/stat/index.js";
+export * from "./components/table/index.js";
+export * from "./components/zoom-frame/index.js";
 
 // Navigation
 export * from "./components/accordion/index.js";

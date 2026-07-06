@@ -9,8 +9,13 @@ export type LocaleOptions = {
 };
 
 export type FormatNumberOptions = LocaleOptions & {
+  /** Minimum fraction digits, e.g. `2` for `4.50`. @defaultValue 0 */
+  minimumFractionDigits?: number;
+  /** Maximum fraction digits. Raised to `minimumFractionDigits` when lower. @defaultValue 2 */
   maximumFractionDigits?: number;
   grouping?: boolean;
+  /** `percent` multiplies by 100 and appends the locale's percent sign. @defaultValue "decimal" */
+  style?: "decimal" | "percent";
 };
 
 export type FormatDateOptions = LocaleOptions & {
@@ -81,8 +86,11 @@ export function formatNumber(value: number, options: FormatNumberOptions = {}): 
   if (!Number.isFinite(value)) return "";
   const locale = options.locale ?? DEFAULT_LOCALE;
   const digits = options.digits ?? defaultDigits(locale);
+  const minimumFractionDigits = options.minimumFractionDigits ?? 0;
   return new Intl.NumberFormat(withExtensions(locale, digits), {
-    maximumFractionDigits: options.maximumFractionDigits ?? 2,
+    style: options.style ?? "decimal",
+    minimumFractionDigits,
+    maximumFractionDigits: Math.max(options.maximumFractionDigits ?? 2, minimumFractionDigits),
     useGrouping: options.grouping ?? true,
   }).format(value);
 }
