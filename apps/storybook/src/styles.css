@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@avero/font/lahzeh.css";
 @import "@avero/tokens/theme.css";
 @import "@avero/tokens/base.css";
 @import "@avero/tokens/utilities.css";

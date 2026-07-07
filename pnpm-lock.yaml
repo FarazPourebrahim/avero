@@ -29,6 +29,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@avero/font':
+        specifier: workspace:^
+        version: link:../../packages/font
       '@avero/react':
         specifier: workspace:^
         version: link:../../packages/react
@@ -90,6 +93,9 @@ importers:
 
   apps/replica:
     dependencies:
+      '@avero/font':
+        specifier: workspace:^
+        version: link:../../packages/font
       '@avero/react':
         specifier: workspace:^
         version: link:../../packages/react
@@ -133,6 +139,9 @@ importers:
       '@avero/config':
         specifier: workspace:^
         version: link:../../packages/config
+      '@avero/font':
+        specifier: workspace:^
+        version: link:../../packages/font
       '@avero/react':
         specifier: workspace:^
         version: link:../../packages/react

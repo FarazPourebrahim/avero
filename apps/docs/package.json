@@ -10,6 +10,7 @@
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@avero/font": "workspace:^",
     "@avero/react": "workspace:^",
     "@avero/tokens": "workspace:^",
     "fumadocs-core": "16.15.9",

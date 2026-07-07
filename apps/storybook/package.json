@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@avero/config": "workspace:^",
+    "@avero/font": "workspace:^",
     "@avero/react": "workspace:^",
     "@avero/tokens": "workspace:^",
     "@playwright/test": "^1.63.0",
