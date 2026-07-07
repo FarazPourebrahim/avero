@@ -819,18 +819,18 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn.
 
-### Phase 7 — Data display  ⬜
+### Phase 7 — Data display  🟨
 
 **Scope:** D-01…D-24.
 
 **DoD:**
-- [ ] D-01 `Card` family meets the Global DoD, including all 4 surfaces and hover elevations
-- [ ] D-02…D-08 stat, feature, action and info components meet the Global DoD
-- [ ] D-09 `Table` meets the Global DoD, including responsive overflow, header scope and row hover
+- [x] D-01 `Card` family meets the Global DoD, including all 4 surfaces and hover elevations
+- [x] D-02…D-08 stat, feature, action and info components meet the Global DoD
+- [x] D-09 `Table` meets the Global DoD, including responsive overflow, header scope and row hover
 - [ ] D-10 `List`, D-11 `Blockquote` and D-12 `RichContent` meet the Global DoD; `RichContent` **always** sanitizes (DOMPurify, isomorphic), with tests covering script, `on*` handlers and `javascript:` URLs
-- [ ] D-13…D-17 meta, price, rating, capacity and match components meet the Global DoD, with number formatting via the Phase 2 utils
+- [x] D-13…D-17 meta, price, rating, capacity and match components meet the Global DoD, with number formatting via the Phase 2 utils
 - [ ] D-18 `ActivityHeatmap` meets the Global DoD: accessible (each cell has a label with date and count), keyboard-navigable grid, legend, Jalali/Gregorian months
-- [ ] D-19…D-23 key-value, contact, section header, zoom frame and cover header meet the Global DoD
+- [x] D-19…D-23 key-value, contact, section header, zoom frame and cover header meet the Global DoD
 - [ ] D-24 `ResponsiveBanner` meets the Global DoD (after capture)
 - [ ] Every data component renders sensibly with empty, `null`/`undefined` and overflowing content (tests present)
 
@@ -1033,29 +1033,29 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | O-08 | EmptyState | A | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-09 | Alert / Callout | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-10 | DisabledOverlay | A | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-01 | Card family | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-02 | StatCard | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-03 | StatTile | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-04 | MiniStat | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-05 | FeatureCard | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-06 | ActionTile | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-07 | InfoRow | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-08 | HighlightPanel | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-09 | Table | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-10 | List | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-11 | Blockquote | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| D-01 | Card family | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-02 | StatCard | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-03 | StatTile | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-04 | MiniStat | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-05 | FeatureCard | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-06 | ActionTile | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-07 | InfoRow | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-08 | HighlightPanel | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-09 | Table | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-10 | List | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-11 | Blockquote | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-12 | RichContent | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-13 | MetaItem / MetaBar | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-14 | PriceTag | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-15 | Rating | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-16 | CapacityMeter | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-17 | MatchScore | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| D-13 | MetaItem / MetaBar | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-14 | PriceTag | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-15 | Rating | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-16 | CapacityMeter | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-17 | MatchScore | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-18 | ActivityHeatmap | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-19 | KeyValueRow | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-20 | ContactMethod | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-21 | SectionHeader | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-22 | ZoomFrame | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| D-23 | CoverHeader | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| D-19 | KeyValueRow | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-20 | ContactMethod | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-21 | SectionHeader | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-22 | ZoomFrame | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| D-23 | CoverHeader | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-24 | ResponsiveBanner | B | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | C-01 | ChartCard | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | C-02 | AreaChart | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
@@ -1064,7 +1064,7 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | E-01 | Editor content styles | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | E-02 | Editor toolbar | B | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | X-01 | Animation utilities | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
-| X-02 | GlowOrbs | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| X-02 | GlowOrbs | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | X-03 | Hero illustration | B | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | T-01…T-09 | Shells and layouts | A | 8 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | B-01…B-25 | Blocks (see §7.10) | A | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
