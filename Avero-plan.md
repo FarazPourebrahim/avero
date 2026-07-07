@@ -62,7 +62,7 @@
 
 **Overall:** 33 / 164 phase-DoD items (≈20%).
 
-> Phase 3 note (2026-06-19): 13 primitives are implemented, unit/SSR/axe-tested (255 tests, 100% statements) and visually baselined locally, but no Phase 3 item is ticked yet. Docs pages with live RTL/LTR previews and generated props tables now exist for all 13; what remains is cross-platform visual baselines rendered with the Lahzeh font (KD-02, KD-06).
+> Phase 3 note (2026-06-19): 13 primitives are implemented, unit/SSR/axe-tested (255 tests, 100% statements) and visually baselined locally, but no Phase 3 item is ticked yet. Docs pages with live RTL/LTR previews and generated props tables now exist for all 13; what remains is cross-platform visual baselines (KD-06).
 
 ---
 
