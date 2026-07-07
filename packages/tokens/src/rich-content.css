@@ -158,6 +158,36 @@
     }
   }
 
+  /* ---------------------------------------------------------------- Question content (.question-rendered-content) */
+
+  /*
+   * The reference styles this surface only through the shared list overrides; everything else is
+   * inherited from the page, so the variant deliberately carries no typography of its own.
+   */
+  .avero-rich-content-question {
+    & ol,
+    & ul {
+      @apply my-2 list-outside space-y-2 ps-6;
+    }
+
+    & ol {
+      @apply list-decimal;
+    }
+
+    & ul {
+      @apply list-disc;
+    }
+
+    & li {
+      @apply leading-prose my-1;
+    }
+
+    & li > p,
+    & li > div {
+      @apply m-0 inline p-0;
+    }
+  }
+
   /* ---------------------------------------------------------------- Tiptap editing surface (.tiptap-content) */
 
   .avero-editor-content .tiptap {
