@@ -1,0 +1,71 @@
+---
+title: RichContent
+description: Renders stored HTML with the reference's prose styles, always sanitized.
+---
+
+**Reference:** article body (R-01), service description (R-05), project description (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/rich-content)
+
+```tsx
+import { RichContent } from "@avero/react";
+```
+
+<ComponentPreview name="rich-content/article" />
+
+## Anatomy
+
+| Part | Slot                       | Notes                                          |
+| ---- | -------------------------- | ---------------------------------------------- |
+| Root | `data-slot="rich-content"` | Carries the prose class for the chosen variant |
+
+The three variants map to the reference's three prose systems: `content` (`.content-area`),
+`editor` (`.editor`) and `question` (`.question-rendered-content`). They are exclusive — each
+variant carries its own typography.
+
+## Examples
+
+### Untrusted input is sanitized
+
+The HTML below contains a script, an inline handler, a `javascript:` link and an iframe. All four
+are removed before the markup reaches the DOM.
+
+<ComponentPreview name="rich-content/sanitized" />
+
+## Right-to-left
+
+The prose layer uses logical properties throughout: list indents are `ps-*`, the blockquote border
+is `border-s-*`, and headings and cells align to the inline start.
+
+## Composition
+
+- Sanitizing happens on every render, in the browser and during SSR — there is no unsafe mode.
+- `sanitize` swaps in your own function when you need a different allowlist. It **must** return safe
+  HTML; returning the input unchanged reintroduces XSS.
+- `sanitizeHtml` and `richContentAllowList` are exported if you want to sanitize before storing.
+
+## Accessibility
+
+- The rendered HTML keeps its own semantics, so headings, lists and tables are announced normally.
+- Heading levels come from the stored content; start articles at `h2` so the page keeps one `h1`.
+- Links that open a new tab get `rel="noopener noreferrer"` added during sanitizing.
+
+## API reference
+
+`RichContent` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/rich-content/RichContent.tsx" name="RichContentOwnProps" />
+
+## Theming
+
+| Token                | Used by               |
+| -------------------- | --------------------- |
+| `--color-indigo-500` | Blockquote border     |
+| `--leading-prose`    | List item line height |
+
+## Do and don't
+
+- **Do** pass untrusted HTML straight in; that is what this component is for.
+- **Don't** use `dangerouslySetInnerHTML` anywhere else in your app.
+
+## Related
+
+[List](./list) · [Table](./table) · [Typography](./typography)

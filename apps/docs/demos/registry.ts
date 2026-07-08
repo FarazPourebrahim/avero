@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import AccordionFooter from "./accordion/footer";
+import ActivityHeatmapYear from "./activity-heatmap/year";
 import AvatarFallback from "./avatar/fallback";
 import AvatarUsages from "./avatar/usages";
 import BadgeHighlights from "./badge/highlights";
@@ -41,6 +42,8 @@ import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
 import RatingUsages from "./rating/usages";
+import RichContentArticle from "./rich-content/article";
+import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
 import SectionHeaderVariants from "./section-header/variants";
 import SegmentedControlAnalytics from "./segmented-control/analytics";
@@ -77,6 +80,9 @@ export const demos = {
   "match-score/suggested": MatchScoreSuggested,
   "zoom-frame/gallery": ZoomFrameGallery,
   "cover-header/profile": CoverHeaderProfile,
+  "rich-content/article": RichContentArticle,
+  "rich-content/sanitized": RichContentSanitized,
+  "activity-heatmap/year": ActivityHeatmapYear,
   "carousel/related-projects": CarouselRelatedProjects,
   "carousel/pill": CarouselPill,
   "table-of-contents/article": TableOfContentsArticle,

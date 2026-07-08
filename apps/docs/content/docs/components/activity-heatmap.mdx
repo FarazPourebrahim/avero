@@ -1,0 +1,64 @@
+---
+title: ActivityHeatmap
+description: A year of activity as a keyboard-navigable grid with month labels and a legend.
+---
+
+**Reference:** dashboard activity map (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/activity-heatmap)
+
+```tsx
+import { ActivityHeatmap } from "@avero/react";
+```
+
+<ComponentPreview name="activity-heatmap/year" />
+
+## Anatomy
+
+| Part   | Slot                                  | Notes                                        |
+| ------ | ------------------------------------- | -------------------------------------------- |
+| Root   | `data-slot="activity-heatmap"`        | `data-state="empty"` when there are no days  |
+| Grid   | `data-slot="activity-heatmap-grid"`   | `role="grid"`, weekday rows and week columns |
+| Day    | `data-slot="activity-heatmap-day"`    | `role="gridcell"` button, `data-level` 0–4   |
+| Legend | `data-slot="activity-heatmap-legend"` | Decorative "less → more" scale               |
+
+## Right-to-left
+
+Weeks run from the inline start, so the oldest week is on the right in RTL and on the left in LTR.
+Arrow keys follow the same logic: <kbd>→</kbd> moves forward in time in LTR and backwards in RTL.
+Month names come from the active calendar — Jalali for Persian locales, Gregorian otherwise.
+
+## Composition
+
+- Pass only the days you have; gaps are filled with zero-count days automatically.
+- The card, title and summary line are yours to compose; the component renders the grid and legend.
+- `maxCount` pins the darkest shade, which keeps colours comparable between two heatmaps.
+
+## Accessibility
+
+- A real ARIA grid: weekday rows carry `rowheader`s with full weekday names, and each day is a
+  button labelled with its count and date ("۳ فعالیت در ۲۰ شهریور ۱۴۰۵").
+- Roving focus keeps one tab stop for the whole grid; arrow keys move between days.
+- The legend is decorative and hidden from assistive technology, because the labels carry the counts.
+- Pass `emptyState` so a freshly created account sees an explanation, not a bare container.
+
+## API reference
+
+`ActivityHeatmap` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/activity-heatmap/ActivityHeatmap.tsx" name="ActivityHeatmapOwnProps" />
+
+## Theming
+
+| Token                 | Used by             |
+| --------------------- | ------------------- |
+| `--color-emerald-200` | Lightest active day |
+| `--color-emerald-700` | Busiest day         |
+| `--color-gray-100`    | Empty day           |
+
+## Do and don't
+
+- **Do** keep the legend unless the counts are shown some other way.
+- **Don't** rely on shade alone to convey a number; every cell is labelled.
+
+## Related
+
+[Stats](./stats) · [CapacityMeter](./capacity-meter)
