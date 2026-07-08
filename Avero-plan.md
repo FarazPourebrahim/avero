@@ -100,6 +100,7 @@
 | D-11 | Visual-conflict rule | Avero reproduces **what the browser actually renders**, not what a broken class intended. The exception is when the rendered result is broken or unusable; those cases go in the deviation register (§6.2) for approval. | Keeps "looks exactly like" objective and testable. | Plan default |
 | D-12 | Monorepo | pnpm workspace following `.claude/CLAUDE.md` (`apps/*`, `packages/*`). The `packages/contracts` package from CLAUDE.md is **not applicable** because there is no backend and no cross-app API contracts. | Follows the working agreement and records the deliberate omission. | Plan default |
 | D-13 | Library build | **Changed from Vite library mode to the TypeScript compiler** (`tsc`, per-file ESM + `.d.ts`). Library source uses `.js`-suffixed relative imports (`module: NodeNext`). | No bundler plugins are needed to keep `"use client"` directives. Output is valid Node ESM and tree-shakes per file. | Implementation, 2026-06-19 |
+| D-15 | `RichContent` sanitizer | **js-xss** (`xss`), not DOMPurify: an allowlist filter that needs no DOM, so the same code runs in the browser, in SSR and in tests. `isomorphic-dompurify` would pull jsdom (~10 MB) into every server bundle that renders stored HTML. | Sanitizing is mandatory (D-08) and must not cost a jsdom dependency on the server. | Implementation, 2026-07-05, approved by the user |
 | D-14 | Toolchain pins | TypeScript ~6.0.3 (typescript-eslint supports `<6.1.0`); Node floor ≥ 22.12; jsdom ^28.1 and size-limit ^12.1 (newer majors need Node ≥ 22.18/22.22). | Keeps lint working and supports the local Node 22.16. | Implementation, 2026-06-19 |
 
 ---
@@ -827,9 +828,9 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 - [x] D-01 `Card` family meets the Global DoD, including all 4 surfaces and hover elevations
 - [x] D-02…D-08 stat, feature, action and info components meet the Global DoD
 - [x] D-09 `Table` meets the Global DoD, including responsive overflow, header scope and row hover
-- [ ] D-10 `List`, D-11 `Blockquote` and D-12 `RichContent` meet the Global DoD; `RichContent` **always** sanitizes (DOMPurify, isomorphic), with tests covering script, `on*` handlers and `javascript:` URLs
+- [x] D-10 `List`, D-11 `Blockquote` and D-12 `RichContent` meet the Global DoD; `RichContent` **always** sanitizes (js-xss, isomorphic — decision D-15), with tests covering script, `on*` handlers and `javascript:` URLs
 - [x] D-13…D-17 meta, price, rating, capacity and match components meet the Global DoD, with number formatting via the Phase 2 utils
-- [ ] D-18 `ActivityHeatmap` meets the Global DoD: accessible (each cell has a label with date and count), keyboard-navigable grid, legend, Jalali/Gregorian months
+- [x] D-18 `ActivityHeatmap` meets the Global DoD: accessible (each cell has a label with date and count), keyboard-navigable grid, legend, Jalali/Gregorian months
 - [x] D-19…D-23 key-value, contact, section header, zoom frame and cover header meet the Global DoD
 - [ ] D-24 `ResponsiveBanner` meets the Global DoD (after capture)
 - [ ] Every data component renders sensibly with empty, `null`/`undefined` and overflowing content (tests present)
@@ -1044,13 +1045,13 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | D-09 | Table | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-10 | List | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-11 | Blockquote | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
-| D-12 | RichContent | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| D-12 | RichContent | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-13 | MetaItem / MetaBar | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-14 | PriceTag | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-15 | Rating | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-16 | CapacityMeter | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-17 | MatchScore | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
-| D-18 | ActivityHeatmap | A | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| D-18 | ActivityHeatmap | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-19 | KeyValueRow | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-20 | ContactMethod | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-21 | SectionHeader | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
