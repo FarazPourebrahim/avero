@@ -98,6 +98,11 @@ describe("formatDate", () => {
     expect(formatDate(SHAHRIVAR_20_1405, { preset: "dayMonth" })).toBe("۲۰ شهریور");
   });
 
+  it("formats the month name only", () => {
+    expect(formatDate(SHAHRIVAR_20_1405, { preset: "month" })).toBe("شهریور");
+    expect(formatDate(SHAHRIVAR_20_1405, { preset: "month", locale: "en-US" })).toBe("September");
+  });
+
   it("formats a Gregorian date for English", () => {
     expect(formatDate(SHAHRIVAR_20_1405, { locale: "en-US" })).toBe("September 11, 2026");
   });

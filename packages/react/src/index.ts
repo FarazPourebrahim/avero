@@ -1,5 +1,6 @@
 // Utilities
 export { cn } from "./utils/cn.js";
+export { richContentAllowList, sanitizeHtml } from "./utils/sanitize.js";
 export {
   formatDate,
   formatNumber,
@@ -59,6 +60,7 @@ export * from "./components/visually-hidden/index.js";
 
 // Data display
 export * from "./components/action-tile/index.js";
+export * from "./components/activity-heatmap/index.js";
 export * from "./components/capacity-meter/index.js";
 export * from "./components/card/index.js";
 export * from "./components/cover-header/index.js";
@@ -69,6 +71,7 @@ export * from "./components/match-score/index.js";
 export * from "./components/meta/index.js";
 export * from "./components/price-tag/index.js";
 export * from "./components/rating/index.js";
+export * from "./components/rich-content/index.js";
 export * from "./components/section-header/index.js";
 export * from "./components/stat/index.js";
 export * from "./components/table/index.js";

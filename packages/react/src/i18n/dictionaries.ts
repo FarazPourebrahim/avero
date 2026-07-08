@@ -15,6 +15,10 @@ export type AveroDictionary = {
   pricePrefixFrom: string;
   heatmapLess: string;
   heatmapMore: string;
+  /** Accessible name of the activity heatmap grid. */
+  heatmapLabel: string;
+  /** Label of one heatmap day. `{count}` and `{date}` are replaced. */
+  heatmapCell: string;
   tocTitle: string;
   /** Accessible label of a carousel pagination dot. `{index}` is replaced with the slide number. */
   goToSlide: string;
@@ -42,6 +46,8 @@ export const fa: AveroDictionary = {
   pricePrefixFrom: "از",
   heatmapLess: "کمتر",
   heatmapMore: "بیشتر",
+  heatmapLabel: "نقشه فعالیت",
+  heatmapCell: "{count} فعالیت در {date}",
   tocTitle: "در این مقاله",
   goToSlide: "اسلاید {index}",
   ofTotal: "{value} از {max}",
@@ -62,6 +68,8 @@ export const en: AveroDictionary = {
   pricePrefixFrom: "From",
   heatmapLess: "Less",
   heatmapMore: "More",
+  heatmapLabel: "Activity map",
+  heatmapCell: "{count} activities on {date}",
   tocTitle: "On this page",
   goToSlide: "Go to slide {index}",
   ofTotal: "{value} of {max}",

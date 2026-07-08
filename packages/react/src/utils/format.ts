@@ -1,6 +1,6 @@
 export type DigitSystem = "fa" | "latn";
 export type CalendarSystem = "persian" | "gregory";
-export type DatePreset = "long" | "numeric" | "dayMonth";
+export type DatePreset = "long" | "numeric" | "dayMonth" | "month";
 
 export type LocaleOptions = {
   /** BCP 47 language tag without extensions, e.g. `fa-IR` or `en-US`. */
@@ -36,6 +36,7 @@ const DATE_PRESETS: Record<DatePreset, Intl.DateTimeFormatOptions> = {
   long: { day: "numeric", month: "long", year: "numeric" },
   numeric: { day: "numeric", month: "numeric", year: "numeric" },
   dayMonth: { day: "numeric", month: "long" },
+  month: { month: "long" },
 };
 
 const RELATIVE_UNITS: ReadonlyArray<[Intl.RelativeTimeFormatUnit, number]> = [
