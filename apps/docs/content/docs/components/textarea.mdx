@@ -1,0 +1,55 @@
+---
+title: Textarea
+description: The comment box, in the article's gray and the service page's slate treatment.
+---
+
+**Reference:** blog comment form (R-01), service comment form (R-05) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/textarea)
+
+```tsx
+import { Textarea } from "@avero/react";
+```
+
+<ComponentPreview name="textarea/variants" />
+
+## Anatomy
+
+| Part | Slot                   | Notes                                     |
+| ---- | ---------------------- | ----------------------------------------- |
+| Root | `data-slot="textarea"` | Native `<textarea>`; `rows` defaults to 4 |
+
+## Right-to-left
+
+The box, its placeholder and the resize handle all follow the document direction.
+
+## Composition
+
+- `soft` is the blog comment box (gray ground); `slate` is the service page's (white, slate border).
+- The reference locks resizing; pass `resize="vertical"` when a long answer is expected.
+
+## Accessibility
+
+- Give it a label, and pair it with an error message referenced by `aria-describedby`.
+- Set `aria-invalid` while validation fails (V-08).
+
+## API reference
+
+`Textarea` accepts every native `<textarea>` attribute plus:
+
+<PropsTable file="components/textarea/Textarea.tsx" name="TextareaOwnProps" />
+
+## Theming
+
+| Token                | Used by        |
+| -------------------- | -------------- |
+| `--color-gray-50`    | `soft` ground  |
+| `--color-slate-200`  | `slate` border |
+| `--color-indigo-500` | Focus ring     |
+
+## Do and don't
+
+- **Do** state the moderation rule next to the submit button with [FormActions](./form-actions).
+- **Don't** grow the box automatically while typing; the reference keeps a fixed height.
+
+## Related
+
+[Input](./input) · [FormActions](./form-actions)

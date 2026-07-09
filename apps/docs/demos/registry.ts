@@ -22,6 +22,7 @@ import ChipLinks from "./chip/links";
 import ChipStatic from "./chip/static";
 import DividerBasic from "./divider/basic";
 import FeatureCardActions from "./feature-card/actions";
+import FormActionsCommentForm from "./form-actions/comment-form";
 import FeatureCardGrid from "./feature-card/grid";
 import IconButtonChrome from "./icon-button/chrome";
 import IconButtonShare from "./icon-button/share";
@@ -29,6 +30,7 @@ import IconButtonSocial from "./icon-button/social";
 import IconTileSizes from "./icon-tile/sizes";
 import IconTileVariants from "./icon-tile/variants";
 import IconsGallery from "./icons/gallery";
+import InputVariants from "./input/variants";
 import ImageCardAndFallback from "./image/card-and-fallback";
 import ImageCover from "./image/cover";
 import LinkInline from "./link/inline";
@@ -37,6 +39,7 @@ import ListProse from "./list/prose";
 import MatchScoreSuggested from "./match-score/suggested";
 import MetaArticle from "./meta/article";
 import MetaContacts from "./meta/contacts";
+import NativeSelectSort from "./native-select/sort";
 import PillTabsProfile from "./pill-tabs/profile";
 import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
@@ -45,6 +48,7 @@ import RatingUsages from "./rating/usages";
 import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
+import SelectFilter from "./select/filter";
 import SectionHeaderVariants from "./section-header/variants";
 import SegmentedControlAnalytics from "./segmented-control/analytics";
 import SidebarNavDashboard from "./sidebar-nav/dashboard";
@@ -52,6 +56,7 @@ import StatsAchievements from "./stats/achievements";
 import StatsDashboard from "./stats/dashboard";
 import StatsProfile from "./stats/profile";
 import TableArticle from "./table/article";
+import TextareaVariants from "./textarea/variants";
 import TableOfContentsArticle from "./table-of-contents/article";
 import ToggleChipGroupMetrics from "./toggle-chip-group/metrics";
 import TypographyHeadings from "./typography/headings";
@@ -83,6 +88,11 @@ export const demos = {
   "rich-content/article": RichContentArticle,
   "rich-content/sanitized": RichContentSanitized,
   "activity-heatmap/year": ActivityHeatmapYear,
+  "input/variants": InputVariants,
+  "textarea/variants": TextareaVariants,
+  "native-select/sort": NativeSelectSort,
+  "select/filter": SelectFilter,
+  "form-actions/comment-form": FormActionsCommentForm,
   "carousel/related-projects": CarouselRelatedProjects,
   "carousel/pill": CarouselPill,
   "table-of-contents/article": TableOfContentsArticle,

@@ -1,0 +1,53 @@
+---
+title: NativeSelect
+description: The platform dropdown, styled like the listing page's sort control.
+---
+
+**Reference:** listing sort control (R-06) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/native-select)
+
+```tsx
+import { NativeSelect } from "@avero/react";
+```
+
+<ComponentPreview name="native-select/sort" />
+
+## Anatomy
+
+| Part | Slot                        | Notes                                    |
+| ---- | --------------------------- | ---------------------------------------- |
+| Root | `data-slot="native-select"` | Native `<select>`, keeping its own arrow |
+
+## Right-to-left
+
+The native control follows the document direction, and the platform draws the arrow on the
+correct side — one reason to prefer it on touch devices.
+
+## Composition
+
+- Pass `<option>` (and `<optgroup>`) children exactly as you would to a native select.
+- Reach for [Select](./select) only when the trigger must match the filter panel's custom style.
+
+## Accessibility
+
+- The platform dropdown is the most reliable option for screen readers and touch keyboards.
+- Label it like any other control; the reference uses `aria-label="مرتب‌سازی"`.
+
+## API reference
+
+`NativeSelect` accepts every native `<select>` attribute. It adds no props of its own.
+
+## Theming
+
+| Token              | Used by    |
+| ------------------ | ---------- |
+| `--color-gray-300` | Border     |
+| `--color-blue-500` | Focus ring |
+
+## Do and don't
+
+- **Do** prefer it for short, simple option lists.
+- **Don't** put rich markup in options; the platform renders plain text only.
+
+## Related
+
+[Select](./select) · [Input](./input)

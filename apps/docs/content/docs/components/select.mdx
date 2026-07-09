@@ -1,0 +1,78 @@
+---
+title: Select
+description: The filter panel's custom dropdown, built on Radix Select.
+---
+
+**Reference:** listing category filter (R-06) · **Tier:** A (trigger) / B (listbox) · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/select)
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "@avero/react";
+```
+
+<ComponentPreview name="select/filter" />
+
+## Anatomy
+
+| Part      | Slot                           | Notes                                         |
+| --------- | ------------------------------ | --------------------------------------------- |
+| Trigger   | `data-slot="select-trigger"`   | `role="combobox"`; chevron rotates when open  |
+| Content   | `data-slot="select-content"`   | Portalled popper, matches the trigger's width |
+| Item      | `data-slot="select-item"`      | Highlight on hover and keyboard focus         |
+| Label     | `data-slot="select-label"`     | Group heading                                 |
+| Separator | `data-slot="select-separator"` | Hairline between groups                       |
+
+The trigger reproduces the reference exactly. The listbox is designed from the token system,
+because the reference only ever renders the closed trigger — recorded as deviation V-07.
+
+## Right-to-left
+
+Radix reads the direction from `AveroProvider`, so the listbox aligns and animates from the
+correct side and type-ahead works in both directions.
+
+## Composition
+
+- `SelectValue` shows the chosen option; its `placeholder` renders while nothing is selected.
+- Group options with `SelectGroup` + `SelectLabel`, and separate groups with `SelectSeparator`.
+- For a plain list on touch devices, [NativeSelect](./native-select) is the better default.
+
+## Accessibility
+
+- Full combobox semantics from Radix: `aria-expanded`, active-descendant highlighting and
+  type-ahead. Enter, Space and the arrow keys open the list; Escape closes it.
+- A hidden native select keeps the value in real form submissions.
+
+## API reference
+
+`SelectTrigger` accepts every Radix trigger prop plus:
+
+<PropsTable file="components/select/Select.tsx" name="SelectTriggerOwnProps" />
+
+`Select`, `SelectContent`, `SelectItem`, `SelectLabel` and `SelectSeparator` accept their Radix
+props unchanged.
+
+## Theming
+
+| Token                  | Used by        |
+| ---------------------- | -------------- |
+| `--color-gray-300`     | Trigger border |
+| `--color-blue-500`     | Focus ring     |
+| `--shadow-card-raised` | Listbox        |
+| `--z-dropdown`         | Listbox layer  |
+
+## Do and don't
+
+- **Do** label the trigger; the placeholder is not a label.
+- **Don't** nest interactive elements inside an item.
+
+## Related
+
+[NativeSelect](./native-select) · [Input](./input)

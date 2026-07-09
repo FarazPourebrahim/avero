@@ -1,0 +1,56 @@
+---
+title: FormActions
+description: The row under a form — a hint on one side, the submit controls on the other.
+---
+
+**Reference:** blog comment form (R-01), service comment form (R-05) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/form-actions)
+
+```tsx
+import { FormActions } from "@avero/react";
+```
+
+<ComponentPreview name="form-actions/comment-form" />
+
+## Anatomy
+
+| Part | Slot                            | Notes                                             |
+| ---- | ------------------------------- | ------------------------------------------------- |
+| Root | `data-slot="form-actions"`      | `justify-between` with a hint, else `justify-end` |
+| Hint | `data-slot="form-actions-hint"` | Muted explanatory text                            |
+
+## Right-to-left
+
+The hint sits at the inline start and the actions at the inline end, so the submit button stays
+where the reading direction expects it.
+
+## Composition
+
+- Pass the submit [Button](./button) (and any secondary action) as children.
+- `align` overrides the automatic choice when you want actions alone on the end with a hint above.
+
+## Accessibility
+
+- Keep the hint as real text, not a tooltip: rules such as "comments are reviewed before publishing"
+  must be readable before submitting.
+- The submit button should show its pending state while the form is in flight.
+
+## API reference
+
+`FormActions` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/form-actions/FormActions.tsx" name="FormActionsOwnProps" />
+
+## Theming
+
+| Token              | Used by   |
+| ------------------ | --------- |
+| `--color-gray-400` | Hint text |
+
+## Do and don't
+
+- **Do** keep one primary action per form.
+- **Don't** hide the submit button behind a disabled state without explaining why.
+
+## Related
+
+[Textarea](./textarea) · [Button](./button) · [Input](./input)
