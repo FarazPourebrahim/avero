@@ -376,6 +376,8 @@ Three overlapping systems exist in the reference and are unified into one `RichC
 | V-04 | Accessibility semantics added (no visual change) | Apply | ✅ Approved 2026-06-19 |
 | V-05 | Toasts use Lahzeh | Apply | ✅ Approved 2026-06-19 |
 | V-06 | Animations disabled or reduced under `prefers-reduced-motion` | Apply | ✅ Approved 2026-06-19 |
+| V-07 | `Select`'s listbox (open state) is designed from the token system: the reference only ever renders the closed trigger, so there is nothing to reproduce. The trigger itself still matches the reference exactly. | Apply | 🟨 Proposed 2026-07-05 |
+| V-08 | Form controls gain an invalid state (red border and ring under `aria-invalid`), which the reference never renders | Apply | 🟨 Proposed 2026-07-05 |
 
 ---
 
@@ -767,15 +769,15 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** a Storybook "Primitives" review page is signed off against reference crops.
 
-### Phase 4 — Forms  ⬜
+### Phase 4 — Forms  🟨
 
 **Scope:** FM-01…FM-15.
 
 **DoD:**
-- [ ] FM-02 `Input`, FM-03 `Textarea`, FM-04 `NativeSelect` and FM-15 `FormActions` meet the Global DoD
-- [ ] FM-05 `Select` (Radix) meets the Global DoD, and its trigger matches the reference pixel-for-pixel
+- [x] FM-02 `Input`, FM-03 `Textarea`, FM-04 `NativeSelect` and FM-15 `FormActions` meet the Global DoD
+- [x] FM-05 `Select` (Radix) meets the Global DoD, and its trigger matches the reference pixel-for-pixel (listbox designed per deviation V-07)
 - [ ] FM-01 `Field` wires label, description and error ids (`aria-describedby`, `aria-invalid`) automatically
-- [ ] A react-hook-form + zod integration example passes a test for register, validation errors and submit
+- [x] A react-hook-form + zod integration example passes a test for register, validation errors and submit
 - [ ] FM-06 `Combobox` meets the Global DoD (after capture)
 - [ ] FM-07 `Checkbox`, FM-08 `Radio` and FM-09 `Switch` meet the Global DoD (after capture)
 - [ ] FM-10 `FileInput` meets the Global DoD, including keyboard access and file-type/size props (after capture)
@@ -999,10 +1001,10 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | P-14 | VisuallyHidden / LiveRegion | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | P-15 | Image / Figure | A | 3 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | FM-01 | Field | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| FM-02 | Input | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| FM-03 | Textarea | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| FM-04 | NativeSelect | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| FM-05 | Select | A/B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-02 | Input | A | 4 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| FM-03 | Textarea | A | 4 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| FM-04 | NativeSelect | A | 4 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| FM-05 | Select | A/B | 4 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | FM-06 | Combobox | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-07 | Checkbox | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-08 | Radio | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
@@ -1012,7 +1014,7 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | FM-12 | TagInput | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-13 | DatePicker (Jalali) | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | FM-14 | OtpInput | B | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| FM-15 | FormActions | A | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-15 | FormActions | A | 4 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | N-01 | NavLink (provided by `Link` `nav` / `drawer` variants) | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | N-02 | SidebarNav | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | N-03 | BackLink | A | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
