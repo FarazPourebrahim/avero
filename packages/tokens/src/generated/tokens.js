@@ -398,7 +398,7 @@ export const tokens = {
   },
   "zIndexDrawer": {
     "cssVar": "--z-drawer",
-    "value": "50"
+    "value": "70"
   },
   "zIndexDropdown": {
     "cssVar": "--z-dropdown",
