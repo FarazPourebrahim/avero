@@ -77,6 +77,11 @@ export * from "./components/stat/index.js";
 export * from "./components/table/index.js";
 export * from "./components/zoom-frame/index.js";
 
+// Overlays and feedback
+export * from "./components/disabled-overlay/index.js";
+export * from "./components/drawer/index.js";
+export * from "./components/empty-state/index.js";
+
 // Forms
 export * from "./components/form-actions/index.js";
 export * from "./components/input/index.js";
