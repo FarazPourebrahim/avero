@@ -1,0 +1,57 @@
+---
+title: DisabledOverlay
+description: Covers a card that can no longer be acted on, with the reason on a pill.
+---
+
+**Reference:** "تکمیل ظرفیت" project cards (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/disabled-overlay)
+
+```tsx
+import { DisabledOverlay } from "@avero/react";
+```
+
+<ComponentPreview name="disabled-overlay/full-card" />
+
+## Anatomy
+
+| Part   | Slot                                  | Notes                                   |
+| ------ | ------------------------------------- | --------------------------------------- |
+| Root   | `data-slot="disabled-overlay"`        | Absolutely positioned, faint blur       |
+| Reason | `data-slot="disabled-overlay-reason"` | Red pill by default, slate when neutral |
+
+## Right-to-left
+
+The pill is centred, so the overlay reads the same in both directions.
+
+## Composition
+
+- Put it inside a `relative` container and match `radius` to that container's corners.
+- The reference also dims the card itself (`opacity-70 blur-[1px]`) — apply that to the card, not
+  the overlay, so the reason stays legible.
+- Make the card genuinely inert: `aria-disabled`, `pointer-events-none` and no focusable children.
+
+## Accessibility
+
+- The reason is real text inside the overlay, so it is announced with the card.
+- Blur alone is not a state: never rely on it to signal that something is unavailable.
+
+## API reference
+
+`DisabledOverlay` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/disabled-overlay/DisabledOverlay.tsx" name="DisabledOverlayOwnProps" />
+
+## Theming
+
+| Token             | Used by       |
+| ----------------- | ------------- |
+| `--color-red-500` | `danger` pill |
+| `--z-raised`      | Overlay layer |
+
+## Do and don't
+
+- **Do** state why — "تکمیل ظرفیت" tells the user more than a greyed-out card.
+- **Don't** leave links inside a covered card focusable.
+
+## Related
+
+[CapacityMeter](./capacity-meter) · [EmptyState](./empty-state)

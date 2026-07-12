@@ -1,0 +1,77 @@
+---
+title: Drawer
+description: The slide-in menu panel, in both of the reference's sizes.
+---
+
+**Reference:** site header menu (R-01/R-03), dashboard menu (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/drawer)
+
+```tsx
+import {
+  Drawer,
+  DrawerBody,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@avero/react";
+```
+
+<ComponentPreview name="drawer/menu" />
+
+## Anatomy
+
+| Part    | Slot                         | Notes                                             |
+| ------- | ---------------------------- | ------------------------------------------------- |
+| Content | `data-slot="drawer-content"` | The panel; 300ms slide, `--z-drawer`              |
+| Overlay | `data-slot="drawer-overlay"` | Dimmed scrim (deviation V-09)                     |
+| Header  | `data-slot="drawer-header"`  | Icon, title and the close button                  |
+| Body    | `data-slot="drawer-body"`    | Scrolls when the content is taller than the panel |
+
+`size="panel"` is the dashboard drawer (75%, half from `sm`, capped at `max-w-sm`);
+`size="wide"` is the header menu (two thirds).
+
+## Right-to-left
+
+`side="start"` and `side="end"` are logical, so a drawer that opens from the right in RTL opens
+from the left in LTR without any extra work.
+
+## Composition
+
+- `DrawerTitle` is required — it names the dialog. Use `DrawerDescription`, or pass
+  `aria-describedby={undefined}` when there is no description.
+- `container` portals the panel into an element of your choosing instead of `document.body`.
+- Pass `modal={false}` when the page behind must stay interactive.
+
+## Accessibility
+
+- Radix Dialog supplies the focus trap, `Esc` to close, scroll lock and focus return.
+- The close button is labelled from the dictionary (`closeMenu`), so it reads correctly in both
+  languages.
+- The reference ships no scrim at all, which leaves the page clickable behind the drawer; Avero
+  adds one (V-09).
+
+## API reference
+
+`DrawerContent` accepts every Radix dialog content prop plus:
+
+<PropsTable file="components/drawer/Drawer.tsx" name="DrawerContentOwnProps" />
+
+`DrawerHeader` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/drawer/Drawer.tsx" name="DrawerHeaderOwnProps" />
+
+## Theming
+
+| Token        | Used by     |
+| ------------ | ----------- |
+| `--z-drawer` | Panel layer |
+
+## Do and don't
+
+- **Do** keep drawers for navigation and filters; use a dialog for decisions.
+- **Don't** nest a drawer inside another drawer.
+
+## Related
+
+[SidebarNav](./sidebar-nav) · [EmptyState](./empty-state)

@@ -1,0 +1,59 @@
+---
+title: EmptyState
+description: The four ways the reference says "there is nothing here yet".
+---
+
+**Reference:** article comments (R-01), dashboard panels and charts (R-02), service comments (R-05) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/empty-state)
+
+```tsx
+import { EmptyState } from "@avero/react";
+```
+
+<ComponentPreview name="empty-state/variants" />
+
+## Anatomy
+
+| Part   | Slot                             | Notes                                       |
+| ------ | -------------------------------- | ------------------------------------------- |
+| Root   | `data-slot="empty-state"`        | Centred column                              |
+| Icon   | `data-slot="empty-state-icon"`   | `icon` fades it; `circle` puts it in a disc |
+| Action | `data-slot="empty-state-action"` | Optional next step                          |
+
+## Right-to-left
+
+Everything is centred, so the layout is direction-agnostic; only the message changes.
+
+## Composition
+
+- `text` and `slate` are message-only; they ignore `icon`.
+- `icon` is the "coming soon" chart placeholder; `circle` is the panel-with-no-data state.
+- `action` takes a [Button](./button) that starts whatever is missing.
+
+## Accessibility
+
+- Say what is missing and what to do next. "داده‌ای برای نمایش وجود ندارد" beats "empty".
+- Distinguish "no results for this filter" from "nothing here yet" — they need different actions.
+- Icons are decorative; the message carries the meaning.
+
+## API reference
+
+`EmptyState` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/empty-state/EmptyState.tsx" name="EmptyStateOwnProps" />
+
+## Theming
+
+| Token               | Used by         |
+| ------------------- | --------------- |
+| `--color-gray-400`  | `text` message  |
+| `--color-slate-400` | `slate` message |
+| `--color-gray-100`  | `circle` disc   |
+
+## Do and don't
+
+- **Do** give every list, query and panel an empty state.
+- **Don't** leave a bare container when a collection returns nothing.
+
+## Related
+
+[Drawer](./drawer) · [Stats](./stats) · [ActivityHeatmap](./activity-heatmap)

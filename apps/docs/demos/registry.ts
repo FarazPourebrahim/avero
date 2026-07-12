@@ -20,7 +20,10 @@ import CarouselPill from "./carousel/pill";
 import CarouselRelatedProjects from "./carousel/related-projects";
 import ChipLinks from "./chip/links";
 import ChipStatic from "./chip/static";
+import DisabledOverlayFullCard from "./disabled-overlay/full-card";
 import DividerBasic from "./divider/basic";
+import DrawerMenu from "./drawer/menu";
+import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
 import FormActionsCommentForm from "./form-actions/comment-form";
 import FeatureCardGrid from "./feature-card/grid";
@@ -93,6 +96,9 @@ export const demos = {
   "native-select/sort": NativeSelectSort,
   "select/filter": SelectFilter,
   "form-actions/comment-form": FormActionsCommentForm,
+  "drawer/menu": DrawerMenu,
+  "empty-state/variants": EmptyStateVariants,
+  "disabled-overlay/full-card": DisabledOverlayFullCard,
   "carousel/related-projects": CarouselRelatedProjects,
   "carousel/pill": CarouselPill,
   "table-of-contents/article": TableOfContentsArticle,
