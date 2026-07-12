@@ -378,6 +378,8 @@ Three overlapping systems exist in the reference and are unified into one `RichC
 | V-06 | Animations disabled or reduced under `prefers-reduced-motion` | Apply | ✅ Approved 2026-06-19 |
 | V-07 | `Select`'s listbox (open state) is designed from the token system: the reference only ever renders the closed trigger, so there is nothing to reproduce. The trigger itself still matches the reference exactly. | Apply | 🟨 Proposed 2026-07-05 |
 | V-08 | Form controls gain an invalid state (red border and ring under `aria-invalid`), which the reference never renders | Apply | 🟨 Proposed 2026-07-05 |
+| V-10 | `--z-drawer` is raised from the reference's `50` to `70`. The reference puts drawers on the same layer as the sticky header and below dropdowns (`60`), so a drawer can render underneath both; a layering check script now enforces the order. | Apply | 🟨 Proposed 2026-07-05 |
+| V-09 | `Drawer` renders a dimmed scrim behind the panel. The reference has no backdrop element at all (no `bg-black/*` anywhere), so its drawers leave the page clickable behind them — a focus-trap and click-outside bug. The panel itself still matches the reference exactly. | Apply | 🟨 Proposed 2026-07-05 |
 
 ---
 
@@ -804,20 +806,20 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** reference regions for the TOC, profile tabs, segmented control and related-projects carousel pass visual diff ≤ 1%.
 
-### Phase 6 — Overlays and feedback  ⬜
+### Phase 6 — Overlays and feedback  🟨
 
 **Scope:** O-01…O-10.
 
 **DoD:**
-- [ ] O-01 `Drawer`/`Sheet` meets the Global DoD: focus trap, `Esc`, scroll lock, start/end sides mirror in LTR, and it reproduces both reference drawers
+- [x] O-01 `Drawer`/`Sheet` meets the Global DoD: focus trap, `Esc`, scroll lock, start/end sides mirror in LTR, and it reproduces both reference drawers
 - [ ] O-02 `Dialog` and O-03 `ConfirmDialog` meet the Global DoD (after capture)
 - [ ] O-04 `Popover`/`DropdownMenu` meet the Global DoD, including the notification-menu composition (after capture)
 - [ ] O-05 `Tooltip` meets the Global DoD
 - [ ] O-06 `Toast` meets the Global DoD: success, error, info and warning variants, stacking, 480px mobile behaviour, and a pause-on-hover progress bar (after capture of the visual states)
 - [ ] O-07 `Lightbox` meets the Global DoD, including keyboard navigation and focus return (after capture)
-- [ ] O-08 `EmptyState` meets the Global DoD with all 4 reference variants, and distinguishes "no results" from "nothing yet"
+- [x] O-08 `EmptyState` meets the Global DoD with all 4 reference variants, and distinguishes "no results" from "nothing yet"
 - [ ] O-09 `Alert` (after capture) and O-10 `DisabledOverlay` meet the Global DoD
-- [ ] Z-index tokens finalised (§5.8), with a layering test proving toast > modal > drawer > dropdown > header
+- [x] Z-index tokens finalised (§5.8), with a layering test proving toast > modal > drawer > dropdown > header — `packages/tokens/scripts/check-z-order.mjs`, run by the tokens test; `--z-drawer` raised above the header and dropdown layers (deviation V-10)
 - [ ] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled)
 
 **Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn.
@@ -1026,16 +1028,16 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | N-09 | Carousel | A/B | 5 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | N-10 | Pagination | B | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | N-11 | InfiniteScroll | B | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| O-01 | Drawer / Sheet | A | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-01 | Drawer / Sheet | A | 6 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | O-02 | Dialog | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-03 | ConfirmDialog | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-04 | Popover / DropdownMenu | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-05 | Tooltip | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-06 | Toast | A/B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | O-07 | Lightbox | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| O-08 | EmptyState | A | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-08 | EmptyState | A | 6 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | O-09 | Alert / Callout | B | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| O-10 | DisabledOverlay | A | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-10 | DisabledOverlay | A | 6 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-01 | Card family | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-02 | StatCard | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-03 | StatTile | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
