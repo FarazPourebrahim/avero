@@ -16,6 +16,8 @@ export type AveroDictionary = {
   heatmapLess: string;
   heatmapMore: string;
   /** Accessible name of the activity heatmap grid. */
+  /** Skip link at the top of a page shell. */
+  skipToContent: string;
   heatmapLabel: string;
   /** Label of one heatmap day. `{count}` and `{date}` are replaced. */
   heatmapCell: string;
@@ -46,6 +48,7 @@ export const fa: AveroDictionary = {
   pricePrefixFrom: "از",
   heatmapLess: "کمتر",
   heatmapMore: "بیشتر",
+  skipToContent: "رفتن به محتوای اصلی",
   heatmapLabel: "نقشه فعالیت",
   heatmapCell: "{count} فعالیت در {date}",
   tocTitle: "در این مقاله",
@@ -68,6 +71,7 @@ export const en: AveroDictionary = {
   pricePrefixFrom: "From",
   heatmapLess: "Less",
   heatmapMore: "More",
+  skipToContent: "Skip to content",
   heatmapLabel: "Activity map",
   heatmapCell: "{count} activities on {date}",
   tocTitle: "On this page",

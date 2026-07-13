@@ -77,6 +77,14 @@ export * from "./components/stat/index.js";
 export * from "./components/table/index.js";
 export * from "./components/zoom-frame/index.js";
 
+// Layout
+export * from "./components/container/index.js";
+export * from "./components/dashboard-shell/index.js";
+export * from "./components/layouts/index.js";
+export * from "./components/site-shell/index.js";
+export * from "./components/site-footer/index.js";
+export * from "./components/site-header/index.js";
+
 // Overlays and feedback
 export * from "./components/disabled-overlay/index.js";
 export * from "./components/drawer/index.js";
