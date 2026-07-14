@@ -1,0 +1,9 @@
+[
+  {
+    "name": "ChartCard (without recharts)",
+    "path": "dist/index.js",
+    "import": "{ ChartCard }",
+    "ignore": ["recharts"],
+    "limit": "10 kB"
+  }
+]
