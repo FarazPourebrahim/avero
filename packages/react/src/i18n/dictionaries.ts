@@ -15,9 +15,9 @@ export type AveroDictionary = {
   pricePrefixFrom: string;
   heatmapLess: string;
   heatmapMore: string;
-  /** Accessible name of the activity heatmap grid. */
   /** Skip link at the top of a page shell. */
   skipToContent: string;
+  /** Accessible name of the activity heatmap grid. */
   heatmapLabel: string;
   /** Label of one heatmap day. `{count}` and `{date}` are replaced. */
   heatmapCell: string;
@@ -32,6 +32,10 @@ export type AveroDictionary = {
   zoomHint: string;
   /** Accessible label of a rating. `{value}` is replaced with the score. */
   rating: string;
+  /** Caption of a chart's hidden data table, used when the chart has no `label`. */
+  chartDataTable: string;
+  /** Header of a chart data table's first column, holding the x value of each row. */
+  chartCategory: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -57,6 +61,8 @@ export const fa: AveroDictionary = {
   matchLabel: "تطابق",
   zoomHint: "مشاهده بزرگ‌نمایی",
   rating: "امتیاز {value}",
+  chartDataTable: "جدول داده‌های نمودار",
+  chartCategory: "دسته",
 };
 
 export const en: AveroDictionary = {
@@ -80,6 +86,8 @@ export const en: AveroDictionary = {
   matchLabel: "Match",
   zoomHint: "View larger",
   rating: "Rating {value}",
+  chartDataTable: "Chart data table",
+  chartCategory: "Category",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
