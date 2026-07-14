@@ -841,18 +841,18 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** the reference regions for the blog prose, the dashboard stats and the profile stat strip pass visual diff ≤ 1%.
 
-### Phase 8 — Layout shells and site chrome  ⬜
+### Phase 8 — Layout shells and site chrome  🟨
 
 **Scope:** T-01…T-09.
 
 **DoD:**
-- [ ] T-02 `SiteHeader` meets the Global DoD: sticky with blur, slots (logo, nav, actions, user), mobile menu trigger opening the drawer
-- [ ] T-03 `SiteFooter` meets the Global DoD: link-chip grid (3 → 5 columns), link groups that become accordions below `md`, contact rows, trust-seal slot, social tiles, copyright slot
-- [ ] T-04 `DashboardShell` meets the Global DoD: desktop sidebar ≥ `lg`, mobile bar + drawer below `lg`
-- [ ] T-05…T-09 layout templates meet the Global DoD, with correct sticky offsets and order swaps
-- [ ] All shells are data-driven (nav items, links and columns passed as props); no reference content is hardcoded
-- [ ] A skip-to-content link and landmark roles (`banner`, `navigation`, `main`, `contentinfo`) are present
-- [ ] `Container` and grid presets documented and used by every shell
+- [x] T-02 `SiteHeader` meets the Global DoD: sticky with blur, slots (logo, nav, actions, user), mobile menu trigger opening the drawer
+- [x] T-03 `SiteFooter` meets the Global DoD: link-chip grid (3 → 5 columns), link groups that become accordions below `md`, contact rows, trust-seal slot, social tiles, copyright slot
+- [x] T-04 `DashboardShell` meets the Global DoD: desktop sidebar ≥ `lg`, mobile bar + drawer below `lg`
+- [x] T-05…T-09 layout templates meet the Global DoD, with correct sticky offsets and order swaps
+- [x] All shells are data-driven (nav items, links and columns passed as props); no reference content is hardcoded
+- [x] A skip-to-content link and landmark roles (`banner`, `navigation`, `main`, `contentinfo`) are present
+- [x] `Container` and grid presets documented and used by every shell
 - [ ] Shells verified at 320px minimum width with no horizontal scroll
 - [ ] Visual baselines committed for every shell at 4 viewports × 2 directions
 
@@ -1071,7 +1071,16 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | X-01 | Animation utilities | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
 | X-02 | GlowOrbs | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | X-03 | Hero illustration | B | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| T-01…T-09 | Shells and layouts | A | 8 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| T-01 | SiteShell | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-02 | SiteHeader | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-03 | SiteFooter | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-04 | DashboardShell | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-05 | ArticleLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-06 | DetailLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-07 | ListingLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-08 | SplitDetailLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| T-09 | ProfileLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| X-04 | Container (added for T-01) | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | B-01…B-25 | Blocks (see §7.10) | A | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | RP-01…RP-08 | Replica pages (parity gate) | A | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 
