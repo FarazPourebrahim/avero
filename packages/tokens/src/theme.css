@@ -79,6 +79,22 @@
   --color-hero-plant-leaf-2: #047857;
   --color-hero-keyboard-keys: #94a3b8;
 
+  /* Chart palette (C-04), read from the reference's rendered Recharts output (R-02). Recharts takes
+     colours as props that become SVG attributes, so `@avero/charts` consumes these as token data
+     rather than as utility classes. */
+  --color-chart-views: #6366f1;
+  --color-chart-likes: #f43f5e;
+  --color-chart-clicks: #8b5cf6;
+  --color-chart-comments: #10b981;
+
+  --color-chart-grid: #f1f5f9;
+  --color-chart-axis: #94a3b8;
+  --color-chart-cursor: #cbd5e1;
+
+  --color-chart-tooltip-surface: #1e293b;
+  --color-chart-tooltip-text: #f8fafc;
+  --color-chart-tooltip-label: #94a3b8;
+
   /* ---------------------------------------------------------------- Radius */
   --radius-huge: 1.75rem; /* 28px */
   --radius-leaf: 2.5rem; /* 40px, asymmetric "leaf" corners */

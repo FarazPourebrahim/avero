@@ -192,6 +192,46 @@ export const tokens = {
     "cssVar": "--color-hero-keyboard-keys",
     "value": "#94a3b8"
   },
+  "colorChartViews": {
+    "cssVar": "--color-chart-views",
+    "value": "#6366f1"
+  },
+  "colorChartLikes": {
+    "cssVar": "--color-chart-likes",
+    "value": "#f43f5e"
+  },
+  "colorChartClicks": {
+    "cssVar": "--color-chart-clicks",
+    "value": "#8b5cf6"
+  },
+  "colorChartComments": {
+    "cssVar": "--color-chart-comments",
+    "value": "#10b981"
+  },
+  "colorChartGrid": {
+    "cssVar": "--color-chart-grid",
+    "value": "#f1f5f9"
+  },
+  "colorChartAxis": {
+    "cssVar": "--color-chart-axis",
+    "value": "#94a3b8"
+  },
+  "colorChartCursor": {
+    "cssVar": "--color-chart-cursor",
+    "value": "#cbd5e1"
+  },
+  "colorChartTooltipSurface": {
+    "cssVar": "--color-chart-tooltip-surface",
+    "value": "#1e293b"
+  },
+  "colorChartTooltipText": {
+    "cssVar": "--color-chart-tooltip-text",
+    "value": "#f8fafc"
+  },
+  "colorChartTooltipLabel": {
+    "cssVar": "--color-chart-tooltip-label",
+    "value": "#94a3b8"
+  },
   "radiusHuge": {
     "cssVar": "--radius-huge",
     "value": "1.75rem"
@@ -485,7 +525,17 @@ export const tokenGroups = {
     "hero-pot",
     "hero-plant-leaf-1",
     "hero-plant-leaf-2",
-    "hero-keyboard-keys"
+    "hero-keyboard-keys",
+    "chart-views",
+    "chart-likes",
+    "chart-clicks",
+    "chart-comments",
+    "chart-grid",
+    "chart-axis",
+    "chart-cursor",
+    "chart-tooltip-surface",
+    "chart-tooltip-text",
+    "chart-tooltip-label"
   ],
   "fontFamily": [
     "sans",
