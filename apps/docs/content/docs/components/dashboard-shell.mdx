@@ -1,0 +1,59 @@
+---
+title: DashboardShell
+description: The freelancer dashboard chrome — sidebar, mobile bar and content card.
+---
+
+**Reference:** freelancer dashboard (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/dashboard-shell)
+
+```tsx
+import { DashboardShell } from "@avero/react";
+```
+
+<ComponentPreview name="dashboard-shell/freelancer" />
+
+## Anatomy
+
+| Part       | Slot                                     | Notes                                  |
+| ---------- | ---------------------------------------- | -------------------------------------- |
+| Root       | `data-slot="dashboard-shell"`            | Vertical rhythm wrapper                |
+| Container  | `data-slot="container"`                  | `main` landmark, tighter phone gutters |
+| Sidebar    | `data-slot="dashboard-shell-sidebar"`    | One third, from `lg`                   |
+| Mobile bar | `data-slot="dashboard-shell-mobile-bar"` | Card shown below `lg`                  |
+| Content    | `data-slot="dashboard-shell-content"`    | Two thirds, white card, `min-w-0`      |
+
+## Right-to-left
+
+The grid mirrors with the document direction, so the sidebar sits at the inline start either way.
+
+## Composition
+
+- Put [SidebarNav](./sidebar-nav) and the greeting in `sidebar`; it only shows from `lg`.
+- `mobileBar` replaces it below `lg` — pair it with a [Drawer](./drawer) trigger for the full menu.
+- The content card carries `min-w-0`, so wide tables and charts inside it scroll instead of
+  stretching the grid.
+
+## Accessibility
+
+- The container is the `main` landmark; the dashboard page should not add another.
+- Name the sidebar navigation (`aria-label`), because the drawer contains a second copy of it.
+
+## API reference
+
+`DashboardShell` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/dashboard-shell/DashboardShell.tsx" name="DashboardShellOwnProps" />
+
+## Theming
+
+| Token                 | Used by                     |
+| --------------------- | --------------------------- |
+| `--shadow-brand-soft` | Content card and mobile bar |
+
+## Do and don't
+
+- **Do** keep the same navigation items in the sidebar and the drawer.
+- **Don't** wrap the shell in another `Container`; it provides its own.
+
+## Related
+
+[SidebarNav](./sidebar-nav) · [Drawer](./drawer) · [Layouts](./layouts)

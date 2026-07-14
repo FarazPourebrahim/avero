@@ -1,0 +1,68 @@
+---
+title: SiteShell
+description: Skip link, header, page content and footer in the reference's vertical rhythm.
+---
+
+**Reference:** shared page scaffold · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/site-shell)
+
+```tsx
+import { SiteShell } from "@avero/react";
+```
+
+```tsx
+<SiteShell header={<SiteHeader … />} footer={<SiteFooter … />}>
+  <ArticleLayout id="main-content" aside={…}>…</ArticleLayout>
+</SiteShell>
+```
+
+<ComponentPreview name="site-header/default" />
+
+## Anatomy
+
+| Part      | Slot                               | Notes                         |
+| --------- | ---------------------------------- | ----------------------------- |
+| Root      | `data-slot="site-shell"`           | `flex flex-col gap-y-10`      |
+| Skip link | `data-slot="site-shell-skip-link"` | Visually hidden until focused |
+
+## Right-to-left
+
+The skip link anchors to the inline start when focused, so it appears on the correct side in both
+directions.
+
+## Composition
+
+- `header` and `footer` are slots: pass [SiteHeader](./site-header) and [SiteFooter](./site-footer),
+  wired to your own routing.
+- The children supply the `main` landmark — usually one of the [layout templates](./layouts). Give
+  that element the id the skip link targets (`main-content` by default).
+
+## Accessibility
+
+- The skip link is the first focusable element on the page, which is what makes keyboard-only
+  navigation past the header possible.
+- Together with the header, layout and footer, the page then exposes the full landmark set:
+  `banner`, `navigation`, `main` and `contentinfo`.
+- Set `mainId` when your main element uses a different id; a skip link pointing at nothing is worse
+  than none.
+
+## API reference
+
+`SiteShell` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/site-shell/SiteShell.tsx" name="SiteShellOwnProps" />
+
+## Theming
+
+| Token             | Used by           |
+| ----------------- | ----------------- |
+| `--color-primary` | Focused skip link |
+| `--z-max`         | Focused skip link |
+
+## Do and don't
+
+- **Do** keep the skip link enabled in production.
+- **Don't** render two `main` elements inside one shell.
+
+## Related
+
+[SiteHeader](./site-header) · [SiteFooter](./site-footer) · [Layouts](./layouts)

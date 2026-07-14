@@ -1,0 +1,72 @@
+---
+title: SiteFooter
+description: The full site footer — category chips, link groups, contacts, trust seal and socials.
+---
+
+**Reference:** shared site footer (R-01/R-03/R-04/R-05/R-06/R-07/R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/site-footer)
+
+```tsx
+import { FooterSocialTile, SiteFooter } from "@avero/react";
+```
+
+<ComponentPreview name="site-footer/default" />
+
+## Anatomy
+
+| Part       | Slot                             | Notes                                       |
+| ---------- | -------------------------------- | ------------------------------------------- |
+| Root       | `data-slot="site-footer"`        | `contentinfo` landmark                      |
+| Categories | `data-slot="footer-categories"`  | Chip grid, 3 → 5 columns, from `md`         |
+| Columns    | `data-slot="footer-columns"`     | Brand, mobile accordions and contact column |
+| Groups     | `data-slot="footer-groups"`      | Accordions below `md`                       |
+| Contact    | `data-slot="footer-contact"`     | Key/value rows, from `md`                   |
+| About      | `data-slot="footer-about"`       | About text and the trust-seal slot          |
+| Bottom     | `data-slot="footer-bottom"`      | Copyright and social tiles                  |
+| Chip       | `data-slot="footer-chip"`        | One bordered link chip                      |
+| Social     | `data-slot="footer-social-tile"` | One square social tile                      |
+
+## Right-to-left
+
+Chips, accordions and contact rows all use logical properties, and contact values stay `dir="ltr"`
+so emails and phone numbers read correctly inside Persian text.
+
+## Composition
+
+- Everything is data-driven: `categories`, `brandLinks`, `groups`, `contact`, `about`, `trustSeal`,
+  `copyright` and `social` are props, so no content is baked into the component.
+- Below `md` the brand chips become the first accordion group — pass `brandLinksTitle` to enable
+  that; without it they stay desktop-only.
+- Groups are rendered with [Accordion](./accordion), and contact rows with `KeyValueRow`
+  from [Meta](./meta).
+
+## Accessibility
+
+- Renders a `<footer>`, giving the page its `contentinfo` landmark.
+- Social tiles are links and need an `aria-label` each, since they contain only a glyph.
+- External links get `rel="noopener noreferrer"` automatically when `external` is set.
+
+## API reference
+
+`SiteFooter` accepts every native `<footer>` attribute plus:
+
+<PropsTable file="components/site-footer/SiteFooter.tsx" name="SiteFooterOwnProps" />
+
+## Theming
+
+| Token                       | Used by                      |
+| --------------------------- | ---------------------------- |
+| `--color-text-chrome`       | Chips, headings, link text   |
+| `--color-text-chrome-hover` | Chip and link hover          |
+| `--color-text-muted`        | About text and copyright     |
+| `--color-surface-muted`     | About strip and social tiles |
+| `--color-icon-muted`        | Social glyph, resting        |
+| `--color-accent-social`     | Social glyph, hover          |
+
+## Do and don't
+
+- **Do** keep the category grid to the links people actually use.
+- **Don't** duplicate the header navigation here verbatim.
+
+## Related
+
+[SiteHeader](./site-header) · [Accordion](./accordion) · [Meta](./meta)

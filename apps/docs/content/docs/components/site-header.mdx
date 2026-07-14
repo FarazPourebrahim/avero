@@ -1,0 +1,64 @@
+---
+title: SiteHeader
+description: The sticky, blurred site bar with logo, navigation and user actions.
+---
+
+**Reference:** shared site header (R-01/R-03/R-04/R-05/R-06/R-07/R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/site-header)
+
+```tsx
+import { SiteHeader, SiteHeaderMenuButton } from "@avero/react";
+```
+
+<ComponentPreview name="site-header/default" />
+
+## Anatomy
+
+| Part        | Slot                                  | Notes                                          |
+| ----------- | ------------------------------------- | ---------------------------------------------- |
+| Root        | `data-slot="site-header"`             | `banner` landmark, sticky at `top-12`, blurred |
+| Navigation  | `data-slot="site-header-nav"`         | Hidden below `md`                              |
+| Actions     | `data-slot="site-header-actions"`     | Avatar, dashboard link, call to action         |
+| Menu button | `data-slot="site-header-menu-button"` | Shown below `md`                               |
+
+## Right-to-left
+
+Logo and navigation sit at the inline start, actions at the inline end, so the bar mirrors
+automatically.
+
+## Composition
+
+- Everything is a slot, and the header holds no state — wrap `SiteHeaderMenuButton` in a
+  [Drawer](./drawer) `DrawerTrigger` with `asChild` to open the mobile menu.
+- Use [Link](./link)'s `nav` variant for the navigation items and set `aria-current="page"` on the
+  active one.
+- `sticky={false}` pins it in place, which is useful inside previews and embedded views.
+
+## Accessibility
+
+- Renders a `<header>`, giving the page its `banner` landmark, with a real `<nav>` inside.
+- The menu button needs an accessible name (`aria-label`), since it holds only an icon.
+
+## API reference
+
+`SiteHeader` accepts every native `<header>` attribute plus:
+
+<PropsTable file="components/site-header/SiteHeader.tsx" name="SiteHeaderOwnProps" />
+
+`SiteHeaderMenuButton` accepts every native `<button>` attribute plus:
+
+<PropsTable file="components/site-header/SiteHeader.tsx" name="SiteHeaderMenuButtonOwnProps" />
+
+## Theming
+
+| Token        | Used by      |
+| ------------ | ------------ |
+| `--z-sticky` | Header layer |
+
+## Do and don't
+
+- **Do** keep the navigation short; the drawer carries the full menu on phones.
+- **Don't** put the page title in the header; that belongs to the page.
+
+## Related
+
+[SiteShell](./site-shell) · [Drawer](./drawer) · [SiteFooter](./site-footer)

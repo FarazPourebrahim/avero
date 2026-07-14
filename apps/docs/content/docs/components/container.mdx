@@ -1,0 +1,53 @@
+---
+title: Container
+description: The centred page column every shell and layout is built on.
+---
+
+**Reference:** every page's `max-w-7xl` column · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/container)
+
+```tsx
+import { Container } from "@avero/react";
+```
+
+<ComponentPreview name="container/sizes" />
+
+## Anatomy
+
+| Part | Slot                    | Notes                                       |
+| ---- | ----------------------- | ------------------------------------------- |
+| Root | `data-slot="container"` | `mx-auto`, capped width, responsive gutters |
+
+## Right-to-left
+
+Gutters are symmetric, so the column behaves identically in both directions.
+
+## Composition
+
+- `as` renders a `main`, `section`, `header` or `footer` instead of a `div`, which is how the
+  layout templates provide their landmarks.
+- `gutter="tight"` matches the dashboard's narrower phone padding.
+- Nest nothing wider than the container; use `size="full"` when a section must bleed.
+
+## Accessibility
+
+- Purely presentational by default. When it carries a landmark, give that landmark a name if the
+  page has more than one of its kind.
+
+## API reference
+
+`Container` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/container/Container.tsx" name="ContainerOwnProps" />
+
+## Theming
+
+Widths and gutters use Tailwind's scale directly, so there is no Avero token to override.
+
+## Do and don't
+
+- **Do** use one container per page section.
+- **Don't** re-declare `max-w-7xl` by hand; that is what this is for.
+
+## Related
+
+[SiteShell](./site-shell) · [Layouts](./layouts)

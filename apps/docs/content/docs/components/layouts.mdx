@@ -1,0 +1,75 @@
+---
+title: Layouts
+description: The five page templates — article, detail, listing, split detail and profile.
+---
+
+**Reference:** article (R-01), service detail (R-05), listing (R-06), project detail (R-07), profile (R-04/R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/layouts)
+
+```tsx
+import {
+  ArticleLayout,
+  DetailLayout,
+  ListingLayout,
+  ProfileLayout,
+  SplitDetailLayout,
+} from "@avero/react";
+```
+
+<ComponentPreview name="layouts/templates" />
+
+## Anatomy
+
+Each template renders the page's `main` landmark around a `max-w-7xl` [Container](./container).
+
+| Template            | Slot                              | Grid                                            |
+| ------------------- | --------------------------------- | ----------------------------------------------- |
+| `ArticleLayout`     | `data-slot="article-layout"`      | 8/4 from `lg`; aside sticky at `top-28`         |
+| `DetailLayout`      | `data-slot="detail-layout"`       | 8/4 from `lg`; aside sticky at `top-24`         |
+| `ListingLayout`     | `data-slot="listing-layout"`      | 3/9 from `md`; filters sticky at `top-10`       |
+| `SplitDetailLayout` | `data-slot="split-detail-layout"` | 1/3 from `lg`, with the content first on phones |
+| `ProfileLayout`     | `data-slot="profile-layout"`      | 12-column stack of full-width sections          |
+
+## Right-to-left
+
+All columns and sticky offsets use logical properties, so every template mirrors without changes.
+
+## Composition
+
+- Pass the narrow column as `aside` and name it with `asideLabel`; omit it and the main column
+  takes the full width.
+- `ListingLayout` takes a `header` for the page heading row above both columns.
+- `SplitDetailLayout` swaps order so the content reads first on phones while the aside stays first
+  on desktop.
+- `ProfileLayout` stretches every direct child across all 12 columns — put [CoverHeader](./cover-header)
+  first.
+
+## Accessibility
+
+- Each template renders exactly one `<main>`, so a page must use only one template.
+- Asides become `complementary` landmarks; give each a name when a page has more than one.
+- Sticky offsets keep an aside below the sticky [SiteHeader](./site-header) rather than behind it.
+
+## API reference
+
+`ArticleLayout`, `DetailLayout` and `SplitDetailLayout` accept every native `<main>` attribute plus:
+
+<PropsTable file="components/layouts/Layouts.tsx" name="AsideLayoutOwnProps" />
+
+`ListingLayout` adds a header slot:
+
+<PropsTable file="components/layouts/Layouts.tsx" name="ListingLayoutOwnProps" />
+
+`ProfileLayout` accepts every native `<main>` attribute.
+
+## Theming
+
+Templates carry no colour of their own; they only position the cards inside them.
+
+## Do and don't
+
+- **Do** give the template's `main` the id your skip link targets.
+- **Don't** nest one template inside another.
+
+## Related
+
+[Container](./container) · [SiteShell](./site-shell) · [DashboardShell](./dashboard-shell)

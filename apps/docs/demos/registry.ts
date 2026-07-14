@@ -19,6 +19,8 @@ import CoverHeaderProfile from "./cover-header/profile";
 import CarouselPill from "./carousel/pill";
 import CarouselRelatedProjects from "./carousel/related-projects";
 import ChipLinks from "./chip/links";
+import ContainerSizes from "./container/sizes";
+import DashboardShellFreelancer from "./dashboard-shell/freelancer";
 import ChipStatic from "./chip/static";
 import DisabledOverlayFullCard from "./disabled-overlay/full-card";
 import DividerBasic from "./divider/basic";
@@ -36,6 +38,7 @@ import IconsGallery from "./icons/gallery";
 import InputVariants from "./input/variants";
 import ImageCardAndFallback from "./image/card-and-fallback";
 import ImageCover from "./image/cover";
+import LayoutsTemplates from "./layouts/templates";
 import LinkInline from "./link/inline";
 import LinkNavigation from "./link/navigation";
 import ListProse from "./list/prose";
@@ -52,6 +55,8 @@ import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
 import SelectFilter from "./select/filter";
+import SiteFooterDefault from "./site-footer/default";
+import SiteHeaderDefault from "./site-header/default";
 import SectionHeaderVariants from "./section-header/variants";
 import SegmentedControlAnalytics from "./segmented-control/analytics";
 import SidebarNavDashboard from "./sidebar-nav/dashboard";
@@ -96,6 +101,11 @@ export const demos = {
   "native-select/sort": NativeSelectSort,
   "select/filter": SelectFilter,
   "form-actions/comment-form": FormActionsCommentForm,
+  "container/sizes": ContainerSizes,
+  "site-header/default": SiteHeaderDefault,
+  "site-footer/default": SiteFooterDefault,
+  "dashboard-shell/freelancer": DashboardShellFreelancer,
+  "layouts/templates": LayoutsTemplates,
   "drawer/menu": DrawerMenu,
   "empty-state/variants": EmptyStateVariants,
   "disabled-overlay/full-card": DisabledOverlayFullCard,
