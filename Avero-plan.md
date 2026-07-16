@@ -101,6 +101,8 @@
 | D-12 | Monorepo | pnpm workspace following `.claude/CLAUDE.md` (`apps/*`, `packages/*`). The `packages/contracts` package from CLAUDE.md is **not applicable** because there is no backend and no cross-app API contracts. | Follows the working agreement and records the deliberate omission. | Plan default |
 | D-13 | Library build | **Changed from Vite library mode to the TypeScript compiler** (`tsc`, per-file ESM + `.d.ts`). Library source uses `.js`-suffixed relative imports (`module: NodeNext`). | No bundler plugins are needed to keep `"use client"` directives. Output is valid Node ESM and tree-shakes per file. | Implementation, 2026-06-19 |
 | D-15 | `RichContent` sanitizer | **js-xss** (`xss`), not DOMPurify: an allowlist filter that needs no DOM, so the same code runs in the browser, in SSR and in tests. `isomorphic-dompurify` would pull jsdom (~10 MB) into every server bundle that renders stored HTML. | Sanitizing is mandatory (D-08) and must not cost a jsdom dependency on the server. | Implementation, 2026-07-05, approved by the user |
+| D-16 | Chart colours | The chart palette, grid, axis, cursor and tooltip colours are defined as `--color-chart-*` tokens in `@avero/tokens` and consumed by `@avero/charts` as generated token data (`tokens.colorChartViews.value`). | Recharts takes colours as props that become SVG attributes: a utility class cannot reach them, and a `var()` reference would depend on Tailwind emitting a theme variable that no class references (plain `@theme` prunes unused variables), which would fail silently. Sourcing them from the tokens package keeps `avero/no-raw-color` passing with no lint exemption — the repo's first would have been set here — and matches the hero illustration precedent (`--color-hero-*`). | Implementation, 2026-07-05 |
+| D-17 | Docs props tables | `PropsTable` takes an optional `package` prop, backed by one `fumadocs-typescript` generator per package tsconfig. | A generator resolves types through exactly one tsconfig, and the previous single generator was bound to `packages/react`, so charts types were unreachable. Additive, so the 61 existing call sites are untouched. | Implementation, 2026-07-05 |
 | D-14 | Toolchain pins | TypeScript ~6.0.3 (typescript-eslint supports `<6.1.0`); Node floor ≥ 22.12; jsdom ^28.1 and size-limit ^12.1 (newer majors need Node ≥ 22.18/22.22). | Keeps lint working and supports the local Node 22.16. | Implementation, 2026-06-19 |
 
 ---
@@ -858,16 +860,16 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** the header, footer and dashboard chrome of the replica pass visual diff ≤ 1% against the reference at 375/768/1280/1536px.
 
-### Phase 9 — Charts and editor packages  ⬜
+### Phase 9 — Charts and editor packages  🟨
 
 **Scope:** C-01…C-04, E-01…E-02.
 
 **DoD:**
-- [ ] `@avero/charts` is published as a separate package with `recharts` as a peer; the core package has no recharts import (verified by a bundle check)
-- [ ] C-01 `ChartCard` meets the Global DoD, including toggle chips, empty state and loading state
-- [ ] C-02 `AreaChart` and C-03 `LineChart` meet the Global DoD, using the reference palette, grid and axis colours
-- [ ] C-04 tooltip styling matches the reference; charts expose an accessible data-table fallback
-- [ ] Charts render RTL correctly (axis direction option documented)
+- [x] `@avero/charts` is published as a separate package with `recharts` as a peer; the core package has no recharts import (verified by a bundle check) — `size-limit` measures `ChartCard` with recharts ignored at 8.93 kB of a 10 kB budget
+- [x] C-01 `ChartCard` meets the Global DoD, including toggle chips, empty state and loading state (`data-state` is `ready`/`empty`/`loading`)
+- [x] C-02 `AreaChart` and C-03 `LineChart` meet the Global DoD, using the reference palette, grid and axis colours
+- [x] C-04 tooltip styling matches the reference; charts expose an accessible data-table fallback (`ChartDataTable`, a screen-reader-only table captioned by `label`)
+- [x] Charts render RTL correctly (axis direction option documented) — per D-11 `reversed` defaults to `false`, because the reference's own x-axis ticks ascend across the axis (۲۱ مرداد at x=17 → ۶ شهریور at x=158) even though the page is RTL
 - [ ] `@avero/editor` is published separately with `@tiptap/*` as peers
 - [ ] E-01 content styles match §5.11 exactly (visual test against a captured editor state)
 - [ ] E-02 toolbar meets the Global DoD (after capture)
@@ -1062,10 +1064,10 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | D-22 | ZoomFrame | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-23 | CoverHeader | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | D-24 | ResponsiveBanner | B | 7 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
-| C-01 | ChartCard | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| C-02 | AreaChart | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| C-03 | LineChart | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| C-04 | ChartTooltip / palette | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| C-01 | ChartCard | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| C-02 | AreaChart | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| C-03 | LineChart | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
+| C-04 | ChartTooltip / palette | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | E-01 | Editor content styles | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | E-02 | Editor toolbar | B | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | X-01 | Animation utilities | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
