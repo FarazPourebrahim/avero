@@ -5,7 +5,7 @@ Before every release (Phase 12 and Phase 13), verify every item below and record
 
 ## Rendering
 
-- [ ] `dangerouslySetInnerHTML` is used **only** inside `RichContent`, and `RichContent` always sanitizes its input (DOMPurify) before rendering.
+- [ ] `dangerouslySetInnerHTML` is used **only** inside `RichContent`, and `RichContent` always sanitizes its input (js-xss, decision D-15) before rendering.
 - [ ] Sanitization tests cover `<script>`, inline event handlers (`on*`), `javascript:`/`data:` URLs, `<iframe>`/`<object>`/`<embed>`, SVG script vectors and CSS `expression()`.
 - [ ] Excerpt helpers strip HTML instead of rendering it (deviation V-03).
 - [ ] No `eval`, `new Function` or string-based `setTimeout`/`setInterval`.
