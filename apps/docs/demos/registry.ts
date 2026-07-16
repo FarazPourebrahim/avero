@@ -18,6 +18,8 @@ import CardSurfaces from "./card/surfaces";
 import CoverHeaderProfile from "./cover-header/profile";
 import CarouselPill from "./carousel/pill";
 import CarouselRelatedProjects from "./carousel/related-projects";
+import ChartsAnalytics from "./charts/analytics";
+import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
 import ContainerSizes from "./container/sizes";
 import DashboardShellFreelancer from "./dashboard-shell/freelancer";
@@ -101,6 +103,8 @@ export const demos = {
   "native-select/sort": NativeSelectSort,
   "select/filter": SelectFilter,
   "form-actions/comment-form": FormActionsCommentForm,
+  "charts/analytics": ChartsAnalytics,
+  "charts/trend": ChartsTrend,
   "container/sizes": ContainerSizes,
   "site-header/default": SiteHeaderDefault,
   "site-footer/default": SiteFooterDefault,

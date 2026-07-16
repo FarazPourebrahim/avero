@@ -1,0 +1,88 @@
+---
+title: Charts
+description: Recharts wrappers styled to the dashboard's analytics cards.
+---
+
+**Reference:** dashboard analytics and trend cards (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/charts)
+
+Charts live in a separate package, so the core library never pulls in Recharts:
+
+```bash
+pnpm add @avero/charts recharts
+```
+
+```tsx
+import { AreaChart, ChartCard, ChartTooltip, LineChart, chartPalette } from "@avero/charts";
+```
+
+<ComponentPreview name="charts/analytics" />
+
+## Anatomy
+
+| Part       | Slot                             | Notes                                            |
+| ---------- | -------------------------------- | ------------------------------------------------ |
+| Card       | `data-slot="chart-card"`         | `data-state` is `ready`, `empty` or `loading`    |
+| Title      | `data-slot="chart-card-title"`   | Bold, 12→14px                                    |
+| Actions    | `data-slot="chart-card-actions"` | Metric toggles                                   |
+| Body       | `data-slot="chart-card-body"`    | `h-44 sm:h-52`, or `h-40 sm:h-48` at `size="sm"` |
+| Chart      | `data-slot="chart"`              | Wraps the responsive chart and its data table    |
+| Data table | `data-slot="chart-data-table"`   | Screen-reader-only `<table>` of the plotted rows |
+
+## Examples
+
+### Trend and empty states
+
+<ComponentPreview name="charts/trend" />
+
+## Right-to-left
+
+Recharts lays out in physical directions. The reference itself does **not** mirror its axis: the
+dashboard plots its dates in ascending order across the x axis even though the page is RTL, so
+`reversed` defaults to `false` (decision D-11). Pass `reversed` when you do want the axis mirrored —
+it also moves the y axis to the opposite edge.
+
+## Composition
+
+- `ChartCard` handles the chrome, the fixed body height and the empty and loading states; the chart
+  itself fills the body through Recharts' `ResponsiveContainer`.
+- `series` is data-driven: `{ dataKey, name, color }`. Without a colour, the palette is used in
+  order — `views`, `likes`, `clicks`, `comments`.
+- `ChartTooltip` is the reference's dark tooltip; use its `formatter` and `labelFormatter` to
+  localise numbers and dates with Avero's `useAveroFormatter`.
+
+## Accessibility
+
+- Pass `label`: it becomes the SVG's `<title>` (Recharts' own `title` prop) and captions the data table.
+- Every chart also renders its rows as a screen-reader-only `<table>` (`data-slot="chart-data-table"`),
+  because an SVG conveys shape but not values. Numbers are localised through the active
+  `AveroProvider`, and the table is omitted when there is nothing to plot.
+- Recharts' `accessibilityLayer` is enabled, giving keyboard users arrow-key access to data points.
+- Never rely on line colour alone to distinguish series — name them, and keep the tooltip enabled.
+
+## API reference
+
+`ChartCard` accepts every native `<div>` attribute plus:
+
+<PropsTable package="charts" file="components/ChartCard.tsx" name="ChartCardOwnProps" />
+
+`AreaChart` and `LineChart` share the same props:
+
+<PropsTable package="charts" file="components/AreaChart.tsx" name="CartesianChartProps" />
+
+## Theming
+
+| Export               | Value                                          |
+| -------------------- | ---------------------------------------------- |
+| `chartPalette`       | `#6366f1`, `#f43f5e`, `#8b5cf6`, `#10b981`     |
+| `chartGrid`          | `#f1f5f9`, dashed `3 3`, horizontal only       |
+| `chartAxis`          | 10px ticks in `#94a3b8`, no axis or tick lines |
+| `chartTooltipStyles` | `#1e293b` surface, 12px radius, `#f8fafc` text |
+
+## Do and don't
+
+- **Do** keep `maxCount`-style scales consistent between charts you want compared.
+- **Don't** import `recharts` in the core package; charts stay optional by design.
+
+## Related
+
+[ActivityHeatmap](./activity-heatmap) · [Stats](./stats) · [ToggleChipGroup](./toggle-chip-group)

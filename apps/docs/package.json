@@ -10,6 +10,7 @@
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@avero/charts": "workspace:^",
     "@avero/font": "workspace:^",
     "@avero/react": "workspace:^",
     "@avero/tokens": "workspace:^",
@@ -20,7 +21,8 @@
     "lucide-react": "^1.45.0",
     "next": "16.3.4",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "recharts": "^3.3.1"
   },
   "devDependencies": {
     "@avero/config": "workspace:^",
