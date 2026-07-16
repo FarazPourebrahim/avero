@@ -32,6 +32,10 @@ export type AveroDictionary = {
   zoomHint: string;
   /** Accessible label of a rating. `{value}` is replaced with the score. */
   rating: string;
+  /** Accessible name of the rich text editing surface. */
+  editorLabel: string;
+  /** Placeholder shown in an empty rich text editor. */
+  editorPlaceholder: string;
   /** Caption of a chart's hidden data table, used when the chart has no `label`. */
   chartDataTable: string;
   /** Header of a chart data table's first column, holding the x value of each row. */
@@ -61,6 +65,8 @@ export const fa: AveroDictionary = {
   matchLabel: "تطابق",
   zoomHint: "مشاهده بزرگ‌نمایی",
   rating: "امتیاز {value}",
+  editorLabel: "ویرایشگر متن",
+  editorPlaceholder: "متن خود را بنویسید…",
   chartDataTable: "جدول داده‌های نمودار",
   chartCategory: "دسته",
 };
@@ -86,6 +92,8 @@ export const en: AveroDictionary = {
   matchLabel: "Match",
   zoomHint: "View larger",
   rating: "Rating {value}",
+  editorLabel: "Rich text editor",
+  editorPlaceholder: "Write your text…",
   chartDataTable: "Chart data table",
   chartCategory: "Category",
 };
