@@ -2,8 +2,10 @@ import { AutoTypeTable } from "fumadocs-typescript/ui";
 import { join } from "node:path";
 import {
   CHARTS_SOURCE_DIR,
+  EDITOR_SOURCE_DIR,
   REACT_SOURCE_DIR,
   chartsTypeGenerator,
+  editorTypeGenerator,
   typeGenerator,
 } from "@/lib/typegen";
 
@@ -11,6 +13,7 @@ import {
 const SOURCES = {
   react: { dir: REACT_SOURCE_DIR, generator: typeGenerator },
   charts: { dir: CHARTS_SOURCE_DIR, generator: chartsTypeGenerator },
+  editor: { dir: EDITOR_SOURCE_DIR, generator: editorTypeGenerator },
 } as const;
 
 type PropsTableProps = {
