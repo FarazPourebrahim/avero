@@ -4,6 +4,7 @@
 @import "fumadocs-ui/css/preset.css";
 @import "@avero/tokens/theme.css";
 @import "@avero/tokens/utilities.css";
+@import "@avero/tokens/rich-content.css";
 
 /* Avero components ship as compiled JS; Tailwind scans them for the classes they use. */
 @source "../node_modules/@avero/react/dist";
