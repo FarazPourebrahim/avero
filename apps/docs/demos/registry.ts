@@ -27,6 +27,7 @@ import ChipStatic from "./chip/static";
 import DisabledOverlayFullCard from "./disabled-overlay/full-card";
 import DividerBasic from "./divider/basic";
 import DrawerMenu from "./drawer/menu";
+import EditorBasic from "./editor/basic";
 import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
 import FormActionsCommentForm from "./form-actions/comment-form";
@@ -105,6 +106,7 @@ export const demos = {
   "form-actions/comment-form": FormActionsCommentForm,
   "charts/analytics": ChartsAnalytics,
   "charts/trend": ChartsTrend,
+  "editor/basic": EditorBasic,
   "container/sizes": ContainerSizes,
   "site-header/default": SiteHeaderDefault,
   "site-footer/default": SiteFooterDefault,

@@ -1,0 +1,73 @@
+---
+title: Editor
+description: The reference's Tiptap editing surface, sharing one stylesheet with rendered prose.
+---
+
+**Reference:** `.tiptap-content` editing surface (§5.11) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/editor)
+
+The editor lives in a separate package, so the core library never pulls in Tiptap:
+
+```bash
+pnpm add @avero/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extension-table @tiptap/extension-image @tiptap/extensions
+```
+
+```tsx
+import { RichTextEditor } from "@avero/editor";
+```
+
+<ComponentPreview name="editor/basic" />
+
+## Anatomy
+
+| Part    | Slot                           | Notes                                                  |
+| ------- | ------------------------------ | ------------------------------------------------------ |
+| Root    | `data-slot="rich-text-editor"` | Carries `.avero-editor-content`; `data-editable` state |
+| Surface | `.tiptap`                      | Tiptap's contenteditable, styled by §5.11              |
+
+## Styles
+
+The editor does **not** ship its own CSS. Its prose styles live in `@avero/tokens/rich-content.css`
+under `.avero-editor-content`, the same stylesheet that styles rendered articles — so what an author
+types matches what a reader sees:
+
+```css
+@import "@avero/tokens/rich-content.css";
+```
+
+## Composition
+
+- The editor is **uncontrolled**: `defaultValue` seeds the document, and later changes to it are
+  ignored. Read the current HTML from `onChange`.
+- `onReady` hands you the Tiptap `Editor`, which is where a toolbar issues commands from.
+- Extensions are `StarterKit` (headings, lists, bold, italic, underline, strike, code, code blocks,
+  blockquote, horizontal rules, links), `TableKit`, `Image` and `Placeholder` — exactly the set the
+  reference's stylesheet has rules for.
+
+## Sanitization
+
+Editor output is plain HTML and is meant to be rendered back through
+[RichContent](./rich-content), which sanitizes on every render. The round trip is covered by a test:
+every tag in `richContentAllowList` survives it, so allowed formatting is never silently lost.
+
+## Accessibility
+
+- The editing surface is a `role="textbox"` with `aria-multiline="true"` and an accessible name from
+  the `editorLabel` dictionary entry (override it with `label`).
+- The placeholder comes from `editorPlaceholder` and is drawn with `::before`, so it never becomes
+  part of the document's text.
+- Direction follows `AveroProvider`, so the surface reads correctly in both `rtl` and `ltr`.
+
+## API reference
+
+`RichTextEditor` accepts every native `<div>` attribute plus:
+
+<PropsTable package="editor" file="components/RichTextEditor.tsx" name="RichTextEditorOwnProps" />
+
+## Do and don't
+
+- **Do** render stored output through `RichContent` rather than injecting it yourself.
+- **Don't** import `@tiptap/*` in the core package; the editor stays optional by design.
+
+## Related
+
+[RichContent](./rich-content) · [Typography](./typography)
