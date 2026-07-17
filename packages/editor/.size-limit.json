@@ -1,0 +1,16 @@
+[
+  {
+    "name": "RichTextEditor (without tiptap)",
+    "path": "dist/index.js",
+    "import": "{ RichTextEditor }",
+    "ignore": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap/starter-kit",
+      "@tiptap/extension-table",
+      "@tiptap/extension-image",
+      "@tiptap/extensions"
+    ],
+    "limit": "11 kB"
+  }
+]
