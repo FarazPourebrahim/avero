@@ -870,11 +870,11 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 - [x] C-02 `AreaChart` and C-03 `LineChart` meet the Global DoD, using the reference palette, grid and axis colours
 - [x] C-04 tooltip styling matches the reference; charts expose an accessible data-table fallback (`ChartDataTable`, a screen-reader-only table captioned by `label`)
 - [x] Charts render RTL correctly (axis direction option documented) — per D-11 `reversed` defaults to `false`, because the reference's own x-axis ticks ascend across the axis (۲۱ مرداد at x=17 → ۶ شهریور at x=158) even though the page is RTL
-- [ ] `@avero/editor` is published separately with `@tiptap/*` as peers
-- [ ] E-01 content styles match §5.11 exactly (visual test against a captured editor state)
+- [x] `@avero/editor` is published separately with `@tiptap/*` as peers — StarterKit, `TableKit`, `Image` and `Placeholder`, the exact set `rich-content.css` has rules for
+- [ ] E-01 content styles match §5.11 exactly (visual test against a captured editor state) — ⛔ the reference contains no rendered Tiptap markup, so no captured editor state exists to diff against (KD-07). The §5.11 values themselves are reproduced in `rich-content.css` and were signed off in Phase 2; the editor reuses that stylesheet rather than shipping its own
 - [ ] E-02 toolbar meets the Global DoD (after capture)
-- [ ] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests)
-- [ ] Both packages meet their `size-limit` budgets
+- [x] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests) — every tag in `richContentAllowList` survives `editor.getHTML()` → `sanitizeHtml()`
+- [x] Both packages meet their `size-limit` budgets — charts 8.93 kB of 10 kB, editor 9.8 kB of 11 kB (Recharts and Tiptap ignored as peers)
 
 **Exit gate:** the dashboard analytics region of the replica passes visual diff ≤ 1%.
 
@@ -1068,7 +1068,7 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | C-02 | AreaChart | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | C-03 | LineChart | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | C-04 | ChartTooltip / palette | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
-| E-01 | Editor content styles | A | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| E-01 | Editor content styles | A | 9 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | E-02 | Editor toolbar | B | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⛔ |
 | X-01 | Animation utilities | A | 2 | ✅ | ✅ | ⬜ | ⬜ | ⬜ | 🟨 |
 | X-02 | GlowOrbs | A | 7 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
