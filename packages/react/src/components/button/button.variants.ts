@@ -31,6 +31,7 @@ export const buttonVariants = cva(
       },
       tone: {
         neutral: "",
+        slate: "",
         sky: "",
         emerald: "",
         blue: "",
@@ -64,6 +65,8 @@ export const buttonVariants = cva(
     },
     compoundVariants: [
       { variant: "soft", tone: "neutral", class: "bg-slate-100 text-slate-700 hover:bg-slate-200" },
+      // Portfolio card like button (R-08); mirrors IconButton's slate tone.
+      { variant: "soft", tone: "slate", class: "bg-slate-50 text-slate-500 hover:bg-slate-100" },
       { variant: "soft", tone: "sky", class: "bg-sky-50 text-sky-600 hover:bg-sky-100" },
       {
         variant: "soft",
