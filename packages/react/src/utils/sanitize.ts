@@ -89,6 +89,42 @@ function hardenLinks(html: string): string {
  * Removes every tag, attribute and URL scheme outside {@link richContentAllowList}: script and
  * style bodies, `on*` handlers, `javascript:` and `data:` URLs, and inline styles.
  */
+// Every tag is dropped, but the text inside ordinary tags is kept, so an excerpt reads as prose.
+const stripFilter = new FilterXSS({
+  whiteList: {},
+  stripIgnoreTag: true,
+  stripIgnoreTagBody: STRIP_WITH_BODY,
+  css: false,
+});
+
+const ENTITIES: ReadonlyArray<readonly [RegExp, string]> = [
+  [/&lt;/g, "<"],
+  [/&gt;/g, ">"],
+  [/&quot;/g, '"'],
+  [/&#39;/g, "'"],
+  [/&nbsp;/g, " "],
+  // `&amp;` is decoded last, so "&amp;lt;" becomes "&lt;" rather than "<".
+  [/&amp;/g, "&"],
+];
+
+/**
+ * Returns an HTML string's readable text: markup is removed, the basic entities are decoded once
+ * and whitespace is collapsed.
+ *
+ * The reference stores excerpts as raw HTML and renders them as visible tags — a listing card shows
+ * a literal "<p>…" (defect R-08). Avero strips the markup instead (deviation V-03). Use this for
+ * plain-text contexts only; to render stored HTML, use `RichContent`, which sanitizes it.
+ */
+export function stripHtml(html: string): string {
+  if (!html) return "";
+
+  const text = ENTITIES.reduce(
+    (value, [pattern, character]) => value.replace(pattern, character),
+    stripFilter.process(html),
+  );
+  return text.replace(/\s+/g, " ").trim();
+}
+
 export function sanitizeHtml(html: string): string {
   if (!html) return "";
   return hardenLinks(filter.process(html));

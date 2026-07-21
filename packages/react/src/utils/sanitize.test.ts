@@ -1,5 +1,32 @@
 import { describe, expect, it } from "vitest";
-import { richContentAllowList, sanitizeHtml } from "./sanitize.js";
+import { richContentAllowList, sanitizeHtml, stripHtml } from "./sanitize.js";
+
+describe("stripHtml", () => {
+  it("returns the readable text of an excerpt stored as HTML (V-03)", () => {
+    expect(stripHtml("<p>انواع طراحی سایت و سئو</p>")).toBe("انواع طراحی سایت و سئو");
+  });
+
+  it("keeps the text of nested formatting tags", () => {
+    expect(stripHtml("<p>یک <strong>متن</strong> با <em>قالب</em></p>")).toBe("یک متن با قالب");
+  });
+
+  it("drops script-like tags with their content", () => {
+    expect(stripHtml("<p>سلام</p><script>alert(1)</script>")).toBe("سلام");
+  });
+
+  it("decodes basic entities once, so an escaped tag stays escaped text", () => {
+    expect(stripHtml("<p>a &amp;lt;b&amp;gt; c</p>")).toBe("a &lt;b&gt; c");
+    expect(stripHtml("<p>5 &lt; 7 &amp; 8 &gt; 6</p>")).toBe("5 < 7 & 8 > 6");
+  });
+
+  it("collapses whitespace and trims", () => {
+    expect(stripHtml("<p>  یک\n\n  دو  </p>")).toBe("یک دو");
+  });
+
+  it("returns an empty string for empty input", () => {
+    expect(stripHtml("")).toBe("");
+  });
+});
 
 describe("sanitizeHtml", () => {
   it("keeps the reference's prose markup", () => {
