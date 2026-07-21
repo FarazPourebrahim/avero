@@ -43,6 +43,7 @@ import ImageCardAndFallback from "./image/card-and-fallback";
 import ImageCover from "./image/cover";
 import LayoutsTemplates from "./layouts/templates";
 import LinkInline from "./link/inline";
+import ListingCardService from "./listing-card/service";
 import LinkNavigation from "./link/navigation";
 import ListProse from "./list/prose";
 import MatchScoreSuggested from "./match-score/suggested";
@@ -88,6 +89,7 @@ export const demos = {
   "stats/achievements": StatsAchievements,
   "table/article": TableArticle,
   "list/prose": ListProse,
+  "listing-card/service": ListingCardService,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,
   "price-tag/variants": PriceTagVariants,

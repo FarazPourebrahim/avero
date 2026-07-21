@@ -1,0 +1,71 @@
+---
+title: ListingCard
+description: The services marketplace card — one glass link holding cover, category, excerpt, author and price.
+---
+
+**Reference:** services marketplace list (R-06) · **Tier:** A · **Block:** B-01 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/listing-card)
+
+```tsx
+import { ListingCard } from "@avero/react";
+```
+
+<ComponentPreview name="listing-card/service" />
+
+## Anatomy
+
+| Part    | Slot                               | Notes                                           |
+| ------- | ---------------------------------- | ----------------------------------------------- |
+| Root    | `data-slot="listing-card"`         | `<article>`, full width                         |
+| Surface | `data-slot="card"`                 | `Card` `variant="glass"`, rendered as the `<a>` |
+| Title   | `data-slot="listing-card-title"`   | Clamped to 2 lines with a `min-h` so rows align |
+| Excerpt | `data-slot="listing-card-excerpt"` | HTML stripped (V-03), clamped to 2 lines        |
+| Author  | `data-slot="listing-card-author"`  | `Avatar size="xs"` (28px) plus the name         |
+
+## Composition
+
+The card is built only from Avero components — `Card`, `Image`, `Chip`, `Avatar`, `PriceTag` and
+`MetaItem` — so a change to any of them flows through every listing automatically:
+
+- the surface is `Card variant="glass" padding="none"`, matching the reference's
+  `bg-[var(--bg-card)]` card that turns solid white on hover;
+- the category uses `Chip variant="category"`;
+- the price uses `PriceTag variant="inline"`, which renders "از ۲۰٬۰۰۰٬۰۰۰ تومان".
+
+## Excerpt handling
+
+The reference stores excerpts as HTML and renders the tags as visible text, so a card literally
+shows `<p>…` (defect R-08). `ListingCard` runs the excerpt through `stripHtml` instead
+(deviation V-03), which removes markup, decodes basic entities and collapses whitespace:
+
+```tsx
+import { stripHtml } from "@avero/react";
+
+stripHtml("<p>انواع طراحی سایت</p>"); // "انواع طراحی سایت"
+```
+
+To _render_ stored HTML rather than flatten it, use [RichContent](../components/rich-content),
+which sanitizes it.
+
+## Accessibility
+
+- The whole card is a single link named by `title`, so the accessible name never becomes a wall of
+  concatenated text.
+- The reference nests a `div role="link"` for the author **inside** the card's own link (defect
+  R-10). A nested link is invalid, so the author row here is plain content and the card stays one
+  link target (deviation V-04). The visuals are unchanged.
+- The cover image is decorative (`alt=""`): its meaning is already carried by the title.
+
+## API reference
+
+`ListingCard` accepts every native `<article>` attribute plus:
+
+<PropsTable file="blocks/listing-card/ListingCard.tsx" name="ListingCardOwnProps" />
+
+## Do and don't
+
+- **Do** pass `excerpt` exactly as stored; stripping is handled for you.
+- **Don't** place another link or button inside the card — the surface is already one link.
+
+## Related
+
+[Card](../components/card) · [PriceTag](../components/price-tag) · [Chip](../components/chip)
