@@ -40,6 +40,18 @@ export const HeartIcon = createIcon("HeartIcon", {
   ],
 });
 
+export const Share2Icon = createIcon("Share2Icon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M15 5a3 3 0 1 0 6 0a3 3 0 1 0 -6 0",
+    "M3 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0",
+    "M15 19a3 3 0 1 0 6 0a3 3 0 1 0 -6 0",
+    "M8.59 13.51 15.42 17.49",
+    "M15.41 6.51 8.59 10.49",
+  ],
+});
+
 export const StarIcon = createIcon("StarIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",
