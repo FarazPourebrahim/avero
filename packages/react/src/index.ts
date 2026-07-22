@@ -79,6 +79,7 @@ export * from "./components/zoom-frame/index.js";
 
 // Blocks
 export * from "./blocks/listing-card/index.js";
+export * from "./blocks/showcase-card/index.js";
 
 // Layout
 export * from "./components/container/index.js";
