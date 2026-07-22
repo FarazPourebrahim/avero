@@ -32,6 +32,12 @@ export type AveroDictionary = {
   zoomHint: string;
   /** Accessible label of a rating. `{value}` is replaced with the score. */
   rating: string;
+  /** Accessible name of a like control. */
+  like: string;
+  /** Accessible name of a share control. */
+  share: string;
+  /** Overlay call to action on a portfolio card. */
+  viewDetails: string;
   /** Accessible name of the rich text editing surface. */
   editorLabel: string;
   /** Placeholder shown in an empty rich text editor. */
@@ -65,6 +71,9 @@ export const fa: AveroDictionary = {
   matchLabel: "تطابق",
   zoomHint: "مشاهده بزرگ‌نمایی",
   rating: "امتیاز {value}",
+  like: "پسندیدن",
+  share: "اشتراک‌گذاری",
+  viewDetails: "مشاهده جزئیات کامل",
   editorLabel: "ویرایشگر متن",
   editorPlaceholder: "متن خود را بنویسید…",
   chartDataTable: "جدول داده‌های نمودار",
@@ -92,6 +101,9 @@ export const en: AveroDictionary = {
   matchLabel: "Match",
   zoomHint: "View larger",
   rating: "Rating {value}",
+  like: "Like",
+  share: "Share",
+  viewDetails: "View full details",
   editorLabel: "Rich text editor",
   editorPlaceholder: "Write your text…",
   chartDataTable: "Chart data table",
