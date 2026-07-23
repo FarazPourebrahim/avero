@@ -59,6 +59,7 @@ import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
 import SelectFilter from "./select/filter";
+import ShowcaseCardPortfolio from "./showcase-card/portfolio";
 import SiteFooterDefault from "./site-footer/default";
 import SiteHeaderDefault from "./site-header/default";
 import SectionHeaderVariants from "./section-header/variants";
@@ -90,6 +91,7 @@ export const demos = {
   "table/article": TableArticle,
   "list/prose": ListProse,
   "listing-card/service": ListingCardService,
+  "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,
   "price-tag/variants": PriceTagVariants,

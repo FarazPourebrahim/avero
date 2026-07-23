@@ -1,0 +1,67 @@
+---
+title: ShowcaseCard
+description: The portfolio card — a zooming cover with a hover overlay, tags and an action row.
+---
+
+**Reference:** freelancer portfolio (R-08) · **Tier:** A · **Block:** B-02 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/showcase-card)
+
+```tsx
+import { ShowcaseCard } from "@avero/react";
+```
+
+<ComponentPreview name="showcase-card/portfolio" />
+
+## Anatomy
+
+| Part    | Slot                              | Notes                                           |
+| ------- | --------------------------------- | ----------------------------------------------- |
+| Root    | `data-slot="showcase-card"`       | `group` card; the cover zooms on hover          |
+| Title   | `data-slot="showcase-card-title"` | Links when `href` is given; turns blue on hover |
+| Tags    | `data-slot="showcase-card-tags"`  | `Chip variant="mini"` technology tags           |
+| Actions | —                                 | Like, share, and a `report` slot                |
+
+## Composition
+
+Built only from Avero components — `Image`, `Chip`, `Button` and `IconButton`:
+
+- the cover uses `Image zoom="group"`, which is the reference's
+  `transition-transform duration-500 group-hover:scale-105`;
+- the like control is `Button variant="soft" tone="slate" size="xs"`;
+- the share control is `IconButton variant="soft" tone="slate"`.
+
+The `slate` tone was added to `Button` so it mirrors the one `IconButton` already had, rather than
+hand-writing the reference's colours into this block.
+
+## The report slot
+
+The report control is shared by the service, project and portfolio pages, so it is its own block
+(B-10 `ReportAction`) rather than part of this card. Pass it in:
+
+```tsx
+<ShowcaseCard title="…" report={<ReportAction onReport={…} />} />
+```
+
+## Accessibility
+
+- The reference renders the whole card as a `div` with `cursor-pointer` and **no link**, then nests
+  its like, share and report buttons inside it (defect R-10). Nesting controls inside a link is
+  invalid, so here the **title** carries the link and the buttons are its siblings (deviation V-04).
+  The visuals are unchanged.
+- The like control exposes `aria-pressed`, and both controls take their accessible names from the
+  `like` and `share` dictionary entries — the reference labels its share button with `title` alone.
+- The cover image is decorative (`alt=""`); the title already carries its meaning.
+
+## API reference
+
+`ShowcaseCard` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/showcase-card/ShowcaseCard.tsx" name="ShowcaseCardOwnProps" />
+
+## Do and don't
+
+- **Do** pass `report` when the card appears in a public listing.
+- **Don't** wrap the card in a link — the title is already the link target.
+
+## Related
+
+[ListingCard](./listing-card) · [Image](../components/image) · [Chip](../components/chip)
