@@ -32,6 +32,10 @@ export type AveroDictionary = {
   zoomHint: string;
   /** Accessible label of a rating. `{value}` is replaced with the score. */
   rating: string;
+  /** Call to action on an opportunity card. */
+  view: string;
+  /** Reason shown when an opportunity has no places left. */
+  capacityFull: string;
   /** Accessible name of a like control. */
   like: string;
   /** Accessible name of a share control. */
@@ -71,6 +75,8 @@ export const fa: AveroDictionary = {
   matchLabel: "تطابق",
   zoomHint: "مشاهده بزرگ‌نمایی",
   rating: "امتیاز {value}",
+  view: "مشاهده",
+  capacityFull: "تکمیل ظرفیت",
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
@@ -101,6 +107,8 @@ export const en: AveroDictionary = {
   matchLabel: "Match",
   zoomHint: "View larger",
   rating: "Rating {value}",
+  view: "View",
+  capacityFull: "Capacity full",
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
