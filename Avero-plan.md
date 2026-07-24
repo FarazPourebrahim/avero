@@ -1084,7 +1084,7 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | T-08 | SplitDetailLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | T-09 | ProfileLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | X-04 | Container (added for T-01) | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
-| B-01…B-25 | Blocks (see §7.10) — done: B-01 `ListingCard` | A | 10 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 |
+| B-01…B-25 | Blocks (see §7.10) — done: B-01 `ListingCard`, B-02 `ShowcaseCard` | A | 10 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 |
 | RP-01…RP-08 | Replica pages (parity gate) | A | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 
 > When Phase 10 starts, expand the `T-*`, `B-*` and `RP-*` summary rows into one row per ID.
