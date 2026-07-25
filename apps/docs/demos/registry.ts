@@ -50,6 +50,7 @@ import MatchScoreSuggested from "./match-score/suggested";
 import MetaArticle from "./meta/article";
 import MetaContacts from "./meta/contacts";
 import NativeSelectSort from "./native-select/sort";
+import OpportunityCardRelated from "./opportunity-card/related";
 import PillTabsProfile from "./pill-tabs/profile";
 import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
@@ -91,6 +92,7 @@ export const demos = {
   "table/article": TableArticle,
   "list/prose": ListProse,
   "listing-card/service": ListingCardService,
+  "opportunity-card/related": OpportunityCardRelated,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,

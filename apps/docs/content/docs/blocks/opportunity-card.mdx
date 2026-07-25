@@ -1,0 +1,70 @@
+---
+title: OpportunityCard
+description: The related-project card — title, tags, capacity meter, and a capacity-full state.
+---
+
+**Reference:** project detail, related projects (R-07) · **Tier:** A · **Block:** B-03 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/opportunity-card)
+
+```tsx
+import { OpportunityCard } from "@avero/react";
+```
+
+<ComponentPreview name="opportunity-card/related" />
+
+## Anatomy
+
+| Part     | Slot                                 | Notes                                         |
+| -------- | ------------------------------------ | --------------------------------------------- |
+| Root     | `data-slot="opportunity-card"`       | One `<a>`; `data-full` marks a closed project |
+| Title    | `data-slot="opportunity-card-title"` | Clamped to two lines                          |
+| Tags     | `data-slot="opportunity-card-tags"`  | Work-type chips                               |
+| Capacity | `CapacityMeter variant="card"`       | Pill, bar and the two captions                |
+
+## Composition
+
+Built from `CapacityMeter`, `Chip` and `DisabledOverlay`. The capacity block is entirely
+`CapacityMeter variant="card"` — the pill turns red on its own once the meter is full:
+
+```tsx
+<OpportunityCard
+  capacityLabel="ظرفیت ارسال رزومه"
+  value={3}
+  max={12}
+  status="9 جای خالی"
+  startCaption="3 رزومه ارسال شده"
+  endCaption="حداکثر 12 نفر"
+/>
+```
+
+Carousel sizing (`w-[85%]`, `snap-center`, `flex-none`) belongs to the carousel rather than the
+card, so pass it through `className`.
+
+## The capacity-full state
+
+`full` reproduces the reference's closed card: the surface dims and blurs, pointer events stop, the
+call to action disappears, and `DisabledOverlay` covers it with a reason pill.
+
+The reference's overlay also carries `bg-bg-[var(--bg-card)]/40` — a typo that never compiles
+(defect R-06) — so only the backdrop blur actually renders. Avero reproduces the rendered result.
+
+## Accessibility
+
+- The closed card sets `aria-disabled` alongside `pointer-events-none`, so assistive technology is
+  told what the styling implies rather than only being unable to click it.
+- The `→` in the call to action is decorative and hidden from assistive technology; the label itself
+  comes from the `view` dictionary entry.
+
+## API reference
+
+`OpportunityCard` accepts every native `<a>` attribute plus:
+
+<PropsTable file="blocks/opportunity-card/OpportunityCard.tsx" name="OpportunityCardOwnProps" />
+
+## Do and don't
+
+- **Do** pass `status` text that matches the remaining places; the pill colour follows the meter.
+- **Don't** rely on `full` alone to prevent navigation server-side — it is a presentation state.
+
+## Related
+
+[CapacityMeter](../components/capacity-meter) · [DisabledOverlay](../components/disabled-overlay) · [ListingCard](./listing-card)
