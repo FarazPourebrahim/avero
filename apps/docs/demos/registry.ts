@@ -69,6 +69,7 @@ import SidebarNavDashboard from "./sidebar-nav/dashboard";
 import StatsAchievements from "./stats/achievements";
 import StatsDashboard from "./stats/dashboard";
 import StatsProfile from "./stats/profile";
+import SuggestionItemDashboard from "./suggestion-item/dashboard";
 import TableArticle from "./table/article";
 import TextareaVariants from "./textarea/variants";
 import TableOfContentsArticle from "./table-of-contents/article";
@@ -93,6 +94,7 @@ export const demos = {
   "list/prose": ListProse,
   "listing-card/service": ListingCardService,
   "opportunity-card/related": OpportunityCardRelated,
+  "suggestion-item/dashboard": SuggestionItemDashboard,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,

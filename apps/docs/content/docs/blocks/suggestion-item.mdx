@@ -1,0 +1,55 @@
+---
+title: SuggestionItem
+description: The dashboard's suggested project row — title, tags and a match percentage.
+---
+
+**Reference:** freelancer dashboard (R-02) · **Tier:** A · **Block:** B-04 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/suggestion-item)
+
+```tsx
+import { SuggestionItem } from "@avero/react";
+```
+
+<ComponentPreview name="suggestion-item/dashboard" />
+
+## Anatomy
+
+| Part  | Slot                                | Notes                                    |
+| ----- | ----------------------------------- | ---------------------------------------- |
+| Root  | `data-slot="suggestion-item"`       | Bordered row; indigo tint on hover       |
+| Title | `data-slot="suggestion-item-title"` | Truncated; links when `href` is given    |
+| Tags  | `data-slot="suggestion-item-tags"`  | `Chip variant="category" size="sm"`      |
+| Score | `MatchScore`                        | Percentage over the `matchLabel` caption |
+
+## Composition
+
+Built from `Chip` and `MatchScore`. The score is `MatchScore`, which formats the percentage in the
+active locale's digits and captions it from the `matchLabel` dictionary entry:
+
+```tsx
+<SuggestionItem title="طراحی سایت عمده فروش" match={8} tags={["remote"]} />
+```
+
+Stack rows in a `space-y-3` list to reproduce the dashboard's suggested-projects card.
+
+## Accessibility
+
+- The reference renders each row as a plain `div` with no link, so nothing is reachable by keyboard
+  (defect R-10). Passing `href` makes the **title** a link (deviation V-04) without changing how the
+  row looks.
+- The title truncates visually but keeps its full text in the DOM, so assistive technology reads the
+  whole project name.
+
+## API reference
+
+`SuggestionItem` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/suggestion-item/SuggestionItem.tsx" name="SuggestionItemOwnProps" />
+
+## Do and don't
+
+- **Do** keep summaries to one line; the row truncates rather than wraps.
+- **Don't** put a second link in the row — the title is the target.
+
+## Related
+
+[MatchScore](../components/match-score) · [OpportunityCard](./opportunity-card) · [Chip](../components/chip)
