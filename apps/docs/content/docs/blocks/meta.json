@@ -1,4 +1,10 @@
 {
   "title": "Blocks",
-  "pages": ["listing-card", "showcase-card", "opportunity-card", "suggestion-item"]
+  "pages": [
+    "listing-card",
+    "showcase-card",
+    "opportunity-card",
+    "suggestion-item",
+    "post-list-item"
+  ]
 }

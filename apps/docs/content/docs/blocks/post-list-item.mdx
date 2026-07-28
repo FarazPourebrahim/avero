@@ -1,0 +1,58 @@
+---
+title: PostListItem
+description: The related-blog row — a thumbnail beside a clamped title, author and reading time.
+---
+
+**Reference:** blog article sidebar (R-01) · **Tier:** A · **Block:** B-05 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/post-list-item)
+
+```tsx
+import { PostListItem } from "@avero/react";
+```
+
+<ComponentPreview name="post-list-item/related" />
+
+## Anatomy
+
+| Part  | Slot                               | Notes                               |
+| ----- | ---------------------------------- | ----------------------------------- |
+| Root  | `data-slot="post-list-item"`       | An `<li>`; place it inside a `<ul>` |
+| Title | `data-slot="post-list-item-title"` | Clamped to two lines                |
+| Meta  | `data-slot="post-list-item-meta"`  | Author and reading time             |
+
+## Usage
+
+The row renders an `<li>`, matching the reference's "بلاگ‌های مرتبط" panel, so wrap a group of them
+in a list:
+
+```tsx
+<ul className="space-y-4">
+  <PostListItem title="…" href="…" author="محمد ابراهیمی" readTime="5 دقیقه" />
+</ul>
+```
+
+## Composition
+
+Built from `Image` and the vendored `ClockSolidIcon`. The thumbnail is a fixed 64px square
+(`size-16`) that fades slightly when the row is hovered, driven by the row's `group` class.
+
+## Accessibility
+
+- The whole row is one link named by the title, so screen-reader users hear the post name rather
+  than "image, link, link".
+- The thumbnail is decorative (`alt=""`) — the title already carries its meaning.
+- The clock glyph is decorative; the reading time beside it is real text.
+
+## API reference
+
+`PostListItem` accepts every native `<li>` attribute plus:
+
+<PropsTable file="blocks/post-list-item/PostListItem.tsx" name="PostListItemOwnProps" />
+
+## Do and don't
+
+- **Do** keep the list short — the reference shows three related posts.
+- **Don't** render it outside a list; an `<li>` needs a list parent.
+
+## Related
+
+[ListingCard](./listing-card) · [Image](../components/image) · [List](../components/list)

@@ -52,6 +52,7 @@ import MetaContacts from "./meta/contacts";
 import NativeSelectSort from "./native-select/sort";
 import OpportunityCardRelated from "./opportunity-card/related";
 import PillTabsProfile from "./pill-tabs/profile";
+import PostListItemRelated from "./post-list-item/related";
 import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
@@ -95,6 +96,7 @@ export const demos = {
   "listing-card/service": ListingCardService,
   "opportunity-card/related": OpportunityCardRelated,
   "suggestion-item/dashboard": SuggestionItemDashboard,
+  "post-list-item/related": PostListItemRelated,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,
