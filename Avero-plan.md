@@ -6,7 +6,7 @@
 | --- | --- |
 | Plan version | 1.0 |
 | Created | 2026-06-19 |
-| Last updated | 2026-06-19 |
+| Last updated | 2026-07-05 |
 | Source of truth for visuals | `reference/**` (read-only, never modified) |
 | Target stack | React 18.2+/19, TypeScript (strict), Tailwind CSS v4.3 (same major/minor as reference), Radix UI primitives, pnpm workspace |
 | Default direction / locale | RTL / `fa-IR`, with full LTR / `en` support |
@@ -44,23 +44,23 @@
 
 | # | Phase | Status | Progress | Depends on | Effort | Started | Completed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | Reference audit and extraction | 🟨 | 9 / 12 | — | M | 2026-06-19 | |
+| 0 | Reference audit and extraction | 🟨 | 10 / 12 | — | M | 2026-06-19 | |
 | 1 | Workspace, tooling and CI | 🟨 | 15 / 16 | 0 | M | 2026-06-19 | |
 | 2 | Design tokens and foundations | 🟨 | 9 / 15 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | 🟨 | 0 / 9 | 2 | L | 2026-06-19 | |
-| 4 | Forms | ⬜ | 0 / 10 | 3, 0.B | L | | |
+| 4 | Forms | 🟨 | 3 / 10 | 3, 0.B | L | 2026-07-05 | |
 | 5 | Navigation, disclosure and carousel | 🟨 | 0 / 9 | 3 | M | 2026-06-19 | |
-| 6 | Overlays and feedback | ⬜ | 0 / 10 | 3, 0.B | L | | |
-| 7 | Data display | ⬜ | 0 / 9 | 3 | L | | |
-| 8 | Layout shells and site chrome | ⬜ | 0 / 9 | 5, 6, 7 | M | | |
-| 9 | Charts and editor packages | ⬜ | 0 / 10 | 7 | M | | |
-| 10 | Blocks, templates and replica pages (visual parity gate) | ⬜ | 0 / 10 | 4–9 | L | | |
+| 6 | Overlays and feedback | 🟨 | 3 / 10 | 3, 0.B | L | 2026-07-05 | |
+| 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
+| 8 | Layout shells and site chrome | 🟨 | 7 / 9 | 5, 6, 7 | M | 2026-07-05 | |
+| 9 | Charts and editor packages | 🟨 | 8 / 10 | 7 | M | 2026-07-05 | |
+| 10 | Blocks, templates and replica pages (visual parity gate) | 🟨 | 0 / 10 | 4–9 | L | 2026-07-05 | |
 | 11 | Documentation site | 🟨 | 0 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 8 | 13 | L | | |
 
-**Overall:** 33 / 164 phase-DoD items (≈20%).
+**Overall:** 62 / 164 phase-DoD items (≈38%).
 
 > Phase 3 note (2026-06-19): 13 primitives are implemented, unit/SSR/axe-tested (255 tests, 100% statements) and visually baselined locally, but no Phase 3 item is ticked yet. Docs pages with live RTL/LTR previews and generated props tables now exist for all 13; what remains is cross-platform visual baselines (KD-06).
 
@@ -710,7 +710,7 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 **Evidence:** this plan (sections 4–7), audit session 2026-06-19.
 **Exit gate:** every §7 item has Tier A status or is explicitly dropped; baselines exist for all 8 pages × 4 viewports.
 
-### Phase 1 — Workspace, tooling and CI  ⬜
+### Phase 1 — Workspace, tooling and CI  🟨
 
 **Scope:** monorepo skeleton per §8.1, empty packages building, all quality gates wired.
 
@@ -734,7 +734,7 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** a fresh clone passes `pnpm install && pnpm -r build && pnpm -r test` with CI green.
 
-### Phase 2 — Design tokens and foundations  ⬜
+### Phase 2 — Design tokens and foundations  🟨
 
 **Scope:** F-01…F-13.
 
@@ -757,7 +757,7 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** the coverage script reports 100%, and the specimen page is signed off side-by-side with reference screenshots.
 
-### Phase 3 — Core primitives  ⬜
+### Phase 3 — Core primitives  🟨
 
 **Scope:** P-01…P-15 (Tier A now; P-06b, P-11, P-12 once Tier B is captured).
 
@@ -792,7 +792,7 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** a "Forms" demo form (every control, validation on) passes axe and keyboard-only completion in Playwright.
 
-### Phase 5 — Navigation, disclosure and carousel  ⬜
+### Phase 5 — Navigation, disclosure and carousel  🟨
 
 **Scope:** N-01…N-11.
 
@@ -897,7 +897,7 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 **Exit gate:** all replica pages pass the parity gate in CI. This is the objective proof of "looks exactly like the website".
 
-### Phase 11 — Documentation site  ⬜
+### Phase 11 — Documentation site  🟨
 
 **Scope:** `apps/docs`, modelled on large libraries (shadcn/ui, MUI, Chakra, Radix).
 
