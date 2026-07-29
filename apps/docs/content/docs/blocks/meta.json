@@ -5,6 +5,7 @@
     "showcase-card",
     "opportunity-card",
     "suggestion-item",
-    "post-list-item"
+    "post-list-item",
+    "author-card"
   ]
 }

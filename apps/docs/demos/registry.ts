@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import AccordionFooter from "./accordion/footer";
 import ActivityHeatmapYear from "./activity-heatmap/year";
+import AuthorCardSidebar from "./author-card/sidebar";
 import AvatarFallback from "./avatar/fallback";
 import AvatarUsages from "./avatar/usages";
 import BadgeHighlights from "./badge/highlights";
@@ -93,6 +94,7 @@ export const demos = {
   "stats/achievements": StatsAchievements,
   "table/article": TableArticle,
   "list/prose": ListProse,
+  "author-card/sidebar": AuthorCardSidebar,
   "listing-card/service": ListingCardService,
   "opportunity-card/related": OpportunityCardRelated,
   "suggestion-item/dashboard": SuggestionItemDashboard,

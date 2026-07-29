@@ -1,0 +1,69 @@
+---
+title: AuthorCard
+description: The article author box — avatar, name, role pill and a clamped biography.
+---
+
+**Reference:** blog article sidebar (R-01) · **Tier:** A · **Block:** B-06 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/author-card)
+
+```tsx
+import { AuthorCard } from "@avero/react";
+```
+
+<ComponentPreview name="author-card/sidebar" />
+
+## Anatomy
+
+| Part | Slot                           | Notes                                       |
+| ---- | ------------------------------ | ------------------------------------------- |
+| Root | `data-slot="author-card"`      | A `Card` surface, centred                   |
+| Role | `data-slot="author-card-role"` | The pill under the name; omitted when unset |
+| Bio  | `data-slot="author-card-bio"`  | Clamped to four lines; omitted when unset   |
+
+## Usage
+
+The card sits in the article sidebar, above the related-post panel:
+
+```tsx
+<AuthorCard
+  name="محمد ابراهیمی"
+  roleLabel="مدیر دورلنسر"
+  image="/authors/ebrahimi.jpg"
+  bio="یه برنامه‌نویس و عاشق دنیای تکنولوژی‌ام…"
+/>
+```
+
+The role prop is called `roleLabel`, not `role`, so the native ARIA `role` attribute stays
+available on the card.
+
+## Composition
+
+Built from `Card` (`surface` variant, `brand` elevation), `Avatar` (96px, the reference's
+`gray-500/20` four-pixel border) and `Heading` at the `card` scale.
+
+The reference's own surface carries `shadow-[0_0_20px_0_(--shadow)]`, which compiles to an invalid
+value and renders no shadow at all (defect R-02). Avero ships `shadow-brand-soft` in its place — a
+2%-alpha shadow that is visually indistinguishable from no shadow at card size.
+
+## Accessibility
+
+- The name is a real `h3`, so the card appears in the document outline between the article's
+  headings and the related-post panel.
+- Without an image the avatar falls back to the name's initials, announced as an image labelled
+  with the author's name.
+- The biography is clamped visually with `line-clamp-4`; the full text stays in the accessibility
+  tree, so pass a biography that reads well when truncated.
+
+## API reference
+
+`AuthorCard` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/author-card/AuthorCard.tsx" name="AuthorCardOwnProps" />
+
+## Do and don't
+
+- **Do** keep the biography to a few sentences — the reference clamps it at four lines.
+- **Don't** wrap the card in a link; nothing in it is interactive in the reference.
+
+## Related
+
+[PostListItem](./post-list-item) · [Avatar](../components/avatar) · [Card](../components/card)
