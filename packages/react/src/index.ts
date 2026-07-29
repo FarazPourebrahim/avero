@@ -78,6 +78,7 @@ export * from "./components/table/index.js";
 export * from "./components/zoom-frame/index.js";
 
 // Blocks
+export * from "./blocks/author-card/index.js";
 export * from "./blocks/listing-card/index.js";
 export * from "./blocks/opportunity-card/index.js";
 export * from "./blocks/post-list-item/index.js";
