@@ -60,6 +60,16 @@ export const StarIcon = createIcon("StarIcon", {
   ],
 });
 
+export const UserCheckIcon = createIcon("UserCheckIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "m16 11 2 2 4-4",
+    "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",
+    "M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+  ],
+});
+
 export const ZoomInIcon = createIcon("ZoomInIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",

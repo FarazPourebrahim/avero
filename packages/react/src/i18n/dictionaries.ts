@@ -42,6 +42,10 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Label above a service provider's name. */
+  serviceProvider: string;
+  /** Call to action linking to a provider's profile. */
+  viewProfile: string;
   /** Accessible name of the rich text editing surface. */
   editorLabel: string;
   /** Placeholder shown in an empty rich text editor. */
@@ -80,6 +84,8 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  serviceProvider: "ارائه‌دهنده خدمت",
+  viewProfile: "مشاهده پروفایل فریلنسر",
   editorLabel: "ویرایشگر متن",
   editorPlaceholder: "متن خود را بنویسید…",
   chartDataTable: "جدول داده‌های نمودار",
@@ -112,6 +118,8 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  serviceProvider: "Service provider",
+  viewProfile: "View freelancer profile",
   editorLabel: "Rich text editor",
   editorPlaceholder: "Write your text…",
   chartDataTable: "Chart data table",
