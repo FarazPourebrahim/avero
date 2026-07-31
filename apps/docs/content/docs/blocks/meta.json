@@ -6,6 +6,7 @@
     "opportunity-card",
     "suggestion-item",
     "post-list-item",
-    "author-card"
+    "author-card",
+    "provider-card"
   ]
 }

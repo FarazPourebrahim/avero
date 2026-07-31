@@ -1,0 +1,74 @@
+---
+title: ProviderCard
+description: The service provider box — identity row, mini statistics and a link to the full profile.
+---
+
+**Reference:** service detail sidebar (R-05) · **Tier:** A · **Block:** B-07 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/provider-card)
+
+```tsx
+import { ProviderCard } from "@avero/react";
+```
+
+<ComponentPreview name="provider-card/service" />
+
+## Anatomy
+
+| Part       | Slot                              | Notes                                              |
+| ---------- | --------------------------------- | -------------------------------------------------- |
+| Root       | `data-slot="provider-card"`       | A `Card` surface with `space-y-6`                  |
+| Name       | `data-slot="provider-card-name"`  | An `h4` under the eyebrow                          |
+| Statistics | `data-slot="provider-card-stats"` | Two-column grid of `MiniStat`s; omitted when empty |
+
+## Usage
+
+```tsx
+<ProviderCard
+  name="زینب فلاح"
+  headline="طراحی سایت و سئو"
+  image="/providers/zeinab.jpg"
+  stats={[
+    { label: "تعداد خدمات", value: "1" },
+    { label: "امتیاز رضایت", value: <Rating value={0} size="sm" /> },
+  ]}
+  profileHref="/freelancer/zeinab"
+/>
+```
+
+The eyebrow and the profile link fall back to the `serviceProvider` and `viewProfile` dictionary
+strings, so both follow the provider's locale without being passed.
+
+## Composition
+
+Built from `Card` (`surface`, `xs` elevation), `Avatar` (64px with the reference's two-pixel
+indigo ring), `Eyebrow`, `MiniStat` and an outlined `Button` rendered `asChild` as a link.
+
+Statistics are deliberately untyped beyond `label` and `value`: the reference's rating stat is a
+filled star beside a two-decimal score, which is `Rating` rather than a number, and the same slot
+takes plain counts.
+
+## Accessibility
+
+- The provider's name is a real `h4`, so the card joins the page outline beside the other sidebar
+  panels.
+- The profile link is a link, not a button — it navigates.
+- `Rating` exposes itself as one image labelled "امتیاز ۰٫۰۰", so the score is announced as a
+  rating rather than as a bare number.
+
+## API reference
+
+`ProviderCard` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/provider-card/ProviderCard.tsx" name="ProviderCardOwnProps" />
+
+Each entry in `stats`:
+
+<PropsTable file="blocks/provider-card/ProviderCard.tsx" name="ProviderCardStat" />
+
+## Do and don't
+
+- **Do** keep statistics to an even number — the reference's grid is two columns wide.
+- **Don't** put the whole card in a link; only the profile call to action navigates.
+
+## Related
+
+[AuthorCard](./author-card) · [MiniStat](../components/stat) · [Rating](../components/rating)

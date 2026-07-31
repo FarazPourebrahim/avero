@@ -57,6 +57,7 @@ import PostListItemRelated from "./post-list-item/related";
 import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
+import ProviderCardService from "./provider-card/service";
 import RatingUsages from "./rating/usages";
 import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
@@ -99,6 +100,7 @@ export const demos = {
   "opportunity-card/related": OpportunityCardRelated,
   "suggestion-item/dashboard": SuggestionItemDashboard,
   "post-list-item/related": PostListItemRelated,
+  "provider-card/service": ProviderCardService,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,
