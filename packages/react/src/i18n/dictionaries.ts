@@ -42,6 +42,16 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Title of a comment section. */
+  comments: string;
+  /** Accessible name of a comment box. */
+  commentLabel: string;
+  /** Placeholder of a comment box. */
+  commentPlaceholder: string;
+  /** Submit label of a comment form. */
+  submitComment: string;
+  /** Message shown when nothing has been commented yet. */
+  commentsEmpty: string;
   /** Label above a service provider's name. */
   serviceProvider: string;
   /** Call to action linking to a provider's profile. */
@@ -84,6 +94,11 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  comments: "نظرات کاربران",
+  commentLabel: "نظر شما",
+  commentPlaceholder: "نظر خود را بنویسید...",
+  submitComment: "ثبت نظر",
+  commentsEmpty: "هنوز نظری ثبت نشده است. اولین نفری باشید که نظر ثبت می‌کند!",
   serviceProvider: "ارائه‌دهنده خدمت",
   viewProfile: "مشاهده پروفایل فریلنسر",
   editorLabel: "ویرایشگر متن",
@@ -118,6 +133,11 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  comments: "Comments",
+  commentLabel: "Your comment",
+  commentPlaceholder: "Write your comment…",
+  submitComment: "Post comment",
+  commentsEmpty: "No comments yet. Be the first to write one!",
   serviceProvider: "Service provider",
   viewProfile: "View freelancer profile",
   editorLabel: "Rich text editor",
