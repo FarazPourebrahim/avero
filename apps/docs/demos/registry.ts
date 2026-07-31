@@ -22,6 +22,8 @@ import CarouselRelatedProjects from "./carousel/related-projects";
 import ChartsAnalytics from "./charts/analytics";
 import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
+import CommentSectionArticle from "./comment-section/article";
+import CommentSectionService from "./comment-section/service";
 import ContainerSizes from "./container/sizes";
 import DashboardShellFreelancer from "./dashboard-shell/freelancer";
 import ChipStatic from "./chip/static";
@@ -101,6 +103,8 @@ export const demos = {
   "suggestion-item/dashboard": SuggestionItemDashboard,
   "post-list-item/related": PostListItemRelated,
   "provider-card/service": ProviderCardService,
+  "comment-section/article": CommentSectionArticle,
+  "comment-section/service": CommentSectionService,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,

@@ -7,6 +7,7 @@
     "suggestion-item",
     "post-list-item",
     "author-card",
-    "provider-card"
+    "provider-card",
+    "comment-section"
   ]
 }

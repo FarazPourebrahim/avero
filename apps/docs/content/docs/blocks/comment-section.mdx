@@ -1,0 +1,104 @@
+---
+title: CommentSection
+description: The comment panel — header with a count, comment form, and the comment list or its empty state.
+---
+
+**Reference:** blog article (R-01) and service detail (R-05) · **Tier:** A · **Block:** B-08 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/comment-section)
+
+```tsx
+import { CommentSection } from "@avero/react";
+```
+
+<ComponentPreview name="comment-section/article" />
+
+## Variants
+
+The reference ships two comment panels that differ in palette, title scale, icon and spacing, so
+they are one block with a `variant`.
+
+### `article`
+
+The blog's gray-toned panel: a Font Awesome speech bubble, an `h3` at the card scale, and the
+count in a `Badge`. The moderation note sits opposite the submit button.
+
+### `service`
+
+The detail page's slate panel: a Lucide message square, a heavier title that carries the count in
+brackets, and no note — the submit button stands alone at the end of the row.
+
+<ComponentPreview name="comment-section/service" />
+
+## Anatomy
+
+| Part   | Slot                                 | Notes                                            |
+| ------ | ------------------------------------ | ------------------------------------------------ |
+| Root   | `data-slot="comment-section"`        | A `<section>` on a `Card` surface                |
+| Header | `data-slot="comment-section-header"` | Icon, title, count                               |
+| Form   | `data-slot="comment-section-form"`   | Comment box and actions                          |
+| List   | `data-slot="comment-section-list"`   | Children, or the empty state when there are none |
+
+## Usage
+
+```tsx
+<CommentSection
+  count={comments.length}
+  placeholder="نظر خود را درباره این مقاله بنویسید..."
+  hint="نظرات پس از بررسی و تایید مدیر منتشر خواهند شد."
+  pending={isSubmitting}
+  onSubmitComment={(text) => postComment(text)}
+>
+  {comments.map((comment) => (
+    <CommentRow key={comment.id} {...comment} />
+  ))}
+</CommentSection>
+```
+
+The draft comment works controlled (`value` + `onValueChange`) or uncontrolled (`defaultValue`),
+like every other stateful Avero component. `pending` disables the box and puts a spinner in the
+button, so a slow request can never be submitted twice.
+
+Comment rows are not part of this block. The reference never renders one — every captured page
+has an empty comment list — so there is no markup to reproduce, and inventing rows would mean
+guessing. Pass your own as children; the block shows its empty state when there are none.
+
+## Composition
+
+Built from `Card`, `CardTitle`, `Heading`, `Badge`, `Textarea`, `FormActions`, `Button` and
+`EmptyState`. Each of those already carries both palettes — `Textarea` has `soft` and `slate`
+variants, `EmptyState` has `text` and `slate` — so the block only decides which to use.
+
+## Reference defects
+
+Two are fixed here, both without changing what the panel looks like:
+
+- The blog's submit button hovers to the colour it already has, so it gives no hover feedback
+  (defect R-07). It hovers to `primary-hover` instead (deviation V-02).
+- Neither comment box has an accessible name — only a placeholder, which assistive technology may
+  not announce and which disappears once typing starts (defect R-10). The box is labelled with the
+  `commentLabel` dictionary string, overridable per instance (deviation V-04).
+
+The comment box is also marked `required`, as it already is on the service page, so an empty
+comment cannot be submitted from either panel.
+
+## Accessibility
+
+- The panel is a `<section>`, so it is reachable as a landmark when given an accessible name.
+- The count is plain text inside the heading (`service`) or a badge beside it (`article`); either
+  way it is announced with the title rather than as a stray number.
+- The empty state is real text, not a styled placeholder, so it is read out like any other
+  content.
+
+## API reference
+
+`CommentSection` accepts every native `<section>` attribute plus:
+
+<PropsTable file="blocks/comment-section/CommentSection.tsx" name="CommentSectionOwnProps" />
+
+## Do and don't
+
+- **Do** pass the count you actually render — the badge and the list must agree.
+- **Don't** use `pending` for a disabled form; pass `disabled` on your own controls instead.
+
+## Related
+
+[AuthorCard](./author-card) · [Textarea](../components/textarea) · [FormActions](../components/form-actions) · [EmptyState](../components/empty-state)
