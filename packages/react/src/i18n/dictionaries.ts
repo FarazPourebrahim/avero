@@ -42,6 +42,12 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Name of a control that reports a violation. */
+  report: string;
+  /** Title of the report panel. */
+  reportTitle: string;
+  /** Line under the report panel's title. */
+  reportDescription: string;
   /** Label before a row of share controls. */
   shareLabel: string;
   /** Name of the copy-link share control. */
@@ -106,6 +112,9 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  report: "گزارش تخلف",
+  reportTitle: "گزارش اشکال یا تخلف",
+  reportDescription: "ارسال جهت بررسی ادمین",
   shareLabel: "اشتراک‌گذاری:",
   shareCopy: "کپی لینک",
   shareTelegram: "تلگرام",
@@ -151,6 +160,9 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  report: "Report abuse",
+  reportTitle: "Report a problem or abuse",
+  reportDescription: "Sent to an administrator for review",
   shareLabel: "Share:",
   shareCopy: "Copy link",
   shareTelegram: "Telegram",
