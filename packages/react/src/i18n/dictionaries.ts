@@ -42,6 +42,18 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Label before a row of share controls. */
+  shareLabel: string;
+  /** Name of the copy-link share control. */
+  shareCopy: string;
+  /** Name of the Telegram share control. */
+  shareTelegram: string;
+  /** Name of the WhatsApp share control. */
+  shareWhatsapp: string;
+  /** Name of the LinkedIn share control. */
+  shareLinkedin: string;
+  /** Name of the X (Twitter) share control. */
+  shareX: string;
   /** Title of a comment section. */
   comments: string;
   /** Accessible name of a comment box. */
@@ -94,6 +106,12 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  shareLabel: "اشتراک‌گذاری:",
+  shareCopy: "کپی لینک",
+  shareTelegram: "تلگرام",
+  shareWhatsapp: "واتس‌اپ",
+  shareLinkedin: "لینکدین",
+  shareX: "تویتر",
   comments: "نظرات کاربران",
   commentLabel: "نظر شما",
   commentPlaceholder: "نظر خود را بنویسید...",
@@ -133,6 +151,12 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  shareLabel: "Share:",
+  shareCopy: "Copy link",
+  shareTelegram: "Telegram",
+  shareWhatsapp: "WhatsApp",
+  shareLinkedin: "LinkedIn",
+  shareX: "X",
   comments: "Comments",
   commentLabel: "Your comment",
   commentPlaceholder: "Write your comment…",

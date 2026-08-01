@@ -19,7 +19,7 @@ The icons in `src/icons/referenceIcons.generated.tsx` whose source says "Font Aw
 
 ## Lucide
 
-`src/icons/internalIcons.tsx` vendors the Lucide glyphs that Avero components render internally (arrow, chevron, star, zoom, heart, share, message, send, user and close icons), so `lucide-react` stays an optional peer dependency.
+`src/icons/internalIcons.tsx` vendors the Lucide glyphs that Avero components render internally (arrow, chevron, copy, star, zoom, heart, share, message, send, user and close icons), so `lucide-react` stays an optional peer dependency.
 
 - Copyright: Lucide Contributors (https://lucide.dev)
 - Licence: ISC

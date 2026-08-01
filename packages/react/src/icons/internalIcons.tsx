@@ -32,6 +32,23 @@ export const ChevronRightIcon = createIcon("ChevronRightIcon", {
   paths: ["m9 18 6-6-6-6"],
 });
 
+export const CopyIcon = createIcon("CopyIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M10 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z",
+    "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2",
+  ],
+});
+
+export const MessageCircleIcon = createIcon("MessageCircleIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719",
+  ],
+});
+
 export const HeartIcon = createIcon("HeartIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",
