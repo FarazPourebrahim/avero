@@ -8,6 +8,7 @@
     "post-list-item",
     "author-card",
     "provider-card",
-    "comment-section"
+    "comment-section",
+    "share-bar"
   ]
 }

@@ -70,6 +70,8 @@ import SiteFooterDefault from "./site-footer/default";
 import SiteHeaderDefault from "./site-header/default";
 import SectionHeaderVariants from "./section-header/variants";
 import SegmentedControlAnalytics from "./segmented-control/analytics";
+import ShareBarIcons from "./share-bar/icons";
+import ShareBarLabelled from "./share-bar/labelled";
 import SidebarNavDashboard from "./sidebar-nav/dashboard";
 import StatsAchievements from "./stats/achievements";
 import StatsDashboard from "./stats/dashboard";
@@ -105,6 +107,8 @@ export const demos = {
   "provider-card/service": ProviderCardService,
   "comment-section/article": CommentSectionArticle,
   "comment-section/service": CommentSectionService,
+  "share-bar/icons": ShareBarIcons,
+  "share-bar/labelled": ShareBarLabelled,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,

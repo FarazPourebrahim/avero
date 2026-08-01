@@ -1,0 +1,96 @@
+---
+title: ShareBar
+description: The share controls — an icon row beside the article's like button, or a card of named buttons.
+---
+
+**Reference:** blog article (R-01) and service detail (R-05) · **Tier:** A · **Block:** B-09 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/share-bar)
+
+```tsx
+import { ShareBar } from "@avero/react";
+```
+
+<ComponentPreview name="share-bar/icons" />
+
+## Variants
+
+### `icon`
+
+The article's row: a label, then five icon-only buttons — copy link, Telegram, LinkedIn, X and
+WhatsApp, in that order. It has no surface of its own because it sits inside the article's action
+row, beside the like button.
+
+### `labelled`
+
+The service page's own card: a heading with a share glyph on one side and named buttons on the
+other, wrapping onto a second line when the card is narrow.
+
+<ComponentPreview name="share-bar/labelled" />
+
+## Usage
+
+```tsx
+<ShareBar
+  onShare={(channel) => {
+    if (channel === "copy") return navigator.clipboard.writeText(url);
+    window.open(shareUrl(channel, url), "_blank", "noopener");
+  }}
+/>
+```
+
+`ShareBar` reports which channel was pressed and does nothing else — it opens no windows, touches
+no clipboard, and renders buttons rather than links. Sharing depends on the URL, the window and
+the platform, none of which a component library should decide.
+
+Pass `channels` to change the set or the order, and `labels` to override a single name:
+
+```tsx
+<ShareBar variant="labelled" channels={["telegram", "copy"]} labels={{ whatsapp: "واتساپ" }} />
+```
+
+That override exists because the reference spells WhatsApp two ways — "واتس‌اپ" on the article
+page and "واتساپ" on the service page — and the two render differently in Persian.
+
+## Channel styling
+
+The same channel is not styled the same way in both bars, so each variant has its own table:
+
+| Channel  | `icon`                             | `labelled`                     |
+| -------- | ---------------------------------- | ------------------------------ |
+| Copy     | Font Awesome copy, gray            | Lucide copy, slate             |
+| Telegram | Font Awesome Telegram, blue        | Lucide send, sky               |
+| WhatsApp | Font Awesome WhatsApp, green       | Lucide message circle, emerald |
+| LinkedIn | Font Awesome LinkedIn, darker blue | Font Awesome LinkedIn, blue    |
+| X        | Font Awesome X, near-black         | Font Awesome X, slate          |
+
+LinkedIn and X have no tone of their own: they sit on the shared blue and gray grounds with a
+darker text colour, which the block applies as a class rather than inventing a tone for.
+
+## Anatomy
+
+| Part    | Slot                            | Notes                                    |
+| ------- | ------------------------------- | ---------------------------------------- |
+| Root    | `data-slot="share-bar"`         | A row (`icon`) or a `Card` (`labelled`)  |
+| Actions | `data-slot="share-bar-actions"` | The wrapping button row, `labelled` only |
+
+## Accessibility
+
+The reference labels the icon buttons in English — `aria-label="Share on Telegram"` — while their
+tooltips are Persian, so a screen-reader user hears a different language from the one on screen
+(defect R-10). Both come from the dictionary here, so the accessible name and the tooltip always
+agree (deviation V-04).
+
+## API reference
+
+`ShareBar` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/share-bar/ShareBar.tsx" name="ShareBarOwnProps" />
+
+## Do and don't
+
+- **Do** handle `copy` separately from the rest — it stays on the page.
+- **Don't** open a share window without `noopener`; the target page can otherwise reach back into
+  yours through `window.opener`.
+
+## Related
+
+[CommentSection](./comment-section) · [IconButton](../components/icon-button) · [Button](../components/button)
