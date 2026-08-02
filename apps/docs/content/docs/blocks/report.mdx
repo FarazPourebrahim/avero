@@ -1,0 +1,70 @@
+---
+title: Report
+description: The report control in its three reference shapes, and the service page's report panel.
+---
+
+**Reference:** service detail (R-05), project detail (R-07), portfolio (R-08) · **Tier:** A · **Block:** B-10 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/report)
+
+```tsx
+import { ReportAction, ReportCard } from "@avero/react";
+```
+
+<ComponentPreview name="report/variants" />
+
+## Two components
+
+`ReportAction` is the control itself. The same action appears on three pages in three shapes, so
+it is one component with a `variant` rather than three near-copies:
+
+| Variant | Where                                  | Look                              |
+| ------- | -------------------------------------- | --------------------------------- |
+| `mini`  | Under a portfolio card (R-08)          | 11px slate text, warning triangle |
+| `text`  | Under a project's description (R-07)   | 14px gray text, flag              |
+| `soft`  | Inside the service report panel (R-05) | Tinted rose button, shield        |
+
+`ReportCard` is the panel that wraps the `soft` variant on the service page: a title, a line of
+explanation, and the button at the end of the row.
+
+## Usage
+
+```tsx
+<ReportCard onReport={() => openReportDialog(serviceId)} />
+
+<ShowcaseCard title="…" report={<ReportAction onReport={() => openReportDialog(workId)} />} />
+```
+
+`onReport` is the whole contract — the block never opens a dialog, posts a form or shows a
+confirmation of its own, because what "reporting" means belongs to the application.
+
+## Anatomy
+
+| Part   | Slot                        | Notes                                     |
+| ------ | --------------------------- | ----------------------------------------- |
+| Action | `data-slot="report-action"` | A `<button>` in all three variants        |
+| Panel  | `data-slot="report-card"`   | A `Card` holding the title and the action |
+
+## Accessibility
+
+The reference's portfolio control has no text and no `aria-label` — only a `title` attribute,
+which assistive technology may not announce and which never reaches a touch user (defect R-10).
+Every variant here has real text, taken from the `report` dictionary string (deviation V-04), so
+the control is named on every device.
+
+## API reference
+
+`ReportAction` accepts every native `<button>` attribute plus:
+
+<PropsTable file="blocks/report/Report.tsx" name="ReportActionOwnProps" />
+
+`ReportCard` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/report/Report.tsx" name="ReportCardOwnProps" />
+
+## Do and don't
+
+- **Do** confirm the report in your own UI — the button fires immediately.
+- **Don't** hide the control behind a hover state; it is the only way to flag abuse.
+
+## Related
+
+[ShowcaseCard](./showcase-card) · [ShareBar](./share-bar) · [Button](../components/button)

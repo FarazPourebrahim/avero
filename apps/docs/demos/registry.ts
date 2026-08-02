@@ -61,6 +61,7 @@ import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
 import ProviderCardService from "./provider-card/service";
 import RatingUsages from "./rating/usages";
+import ReportVariants from "./report/variants";
 import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
@@ -107,6 +108,7 @@ export const demos = {
   "provider-card/service": ProviderCardService,
   "comment-section/article": CommentSectionArticle,
   "comment-section/service": CommentSectionService,
+  "report/variants": ReportVariants,
   "share-bar/icons": ShareBarIcons,
   "share-bar/labelled": ShareBarLabelled,
   "showcase-card/portfolio": ShowcaseCardPortfolio,
