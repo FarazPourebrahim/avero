@@ -42,6 +42,8 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Title of a filter panel. */
+  filters: string;
   /** Name of a control that reports a violation. */
   report: string;
   /** Title of the report panel. */
@@ -112,6 +114,7 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  filters: "فیلترها",
   report: "گزارش تخلف",
   reportTitle: "گزارش اشکال یا تخلف",
   reportDescription: "ارسال جهت بررسی ادمین",
@@ -160,6 +163,7 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  filters: "Filters",
   report: "Report abuse",
   reportTitle: "Report a problem or abuse",
   reportDescription: "Sent to an administrator for review",
