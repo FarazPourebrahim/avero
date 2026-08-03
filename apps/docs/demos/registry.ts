@@ -33,6 +33,7 @@ import DrawerMenu from "./drawer/menu";
 import EditorBasic from "./editor/basic";
 import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
+import FilterPanelListing from "./filter-panel/listing";
 import FormActionsCommentForm from "./form-actions/comment-form";
 import FeatureCardGrid from "./feature-card/grid";
 import IconButtonChrome from "./icon-button/chrome";
@@ -108,6 +109,7 @@ export const demos = {
   "provider-card/service": ProviderCardService,
   "comment-section/article": CommentSectionArticle,
   "comment-section/service": CommentSectionService,
+  "filter-panel/listing": FilterPanelListing,
   "report/variants": ReportVariants,
   "share-bar/icons": ShareBarIcons,
   "share-bar/labelled": ShareBarLabelled,

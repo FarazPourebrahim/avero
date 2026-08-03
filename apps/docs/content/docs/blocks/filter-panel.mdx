@@ -1,0 +1,66 @@
+---
+title: FilterPanel
+description: The listing sidebar's filter card — a title above a stack of filter controls.
+---
+
+**Reference:** services listing sidebar (R-06) · **Tier:** A · **Block:** B-11 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/filter-panel)
+
+```tsx
+import { FilterPanel } from "@avero/react";
+```
+
+<ComponentPreview name="filter-panel/listing" />
+
+## Anatomy
+
+| Part     | Slot                                | Notes                                     |
+| -------- | ----------------------------------- | ----------------------------------------- |
+| Root     | `data-slot="filter-panel"`          | A `<section>` named by its heading        |
+| Controls | `data-slot="filter-panel-controls"` | The stack, in the reference's 12px rhythm |
+
+## Usage
+
+The controls are children, not props — which filters a listing needs is the application's
+decision, and each control already carries the reference's styling:
+
+```tsx
+<FilterPanel>
+  <Input aria-label="جستجو" placeholder="جستجو..." value={query} onChange={…} />
+  <Select value={category} onValueChange={setCategory}>
+    <SelectTrigger aria-label="دسته‌بندی">
+      <SelectValue placeholder="همه دسته‌ها" />
+    </SelectTrigger>
+    <SelectContent>…</SelectContent>
+  </Select>
+  <NativeSelect aria-label="مرتب‌سازی" value={sort} onChange={…}>…</NativeSelect>
+</FilterPanel>
+```
+
+The reference mixes control styles deliberately: the search box and the sort control are plain
+4px-radius fields, while the category trigger is a 12px-radius custom `Select`. Avero reproduces
+that rather than unifying it — see [`Input`](../components/input), [`Select`](../components/select)
+and [`NativeSelect`](../components/native-select) for why each is the right control.
+
+## Accessibility
+
+- The panel's `<section>` is named by its heading through `aria-labelledby`, so it is announced as
+  a region. The reference's own panel has the heading but no link between the two, so screen
+  readers skip past it (defect R-10, deviation V-04).
+- Every control needs its own accessible name. The reference labels all three with `aria-label`,
+  which is what the examples here do too — a visible `<label>` would change the layout.
+
+## API reference
+
+`FilterPanel` accepts every native `<section>` attribute plus:
+
+<PropsTable file="blocks/filter-panel/FilterPanel.tsx" name="FilterPanelOwnProps" />
+
+## Do and don't
+
+- **Do** apply filters as they change; the reference has no submit button.
+- **Don't** nest a `<form>` inside unless a submit actually exists — a form with no submit
+  control traps keyboard users who press Enter.
+
+## Related
+
+[ListingCard](./listing-card) · [Input](../components/input) · [Select](../components/select) · [NativeSelect](../components/native-select)

@@ -10,6 +10,7 @@
     "provider-card",
     "comment-section",
     "share-bar",
-    "report"
+    "report",
+    "filter-panel"
   ]
 }
