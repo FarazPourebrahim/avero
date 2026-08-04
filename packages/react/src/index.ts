@@ -84,6 +84,7 @@ export * from "./blocks/filter-panel/index.js";
 export * from "./blocks/listing-card/index.js";
 export * from "./blocks/opportunity-card/index.js";
 export * from "./blocks/post-list-item/index.js";
+export * from "./blocks/promo-banner/index.js";
 export * from "./blocks/provider-card/index.js";
 export * from "./blocks/report/index.js";
 export * from "./blocks/share-bar/index.js";
