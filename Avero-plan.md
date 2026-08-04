@@ -367,6 +367,7 @@ Three overlapping systems exist in the reference and are unified into one `RichC
 | R-16 | Digits | Persian and Latin digits are mixed ("5 دقیقه", "0 از 15" vs "۲۰٬۰۰۰٬۰۰۰") | Inconsistent | `formatNumber` utility with `digits: "fa" \| "latn"`; defaults reproduce the reference per component |
 | R-17 | Header `sticky top-12` | A 48px offset suggests a top bar that isn't in any capture | Gap above the header | Confirm via Tier B capture (C-01) |
 | R-18 | Motion | No `prefers-reduced-motion` handling | Always animated | **Deviation V-06:** respect reduced motion |
+| R-19 | Listing promo banner `<a class="w-full h-70">` | `width` and `height` do not apply to a non-replaced inline element, and the anchor has no `display` utility | The banner is not the intended 280px box: the artwork keeps its own aspect ratio, and the image's `object-cover` never applies | Reproduce the rendered result; `PromoBanner` sets no height |
 
 ### 6.2 Deviation register (needs your approval)
 
@@ -1084,7 +1085,7 @@ Columns follow the Global DoD: **Impl** (API + fidelity), **Test** (unit + SSR),
 | T-08 | SplitDetailLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | T-09 | ProfileLayout | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
 | X-04 | Container (added for T-01) | A | 8 | ✅ | ✅ | ✅ | 🟨 | ✅ | 🟨 |
-| B-01…B-25 | Blocks (see §7.10) — done: B-01 `ListingCard`, B-02 `ShowcaseCard`, B-03 `OpportunityCard`, B-04 `SuggestionItem`, B-05 `PostListItem`, B-06 `AuthorCard`, B-07 `ProviderCard`, B-08 `CommentSection`, B-09 `ShareBar`, B-10 `ReportAction`/`ReportCard`, B-11 `FilterPanel` | A | 10 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 |
+| B-01…B-25 | Blocks (see §7.10) — done: B-01 `ListingCard`, B-02 `ShowcaseCard`, B-03 `OpportunityCard`, B-04 `SuggestionItem`, B-05 `PostListItem`, B-06 `AuthorCard`, B-07 `ProviderCard`, B-08 `CommentSection`, B-09 `ShareBar`, B-10 `ReportAction`/`ReportCard`, B-11 `FilterPanel`, B-12 `PromoBanner` | A | 10 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 | 🟨 |
 | RP-01…RP-08 | Replica pages (parity gate) | A | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 
 > When Phase 10 starts, expand the `T-*`, `B-*` and `RP-*` summary rows into one row per ID.
