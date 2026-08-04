@@ -60,6 +60,7 @@ import PostListItemRelated from "./post-list-item/related";
 import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
+import PromoBannerSidebar from "./promo-banner/sidebar";
 import ProviderCardService from "./provider-card/service";
 import RatingUsages from "./rating/usages";
 import ReportVariants from "./report/variants";
@@ -110,6 +111,7 @@ export const demos = {
   "comment-section/article": CommentSectionArticle,
   "comment-section/service": CommentSectionService,
   "filter-panel/listing": FilterPanelListing,
+  "promo-banner/sidebar": PromoBannerSidebar,
   "report/variants": ReportVariants,
   "share-bar/icons": ShareBarIcons,
   "share-bar/labelled": ShareBarLabelled,
