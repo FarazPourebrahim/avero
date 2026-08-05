@@ -80,6 +80,8 @@ export * from "./components/zoom-frame/index.js";
 // Blocks
 export * from "./blocks/author-card/index.js";
 export * from "./blocks/comment-section/index.js";
+export * from "./blocks/cta-banner/index.js";
+export * from "./blocks/feature-grid/index.js";
 export * from "./blocks/filter-panel/index.js";
 export * from "./blocks/listing-card/index.js";
 export * from "./blocks/opportunity-card/index.js";
@@ -89,6 +91,7 @@ export * from "./blocks/provider-card/index.js";
 export * from "./blocks/report/index.js";
 export * from "./blocks/share-bar/index.js";
 export * from "./blocks/showcase-card/index.js";
+export * from "./blocks/split-hero/index.js";
 export * from "./blocks/suggestion-item/index.js";
 
 // Layout
