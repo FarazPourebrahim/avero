@@ -12,6 +12,9 @@
     "share-bar",
     "report",
     "filter-panel",
-    "promo-banner"
+    "promo-banner",
+    "cta-banner",
+    "split-hero",
+    "feature-grid"
   ]
 }

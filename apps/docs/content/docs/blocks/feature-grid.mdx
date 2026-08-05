@@ -1,0 +1,66 @@
+---
+title: FeatureGrid
+description: The "why us" section — an icon title above a responsive grid of feature cards.
+---
+
+**Reference:** about page (R-03) · **Tier:** A · **Block:** B-15 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/feature-grid)
+
+```tsx
+import { FeatureCard, FeatureGrid } from "@avero/react";
+```
+
+<ComponentPreview name="feature-grid/why-us" />
+
+## Usage
+
+```tsx
+<FeatureGrid title="چرا دورلنسر انتخابی متفاوت است؟" icon={<SparklesIcon />}>
+  <FeatureCard title="سیستم پرداخت امن" description="…" tone="emerald" />
+  <FeatureCard title="برترین استعدادها" description="…" tone="blue" />
+  <FeatureCard title="سنجش مهارت" description="…" tone="purple" />
+  <FeatureCard title="پشتیبانی فعال" description="…" tone="amber" />
+</FeatureGrid>
+```
+
+The cards are children, not data: `FeatureCard` already exists as its own component, and a grid
+that only accepted a fixed shape would rule out mixing in anything else.
+
+## Columns
+
+`columns` sets the count at the widest breakpoint. Every value starts at one column on a phone and
+two on a tablet, which is what the reference does:
+
+| `columns`     | sm  | lg  |
+| ------------- | --- | --- |
+| `2`           | 2   | 2   |
+| `3`           | 2   | 3   |
+| `4` (default) | 2   | 4   |
+
+## Anatomy
+
+| Part  | Slot                             | Notes                                   |
+| ----- | -------------------------------- | --------------------------------------- |
+| Root  | `data-slot="feature-grid"`       | A `<section>`                           |
+| Title | `data-slot="section-header"`     | A `SectionHeader` in its `icon` variant |
+| Items | `data-slot="feature-grid-items"` | The grid itself                         |
+
+## Accessibility
+
+The title renders as an `h3` by default, matching the reference's place in the page outline;
+pass `titleAs` when your page nests differently. Without a title the grid is a plain section —
+give it an `aria-label` if it needs to be a landmark.
+
+## API reference
+
+`FeatureGrid` accepts every native `<section>` attribute plus:
+
+<PropsTable file="blocks/feature-grid/FeatureGrid.tsx" name="FeatureGridOwnProps" />
+
+## Do and don't
+
+- **Do** keep the card count a multiple of the column count, so the last row is not ragged.
+- **Don't** vary description lengths wildly — the cards stretch to the tallest in each row.
+
+## Related
+
+[FeatureCard](../components/feature-card) · [SplitHero](./split-hero) · [SectionHeader](../components/section-header)

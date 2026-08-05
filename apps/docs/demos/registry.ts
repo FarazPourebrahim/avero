@@ -25,6 +25,7 @@ import ChipLinks from "./chip/links";
 import CommentSectionArticle from "./comment-section/article";
 import CommentSectionService from "./comment-section/service";
 import ContainerSizes from "./container/sizes";
+import CtaBannerMission from "./cta-banner/mission";
 import DashboardShellFreelancer from "./dashboard-shell/freelancer";
 import ChipStatic from "./chip/static";
 import DisabledOverlayFullCard from "./disabled-overlay/full-card";
@@ -33,6 +34,7 @@ import DrawerMenu from "./drawer/menu";
 import EditorBasic from "./editor/basic";
 import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
+import FeatureGridWhyUs from "./feature-grid/why-us";
 import FilterPanelListing from "./filter-panel/listing";
 import FormActionsCommentForm from "./form-actions/comment-form";
 import FeatureCardGrid from "./feature-card/grid";
@@ -71,6 +73,7 @@ import SelectFilter from "./select/filter";
 import ShowcaseCardPortfolio from "./showcase-card/portfolio";
 import SiteFooterDefault from "./site-footer/default";
 import SiteHeaderDefault from "./site-header/default";
+import SplitHeroAbout from "./split-hero/about";
 import SectionHeaderVariants from "./section-header/variants";
 import SegmentedControlAnalytics from "./segmented-control/analytics";
 import ShareBarIcons from "./share-bar/icons";
@@ -112,6 +115,9 @@ export const demos = {
   "comment-section/service": CommentSectionService,
   "filter-panel/listing": FilterPanelListing,
   "promo-banner/sidebar": PromoBannerSidebar,
+  "cta-banner/mission": CtaBannerMission,
+  "split-hero/about": SplitHeroAbout,
+  "feature-grid/why-us": FeatureGridWhyUs,
   "report/variants": ReportVariants,
   "share-bar/icons": ShareBarIcons,
   "share-bar/labelled": ShareBarLabelled,

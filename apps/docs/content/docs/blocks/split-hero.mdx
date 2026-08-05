@@ -1,0 +1,70 @@
+---
+title: SplitHero
+description: The about page hero — a column of text beside a framed illustration.
+---
+
+**Reference:** about page (R-03) · **Tier:** A · **Block:** B-14 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/split-hero)
+
+```tsx
+import { SplitHero } from "@avero/react";
+```
+
+<ComponentPreview name="split-hero/about" />
+
+## Usage
+
+```tsx
+<SplitHero
+  eyebrow="تابستون ۱۴۰۵"
+  note="نقطه آغاز ماجرا"
+  title="یه تصمیم بزرگ برای شکستن مرزهای جغرافیایی کار"
+  image="/illustrations/story.svg"
+  imageAlt="داستان دورلنسر"
+  actions={<Button elevated>مشاهده پروژه‌ها</Button>}
+>
+  <p>…</p>
+  <p>…</p>
+</SplitHero>
+```
+
+Body paragraphs are children rather than a single string, because the reference's hero runs to
+three of them and each needs its own `<p>`. They inherit the justified 15px prose from the
+wrapper, so plain `<p>` elements are all you pass.
+
+Without `image` the text column takes the full width — the grid columns are only applied when
+there is something to put beside it.
+
+## Anatomy
+
+| Part    | Slot                             | Notes                                 |
+| ------- | -------------------------------- | ------------------------------------- |
+| Root    | `data-slot="split-hero"`         | A `Card` with the soft ambient shadow |
+| Body    | `data-slot="split-hero-body"`    | The paragraph stack                   |
+| Actions | `data-slot="split-hero-actions"` | Buttons under the text                |
+
+## Layout
+
+Seven columns of text beside five of illustration from `lg` up, one column below it. The
+illustration sits in its own gradient-tinted frame and scales slightly on hover.
+
+## RTL and LTR
+
+The reference pins the text column with `text-right`, which is only correct in RTL (defect R-09).
+Avero uses the logical `text-start`, so the hero reads correctly in both directions with no
+change to how it looks in Persian.
+
+## API reference
+
+`SplitHero` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/split-hero/SplitHero.tsx" name="SplitHeroOwnProps" />
+
+## Do and don't
+
+- **Do** give the illustration real alternative text when it carries meaning, and `""` when it
+  is decoration.
+- **Don't** put a second heading inside the body; the hero's title is the section's heading.
+
+## Related
+
+[CtaBanner](./cta-banner) · [FeatureGrid](./feature-grid) · [Badge](../components/badge)

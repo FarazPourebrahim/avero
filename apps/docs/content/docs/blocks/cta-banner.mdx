@@ -1,0 +1,60 @@
+---
+title: CtaBanner
+description: The dark gradient banner — eyebrow, headline and a statement, over two blurred glows.
+---
+
+**Reference:** about page (R-03) · **Tier:** A · **Block:** B-13 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/cta-banner)
+
+```tsx
+import { CtaBanner } from "@avero/react";
+```
+
+<ComponentPreview name="cta-banner/mission" />
+
+## Usage
+
+```tsx
+<CtaBanner eyebrow="مأموریت و چشم‌انداز" title="ساختن آینده‌ای که…">
+  هدف ما در دورلنسر تنها مدیریت چند پروژه نیست…
+</CtaBanner>
+```
+
+The reference's banner has no button — it is a statement, not a call to action, despite the name
+this block inherits from the plan. An `actions` slot is there for pages that need one.
+
+## Anatomy
+
+| Part    | Slot                             | Notes                                          |
+| ------- | -------------------------------- | ---------------------------------------------- |
+| Root    | `data-slot="cta-banner"`         | A `<section>` with the slate → indigo gradient |
+| Glows   | `data-slot="glow-orbs"`          | Decorative, `aria-hidden`                      |
+| Actions | `data-slot="cta-banner-actions"` | Rendered only when given                       |
+
+## Composition
+
+Built from `GlowOrbs` and `Eyebrow` (`onDark`). The content sits on `relative z-10` above the
+glows, so the 48px blur never washes the text out — an ordering that is easy to lose when copying
+the markup by hand.
+
+## Accessibility
+
+- The heading level is yours to set: the reference's is an `h3` because the banner closes a page
+  that already has an `h1` and an `h2`. Pass `titleAs` to fit your own outline.
+- The glows are decorative and hidden; there is nothing to describe.
+- The banner's text is white on a dark gradient, which clears AA comfortably at every size used
+  here.
+
+## API reference
+
+`CtaBanner` accepts every native `<section>` attribute plus:
+
+<PropsTable file="blocks/cta-banner/CtaBanner.tsx" name="CtaBannerOwnProps" />
+
+## Do and don't
+
+- **Do** keep the paragraph to a few lines — it is justified, and long text turns into rivers.
+- **Don't** place another dark surface directly against it; the gradient needs light around it.
+
+## Related
+
+[SplitHero](./split-hero) · [FeatureGrid](./feature-grid) · [GlowOrbs](../components/glow-orbs)
