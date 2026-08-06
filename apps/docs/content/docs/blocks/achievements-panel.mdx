@@ -1,0 +1,56 @@
+---
+title: AchievementsPanel
+description: The dashboard rank panel — a titled card over a highlight block and tinted rows.
+---
+
+**Reference:** freelancer dashboard (R-02) · **Tier:** A · **Block:** B-25 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/achievements-panel)
+
+```tsx
+import { AchievementsPanel, HighlightPanel, InfoRow } from "@avero/react";
+```
+
+<ComponentPreview name="achievements-panel/rank" />
+
+## Usage
+
+```tsx
+<AchievementsPanel title="رتبه و دستاوردها" icon={<TrophyIcon className="size-4 text-amber-500" />}>
+  <HighlightPanel label="رتبه در دورلنسر" value={rank ?? "-"} />
+  <InfoRow label="گواهینامه‌ها" value={`${certificates} عدد`} tone="emerald" icon={<AwardIcon />} />
+  <InfoRow label="نشان‌ها" value={`${badges} عدد`} tone="purple" icon={<BadgeIcon />} />
+</AchievementsPanel>
+```
+
+The panel supplies the card, the heading and the rhythm between rows; what goes in it is yours.
+The reference's own contents are one `HighlightPanel` for the rank and three `InfoRow`s.
+
+## Anatomy
+
+| Part  | Slot                                   | Notes                          |
+| ----- | -------------------------------------- | ------------------------------ |
+| Root  | `data-slot="achievements-panel"`       | A `<section>` on a flat `Card` |
+| Items | `data-slot="achievements-panel-items"` | The row stack                  |
+
+## Why not `CardTitle`
+
+`CardTitle` tints every icon it contains indigo, which is right for the panels that use it — but
+the reference's trophy here is amber. The heading is therefore a plain element, and the icon keeps
+whatever colour you give it.
+
+## API reference
+
+`AchievementsPanel` accepts every native `<section>` attribute plus:
+
+<PropsTable
+  file="blocks/achievements-panel/AchievementsPanel.tsx"
+  name="AchievementsPanelOwnProps"
+/>
+
+## Do and don't
+
+- **Do** show a placeholder like "-" for a rank that does not exist yet, as the reference does.
+- **Don't** let the rows exceed four or five; the panel is a summary, not a table.
+
+## Related
+
+[InfoRow and HighlightPanel](../components/stat) · [WelcomeCard](./welcome-card) · [QuickActions](./quick-actions)

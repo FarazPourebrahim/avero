@@ -15,6 +15,9 @@
     "promo-banner",
     "cta-banner",
     "split-hero",
-    "feature-grid"
+    "feature-grid",
+    "welcome-card",
+    "quick-actions",
+    "achievements-panel"
   ]
 }

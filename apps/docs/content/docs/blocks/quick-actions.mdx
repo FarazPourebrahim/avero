@@ -1,0 +1,54 @@
+---
+title: QuickActions
+description: The dashboard shortcut grid — a responsive row of gradient action tiles.
+---
+
+**Reference:** freelancer dashboard (R-02) · **Tier:** A · **Block:** B-16 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/quick-actions)
+
+```tsx
+import { ActionTile, QuickActions } from "@avero/react";
+```
+
+<ComponentPreview name="quick-actions/dashboard" />
+
+## Usage
+
+```tsx
+<QuickActions label="دسترسی سریع">
+  <ActionTile icon={<PlusIcon />} onClick={addService}>
+    افزودن خدمت
+  </ActionTile>
+  <ActionTile icon={<ImageIcon />} tone="purple" onClick={addWork}>
+    افزودن نمونه‌کار
+  </ActionTile>
+</QuickActions>
+```
+
+The tiles are children: `ActionTile` is its own component, and a grid that only accepted a fixed
+shape would rule out a link tile or a disabled one.
+
+## Columns
+
+Every row starts at two columns on a phone and three on a tablet, as the reference does;
+`columns` sets the count from `lg` up — 4, 5 or 6, with 6 matching the reference.
+
+## Accessibility
+
+The reference's grid is a bare `div`, so its six buttons are announced one after another with
+nothing tying them together. Passing `label` makes it a named group (deviation V-04) — worth doing
+whenever the tiles belong to one heading that is not directly above them.
+
+## API reference
+
+`QuickActions` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/quick-actions/QuickActions.tsx" name="QuickActionsOwnProps" />
+
+## Do and don't
+
+- **Do** keep the labels to two or three words — they sit under the icon and wrap tightly.
+- **Don't** mix destructive actions in; the tiles all look equally inviting.
+
+## Related
+
+[ActionTile](../components/action-tile) · [WelcomeCard](./welcome-card) · [AchievementsPanel](./achievements-panel)

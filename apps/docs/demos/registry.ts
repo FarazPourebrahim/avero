@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import AccordionFooter from "./accordion/footer";
+import AchievementsPanelRank from "./achievements-panel/rank";
 import ActivityHeatmapYear from "./activity-heatmap/year";
 import AuthorCardSidebar from "./author-card/sidebar";
 import AvatarFallback from "./avatar/fallback";
@@ -64,6 +65,7 @@ import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
 import PromoBannerSidebar from "./promo-banner/sidebar";
 import ProviderCardService from "./provider-card/service";
+import QuickActionsDashboard from "./quick-actions/dashboard";
 import RatingUsages from "./rating/usages";
 import ReportVariants from "./report/variants";
 import RichContentArticle from "./rich-content/article";
@@ -90,6 +92,7 @@ import ToggleChipGroupMetrics from "./toggle-chip-group/metrics";
 import TypographyHeadings from "./typography/headings";
 import TypographyText from "./typography/text";
 import VisuallyHiddenLiveRegion from "./visually-hidden/live-region";
+import WelcomeCardDashboard from "./welcome-card/dashboard";
 import ZoomFrameGallery from "./zoom-frame/gallery";
 
 /** Every live demo, keyed by its file path under `demos/` (without extension). */
@@ -116,6 +119,9 @@ export const demos = {
   "filter-panel/listing": FilterPanelListing,
   "promo-banner/sidebar": PromoBannerSidebar,
   "cta-banner/mission": CtaBannerMission,
+  "welcome-card/dashboard": WelcomeCardDashboard,
+  "quick-actions/dashboard": QuickActionsDashboard,
+  "achievements-panel/rank": AchievementsPanelRank,
   "split-hero/about": SplitHeroAbout,
   "feature-grid/why-us": FeatureGridWhyUs,
   "report/variants": ReportVariants,
