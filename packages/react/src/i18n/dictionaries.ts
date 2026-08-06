@@ -42,6 +42,10 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Dashboard greeting. `{name}` is replaced with the person's name. */
+  greeting: string;
+  /** Line under the dashboard greeting. */
+  welcomeMessage: string;
   /** Title of a filter panel. */
   filters: string;
   /** Name of a control that reports a violation. */
@@ -114,6 +118,8 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  greeting: "{name} عزیز، سلام 👋",
+  welcomeMessage: "به دورلنسر خوش اومدی",
   filters: "فیلترها",
   report: "گزارش تخلف",
   reportTitle: "گزارش اشکال یا تخلف",
@@ -163,6 +169,8 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  greeting: "Hello {name} 👋",
+  welcomeMessage: "Welcome back",
   filters: "Filters",
   report: "Report abuse",
   reportTitle: "Report a problem or abuse",

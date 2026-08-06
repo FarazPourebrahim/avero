@@ -78,6 +78,7 @@ export * from "./components/table/index.js";
 export * from "./components/zoom-frame/index.js";
 
 // Blocks
+export * from "./blocks/achievements-panel/index.js";
 export * from "./blocks/author-card/index.js";
 export * from "./blocks/comment-section/index.js";
 export * from "./blocks/cta-banner/index.js";
@@ -87,11 +88,13 @@ export * from "./blocks/listing-card/index.js";
 export * from "./blocks/opportunity-card/index.js";
 export * from "./blocks/post-list-item/index.js";
 export * from "./blocks/promo-banner/index.js";
+export * from "./blocks/quick-actions/index.js";
 export * from "./blocks/provider-card/index.js";
 export * from "./blocks/report/index.js";
 export * from "./blocks/share-bar/index.js";
 export * from "./blocks/showcase-card/index.js";
 export * from "./blocks/split-hero/index.js";
+export * from "./blocks/welcome-card/index.js";
 export * from "./blocks/suggestion-item/index.js";
 
 // Layout
