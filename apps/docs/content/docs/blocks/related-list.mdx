@@ -1,0 +1,63 @@
+---
+title: RelatedList
+description: The related services panel — a titled card over linked thumbnail rows.
+---
+
+**Reference:** service detail sidebar (R-05) · **Tier:** A · **Block:** B-24 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/related-list)
+
+```tsx
+import { RelatedItem, RelatedList } from "@avero/react";
+```
+
+<ComponentPreview name="related-list/services" />
+
+## Usage
+
+```tsx
+<RelatedList title="خدمات مرتبط" actions={<Link href="/services">همه</Link>}>
+  {services.map((service) => (
+    <RelatedItem
+      key={service.id}
+      title={service.title}
+      href={`/services/${service.slug}`}
+      image={service.cover}
+      price={service.price}
+    />
+  ))}
+</RelatedList>
+```
+
+A row shows a price when given a number, and anything else through `meta` — "توافقی", a date, a
+rating. `meta` wins when both are passed.
+
+## Anatomy
+
+| Part  | Slot                             | Notes                             |
+| ----- | -------------------------------- | --------------------------------- |
+| Root  | `data-slot="related-list"`       | A `<section>` on a `Card` surface |
+| Items | `data-slot="related-list-items"` | The row stack                     |
+| Row   | `data-slot="related-item"`       | One link: thumbnail, name, price  |
+
+## Accessibility
+
+The thumbnail is decorative (`alt=""`), so each row is announced by its name and price rather than
+by an image filename — the whole row is one link, not three.
+
+## API reference
+
+`RelatedList` accepts every native `<section>` attribute plus:
+
+<PropsTable file="blocks/related-list/RelatedList.tsx" name="RelatedListOwnProps" />
+
+`RelatedItem` accepts every native `<a>` attribute plus:
+
+<PropsTable file="blocks/related-list/RelatedList.tsx" name="RelatedItemOwnProps" />
+
+## Do and don't
+
+- **Do** keep names short — they truncate to one line at the sidebar's width.
+- **Don't** list more than a handful; this is a sidebar, not a search result page.
+
+## Related
+
+[PostListItem](./post-list-item) · [PriceTag](../components/price-tag) · [ListingCard](./listing-card)

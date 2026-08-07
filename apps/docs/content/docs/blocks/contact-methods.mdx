@@ -1,0 +1,60 @@
+---
+title: ContactMethods
+description: The direct contact panel — a titled card of verified contact channels.
+---
+
+**Reference:** service detail (R-05) · **Tier:** A · **Block:** B-22 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/contact-methods)
+
+```tsx
+import { ContactMethod, ContactMethods } from "@avero/react";
+```
+
+<ComponentPreview name="contact-methods/direct" />
+
+## Usage
+
+```tsx
+<ContactMethods title="راه‌های ارتباط مستقیم با ارائه‌دهنده خدمت" description="…">
+  <ContactMethod href="mailto:…" label="email:" value="…" external />
+  <ContactMethod href="tel:…" label="phone:" value="…" />
+  <ContactMethod
+    href="https://t.me/…"
+    label="telegram:"
+    value="@…"
+    icon={<TelegramIcon />}
+    external
+  />
+</ContactMethods>
+```
+
+The chips are [`ContactMethod`](../components/meta) components, which already handle the parts
+that are easy to get wrong: the value renders left-to-right in a monospace face even inside an RTL
+page, and `external` adds `rel="noopener noreferrer"` along with the new tab.
+
+## Anatomy
+
+| Part     | Slot                               | Notes                             |
+| -------- | ---------------------------------- | --------------------------------- |
+| Root     | `data-slot="contact-methods"`      | A `<section>` on a `Card` surface |
+| Channels | `data-slot="contact-methods-list"` | Wraps onto as many rows as needed |
+
+## Accessibility
+
+Each chip is a link whose accessible name is its label and value together — "email:
+hello@example.com" — so the channel and the address are announced as one thing. Phone and email
+links work on mobile without any script.
+
+## API reference
+
+`ContactMethods` accepts every native `<section>` attribute plus:
+
+<PropsTable file="blocks/contact-methods/ContactMethods.tsx" name="ContactMethodsOwnProps" />
+
+## Do and don't
+
+- **Do** say in `description` why the channels are there — the reference notes they are verified.
+- **Don't** show a contact channel the provider has not agreed to publish.
+
+## Related
+
+[ContactMethod](../components/meta) · [ProviderCard](./provider-card) · [PriceCard](./price-card)

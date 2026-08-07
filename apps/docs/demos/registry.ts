@@ -25,6 +25,7 @@ import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
 import CommentSectionArticle from "./comment-section/article";
 import CommentSectionService from "./comment-section/service";
+import ContactMethodsDirect from "./contact-methods/direct";
 import ContainerSizes from "./container/sizes";
 import CtaBannerMission from "./cta-banner/mission";
 import DashboardShellFreelancer from "./dashboard-shell/freelancer";
@@ -60,6 +61,7 @@ import NativeSelectSort from "./native-select/sort";
 import OpportunityCardRelated from "./opportunity-card/related";
 import PillTabsProfile from "./pill-tabs/profile";
 import PostListItemRelated from "./post-list-item/related";
+import PriceCardBase from "./price-card/base";
 import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
@@ -67,6 +69,7 @@ import PromoBannerSidebar from "./promo-banner/sidebar";
 import ProviderCardService from "./provider-card/service";
 import QuickActionsDashboard from "./quick-actions/dashboard";
 import RatingUsages from "./rating/usages";
+import RelatedListServices from "./related-list/services";
 import ReportVariants from "./report/variants";
 import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
@@ -122,6 +125,9 @@ export const demos = {
   "welcome-card/dashboard": WelcomeCardDashboard,
   "quick-actions/dashboard": QuickActionsDashboard,
   "achievements-panel/rank": AchievementsPanelRank,
+  "price-card/base": PriceCardBase,
+  "contact-methods/direct": ContactMethodsDirect,
+  "related-list/services": RelatedListServices,
   "split-hero/about": SplitHeroAbout,
   "feature-grid/why-us": FeatureGridWhyUs,
   "report/variants": ReportVariants,

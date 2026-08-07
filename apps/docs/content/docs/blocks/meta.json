@@ -18,6 +18,9 @@
     "feature-grid",
     "welcome-card",
     "quick-actions",
-    "achievements-panel"
+    "achievements-panel",
+    "price-card",
+    "contact-methods",
+    "related-list"
   ]
 }
