@@ -42,6 +42,8 @@ export type AveroDictionary = {
   share: string;
   /** Overlay call to action on a portfolio card. */
   viewDetails: string;
+  /** Label above a service's base price. */
+  basePrice: string;
   /** Dashboard greeting. `{name}` is replaced with the person's name. */
   greeting: string;
   /** Line under the dashboard greeting. */
@@ -118,6 +120,7 @@ export const fa: AveroDictionary = {
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
+  basePrice: "قیمت پایه خدمت",
   greeting: "{name} عزیز، سلام 👋",
   welcomeMessage: "به دورلنسر خوش اومدی",
   filters: "فیلترها",
@@ -169,6 +172,7 @@ export const en: AveroDictionary = {
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
+  basePrice: "Base price",
   greeting: "Hello {name} 👋",
   welcomeMessage: "Welcome back",
   filters: "Filters",
