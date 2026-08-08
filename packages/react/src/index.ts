@@ -79,7 +79,9 @@ export * from "./components/zoom-frame/index.js";
 
 // Blocks
 export * from "./blocks/achievements-panel/index.js";
+export * from "./blocks/article-header/index.js";
 export * from "./blocks/author-card/index.js";
+export * from "./blocks/category-links/index.js";
 export * from "./blocks/comment-section/index.js";
 export * from "./blocks/contact-methods/index.js";
 export * from "./blocks/cta-banner/index.js";
@@ -89,8 +91,10 @@ export * from "./blocks/listing-card/index.js";
 export * from "./blocks/opportunity-card/index.js";
 export * from "./blocks/post-list-item/index.js";
 export * from "./blocks/price-card/index.js";
+export * from "./blocks/profile-header/index.js";
 export * from "./blocks/promo-banner/index.js";
 export * from "./blocks/quick-actions/index.js";
+export * from "./blocks/reaction-bar/index.js";
 export * from "./blocks/related-list/index.js";
 export * from "./blocks/provider-card/index.js";
 export * from "./blocks/report/index.js";

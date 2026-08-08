@@ -36,6 +36,10 @@ export type AveroDictionary = {
   view: string;
   /** Reason shown when an opportunity has no places left. */
   capacityFull: string;
+  /** Accessible name of a save control. */
+  save: string;
+  /** Accessible name of a view count. */
+  views: string;
   /** Accessible name of a like control. */
   like: string;
   /** Accessible name of a share control. */
@@ -78,6 +82,8 @@ export type AveroDictionary = {
   submitComment: string;
   /** Message shown when nothing has been commented yet. */
   commentsEmpty: string;
+  /** Label before a row of social links on a profile. */
+  socialNetworks: string;
   /** Label above a service provider's name. */
   serviceProvider: string;
   /** Call to action linking to a provider's profile. */
@@ -117,6 +123,8 @@ export const fa: AveroDictionary = {
   rating: "امتیاز {value}",
   view: "مشاهده",
   capacityFull: "تکمیل ظرفیت",
+  save: "ذخیره",
+  views: "بازدید",
   like: "پسندیدن",
   share: "اشتراک‌گذاری",
   viewDetails: "مشاهده جزئیات کامل",
@@ -138,6 +146,7 @@ export const fa: AveroDictionary = {
   commentPlaceholder: "نظر خود را بنویسید...",
   submitComment: "ثبت نظر",
   commentsEmpty: "هنوز نظری ثبت نشده است. اولین نفری باشید که نظر ثبت می‌کند!",
+  socialNetworks: "شبکه‌های اجتماعی:",
   serviceProvider: "ارائه‌دهنده خدمت",
   viewProfile: "مشاهده پروفایل فریلنسر",
   editorLabel: "ویرایشگر متن",
@@ -169,6 +178,8 @@ export const en: AveroDictionary = {
   rating: "Rating {value}",
   view: "View",
   capacityFull: "Capacity full",
+  save: "Save",
+  views: "Views",
   like: "Like",
   share: "Share",
   viewDetails: "View full details",
@@ -190,6 +201,7 @@ export const en: AveroDictionary = {
   commentPlaceholder: "Write your comment…",
   submitComment: "Post comment",
   commentsEmpty: "No comments yet. Be the first to write one!",
+  socialNetworks: "Social networks:",
   serviceProvider: "Service provider",
   viewProfile: "View freelancer profile",
   editorLabel: "Rich text editor",

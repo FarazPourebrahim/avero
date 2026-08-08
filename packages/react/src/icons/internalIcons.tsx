@@ -32,6 +32,40 @@ export const ChevronRightIcon = createIcon("ChevronRightIcon", {
   paths: ["m9 18 6-6-6-6"],
 });
 
+export const BookmarkIcon = createIcon("BookmarkIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z",
+  ],
+});
+
+export const EyeIcon = createIcon("EyeIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",
+    "M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0",
+  ],
+});
+
+export const FolderTreeIcon = createIcon("FolderTreeIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z",
+    "M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z",
+    "M3 5a2 2 0 0 0 2 2h3",
+    "M3 3v13a2 2 0 0 0 2 2h3",
+  ],
+});
+
+export const UserIcon = createIcon("UserIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", "M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"],
+});
+
 export const FlagIcon = createIcon("FlagIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",
