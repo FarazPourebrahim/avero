@@ -1,0 +1,81 @@
+---
+title: ProfileHeader
+description: The freelancer profile header — gradient cover, overlapping avatar, identity, tabs and socials.
+---
+
+**Reference:** profile about (R-04) and portfolio (R-08) · **Tier:** A · **Block:** B-17 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/profile-header)
+
+```tsx
+import { ProfileHeader } from "@avero/react";
+```
+
+<ComponentPreview name="profile-header/freelancer" />
+
+## Usage
+
+```tsx
+<ProfileHeader
+  name={freelancer.name}
+  image={freelancer.avatar}
+  headline={freelancer.headline}
+  badge={<Badge variant="premium">پکیج رایگان</Badge>}
+  meta={
+    <>
+      <MetaItem variant="pill" icon={<MapPinIcon />}>
+        {freelancer.city}
+      </MetaItem>
+      <MetaItem icon={<CalendarSolidIcon />}>تاریخ عضویت: {joined}</MetaItem>
+    </>
+  }
+  tabs={
+    <PillTabs aria-label="بخش‌های پروفایل">
+      <PillTab href={aboutHref} current={tab === "about"}>
+        درباره من
+      </PillTab>
+      <PillTab href={portfolioHref} current={tab === "portfolio"}>
+        نمونه کار
+      </PillTab>
+    </PillTabs>
+  }
+  socials={socialButtons}
+/>
+```
+
+The same header appears on every profile tab with a different tab marked current, so `tabs` is a
+slot rather than data: which page is open is routing, not presentation.
+
+## Anatomy
+
+| Part    | Slot                                 | Notes                                         |
+| ------- | ------------------------------------ | --------------------------------------------- |
+| Root    | `data-slot="profile-header"`         | A `CoverHeader`                               |
+| Cover   | `data-slot="cover-header-cover"`     | Gradient by default; pass `cover` for artwork |
+| Avatar  | `data-slot="cover-header-avatar"`    | The white ring overlapping the cover          |
+| Footer  | `data-slot="cover-header-footer"`    | Tabs and socials; omitted when both are       |
+| Socials | `data-slot="profile-header-socials"` | Label plus the social buttons                 |
+
+## Composition
+
+Built on [`CoverHeader`](../components/cover-header), which owns the cover, the avatar ring and
+the footer bar. This block adds the identity block — name, badge, headline and meta — and the
+labelled social row.
+
+## RTL and LTR
+
+The reference pushes the socials label with `ml-1`, which only works in RTL (defect R-09). Avero
+uses the logical `me-1`, so the spacing follows the writing direction.
+
+## API reference
+
+`ProfileHeader` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/profile-header/ProfileHeader.tsx" name="ProfileHeaderOwnProps" />
+
+## Do and don't
+
+- **Do** give every social link an accessible name — the reference labels them only with `title`.
+- **Don't** stack more than two lines of meta; the header is already tall on a phone.
+
+## Related
+
+[CoverHeader](../components/cover-header) · [PillTabs](../components/pill-tabs) · [ShowcaseCard](./showcase-card)

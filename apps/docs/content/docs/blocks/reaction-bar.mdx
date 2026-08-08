@@ -1,0 +1,67 @@
+---
+title: ReactionBar
+description: The project action row — like, views, remaining capacity and save.
+---
+
+**Reference:** project detail (R-07) · **Tier:** A · **Block:** B-19 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/reaction-bar)
+
+```tsx
+import { ReactionBar } from "@avero/react";
+```
+
+<ComponentPreview name="reaction-bar/project" />
+
+## Usage
+
+```tsx
+<ReactionBar
+  likes={project.likes}
+  liked={project.likedByMe}
+  onLike={toggleLike}
+  views={project.views}
+  capacity="حداکثر ۱۵ رزومه"
+  saved={project.savedByMe}
+  onSave={toggleSave}
+/>
+```
+
+Each pill appears only when it has a value, so a project without a capacity limit simply has three
+pills. Anything extra goes in as children, at the end of the row.
+
+## Counts
+
+`likes` and `views` are printed exactly as given, which is what the reference does — its counts are
+Latin digits on a page whose prices are Persian (defect R-16). Format them yourself with
+`useAveroFormatter` when you want the locale's digits.
+
+## Toggles
+
+Both toggles are buttons with `aria-pressed` rather than checkboxes, and the attribute follows
+`liked` and `saved`. The reference sets it too, but hard-codes it to `false`, so a screen reader
+never learns that the viewer has already liked or saved (defect R-10, deviation V-04).
+
+## Anatomy
+
+| Part     | Slot                                |
+| -------- | ----------------------------------- |
+| Root     | `data-slot="reaction-bar"`          |
+| Like     | `data-slot="reaction-bar-like"`     |
+| Views    | `data-slot="reaction-bar-views"`    |
+| Capacity | `data-slot="reaction-bar-capacity"` |
+| Save     | `data-slot="reaction-bar-save"`     |
+
+## API reference
+
+`ReactionBar` accepts every native `<div>` attribute plus:
+
+<PropsTable file="blocks/reaction-bar/ReactionBar.tsx" name="ReactionBarOwnProps" />
+
+## Do and don't
+
+- **Do** update `liked` and `likes` together — an optimistic update that moves one without the
+  other reads as a bug.
+- **Don't** use the bar for navigation; every pill here is a state change or a count.
+
+## Related
+
+[CategoryLinks](./category-links) · [OpportunityCard](./opportunity-card) · [Report](./report)

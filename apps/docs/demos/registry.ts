@@ -3,6 +3,7 @@ import AccordionFooter from "./accordion/footer";
 import AchievementsPanelRank from "./achievements-panel/rank";
 import ActivityHeatmapYear from "./activity-heatmap/year";
 import AuthorCardSidebar from "./author-card/sidebar";
+import ArticleHeaderBlogPost from "./article-header/blog-post";
 import AvatarFallback from "./avatar/fallback";
 import AvatarUsages from "./avatar/usages";
 import BadgeHighlights from "./badge/highlights";
@@ -20,6 +21,7 @@ import CardSurfaces from "./card/surfaces";
 import CoverHeaderProfile from "./cover-header/profile";
 import CarouselPill from "./carousel/pill";
 import CarouselRelatedProjects from "./carousel/related-projects";
+import CategoryLinksRelated from "./category-links/related";
 import ChartsAnalytics from "./charts/analytics";
 import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
@@ -66,9 +68,11 @@ import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
 import PromoBannerSidebar from "./promo-banner/sidebar";
+import ProfileHeaderFreelancer from "./profile-header/freelancer";
 import ProviderCardService from "./provider-card/service";
 import QuickActionsDashboard from "./quick-actions/dashboard";
 import RatingUsages from "./rating/usages";
+import ReactionBarProject from "./reaction-bar/project";
 import RelatedListServices from "./related-list/services";
 import ReportVariants from "./report/variants";
 import RichContentArticle from "./rich-content/article";
@@ -128,6 +132,10 @@ export const demos = {
   "price-card/base": PriceCardBase,
   "contact-methods/direct": ContactMethodsDirect,
   "related-list/services": RelatedListServices,
+  "article-header/blog-post": ArticleHeaderBlogPost,
+  "profile-header/freelancer": ProfileHeaderFreelancer,
+  "reaction-bar/project": ReactionBarProject,
+  "category-links/related": CategoryLinksRelated,
   "split-hero/about": SplitHeroAbout,
   "feature-grid/why-us": FeatureGridWhyUs,
   "report/variants": ReportVariants,

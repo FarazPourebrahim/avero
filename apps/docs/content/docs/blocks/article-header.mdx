@@ -1,0 +1,67 @@
+---
+title: ArticleHeader
+description: The blog article header — cover, title and the metadata panel.
+---
+
+**Reference:** blog article (R-01) · **Tier:** A · **Block:** B-20 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/article-header)
+
+```tsx
+import { ArticleHeader } from "@avero/react";
+```
+
+<ComponentPreview name="article-header/blog-post" />
+
+## Usage
+
+```tsx
+<ArticleHeader
+  titleId="article-title"
+  title={post.title}
+  image={post.cover}
+  actions={<BackLink href="/blog">بازگشت</BackLink>}
+  meta={
+    <>
+      <MetaItem icon={<CalendarSolidIcon size={14} />} label="انتشار:">
+        <time dateTime={post.publishedAt}>{formatted}</time>
+      </MetaItem>
+      <MetaItem icon={<ClockSolidIcon size={14} />}>{post.readingTime}</MetaItem>
+    </>
+  }
+/>
+```
+
+The header is a `<header>` with the same 24px gap as the article card around it, so its parts
+space evenly whether the card lays them out or this block does.
+
+## Anatomy
+
+| Part    | Slot                                 | Notes                                   |
+| ------- | ------------------------------------ | --------------------------------------- |
+| Root    | `data-slot="article-header"`         | A `<header>`                            |
+| Actions | `data-slot="article-header-actions"` | The row above the cover                 |
+| Cover   | `data-slot="figure"`                 | A `Figure` that clips the zooming image |
+| Meta    | `data-slot="meta-bar"`               | `MetaBar` in its `panel` variant        |
+
+## Accessibility
+
+- `titleId` exists so the surrounding `<article>` can point `aria-labelledby` at the title, as the
+  reference does — the article is then announced by its name rather than as an unnamed region.
+- The cover's alternative text falls back to the title, which is what the reference uses. Pass
+  `imageAlt=""` when the cover is pure decoration.
+- Dates belong in a `<time datetime="…">` inside the meta item, so the machine-readable date
+  survives the Jalali formatting.
+
+## API reference
+
+`ArticleHeader` accepts every native `<header>` attribute plus:
+
+<PropsTable file="blocks/article-header/ArticleHeader.tsx" name="ArticleHeaderOwnProps" />
+
+## Do and don't
+
+- **Do** keep the meta panel to three or four items; it wraps, but it is a strip, not a table.
+- **Don't** put the article's excerpt here — the header ends at the metadata.
+
+## Related
+
+[AuthorCard](./author-card) · [PostListItem](./post-list-item) · [MetaBar](../components/meta)

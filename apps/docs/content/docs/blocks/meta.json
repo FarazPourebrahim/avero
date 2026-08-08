@@ -21,6 +21,10 @@
     "achievements-panel",
     "price-card",
     "contact-methods",
-    "related-list"
+    "related-list",
+    "article-header",
+    "profile-header",
+    "reaction-bar",
+    "category-links"
   ]
 }
