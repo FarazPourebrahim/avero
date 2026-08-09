@@ -21,6 +21,7 @@
     "format": "prettier --write .",
     "format-check": "prettier --check .",
     "test": "pnpm -r run test",
+    "replica-parity": "cd apps/replica && pnpm run parity",
     "storybook-test-visual": "cd apps/storybook && pnpm run test-visual",
     "size": "cd packages/react && pnpm run size",
     "changeset": "changeset"

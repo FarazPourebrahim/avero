@@ -8,6 +8,12 @@ export const ArrowRightIcon = createIcon("ArrowRightIcon", {
   paths: ["M5 12h14", "m12 5 7 7-7 7"],
 });
 
+export const ArrowLeftIcon = createIcon("ArrowLeftIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["m12 19-7-7 7-7", "M19 12H5"],
+});
+
 export const ArrowDownIcon = createIcon("ArrowDownIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",
@@ -66,6 +72,34 @@ export const UserIcon = createIcon("UserIcon", {
   paths: ["M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", "M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"],
 });
 
+export const ShieldCheckIcon = createIcon("ShieldCheckIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+    "m9 12 2 2 4-4",
+  ],
+});
+
+export const UsersIcon = createIcon("UsersIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",
+    "M16 3.128a4 4 0 0 1 0 7.744",
+    "M22 21v-2a4 4 0 0 0-3-3.87",
+    "M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+  ],
+});
+
+export const ZapIcon = createIcon("ZapIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z",
+  ],
+});
+
 export const FlagIcon = createIcon("FlagIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",
@@ -91,6 +125,15 @@ export const TriangleAlertIcon = createIcon("TriangleAlertIcon", {
     "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
     "M12 9v4",
     "M12 17h.01",
+  ],
+});
+
+export const AwardIcon = createIcon("AwardIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526",
+    "M6 8a6 6 0 1 0 12 0a6 6 0 1 0 -12 0",
   ],
 });
 

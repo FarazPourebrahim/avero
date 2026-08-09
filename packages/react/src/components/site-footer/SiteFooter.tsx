@@ -91,6 +91,11 @@ export type SiteFooterOwnProps = {
   brandLinksTitle?: ReactNode;
   /** Groups rendered as accordions below `md`. */
   groups?: FooterGroup[];
+  /**
+   * Desktop link columns, each a heading over chips — the reference's "دسترسی سریع" column. They
+   * are hidden below `md`, where the same links belong in `groups` instead.
+   */
+  linkColumns?: FooterGroup[];
   /** Contact column, shown from `md`. */
   contact?: { title: ReactNode; rows: FooterContactRow[] };
   /** About strip: the long text shows from `md`, the short one below it. */
@@ -118,6 +123,7 @@ export const SiteFooter = forwardRef<HTMLElement, SiteFooterProps>(function Site
     brandLinks,
     brandLinksTitle,
     groups,
+    linkColumns,
     contact,
     about,
     trustSeal,
@@ -147,7 +153,7 @@ export const SiteFooter = forwardRef<HTMLElement, SiteFooterProps>(function Site
       <Container className="relative mb-4 flex flex-col gap-y-10 overflow-hidden md:mb-5 md:gap-y-20">
         {categories ? (
           <div data-slot="footer-categories" className="hidden w-full space-y-5 md:block">
-            <h3 className="text-text-chrome relative text-lg font-bold">
+            <h3 className="text-text-strong relative text-lg font-bold">
               <span>{categories.title}</span>
             </h3>
             <div className="grid grid-cols-3 gap-6 lg:grid-cols-5">
@@ -203,10 +209,27 @@ export const SiteFooter = forwardRef<HTMLElement, SiteFooterProps>(function Site
             </div>
           ) : null}
 
+          {linkColumns?.map((column, index) => (
+            <div key={index} data-slot="footer-link-column" className="col-span-4 md:col-span-1">
+              <div className="flex flex-col items-start gap-y-3">
+                <div className="text-text-strong relative mb-3 hidden text-sm font-semibold md:block md:text-lg">
+                  <span>{column.title}</span>
+                </div>
+                <div className="hidden gap-3 md:flex md:flex-row md:flex-wrap">
+                  {column.links.map((link) => (
+                    <FooterChip key={link.href} href={link.href} {...linkProps(link)}>
+                      {link.label}
+                    </FooterChip>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+
           {contact ? (
             <div data-slot="footer-contact" className="col-span-4 hidden md:col-span-1 md:block">
               <div className="flex w-full flex-col items-start gap-y-3">
-                <div className="text-text-chrome relative mb-3 text-sm font-semibold md:text-lg">
+                <div className="text-text-strong relative mb-3 text-sm font-semibold md:text-lg">
                   <span>{contact.title}</span>
                 </div>
                 <div className="flex w-full flex-col gap-y-7">

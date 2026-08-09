@@ -42,6 +42,7 @@ export { mergeRefs } from "./utils/refs.js";
 
 // Icons
 export { createIcon, type IconDefinition, type IconProps } from "./icons/createIcon.js";
+export * from "./icons/internalIcons.js";
 export * from "./icons/referenceIcons.generated.js";
 
 // Primitives
