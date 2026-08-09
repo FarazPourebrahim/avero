@@ -66,7 +66,9 @@ export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function Li
 ) {
   return (
     <article ref={ref} data-slot="listing-card" className={cn("w-full", className)} {...props}>
-      <Card asChild variant="glass" padding="none" className="overflow-hidden p-3">
+      {/* `block`: the reference sets it too, and without it the anchor stays inline, which lays its
+          block children out through anonymous boxes and changes the card height. */}
+      <Card asChild variant="glass" padding="none" className="block overflow-hidden p-3">
         <a href={href} aria-label={title}>
           <div className="h-60 w-full overflow-hidden bg-gray-100">
             <Image src={image} alt="" fit="cover" radius="lg" className="h-60 w-full" />

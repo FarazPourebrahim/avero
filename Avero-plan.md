@@ -899,8 +899,9 @@ A component or block counts as **Done** in §11 only when **all** of these hold.
 
 > Status 2026-07-30: the gate exists and is deterministic (`pnpm replica-parity`). RP-03 passes at
 > 768, 1280 and 1536px — its layout is identical to the reference to the pixel, landmark for
-> landmark — and fails at 375px, where the reference captures 260px taller (KD-09). The other seven
-> pages are not built yet (KD-08). Two defects were found and fixed while building the gate: the
+> landmark — and fails at 375px, where the reference captures 260px taller (KD-09). RP-06 is built
+> and its chrome and sidebar match, but its cards run 17px tall, so it fails at every viewport
+> (KD-11). The other six pages are not built yet (KD-08). Two defects were found and fixed while building the gate: the
 > capture config also ran the parity spec, against the wrong server, and overwrote the baselines it
 > was meant to measure against; and `fullPage` screenshots of a page with a sticky header were not
 > reproducible between runs, so both specs now size the viewport to the document first.
