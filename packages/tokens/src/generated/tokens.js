@@ -124,74 +124,6 @@ export const tokens = {
     "cssVar": "--color-shadow-box",
     "value": "#0f172a14"
   },
-  "colorHeroSkin": {
-    "cssVar": "--color-hero-skin",
-    "value": "#ffd1b3"
-  },
-  "colorHeroSkinShadow": {
-    "cssVar": "--color-hero-skin-shadow",
-    "value": "#e0b496"
-  },
-  "colorHeroHair": {
-    "cssVar": "--color-hero-hair",
-    "value": "#4e3629"
-  },
-  "colorHeroTshirt": {
-    "cssVar": "--color-hero-tshirt",
-    "value": "#4f46e5"
-  },
-  "colorHeroTshirtShadow": {
-    "cssVar": "--color-hero-tshirt-shadow",
-    "value": "#3b31c9"
-  },
-  "colorHeroHeadphones": {
-    "cssVar": "--color-hero-headphones",
-    "value": "#1e293b"
-  },
-  "colorHeroHeadphonesDetail": {
-    "cssVar": "--color-hero-headphones-detail",
-    "value": "#f15928"
-  },
-  "colorHeroLaptopBody": {
-    "cssVar": "--color-hero-laptop-body",
-    "value": "#e2e8f0"
-  },
-  "colorHeroLaptopScreen": {
-    "cssVar": "--color-hero-laptop-screen",
-    "value": "#0f172a"
-  },
-  "colorHeroLaptopGlow": {
-    "cssVar": "--color-hero-laptop-glow",
-    "value": "#6366f140"
-  },
-  "colorHeroMug": {
-    "cssVar": "--color-hero-mug",
-    "value": "#f15928"
-  },
-  "colorHeroCoffeeSteam": {
-    "cssVar": "--color-hero-coffee-steam",
-    "value": "#78787840"
-  },
-  "colorHeroDeskWood": {
-    "cssVar": "--color-hero-desk-wood",
-    "value": "#a16207"
-  },
-  "colorHeroPot": {
-    "cssVar": "--color-hero-pot",
-    "value": "#cbd5e1"
-  },
-  "colorHeroPlantLeaf1": {
-    "cssVar": "--color-hero-plant-leaf-1",
-    "value": "#10b981"
-  },
-  "colorHeroPlantLeaf2": {
-    "cssVar": "--color-hero-plant-leaf-2",
-    "value": "#047857"
-  },
-  "colorHeroKeyboardKeys": {
-    "cssVar": "--color-hero-keyboard-keys",
-    "value": "#94a3b8"
-  },
   "colorChartViews": {
     "cssVar": "--color-chart-views",
     "value": "#6366f1"
@@ -396,30 +328,6 @@ export const tokens = {
     "cssVar": "--animate-spin-glow",
     "value": "spin-glow 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite"
   },
-  "animationTypingLeft": {
-    "cssVar": "--animate-typing-left",
-    "value": "typing-left-hand 0.22s ease-in-out infinite"
-  },
-  "animationTypingRight": {
-    "cssVar": "--animate-typing-right",
-    "value": "typing-right-hand 0.18s ease-in-out infinite"
-  },
-  "animationSteam": {
-    "cssVar": "--animate-steam",
-    "value": "coffee-steam-rise 3.5s ease-in-out infinite"
-  },
-  "animationLeafSway": {
-    "cssVar": "--animate-leaf-sway",
-    "value": "leaf-sway 6s ease-in-out infinite"
-  },
-  "animationLeafSwayAlt": {
-    "cssVar": "--animate-leaf-sway-alt",
-    "value": "leaf-sway-alt 7.5s ease-in-out infinite"
-  },
-  "animationMonitorGlow": {
-    "cssVar": "--animate-monitor-glow",
-    "value": "monitor-light-pulse 4s ease-in-out infinite"
-  },
   "animationAccordionDown": {
     "cssVar": "--animate-accordion-down",
     "value": "accordion-down 0.3s ease-in-out"
@@ -509,23 +417,6 @@ export const tokenGroups = {
     "warning-hover",
     "shadow-brand",
     "shadow-box",
-    "hero-skin",
-    "hero-skin-shadow",
-    "hero-hair",
-    "hero-tshirt",
-    "hero-tshirt-shadow",
-    "hero-headphones",
-    "hero-headphones-detail",
-    "hero-laptop-body",
-    "hero-laptop-screen",
-    "hero-laptop-glow",
-    "hero-mug",
-    "hero-coffee-steam",
-    "hero-desk-wood",
-    "hero-pot",
-    "hero-plant-leaf-1",
-    "hero-plant-leaf-2",
-    "hero-keyboard-keys",
     "chart-views",
     "chart-likes",
     "chart-clicks",
@@ -603,12 +494,6 @@ export const tokenGroups = {
     "sway",
     "shimmer",
     "spin-glow",
-    "typing-left",
-    "typing-right",
-    "steam",
-    "leaf-sway",
-    "leaf-sway-alt",
-    "monitor-glow",
     "accordion-down",
     "accordion-up"
   ],

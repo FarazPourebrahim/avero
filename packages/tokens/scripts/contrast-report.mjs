@@ -1,30 +1,59 @@
-// Phase 2 contrast report: computes WCAG 2.2 contrast ratios for every text/background pairing the
-// reference uses (plan §5, §7) and writes packages/tokens/reference/contrast-report.md.
+// Contrast report: computes WCAG 2.2 contrast ratios for every text/background pairing Avero
+// components use and writes packages/tokens/reports/contrast-report.md.
+// Avero tokens come from src/theme.css; Tailwind's default palette comes from the installed
+// tailwindcss/theme.css, converted from oklch to sRGB hex by lightningcss, the same conversion that
+// produces Tailwind's own sRGB fallbacks.
 // Translucent colors are composited over their backdrop before measuring.
-// Failures are reported, not fatal: decision O-04 keeps the reference look and documents them.
+// Failures are reported, not fatal: they are documented so themes can override the tokens involved.
+import { transform } from "lightningcss";
 import { readFileSync, writeFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const PACKAGE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..");
-const OUTPUT_FILE = join(PACKAGE_DIR, "reference", "contrast-report.md");
+const OUTPUT_FILE = join(PACKAGE_DIR, "reports", "contrast-report.md");
 
-const extracted = JSON.parse(
-  readFileSync(join(PACKAGE_DIR, "reference", "tokens.extracted.json"), "utf8"),
-);
+const require = createRequire(import.meta.url);
+const tailwindThemeCss = readFileSync(require.resolve("tailwindcss/theme.css"), "utf8");
 const themeCss = readFileSync(join(PACKAGE_DIR, "src", "theme.css"), "utf8");
 
-const averoColors = new Map(
-  [...themeCss.matchAll(/(--color-[\w-]+)\s*:\s*([^;]+);/g)].map((match) => [
-    match[1],
-    match[2].trim(),
-  ]),
-);
+function colorProperties(css) {
+  return new Map(
+    [...css.matchAll(/(--color-[\w-]+)\s*:\s*([^;]+);/g)].map((match) => [
+      match[1],
+      match[2].trim(),
+    ]),
+  );
+}
+
+/** Replaces every `oklch()` value with the sRGB hex lightningcss emits as its fallback. */
+function toSrgbHex(colors) {
+  const oklchEntries = [...colors].filter(([, value]) => value.startsWith("oklch("));
+  const css = oklchEntries.map(([, value], index) => `.c${index}{color:${value}}`).join("");
+  const { code } = transform({
+    filename: "palette.css",
+    code: Buffer.from(css),
+    minify: true,
+    targets: { chrome: 80 << 16 },
+  });
+  const output = code.toString();
+  const converted = new Map(colors);
+  oklchEntries.forEach(([name], index) => {
+    const hex = output.match(new RegExp(`\\.c${index}\\{color:(#[0-9a-f]+)`))?.[1];
+    if (!hex) throw new Error(`Could not convert ${name} to sRGB`);
+    converted.set(name, hex);
+  });
+  return converted;
+}
+
+const averoColors = colorProperties(themeCss);
+const tailwindColors = toSrgbHex(colorProperties(tailwindThemeCss));
 
 // WCAG thresholds.
 const REQUIRED = { normal: 4.5, large: 3, ui: 3 };
 
-/** Every foreground/background pairing used by Tier A components, with where it appears. */
+/** Every foreground/background pairing used by Avero components, with where it appears. */
 const PAIRS = [
   // Page chrome
   { fg: "foreground", bg: "background", size: "normal", where: "Body text on the page background" },
@@ -101,11 +130,10 @@ function resolveColor(name) {
   if (name === "white") return "#ffffff";
   if (name === "black") return "#000000";
   const [base, alpha] = name.split("/");
-  const token = averoColors.get(`--color-${base}`);
-  let value = token ?? extracted.themeDefaults[`--color-${base}`];
+  let value = averoColors.get(`--color-${base}`) ?? tailwindColors.get(`--color-${base}`);
   if (!value) throw new Error(`Unknown color: ${name}`);
-  const reference = value.match(/^var\((--color-[\w-]+)\)$/)?.[1];
-  if (reference) value = resolveColor(reference.slice("--color-".length));
+  const alias = value.match(/^var\((--color-[\w-]+)\)$/)?.[1];
+  if (alias) value = resolveColor(alias.slice("--color-".length));
   return alpha ? withAlpha(value, Number(alpha) / 100) : value;
 }
 
@@ -175,7 +203,7 @@ Translucent colors are composited over their backdrop before measuring.
 
 **Result:** ${rows.length - failures.length}/${rows.length} pairings pass. ${failures.length} fail AA.
 
-Per decision O-04, Avero keeps the reference's look by default. Consumers who need strict AA can override
+Per decision O-04, Avero keeps its default palette. Consumers who need strict AA can override
 \`--color-text-muted\` (and the other tokens below) in their theme.
 
 | Where | Pairing | Size | Ratio | Required | AA |

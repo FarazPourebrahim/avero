@@ -1,9 +1,9 @@
 /*
- * Avero utilities: named utilities for the reference's custom CSS and recurring gradients.
+ * Avero utilities: named utilities for scrollbars, loading effects and recurring gradients.
  * Safe to import in any Tailwind v4 app; nothing here styles elements until a class is used.
  *
- * Gradients are defined with @apply of the exact Tailwind classes the reference uses, so they compile
- * to the same CSS (including Tailwind v4's oklab interpolation).
+ * Gradients are defined with @apply of plain Tailwind classes, so they compile to the same CSS as
+ * the classes would inline (including Tailwind v4's oklab interpolation).
  */
 
 /* ---------------------------------------------------------------- Scrollbars */
@@ -76,7 +76,7 @@
 
 /* ---------------------------------------------------------------- Gradients */
 
-/* Profile cover (R-04, R-08). */
+/* Profile cover. */
 @utility gradient-cover {
   @apply bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700;
 }
@@ -86,37 +86,37 @@
   @apply bg-gradient-to-t from-black/40 via-transparent to-transparent;
 }
 
-/* Hover overlay on showcase media (R-08). */
+/* Hover overlay on showcase media. */
 @utility gradient-media-shade {
   @apply bg-gradient-to-t from-black/60 via-transparent to-transparent;
 }
 
-/* Dark mission / call-to-action banner (R-03). */
+/* Dark call-to-action banner. */
 @utility gradient-night {
   @apply bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900;
 }
 
-/* Vertical accent bar beside page titles (R-03). */
+/* Vertical accent bar beside page titles. */
 @utility gradient-accent-bar {
   @apply from-primary bg-gradient-to-b to-cyan-500;
 }
 
-/* Soft label pill (R-03). */
+/* Soft label pill. */
 @utility gradient-label {
   @apply from-primary/10 bg-gradient-to-r to-cyan-50;
 }
 
-/* Premium badge (R-04, R-08). */
+/* Premium badge. */
 @utility gradient-premium {
   @apply bg-gradient-to-r from-amber-500/10 via-yellow-500/20 to-amber-500/10;
 }
 
-/* Illustration frame (R-03). */
+/* Illustration frame. */
 @utility gradient-art-frame {
   @apply bg-gradient-to-tr from-slate-50 to-indigo-50/50;
 }
 
-/* Brand fill (CSS-only in the reference). */
+/* Brand fill. */
 @utility gradient-brand {
   @apply from-primary to-primary-hover bg-gradient-to-r;
 }

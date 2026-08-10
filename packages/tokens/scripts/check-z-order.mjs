@@ -1,6 +1,5 @@
-// Phase 6 DoD: the overlay stack has to layer correctly, so the z tokens must increase strictly in
-// this order. The reference itself puts drawers and the sticky header on the same layer (z-50),
-// which lets a drawer render under a dropdown; Avero raises `--z-drawer` instead (deviation V-10).
+// The overlay stack has to layer correctly, so the z tokens must increase strictly in this order.
+// Drawers sit above the sticky header and dropdowns, so an open drawer is never rendered beneath them.
 import { readFileSync } from "node:fs";
 
 const ORDER = [

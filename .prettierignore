@@ -10,4 +10,4 @@ test-results/
 Avero-plan.md
 .claude/
 packages/tokens/src/generated/
-packages/tokens/reference/
+packages/tokens/reports/

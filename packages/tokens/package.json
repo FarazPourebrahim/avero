@@ -11,7 +11,6 @@
     "./base.css": "./src/base.css",
     "./utilities.css": "./src/utilities.css",
     "./rich-content.css": "./src/rich-content.css",
-    "./compat.css": "./src/compat.css",
     "./tokens.json": "./src/generated/tokens.json",
     ".": {
       "types": "./src/generated/tokens.d.ts",
@@ -23,15 +22,15 @@
     "src"
   ],
   "scripts": {
-    "extract-reference": "node scripts/extract-reference-tokens.mjs",
     "generate": "node scripts/generate-token-data.mjs",
-    "test": "node scripts/generate-token-data.mjs --check && node scripts/check-token-coverage.mjs && node scripts/check-z-order.mjs",
+    "test": "node scripts/generate-token-data.mjs --check && node scripts/check-z-order.mjs",
     "contrast": "node scripts/contrast-report.mjs"
   },
   "peerDependencies": {
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "lightningcss": "1.32.0",
     "tailwindcss": "^4.3.3"
   }
 }

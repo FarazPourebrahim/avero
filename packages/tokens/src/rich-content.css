@@ -1,21 +1,16 @@
 /*
- * Rich content (D-12, F-13): typography for rendered HTML such as articles, service and project
- * descriptions, plus the editor preview and Tiptap editing surface.
+ * Rich content (D-12, F-13): typography for rendered HTML such as articles and descriptions, plus
+ * the editor preview and Tiptap editing surface.
  *
- * Values reproduce what the reference renders (decision D-11), not just the classes it applies:
- * the reference's global `.content-area ul/ol/li` rules override the list classes on the elements,
- * so lists get `padding-inline-start: 1.5rem`, `.5rem` block margins and a 1.8 line height.
+ * Lists get `padding-inline-start: 1.5rem`, `.5rem` block margins and a 1.8 line height, and h2
+ * inherits the body color. Every direction-dependent property is logical (`ps-*`, `border-s-*`,
+ * `rounded-e-*`), so the same styles read correctly in RTL and LTR.
  *
- * The reference is RTL, so its physical `pr-*` / `border-r-*` / `rounded-l-*` map to the logical
- * `ps-*` / `border-s-*` / `rounded-e-*` here. The reference's h2 color class (`text-gray-850`) does
- * not exist in Tailwind, so h2 inherits the body color (defect R-05, reproduced as rendered).
- *
- * The editor surfaces use literal colors because the reference hardcodes Tailwind v3 palette values
- * there, which differ from Tailwind v4's palette.
+ * The editor surfaces use literal Tailwind v3 palette values, which differ from Tailwind v4's.
  */
 
 @layer components {
-  /* ---------------------------------------------------------------- Rendered content (.content-area) */
+  /* ---------------------------------------------------------------- Rendered content */
 
   .avero-rich-content {
     @apply max-w-full space-y-3 overflow-hidden text-base leading-8 break-words text-gray-700;
@@ -98,7 +93,7 @@
     }
   }
 
-  /* ---------------------------------------------------------------- Editor preview (.editor) */
+  /* ---------------------------------------------------------------- Editor preview */
 
   .avero-rich-content-editor {
     & h1 {
@@ -158,11 +153,11 @@
     }
   }
 
-  /* ---------------------------------------------------------------- Question content (.question-rendered-content) */
+  /* ---------------------------------------------------------------- Question content */
 
   /*
-   * The reference styles this surface only through the shared list overrides; everything else is
-   * inherited from the page, so the variant deliberately carries no typography of its own.
+   * Only lists are styled here; everything else is inherited from the page, so the variant
+   * deliberately carries no typography of its own.
    */
   .avero-rich-content-question {
     & ol,
@@ -188,7 +183,7 @@
     }
   }
 
-  /* ---------------------------------------------------------------- Tiptap editing surface (.tiptap-content) */
+  /* ---------------------------------------------------------------- Tiptap editing surface */
 
   .avero-editor-content .tiptap {
     min-height: inherit;

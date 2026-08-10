@@ -1,9 +1,8 @@
 /*
  * Avero theme tokens for Tailwind CSS v4.
  *
- * Every value is extracted from the reference site (packages/tokens/reference/tokens.extracted.json).
- * The default Tailwind palette, spacing, radius and type scale are kept unchanged because the reference
- * uses them verbatim; this file only adds what the reference defines on top of them.
+ * The default Tailwind palette, spacing, radius and type scale are kept unchanged, so every Tailwind
+ * class works as documented; this file only adds Avero's own design tokens on top of them.
  */
 
 @theme {
@@ -14,8 +13,8 @@
   --font-code:
     "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Micro sizes used as arbitrary values in the reference. No line-height is defined, so, like the
-     reference's text-[11px] etc., they inherit the surrounding line-height. */
+  /* Micro sizes for dense UI such as badges, meta rows and legends. No line-height is defined, so
+     they inherit the surrounding line-height. */
   --text-4xs: 0.5625rem; /* 9px  */
   --text-3xs: 0.625rem; /* 10px */
   --text-2xs: 0.6875rem; /* 11px */
@@ -45,43 +44,24 @@
   --color-text-chrome: #8390a2;
   --color-text-chrome-hover: #242424;
   --color-text-subtle: #54595f;
-  /* Decision O-04: the reference's muted meta text; consumers may darken it for stricter contrast. */
+  /* Muted meta text. It is below AA for small text on white (see reports/contrast-report.md), so
+     themes that need strict contrast may darken it. */
   --color-text-muted: var(--color-gray-400);
 
   --color-accent-social: #ff9606;
-  /* Resting color of the footer social icons (inline `color="#C1C3C8"` in the reference). */
+  /* Resting color of the footer social icons. */
   --color-icon-muted: #c1c3c8;
 
-  /* Literal warning CTA colors used by the reference. They are Tailwind v3's amber values, not
-     v4's (v4 amber-500 is #f99c00), so they need their own tokens. */
+  /* Warning call-to-action colors. They are Tailwind v3's amber values, not v4's (v4 amber-500 is
+     #f99c00), so they need their own tokens. */
   --color-warning: #f59e0b;
   --color-warning-hover: #d97706;
 
   --color-shadow-brand: #0a66c205;
   --color-shadow-box: #0f172a14;
 
-  /* Hero illustration palette (X-03). */
-  --color-hero-skin: #ffd1b3;
-  --color-hero-skin-shadow: #e0b496;
-  --color-hero-hair: #4e3629;
-  --color-hero-tshirt: #4f46e5;
-  --color-hero-tshirt-shadow: #3b31c9;
-  --color-hero-headphones: #1e293b;
-  --color-hero-headphones-detail: #f15928;
-  --color-hero-laptop-body: #e2e8f0;
-  --color-hero-laptop-screen: #0f172a;
-  --color-hero-laptop-glow: #6366f140;
-  --color-hero-mug: #f15928;
-  --color-hero-coffee-steam: #78787840;
-  --color-hero-desk-wood: #a16207;
-  --color-hero-pot: #cbd5e1;
-  --color-hero-plant-leaf-1: #10b981;
-  --color-hero-plant-leaf-2: #047857;
-  --color-hero-keyboard-keys: #94a3b8;
-
-  /* Chart palette (C-04), read from the reference's rendered Recharts output (R-02). Recharts takes
-     colours as props that become SVG attributes, so `@avero/charts` consumes these as token data
-     rather than as utility classes. */
+  /* Chart palette (C-04). Recharts takes colours as props that become SVG attributes, so
+     `@avero/charts` consumes these as token data rather than as utility classes. */
   --color-chart-views: #6366f1;
   --color-chart-likes: #f43f5e;
   --color-chart-clicks: #8b5cf6;
@@ -149,13 +129,7 @@
   --animate-sway: sway 3s ease-in-out forwards;
   --animate-shimmer: shimmer 1.6s linear infinite;
   --animate-spin-glow: spin-glow 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  --animate-typing-left: typing-left-hand 0.22s ease-in-out infinite;
-  --animate-typing-right: typing-right-hand 0.18s ease-in-out infinite;
-  --animate-steam: coffee-steam-rise 3.5s ease-in-out infinite;
-  --animate-leaf-sway: leaf-sway 6s ease-in-out infinite;
-  --animate-leaf-sway-alt: leaf-sway-alt 7.5s ease-in-out infinite;
-  --animate-monitor-glow: monitor-light-pulse 4s ease-in-out infinite;
-  /* Accordion open/close (N-08): the reference animates height and opacity over 300ms ease-in-out. */
+  /* Accordion open/close (N-08): height and opacity animate over 300ms ease-in-out. */
   --animate-accordion-down: accordion-down 0.3s ease-in-out;
   --animate-accordion-up: accordion-up 0.3s ease-in-out;
 
@@ -276,88 +250,11 @@
       box-shadow: 0 0 15px color-mix(in srgb, var(--color-indigo-500) 20%, transparent);
     }
   }
-
-  @keyframes typing-left-hand {
-    0%,
-    to {
-      transform: translateY(0) rotate(0);
-    }
-    33% {
-      transform: translateY(-2px) rotate(-1deg);
-    }
-    66% {
-      transform: translateY(1px) rotate(1deg);
-    }
-  }
-
-  @keyframes typing-right-hand {
-    0%,
-    to {
-      transform: translateY(0) rotate(0);
-    }
-    33% {
-      transform: translateY(1.5px) rotate(1deg);
-    }
-    66% {
-      transform: translateY(-2.5px) rotate(-1deg);
-    }
-  }
-
-  @keyframes coffee-steam-rise {
-    0% {
-      opacity: 0;
-      transform: translateY(0) scaleX(1);
-    }
-    15% {
-      opacity: 0.45;
-    }
-    50% {
-      opacity: 0.25;
-      transform: translateY(-8px) scaleX(1.2) skew(4deg);
-    }
-    80% {
-      opacity: 0.1;
-    }
-    to {
-      opacity: 0;
-      transform: translateY(-20px) scaleX(0.7) skew(-4deg);
-    }
-  }
-
-  @keyframes leaf-sway {
-    0%,
-    to {
-      transform: rotate(0);
-    }
-    50% {
-      transform: rotate(1.5deg);
-    }
-  }
-
-  @keyframes leaf-sway-alt {
-    0%,
-    to {
-      transform: rotate(0);
-    }
-    50% {
-      transform: rotate(-1.5deg);
-    }
-  }
-
-  @keyframes monitor-light-pulse {
-    0%,
-    to {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 0.55;
-    }
-  }
 }
 
 /*
  * Layering. Tailwind v4 has no z-index theme namespace, so named layers are plain custom properties
- * used as `z-(--z-modal)`. Values are provisional until the Tier B overlay captures (plan §5.8).
+ * used as `z-(--z-modal)`. Gaps between the values leave room for new layers.
  */
 @layer theme {
   :root,

@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 type Swatch = { name: string; cssVar: string; value: string };
 
-function swatches(prefix: string, exclude: string[] = []): Swatch[] {
+function swatches(prefix: string): Swatch[] {
   return (Object.keys(tokens) as TokenName[])
-    .filter((key) => key.startsWith(prefix) && !exclude.some((name) => key.startsWith(name)))
+    .filter((key) => key.startsWith(prefix))
     .map((key) => ({ name: key, cssVar: tokens[key].cssVar, value: tokens[key].value }));
 }
 
@@ -37,8 +37,7 @@ function SwatchGrid({ title, items }: { title: string; items: Swatch[] }) {
 function ColorSpecimen() {
   return (
     <div className="bg-background flex flex-col gap-8 p-6">
-      <SwatchGrid title="Brand and semantic" items={swatches("color", ["colorHero"])} />
-      <SwatchGrid title="Hero illustration" items={swatches("colorHero")} />
+      <SwatchGrid title="Brand and semantic" items={swatches("color")} />
     </div>
   );
 }
