@@ -10,7 +10,6 @@ const UI_SOURCES = [
   "packages/react/src/**/*.{ts,tsx}",
   "packages/charts/src/**/*.{ts,tsx}",
   "packages/editor/src/**/*.{ts,tsx}",
-  "apps/replica/src/**/*.{ts,tsx}",
 ];
 
 const FOCUSED_OR_SKIPPED_TESTS =
@@ -27,7 +26,6 @@ export default defineConfig(
     "**/coverage/**",
     "**/playwright-report/**",
     "**/test-results/**",
-    "reference/**",
   ]),
   js.configs.recommended,
   tseslint.configs.recommended,

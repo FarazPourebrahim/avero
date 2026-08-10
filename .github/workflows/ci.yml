@@ -55,9 +55,6 @@ jobs:
       - name: Storybook browser tests
         run: pnpm run storybook-test-visual -- --grep-invert @visual
 
-      - name: Build replica
-        run: pnpm run replica-build
-
       - name: Build docs
         run: pnpm run docs-build
 

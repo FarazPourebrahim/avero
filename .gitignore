@@ -11,9 +11,6 @@ storybook-static/
 *.tsbuildinfo
 .source/
 
-# Derived copy of the reference pages, rebuilt by apps/replica/scripts/build-reference-pages.mjs
-.reference-build/
-
 # Test output
 coverage/
 test-results/
