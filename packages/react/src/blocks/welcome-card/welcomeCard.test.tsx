@@ -9,40 +9,40 @@ describe("WelcomeCard", () => {
   it("fills the name into the dictionary's greeting", () => {
     render(<WelcomeCard name="Faraz Pourebrahim" />);
 
-    expect(screen.getByText(/Faraz Pourebrahim عزیز، سلام/)).toBeInTheDocument();
-    expect(screen.getByText("به دورلنسر خوش اومدی")).toBeInTheDocument();
+    expect(screen.getByText(/سلام Faraz Pourebrahim/)).toBeInTheDocument();
+    expect(screen.getByText("خوش آمدید")).toBeInTheDocument();
   });
 
   it("accepts a whole greeting and its own second line", () => {
     render(
-      <WelcomeCard name="زینب" greeting="سلام زینب">
-        روز خوبی داشته باشی
+      <WelcomeCard name="سارا" greeting="صبح بخیر سارا">
+        امروز دو جلسه تازه در انتظار شماست
       </WelcomeCard>,
     );
 
-    expect(screen.getByText("سلام زینب")).toBeInTheDocument();
-    expect(screen.getByText("روز خوبی داشته باشی")).toBeInTheDocument();
+    expect(screen.getByText("صبح بخیر سارا")).toBeInTheDocument();
+    expect(screen.getByText("امروز دو جلسه تازه در انتظار شماست")).toBeInTheDocument();
   });
 
-  it("ships a real shadow in place of the reference's broken one", () => {
-    const { container } = render(<WelcomeCard name="زینب" />);
+  it("uses the soft brand shadow", () => {
+    const { container } = render(<WelcomeCard name="سارا" />);
 
     expect(container.querySelector('[data-slot="welcome-card"]')).toHaveClass("shadow-brand-soft");
   });
 
   it("forwards refs", () => {
     const ref = createRef<HTMLDivElement>();
-    render(<WelcomeCard name="زینب" ref={ref} />);
+    render(<WelcomeCard name="سارا" ref={ref} />);
 
     expect(ref.current).toHaveAttribute("data-slot", "welcome-card");
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<WelcomeCard name="زینب" />)).toContain("خوش اومدی");
+    expect(renderToString(<WelcomeCard name="سارا" />)).toContain("خوش آمدید");
   });
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<WelcomeCard name="زینب" />);
+    const { container } = render(<WelcomeCard name="سارا" />);
 
     await expectNoAxeViolations(container);
   });

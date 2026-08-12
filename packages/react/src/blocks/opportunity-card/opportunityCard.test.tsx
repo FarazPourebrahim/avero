@@ -6,16 +6,16 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { OpportunityCard } from "./OpportunityCard.js";
 
 const PROPS = {
-  title: "توسعه دهنده php",
-  href: "/projects/39",
-  date: "تاریخ نامشخص",
-  tags: ["remote"],
-  description: "توسعه بخش مدیریت سایت",
-  capacityLabel: "ظرفیت ارسال رزومه",
+  title: "کارگاه طراحی تجربه کاربری",
+  href: "/workshops/ux-101",
+  date: "15 مهر",
+  tags: ["آنلاین"],
+  description: "کارگاه عملی سه‌روزه برای آشنایی با فرایند طراحی",
+  capacityLabel: "ظرفیت ثبت‌نام",
   value: 3,
   max: 12,
   status: "9 جای خالی",
-  startCaption: "3 رزومه ارسال شده",
+  startCaption: "3 نفر ثبت‌نام کرده‌اند",
   endCaption: "حداکثر 12 نفر",
 };
 
@@ -23,26 +23,26 @@ describe("OpportunityCard", () => {
   it("renders the whole card as one link", () => {
     render(<OpportunityCard {...PROPS} />);
 
-    expect(screen.getByRole("link", { name: /توسعه دهنده php/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /کارگاه طراحی تجربه کاربری/ })).toHaveAttribute(
       "href",
-      "/projects/39",
+      "/workshops/ux-101",
     );
   });
 
-  it("shows the title, date and work-type tags", () => {
+  it("shows the title, date and tags", () => {
     render(<OpportunityCard {...PROPS} />);
 
-    expect(screen.getByText("توسعه دهنده php")).toBeInTheDocument();
-    expect(screen.getByText("تاریخ نامشخص")).toBeInTheDocument();
-    expect(screen.getByText("remote")).toBeInTheDocument();
+    expect(screen.getByText("کارگاه طراحی تجربه کاربری")).toBeInTheDocument();
+    expect(screen.getByText("15 مهر")).toBeInTheDocument();
+    expect(screen.getByText("آنلاین")).toBeInTheDocument();
   });
 
   it("renders the capacity meter with its captions", () => {
     render(<OpportunityCard {...PROPS} />);
 
-    expect(screen.getByText("ظرفیت ارسال رزومه")).toBeInTheDocument();
+    expect(screen.getByText("ظرفیت ثبت‌نام")).toBeInTheDocument();
     expect(screen.getByText("9 جای خالی")).toBeInTheDocument();
-    expect(screen.getByText("3 رزومه ارسال شده")).toBeInTheDocument();
+    expect(screen.getByText("3 نفر ثبت‌نام کرده‌اند")).toBeInTheDocument();
     expect(screen.getByText("حداکثر 12 نفر")).toBeInTheDocument();
   });
 
@@ -59,15 +59,15 @@ describe("OpportunityCard", () => {
     expect(card).toHaveAttribute("data-full", "true");
     expect(card).toHaveAttribute("aria-disabled", "true");
     expect(card).toHaveClass("pointer-events-none", "opacity-70", "blur-[1px]");
-    expect(screen.getByText("تکمیل ظرفیت")).toBeInTheDocument();
-    // The reference drops the call to action once the card is closed.
+    expect(screen.getByText("ظرفیت تکمیل شد")).toBeInTheDocument();
+    // A full card has nothing left to act on, so it drops its call to action.
     expect(screen.queryByText(/مشاهده/)).toBeNull();
   });
 
   it("omits the meter when no capacity is given", () => {
     render(<OpportunityCard title="بدون ظرفیت" href="/x" />);
 
-    expect(screen.queryByText("ظرفیت ارسال رزومه")).toBeNull();
+    expect(screen.queryByText("ظرفیت ثبت‌نام")).toBeNull();
   });
 
   it("forwards refs", () => {
@@ -78,7 +78,7 @@ describe("OpportunityCard", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<OpportunityCard {...PROPS} />)).toContain("توسعه دهنده php");
+    expect(renderToString(<OpportunityCard {...PROPS} />)).toContain("کارگاه طراحی تجربه کاربری");
   });
 
   it("has no accessibility violations", async () => {

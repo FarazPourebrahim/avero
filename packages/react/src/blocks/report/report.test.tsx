@@ -7,25 +7,25 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { ReportAction, ReportCard } from "./Report.js";
 
 describe("ReportAction", () => {
-  it("renders the portfolio card's mini control by default", () => {
+  it("renders the compact mini control by default", () => {
     render(<ReportAction />);
-    const button = screen.getByRole("button", { name: "گزارش تخلف" });
+    const button = screen.getByRole("button", { name: "گزارش مشکل" });
 
     expect(button).toHaveClass("text-2xs", "text-slate-400");
   });
 
-  it("renders the project page's text control", () => {
+  it("renders the plain text control", () => {
     render(<ReportAction variant="text" />);
 
-    expect(screen.getByRole("button", { name: "گزارش تخلف" })).toHaveClass(
+    expect(screen.getByRole("button", { name: "گزارش مشکل" })).toHaveClass(
       "text-sm",
       "text-gray-500",
     );
   });
 
-  it("renders the service page's tinted button", () => {
+  it("renders the tinted soft button", () => {
     render(<ReportAction variant="soft" />);
-    const button = screen.getByRole("button", { name: "گزارش تخلف" });
+    const button = screen.getByRole("button", { name: "گزارش مشکل" });
 
     expect(button).toHaveAttribute("data-slot", "report-action");
     expect(button).toHaveClass("bg-rose-50", "text-rose-600");
@@ -58,9 +58,9 @@ describe("ReportCard", () => {
   it("renders the dictionary's title, description and button", () => {
     render(<ReportCard />);
 
-    expect(screen.getByText("گزارش اشکال یا تخلف")).toBeInTheDocument();
-    expect(screen.getByText("ارسال جهت بررسی ادمین")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "گزارش تخلف" })).toBeInTheDocument();
+    expect(screen.getByText("گزارش محتوای نامناسب")).toBeInTheDocument();
+    expect(screen.getByText("برای بررسی به تیم پشتیبانی ارسال می‌شود")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "گزارش مشکل" })).toBeInTheDocument();
   });
 
   it("reports activation from its button", async () => {
@@ -80,7 +80,7 @@ describe("ReportCard", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<ReportCard />)).toContain("ارسال جهت بررسی ادمین");
+    expect(renderToString(<ReportCard />)).toContain("برای بررسی به تیم پشتیبانی ارسال می‌شود");
   });
 
   it("has no accessibility violations", async () => {

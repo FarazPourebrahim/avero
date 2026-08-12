@@ -7,13 +7,13 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { ShareBar } from "./ShareBar.js";
 
 describe("ShareBar", () => {
-  it("renders the article's five icon buttons in the reference's order", () => {
+  it("renders the default five icon buttons in order", () => {
     const { container } = render(<ShareBar />);
     const names = [...container.querySelectorAll("button")].map((button) =>
       button.getAttribute("aria-label"),
     );
 
-    expect(names).toEqual(["کپی لینک", "تلگرام", "لینکدین", "تویتر", "واتس‌اپ"]);
+    expect(names).toEqual(["کپی لینک", "تلگرام", "لینکدین", "ایکس", "واتس‌اپ"]);
     expect(screen.getByText("اشتراک‌گذاری:")).toBeInTheDocument();
   });
 
@@ -24,12 +24,12 @@ describe("ShareBar", () => {
     expect(telegram).toHaveAttribute("title", "تلگرام");
   });
 
-  it("renders the service card with visible channel names", () => {
-    const { container } = render(<ShareBar variant="labelled" label="اشتراک‌گذاری خدمت:" />);
+  it("renders the labelled variant with visible channel names", () => {
+    const { container } = render(<ShareBar variant="labelled" label="اشتراک‌گذاری این دوره:" />);
 
     expect(container.querySelector('[data-slot="share-bar"]')).toHaveClass("justify-between");
     expect(screen.getByRole("button", { name: "تلگرام" })).toHaveTextContent("تلگرام");
-    expect(screen.getByText("اشتراک‌گذاری خدمت:")).toBeInTheDocument();
+    expect(screen.getByText("اشتراک‌گذاری این دوره:")).toBeInTheDocument();
   });
 
   it("reports which channel was activated", async () => {

@@ -7,10 +7,10 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { ShowcaseCard } from "./ShowcaseCard.js";
 
 const PROPS = {
-  title: "طراحی سایت و سئو",
-  href: "/portfolio/seo",
-  description: "طراحی سایت برای خدمات طراحی سایت و سئو",
-  tags: ["وردپرس"],
+  title: "اپلیکیشن مدیریت کارها",
+  href: "/showcase/task-app",
+  description: "طراحی رابط کاربری برای یک اپلیکیشن مدیریت کارهای روزانه",
+  tags: ["Figma"],
   likes: 0,
 };
 
@@ -19,15 +19,15 @@ describe("ShowcaseCard", () => {
     render(<ShowcaseCard {...PROPS} onShare={() => {}} />);
 
     // One link (the title) and the action buttons as siblings, never nested inside it.
-    expect(screen.getByRole("link", { name: "طراحی سایت و سئو" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "اپلیکیشن مدیریت کارها" })).toHaveAttribute(
       "href",
-      "/portfolio/seo",
+      "/showcase/task-app",
     );
     expect(screen.getAllByRole("link")).toHaveLength(1);
     expect(screen.getByRole("button", { name: "اشتراک‌گذاری" })).toBeInTheDocument();
   });
 
-  it("renders the cover with the group zoom the reference uses", () => {
+  it("zooms the cover when the card is hovered", () => {
     const { container } = render(<ShowcaseCard {...PROPS} image="/cover.png" />);
 
     expect(container.querySelector("img")).toHaveClass("group-hover:scale-105", "object-cover");
@@ -36,14 +36,14 @@ describe("ShowcaseCard", () => {
   it("shows the overlay call to action from the dictionary", () => {
     render(<ShowcaseCard {...PROPS} />);
 
-    expect(screen.getByText("مشاهده جزئیات کامل")).toBeInTheDocument();
+    expect(screen.getByText("مشاهده جزئیات")).toBeInTheDocument();
   });
 
   it("renders technology tags as mini chips", () => {
-    const { container } = render(<ShowcaseCard {...PROPS} tags={["وردپرس", "سئو"]} />);
+    const { container } = render(<ShowcaseCard {...PROPS} tags={["Figma", "React"]} />);
 
     expect(container.querySelectorAll('[data-slot="showcase-card-tags"] > *')).toHaveLength(2);
-    expect(screen.getByText("سئو")).toHaveClass("text-3xs", "bg-slate-100");
+    expect(screen.getByText("React")).toHaveClass("text-3xs", "bg-slate-100");
   });
 
   it("reports likes and shares", async () => {
@@ -66,9 +66,9 @@ describe("ShowcaseCard", () => {
   });
 
   it("renders a report slot supplied by the consumer", () => {
-    render(<ShowcaseCard {...PROPS} report={<button type="button">گزارش تخلف</button>} />);
+    render(<ShowcaseCard {...PROPS} report={<button type="button">گزارش</button>} />);
 
-    expect(screen.getByRole("button", { name: "گزارش تخلف" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "گزارش" })).toBeInTheDocument();
   });
 
   it("omits optional parts when they are not given", () => {
@@ -87,7 +87,7 @@ describe("ShowcaseCard", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<ShowcaseCard {...PROPS} />)).toContain("طراحی سایت و سئو");
+    expect(renderToString(<ShowcaseCard {...PROPS} />)).toContain("اپلیکیشن مدیریت کارها");
   });
 
   it("has no accessibility violations", async () => {

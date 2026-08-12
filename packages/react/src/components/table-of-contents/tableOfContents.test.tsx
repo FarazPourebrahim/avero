@@ -8,9 +8,9 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { TableOfContents, type TocItem } from "./TableOfContents.js";
 
 const ITEMS: TocItem[] = [
-  { id: "what", label: "فریلنسری چیست؟" },
-  { id: "benefits", label: "مزایای فریلنسری چیست؟" },
-  { id: "flexibility", label: "انعطاف‌پذیری در زمان و مکان", level: 3 },
+  { id: "intro", label: "آشنایی با طراحی رابط کاربری" },
+  { id: "principles", label: "اصول پایه طراحی" },
+  { id: "hierarchy", label: "سلسله‌مراتب بصری", level: 3 },
 ];
 
 function entry(name: string) {
@@ -48,15 +48,15 @@ describe("TableOfContents", () => {
   it("renders a titled navigation of heading links", () => {
     render(<TableOfContents items={ITEMS} spy={false} />);
 
-    expect(screen.getByRole("navigation", { name: "در این مقاله" })).toBeInTheDocument();
-    expect(entry("فریلنسری چیست؟")).toHaveAttribute("href", "#what");
+    expect(screen.getByRole("navigation", { name: "فهرست مطالب" })).toBeInTheDocument();
+    expect(entry("آشنایی با طراحی رابط کاربری")).toHaveAttribute("href", "#intro");
   });
 
   it("highlights the first entry by default", () => {
     render(<TableOfContents items={ITEMS} spy={false} />);
 
-    expect(entry("فریلنسری چیست؟")).toHaveAttribute("aria-current", "location");
-    expect(entry("فریلنسری چیست؟").parentElement).toHaveClass(
+    expect(entry("آشنایی با طراحی رابط کاربری")).toHaveAttribute("aria-current", "location");
+    expect(entry("آشنایی با طراحی رابط کاربری").parentElement).toHaveClass(
       "border-indigo-500",
       "text-indigo-600",
     );
@@ -65,26 +65,26 @@ describe("TableOfContents", () => {
   it("renders level-3 entries as smaller sub-items", () => {
     render(<TableOfContents items={ITEMS} spy={false} />);
 
-    expect(entry("انعطاف‌پذیری در زمان و مکان")).toHaveClass("text-xs", "pe-6");
+    expect(entry("سلسله‌مراتب بصری")).toHaveClass("text-xs", "pe-6");
   });
 
   it("highlights the clicked entry and reports it", async () => {
     const onActiveChange = vi.fn();
     render(<TableOfContents items={ITEMS} spy={false} onActiveChange={onActiveChange} />);
 
-    await userEvent.click(entry("مزایای فریلنسری چیست؟"));
+    await userEvent.click(entry("اصول پایه طراحی"));
 
-    expect(entry("مزایای فریلنسری چیست؟")).toHaveAttribute("aria-current", "location");
-    expect(onActiveChange).toHaveBeenCalledWith("benefits");
+    expect(entry("اصول پایه طراحی")).toHaveAttribute("aria-current", "location");
+    expect(onActiveChange).toHaveBeenCalledWith("principles");
   });
 
   it("supports a controlled active entry and a custom title", () => {
     render(
-      <TableOfContents items={ITEMS} spy={false} activeId="flexibility" title="فهرست مطالب" />,
+      <TableOfContents items={ITEMS} spy={false} activeId="hierarchy" title="در این راهنما" />,
     );
 
-    expect(screen.getByRole("navigation", { name: "فهرست مطالب" })).toBeInTheDocument();
-    expect(entry("انعطاف‌پذیری در زمان و مکان")).toHaveAttribute("aria-current", "location");
+    expect(screen.getByRole("navigation", { name: "در این راهنما" })).toBeInTheDocument();
+    expect(entry("سلسله‌مراتب بصری")).toHaveAttribute("aria-current", "location");
   });
 
   it("uses the English title under an English provider", () => {
@@ -101,24 +101,24 @@ describe("TableOfContents", () => {
     const observer = installObserver();
     const { unmount } = render(
       <>
-        <h2 id="what">what</h2>
-        <h2 id="benefits">benefits</h2>
+        <h2 id="intro">intro</h2>
+        <h2 id="principles">principles</h2>
         <TableOfContents items={ITEMS} />
       </>,
     );
 
-    expect(observer.observed.map((element) => element.id)).toEqual(["what", "benefits"]);
+    expect(observer.observed.map((element) => element.id)).toEqual(["intro", "principles"]);
 
-    const benefits = document.getElementById("benefits")!;
-    const what = document.getElementById("what")!;
+    const principles = document.getElementById("principles")!;
+    const intro = document.getElementById("intro")!;
     observer.fire([
-      { target: benefits, isIntersecting: true },
-      { target: what, isIntersecting: false },
+      { target: principles, isIntersecting: true },
+      { target: intro, isIntersecting: false },
     ]);
-    expect(entry("مزایای فریلنسری چیست؟")).toHaveAttribute("aria-current", "location");
+    expect(entry("اصول پایه طراحی")).toHaveAttribute("aria-current", "location");
 
-    observer.fire([{ target: benefits, isIntersecting: false }]);
-    expect(entry("مزایای فریلنسری چیست؟")).toHaveAttribute("aria-current", "location");
+    observer.fire([{ target: principles, isIntersecting: false }]);
+    expect(entry("اصول پایه طراحی")).toHaveAttribute("aria-current", "location");
 
     unmount();
     expect(observer.disconnect).toHaveBeenCalled();
@@ -129,7 +129,7 @@ describe("TableOfContents", () => {
 
     render(<TableOfContents items={ITEMS} />);
 
-    expect(entry("فریلنسری چیست؟")).toHaveAttribute("aria-current", "location");
+    expect(entry("آشنایی با طراحی رابط کاربری")).toHaveAttribute("aria-current", "location");
   });
 
   it("forwards refs", () => {
@@ -140,7 +140,7 @@ describe("TableOfContents", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<TableOfContents items={ITEMS} />)).toContain('href="#what"');
+    expect(renderToString(<TableOfContents items={ITEMS} />)).toContain('href="#intro"');
   });
 
   it("has no accessibility violations", async () => {

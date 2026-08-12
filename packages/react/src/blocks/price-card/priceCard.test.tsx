@@ -7,10 +7,10 @@ import { PriceCard } from "./PriceCard.js";
 
 describe("PriceCard", () => {
   it("renders the dictionary's caption over a formatted amount", () => {
-    render(<PriceCard amount={20000000} />);
+    render(<PriceCard amount={4500000} />);
 
-    expect(screen.getByText("قیمت پایه خدمت")).toBeInTheDocument();
-    expect(screen.getByText("۲۰٬۰۰۰٬۰۰۰")).toBeInTheDocument();
+    expect(screen.getByText("قیمت پایه")).toBeInTheDocument();
+    expect(screen.getByText("۴٬۵۰۰٬۰۰۰")).toBeInTheDocument();
     expect(screen.getByText("تومان")).toBeInTheDocument();
   });
 
@@ -24,11 +24,11 @@ describe("PriceCard", () => {
   it("renders anything passed under the price", () => {
     render(
       <PriceCard amount={1000}>
-        <button type="button">سفارش</button>
+        <button type="button">ثبت‌نام</button>
       </PriceCard>,
     );
 
-    expect(screen.getByRole("button", { name: "سفارش" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "ثبت‌نام" })).toBeInTheDocument();
   });
 
   it("forwards refs", () => {
@@ -39,11 +39,11 @@ describe("PriceCard", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<PriceCard amount={20000000} />)).toContain("قیمت پایه خدمت");
+    expect(renderToString(<PriceCard amount={4500000} />)).toContain("قیمت پایه");
   });
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<PriceCard amount={20000000} />);
+    const { container } = render(<PriceCard amount={4500000} />);
 
     await expectNoAxeViolations(container);
   });

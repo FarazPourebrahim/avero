@@ -7,7 +7,7 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `ZoomFrame`. It also accepts every native `<button>` attribute. */
 export type ZoomFrameOwnProps = {
-  /** Pill text shown on hover and focus. @defaultValue the dictionary's `zoomHint` ("مشاهده بزرگ‌نمایی" / "View larger") */
+  /** Pill text shown on hover and focus. @defaultValue the dictionary's `zoomHint` ("نمایش بزرگ‌تر" / "View larger") */
   hint?: ReactNode;
 };
 
@@ -18,8 +18,8 @@ export type ZoomFrameProps = Omit<
   ZoomFrameOwnProps;
 
 /**
- * Clickable image frame from the service gallery (D-22, R-05): on hover or keyboard focus the
- * image scales slightly, dims, and a "view larger" pill slides in. Open your lightbox in `onClick`.
+ * Clickable image frame for galleries (D-22): on hover or keyboard focus the image scales
+ * slightly, dims, and a "view larger" pill slides in. Open your lightbox in `onClick`.
  */
 export const ZoomFrame = forwardRef<HTMLButtonElement, ZoomFrameProps>(function ZoomFrame(
   { hint, type = "button", className, children, ...props },

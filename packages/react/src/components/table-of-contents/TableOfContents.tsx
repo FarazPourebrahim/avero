@@ -26,7 +26,7 @@ export type TableOfContentsOwnProps = {
   onActiveChange?: (id: string) => void;
   /** Highlights the entry whose heading is at the top of the viewport while scrolling. @defaultValue true */
   spy?: boolean;
-  /** Card title. @defaultValue the dictionary's `tocTitle` ("در این مقاله" / "On this page") */
+  /** Card title. @defaultValue the dictionary's `tocTitle` ("فهرست مطالب" / "On this page") */
   title?: ReactNode;
 };
 
@@ -37,7 +37,7 @@ export type TableOfContentsProps = Omit<
   TableOfContentsOwnProps;
 
 /**
- * The article's "در این مقاله" card (N-07, R-01). Entries are real `#id` links, so they work
+ * An article's table-of-contents card (N-07). Entries are real `#id` links, so they work
  * without JavaScript; the current section is highlighted with an indigo start border.
  */
 export const TableOfContents = forwardRef<HTMLDivElement, TableOfContentsProps>(

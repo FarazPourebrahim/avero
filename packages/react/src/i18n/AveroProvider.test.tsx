@@ -42,7 +42,7 @@ function Probe() {
 }
 
 describe("resolveAveroSettings", () => {
-  it("defaults to the reference settings (RTL, Persian, Jalali)", () => {
+  it("defaults to the Persian settings (RTL, Persian digits, Jalali)", () => {
     expect(resolveAveroSettings()).toEqual({
       dir: "rtl",
       locale: "fa-IR",
@@ -84,7 +84,7 @@ describe("getDictionary", () => {
 });
 
 describe("AveroProvider", () => {
-  it("provides reference defaults without a provider", () => {
+  it("provides the Persian defaults without a provider", () => {
     render(<Probe />);
 
     expect(screen.getByTestId("dir")).toHaveTextContent("rtl");

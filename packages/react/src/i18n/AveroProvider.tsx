@@ -28,7 +28,7 @@ export type AveroProviderProps = {
   children: ReactNode;
   /** Text direction. Defaults to `rtl` for Persian locales and `ltr` otherwise. */
   dir?: TextDirection;
-  /** BCP 47 locale tag. Defaults to `fa-IR`, matching the reference site. */
+  /** BCP 47 locale tag. Defaults to `fa-IR`, since Avero is Persian-first. */
   locale?: string;
   /** Digit system for formatted numbers and dates. Defaults to the locale's native digits. */
   digits?: DigitSystem;
@@ -62,7 +62,7 @@ const AveroContext = createContext<AveroSettings>(resolveAveroSettings());
 
 /**
  * Supplies direction, locale, number/date formatting and built-in strings to Avero components.
- * Components also work without a provider, using the reference defaults (RTL, `fa-IR`, Jalali).
+ * Components also work without a provider, using the Persian defaults (RTL, `fa-IR`, Jalali).
  */
 export function AveroProvider({
   children,

@@ -7,13 +7,13 @@ import { AveroProvider } from "../../i18n/AveroProvider.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { ZoomFrame } from "./ZoomFrame.js";
 
-const image = <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="طراحی سایت" />;
+const image = <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="پیش‌نمایش دوره" />;
 
 describe("ZoomFrame", () => {
   it("renders a button named by the image and the zoom hint", async () => {
     const onClick = vi.fn();
     render(<ZoomFrame onClick={onClick}>{image}</ZoomFrame>);
-    const button = screen.getByRole("button", { name: /طراحی سایت.*مشاهده بزرگ‌نمایی/ });
+    const button = screen.getByRole("button", { name: /پیش‌نمایش دوره.*نمایش بزرگ‌تر/ });
 
     await userEvent.click(button);
 
@@ -35,9 +35,9 @@ describe("ZoomFrame", () => {
   });
 
   it("renders a custom hint", () => {
-    render(<ZoomFrame hint="بزرگ‌تر">{image}</ZoomFrame>);
+    render(<ZoomFrame hint="بزرگ‌نمایی">{image}</ZoomFrame>);
 
-    expect(screen.getByText("بزرگ‌تر")).toBeInTheDocument();
+    expect(screen.getByText("بزرگ‌نمایی")).toBeInTheDocument();
   });
 
   it("uses the English hint under an English provider", () => {
@@ -58,7 +58,7 @@ describe("ZoomFrame", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<ZoomFrame>{image}</ZoomFrame>)).toContain("مشاهده بزرگ‌نمایی");
+    expect(renderToString(<ZoomFrame>{image}</ZoomFrame>)).toContain("نمایش بزرگ‌تر");
   });
 
   it("has no accessibility violations", async () => {
