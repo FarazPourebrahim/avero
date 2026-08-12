@@ -4,7 +4,7 @@ import { Figure, Image } from "./Image.js";
 
 // Inline SVG artwork keeps stories deterministic and offline (no remote images).
 const FROM = tokens.colorPrimary.value;
-const TO = tokens.colorHeroTshirt.value;
+const TO = tokens.colorPrimaryHover.value;
 const HIGHLIGHT = tokens.colorSurfaceGlass.value;
 const ARTWORK =
   "data:image/svg+xml;utf8," +

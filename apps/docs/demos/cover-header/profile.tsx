@@ -5,7 +5,7 @@ import { tokens } from "@avero/tokens";
 const AVATAR =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="${tokens.colorPrimary.value}"/><circle cx="100" cy="78" r="38" fill="${tokens.colorHeroTshirt.value}"/><rect x="34" y="130" width="132" height="70" rx="35" fill="${tokens.colorHeroTshirt.value}"/></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="${tokens.colorPrimary.value}"/><circle cx="100" cy="78" r="38" fill="${tokens.colorPrimaryHover.value}"/><rect x="34" y="130" width="132" height="70" rx="35" fill="${tokens.colorPrimaryHover.value}"/></svg>`,
   );
 
 export default function CoverHeaderProfileDemo() {

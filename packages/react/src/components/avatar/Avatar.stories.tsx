@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Avatar } from "./Avatar.js";
 
 // An inline SVG portrait keeps stories deterministic and offline (no remote images).
-const BACKGROUND = tokens.colorHeroPot.value;
-const FIGURE = tokens.colorHeroKeyboardKeys.value;
+const BACKGROUND = tokens.colorBorderSubtle.value;
+const FIGURE = tokens.colorTextChrome.value;
 const PORTRAIT =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(

@@ -5,7 +5,7 @@ import { CoverHeader } from "./CoverHeader.js";
 
 // Inline SVG artwork keeps stories deterministic and offline (no remote images).
 const FROM = tokens.colorPrimary.value;
-const TO = tokens.colorHeroTshirt.value;
+const TO = tokens.colorPrimaryHover.value;
 const AVATAR =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(
