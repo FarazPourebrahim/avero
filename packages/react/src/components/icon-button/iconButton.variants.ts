@@ -1,14 +1,14 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Icon-only button styles extracted from the reference (P-02):
- * - chrome: dashboard home / notification buttons (R-02)
- * - outline: header menu toggle (shared header)
- * - ghost: drawer close button (R-02)
- * - soft + tone: share buttons (R-01), portfolio share (R-08)
- * - circle: carousel previous / next (R-07)
- * - social: profile social links (R-04, R-08)
- * - tile: footer social icons, which turn orange on hover (shared footer)
+ * Icon-only button styles (P-02):
+ * - chrome: dashboard toolbar buttons such as home and notifications
+ * - outline: header menu toggle
+ * - ghost: drawer close button
+ * - soft + tone: share buttons
+ * - circle: carousel previous / next
+ * - social: profile social links
+ * - tile: footer social icons, which turn orange on hover
  */
 export const iconButtonVariants = cva(
   [

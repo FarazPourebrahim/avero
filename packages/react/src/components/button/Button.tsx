@@ -15,7 +15,7 @@ export type ButtonOwnProps = {
   radius?: ButtonVariantProps["radius"];
   /** Stretches the button to the full width of its container. @defaultValue false */
   block?: ButtonVariantProps["block"];
-  /** Adds the reference's drop shadow (primary: `shadow-md shadow-primary/20`). @defaultValue false */
+  /** Adds a soft drop shadow (primary: `shadow-md shadow-primary/20`). @defaultValue false */
   elevated?: ButtonVariantProps["elevated"];
   /** Renders the child element (e.g. a link) with button styles instead of a `<button>`. @defaultValue false */
   asChild?: boolean;

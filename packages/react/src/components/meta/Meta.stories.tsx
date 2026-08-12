@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Calendar, Clock, Eye, Globe, Mail, MapPin, Phone, Star, User } from "lucide-react";
-import {
-  CalendarSolidIcon,
-  ClockSolidIcon,
-  EyeSolidIcon,
-} from "../../icons/publicIcons.js";
+import { CalendarSolidIcon, ClockSolidIcon, EyeSolidIcon } from "../../icons/publicIcons.js";
 import { ContactMethod, KeyValueRow, MetaBar, MetaItem } from "./Meta.js";
 
 const meta: Meta = {

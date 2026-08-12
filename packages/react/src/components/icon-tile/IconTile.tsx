@@ -3,11 +3,11 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Colored icon containers extracted from the reference (P-07):
- * - soft: dashboard stat tiles and feature cards (`bg-{c}-50 text-{c}-600`, R-02/R-03)
- * - muted: dashboard achievement rows (`bg-{c}-100 text-{c}-600`, R-02)
- * - tint: profile stat tiles (`bg-{c}-600/10 text-{c}-600`, R-04)
- * - gradient: dashboard quick actions (`from-{c}-500 to-{c}-600`, R-02)
+ * Colored icon containers (P-07):
+ * - soft: stat tiles and feature cards (`bg-{c}-50 text-{c}-600`)
+ * - muted: achievement rows (`bg-{c}-100 text-{c}-600`)
+ * - tint: profile stat tiles (`bg-{c}-600/10 text-{c}-600`)
+ * - gradient: quick actions (`from-{c}-500 to-{c}-600`)
  */
 export const iconTileVariants = cva(
   "inline-flex shrink-0 items-center justify-center [&>svg]:shrink-0",
@@ -89,7 +89,7 @@ export type IconTileOwnProps = {
   variant?: IconTileVariantProps["variant"];
   /** Color family. @defaultValue "blue" */
   tone?: IconTileVariantProps["tone"];
-  /** Tile size, responsive as in the reference; `padded` wraps the icon with 12px padding. @defaultValue "xs" */
+  /** Tile size, growing one step from `sm` up; `padded` wraps the icon with 12px padding. @defaultValue "xs" */
   size?: IconTileVariantProps["size"];
 };
 

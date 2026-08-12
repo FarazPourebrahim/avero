@@ -6,9 +6,8 @@ import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react
 import { cn } from "../../utils/cn.js";
 
 /**
- * Avatar styles extracted from the reference (P-06):
- * sizes from the listing author (28px) to the profile header (112 → 176px); shapes from circles to
- * the dashboard's rounded squares; borders from the header hairline to the profile's white ring.
+ * Avatar styles (P-06): sizes from a compact author avatar (28px) to the profile header
+ * (112 → 176px); shapes from circles to rounded squares; borders from a hairline to a white ring.
  */
 export const avatarVariants = cva(
   "relative inline-flex shrink-0 items-center justify-center overflow-hidden bg-slate-200 align-middle",
@@ -71,7 +70,7 @@ export type AvatarProps = Omit<
 > &
   AvatarOwnProps;
 
-/** Returns up to two initials from a name, e.g. "Faraz Pourebrahim" → "FP", "زینب فلاح" → "زف". */
+/** Returns up to two initials from a name, e.g. "Faraz Pourebrahim" → "FP", "سارا محمدی" → "سم". */
 export function getInitials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);
   const first = words[0] ?? "";

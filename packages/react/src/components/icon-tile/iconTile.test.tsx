@@ -59,7 +59,7 @@ describe("IconTile", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <p>
-        <IconTile>★</IconTile> خدمات
+        <IconTile>★</IconTile> دوره‌ها
       </p>,
     );
 

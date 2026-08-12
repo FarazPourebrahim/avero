@@ -31,9 +31,9 @@ export const Status: Story = {
         9 جای خالی
       </Badge>
       <Badge tone="danger" className="py-1">
-        تکمیل ظرفیت
+        ظرفیت تکمیل شد
       </Badge>
-      <Badge>remote</Badge>
+      <Badge>آنلاین</Badge>
     </div>
   ),
 };
@@ -42,14 +42,14 @@ export const Outline: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
       <Badge variant="outline" tone="indigo">
-        سئو
+        طراحی
       </Badge>
       <Badge variant="outline" tone="emerald">
-        همکاری: remote
+        قالب: آنلاین
       </Badge>
       <Badge variant="outline" tone="amber">
         <MapPin className="size-3.5" aria-hidden />
-        ایران، تهران
+        ایران، اصفهان
       </Badge>
     </div>
   ),
@@ -60,12 +60,12 @@ export const Highlights: Story = {
     <div className="flex flex-wrap items-center gap-3">
       <Badge variant="premium">
         <Sparkles className="size-4 animate-pulse text-amber-500" aria-hidden />
-        <span>پکیج رایگان</span>
+        <span>طرح ویژه</span>
         <ShieldCheck className="size-4 text-amber-600" aria-hidden />
       </Badge>
       <Badge variant="label">
         <Sparkles className="size-4" aria-hidden />
-        تابستون ۱۴۰۵
+        دوره‌های تازه
       </Badge>
       <Badge variant="counter">0</Badge>
     </div>
@@ -77,13 +77,13 @@ export const OnMedia: Story = {
     <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-slate-300 p-6">
       <Badge variant="overlay">
         <ZoomIn className="size-4" aria-hidden />
-        مشاهده بزرگ‌نمایی
+        نمایش بزرگ‌تر
       </Badge>
       <Badge variant="overlay" tone="blue">
-        مشاهده جزئیات کامل
+        مشاهده جزئیات
       </Badge>
       <Badge variant="solid" tone="danger">
-        تکمیل ظرفیت
+        ظرفیت تکمیل شد
       </Badge>
     </div>
   ),

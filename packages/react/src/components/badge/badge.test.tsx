@@ -7,8 +7,8 @@ import { Badge } from "./Badge.js";
 
 describe("Badge", () => {
   it("renders a neutral status badge by default", () => {
-    render(<Badge>remote</Badge>);
-    const badge = screen.getByText("remote");
+    render(<Badge>آنلاین</Badge>);
+    const badge = screen.getByText("آنلاین");
 
     expect(badge.tagName).toBe("SPAN");
     expect(badge).toHaveAttribute("data-slot", "badge");

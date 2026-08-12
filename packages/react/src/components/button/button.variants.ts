@@ -1,14 +1,14 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Button styles extracted from the reference (P-01):
- * - primary: CTA buttons (R-03 "مشاهده پروژه‌ها", comment submit R-01/R-05, dashboard menu R-02)
- * - secondary: orange drawer CTA "ثبت آگهی" (shared mobile drawer)
- * - soft + tone: tinted share / report / certificate / contact buttons (R-01, R-03, R-04, R-05)
- * - ghost: back button (R-01)
- * - outline: "مشاهده پروفایل فریلنسر" (R-05)
- * - inverse: "ارسال درخواست" (R-07)
- * - warning: amber CTA (CSS-only in the reference)
+ * Button styles (P-01):
+ * - primary: main calls to action and form submits
+ * - secondary: orange accent call to action
+ * - soft + tone: tinted share, report, certificate and contact buttons
+ * - ghost: quiet actions such as a back button
+ * - outline: secondary links such as "view profile"
+ * - inverse: a filled button that turns glass on hover
+ * - warning: amber call to action
  */
 export const buttonVariants = cva(
   [
@@ -65,7 +65,7 @@ export const buttonVariants = cva(
     },
     compoundVariants: [
       { variant: "soft", tone: "neutral", class: "bg-slate-100 text-slate-700 hover:bg-slate-200" },
-      // Portfolio card like button (R-08); mirrors IconButton's slate tone.
+      // Like button on media cards; mirrors IconButton's slate tone.
       { variant: "soft", tone: "slate", class: "bg-slate-50 text-slate-500 hover:bg-slate-100" },
       { variant: "soft", tone: "sky", class: "bg-sky-50 text-sky-600 hover:bg-sky-100" },
       {

@@ -9,10 +9,10 @@ import { ArrowRightSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Back links extracted from the reference (N-03):
- * - text: article "بازگشت" button with a solid arrow (R-01)
- * - soft: service page back button with a hover fill (R-05)
- * - subtle: "بازگشت به لیست پروژه‌ها" link (R-07)
+ * Back links (N-03):
+ * - text: a "بازگشت" button with a solid arrow
+ * - soft: a back button with a hover fill
+ * - subtle: a quiet link such as "بازگشت به فهرست دوره‌ها"
  * The arrow points to the inline start (right in RTL) and flips in LTR.
  */
 export const backLinkVariants = cva(

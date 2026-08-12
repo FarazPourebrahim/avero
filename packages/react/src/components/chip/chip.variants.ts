@@ -1,13 +1,13 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Chip / tag styles extracted from the reference (P-05):
- * - category: listing category chip (R-06), dashboard work-type chip (R-02)
- * - link: blog category link (R-01)
- * - tag: related-category link with a tag icon (R-07)
- * - footer: bordered footer link chip (shared footer)
- * - mini: portfolio technology tag (R-08)
- * - skill: profile skill tag (R-04)
+ * Chip / tag styles (P-05):
+ * - category: a card's category chip, or a small format chip
+ * - link: a category link under an article
+ * - tag: a related-topic link with a tag icon
+ * - footer: bordered footer link chip
+ * - mini: compact technology tag
+ * - skill: profile skill tag
  */
 export const chipVariants = cva("inline-flex items-center whitespace-nowrap", {
   variants: {

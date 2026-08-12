@@ -31,16 +31,16 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex flex-wrap items-end gap-4">
       {(["xs", "sm", "md", "lg", "xl", "2xl", "3xl"] as const).map((size) => (
-        <Avatar key={size} name="زینب فلاح" src={PORTRAIT} size={size} />
+        <Avatar key={size} name="سارا محمدی" src={PORTRAIT} size={size} />
       ))}
     </div>
   ),
 };
 
-export const ReferenceUsages: Story = {
+export const CommonUsages: Story = {
   render: () => (
     <div className="flex flex-wrap items-end gap-6 rounded-3xl bg-white p-6">
-      <Avatar name="زینب فلاح" src={PORTRAIT} size="xs" />
+      <Avatar name="سارا محمدی" src={PORTRAIT} size="xs" />
       <Avatar
         name="Faraz Pourebrahim"
         src={PORTRAIT}
@@ -49,10 +49,10 @@ export const ReferenceUsages: Story = {
       />
       <Avatar name="Faraz Pourebrahim" src={PORTRAIT} size="sm" shape="xl" className="shadow-xs" />
       <Avatar name="Faraz Pourebrahim" src={PORTRAIT} size="md" shape="2xl" className="shadow-xs" />
-      <Avatar name="زینب فلاح" src={PORTRAIT} size="lg" border="accent" />
+      <Avatar name="سارا محمدی" src={PORTRAIT} size="lg" border="accent" />
       <Avatar name="Faraz Pourebrahim" src={PORTRAIT} size="xl" shape="3xl" />
-      <Avatar name="محمد ابراهیمی" src={PORTRAIT} size="2xl" border="muted" />
-      <Avatar name="فلاح" src={PORTRAIT} size="3xl" border="ring" />
+      <Avatar name="علی کریمی" src={PORTRAIT} size="2xl" border="muted" />
+      <Avatar name="سارا" src={PORTRAIT} size="3xl" border="ring" />
     </div>
   ),
 };
@@ -60,9 +60,9 @@ export const ReferenceUsages: Story = {
 export const Fallback: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Avatar name="زینب فلاح" />
+      <Avatar name="سارا محمدی" />
       <Avatar name="Faraz Pourebrahim" size="lg" />
-      <Avatar name="Iliya" size="lg" shape="2xl" />
+      <Avatar name="Nika" size="lg" shape="2xl" />
     </div>
   ),
 };

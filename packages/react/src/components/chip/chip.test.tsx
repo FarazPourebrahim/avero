@@ -7,8 +7,8 @@ import { Chip } from "./Chip.js";
 
 describe("Chip", () => {
   it("renders a category chip by default", () => {
-    render(<Chip>سئو</Chip>);
-    const chip = screen.getByText("سئو");
+    render(<Chip>طراحی</Chip>);
+    const chip = screen.getByText("طراحی");
 
     expect(chip.tagName).toBe("SPAN");
     expect(chip).toHaveAttribute("data-slot", "chip");
@@ -16,9 +16,9 @@ describe("Chip", () => {
   });
 
   it("renders the small category chip", () => {
-    render(<Chip size="sm">remote</Chip>);
+    render(<Chip size="sm">آنلاین</Chip>);
 
-    expect(screen.getByText("remote")).toHaveClass("py-0.5", "text-3xs");
+    expect(screen.getByText("آنلاین")).toHaveClass("py-0.5", "text-3xs");
   });
 
   it.each([
@@ -36,12 +36,12 @@ describe("Chip", () => {
   it("renders a link when asChild is set", () => {
     render(
       <Chip asChild variant="link">
-        <a href="/blog?category=frylnsry">فریلنسری</a>
+        <a href="/blog?category=design">طراحی</a>
       </Chip>,
     );
-    const link = screen.getByRole("link", { name: "فریلنسری" });
+    const link = screen.getByRole("link", { name: "طراحی" });
 
-    expect(link).toHaveAttribute("href", "/blog?category=frylnsry");
+    expect(link).toHaveAttribute("href", "/blog?category=design");
     expect(link).toHaveClass("bg-gray-50");
   });
 
@@ -49,7 +49,7 @@ describe("Chip", () => {
     const ref = createRef<HTMLSpanElement>();
     render(
       <Chip ref={ref} className="text-gray-500">
-        freelance
+        design
       </Chip>,
     );
 
@@ -58,15 +58,15 @@ describe("Chip", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<Chip variant="skill">WordPress</Chip>)).toContain("bg-blue-50");
+    expect(renderToString(<Chip variant="skill">React</Chip>)).toContain("bg-blue-50");
   });
 
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div>
-        <Chip>سئو</Chip>
+        <Chip>طراحی</Chip>
         <Chip asChild variant="tag">
-          <a href="/project?category=PHP">PHP</a>
+          <a href="/topics?tag=typescript">TypeScript</a>
         </Chip>
       </div>,
     );

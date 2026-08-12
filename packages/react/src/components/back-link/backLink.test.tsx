@@ -31,10 +31,10 @@ describe("BackLink", () => {
   });
 
   it("renders a link when href is given", () => {
-    render(<BackLink href="/projects" variant="subtle" label="بازگشت به لیست پروژه‌ها" />);
-    const link = screen.getByRole("link", { name: "بازگشت به لیست پروژه‌ها" });
+    render(<BackLink href="/courses" variant="subtle" label="بازگشت به فهرست دوره‌ها" />);
+    const link = screen.getByRole("link", { name: "بازگشت به فهرست دوره‌ها" });
 
-    expect(link).toHaveAttribute("href", "/projects");
+    expect(link).toHaveAttribute("href", "/courses");
     expect(link).toHaveClass("hover:text-gray-700");
   });
 

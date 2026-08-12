@@ -5,7 +5,7 @@ import { Button } from "./Button.js";
 const meta = {
   title: "Primitives/Button",
   component: Button,
-  args: { children: "مشاهده پروژه‌ها" },
+  args: { children: "مشاهده دوره‌ها" },
   argTypes: {
     variant: {
       control: "select",
@@ -29,19 +29,19 @@ export const Variants: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
       <Button elevated>
-        <span>مشاهده پروژه‌ها</span>
+        <span>مشاهده دوره‌ها</span>
         <ArrowLeft className="size-4 ltr:-scale-x-100" aria-hidden />
       </Button>
       <Button variant="secondary" radius="none" size="lg">
-        ثبت آگهی
+        ثبت‌نام رایگان
       </Button>
-      <Button variant="soft">ارتباط با تیم ما</Button>
+      <Button variant="soft">تماس با پشتیبانی</Button>
       <Button variant="ghost" size="sm" className="font-medium">
         بازگشت
       </Button>
       <Button variant="outline" radius="2xl" size="lg" className="text-xs font-bold">
         <UserCheck className="size-4" aria-hidden />
-        مشاهده پروفایل فریلنسر
+        مشاهده پروفایل
       </Button>
       <Button variant="warning">ارتقا</Button>
     </div>
@@ -56,7 +56,7 @@ export const SoftTones: Story = {
         تلگرام
       </Button>
       <Button variant="soft" tone="emerald" size="sm">
-        واتساپ
+        واتس‌اپ
       </Button>
       <Button variant="soft" tone="blue" size="sm">
         لینکدین
@@ -66,10 +66,10 @@ export const SoftTones: Story = {
       </Button>
       <Button variant="soft" tone="rose" size="sm">
         <ShieldAlert className="size-4" aria-hidden />
-        گزارش تخلف
+        گزارش مشکل
       </Button>
       <Button variant="soft" tone="purple" size="xs">
-        مشاهده مدرک
+        مشاهده گواهی
       </Button>
       <Button variant="soft" tone="indigo" size="xs">
         indigo
@@ -99,10 +99,10 @@ export const Sizes: Story = {
 export const States: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
-      <Button loading>ثبت نظر</Button>
-      <Button disabled>ثبت نظر</Button>
+      <Button loading>ارسال دیدگاه</Button>
+      <Button disabled>ارسال دیدگاه</Button>
       <Button variant="inverse" size="xl" block className="max-w-md">
-        ارسال درخواست
+        ثبت‌نام در کارگاه
       </Button>
     </div>
   ),
@@ -111,7 +111,7 @@ export const States: Story = {
 export const AsLink: Story = {
   render: () => (
     <Button asChild variant="soft">
-      <a href="#contact">ارتباط با تیم ما</a>
+      <a href="#contact">تماس با پشتیبانی</a>
     </Button>
   ),
 };

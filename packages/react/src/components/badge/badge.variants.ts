@@ -1,14 +1,14 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Badge styles extracted from the reference (P-04):
- * - status: "منتشر شده" / "تکمیل ظرفیت" / "9 جای خالی" (R-07)
- * - outline: bordered soft pills (R-05 category / cooperation / location)
- * - counter: comment count (R-01)
- * - premium: "پکیج رایگان" gradient badge (R-04, R-08)
- * - label: gradient label pill "تابستون ۱۴۰۵" (R-03)
- * - overlay: floating labels on media (R-05 zoom hint, R-08 "مشاهده جزئیات کامل")
- * - solid: "تکمیل ظرفیت" overlay badge (R-07)
+ * Badge styles (P-04):
+ * - status: publication and availability states such as "منتشر شده" or "9 جای خالی"
+ * - outline: bordered soft pills for category, format or location
+ * - counter: a count beside a heading
+ * - premium: gold gradient badge for special plans
+ * - label: gradient label pill above a section title
+ * - overlay: floating labels on media, such as a zoom hint
+ * - solid: a strong status badge over a covered card
  */
 export const badgeVariants = cva("inline-flex items-center gap-1.5 whitespace-nowrap", {
   variants: {

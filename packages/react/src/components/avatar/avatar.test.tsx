@@ -8,10 +8,10 @@ import { Avatar, getInitials } from "./Avatar.js";
 describe("getInitials", () => {
   it.each([
     ["Faraz Pourebrahim", "FP"],
-    ["زینب فلاح", "زف"],
-    ["Iliya", "I"],
-    ["  erfan   mohmedi  ", "EM"],
-    ["محمد ابراهیمی نژاد", "من"],
+    ["سارا محمدی", "سم"],
+    ["Nika", "N"],
+    ["  sam   taylor  ", "ST"],
+    ["علی رضا کریمی", "عک"],
     ["", ""],
   ])("returns the initials of %j", (name, initials) => {
     expect(getInitials(name)).toBe(initials);
@@ -20,9 +20,9 @@ describe("getInitials", () => {
 
 describe("Avatar", () => {
   it("shows the initials fallback when no image is given", () => {
-    render(<Avatar name="زینب فلاح" />);
+    render(<Avatar name="سارا محمدی" />);
 
-    expect(screen.getByRole("img", { name: "زینب فلاح" })).toHaveTextContent("زف");
+    expect(screen.getByRole("img", { name: "سارا محمدی" })).toHaveTextContent("سم");
   });
 
   it("renders a custom fallback", () => {
@@ -38,14 +38,14 @@ describe("Avatar", () => {
     expect(root).toHaveClass("size-20", "rounded-3xl", "border-4", "border-white", "shadow-md");
   });
 
-  it("uses the reference defaults (40px circle)", () => {
+  it("defaults to a 40px circle", () => {
     const { container } = render(<Avatar name="Faraz" />);
 
     expect(container.querySelector('[data-slot="avatar"]')).toHaveClass("size-10", "rounded-full");
   });
 
   it("uses the responsive profile size", () => {
-    const { container } = render(<Avatar name="فلاح" size="3xl" />);
+    const { container } = render(<Avatar name="سارا" size="3xl" />);
 
     expect(container.querySelector('[data-slot="avatar"]')).toHaveClass("size-28", "md:size-44");
   });
@@ -64,8 +64,8 @@ describe("Avatar", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div>
-        <Avatar name="زینب فلاح" />
-        <Avatar name="Iliya" src="data:image/png;base64,iVBORw0KGgo=" />
+        <Avatar name="سارا محمدی" />
+        <Avatar name="Nika" src="data:image/png;base64,iVBORw0KGgo=" />
       </div>,
     );
 

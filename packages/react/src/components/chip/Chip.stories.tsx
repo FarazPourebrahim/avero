@@ -5,7 +5,7 @@ import { Chip } from "./Chip.js";
 const meta = {
   title: "Primitives/Chip",
   component: Chip,
-  args: { children: "سئو" },
+  args: { children: "طراحی" },
   argTypes: {
     variant: {
       control: "select",
@@ -24,37 +24,37 @@ export const Variants: Story = {
   render: () => (
     <div className="flex flex-col items-start gap-4">
       <div className="flex flex-wrap gap-2">
-        <Chip>طراحی UI/UX</Chip>
-        <Chip size="sm">remote</Chip>
-        <Chip variant="mini">وردپرس</Chip>
-        <Chip variant="skill">WordPress</Chip>
-        <Chip variant="skill">سئو (SEO)</Chip>
+        <Chip>طراحی رابط کاربری</Chip>
+        <Chip size="sm">آنلاین</Chip>
+        <Chip variant="mini">Figma</Chip>
+        <Chip variant="skill">React</Chip>
+        <Chip variant="skill">طراحی تعاملی</Chip>
       </div>
       <div className="flex flex-wrap gap-2">
         <Chip asChild variant="link">
-          <a href="#frylnsry">فریلنسری</a>
+          <a href="#design">طراحی</a>
         </Chip>
         <Chip asChild variant="link">
-          <a href="#bazar-kar">بازار کار</a>
+          <a href="#career">مسیر شغلی</a>
         </Chip>
       </div>
       <div className="flex flex-wrap gap-2.5">
         <Chip asChild variant="tag">
-          <a href="#php">
+          <a href="#typescript">
             <Tag aria-hidden />
-            <span>PHP</span>
+            <span>TypeScript</span>
           </a>
         </Chip>
         <Chip asChild variant="tag">
-          <a href="#laravel">
+          <a href="#accessibility">
             <Tag aria-hidden />
-            <span>Laravel</span>
+            <span>دسترس‌پذیری</span>
           </a>
         </Chip>
       </div>
       <div className="bg-background flex flex-wrap gap-3 p-4">
         <Chip asChild variant="footer">
-          <a href="#web-design">طراحی سایت</a>
+          <a href="#programming">برنامه‌نویسی</a>
         </Chip>
         <Chip asChild variant="footer">
           <a href="#react">React</a>

@@ -37,7 +37,7 @@ export const Variants: Story = {
   ),
 };
 
-export const ReferenceUsages: Story = {
+export const CommonUsages: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4 rounded-3xl bg-white p-6">
       <IconTile tone="blue">

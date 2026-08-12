@@ -8,8 +8,8 @@ import { Button } from "./Button.js";
 
 describe("Button", () => {
   it("renders a primary medium button with type=button by default", () => {
-    render(<Button>مشاهده پروژه‌ها</Button>);
-    const button = screen.getByRole("button", { name: "مشاهده پروژه‌ها" });
+    render(<Button>مشاهده دوره‌ها</Button>);
+    const button = screen.getByRole("button", { name: "مشاهده دوره‌ها" });
 
     expect(button).toHaveAttribute("type", "button");
     expect(button).toHaveAttribute("data-slot", "button");
@@ -23,7 +23,7 @@ describe("Button", () => {
   });
 
   it("keeps an explicit submit type", () => {
-    render(<Button type="submit">ثبت نظر</Button>);
+    render(<Button type="submit">ارسال دیدگاه</Button>);
 
     expect(screen.getByRole("button")).toHaveAttribute("type", "submit");
   });
@@ -63,7 +63,7 @@ describe("Button", () => {
   it("applies size, radius, block and elevation options", () => {
     render(
       <Button size="xl" radius="2xl" block elevated>
-        ارسال درخواست
+        ثبت‌نام در کارگاه
       </Button>,
     );
     const button = screen.getByRole("button");
@@ -121,10 +121,10 @@ describe("Button", () => {
   it("renders its child with button styles when asChild is set", () => {
     render(
       <Button asChild variant="soft">
-        <a href="/contact">ارتباط با تیم ما</a>
+        <a href="/contact">تماس با پشتیبانی</a>
       </Button>,
     );
-    const link = screen.getByRole("link", { name: "ارتباط با تیم ما" });
+    const link = screen.getByRole("link", { name: "تماس با پشتیبانی" });
 
     expect(link).toHaveAttribute("href", "/contact");
     expect(link).toHaveClass("bg-slate-100");
