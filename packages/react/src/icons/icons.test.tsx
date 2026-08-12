@@ -4,7 +4,7 @@ import { renderToString } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { expectNoAxeViolations } from "../test/axe.js";
 import { createIcon } from "./createIcon.js";
-import * as referenceIcons from "./referenceIcons.generated.js";
+import * as publicIcons from "./publicIcons.js";
 
 const SolidSquare = createIcon("SolidSquare", {
   viewBox: "0 0 10 10",
@@ -81,14 +81,14 @@ describe("createIcon", () => {
   });
 });
 
-describe("reference icons", () => {
-  const entries = Object.entries(referenceIcons);
+describe("public icons", () => {
+  const entries = Object.entries(publicIcons);
 
-  it("exports every glyph extracted from the reference", () => {
+  it("exports every bundled glyph", () => {
     expect(entries).toHaveLength(19);
   });
 
-  it.each(entries)("%s renders its reference path data", (name, Icon) => {
+  it.each(entries)("%s renders its path data", (name, Icon) => {
     const { container } = render(<Icon />);
     const paths = container.querySelectorAll("path");
 

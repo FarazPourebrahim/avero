@@ -1,5 +1,5 @@
 import { forwardRef, type HTMLAttributes, type LiHTMLAttributes, type Ref } from "react";
-import { QuoteRightSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { QuoteRightSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /** Props specific to `List`. It also accepts every native list attribute. */

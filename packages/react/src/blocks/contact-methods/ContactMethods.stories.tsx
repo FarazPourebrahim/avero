@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ContactMethod } from "../../components/meta/index.js";
-import { TelegramIcon, WhatsappIcon } from "../../icons/referenceIcons.generated.js";
+import { TelegramIcon, WhatsappIcon } from "../../icons/publicIcons.js";
 import { ContactMethods } from "./ContactMethods.js";
 
 const meta: Meta<typeof ContactMethods> = {

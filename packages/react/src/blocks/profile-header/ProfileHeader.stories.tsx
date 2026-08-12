@@ -4,7 +4,7 @@ import { Badge } from "../../components/badge/index.js";
 import { IconButton } from "../../components/icon-button/index.js";
 import { MetaItem } from "../../components/meta/index.js";
 import { PillTab, PillTabs } from "../../components/pill-tabs/index.js";
-import { TelegramIcon } from "../../icons/referenceIcons.generated.js";
+import { TelegramIcon } from "../../icons/publicIcons.js";
 import { ProfileHeader } from "./ProfileHeader.js";
 
 // Inline SVG artwork keeps stories deterministic and offline (no remote images).

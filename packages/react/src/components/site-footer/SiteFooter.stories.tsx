@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FooterSocialTile, SiteFooter } from "./SiteFooter.js";
-import { InstagramIcon, TelegramIcon, LinkedinIcon } from "../../icons/referenceIcons.generated.js";
+import { InstagramIcon, TelegramIcon, LinkedinIcon } from "../../icons/publicIcons.js";
 
 const CATEGORY_COLUMNS = [
   ["طراحی سایت", "تولید محتوا", "طراحی گرافیک", "سئو"],

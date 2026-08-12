@@ -12,7 +12,7 @@ import {
   TelegramIcon,
   TwitterIcon,
   WhatsappIcon,
-} from "../../icons/referenceIcons.generated.js";
+} from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /** A share destination, or the copy-link action. */

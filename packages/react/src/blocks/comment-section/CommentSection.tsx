@@ -11,7 +11,7 @@ import { Heading } from "../../components/typography/index.js";
 import { useControllableState } from "../../hooks/useControllableState.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { MessageSquareIcon, SendIcon } from "../../icons/internalIcons.js";
-import { CommentSolidIcon, PaperPlaneSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { CommentSolidIcon, PaperPlaneSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /** Props specific to `CommentSection`. It also accepts every native `<section>` attribute. */

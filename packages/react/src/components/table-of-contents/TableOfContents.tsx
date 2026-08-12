@@ -3,7 +3,7 @@
 import { forwardRef, useEffect, useId, type HTMLAttributes, type ReactNode } from "react";
 import { useControllableState } from "../../hooks/useControllableState.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
-import { ListUlSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { ListUlSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 export type TocItem = {

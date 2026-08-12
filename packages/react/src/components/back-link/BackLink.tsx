@@ -5,7 +5,7 @@ import { Slot } from "radix-ui";
 import { forwardRef, type HTMLAttributes, type ReactNode, type Ref } from "react";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { ArrowRightIcon } from "../../icons/internalIcons.js";
-import { ArrowRightSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { ArrowRightSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**

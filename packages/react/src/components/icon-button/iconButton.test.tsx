@@ -3,7 +3,7 @@ import { userEvent } from "@testing-library/user-event";
 import { createRef } from "react";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
-import { TelegramIcon } from "../../icons/referenceIcons.generated.js";
+import { TelegramIcon } from "../../icons/publicIcons.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { IconButton } from "./IconButton.js";
 

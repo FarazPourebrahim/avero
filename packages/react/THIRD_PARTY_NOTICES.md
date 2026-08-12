@@ -4,7 +4,7 @@
 
 ## Font Awesome Free 5 icons
 
-The icons in `src/icons/referenceIcons.generated.tsx` whose source says "Font Awesome Free 5" reproduce Font Awesome Free glyphs, as used by the reference design.
+The icons in `src/icons/publicIcons.tsx` whose source says "Font Awesome Free 5" reproduce Font Awesome Free glyphs.
 
 - Copyright: Fonticons, Inc. (https://fontawesome.com)
 - Licence: Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/
@@ -26,4 +26,4 @@ The icons in `src/icons/referenceIcons.generated.tsx` whose source says "Font Aw
 
 ## Pending verification
 
-- `InstagramIcon`: the glyph comes from the reference site's icon library, and its source icon set has not been identified yet. Its licence must be verified before release (tracked in `docs/known-debts.md`, KD-05).
+- `InstagramIcon`: the glyph's source icon set has not been identified yet. Its licence must be verified before release (tracked in `docs/known-debts.md`).

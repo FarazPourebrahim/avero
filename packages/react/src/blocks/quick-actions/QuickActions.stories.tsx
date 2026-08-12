@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ActionTile } from "../../components/action-tile/index.js";
-import { PaperPlaneSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { PaperPlaneSolidIcon } from "../../icons/publicIcons.js";
 import { QuickActions } from "./QuickActions.js";
 
 const meta: Meta<typeof QuickActions> = {

@@ -9,7 +9,7 @@ import {
   TelegramPlaneIcon,
   TwitterIcon,
   WhatsappIcon,
-} from "../../icons/referenceIcons.generated.js";
+} from "../../icons/publicIcons.js";
 import { IconButton } from "./IconButton.js";
 
 const meta = {

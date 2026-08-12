@@ -1,7 +1,7 @@
 import { tokens } from "@avero/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { MetaItem } from "../../components/meta/index.js";
-import { CalendarSolidIcon, ClockSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { CalendarSolidIcon, ClockSolidIcon } from "../../icons/publicIcons.js";
 import { ArticleHeader } from "./ArticleHeader.js";
 
 // Inline SVG artwork keeps stories deterministic and offline (no remote images).

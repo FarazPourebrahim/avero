@@ -4,7 +4,7 @@ import {
   CalendarSolidIcon,
   ClockSolidIcon,
   EyeSolidIcon,
-} from "../../icons/referenceIcons.generated.js";
+} from "../../icons/publicIcons.js";
 import { ContactMethod, KeyValueRow, MetaBar, MetaItem } from "./Meta.js";
 
 const meta: Meta = {

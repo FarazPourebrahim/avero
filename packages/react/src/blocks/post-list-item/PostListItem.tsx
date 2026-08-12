@@ -1,6 +1,6 @@
 import { forwardRef, type LiHTMLAttributes, type ReactNode } from "react";
 import { Image } from "../../components/image/index.js";
-import { ClockSolidIcon } from "../../icons/referenceIcons.generated.js";
+import { ClockSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /** Props specific to `PostListItem`. It also accepts every native `<li>` attribute. */
