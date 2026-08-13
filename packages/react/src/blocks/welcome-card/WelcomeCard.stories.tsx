@@ -19,5 +19,5 @@ type Story = StoryObj<typeof WelcomeCard>;
 export const Dashboard: Story = { args: { name: "Faraz Pourebrahim" } };
 
 export const CustomMessage: Story = {
-  args: { name: "زینب فلاح", children: "۳ پروژه جدید منتظر بررسی توست" },
+  args: { name: "سارا محمدی", children: "امروز دو جلسه تازه در انتظار شماست" },
 };

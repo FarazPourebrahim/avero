@@ -5,14 +5,17 @@ import { describe, expect, it } from "vitest";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { PromoBanner } from "./PromoBanner.js";
 
-const PROPS = { href: "/service", image: "/banner.webp", label: "ثبت پروژه" };
+const PROPS = { href: "/workshops", image: "/banner.webp", label: "ثبت‌نام در کارگاه" };
 
 describe("PromoBanner", () => {
-  it("names the link with the label the reference leaves empty", () => {
+  it("names the link and the image with the label", () => {
     render(<PromoBanner {...PROPS} />);
 
-    expect(screen.getByRole("link", { name: "ثبت پروژه" })).toHaveAttribute("href", "/service");
-    expect(screen.getByAltText("ثبت پروژه")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "ثبت‌نام در کارگاه" })).toHaveAttribute(
+      "href",
+      "/workshops",
+    );
+    expect(screen.getByAltText("ثبت‌نام در کارگاه")).toBeInTheDocument();
   });
 
   it("hides the listing banner below the md breakpoint", () => {
@@ -31,7 +34,7 @@ describe("PromoBanner", () => {
     expect(container.querySelector("img")).toHaveClass("shadow-sm", "hover:opacity-95");
   });
 
-  it("sets no height, because the reference's never applies", () => {
+  it("sets no height, so the artwork keeps its aspect ratio", () => {
     const { container } = render(<PromoBanner {...PROPS} />);
     const banner = container.querySelector('[data-slot="promo-banner"]');
 
@@ -55,7 +58,7 @@ describe("PromoBanner", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<PromoBanner {...PROPS} />)).toContain("ثبت پروژه");
+    expect(renderToString(<PromoBanner {...PROPS} />)).toContain("ثبت‌نام در کارگاه");
   });
 
   it("has no accessibility violations", async () => {

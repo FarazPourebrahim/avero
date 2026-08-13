@@ -18,7 +18,7 @@ import { cn } from "../../utils/cn.js";
 /** A share destination, or the copy-link action. */
 export type ShareChannel = "copy" | "telegram" | "whatsapp" | "linkedin" | "x";
 
-/** The reference's order, which differs between the two bars. */
+/** Default channel order, which differs between the two bars. */
 const DEFAULT_CHANNELS = {
   icon: ["copy", "telegram", "linkedin", "x", "whatsapp"],
   labelled: ["telegram", "whatsapp", "linkedin", "copy"],
@@ -26,7 +26,7 @@ const DEFAULT_CHANNELS = {
 
 /**
  * Per-variant channel styling. The two bars use different icon sets and different tints for the
- * same channel: the article uses Font Awesome brand glyphs, the service page Lucide outlines.
+ * same channel: the icon bar uses Font Awesome brand glyphs, the labelled bar Lucide outlines.
  * `className` carries the shades that are not tones of their own — LinkedIn's darker blue text
  * on the shared blue ground, and X's near-black on gray.
  */
@@ -53,13 +53,13 @@ const LABELLED_CHANNELS: Record<ShareChannel, LabelledChannelStyle> = {
 /** Props specific to `ShareBar`. It also accepts every native `<div>` attribute. */
 export type ShareBarOwnProps = {
   /**
-   * `icon` is the article's row of icon-only buttons (R-01); `labelled` is the service page's
-   * card of named buttons (R-05). @defaultValue "icon"
+   * `icon` is a row of icon-only buttons; `labelled` is a card of named buttons.
+   * @defaultValue "icon"
    */
   variant?: "icon" | "labelled";
   /** Text before the buttons. @defaultValue the `shareLabel` dictionary string */
   label?: ReactNode;
-  /** Which channels to offer, in order. @defaultValue the reference's order for the variant */
+  /** Which channels to offer, in order. @defaultValue the variant's default order */
   channels?: readonly ShareChannel[];
   /** Channel names, for overriding a single label. @defaultValue the `share*` dictionary strings */
   labels?: Partial<Record<ShareChannel, string>>;
@@ -74,11 +74,11 @@ export type ShareBarProps = Omit<
   ShareBarOwnProps;
 
 /**
- * Share controls (B-09, R-01/R-05). The article's bar is icon-only and sits in the action row
- * beside the like button; the service page's is a card of named buttons.
+ * Share controls. The icon bar fits an article's action row beside the like button; the labelled
+ * bar is a card of named buttons.
  *
- * The reference labels the icon buttons in English ("Share on Telegram") while showing Persian
- * tooltips; here both come from the dictionary, so the accessible name matches what is seen.
+ * Accessible names and tooltips both come from the dictionary, so what is announced matches what
+ * is seen.
  */
 export const ShareBar = forwardRef<HTMLDivElement, ShareBarProps>(function ShareBar(
   { variant = "icon", label, channels, labels, onShare, className, ...props },

@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
-/** Divider tones (P-09): gray-100 (cards), slate-100 (profile), gray-200 (footer). */
+/** Divider tones: gray-100 (cards), slate-100 (profile), gray-200 (footer). */
 export const dividerVariants = cva("shrink-0 border-0", {
   variants: {
     orientation: {

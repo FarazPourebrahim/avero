@@ -9,31 +9,31 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `OpportunityCard`. It also accepts every native `<a>` attribute. */
 export type OpportunityCardOwnProps = {
-  /** Project title. */
+  /** Item title, e.g. a workshop or an event. */
   title: string;
   /** Where the card links to. */
   href: string;
-  /** Date shown opposite the title, e.g. "تاریخ نامشخص". */
+  /** Date shown opposite the title, e.g. "15 مهر". */
   date?: ReactNode;
-  /** Work-type tags, e.g. `["remote"]`. */
+  /** Tags, e.g. `["آنلاین"]`. */
   tags?: readonly string[];
   /** Short description, clamped to two lines. */
   description?: string;
-  /** Capacity label, e.g. "ظرفیت ارسال رزومه". Omit to hide the meter. */
+  /** Capacity label, e.g. "ظرفیت ثبت‌نام". Omit to hide the meter. */
   capacityLabel?: ReactNode;
-  /** Applications received. */
+  /** Places taken. */
   value?: number;
   /** Total places. */
   max?: number;
   /** Capacity pill, e.g. "9 جای خالی". Turns red once the meter is full. */
   status?: ReactNode;
-  /** Caption under the meter's start, e.g. "3 رزومه ارسال شده". */
+  /** Caption under the meter's start, e.g. "3 نفر ثبت‌نام کرده‌اند". */
   startCaption?: ReactNode;
   /** Caption under the meter's end, e.g. "حداکثر 12 نفر". */
   endCaption?: ReactNode;
   /** Footer call to action. @defaultValue the `view` dictionary string */
   actionLabel?: ReactNode;
-  /** Marks the opportunity as closed: the card dims, blurs and stops responding. @defaultValue false */
+  /** Marks the item as full: the card dims, blurs and stops responding. @defaultValue false */
   full?: boolean;
   /** Reason shown on the overlay. @defaultValue the `capacityFull` dictionary string */
   fullLabel?: ReactNode;
@@ -46,13 +46,11 @@ export type OpportunityCardProps = Omit<
   OpportunityCardOwnProps;
 
 /**
- * Related-project card (B-03, R-07): title and date, work-type tags, a clamped description and a
- * capacity meter, inside one link.
+ * Opportunity card, e.g. for a workshop with limited places: title and date, tags, a clamped
+ * description and a capacity meter, inside one link.
  *
- * Once capacity is full the reference blurs and dims the card, disables pointer events and covers
- * it with a reason pill. Its overlay also carries `bg-bg-[var(--bg-card)]/40`, a typo that never
- * compiles (defect R-06), so only the backdrop blur renders — which is what `DisabledOverlay`
- * reproduces.
+ * Once capacity is full the card blurs and dims, stops responding to the pointer and is covered by
+ * a `DisabledOverlay` with the reason.
  *
  * Carousel sizing (`w-[85%]`, `snap-center`, `flex-none`) belongs to the carousel, not the card, so
  * pass it through `className`.

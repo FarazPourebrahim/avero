@@ -6,18 +6,18 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { CtaBanner } from "./CtaBanner.js";
 
 const PROPS = {
-  eyebrow: "مأموریت و چشم‌انداز",
-  title: "ساختن آینده‌ای که در آن تخصص و تلاش حد و مرزی ندارد",
-  children: "هدف ما در دورلنسر تنها مدیریت چند پروژه نیست.",
+  eyebrow: "مأموریت ما",
+  title: "یادگیری بدون مرز، برای همه",
+  children: "هدف ما فقط برگزاری چند دوره نیست.",
 };
 
 describe("CtaBanner", () => {
   it("renders the eyebrow, headline and paragraph", () => {
     render(<CtaBanner {...PROPS} />);
 
-    expect(screen.getByText("مأموریت و چشم‌انداز")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /ساختن آینده/ })).toBeInTheDocument();
-    expect(screen.getByText(/هدف ما در دورلنسر/)).toBeInTheDocument();
+    expect(screen.getByText("مأموریت ما")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /یادگیری بدون مرز/ })).toBeInTheDocument();
+    expect(screen.getByText(/هدف ما فقط/)).toBeInTheDocument();
   });
 
   it("hides the decorative glows from assistive technology", () => {

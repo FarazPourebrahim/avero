@@ -5,13 +5,13 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `SuggestionItem`. It also accepts every native `<div>` attribute. */
 export type SuggestionItemOwnProps = {
-  /** Project title. */
+  /** Item title. */
   title: string;
   /** Where the title links to. Without it the title is plain text. */
   href?: string;
   /** One-line summary, truncated to the row's width. */
   description?: string;
-  /** Work-type tags, e.g. `["remote"]`. */
+  /** Tags, e.g. `["آنلاین"]`. */
   tags?: readonly string[];
   /** Match percentage, 0–100. Omit to hide the score. */
   match?: number;
@@ -26,12 +26,10 @@ export type SuggestionItemProps = Omit<
   SuggestionItemOwnProps;
 
 /**
- * Suggested project row on the dashboard (B-04, R-02): title, summary and work-type tags on one
- * side, a match percentage on the other.
+ * Suggestion row, e.g. a recommended course on a dashboard: title, summary and tags on one side,
+ * a match percentage on the other.
  *
- * The reference renders the row as a plain `div` with no link at all, so nothing is reachable by
- * keyboard (defect R-10). Here the title carries the link when `href` is given (deviation V-04);
- * the visuals are unchanged.
+ * The title carries the link when `href` is given, so the row is reachable by keyboard.
  */
 export const SuggestionItem = forwardRef<HTMLDivElement, SuggestionItemProps>(
   function SuggestionItem(

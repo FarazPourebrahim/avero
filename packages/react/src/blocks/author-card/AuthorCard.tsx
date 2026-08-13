@@ -11,11 +11,11 @@ export type AuthorCardOwnProps = {
   /** Avatar image. Without one the avatar falls back to the name's initials. */
   image?: string;
   /**
-   * Role pill under the name, e.g. "مدیر دورلنسر". Named `roleLabel` rather than `role` so the
+   * Role pill under the name, e.g. "سردبیر وبلاگ". Named `roleLabel` rather than `role` so the
    * native ARIA `role` attribute stays available on the card.
    */
   roleLabel?: ReactNode;
-  /** Short biography. Clamped to four lines, as in the reference. */
+  /** Short biography, clamped to four lines. */
   bio?: ReactNode;
 };
 
@@ -26,12 +26,10 @@ export type AuthorCardProps = Omit<
   AuthorCardOwnProps;
 
 /**
- * Author box in the article sidebar (B-06, R-01): a centred column of avatar, name, role pill and
+ * Author box in the article sidebar: a centred column of avatar, name, role pill and
  * a clamped biography.
  *
- * The reference's surface is `rounded-3xl` white with a `gray-100` border and the broken
- * `shadow-[0_0_20px_0_(--shadow)]` (defect R-02), which renders no shadow at all; this ships
- * `shadow-brand-soft`, a 2%-alpha shadow that is visually indistinguishable.
+ * The surface is `rounded-3xl` white with a `gray-100` border and the faint `shadow-brand-soft`.
  */
 export const AuthorCard = forwardRef<HTMLDivElement, AuthorCardProps>(function AuthorCard(
   { name, image, roleLabel, bio, className, ...props },

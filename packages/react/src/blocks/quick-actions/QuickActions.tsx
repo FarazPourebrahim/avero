@@ -16,7 +16,7 @@ export const quickActionsVariants = cva("grid grid-cols-2 gap-2 sm:grid-cols-3 s
 
 /** Props specific to `QuickActions`. It also accepts every native `<div>` attribute. */
 export type QuickActionsOwnProps = {
-  /** The tiles, `ActionTile`s in the reference. */
+  /** The tiles, typically `ActionTile`s. */
   children: ReactNode;
   /** Tiles per row at the widest breakpoint. @defaultValue 6 */
   columns?: VariantProps<typeof quickActionsVariants>["columns"];
@@ -28,11 +28,11 @@ export type QuickActionsProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Quick
   QuickActionsOwnProps;
 
 /**
- * Dashboard shortcut grid (B-16, R-02): the row of six gradient `ActionTile`s under the stat
+ * Dashboard shortcut grid: the row of six gradient `ActionTile`s under the stat
  * cards, folding to three columns on a tablet and two on a phone.
  *
- * The reference's grid is an unlabelled `div`; passing `label` makes it a named group, so screen
- * reader users hear what the six buttons belong to (deviation V-04).
+ * Passing `label` makes the grid a named group, so screen reader users hear what the buttons
+ * belong to.
  */
 export const QuickActions = forwardRef<HTMLDivElement, QuickActionsProps>(function QuickActions(
   { children, columns, label, className, ...props },

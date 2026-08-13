@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Button styles (P-01):
+ * Button styles:
  * - primary: main calls to action and form submits
  * - secondary: orange accent call to action
  * - soft + tone: tinted share, report, certificate and contact buttons

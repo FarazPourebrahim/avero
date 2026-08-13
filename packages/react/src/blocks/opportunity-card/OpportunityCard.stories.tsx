@@ -18,31 +18,31 @@ type Story = StoryObj<typeof OpportunityCard>;
 
 export const Open: Story = {
   args: {
-    title: "توسعه دهنده php",
+    title: "کارگاه طراحی تجربه کاربری",
     href: "#",
-    date: "تاریخ نامشخص",
-    tags: ["remote"],
-    description: "توسعه بخش مدیریت سایت و رفع اشکالات موجود",
-    capacityLabel: "ظرفیت ارسال رزومه",
+    date: "15 مهر",
+    tags: ["آنلاین"],
+    description: "کارگاه عملی سه‌روزه برای آشنایی با فرایند طراحی و آزمون کاربردپذیری",
+    capacityLabel: "ظرفیت ثبت‌نام",
     value: 3,
     max: 12,
     status: "9 جای خالی",
-    startCaption: "3 رزومه ارسال شده",
+    startCaption: "3 نفر ثبت‌نام کرده‌اند",
     endCaption: "حداکثر 12 نفر",
   },
 };
 
 export const Full: Story = {
   args: {
-    title: "تبدیل قالب HTML به وردپرس",
+    title: "کارگاه عکاسی با موبایل",
     href: "#",
-    date: "تاریخ نامشخص",
-    tags: ["freelance"],
-    capacityLabel: "ظرفیت ارسال رزومه",
+    date: "22 مهر",
+    tags: ["حضوری"],
+    capacityLabel: "ظرفیت ثبت‌نام",
     value: 5,
     max: 5,
-    status: "تکمیل ظرفیت",
-    startCaption: "5 رزومه ارسال شده",
+    status: "ظرفیت تکمیل شد",
+    startCaption: "5 نفر ثبت‌نام کرده‌اند",
     endCaption: "حداکثر 5 نفر",
     full: true,
   },

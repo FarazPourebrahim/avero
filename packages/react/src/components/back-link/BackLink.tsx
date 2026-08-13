@@ -9,7 +9,7 @@ import { ArrowRightSolidIcon } from "../../icons/publicIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Back links (N-03):
+ * Back links:
  * - text: a "بازگشت" button with a solid arrow
  * - soft: a back button with a hover fill
  * - subtle: a quiet link such as "بازگشت به فهرست دوره‌ها"

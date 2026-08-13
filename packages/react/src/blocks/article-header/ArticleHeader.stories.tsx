@@ -30,12 +30,12 @@ type Story = StoryObj<typeof ArticleHeader>;
 
 export const BlogPost: Story = {
   args: {
-    title: "فریلنسری چیست؟ راهنمای کامل شروع کار به عنوان فریلنسر",
+    title: "چطور یک سیستم طراحی بسازیم؟ راهنمای گام‌به‌گام",
     image: COVER,
     meta: (
       <>
         <MetaItem icon={<CalendarSolidIcon size={14} />} label="انتشار:">
-          <time dateTime="2026-08-25">۳ شهریور ۱۴۰۵</time>
+          <time dateTime="2026-10-04">۱۲ مهر ۱۴۰۵</time>
         </MetaItem>
         <MetaItem icon={<ClockSolidIcon size={14} />}>۱۲ دقیقه مطالعه</MetaItem>
       </>
@@ -44,5 +44,5 @@ export const BlogPost: Story = {
 };
 
 export const WithoutCover: Story = {
-  args: { title: "چطور اولین پروژه فریلنسری خود را بگیریم؟" },
+  args: { title: "آشنایی با اصول تایپوگرافی فارسی" },
 };

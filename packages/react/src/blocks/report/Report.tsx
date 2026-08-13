@@ -9,10 +9,10 @@ import { FlagIcon, ShieldAlertIcon, TriangleAlertIcon } from "../../icons/intern
 import { cn } from "../../utils/cn.js";
 
 /**
- * The reference's three report controls (B-10):
- * - `mini`: under a portfolio card, beside its like and share buttons (R-08)
- * - `text`: under a project's description (R-07)
- * - `soft`: the tinted button inside the service page's report card (R-05)
+ * Three report control shapes:
+ * - `mini`: a compact control in a card's action row, beside like and share
+ * - `text`: a plain text control under a description
+ * - `soft`: a tinted button, as inside `ReportCard`
  */
 export const reportActionVariants = cva("inline-flex cursor-pointer items-center transition", {
   variants: {
@@ -27,7 +27,7 @@ export const reportActionVariants = cva("inline-flex cursor-pointer items-center
 
 /** Props specific to `ReportAction`. It also accepts every native `<button>` attribute. */
 export type ReportActionOwnProps = {
-  /** Which of the reference's three shapes to render. @defaultValue "mini" */
+  /** Which of the three shapes to render. @defaultValue "mini" */
   variant?: VariantProps<typeof reportActionVariants>["variant"];
   /** The control's text. @defaultValue the `report` dictionary string */
   children?: ReactNode;
@@ -42,11 +42,11 @@ export type ReportActionProps = Omit<
   ReportActionOwnProps;
 
 /**
- * Report control (B-10, R-05/R-07/R-08). The same action appears in three places with three
+ * Report control. The same action appears in three places with three
  * shapes, so it is one component with a variant rather than three near-copies.
  *
- * The reference's portfolio control is labelled only by a `title` attribute, which is not a
- * reliable accessible name (defect R-10); every variant here has real text (deviation V-04).
+ * Every variant has real text, because a `title` attribute alone is not a reliable accessible
+ * name.
  */
 export const ReportAction = forwardRef<HTMLButtonElement, ReportActionProps>(function ReportAction(
   { variant = "mini", children, onReport, className, type, title, ...props },
@@ -115,7 +115,7 @@ export type ReportCardProps = Omit<
 > &
   ReportCardOwnProps;
 
-/** The service page's report panel (B-10, R-05): a titled row with a tinted report button. */
+/** Report panel for a detail page: a titled row with a tinted report button. */
 export const ReportCard = forwardRef<HTMLDivElement, ReportCardProps>(function ReportCard(
   { title, description, actionLabel, onReport, className, ...props },
   ref,

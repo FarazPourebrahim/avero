@@ -10,11 +10,11 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { ProfileHeader } from "./ProfileHeader.js";
 
 const PROPS = {
-  name: "فلاح",
+  name: "سارا محمدی",
   image: "/avatar.jpg",
-  headline: "طراحی انواع سایت و سئو",
-  badge: <Badge variant="premium">پکیج رایگان</Badge>,
-  meta: <MetaItem variant="pill">تهران (ایران)</MetaItem>,
+  headline: "مدرس طراحی رابط کاربری",
+  badge: <Badge variant="premium">مدرس برگزیده</Badge>,
+  meta: <MetaItem variant="pill">اصفهان (ایران)</MetaItem>,
 };
 
 function tabs() {
@@ -23,7 +23,7 @@ function tabs() {
       <PillTab href="/about" current>
         درباره من
       </PillTab>
-      <PillTab href="/portfolio">نمونه کار (4)</PillTab>
+      <PillTab href="/courses">دوره‌ها (3)</PillTab>
     </PillTabs>
   );
 }
@@ -32,10 +32,10 @@ describe("ProfileHeader", () => {
   it("renders the name, badge, headline and meta", () => {
     render(<ProfileHeader {...PROPS} />);
 
-    expect(screen.getByRole("heading", { level: 1, name: "فلاح" })).toBeInTheDocument();
-    expect(screen.getByText("پکیج رایگان")).toBeInTheDocument();
-    expect(screen.getByText("طراحی انواع سایت و سئو")).toBeInTheDocument();
-    expect(screen.getByText("تهران (ایران)")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "سارا محمدی" })).toBeInTheDocument();
+    expect(screen.getByText("مدرس برگزیده")).toBeInTheDocument();
+    expect(screen.getByText("مدرس طراحی رابط کاربری")).toBeInTheDocument();
+    expect(screen.getByText("اصفهان (ایران)")).toBeInTheDocument();
   });
 
   it("puts the avatar in the ring that overlaps the cover", () => {
@@ -43,7 +43,7 @@ describe("ProfileHeader", () => {
     const ring = container.querySelector('[data-slot="cover-header-avatar"]');
 
     expect(ring).toHaveClass("rounded-full", "border-white");
-    expect(ring?.querySelector("img")).toHaveAttribute("alt", "فلاح");
+    expect(ring?.querySelector("img")).toHaveAttribute("alt", "سارا محمدی");
   });
 
   it("renders tabs and social links in the footer", () => {

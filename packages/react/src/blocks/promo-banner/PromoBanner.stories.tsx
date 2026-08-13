@@ -27,9 +27,9 @@ export default meta;
 type Story = StoryObj<typeof PromoBanner>;
 
 export const Listing: Story = {
-  args: { href: "#", image: ARTWORK, label: "خدمات فریلنسرها" },
+  args: { href: "#", image: ARTWORK, label: "دوره‌های تازه" },
 };
 
 export const Project: Story = {
-  args: { href: "#", image: ARTWORK, label: "ثبت پروژه", variant: "project" },
+  args: { href: "#", image: ARTWORK, label: "ثبت‌نام در کارگاه", variant: "project" },
 };

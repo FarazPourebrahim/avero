@@ -25,7 +25,7 @@ export type SegmentedControlProps = Omit<
   SegmentedControlOwnProps;
 
 /**
- * A single-choice switch on a gray track (N-05), e.g. a dashboard report switcher.
+ * A single-choice switch on a gray track, e.g. a dashboard report switcher.
  * Arrow keys move between segments in reading direction.
  */
 export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps>(

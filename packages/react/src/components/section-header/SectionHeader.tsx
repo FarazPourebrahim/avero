@@ -3,7 +3,7 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Section headings (D-21):
+ * Section headings:
  * - accentBar: page header with a gradient bar, title and subtitle
  * - dot: blue dot + title, as in "درباره من"
  * - icon: primary icon + title, as in "چرا ما را انتخاب کنید؟"

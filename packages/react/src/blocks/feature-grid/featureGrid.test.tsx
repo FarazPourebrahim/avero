@@ -9,17 +9,17 @@ import { FeatureGrid } from "./FeatureGrid.js";
 function cards() {
   return (
     <>
-      <FeatureCard title="پرداخت امن" description="پرداخت مرحله‌ای و امانی." tone="emerald" />
-      <FeatureCard title="برترین استعدادها" description="هزاران متخصص ماهر." tone="blue" />
+      <FeatureCard title="پرداخت امن" description="بازگشت وجه تا هفت روز." tone="emerald" />
+      <FeatureCard title="مدرس‌های باتجربه" description="متخصصانی با سال‌ها تجربه." tone="blue" />
     </>
   );
 }
 
 describe("FeatureGrid", () => {
   it("renders the titled section above its cards", () => {
-    render(<FeatureGrid title="چرا دورلنسر؟">{cards()}</FeatureGrid>);
+    render(<FeatureGrid title="چرا ما؟">{cards()}</FeatureGrid>);
 
-    expect(screen.getByRole("heading", { name: "چرا دورلنسر؟" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "چرا ما؟" })).toBeInTheDocument();
     expect(screen.getByText("پرداخت امن")).toBeInTheDocument();
   });
 
@@ -55,13 +55,13 @@ describe("FeatureGrid", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<FeatureGrid title="چرا دورلنسر؟">{cards()}</FeatureGrid>)).toContain(
+    expect(renderToString(<FeatureGrid title="چرا ما؟">{cards()}</FeatureGrid>)).toContain(
       "پرداخت امن",
     );
   });
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<FeatureGrid title="چرا دورلنسر؟">{cards()}</FeatureGrid>);
+    const { container } = render(<FeatureGrid title="چرا ما؟">{cards()}</FeatureGrid>);
 
     await expectNoAxeViolations(container);
   });

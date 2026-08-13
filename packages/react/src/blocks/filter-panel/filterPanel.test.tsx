@@ -28,19 +28,19 @@ describe("FilterPanel", () => {
     expect(screen.getByRole("combobox", { name: "مرتب‌سازی" })).toBeInTheDocument();
   });
 
-  it("names the region with its heading, which the reference leaves unnamed", () => {
+  it("names the region with its heading", () => {
     renderPanel();
 
     expect(screen.getByRole("region", { name: "فیلترها" })).toBeInTheDocument();
   });
 
   it("accepts its own title", () => {
-    renderPanel("فیلتر خدمات");
+    renderPanel("فیلتر دوره‌ها");
 
-    expect(screen.getByRole("region", { name: "فیلتر خدمات" })).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "فیلتر دوره‌ها" })).toBeInTheDocument();
   });
 
-  it("stacks the controls in the reference's rhythm", () => {
+  it("stacks the controls 12px apart", () => {
     const { container } = renderPanel();
 
     expect(container.querySelector('[data-slot="filter-panel-controls"]')).toHaveClass(

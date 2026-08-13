@@ -18,24 +18,24 @@ type Story = StoryObj<typeof SuggestionItem>;
 
 export const Suggested: Story = {
   args: {
-    title: "طراحی سایت عمده فروش",
+    title: "مبانی تحلیل داده",
     href: "#",
-    description: "طراحی فروشگاه اینترنتی با پنل مدیریت",
-    tags: ["remote"],
+    description: "کار با داده‌های واقعی و رسم نمودار در Python",
+    tags: ["آنلاین"],
     match: 8,
   },
 };
 
 export const HighMatch: Story = {
   args: {
-    title: "توسعه اپلیکیشن موبایل",
+    title: "طراحی سیستم طراحی در Figma",
     href: "#",
-    description: "اپلیکیشن فروشگاهی برای اندروید و iOS",
-    tags: ["freelance", "remote"],
+    description: "ساختن کتابخانه کامپوننت و توکن‌های طراحی",
+    tags: ["پیشرفته", "آنلاین"],
     match: 92,
   },
 };
 
 export const TitleOnly: Story = {
-  args: { title: "پروژه بدون جزئیات" },
+  args: { title: "دوره بدون جزئیات" },
 };

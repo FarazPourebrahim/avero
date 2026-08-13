@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn.js";
 import { Container } from "../container/Container.js";
 
 /**
- * Page templates (T-05…T-09). Each one renders the page's `main` landmark, centres a `max-w-7xl`
+ * Page templates. Each one renders the page's `main` landmark, centres a `max-w-7xl`
  * column and lays out the grid for that page type. Sticky offsets clear the sticky header, so an
  * aside stops under it rather than behind it.
  */
@@ -43,7 +43,7 @@ export type AsideLayoutOwnProps = {
 export type AsideLayoutProps = Omit<HTMLAttributes<HTMLElement>, keyof AsideLayoutOwnProps> &
   AsideLayoutOwnProps;
 
-/** Article page (T-05): 8/4 from `lg`, with an aside that sticks under the header. */
+/** Article page: 8/4 from `lg`, with an aside that sticks under the header. */
 export const ArticleLayout = forwardRef<HTMLElement, AsideLayoutProps>(function ArticleLayout(
   { aside, asideLabel, asideClassName, children, ...props },
   ref,
@@ -74,7 +74,7 @@ export const ArticleLayout = forwardRef<HTMLElement, AsideLayoutProps>(function 
 
 ArticleLayout.displayName = "ArticleLayout";
 
-/** Detail page (T-06): 8/4 from `lg`, aside sticky at `top-24`. */
+/** Detail page: 8/4 from `lg`, aside sticky at `top-24`. */
 export const DetailLayout = forwardRef<HTMLElement, AsideLayoutProps>(function DetailLayout(
   { aside, asideLabel, asideClassName, children, ...props },
   ref,
@@ -111,7 +111,7 @@ export type ListingLayoutOwnProps = AsideLayoutOwnProps & {
 export type ListingLayoutProps = Omit<HTMLAttributes<HTMLElement>, keyof ListingLayoutOwnProps> &
   ListingLayoutOwnProps;
 
-/** Listing page (T-07): sticky filters at the inline start, results beside them. */
+/** Listing page: sticky filters at the inline start, results beside them. */
 export const ListingLayout = forwardRef<HTMLElement, ListingLayoutProps>(function ListingLayout(
   { aside, asideLabel, asideClassName, header, children, ...props },
   ref,
@@ -147,7 +147,7 @@ export const ListingLayout = forwardRef<HTMLElement, ListingLayoutProps>(functio
 
 ListingLayout.displayName = "ListingLayout";
 
-/** Split detail page (T-08): a quarter-width aside that drops below the content on phones. */
+/** Split detail page: a quarter-width aside that drops below the content on phones. */
 export const SplitDetailLayout = forwardRef<HTMLElement, AsideLayoutProps>(
   function SplitDetailLayout({ aside, asideLabel, asideClassName, children, ...props }, ref) {
     return (
@@ -178,7 +178,7 @@ SplitDetailLayout.displayName = "SplitDetailLayout";
 
 export type ProfileLayoutProps = HTMLAttributes<HTMLElement>;
 
-/** Profile page (T-09): a single 12-column stack under the cover header. */
+/** Profile page: a single 12-column stack under the cover header. */
 export const ProfileLayout = forwardRef<HTMLElement, ProfileLayoutProps>(function ProfileLayout(
   { children, ...props },
   ref,

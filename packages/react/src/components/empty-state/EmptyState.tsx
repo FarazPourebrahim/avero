@@ -3,7 +3,7 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Empty state (O-08) in four shapes:
+ * Empty state in four shapes:
  * `text` — a bare centred line, e.g. under an empty comment list;
  * `slate` — the same, in a slate palette;
  * `icon` — a faded icon above the message, e.g. for a "coming soon" chart;

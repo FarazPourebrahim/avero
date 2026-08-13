@@ -16,12 +16,12 @@ const meta: Meta<typeof ShowcaseCard> = {
 export default meta;
 type Story = StoryObj<typeof ShowcaseCard>;
 
-export const Portfolio: Story = {
+export const Showcase: Story = {
   args: {
-    title: "طراحی سایت طراحی سایت و سئو",
+    title: "اپلیکیشن مدیریت کارها",
     href: "#",
-    description: "طراحی سایت برای خدمات طراحی سایت و سئو و غیره",
-    tags: ["وردپرس"],
+    description: "پروژه پایانی دوره طراحی رابط کاربری برای یک اپلیکیشن مدیریت کارهای روزانه",
+    tags: ["Figma"],
     likes: 0,
     onShare: () => {},
   },
@@ -29,10 +29,10 @@ export const Portfolio: Story = {
 
 export const ManyTags: Story = {
   args: {
-    title: "خدمات ساختمانی",
+    title: "داشبورد تحلیل فروش",
     href: "#",
-    description: "طراحی و اجرای پروژه‌های ساختمانی",
-    tags: ["وردپرس", "سئو", "طراحی"],
+    description: "نمایش داده‌های فروش با نمودارهای تعاملی",
+    tags: ["React", "TypeScript", "Recharts"],
     likes: 12,
     liked: true,
     onShare: () => {},
@@ -40,5 +40,5 @@ export const ManyTags: Story = {
 };
 
 export const TitleOnly: Story = {
-  args: { title: "مشاوره فنی" },
+  args: { title: "پروژه بدون جزئیات" },
 };

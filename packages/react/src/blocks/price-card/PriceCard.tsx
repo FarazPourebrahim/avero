@@ -14,7 +14,7 @@ export type PriceCardOwnProps = {
   label?: ReactNode;
   /** Currency after the amount. @defaultValue the `currencyToman` dictionary string */
   currency?: ReactNode;
-  /** Anything under the price, e.g. a call to action the reference does not have. */
+  /** Anything under the price, e.g. a call to action. */
   children?: ReactNode;
 };
 
@@ -22,7 +22,7 @@ export type PriceCardProps = Omit<HTMLAttributes<HTMLDivElement>, keyof PriceCar
   PriceCardOwnProps;
 
 /**
- * Base price panel in the service sidebar (B-23, R-05): a small caption over a large primary
+ * Price panel for a detail page's sidebar: a small caption over a large primary
  * amount with its currency.
  */
 export const PriceCard = forwardRef<HTMLDivElement, PriceCardProps>(function PriceCard(

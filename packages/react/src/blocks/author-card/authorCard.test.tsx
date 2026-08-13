@@ -6,22 +6,22 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { AuthorCard } from "./AuthorCard.js";
 
 const PROPS = {
-  name: "محمد ابراهیمی",
+  name: "سارا محمدی",
   image: "/avatar.jpg",
-  roleLabel: "مدیر دورلنسر",
-  bio: "یه برنامه‌نویس و عاشق دنیای تکنولوژی‌ام که دورلنسر رو راه‌اندازی کردم.",
+  roleLabel: "سردبیر وبلاگ",
+  bio: "طراح محصول و علاقه‌مند به آموزش هستم.",
 };
 
 describe("AuthorCard", () => {
   it("renders the name as a heading, with the role and biography", () => {
     render(<AuthorCard {...PROPS} />);
 
-    expect(screen.getByRole("heading", { name: "محمد ابراهیمی" })).toBeInTheDocument();
-    expect(screen.getByText("مدیر دورلنسر")).toBeInTheDocument();
-    expect(screen.getByText(/عاشق دنیای تکنولوژی/)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "سارا محمدی" })).toBeInTheDocument();
+    expect(screen.getByText("سردبیر وبلاگ")).toBeInTheDocument();
+    expect(screen.getByText(/علاقه‌مند به آموزش/)).toBeInTheDocument();
   });
 
-  it("keeps the card's slot name and the reference's centred surface", () => {
+  it("keeps the card's slot name and centred surface", () => {
     const { container } = render(<AuthorCard {...PROPS} />);
     const root = container.querySelector('[data-slot="author-card"]');
 
@@ -30,16 +30,16 @@ describe("AuthorCard", () => {
   });
 
   it("omits the role and biography when they are not given", () => {
-    const { container } = render(<AuthorCard name="زینب فلاح" />);
+    const { container } = render(<AuthorCard name="علی کریمی" />);
 
     expect(container.querySelector('[data-slot="author-card-role"]')).toBeNull();
     expect(container.querySelector('[data-slot="author-card-bio"]')).toBeNull();
   });
 
   it("falls back to the name's initials without an image", () => {
-    render(<AuthorCard name="زینب فلاح" />);
+    render(<AuthorCard name="علی کریمی" />);
 
-    expect(screen.getByRole("img", { name: "زینب فلاح" })).toHaveTextContent("زف");
+    expect(screen.getByRole("img", { name: "علی کریمی" })).toHaveTextContent("عک");
   });
 
   it("merges a custom class name", () => {
@@ -56,7 +56,7 @@ describe("AuthorCard", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<AuthorCard {...PROPS} />)).toContain("مدیر دورلنسر");
+    expect(renderToString(<AuthorCard {...PROPS} />)).toContain("سردبیر وبلاگ");
   });
 
   it("has no accessibility violations", async () => {

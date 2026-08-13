@@ -3,7 +3,7 @@ import { forwardRef, type InputHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Text input (FM-02). `filter` is a compact box for filter panels; `soft` and `slate` match the
+ * Text input. `filter` is a compact box for filter panels; `soft` and `slate` match the
  * two `Textarea` treatments, so an input can sit beside one.
  */
 export const inputVariants = cva(

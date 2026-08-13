@@ -67,7 +67,7 @@ const INITIAL_STATE: CarouselState = {
 };
 
 /**
- * A swipeable carousel (N-09) built on Embla, with circular previous/next buttons and dot or
+ * A swipeable carousel built on Embla, with circular previous/next buttons and dot or
  * pill pagination.
  */
 export const Carousel = forwardRef<HTMLElement, CarouselProps>(function Carousel(

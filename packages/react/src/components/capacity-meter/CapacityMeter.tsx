@@ -30,7 +30,7 @@ export type CapacityMeterOwnProps = {
 export type CapacityMeterProps = Omit<HTMLAttributes<HTMLDivElement>, keyof CapacityMeterOwnProps> &
   CapacityMeterOwnProps;
 
-/** Labelled capacity bar (D-16). Exposes `data-state="full"` once `value` reaches `max`. */
+/** Labelled capacity bar. Exposes `data-state="full"` once `value` reaches `max`. */
 export const CapacityMeter = forwardRef<HTMLDivElement, CapacityMeterProps>(function CapacityMeter(
   { label, value, max, variant = "detail", status, startCaption, endCaption, className, ...props },
   ref,

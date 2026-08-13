@@ -21,7 +21,7 @@ export type SiteHeaderProps = Omit<HTMLAttributes<HTMLElement>, keyof SiteHeader
   SiteHeaderOwnProps;
 
 /**
- * Site chrome header (T-02): a blurred, sticky bar with the logo and navigation at the inline
+ * Site chrome header: a blurred, sticky bar with the logo and navigation at the inline
  * start and the user actions at the inline end. It holds no state — pass the drawer's trigger as
  * `menu` so the header stays a server component.
  */

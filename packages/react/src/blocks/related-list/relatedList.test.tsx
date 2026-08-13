@@ -8,44 +8,49 @@ import { RelatedItem, RelatedList } from "./RelatedList.js";
 function items() {
   return (
     <>
-      <RelatedItem title="سئو SEO سایت" href="/services/seo" image="/seo.png" price={35000000} />
-      <RelatedItem title="طراحی لوگو" href="/services/logo" meta={<span>توافقی</span>} />
+      <RelatedItem
+        title="طراحی سیستم طراحی"
+        href="/courses/design-systems"
+        image="/design-systems.png"
+        price={3500000}
+      />
+      <RelatedItem title="اصول تایپوگرافی" href="/courses/typography" meta={<span>رایگان</span>} />
     </>
   );
 }
 
 describe("RelatedList", () => {
   it("renders the titled panel over its rows", () => {
-    render(<RelatedList title="خدمات مرتبط">{items()}</RelatedList>);
+    render(<RelatedList title="دوره‌های مرتبط">{items()}</RelatedList>);
 
-    expect(screen.getByRole("heading", { name: "خدمات مرتبط" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "دوره‌های مرتبط" })).toBeInTheDocument();
     expect(screen.getAllByRole("link")).toHaveLength(2);
   });
 
   it("formats a row's price with the locale's digits", () => {
-    render(<RelatedList title="خدمات مرتبط">{items()}</RelatedList>);
+    render(<RelatedList title="دوره‌های مرتبط">{items()}</RelatedList>);
 
-    expect(screen.getByText(/۳۵٬۰۰۰٬۰۰۰/)).toBeInTheDocument();
+    expect(screen.getByText(/۳٬۵۰۰٬۰۰۰/)).toBeInTheDocument();
   });
 
   it("lets a row show something other than a price", () => {
-    render(<RelatedList title="خدمات مرتبط">{items()}</RelatedList>);
+    render(<RelatedList title="دوره‌های مرتبط">{items()}</RelatedList>);
 
-    expect(screen.getByText("توافقی")).toBeInTheDocument();
+    expect(screen.getByText("رایگان")).toBeInTheDocument();
   });
 
   it("names each row by its title, not its thumbnail", () => {
-    render(<RelatedList title="خدمات مرتبط">{items()}</RelatedList>);
+    render(<RelatedList title="دوره‌های مرتبط">{items()}</RelatedList>);
 
-    expect(screen.getByRole("link", { name: /سئو SEO سایت/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /طراحی سیستم طراحی/ })).toHaveAttribute(
       "href",
-      "/services/seo",
+      "/courses/design-systems",
     );
   });
 
   it("renders header actions when given", () => {
     render(
-      <RelatedList title="خدمات مرتبط" actions={<a href="/services">همه</a>}>
+      <RelatedList title="دوره‌های مرتبط" actions={<a href="/courses">همه</a>}>
         {items()}
       </RelatedList>,
     );
@@ -56,7 +61,7 @@ describe("RelatedList", () => {
   it("forwards refs", () => {
     const ref = createRef<HTMLElement>();
     render(
-      <RelatedList ref={ref} title="خدمات مرتبط">
+      <RelatedList ref={ref} title="دوره‌های مرتبط">
         {items()}
       </RelatedList>,
     );
@@ -65,13 +70,13 @@ describe("RelatedList", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<RelatedList title="خدمات مرتبط">{items()}</RelatedList>)).toContain(
-      "طراحی لوگو",
+    expect(renderToString(<RelatedList title="دوره‌های مرتبط">{items()}</RelatedList>)).toContain(
+      "اصول تایپوگرافی",
     );
   });
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<RelatedList title="خدمات مرتبط">{items()}</RelatedList>);
+    const { container } = render(<RelatedList title="دوره‌های مرتبط">{items()}</RelatedList>);
 
     await expectNoAxeViolations(container);
   });

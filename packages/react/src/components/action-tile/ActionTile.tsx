@@ -41,7 +41,7 @@ export type ActionTileProps = Omit<
   ActionTileOwnProps;
 
 /**
- * Dashboard quick action (D-06): a gradient icon tile with a label; on hover the whole tile
+ * Dashboard quick action: a gradient icon tile with a label; on hover the whole tile
  * fills with the gradient, lifts slightly and the label turns white.
  */
 export const ActionTile = forwardRef<HTMLButtonElement, ActionTileProps>(function ActionTile(

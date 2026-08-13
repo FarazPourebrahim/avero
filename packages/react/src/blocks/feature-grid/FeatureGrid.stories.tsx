@@ -12,30 +12,30 @@ type Story = StoryObj<typeof FeatureGrid>;
 
 const CARDS = [
   {
-    title: "سیستم پرداخت امن و تضمین‌شده",
-    description: "پرداخت مرحله‌ای و امانی.",
+    title: "پرداخت امن و بدون دغدغه",
+    description: "بازگشت وجه تا هفت روز پس از ثبت‌نام.",
     tone: "emerald",
   },
   {
-    title: "دسترسی به برترین استعدادها",
-    description: "هزاران متخصص و فریلنسر ماهر.",
+    title: "مدرس‌های باتجربه",
+    description: "متخصصانی با سال‌ها تجربه در همان حوزه.",
     tone: "blue",
   },
   {
-    title: "سنجش مهارت و گواهینامه معتبر",
-    description: "آزمون‌های تخصصی برای اعتبارسنجی.",
+    title: "گواهی پایان دوره",
+    description: "پس از گذراندن پروژه پایانی.",
     tone: "purple",
   },
   {
-    title: "سرعت، سهولت و پشتیبانی فعال",
-    description: "رابط کاربری ساده و تیم پشتیبانی.",
+    title: "پشتیبانی همیشگی",
+    description: "انجمن پرسش و پاسخ برای هر دوره.",
     tone: "amber",
   },
 ] as const;
 
 export const WhyUs: Story = {
   render: () => (
-    <FeatureGrid title="چرا دورلنسر انتخابی متفاوت است؟">
+    <FeatureGrid title="چرا دوره‌های ما متفاوت‌اند؟">
       {CARDS.map((card) => (
         <FeatureCard key={card.title} {...card} />
       ))}

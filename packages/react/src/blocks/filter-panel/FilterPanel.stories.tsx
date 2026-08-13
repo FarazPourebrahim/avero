@@ -35,7 +35,7 @@ export const Listing: Story = {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">همه دسته‌ها</SelectItem>
-          <SelectItem value="seo">سئو</SelectItem>
+          <SelectItem value="design">طراحی</SelectItem>
         </SelectContent>
       </Select>
       <NativeSelect aria-label="مرتب‌سازی" defaultValue="newest">

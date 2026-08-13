@@ -19,16 +19,16 @@ type Story = StoryObj<typeof ProviderCard>;
 
 export const Provider: Story = {
   args: {
-    name: "زینب فلاح",
-    headline: "طراحی سایت و سئو",
+    name: "نگار رضایی",
+    headline: "مدرس طراحی رابط کاربری",
     stats: [
-      { label: "تعداد خدمات", value: "1" },
-      { label: "امتیاز رضایت", value: <Rating value={0} size="sm" /> },
+      { label: "تعداد دوره‌ها", value: "3" },
+      { label: "امتیاز شرکت‌کنندگان", value: <Rating value={4.8} size="sm" /> },
     ],
     profileHref: "#",
   },
 };
 
 export const WithoutStats: Story = {
-  args: { name: "زینب فلاح", headline: "طراحی سایت و سئو", profileHref: "#" },
+  args: { name: "نگار رضایی", headline: "مدرس طراحی رابط کاربری", profileHref: "#" },
 };

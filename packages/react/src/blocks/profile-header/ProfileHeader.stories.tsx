@@ -23,16 +23,16 @@ const meta: Meta<typeof ProfileHeader> = {
 export default meta;
 type Story = StoryObj<typeof ProfileHeader>;
 
-export const Freelancer: Story = {
+export const Instructor: Story = {
   args: {
-    name: "فلاح",
+    name: "سارا محمدی",
     image: AVATAR,
-    headline: "طراحی انواع سایت و سئو",
-    badge: <Badge variant="premium">پکیج رایگان</Badge>,
+    headline: "مدرس طراحی رابط کاربری",
+    badge: <Badge variant="premium">مدرس برگزیده</Badge>,
     meta: (
       <>
-        <MetaItem variant="pill">تهران (ایران)</MetaItem>
-        <MetaItem>تاریخ عضویت: ۲ هفته پیش</MetaItem>
+        <MetaItem variant="pill">اصفهان (ایران)</MetaItem>
+        <MetaItem>عضویت: ۳ ماه پیش</MetaItem>
       </>
     ),
     tabs: (
@@ -40,8 +40,8 @@ export const Freelancer: Story = {
         <PillTab href="#" current>
           درباره من
         </PillTab>
-        <PillTab href="#">خدمات (1)</PillTab>
-        <PillTab href="#">نمونه کار (4)</PillTab>
+        <PillTab href="#">دوره‌ها (3)</PillTab>
+        <PillTab href="#">گواهی‌ها (2)</PillTab>
       </PillTabs>
     ),
     socials: (
@@ -53,5 +53,5 @@ export const Freelancer: Story = {
 };
 
 export const WithoutFooter: Story = {
-  args: { name: "زینب فلاح", image: AVATAR, headline: "طراحی سایت و سئو" },
+  args: { name: "علی کریمی", image: AVATAR, headline: "مدرس تحلیل داده" },
 };

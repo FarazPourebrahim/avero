@@ -6,7 +6,7 @@ import { ChevronDownIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Custom select (FM-05). The trigger matches the other filter panel controls, and the listbox is
+ * Custom select. The trigger matches the other filter panel controls, and the listbox is
  * styled from the same token system.
  */
 export const Select = SelectPrimitive.Root;

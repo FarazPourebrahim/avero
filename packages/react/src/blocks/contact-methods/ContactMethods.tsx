@@ -4,13 +4,13 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `ContactMethods`. It also accepts every native `<section>` attribute. */
 export type ContactMethodsOwnProps = {
-  /** Panel title, e.g. "راه‌های ارتباط مستقیم با ارائه‌دهنده خدمت". */
+  /** Panel title, e.g. "راه‌های ارتباط با پشتیبانی". */
   title: ReactNode;
   /** Icon before the title. */
   icon?: ReactNode;
   /** Line under the title explaining what the channels are for. */
   description?: ReactNode;
-  /** The channels, `ContactMethod` chips in the reference. */
+  /** The channels, typically `ContactMethod` chips. */
   children: ReactNode;
   /** Heading level of the title. @defaultValue "h3" */
   titleAs?: "h2" | "h3" | "h4";
@@ -20,8 +20,8 @@ export type ContactMethodsProps = Omit<HTMLAttributes<HTMLElement>, keyof Contac
   ContactMethodsOwnProps;
 
 /**
- * Direct contact panel (B-22, R-05): a titled card holding the provider's verified contact
- * channels, which wrap onto as many rows as they need.
+ * Contact panel: a titled card holding contact channels, which wrap onto as many rows as they
+ * need.
  */
 export const ContactMethods = forwardRef<HTMLElement, ContactMethodsProps>(function ContactMethods(
   { title, icon, description, children, titleAs: Title = "h3", className, ...props },

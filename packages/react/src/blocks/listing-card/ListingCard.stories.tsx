@@ -16,29 +16,29 @@ const meta: Meta<typeof ListingCard> = {
 export default meta;
 type Story = StoryObj<typeof ListingCard>;
 
-export const Service: Story = {
+export const Course: Story = {
   args: {
-    title: "طراحی سایت و سئو",
+    title: "مبانی طراحی رابط کاربری",
     href: "#",
-    category: "سئو",
-    excerpt: "<p>انواع طراحی سایت و سئو اعم از فروشگاهی، شرکتی، آموزشی و شخصی</p>",
-    authorName: "زینب فلاح",
-    price: 20_000_000,
+    category: "طراحی",
+    excerpt: "<p>از اصول چیدمان و رنگ تا ساختن نخستین نمونه اولیه در Figma</p>",
+    authorName: "سارا محمدی",
+    price: 4_500_000,
     likes: 0,
   },
 };
 
 export const WithoutAuthor: Story = {
   args: {
-    title: "طراحی سایت با وردپرس",
+    title: "تحلیل داده با Python",
     href: "#",
-    category: "پشتیبانی",
-    excerpt: "<p>راه‌اندازی و پشتیبانی سایت وردپرسی</p>",
-    price: 8_500_000,
+    category: "داده",
+    excerpt: "<p>کار با Pandas و رسم نمودار برای داده‌های واقعی</p>",
+    price: 3_800_000,
     likes: 12,
   },
 };
 
 export const TitleOnly: Story = {
-  args: { title: "مشاوره فنی", href: "#" },
+  args: { title: "کارگاه نویسندگی خلاق", href: "#" },
 };

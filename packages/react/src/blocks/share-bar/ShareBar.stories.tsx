@@ -19,5 +19,5 @@ type Story = StoryObj<typeof ShareBar>;
 export const Icons: Story = {};
 
 export const Labelled: Story = {
-  args: { variant: "labelled", label: "اشتراک‌گذاری خدمت:" },
+  args: { variant: "labelled", label: "اشتراک‌گذاری این دوره:" },
 };

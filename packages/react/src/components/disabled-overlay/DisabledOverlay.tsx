@@ -20,7 +20,7 @@ export type DisabledOverlayProps = Omit<
 const RADIUS = { xl: "rounded-xl", "2xl": "rounded-2xl", "3xl": "rounded-3xl" } as const;
 
 /**
- * Covers a card that can no longer be acted on (O-10): a faint blur with a reason pill.
+ * Covers a card that can no longer be acted on: a faint blur with a reason pill.
  * Put it inside a `relative` container, and give that container `pointer-events-none` plus
  * `aria-disabled` so the card is inert for pointer and keyboard alike.
  */

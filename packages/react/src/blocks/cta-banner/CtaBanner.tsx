@@ -5,16 +5,13 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `CtaBanner`. It also accepts every native `<section>` attribute. */
 export type CtaBannerOwnProps = {
-  /** Small uppercase label above the title, e.g. "مأموریت و چشم‌انداز". */
+  /** Small uppercase label above the title, e.g. "مأموریت ما". */
   eyebrow?: ReactNode;
   /** The banner's headline. */
   title: ReactNode;
   /** Supporting paragraph under the headline. */
   children?: ReactNode;
-  /**
-   * Controls under the text. The reference's banner has none — it is purely a statement — so
-   * anything here is the page's own addition.
-   */
+  /** Controls under the text, e.g. a call to action. Leave it out for a pure statement. */
   actions?: ReactNode;
   /** Heading level of the title. @defaultValue "h3" */
   titleAs?: "h2" | "h3" | "h4";
@@ -24,7 +21,7 @@ export type CtaBannerProps = Omit<HTMLAttributes<HTMLElement>, keyof CtaBannerOw
   CtaBannerOwnProps;
 
 /**
- * Dark gradient banner (B-13, R-03): a slate-to-indigo sweep with two blurred glows behind an
+ * Dark gradient banner: a slate-to-indigo sweep with two blurred glows behind an
  * eyebrow, a headline and a paragraph.
  *
  * The glows are decorative and hidden from assistive technology; the text sits above them on its

@@ -5,7 +5,7 @@ import { Progress as RadixProgress } from "radix-ui";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { cn } from "../../utils/cn.js";
 
-/** Linear progress (P-13), e.g. for capacity bars (`h-2 bg-gray-100 rounded-full`, primary fill). */
+/** Linear progress, e.g. for capacity bars (`h-2 bg-gray-100 rounded-full`, primary fill). */
 export const progressVariants = cva("relative w-full overflow-hidden rounded-full bg-gray-100", {
   variants: {
     size: {

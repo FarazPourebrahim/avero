@@ -5,13 +5,13 @@ import { Image } from "../../components/image/index.js";
 
 /** Props specific to `SplitHero`. It also accepts every native `<div>` attribute. */
 export type SplitHeroOwnProps = {
-  /** Gradient pill above the title, e.g. "تابستون ۱۴۰۵". Pass an icon with it if you want one. */
+  /** Gradient pill above the title, e.g. "از سال ۱۴۰۰". Pass an icon with it if you want one. */
   eyebrow?: ReactNode;
-  /** Quiet line beside the pill, e.g. "نقطه آغاز ماجرا". */
+  /** Quiet line beside the pill, e.g. "داستان ما". */
   note?: ReactNode;
   /** The hero's headline. */
   title: ReactNode;
-  /** Body paragraphs, in the reference's justified 15px prose. */
+  /** Body paragraphs, set as justified 15px prose. */
   children?: ReactNode;
   /** Buttons or links under the text. */
   actions?: ReactNode;
@@ -30,11 +30,10 @@ export type SplitHeroProps = Omit<
   SplitHeroOwnProps;
 
 /**
- * Split hero (B-14, R-03): seven columns of text beside five columns of framed illustration,
+ * Split hero: seven columns of text beside five columns of framed illustration,
  * stacking to one column below `lg`.
  *
- * The reference pins the text with `text-right`, which is correct only in RTL (defect R-09); this
- * uses the logical `text-start`, so the hero also reads correctly in LTR.
+ * The text uses the logical `text-start`, so the hero reads correctly in both RTL and LTR.
  */
 export const SplitHero = forwardRef<HTMLDivElement, SplitHeroProps>(function SplitHero(
   {

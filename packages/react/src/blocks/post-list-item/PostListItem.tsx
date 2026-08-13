@@ -24,11 +24,10 @@ export type PostListItemProps = Omit<
   PostListItemOwnProps;
 
 /**
- * Related-post row in the article sidebar (B-05, R-01): a 64px thumbnail beside a clamped title,
+ * Related-post row in the article sidebar: a 64px thumbnail beside a clamped title,
  * author and reading time, all inside one link.
  *
- * The row renders an `<li>`, so place it inside a list — the reference's "بلاگ‌های مرتبط" panel is
- * a `<ul>`.
+ * The row renders an `<li>`, so place it inside a list, such as a `<ul>` of related posts.
  */
 export const PostListItem = forwardRef<HTMLLIElement, PostListItemProps>(function PostListItem(
   { title, href, image, author, readTime, className, ...props },

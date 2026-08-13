@@ -9,7 +9,7 @@ export type CategoryLinksOwnProps = {
   description?: ReactNode;
   /** Icon inside the tinted square beside the title. */
   icon?: ReactNode;
-  /** The links, `Chip` components in the reference's `tag` variant. */
+  /** The links, typically `Chip`s in the `tag` variant. */
   children: ReactNode;
   /** Heading level of the title. @defaultValue "h3" */
   titleAs?: "h2" | "h3" | "h4";
@@ -19,11 +19,11 @@ export type CategoryLinksProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Cate
   CategoryLinksOwnProps;
 
 /**
- * Related categories (B-21, R-07): a small titled header beside a tinted icon, over a wrapping
+ * Related categories: a small titled header beside a tinted icon, over a wrapping
  * row of category links.
  *
- * It sits at the end of the project description, so the block brings its own top divider rather
- * than a card surface.
+ * It usually closes a long description, so the block brings its own top divider rather than a
+ * card surface.
  */
 export const CategoryLinks = forwardRef<HTMLDivElement, CategoryLinksProps>(function CategoryLinks(
   { title, description, icon, children, titleAs: Title = "h3", className, ...props },

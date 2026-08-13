@@ -4,7 +4,7 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Card surfaces (D-01):
+ * Card surfaces:
  * - surface: white `rounded-3xl` content cards with a slate-100 border
  * - flat: white `rounded-2xl` panels with a gray-100 border
  * - glass: translucent cards that turn white on hover

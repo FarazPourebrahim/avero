@@ -10,7 +10,7 @@ export type ListOwnProps = {
 
 export type ListProps = Omit<HTMLAttributes<HTMLUListElement>, keyof ListOwnProps> & ListOwnProps;
 
-/** Article lists (D-10): outside markers with comfortable spacing. */
+/** Article lists: outside markers with comfortable spacing. */
 export const List = forwardRef<HTMLUListElement, ListProps>(function List(
   { ordered = false, className, ...props },
   ref,
@@ -55,7 +55,7 @@ export type BlockquoteProps = HTMLAttributes<HTMLQuoteElement> & {
 };
 
 /**
- * Article quotation (D-11): an indigo start border on a faint indigo background, italic
+ * Article quotation: an indigo start border on a faint indigo background, italic
  * text and a decorative quote mark.
  */
 export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(function Blockquote(

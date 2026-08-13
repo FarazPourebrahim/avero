@@ -9,8 +9,8 @@ import { AchievementsPanel } from "./AchievementsPanel.js";
 function contents() {
   return (
     <>
-      <HighlightPanel label="رتبه در دورلنسر" value="-" />
-      <InfoRow label="گواهینامه‌ها" value="0 عدد" tone="emerald" />
+      <HighlightPanel label="رتبه در جدول امتیازها" value="-" />
+      <InfoRow label="گواهی‌ها" value="0 عدد" tone="emerald" />
       <InfoRow label="نشان‌ها" value="0 عدد" tone="purple" />
     </>
   );
@@ -21,7 +21,7 @@ describe("AchievementsPanel", () => {
     render(<AchievementsPanel title="رتبه و دستاوردها">{contents()}</AchievementsPanel>);
 
     expect(screen.getByRole("heading", { name: "رتبه و دستاوردها" })).toBeInTheDocument();
-    expect(screen.getByText("رتبه در دورلنسر")).toBeInTheDocument();
+    expect(screen.getByText("رتبه در جدول امتیازها")).toBeInTheDocument();
     expect(screen.getAllByText("0 عدد")).toHaveLength(2);
   });
 
@@ -39,7 +39,7 @@ describe("AchievementsPanel", () => {
     expect(screen.getByTestId("trophy")).toHaveClass("text-amber-500");
   });
 
-  it("spaces the rows as the reference does", () => {
+  it("spaces the rows evenly", () => {
     const { container } = render(
       <AchievementsPanel title="رتبه و دستاوردها">{contents()}</AchievementsPanel>,
     );
@@ -64,7 +64,7 @@ describe("AchievementsPanel", () => {
   it("renders on the server", () => {
     expect(
       renderToString(<AchievementsPanel title="رتبه و دستاوردها">{contents()}</AchievementsPanel>),
-    ).toContain("رتبه در دورلنسر");
+    ).toContain("رتبه در جدول امتیازها");
   });
 
   it("has no accessibility violations", async () => {

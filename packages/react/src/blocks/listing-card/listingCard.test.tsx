@@ -6,50 +6,50 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { ListingCard } from "./ListingCard.js";
 
 const PROPS = {
-  title: "طراحی سایت و سئو",
-  href: "/services/seo",
-  category: "سئو",
-  excerpt: "<p>انواع طراحی سایت و سئو اعم از فروشگاهی، شرکتی و شخصی</p>",
-  authorName: "زینب فلاح",
-  price: 20_000_000,
+  title: "مبانی طراحی رابط کاربری",
+  href: "/courses/ui-basics",
+  category: "طراحی",
+  excerpt: "<p>از اصول چیدمان و رنگ تا نخستین نمونه اولیه</p>",
+  authorName: "سارا محمدی",
+  price: 4_500_000,
   likes: 0,
 };
 
 describe("ListingCard", () => {
   it("renders the whole card as one link named by the title", () => {
     render(<ListingCard {...PROPS} />);
-    const link = screen.getByRole("link", { name: "طراحی سایت و سئو" });
+    const link = screen.getByRole("link", { name: "مبانی طراحی رابط کاربری" });
 
-    expect(link).toHaveAttribute("href", "/services/seo");
-    // The reference's glass card: one link surface, not a card wrapping several links.
+    expect(link).toHaveAttribute("href", "/courses/ui-basics");
+    // One link surface, not a card wrapping several links.
     expect(screen.getAllByRole("link")).toHaveLength(1);
   });
 
-  it("strips HTML from the excerpt (deviation V-03)", () => {
+  it("strips HTML from the excerpt", () => {
     const { container } = render(<ListingCard {...PROPS} />);
     const excerpt = container.querySelector('[data-slot="listing-card-excerpt"]');
 
-    expect(excerpt).toHaveTextContent("انواع طراحی سایت و سئو اعم از فروشگاهی، شرکتی و شخصی");
+    expect(excerpt).toHaveTextContent("از اصول چیدمان و رنگ تا نخستین نمونه اولیه");
     expect(excerpt?.textContent).not.toContain("<p>");
   });
 
   it("shows the category, author and like count", () => {
     render(<ListingCard {...PROPS} />);
 
-    expect(screen.getByText("سئو")).toBeInTheDocument();
-    expect(screen.getByText("زینب فلاح")).toBeInTheDocument();
+    expect(screen.getByText("طراحی")).toBeInTheDocument();
+    expect(screen.getByText("سارا محمدی")).toBeInTheDocument();
     expect(screen.getByText("0")).toBeInTheDocument();
   });
 
-  it("formats the price as the reference's «از … تومان»", () => {
+  it("formats the price as «از … تومان»", () => {
     render(<ListingCard {...PROPS} />);
 
     expect(screen.getByText("از")).toBeInTheDocument();
-    expect(screen.getByText("۲۰٬۰۰۰٬۰۰۰")).toBeInTheDocument();
+    expect(screen.getByText("۴٬۵۰۰٬۰۰۰")).toBeInTheDocument();
     expect(screen.getByText("تومان")).toBeInTheDocument();
   });
 
-  it("carries the reference's glass surface", () => {
+  it("carries the glass surface", () => {
     render(<ListingCard {...PROPS} />);
 
     expect(screen.getByRole("link", { name: PROPS.title })).toHaveClass(
@@ -76,7 +76,7 @@ describe("ListingCard", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<ListingCard {...PROPS} />)).toContain("طراحی سایت و سئو");
+    expect(renderToString(<ListingCard {...PROPS} />)).toContain("مبانی طراحی رابط کاربری");
   });
 
   it("has no accessibility violations", async () => {

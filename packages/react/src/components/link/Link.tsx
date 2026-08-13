@@ -4,7 +4,7 @@ import { forwardRef, type AnchorHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Text link styles (P-03):
+ * Text link styles:
  * - nav: header navigation; the current page uses the primary color
  * - drawer: mobile drawer navigation with a leading icon
  * - prose: links inside article content

@@ -6,7 +6,7 @@ import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react
 import { cn } from "../../utils/cn.js";
 
 /**
- * Avatar styles (P-06): sizes from a compact author avatar (28px) to the profile header
+ * Avatar styles: sizes from a compact author avatar (28px) to the profile header
  * (112 → 176px); shapes from circles to rounded squares; borders from a hairline to a white ring.
  */
 export const avatarVariants = cva(

@@ -16,8 +16,8 @@ const meta: Meta<typeof PriceCard> = {
 export default meta;
 type Story = StoryObj<typeof PriceCard>;
 
-export const BasePrice: Story = { args: { amount: 20000000 } };
+export const BasePrice: Story = { args: { amount: 4500000 } };
 
 export const CustomLabel: Story = {
-  args: { amount: 4500000, label: "قیمت هر ساعت مشاوره" },
+  args: { amount: 950000, label: "قیمت هر جلسه" },
 };

@@ -18,7 +18,7 @@ export type ZoomFrameProps = Omit<
   ZoomFrameOwnProps;
 
 /**
- * Clickable image frame for galleries (D-22): on hover or keyboard focus the image scales
+ * Clickable image frame for galleries: on hover or keyboard focus the image scales
  * slightly, dims, and a "view larger" pill slides in. Open your lightbox in `onClick`.
  */
 export const ZoomFrame = forwardRef<HTMLButtonElement, ZoomFrameProps>(function ZoomFrame(

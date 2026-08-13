@@ -6,10 +6,10 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { PostListItem } from "./PostListItem.js";
 
 const PROPS = {
-  title: "بهترین مهارت‌های فریلنسری در سال ۲۰۲۶",
-  href: "/blog/skills",
+  title: "ده اصل طراحی رابط کاربری",
+  href: "/blog/ui-principles",
   image: "/cover.webp",
-  author: "محمد ابراهیمی",
+  author: "سارا محمدی",
   readTime: "5 دقیقه",
 };
 
@@ -23,21 +23,21 @@ describe("PostListItem", () => {
     const { container } = renderInList(<PostListItem {...PROPS} />);
 
     expect(container.querySelector("li")).toHaveAttribute("data-slot", "post-list-item");
-    expect(screen.getByRole("link", { name: /بهترین مهارت/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /ده اصل طراحی/ })).toHaveAttribute(
       "href",
-      "/blog/skills",
+      "/blog/ui-principles",
     );
   });
 
   it("shows the title, author and reading time", () => {
     renderInList(<PostListItem {...PROPS} />);
 
-    expect(screen.getByText("بهترین مهارت‌های فریلنسری در سال ۲۰۲۶")).toBeInTheDocument();
-    expect(screen.getByText("محمد ابراهیمی")).toBeInTheDocument();
+    expect(screen.getByText("ده اصل طراحی رابط کاربری")).toBeInTheDocument();
+    expect(screen.getByText("سارا محمدی")).toBeInTheDocument();
     expect(screen.getByText(/5 دقیقه/)).toBeInTheDocument();
   });
 
-  it("renders the thumbnail at the reference's 64px square", () => {
+  it("renders the thumbnail as a 64px square", () => {
     const { container } = renderInList(<PostListItem {...PROPS} />);
 
     expect(container.querySelector("img")).toHaveClass("size-16", "object-cover", "rounded-xl");
@@ -63,7 +63,7 @@ describe("PostListItem", () => {
           <PostListItem {...PROPS} />
         </ul>,
       ),
-    ).toContain("بهترین مهارت");
+    ).toContain("ده اصل طراحی");
   });
 
   it("has no accessibility violations", async () => {

@@ -19,7 +19,7 @@ export type DashboardShellProps = Omit<
   DashboardShellOwnProps;
 
 /**
- * Dashboard chrome (T-04): a one-third sidebar beside a two-thirds content card from `lg`,
+ * Dashboard chrome: a one-third sidebar beside a two-thirds content card from `lg`,
  * collapsing to a stacked mobile bar plus card below it. The content card is the `main` landmark.
  */
 export const DashboardShell = forwardRef<HTMLDivElement, DashboardShellProps>(

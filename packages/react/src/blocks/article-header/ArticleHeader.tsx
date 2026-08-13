@@ -12,7 +12,7 @@ export type ArticleHeaderOwnProps = {
   image?: string;
   /** The cover's alternative text. @defaultValue the title, when it is a string */
   imageAlt?: string;
-  /** Metadata under the title, `MetaItem`s in the reference. */
+  /** Metadata under the title, typically `MetaItem`s. */
   meta?: ReactNode;
   /** Controls above the cover, e.g. a `BackLink`. */
   actions?: ReactNode;
@@ -27,7 +27,7 @@ export type ArticleHeaderProps = Omit<
   ArticleHeaderOwnProps;
 
 /**
- * Blog article header (B-20, R-01): an actions row, a wide cover that zooms slightly on hover,
+ * Blog article header: an actions row, a wide cover that zooms slightly on hover,
  * the title, and the metadata panel.
  *
  * It is a `<header>` whose own gap matches the article card's, so the parts space evenly whether

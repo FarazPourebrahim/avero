@@ -12,9 +12,9 @@ import { cn } from "../../utils/cn.js";
 
 /** One mini statistic in the provider card's grid. */
 export type ProviderCardStat = {
-  /** Caption above the figure, e.g. "تعداد خدمات". */
+  /** Caption above the figure, e.g. "تعداد دوره‌ها". */
   label: ReactNode;
-  /** The figure itself. Pass a `Rating` to reproduce the reference's starred score. */
+  /** The figure itself. Pass a `Rating` for a starred score. */
   value: ReactNode;
 };
 
@@ -26,9 +26,9 @@ export type ProviderCardOwnProps = {
   image?: string;
   /** Small uppercase label above the name. @defaultValue the `serviceProvider` dictionary string */
   eyebrow?: ReactNode;
-  /** Line under the name, e.g. the service the provider offers. */
+  /** Line under the name, e.g. what the provider teaches or offers. */
   headline?: ReactNode;
-  /** Mini statistics, laid out in the reference's two-column grid. */
+  /** Mini statistics, laid out in a two-column grid. */
   stats?: readonly ProviderCardStat[];
   /** Where the profile link goes. Without it the link is not rendered. */
   profileHref?: string;
@@ -43,11 +43,10 @@ export type ProviderCardProps = Omit<
   ProviderCardOwnProps;
 
 /**
- * Service provider card in the detail sidebar (B-07, R-05): an identity row of avatar, eyebrow,
- * name and headline, a grid of mini statistics, and an outlined link to the full profile.
+ * Provider card for a detail page's sidebar: an identity row of avatar, eyebrow, name and
+ * headline, a grid of mini statistics, and an outlined link to the full profile.
  *
- * The reference's rating stat is a filled star beside a two-decimal score — pass
- * `<Rating value={4.5} size="sm" />` as that stat's `value` to reproduce it.
+ * For a starred score, pass `<Rating value={4.5} size="sm" />` as a stat's `value`.
  */
 export const ProviderCard = forwardRef<HTMLDivElement, ProviderCardProps>(function ProviderCard(
   { name, image, eyebrow, headline, stats, profileHref, profileLabel, className, ...props },

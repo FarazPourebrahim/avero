@@ -11,7 +11,7 @@ import {
 import { cn } from "../../utils/cn.js";
 
 /**
- * Image styles (P-15): cover images with rounded corners, a subtle hover zoom for article covers
+ * Image styles: cover images with rounded corners, a subtle hover zoom for article covers
  * (`hover:scale-102 duration-500`) and a group zoom for cards (`group-hover:scale-105 duration-500`).
  */
 export const imageVariants = cva("block max-w-full", {
@@ -134,7 +134,7 @@ export type FigureOwnProps = {
 
 export type FigureProps = Omit<HTMLAttributes<HTMLElement>, keyof FigureOwnProps> & FigureOwnProps;
 
-/** Wraps media, clipping zoom effects to rounded corners (the article cover frame, R-01). */
+/** Wraps media, clipping zoom effects to rounded corners, e.g. an article cover frame. */
 export const Figure = forwardRef<HTMLElement, FigureProps>(function Figure(
   { caption, clip = true, className, children, ...props },
   ref,

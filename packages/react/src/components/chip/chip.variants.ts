@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Chip / tag styles (P-05):
+ * Chip / tag styles:
  * - category: a card's category chip, or a small format chip
  * - link: a category link under an article
  * - tag: a related-topic link with a tag icon

@@ -6,7 +6,7 @@ import { describe, expect, it, vi } from "vitest";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { ReactionBar } from "./ReactionBar.js";
 
-const PROPS = { likes: 0, views: 4, capacity: "حداکثر 15 رزومه", saved: false };
+const PROPS = { likes: 0, views: 4, capacity: "حداکثر 15 نفر", saved: false };
 
 describe("ReactionBar", () => {
   it("renders the like, views, capacity and save pills", () => {
@@ -14,7 +14,7 @@ describe("ReactionBar", () => {
 
     expect(screen.getByRole("button", { name: "پسندیدن" })).toBeInTheDocument();
     expect(container.querySelector('[data-slot="reaction-bar-views"]')).toHaveTextContent("4");
-    expect(screen.getByText("حداکثر 15 رزومه")).toBeInTheDocument();
+    expect(screen.getByText("حداکثر 15 نفر")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "ذخیره" })).toBeInTheDocument();
   });
 
@@ -44,7 +44,7 @@ describe("ReactionBar", () => {
     expect(onSave).toHaveBeenCalledTimes(1);
   });
 
-  it("prints counts exactly as given, as the reference does", () => {
+  it("prints counts exactly as given", () => {
     const { container } = render(<ReactionBar likes={12} views={4} />);
 
     expect(container.querySelector('[data-slot="reaction-bar-like"]')).toHaveTextContent("12");
@@ -67,7 +67,7 @@ describe("ReactionBar", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<ReactionBar {...PROPS} />)).toContain("حداکثر 15 رزومه");
+    expect(renderToString(<ReactionBar {...PROPS} />)).toContain("حداکثر 15 نفر");
   });
 
   it("has no accessibility violations", async () => {

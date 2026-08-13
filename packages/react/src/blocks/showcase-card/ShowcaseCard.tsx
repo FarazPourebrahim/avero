@@ -11,7 +11,7 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `ShowcaseCard`. It also accepts every native `<div>` attribute. */
 export type ShowcaseCardOwnProps = {
-  /** Portfolio item title. */
+  /** Item title. */
   title: string;
   /** Where the title links to. Without it the title is plain text. */
   href?: string;
@@ -31,7 +31,7 @@ export type ShowcaseCardOwnProps = {
   onLike?: () => void;
   /** Called when the share control is activated. Omit to hide it. */
   onShare?: () => void;
-  /** Report control, supplied by `ReportAction` (B-10). */
+  /** Report control, supplied by `ReportAction`. */
   report?: ReactNode;
 };
 
@@ -42,13 +42,12 @@ export type ShowcaseCardProps = Omit<
   ShowcaseCardOwnProps;
 
 /**
- * Portfolio showcase card (B-02, R-08): a white card whose cover zooms on hover behind a dark
- * gradient and a "view details" pill, over a title, description, technology tags and an action row.
+ * Showcase card, e.g. for projects in a gallery: a white card whose cover zooms on hover behind a
+ * dark gradient and a "view details" pill, over a title, description, technology tags and an
+ * action row.
  *
- * The reference makes the whole card a `div` with `cursor-pointer` and no link, then nests its
- * like, share and report buttons inside it (defect R-10). Nesting controls inside a link is
- * invalid, so the title carries the link and the buttons stay siblings (deviation V-04); the
- * visuals are unchanged.
+ * Nesting controls inside a link is invalid, so the title carries the link and the like, share and
+ * report buttons stay its siblings.
  */
 export const ShowcaseCard = forwardRef<HTMLDivElement, ShowcaseCardProps>(function ShowcaseCard(
   {

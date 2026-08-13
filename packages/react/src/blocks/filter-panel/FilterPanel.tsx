@@ -8,7 +8,7 @@ import { cn } from "../../utils/cn.js";
 export type FilterPanelOwnProps = {
   /** Panel title. @defaultValue the `filters` dictionary string */
   title?: ReactNode;
-  /** The filter controls, stacked in the reference's 12px rhythm. */
+  /** The filter controls, stacked 12px apart. */
   children: ReactNode;
 };
 
@@ -16,15 +16,13 @@ export type FilterPanelProps = Omit<HTMLAttributes<HTMLElement>, keyof FilterPan
   FilterPanelOwnProps;
 
 /**
- * Filter panel in the listing sidebar (B-11, R-06): a titled card holding a stack of controls —
- * in the reference a search `Input`, a category `Select` and a sort `NativeSelect`.
+ * Filter panel for a listing sidebar: a titled card holding a stack of controls, such as a search
+ * `Input`, a category `Select` and a sort `NativeSelect`.
  *
  * The controls are children rather than props: which filters a listing needs is the application's
- * decision, and each control already carries the reference's styling.
+ * decision, and each control already carries matching styling.
  *
- * The reference's `<section>` has a heading but no accessible name, so it is not announced as a
- * region; the heading is linked here with `aria-labelledby` (deviation V-04), which changes
- * nothing visually.
+ * The heading names the section through `aria-labelledby`, so it is announced as a region.
  */
 export const FilterPanel = forwardRef<HTMLElement, FilterPanelProps>(function FilterPanel(
   { title, children, className, ...props },

@@ -12,7 +12,7 @@ export type FormActionsOwnProps = {
 export type FormActionsProps = Omit<HTMLAttributes<HTMLDivElement>, keyof FormActionsOwnProps> &
   FormActionsOwnProps;
 
-/** The row under a form (FM-15): an optional hint, then the submit controls. */
+/** The row under a form: an optional hint, then the submit controls. */
 export const FormActions = forwardRef<HTMLDivElement, FormActionsProps>(function FormActions(
   { hint, align, className, children, ...props },
   ref,

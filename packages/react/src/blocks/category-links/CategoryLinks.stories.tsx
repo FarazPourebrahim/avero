@@ -18,13 +18,13 @@ const meta: Meta<typeof CategoryLinks> = {
 export default meta;
 type Story = StoryObj<typeof CategoryLinks>;
 
-const CATEGORIES = ["PHP", "Laravel", "برنامه‌نویسی وب", "API"];
+const CATEGORIES = ["TypeScript", "React", "طراحی رابط کاربری", "دسترس‌پذیری"];
 
 export const RelatedCategories: Story = {
   render: () => (
     <CategoryLinks
       title="دسته‌بندی‌های مرتبط"
-      description="دسته‌بندی‌ها و زمینه‌های تخصصی مربوط به این آگهی"
+      description="موضوع‌ها و زمینه‌های مرتبط با این مقاله"
       icon={<FolderTreeIcon />}
     >
       {CATEGORIES.map((category) => (

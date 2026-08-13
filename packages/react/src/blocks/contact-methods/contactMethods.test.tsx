@@ -10,7 +10,7 @@ function methods() {
   return (
     <>
       <ContactMethod href="mailto:a@example.com" label="email:" value="a@example.com" external />
-      <ContactMethod href="tel:+989221257181" label="phone:" value="۰۹۲۲۱۲۵۷۱۸۱" />
+      <ContactMethod href="tel:+982100000000" label="phone:" value="۰۲۱-۰۰۰۰۰۰۰۰" />
     </>
   );
 }
@@ -18,13 +18,13 @@ function methods() {
 describe("ContactMethods", () => {
   it("renders the title, description and channels", () => {
     render(
-      <ContactMethods title="راه‌های ارتباط مستقیم" description="جهت مشاوره سریع">
+      <ContactMethods title="راه‌های ارتباط با پشتیبانی" description="برای پرسش‌های ثبت‌نام">
         {methods()}
       </ContactMethods>,
     );
 
-    expect(screen.getByRole("heading", { name: "راه‌های ارتباط مستقیم" })).toBeInTheDocument();
-    expect(screen.getByText("جهت مشاوره سریع")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "راه‌های ارتباط با پشتیبانی" })).toBeInTheDocument();
+    expect(screen.getByText("برای پرسش‌های ثبت‌نام")).toBeInTheDocument();
     expect(screen.getAllByRole("link")).toHaveLength(2);
   });
 
@@ -62,7 +62,7 @@ describe("ContactMethods", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(
-      <ContactMethods title="تماس" description="جهت مشاوره سریع">
+      <ContactMethods title="تماس" description="برای پرسش‌های ثبت‌نام">
         {methods()}
       </ContactMethods>,
     );

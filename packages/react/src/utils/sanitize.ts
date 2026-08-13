@@ -1,11 +1,11 @@
 import { FilterXSS } from "xss";
 
 /**
- * Tags and attributes `RichContent` renders (D-12). Everything else is dropped: unknown tags lose
+ * Tags and attributes `RichContent` renders. Everything else is dropped: unknown tags lose
  * their markup but keep their text, while script-like tags lose their content too.
  *
  * `xss` is used rather than DOMPurify because it needs no DOM, so the same code runs in the
- * browser, in SSR and in tests without pulling jsdom into a server bundle (decision D-15).
+ * browser, in SSR and in tests without pulling jsdom into a server bundle.
  *
  * A stripped tag nested inside another stripped tag (`<svg><script>…`) leaves the sanitizer's
  * literal `[removed]` marker where the payload was. The markup is gone either way.

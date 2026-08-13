@@ -12,7 +12,7 @@ const SHAHRIVAR_20_1405 = new Date("2026-09-11T12:00:00Z");
 
 describe("toPersianDigits", () => {
   it("converts every Latin digit and keeps other characters", () => {
-    expect(toPersianDigits("PROJ-0123456789")).toBe("PROJ-۰۱۲۳۴۵۶۷۸۹");
+    expect(toPersianDigits("INV-0123456789")).toBe("INV-۰۱۲۳۴۵۶۷۸۹");
   });
 
   it("accepts numbers", () => {

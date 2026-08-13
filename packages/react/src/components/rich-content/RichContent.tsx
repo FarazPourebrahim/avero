@@ -28,7 +28,7 @@ export type RichContentProps = Omit<HTMLAttributes<HTMLDivElement>, keyof RichCo
   RichContentOwnProps;
 
 /**
- * Renders stored HTML with Avero's prose styles (D-12). The HTML is
+ * Renders stored HTML with Avero's prose styles. The HTML is
  * sanitized on every render, on the server and in the browser alike, so untrusted content
  * (comments, descriptions, editor output) is safe to pass straight in.
  */

@@ -3,7 +3,7 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Page width container (T-01). Site pages centre their content in a `max-w-7xl` column
+ * Page width container. Site pages centre their content in a `max-w-7xl` column
  * with the same responsive gutters; the dashboard uses slightly tighter gutters on phones.
  */
 export const containerVariants = cva("mx-auto w-full", {

@@ -112,7 +112,7 @@ export type SiteFooterProps = Omit<HTMLAttributes<HTMLElement>, keyof SiteFooter
   SiteFooterOwnProps;
 
 /**
- * Site chrome footer (T-03). Everything is data-driven: the category grid, the brand chips, the
+ * Site chrome footer. Everything is data-driven: the category grid, the brand chips, the
  * mobile accordion groups, the contact rows, the about strip and the social tiles are all props,
  * so no content is baked in.
  */

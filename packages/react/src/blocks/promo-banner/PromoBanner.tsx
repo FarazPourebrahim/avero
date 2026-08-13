@@ -11,8 +11,8 @@ export type PromoBannerOwnProps = {
   /** The link's accessible name, and the image's alternative text. */
   label: string;
   /**
-   * `listing` is the services sidebar's banner, hidden below `md` (R-06); `project` is the
-   * projects sidebar's, which carries a shadow and fades on hover (R-07). @defaultValue "listing"
+   * `listing` is a listing sidebar's banner, hidden below `md`; `project` is a detail
+   * sidebar's, which carries a shadow and fades on hover. @defaultValue "listing"
    */
   variant?: "listing" | "project";
 };
@@ -24,15 +24,10 @@ export type PromoBannerProps = Omit<
   PromoBannerOwnProps;
 
 /**
- * Sidebar promo banner (B-12, R-06/R-07): one artwork that links somewhere, in the two shapes the
- * reference gives it.
+ * Sidebar promo banner: one artwork that links somewhere, in two shapes.
  *
- * The services banner sets `w-full h-70` on an inline `<a>`, where neither applies, so it renders
- * at the artwork's own aspect ratio rather than in a 280px box (defect R-19). That rendered result
- * is what this reproduces, per the visual-conflict rule.
- *
- * The reference's services banner also carries `alt=""` on the only content of a link, leaving the
- * link unnamed (defect R-10); `label` is required here (deviation V-04).
+ * The banner sets no height, so the artwork keeps its own aspect ratio. The image is the link's
+ * only content, so `label` is required: it names the link and the image alike.
  */
 export const PromoBanner = forwardRef<HTMLAnchorElement, PromoBannerProps>(function PromoBanner(
   { href, image, label, variant = "listing", className, ...props },

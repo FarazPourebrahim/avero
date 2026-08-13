@@ -37,7 +37,7 @@ export type TableOfContentsProps = Omit<
   TableOfContentsOwnProps;
 
 /**
- * An article's table-of-contents card (N-07). Entries are real `#id` links, so they work
+ * An article's table-of-contents card. Entries are real `#id` links, so they work
  * without JavaScript; the current section is highlighted with an indigo start border.
  */
 export const TableOfContents = forwardRef<HTMLDivElement, TableOfContentsProps>(

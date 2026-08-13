@@ -7,7 +7,7 @@ import {
 import { cn } from "../../utils/cn.js";
 
 /**
- * Bordered data table (D-09): a rounded, horizontally
+ * Bordered data table: a rounded, horizontally
  * scrollable container, gray header cells and a subtle row hover.
  */
 export type TableProps = HTMLAttributes<HTMLTableElement> & {

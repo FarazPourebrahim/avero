@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Badge styles (P-04):
+ * Badge styles:
  * - status: publication and availability states such as "منتشر شده" or "9 جای خالی"
  * - outline: bordered soft pills for category, format or location
  * - counter: a count beside a heading

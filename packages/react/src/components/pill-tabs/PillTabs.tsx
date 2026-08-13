@@ -14,7 +14,7 @@ import { cn } from "../../utils/cn.js";
 import { mergeRefs } from "../../utils/refs.js";
 
 /**
- * Link-based pill tabs (N-04), e.g. under a profile header:
+ * Link-based pill tabs, e.g. under a profile header:
  * a horizontally scrollable row with a hidden scrollbar; the current tab is a filled blue pill.
  */
 export const pillTabVariants = cva(

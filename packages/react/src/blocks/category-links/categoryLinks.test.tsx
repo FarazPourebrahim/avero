@@ -10,10 +10,10 @@ function links() {
   return (
     <>
       <Chip asChild variant="tag">
-        <a href="/project?category=PHP">PHP</a>
+        <a href="/topics?tag=typescript">TypeScript</a>
       </Chip>
       <Chip asChild variant="tag">
-        <a href="/project?category=Laravel">Laravel</a>
+        <a href="/topics?tag=react">React</a>
       </Chip>
     </>
   );
@@ -22,16 +22,16 @@ function links() {
 describe("CategoryLinks", () => {
   it("renders the title, description and links", () => {
     render(
-      <CategoryLinks title="دسته‌بندی‌های مرتبط" description="زمینه‌های تخصصی این آگهی">
+      <CategoryLinks title="دسته‌بندی‌های مرتبط" description="موضوع‌های مرتبط با این مقاله">
         {links()}
       </CategoryLinks>,
     );
 
     expect(screen.getByRole("heading", { name: "دسته‌بندی‌های مرتبط" })).toBeInTheDocument();
-    expect(screen.getByText("زمینه‌های تخصصی این آگهی")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "PHP" })).toHaveAttribute(
+    expect(screen.getByText("موضوع‌های مرتبط با این مقاله")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "TypeScript" })).toHaveAttribute(
       "href",
-      "/project?category=PHP",
+      "/topics?tag=typescript",
     );
   });
 
@@ -68,13 +68,13 @@ describe("CategoryLinks", () => {
 
   it("renders on the server", () => {
     expect(renderToString(<CategoryLinks title="دسته‌ها">{links()}</CategoryLinks>)).toContain(
-      "Laravel",
+      "React",
     );
   });
 
   it("has no accessibility violations", async () => {
     const { container } = render(
-      <CategoryLinks title="دسته‌بندی‌های مرتبط" description="زمینه‌های تخصصی">
+      <CategoryLinks title="دسته‌بندی‌های مرتبط" description="موضوع‌های مرتبط">
         {links()}
       </CategoryLinks>,
     );

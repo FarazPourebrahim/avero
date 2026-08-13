@@ -22,7 +22,7 @@ export type RatingProps = Omit<HTMLAttributes<HTMLSpanElement>, keyof RatingOwnP
   RatingOwnProps;
 
 /**
- * Filled amber star with a score (D-15). Exposed to assistive technology as one image
+ * Filled amber star with a score. Exposed to assistive technology as one image
  * labelled with the dictionary's `rating` string, e.g. "امتیاز ۴٫۵۰".
  */
 export const Rating = forwardRef<HTMLSpanElement, RatingProps>(function Rating(

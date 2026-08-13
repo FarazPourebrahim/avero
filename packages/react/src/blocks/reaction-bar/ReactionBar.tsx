@@ -10,7 +10,7 @@ const PILL = "flex items-center gap-2 rounded-xl px-4 py-2 text-xs [&>svg]:size-
 
 /** Props specific to `ReactionBar`. It also accepts every native `<div>` attribute. */
 export type ReactionBarOwnProps = {
-  /** Like count. The reference prints it unlocalised, so it is passed through as given. */
+  /** Like count, shown exactly as given. */
   likes?: number;
   /** Whether the viewer has liked. @defaultValue false */
   liked?: boolean;
@@ -20,7 +20,7 @@ export type ReactionBarOwnProps = {
   likeLabel?: string;
   /** View count, also passed through as given. Omit to hide the counter. */
   views?: number;
-  /** Capacity note, e.g. "حداکثر ۱۵ رزومه". Omit to hide the blue pill. */
+  /** Capacity note, e.g. "حداکثر ۱۵ نفر". Omit to hide the blue pill. */
   capacity?: ReactNode;
   /** Whether the viewer has saved. Omit to hide the save control. */
   saved?: boolean;
@@ -36,11 +36,10 @@ export type ReactionBarProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Reacti
   ReactionBarOwnProps;
 
 /**
- * Project action row (B-19, R-07): like, views, remaining capacity and save, above a divider.
+ * Detail page action row: like, views, remaining capacity and save, above a divider.
  *
- * Both toggles carry `aria-pressed`, so assistive technology announces whether the viewer has
- * already liked or saved — the reference sets it too, and this keeps it in step with `liked` and
- * `saved` rather than leaving it hard-coded to "false".
+ * Both toggles carry `aria-pressed`, kept in step with `liked` and `saved`, so assistive
+ * technology announces whether the viewer has already liked or saved.
  */
 export const ReactionBar = forwardRef<HTMLDivElement, ReactionBarProps>(function ReactionBar(
   {

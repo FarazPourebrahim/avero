@@ -3,7 +3,7 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Colored icon containers (P-07):
+ * Colored icon containers:
  * - soft: stat tiles and feature cards (`bg-{c}-50 text-{c}-600`)
  * - muted: achievement rows (`bg-{c}-100 text-{c}-600`)
  * - tint: profile stat tiles (`bg-{c}-600/10 text-{c}-600`)

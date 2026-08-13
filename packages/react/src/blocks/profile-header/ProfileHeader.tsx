@@ -13,15 +13,15 @@ export type ProfileHeaderOwnProps = {
   image?: string;
   /** Alternative text for the avatar. @defaultValue the name, when it is a string */
   imageAlt?: string;
-  /** Cover artwork. Without one the reference's blue-to-purple gradient shows. */
+  /** Cover artwork. Without one a blue-to-purple gradient shows. */
   cover?: ReactNode;
   /** Badge beside the name, e.g. a premium `Badge`. */
   badge?: ReactNode;
   /** Line under the name, e.g. what the person does. */
   headline?: ReactNode;
-  /** Metadata under the headline, `MetaItem`s in the reference. */
+  /** Metadata under the headline, typically `MetaItem`s. */
   meta?: ReactNode;
-  /** Profile tabs, a `PillTabs` in the reference. */
+  /** Profile tabs, typically a `PillTabs`. */
   tabs?: ReactNode;
   /** Social links, `IconButton`s in their `social` variant. */
   socials?: ReactNode;
@@ -38,7 +38,7 @@ export type ProfileHeaderProps = Omit<
   ProfileHeaderOwnProps;
 
 /**
- * Freelancer profile header (B-17, R-04/R-08): the gradient cover with the overlapping avatar,
+ * Profile header: the gradient cover with the overlapping avatar,
  * the identity block, and a footer bar of tabs and social links.
  *
  * The same header appears on every profile tab with a different tab marked current, so the tabs

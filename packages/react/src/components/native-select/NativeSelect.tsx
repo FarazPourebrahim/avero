@@ -4,7 +4,7 @@ import { cn } from "../../utils/cn.js";
 export type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
 /**
- * Native `<select>` (FM-04), e.g. a listing's sort control. It keeps the platform's own dropdown,
+ * Native `<select>`, e.g. a listing's sort control. It keeps the platform's own dropdown,
  * which stays the most reliable choice on touch devices; use `Select` when the trigger has to
  * match a custom filter panel style.
  */

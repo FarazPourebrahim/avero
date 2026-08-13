@@ -11,17 +11,17 @@ import { stripHtml } from "../../utils/sanitize.js";
 
 /** Props specific to `ListingCard`. It also accepts every native `<article>` attribute. */
 export type ListingCardOwnProps = {
-  /** Service title, also the card's accessible name. */
+  /** Item title, also the card's accessible name. */
   title: string;
   /** Where the card links to. */
   href: string;
-  /** Cover image. Without one the image well stays a neutral block, as in the reference. */
+  /** Cover image. Without one the image well stays a neutral block. */
   image?: string;
-  /** Category chip above the title, e.g. "سئو". */
+  /** Category chip above the title, e.g. "طراحی". */
   category?: ReactNode;
   /**
-   * Short description. The reference stores excerpts as HTML and renders the tags as visible text
-   * (defect R-08); this strips the markup instead (deviation V-03).
+   * Short description. Stored excerpts often contain HTML, so the markup is stripped and only the
+   * text is shown.
    */
   excerpt?: string;
   /** Author name beside the avatar. */
@@ -30,7 +30,7 @@ export type ListingCardOwnProps = {
   authorImage?: string;
   /** Starting price, rendered as "از … تومان". */
   price?: number;
-  /** Like count. The reference prints it unlocalised, so it is passed through as given. */
+  /** Like count, shown exactly as given. */
   likes?: number;
 };
 
@@ -41,12 +41,11 @@ export type ListingCardProps = Omit<
   ListingCardOwnProps;
 
 /**
- * Service listing card (B-01, R-06): a glass card whose whole surface is one link, with a cover
- * image, category chip, clamped title and excerpt, author row, starting price and like count.
+ * Listing card: a glass card whose whole surface is one link, with a cover image, category chip,
+ * clamped title and excerpt, author row, starting price and like count.
  *
- * The reference makes the author row a `div role="link"` nested inside the card's own link (defect
- * R-10). A nested link is invalid, so the author row here is plain content and the card stays a
- * single link target (deviation V-04); the visuals are unchanged.
+ * The author row is plain content rather than a nested link, so the card stays a single, valid
+ * link target.
  */
 export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function ListingCard(
   {
@@ -66,8 +65,8 @@ export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function Li
 ) {
   return (
     <article ref={ref} data-slot="listing-card" className={cn("w-full", className)} {...props}>
-      {/* `block`: the reference sets it too, and without it the anchor stays inline, which lays its
-          block children out through anonymous boxes and changes the card height. */}
+      {/* `block`: without it the anchor stays inline, which lays its block children out through
+          anonymous boxes and changes the card height. */}
       <Card asChild variant="glass" padding="none" className="block overflow-hidden p-3">
         <a href={href} aria-label={title}>
           <div className="h-60 w-full overflow-hidden bg-gray-100">

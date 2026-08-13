@@ -17,16 +17,16 @@ import { cn } from "../../utils/cn.js";
 /** Props specific to `CommentSection`. It also accepts every native `<section>` attribute. */
 export type CommentSectionOwnProps = {
   /**
-   * Which of the reference's two comment panels to render: `article` is the blog's gray-toned
-   * panel (R-01), `service` the detail page's slate one (R-05). @defaultValue "article"
+   * Panel style: `article` is gray-toned, `service` uses a slate palette for detail pages.
+   * @defaultValue "article"
    */
   variant?: "article" | "service";
   /** Section title. @defaultValue the `comments` dictionary string */
   title?: ReactNode;
   /**
    * How many comments there are. The `article` variant shows it in a counter badge, the `service`
-   * variant in brackets after the title. The reference prints it unlocalised, so it is passed
-   * through as given.
+   * variant in brackets after the title. It is shown exactly as given, so format it beforehand
+   * if it needs localised digits.
    */
   count?: string | number;
   /** Accessible name of the comment box. @defaultValue the `commentLabel` dictionary string */
@@ -57,14 +57,11 @@ export type CommentSectionProps = Omit<HTMLAttributes<HTMLElement>, keyof Commen
   CommentSectionOwnProps;
 
 /**
- * Comment panel (B-08, R-01/R-05): a titled header with the comment count, a comment form, and
+ * Comment panel: a titled header with the comment count, a comment form, and
  * either the comment list or an empty state.
  *
- * Comment rows themselves are Tier B — the reference never renders one, so there is nothing to
- * reproduce. Pass them as children.
- *
- * Two reference defects are fixed here (deviations V-02 and V-04): the blog's submit button
- * hovers to the same color it already has, and neither comment box has an accessible name.
+ * Pass the comment rows as children. The submit button darkens on hover, and the comment box
+ * always has an accessible name.
  */
 export const CommentSection = forwardRef<HTMLElement, CommentSectionProps>(function CommentSection(
   {
@@ -118,8 +115,8 @@ export const CommentSection = forwardRef<HTMLElement, CommentSectionProps>(funct
           {isService ? (
             <CardTitle size="lg">
               <MessageSquareIcon />
-              {/* Title and count are one flex item, so the gap between them is the reference's
-                  single space rather than the title row's `gap-2`. */}
+              {/* Title and count are one flex item, so a single space separates them rather
+                  than the title row's `gap-2`. */}
               <span>
                 {title ?? dictionary.comments}
                 {count === undefined ? null : ` (${count})`}

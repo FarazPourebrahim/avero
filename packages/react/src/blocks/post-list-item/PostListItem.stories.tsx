@@ -18,13 +18,13 @@ type Story = StoryObj<typeof PostListItem>;
 
 export const Related: Story = {
   args: {
-    title: "بهترین مهارت‌های فریلنسری در سال ۲۰۲۶؛ کدام مهارت‌ها آینده بهتری دارند؟",
+    title: "ده اصل طراحی رابط کاربری که هر طراح تازه‌کاری باید بداند",
     href: "#",
-    author: "محمد ابراهیمی",
+    author: "سارا محمدی",
     readTime: "5 دقیقه",
   },
 };
 
 export const TitleOnly: Story = {
-  args: { title: "چطور اولین پروژه فریلنسری خود را بگیریم؟", href: "#" },
+  args: { title: "آشنایی با اصول تایپوگرافی فارسی", href: "#" },
 };

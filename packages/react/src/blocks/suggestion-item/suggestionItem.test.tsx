@@ -6,28 +6,28 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { SuggestionItem } from "./SuggestionItem.js";
 
 const PROPS = {
-  title: "طراحی سایت عمده فروش",
-  href: "/projects/12",
-  description: "طراحی فروشگاه اینترنتی",
-  tags: ["remote"],
+  title: "مبانی تحلیل داده",
+  href: "/courses/12",
+  description: "کار با داده‌های واقعی",
+  tags: ["آنلاین"],
   match: 8,
 };
 
 describe("SuggestionItem", () => {
-  it("shows the title, summary and work-type tags", () => {
+  it("shows the title, summary and tags", () => {
     render(<SuggestionItem {...PROPS} />);
 
-    expect(screen.getByText("طراحی سایت عمده فروش")).toBeInTheDocument();
-    expect(screen.getByText("طراحی فروشگاه اینترنتی")).toBeInTheDocument();
-    expect(screen.getByText("remote")).toBeInTheDocument();
+    expect(screen.getByText("مبانی تحلیل داده")).toBeInTheDocument();
+    expect(screen.getByText("کار با داده‌های واقعی")).toBeInTheDocument();
+    expect(screen.getByText("آنلاین")).toBeInTheDocument();
   });
 
   it("links from the title when a href is given", () => {
     render(<SuggestionItem {...PROPS} />);
 
-    expect(screen.getByRole("link", { name: "طراحی سایت عمده فروش" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "مبانی تحلیل داده" })).toHaveAttribute(
       "href",
-      "/projects/12",
+      "/courses/12",
     );
   });
 
@@ -39,10 +39,10 @@ describe("SuggestionItem", () => {
     expect(screen.getByText("۸٪")).toBeInTheDocument();
   });
 
-  it("renders tags at the reference's compact size", () => {
+  it("renders tags at a compact size", () => {
     render(<SuggestionItem {...PROPS} />);
 
-    expect(screen.getByText("remote")).toHaveClass("text-3xs", "py-0.5", "text-gray-400");
+    expect(screen.getByText("آنلاین")).toHaveClass("text-3xs", "py-0.5", "text-gray-400");
   });
 
   it("omits optional parts when they are not given", () => {
@@ -61,7 +61,7 @@ describe("SuggestionItem", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<SuggestionItem {...PROPS} />)).toContain("طراحی سایت عمده فروش");
+    expect(renderToString(<SuggestionItem {...PROPS} />)).toContain("مبانی تحلیل داده");
   });
 
   it("has no accessibility violations", async () => {

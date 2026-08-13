@@ -6,25 +6,25 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { SplitHero } from "./SplitHero.js";
 
 const PROPS = {
-  eyebrow: "تابستون ۱۴۰۵",
-  note: "نقطه آغاز ماجرا",
-  title: "یه تصمیم بزرگ برای شکستن مرزهای جغرافیایی کار",
+  eyebrow: "از سال ۱۴۰۰",
+  note: "داستان ما",
+  title: "جایی برای یادگیری ساده و لذت‌بخش",
   image: "/story.svg",
-  imageAlt: "داستان دورلنسر",
+  imageAlt: "تصویر معرفی",
 };
 
 describe("SplitHero", () => {
   it("renders the pill, note, headline and body", () => {
     render(
       <SplitHero {...PROPS}>
-        <p>تابستون ۱۴۰۵، ایده دورلنسر جوانه زد.</p>
+        <p>ما با یک پرسش ساده شروع کردیم.</p>
       </SplitHero>,
     );
 
-    expect(screen.getByText("تابستون ۱۴۰۵")).toBeInTheDocument();
-    expect(screen.getByText("نقطه آغاز ماجرا")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /یه تصمیم بزرگ/ })).toBeInTheDocument();
-    expect(screen.getByText(/ایده دورلنسر جوانه زد/)).toBeInTheDocument();
+    expect(screen.getByText("از سال ۱۴۰۰")).toBeInTheDocument();
+    expect(screen.getByText("داستان ما")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /جایی برای یادگیری/ })).toBeInTheDocument();
+    expect(screen.getByText(/با یک پرسش ساده/)).toBeInTheDocument();
   });
 
   it("aligns the text logically rather than to the right", () => {
@@ -45,7 +45,7 @@ describe("SplitHero", () => {
   it("renders the illustration in its framed panel", () => {
     render(<SplitHero {...PROPS} />);
 
-    expect(screen.getByAltText("داستان دورلنسر")).toHaveClass("object-contain");
+    expect(screen.getByAltText("تصویر معرفی")).toHaveClass("object-contain");
   });
 
   it("omits the illustration column without an image", () => {
@@ -56,9 +56,9 @@ describe("SplitHero", () => {
   });
 
   it("renders actions when given", () => {
-    render(<SplitHero {...PROPS} actions={<a href="/projects">مشاهده پروژه‌ها</a>} />);
+    render(<SplitHero {...PROPS} actions={<a href="/courses">مشاهده دوره‌ها</a>} />);
 
-    expect(screen.getByRole("link", { name: "مشاهده پروژه‌ها" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "مشاهده دوره‌ها" })).toBeInTheDocument();
   });
 
   it("forwards refs", () => {
@@ -69,7 +69,7 @@ describe("SplitHero", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<SplitHero {...PROPS} />)).toContain("نقطه آغاز ماجرا");
+    expect(renderToString(<SplitHero {...PROPS} />)).toContain("داستان ما");
   });
 
   it("has no accessibility violations", async () => {

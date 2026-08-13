@@ -11,9 +11,9 @@ const ICON = <svg aria-hidden="true" viewBox="0 0 24 24" />;
 function tiles() {
   return (
     <>
-      <ActionTile icon={ICON}>افزودن خدمت</ActionTile>
+      <ActionTile icon={ICON}>افزودن دوره</ActionTile>
       <ActionTile icon={ICON} tone="purple">
-        افزودن نمونه‌کار
+        افزودن جلسه
       </ActionTile>
     </>
   );
@@ -56,7 +56,7 @@ describe("QuickActions", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<QuickActions>{tiles()}</QuickActions>)).toContain("افزودن خدمت");
+    expect(renderToString(<QuickActions>{tiles()}</QuickActions>)).toContain("افزودن دوره");
   });
 
   it("has no accessibility violations", async () => {

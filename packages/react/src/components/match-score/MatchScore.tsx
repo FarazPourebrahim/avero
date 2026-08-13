@@ -15,7 +15,7 @@ export type MatchScoreOwnProps = {
 export type MatchScoreProps = Omit<HTMLAttributes<HTMLDivElement>, keyof MatchScoreOwnProps> &
   MatchScoreOwnProps;
 
-/** Percentage and caption beside a suggested item (D-17). */
+/** Percentage and caption beside a suggested item. */
 export const MatchScore = forwardRef<HTMLDivElement, MatchScoreProps>(function MatchScore(
   { value, label, className, ...props },
   ref,

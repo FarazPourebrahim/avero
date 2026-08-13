@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 /**
- * Icon-only button styles (P-02):
+ * Icon-only button styles:
  * - chrome: dashboard toolbar buttons such as home and notifications
  * - outline: header menu toggle
  * - ghost: drawer close button

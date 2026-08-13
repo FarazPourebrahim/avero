@@ -20,11 +20,11 @@ export type AchievementsPanelProps = Omit<
   AchievementsPanelOwnProps;
 
 /**
- * Rank and achievements panel (B-25, R-02): a dashboard card with a titled header over a stack of
+ * Rank and achievements panel: a dashboard card with a titled header over a stack of
  * tinted rows.
  *
- * The title is a plain heading rather than `CardTitle`, because the reference's trophy keeps its
- * amber color while `CardTitle` tints every icon indigo.
+ * The title is a plain heading rather than `CardTitle`, so an icon such as a trophy keeps its own
+ * color; `CardTitle` tints every icon indigo.
  */
 export const AchievementsPanel = forwardRef<HTMLElement, AchievementsPanelProps>(
   function AchievementsPanel(

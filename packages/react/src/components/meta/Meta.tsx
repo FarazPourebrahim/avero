@@ -3,7 +3,7 @@ import { forwardRef, type AnchorHTMLAttributes, type HTMLAttributes, type ReactN
 import { cn } from "../../utils/cn.js";
 
 /* --------------------------------------------------------------------------------------------
- * MetaItem + MetaBar (D-13): icon + label + value metadata.
+ * MetaItem + MetaBar: icon + label + value metadata.
  * ------------------------------------------------------------------------------------------ */
 
 export const metaItemVariants = cva("flex items-center [&>svg]:shrink-0", {
@@ -100,7 +100,7 @@ export const MetaBar = forwardRef<HTMLDivElement, MetaBarProps>(function MetaBar
 MetaBar.displayName = "MetaBar";
 
 /* --------------------------------------------------------------------------------------------
- * KeyValueRow (D-19): label/value rows, such as a footer's "ایمیل : …" contact rows.
+ * KeyValueRow: label/value rows, such as a footer's "ایمیل : …" contact rows.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `KeyValueRow`. It also accepts every native `<div>` attribute. */
@@ -152,7 +152,7 @@ export const KeyValueRow = forwardRef<HTMLDivElement, KeyValueRowProps>(function
 KeyValueRow.displayName = "KeyValueRow";
 
 /* --------------------------------------------------------------------------------------------
- * ContactMethod (D-20): contact chips with an icon, a channel name and a monospace value.
+ * ContactMethod: contact chips with an icon, a channel name and a monospace value.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `ContactMethod`. It also accepts every native `<a>` attribute. */

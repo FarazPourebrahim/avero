@@ -15,7 +15,7 @@ export type CoverHeaderProps = Omit<HTMLAttributes<HTMLDivElement>, keyof CoverH
   CoverHeaderOwnProps;
 
 /**
- * Profile header (D-23): a gradient cover with a bottom shade, an avatar overlapping
+ * Profile header: a gradient cover with a bottom shade, an avatar overlapping
  * the cover, identity content beside it and an optional footer bar. Children are the identity
  * block (name, badges, meta).
  */

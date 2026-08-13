@@ -4,7 +4,7 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Heading scale (P-10):
+ * Heading scale:
  * - display: the title of a detail page
  * - article: an article title
  * - page: page titles, such as a dashboard or an "about" page
@@ -68,7 +68,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Hea
 Heading.displayName = "Heading";
 
 /**
- * Body text styles (P-10):
+ * Body text styles:
  * - body: article paragraphs (`text-base leading-8 text-gray-700`)
  * - lead: justified intro paragraphs
  * - muted: secondary descriptions (`text-xs md:text-sm text-gray-500`)
@@ -117,7 +117,7 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
 Text.displayName = "Text";
 
 /**
- * Small uppercase labels above headings (P-10):
+ * Small uppercase labels above headings:
  * - onDark: a label above a heading in a dark banner
  * - onLight: a label above a name, such as "ارائه‌دهنده" in a provider card
  */

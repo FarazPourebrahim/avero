@@ -7,24 +7,24 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { ArticleHeader } from "./ArticleHeader.js";
 
 const PROPS = {
-  title: "فریلنسری چیست؟ راهنمای کامل شروع کار",
+  title: "سیستم طراحی چیست؟ راهنمای کامل شروع",
   image: "/cover.webp",
-  meta: <MetaItem label="انتشار:">۳ شهریور ۱۴۰۵</MetaItem>,
+  meta: <MetaItem label="انتشار:">۱۲ مهر ۱۴۰۵</MetaItem>,
 };
 
 describe("ArticleHeader", () => {
   it("renders the cover, title and meta panel", () => {
     const { container } = render(<ArticleHeader {...PROPS} />);
 
-    expect(screen.getByRole("heading", { name: /فریلنسری چیست/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /سیستم طراحی چیست/ })).toBeInTheDocument();
     expect(container.querySelector("figure")).not.toBeNull();
-    expect(screen.getByText("۳ شهریور ۱۴۰۵")).toBeInTheDocument();
+    expect(screen.getByText("۱۲ مهر ۱۴۰۵")).toBeInTheDocument();
   });
 
   it("names the cover with the title when no alternative text is given", () => {
     render(<ArticleHeader {...PROPS} />);
 
-    expect(screen.getByAltText("فریلنسری چیست؟ راهنمای کامل شروع کار")).toBeInTheDocument();
+    expect(screen.getByAltText("سیستم طراحی چیست؟ راهنمای کامل شروع")).toBeInTheDocument();
   });
 
   it("takes its own alternative text", () => {
@@ -59,7 +59,7 @@ describe("ArticleHeader", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<ArticleHeader {...PROPS} />)).toContain("فریلنسری چیست");
+    expect(renderToString(<ArticleHeader {...PROPS} />)).toContain("سیستم طراحی چیست");
   });
 
   it("has no accessibility violations", async () => {

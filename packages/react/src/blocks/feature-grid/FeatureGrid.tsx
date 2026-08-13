@@ -3,7 +3,7 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { SectionHeader } from "../../components/section-header/index.js";
 import { cn } from "../../utils/cn.js";
 
-/** Column counts for the reference's card grids, each starting at one column on a phone. */
+/** Column counts for card grids, each starting at one column on a phone. */
 export const featureGridVariants = cva("grid grid-cols-1 gap-5", {
   variants: {
     columns: {
@@ -21,7 +21,7 @@ export type FeatureGridOwnProps = {
   title?: ReactNode;
   /** Icon before the title. */
   icon?: ReactNode;
-  /** The cards to lay out, `FeatureCard`s in the reference. */
+  /** The cards to lay out, typically `FeatureCard`s. */
   children: ReactNode;
   /** Columns at the widest breakpoint. @defaultValue 4 */
   columns?: VariantProps<typeof featureGridVariants>["columns"];
@@ -33,7 +33,7 @@ export type FeatureGridProps = Omit<HTMLAttributes<HTMLElement>, keyof FeatureGr
   FeatureGridOwnProps;
 
 /**
- * Feature grid (B-15, R-03): the "why us" section — an icon title above a row of four feature
+ * Feature grid, e.g. a "why us" section: an icon title above a row of four feature
  * cards that folds to two columns on a tablet and one on a phone.
  */
 export const FeatureGrid = forwardRef<HTMLElement, FeatureGridProps>(function FeatureGrid(

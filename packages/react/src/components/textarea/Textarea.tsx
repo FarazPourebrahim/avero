@@ -3,7 +3,7 @@ import { forwardRef, type TextareaHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Multi-line input (FM-03): `soft` has a gray ground, `slate` a white ground with a slate
+ * Multi-line input: `soft` has a gray ground, `slate` a white ground with a slate
  * border.
  */
 export const textareaVariants = cva(

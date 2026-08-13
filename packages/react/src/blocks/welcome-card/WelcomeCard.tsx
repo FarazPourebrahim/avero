@@ -19,11 +19,8 @@ export type WelcomeCardProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Welcom
   WelcomeCardOwnProps;
 
 /**
- * Dashboard greeting card (B-18, R-02): the sidebar's welcome, a bold line naming the person
- * above a quieter one.
- *
- * The reference's surface carries the broken `shadow-[0_0_20px_0_(--shadow)]` (defect R-02),
- * which renders nothing; this ships the visually equivalent `shadow-brand-soft`.
+ * Dashboard greeting card: a bold line naming the person above a quieter one, on a white surface
+ * with the faint `shadow-brand-soft`.
  */
 export const WelcomeCard = forwardRef<HTMLDivElement, WelcomeCardProps>(function WelcomeCard(
   { name, greeting, children, className, ...props },

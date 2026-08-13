@@ -8,11 +8,11 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `RelatedList`. It also accepts every native `<section>` attribute. */
 export type RelatedListOwnProps = {
-  /** Panel title, e.g. "خدمات مرتبط". */
+  /** Panel title, e.g. "دوره‌های مرتبط". */
   title: ReactNode;
   /** Content at the end of the header row, e.g. a "see all" link. */
   actions?: ReactNode;
-  /** The rows, `RelatedItem`s in the reference. */
+  /** The rows, typically `RelatedItem`s. */
   children: ReactNode;
   /** Heading level of the title. @defaultValue "h4" */
   titleAs?: "h2" | "h3" | "h4";
@@ -22,7 +22,7 @@ export type RelatedListProps = Omit<HTMLAttributes<HTMLElement>, keyof RelatedLi
   RelatedListOwnProps;
 
 /**
- * Related services panel (B-24, R-05): a titled card over a stack of linked rows, each a
+ * Related items panel: a titled card over a stack of linked rows, each a
  * thumbnail beside a name and a price.
  */
 export const RelatedList = forwardRef<HTMLElement, RelatedListProps>(function RelatedList(
@@ -72,7 +72,7 @@ export type RelatedItemProps = Omit<
 > &
   RelatedItemOwnProps;
 
-/** One row of a `RelatedList` (B-24, R-05): a 64px thumbnail, a name and a price, all one link. */
+/** One row of a `RelatedList`: a 64px thumbnail, a name and a price, all one link. */
 export const RelatedItem = forwardRef<HTMLAnchorElement, RelatedItemProps>(function RelatedItem(
   { title, href, image, price, meta, className, ...props },
   ref,

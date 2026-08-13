@@ -6,7 +6,7 @@ import { IconTile, type IconTileOwnProps } from "../icon-tile/IconTile.js";
 type Tone = NonNullable<IconTileOwnProps["tone"]>;
 
 /* --------------------------------------------------------------------------------------------
- * StatCard (D-02): dashboard counters. Label and icon tile on top, big value below.
+ * StatCard: dashboard counters. Label and icon tile on top, big value below.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `StatCard`. It also accepts every native `<div>` attribute. */
@@ -52,7 +52,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(function StatC
 StatCard.displayName = "StatCard";
 
 /* --------------------------------------------------------------------------------------------
- * StatTile + StatStrip (D-03): a profile's statistics strip.
+ * StatTile + StatStrip: a profile's statistics strip.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `StatTile`. It also accepts every native `<div>` attribute. */
@@ -136,7 +136,7 @@ export const StatStrip = forwardRef<HTMLDivElement, StatStripProps>(function Sta
 StatStrip.displayName = "StatStrip";
 
 /* --------------------------------------------------------------------------------------------
- * MiniStat (D-04): centered label + value, as in a provider card.
+ * MiniStat: centered label + value, as in a provider card.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `MiniStat`. It also accepts every native `<div>` attribute. */
@@ -173,7 +173,7 @@ export const MiniStat = forwardRef<HTMLDivElement, MiniStatProps>(function MiniS
 MiniStat.displayName = "MiniStat";
 
 /* --------------------------------------------------------------------------------------------
- * InfoRow (D-07): tinted rows with an icon tile, as in an achievements panel.
+ * InfoRow: tinted rows with an icon tile, as in an achievements panel.
  * ------------------------------------------------------------------------------------------ */
 
 export const infoRowVariants = cva(
@@ -234,7 +234,7 @@ export const InfoRow = forwardRef<HTMLDivElement, InfoRowProps>(function InfoRow
 InfoRow.displayName = "InfoRow";
 
 /* --------------------------------------------------------------------------------------------
- * HighlightPanel (D-08): an amber panel for one headline figure, such as a rank.
+ * HighlightPanel: an amber panel for one headline figure, such as a rank.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `HighlightPanel`. It also accepts every native `<div>` attribute. */

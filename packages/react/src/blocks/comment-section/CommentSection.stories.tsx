@@ -19,16 +19,16 @@ type Story = StoryObj<typeof CommentSection>;
 export const Article: Story = {
   args: {
     count: 0,
-    placeholder: "نظر خود را درباره این مقاله بنویسید...",
-    hint: "نظرات پس از بررسی و تایید مدیر منتشر خواهند شد.",
+    placeholder: "دیدگاه خود را درباره این مقاله بنویسید…",
+    hint: "دیدگاه‌ها پس از بررسی منتشر می‌شوند.",
   },
 };
 
 export const Service: Story = {
   args: {
     variant: "service",
-    title: "نظرات و دیدگاه‌های کاربران",
+    title: "دیدگاه شرکت‌کنندگان",
     count: 0,
-    placeholder: "نظر خود را درباره این خدمت بنویسید...",
+    placeholder: "دیدگاه خود را درباره این دوره بنویسید…",
   },
 };

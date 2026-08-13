@@ -8,7 +8,7 @@ import { XIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Slide-in panel (O-01) in two sizes: `wide` for a site header menu and `panel` for a dashboard
+ * Slide-in panel in two sizes: `wide` for a site header menu and `panel` for a dashboard
  * menu. Radix Dialog supplies the focus trap, `Esc` and scroll lock, and a dimmed scrim keeps the
  * page behind it from being clicked.
  */

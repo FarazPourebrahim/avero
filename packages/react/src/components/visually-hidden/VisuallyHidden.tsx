@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn.js";
 
 export type VisuallyHiddenProps = HTMLAttributes<HTMLSpanElement>;
 
-/** Content that is read by assistive technology but not shown on screen (P-14). */
+/** Content that is read by assistive technology but not shown on screen. */
 export const VisuallyHidden = forwardRef<HTMLSpanElement, VisuallyHiddenProps>(
   function VisuallyHidden({ className, ...props }, ref) {
     return (

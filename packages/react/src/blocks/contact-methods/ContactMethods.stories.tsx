@@ -21,8 +21,8 @@ type Story = StoryObj<typeof ContactMethods>;
 export const DirectContact: Story = {
   render: () => (
     <ContactMethods
-      title="راه‌های ارتباط مستقیم با ارائه‌دهنده خدمت"
-      description="جهت مشاوره و هماهنگی سریع می‌توانید از راه‌های ارتباطی تاییدشده زیر استفاده نمایید:"
+      title="راه‌های ارتباط با پشتیبانی"
+      description="برای پرسش درباره ثبت‌نام یا دسترسی به دوره‌ها از راه‌های زیر با ما در تماس باشید:"
     >
       <ContactMethod
         href="mailto:hello@example.com"
@@ -30,7 +30,7 @@ export const DirectContact: Story = {
         value="hello@example.com"
         external
       />
-      <ContactMethod href="tel:+989221257181" label="phone:" value="۰۹۲۲۱۲۵۷۱۸۱" />
+      <ContactMethod href="tel:+982100000000" label="phone:" value="۰۲۱-۰۰۰۰۰۰۰۰" />
       <ContactMethod
         href="https://t.me/example"
         label="telegram:"
@@ -39,9 +39,9 @@ export const DirectContact: Story = {
         external
       />
       <ContactMethod
-        href="https://wa.me/989221257181"
+        href="https://wa.me/982100000000"
         label="whatsapp:"
-        value="۰۹۲۲۱۲۵۷۱۸۱"
+        value="۰۲۱-۰۰۰۰۰۰۰۰"
         icon={<WhatsappIcon className="text-emerald-600" />}
         external
       />
