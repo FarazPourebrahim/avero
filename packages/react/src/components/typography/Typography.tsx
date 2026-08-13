@@ -4,13 +4,13 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Heading scale extracted from the reference (P-10):
- * - display: service title (R-05)
- * - article: blog article title (R-01)
- * - page: page titles such as "داستان شکل‌گیری دورلنسر" and "پیشخوان فریلنسر" (R-02, R-03)
- * - section: section titles such as "خدمات فریلنسرها" / "پروژه‌های مرتبط" (R-06, R-07)
- * - card: card titles such as "نظرات کاربران" (R-01)
- * - subsection: feature and panel titles (R-03, R-05)
+ * Heading scale (P-10):
+ * - display: the title of a detail page
+ * - article: an article title
+ * - page: page titles, such as a dashboard or an "about" page
+ * - section: section titles such as "دوره‌های مرتبط"
+ * - card: card titles such as "دیدگاه‌ها"
+ * - subsection: feature and panel titles
  */
 export const headingVariants = cva("", {
   variants: {
@@ -39,7 +39,7 @@ type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 /** Props specific to `Heading`. It also accepts every native heading attribute. */
 export type HeadingOwnProps = {
-  /** Visual scale, from `display` (service title) to `subsection` (panel title). @defaultValue "section" */
+  /** Visual scale, from `display` (detail page title) to `subsection` (panel title). @defaultValue "section" */
   size?: VariantProps<typeof headingVariants>["size"];
   /** The heading element. @defaultValue the level that fits the size (e.g. `page` → `h1`) */
   as?: HeadingLevel;
@@ -68,11 +68,11 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(function Hea
 Heading.displayName = "Heading";
 
 /**
- * Body text styles extracted from the reference (P-10):
- * - body: article paragraphs (`text-base leading-8 text-gray-700`, R-01)
- * - lead: justified intro paragraphs (R-03)
- * - muted: secondary descriptions (`text-xs md:text-sm text-gray-500`, R-03)
- * - caption: fine print such as the comment moderation note (R-01)
+ * Body text styles (P-10):
+ * - body: article paragraphs (`text-base leading-8 text-gray-700`)
+ * - lead: justified intro paragraphs
+ * - muted: secondary descriptions (`text-xs md:text-sm text-gray-500`)
+ * - caption: fine print such as a comment moderation note
  */
 export const textVariants = cva("", {
   variants: {
@@ -118,8 +118,8 @@ Text.displayName = "Text";
 
 /**
  * Small uppercase labels above headings (P-10):
- * - onDark: "مأموریت و چشم‌انداز" in the dark banner (R-03)
- * - onLight: "ارائه‌دهنده خدمت" in the provider card (R-05)
+ * - onDark: a label above a heading in a dark banner
+ * - onLight: a label above a name, such as "ارائه‌دهنده" in a provider card
  */
 export const eyebrowVariants = cva("block tracking-wider uppercase", {
   variants: {

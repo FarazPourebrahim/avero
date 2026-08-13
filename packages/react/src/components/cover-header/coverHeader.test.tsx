@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { CoverHeader } from "./CoverHeader.js";
 
-const avatar = <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="فلاح" />;
+const avatar = <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="سارا محمدی" />;
 
 describe("CoverHeader", () => {
   it("renders the default gradient cover with a bottom shade", () => {
@@ -30,19 +30,19 @@ describe("CoverHeader", () => {
         cover={<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" />}
         avatar={avatar}
       >
-        <h1>فلاح</h1>
+        <h1>سارا محمدی</h1>
       </CoverHeader>,
     );
 
     expect(container.querySelector('[data-slot="cover-header-cover"] > img')).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: "فلاح" }).parentElement).toHaveClass(
+    expect(screen.getByRole("img", { name: "سارا محمدی" }).parentElement).toHaveClass(
       "-mt-14",
       "md:-mt-20",
       "rounded-full",
       "border-4",
       "lg:me-6",
     );
-    expect(screen.getByRole("heading", { name: "فلاح" }).parentElement).toHaveAttribute(
+    expect(screen.getByRole("heading", { name: "سارا محمدی" }).parentElement).toHaveAttribute(
       "data-slot",
       "cover-header-content",
     );
@@ -73,7 +73,7 @@ describe("CoverHeader", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <CoverHeader avatar={avatar} footer={<nav aria-label="tabs">tabs</nav>}>
-        <h1>فلاح</h1>
+        <h1>سارا محمدی</h1>
       </CoverHeader>,
     );
 

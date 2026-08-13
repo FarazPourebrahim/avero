@@ -5,7 +5,7 @@ import { Link } from "./Link.js";
 const meta = {
   title: "Primitives/Link",
   component: Link,
-  args: { href: "#", children: "دورلنسر" },
+  args: { href: "#", children: "Avero" },
   argTypes: {
     variant: {
       control: "select",
@@ -26,8 +26,8 @@ export const Navigation: Story = {
         <Link href="#home" variant="nav" current>
           خانه
         </Link>
-        <Link href="#projects" variant="nav">
-          پروژه ها
+        <Link href="#courses" variant="nav">
+          دوره‌ها
         </Link>
         <Link href="#blog" variant="nav">
           وبلاگ
@@ -38,9 +38,9 @@ export const Navigation: Story = {
           <House />
           خانه
         </Link>
-        <Link href="#projects" variant="drawer">
+        <Link href="#courses" variant="drawer">
           <Package />
-          پروژه ها
+          دوره‌ها
         </Link>
       </nav>
     </div>
@@ -51,7 +51,7 @@ export const Inline: Story = {
   render: () => (
     <div className="flex flex-col gap-4 text-base leading-8 text-gray-700">
       <p>
-        اگر کارفرما هستید، پروژه خود را در <Link href="#register">دورلنسر</Link> ثبت کنید.
+        اگر مدرس هستید، دوره خود را در <Link href="#register">Avero</Link> منتشر کنید.
       </p>
       <p className="bg-background p-3 text-sm">
         ایمیل :{" "}
@@ -62,13 +62,13 @@ export const Inline: Story = {
       <p className="text-text-subtle text-xs">
         تمامی حقوق برای
         <Link href="#home" variant="brand" className="mx-1">
-          آوِرو
+          Avero
         </Link>
         محفوظ است
       </p>
-      <Link href="#projects" variant="subtle">
+      <Link href="#courses" variant="subtle">
         <ArrowRight className="size-5 ltr:-scale-x-100" aria-hidden />
-        <span>بازگشت به لیست پروژه‌ها</span>
+        <span>بازگشت به فهرست دوره‌ها</span>
       </Link>
       <Link href="https://example.com" external>
         لینک خارجی

@@ -8,11 +8,11 @@ import {
   CarouselViewport,
 } from "./Carousel.js";
 
-const PROJECTS = [
-  "توسعه دهنده php",
-  "تبدیل قالب HTML به وردپرس",
-  "همکاری دائمی با برنامه‌نویس فول‌استک وب",
-  "طراح گرافیک",
+const COURSES = [
+  "مبانی طراحی رابط کاربری",
+  "TypeScript برای توسعه‌دهندگان React",
+  "تحلیل داده با Python",
+  "مدیریت محصول دیجیتال",
 ];
 
 const meta: Meta = {
@@ -33,11 +33,11 @@ type Story = StoryObj;
 function Slides() {
   return (
     <CarouselViewport>
-      {PROJECTS.map((title, index) => (
-        <CarouselSlide key={title} aria-label={`${index + 1} از ${PROJECTS.length}`}>
+      {COURSES.map((title, index) => (
+        <CarouselSlide key={title} aria-label={`${index + 1} از ${COURSES.length}`}>
           <div className="bg-surface-glass flex min-h-40 flex-col gap-5 rounded-xl border border-gray-200 p-5">
             <h3 className="text-primary text-base font-bold md:text-lg">{title}</h3>
-            <p className="text-sm leading-7 text-gray-500">ظرفیت ارسال رزومه</p>
+            <p className="text-sm leading-7 text-gray-500">ظرفیت ثبت‌نام</p>
           </div>
         </CarouselSlide>
       ))}
@@ -45,11 +45,11 @@ function Slides() {
   );
 }
 
-export const RelatedProjects: Story = {
+export const RelatedCourses: Story = {
   render: () => (
-    <Carousel aria-label="پروژه‌های مرتبط">
+    <Carousel aria-label="دوره‌های مرتبط">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-xl font-bold text-slate-900 md:text-2xl">پروژه‌های مرتبط</h2>
+        <h2 className="text-xl font-bold text-slate-900 md:text-2xl">دوره‌های مرتبط</h2>
         <div className="flex items-center gap-2">
           <CarouselPrevious />
           <CarouselNext />
@@ -63,7 +63,7 @@ export const RelatedProjects: Story = {
 
 export const PillPagination: Story = {
   render: () => (
-    <Carousel aria-label="پروژه‌ها">
+    <Carousel aria-label="دوره‌ها">
       <Slides />
       <CarouselDots variant="pill" />
     </Carousel>

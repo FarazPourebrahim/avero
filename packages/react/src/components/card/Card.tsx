@@ -4,11 +4,11 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Card surfaces extracted from the reference (D-01):
- * - surface: white `rounded-3xl` content cards with a slate-100 border (R-03, R-04, R-05)
- * - flat: white `rounded-2xl` dashboard and project cards with a gray-100 border (R-02, R-07)
- * - glass: translucent listing cards that turn white on hover (R-06, R-07)
- * - muted: slate-50 tiles such as stat tiles and mini stats (R-04, R-05)
+ * Card surfaces (D-01):
+ * - surface: white `rounded-3xl` content cards with a slate-100 border
+ * - flat: white `rounded-2xl` panels with a gray-100 border
+ * - glass: translucent cards that turn white on hover
+ * - muted: slate-50 tiles such as stat tiles and mini stats
  */
 export const cardVariants = cva("", {
   variants: {
@@ -54,9 +54,9 @@ type CardVariantProps = VariantProps<typeof cardVariants>;
 export type CardOwnProps = {
   /** Surface style. @defaultValue "surface" */
   variant?: CardVariantProps["variant"];
-  /** Shadow, from the reference's hairline `xs` to its soft ambient card shadows. @defaultValue "none" */
+  /** Shadow, from the hairline `xs` to the soft ambient card shadows. @defaultValue "none" */
   elevation?: CardVariantProps["elevation"];
-  /** Inner padding, responsive as in the reference. @defaultValue "lg" */
+  /** Inner padding, which grows at the `sm` or `md` breakpoint. @defaultValue "lg" */
   padding?: CardVariantProps["padding"];
   /** Adds a hover shadow for clickable cards. @defaultValue false */
   interactive?: CardVariantProps["interactive"];
@@ -105,11 +105,11 @@ CardHeader.displayName = "CardHeader";
 export const cardTitleVariants = cva("flex items-center gap-2 [&>svg]:shrink-0", {
   variants: {
     size: {
-      /** Dashboard panel titles (R-02). */
+      /** Compact panel titles, e.g. on a dashboard. */
       sm: "text-xs font-bold text-gray-800 sm:text-sm [&>svg]:text-indigo-600",
-      /** Profile section titles (R-04). */
+      /** Section titles. */
       md: "text-lg font-bold text-slate-900 [&>svg]:size-5",
-      /** Service page section titles (R-05). */
+      /** Prominent section titles on detail pages. */
       lg: "text-xl font-black text-slate-900 [&>svg]:size-5 [&>svg]:text-indigo-600",
     },
   },
@@ -127,7 +127,7 @@ export type CardTitleOwnProps = {
 export type CardTitleProps = Omit<HTMLAttributes<HTMLHeadingElement>, keyof CardTitleOwnProps> &
   CardTitleOwnProps;
 
-/** A card heading; put an icon before the text to get the reference's icon + title pattern. */
+/** A card heading; put an icon before the text for an icon + title heading. */
 export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(function CardTitle(
   { as: Component = "h3", size, className, ...props },
   ref,
@@ -146,7 +146,7 @@ CardTitle.displayName = "CardTitle";
 
 export type CardFooterProps = HTMLAttributes<HTMLDivElement>;
 
-/** A footer row separated by a top border, like the reference's card action rows. */
+/** A footer row separated by a top border, for card actions and meta. */
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(function CardFooter(
   { className, ...props },
   ref,

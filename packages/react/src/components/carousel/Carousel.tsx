@@ -67,8 +67,8 @@ const INITIAL_STATE: CarouselState = {
 };
 
 /**
- * A swipeable carousel (N-09) built on Embla: the related-projects slider (R-07) with circular
- * previous/next buttons and dot pagination, plus the home page's pill pagination.
+ * A swipeable carousel (N-09) built on Embla, with circular previous/next buttons and dot or
+ * pill pagination.
  */
 export const Carousel = forwardRef<HTMLElement, CarouselProps>(function Carousel(
   { opts, setApi, className, children, onKeyDown, ...props },
@@ -162,7 +162,7 @@ CarouselViewport.displayName = "CarouselViewport";
 export type CarouselSlideProps = HTMLAttributes<HTMLDivElement>;
 
 /**
- * One slide. Defaults to the reference's width: 85% of the track on mobile and half of it
+ * One slide. By default it takes 85% of the track on mobile and half of it
  * (minus the gap) from `md`. Give each slide an `aria-label` such as "1 از 3".
  */
 export const CarouselSlide = forwardRef<HTMLDivElement, CarouselSlideProps>(function CarouselSlide(
@@ -240,9 +240,9 @@ CarouselNext.displayName = "CarouselNext";
 export const carouselDotVariants = cva("cursor-pointer rounded-full transition", {
   variants: {
     variant: {
-      /** Related-projects dots (R-07). */
+      /** Small round dots. */
       dot: "size-2",
-      /** Home page swiper bullets: the active one stretches to 28px (CSS-only in the reference). */
+      /** Bullets whose active one stretches to 28px. */
       pill: "h-2 transition-all duration-[400ms] ease-in-out",
     },
     active: { true: "", false: "" },

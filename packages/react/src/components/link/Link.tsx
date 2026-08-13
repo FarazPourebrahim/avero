@@ -4,13 +4,13 @@ import { forwardRef, type AnchorHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Text link styles extracted from the reference (P-03):
- * - nav: header navigation; the current page uses the primary color (shared header)
- * - drawer: mobile drawer navigation with a leading icon (shared drawer)
- * - prose: links inside article content (R-01)
- * - chrome: footer and contact links (shared footer)
- * - subtle: back-to-list link (R-07)
- * - brand: bold inline brand link, e.g. in the copyright line (shared footer)
+ * Text link styles (P-03):
+ * - nav: header navigation; the current page uses the primary color
+ * - drawer: mobile drawer navigation with a leading icon
+ * - prose: links inside article content
+ * - chrome: footer and contact links
+ * - subtle: a quiet back-to-list link
+ * - brand: bold inline brand link, e.g. in a copyright line
  */
 export const linkVariants = cva(
   "focus-visible:ring-primary/40 rounded-sm transition focus-visible:ring-2 focus-visible:outline-none",

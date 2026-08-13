@@ -12,12 +12,12 @@ describe("MetaItem and MetaBar", () => {
     render(
       <MetaBar>
         <MetaItem icon={icon} label="انتشار:">
-          ۳ شهریور ۱۴۰۵
+          ۱۲ مهر ۱۴۰۵
         </MetaItem>
       </MetaBar>,
     );
 
-    expect(screen.getByText("۳ شهریور ۱۴۰۵")).toHaveClass("font-medium", "text-gray-700");
+    expect(screen.getByText("۱۲ مهر ۱۴۰۵")).toHaveClass("font-medium", "text-gray-700");
     expect(screen.getByText("انتشار:").parentElement?.parentElement).toHaveClass(
       "bg-gray-50/70",
       "rounded-2xl",
@@ -62,21 +62,23 @@ describe("KeyValueRow", () => {
   });
 
   it("renders a plain value with a custom direction", () => {
-    render(<KeyValueRow label="شهر :" value="تهران" valueDir="rtl" />);
+    render(<KeyValueRow label="شهر :" value="اصفهان" valueDir="rtl" />);
 
-    expect(screen.getByText("تهران")).toHaveAttribute("dir", "rtl");
+    expect(screen.getByText("اصفهان")).toHaveAttribute("dir", "rtl");
   });
 });
 
 describe("ContactMethod", () => {
   it("renders a contact chip with a monospace LTR value", () => {
-    render(<ContactMethod href="tel:09221257181" icon={icon} label="phone:" value="09221257181" />);
+    render(
+      <ContactMethod href="tel:+982100000000" icon={icon} label="phone:" value="021-00000000" />,
+    );
     const link = screen.getByRole("link");
 
-    expect(link).toHaveAttribute("href", "tel:09221257181");
+    expect(link).toHaveAttribute("href", "tel:+982100000000");
     expect(link).not.toHaveAttribute("target");
-    expect(screen.getByText("09221257181")).toHaveAttribute("dir", "ltr");
-    expect(screen.getByText("09221257181")).toHaveClass("font-mono");
+    expect(screen.getByText("021-00000000")).toHaveAttribute("dir", "ltr");
+    expect(screen.getByText("021-00000000")).toHaveClass("font-mono");
   });
 
   it("opens external channels safely", () => {

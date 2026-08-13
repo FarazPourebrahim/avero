@@ -15,57 +15,57 @@ export const ArticleMeta: Story = {
   render: () => (
     <MetaBar className="max-w-2xl">
       <MetaItem icon={<CalendarSolidIcon size={14} className="text-gray-500" />} label="انتشار:">
-        ۳ شهریور ۱۴۰۵
+        ۱۲ مهر ۱۴۰۵
       </MetaItem>
       <MetaItem icon={<ClockSolidIcon size={14} className="text-gray-500" />} label="زمان مطالعه:">
-        5 دقیقه
+        7 دقیقه
       </MetaItem>
       <MetaItem icon={<EyeSolidIcon size={14} className="text-gray-500" />} label="بازدید:">
-        15
+        128
       </MetaItem>
     </MetaBar>
   ),
 };
 
-export const ProjectAndProfileMeta: Story = {
+export const CompactAndProfileMeta: Story = {
   render: () => (
     <div className="flex flex-col gap-6 rounded-3xl bg-white p-6">
       <MetaBar variant="row">
         <MetaItem variant="compact" icon={<MapPin className="size-6" />}>
-          ایران
+          آنلاین
         </MetaItem>
         <MetaItem variant="compact" icon={<Clock className="size-6" />}>
-          3 هفته
+          6 هفته
         </MetaItem>
         <MetaItem variant="compact" icon={<User className="size-6" />}>
-          freelance
+          همه سطوح
         </MetaItem>
         <MetaItem
           variant="compact"
           icon={<Calendar className="size-6" />}
           className="text-orange-400"
         >
-          ۱۴۰۵/۷/۱۹
+          ۱۴۰۵/۸/۱
         </MetaItem>
       </MetaBar>
       <MetaBar variant="inline">
         <MetaItem variant="pill" icon={<MapPin className="text-blue-600" />}>
-          تهران (ایران)
+          اصفهان (ایران)
         </MetaItem>
         <MetaItem
           variant="compact"
           icon={<Calendar className="size-4 text-slate-400" />}
           className="gap-1 text-slate-500"
         >
-          تاریخ عضویت: 2 هفته پیش
+          عضویت: 3 ماه پیش
         </MetaItem>
       </MetaBar>
       <div className="flex items-center gap-4 text-xs font-bold text-slate-500">
         <MetaItem variant="chip" icon={<Eye className="text-sky-500" />}>
-          6 بازدید
+          128 بازدید
         </MetaItem>
         <MetaItem variant="chip" icon={<Star className="fill-amber-400 text-amber-400" />}>
-          امتیاز: 0.00
+          امتیاز: 4.80
         </MetaItem>
       </div>
     </div>
@@ -83,10 +83,10 @@ export const Contacts: Story = {
           value="hello@example.com"
         />
         <ContactMethod
-          href="tel:09221257181"
+          href="tel:+982100000000"
           icon={<Phone className="text-indigo-600" />}
           label="phone:"
-          value="۰۹۲۲۱۲۵۷۱۸۱"
+          value="۰۲۱-۰۰۰۰۰۰۰۰"
         />
         <ContactMethod
           href="https://example.com"
@@ -98,7 +98,7 @@ export const Contacts: Story = {
       </div>
       <div className="bg-background flex max-w-sm flex-col gap-y-7 p-6">
         <KeyValueRow label="ایمیل :" value="hello@example.com" href="mailto:hello@example.com" />
-        <KeyValueRow label="شماره تماس :" value="09373860014" href="tel:09373860014" />
+        <KeyValueRow label="شماره تماس :" value="021-00000000" href="tel:+982100000000" />
       </div>
     </div>
   ),

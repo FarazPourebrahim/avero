@@ -7,8 +7,8 @@ import { Link } from "./Link.js";
 
 describe("Link", () => {
   it("renders a prose link by default", () => {
-    render(<Link href="/">دورلنسر</Link>);
-    const link = screen.getByRole("link", { name: "دورلنسر" });
+    render(<Link href="/">Avero</Link>);
+    const link = screen.getByRole("link", { name: "Avero" });
 
     expect(link).toHaveAttribute("href", "/");
     expect(link).toHaveAttribute("data-slot", "link");
@@ -35,8 +35,8 @@ describe("Link", () => {
 
   it("marks the current page", () => {
     render(
-      <Link href="/project" variant="nav" current>
-        پروژه ها
+      <Link href="/courses" variant="nav" current>
+        دوره‌ها
       </Link>,
     );
 

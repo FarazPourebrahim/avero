@@ -6,7 +6,7 @@ import { IconTile, type IconTileOwnProps } from "../icon-tile/IconTile.js";
 type Tone = NonNullable<IconTileOwnProps["tone"]>;
 
 /* --------------------------------------------------------------------------------------------
- * StatCard (D-02): dashboard counters (R-02). Label and icon tile on top, big value below.
+ * StatCard (D-02): dashboard counters. Label and icon tile on top, big value below.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `StatCard`. It also accepts every native `<div>` attribute. */
@@ -52,7 +52,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(function StatC
 StatCard.displayName = "StatCard";
 
 /* --------------------------------------------------------------------------------------------
- * StatTile + StatStrip (D-03): the profile's statistics strip (R-04).
+ * StatTile + StatStrip (D-03): a profile's statistics strip.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `StatTile`. It also accepts every native `<div>` attribute. */
@@ -103,7 +103,7 @@ StatTile.displayName = "StatTile";
 
 export type StatStripProps = HTMLAttributes<HTMLDivElement>;
 
-/** A white strip of `StatTile`s with the reference's blue accent bars on both edges. */
+/** A white strip of `StatTile`s with blue accent bars on both edges. */
 export const StatStrip = forwardRef<HTMLDivElement, StatStripProps>(function StatStrip(
   { className, children, ...props },
   ref,
@@ -136,7 +136,7 @@ export const StatStrip = forwardRef<HTMLDivElement, StatStripProps>(function Sta
 StatStrip.displayName = "StatStrip";
 
 /* --------------------------------------------------------------------------------------------
- * MiniStat (D-04): centered label + value, as in the service provider card (R-05).
+ * MiniStat (D-04): centered label + value, as in a provider card.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `MiniStat`. It also accepts every native `<div>` attribute. */
@@ -173,7 +173,7 @@ export const MiniStat = forwardRef<HTMLDivElement, MiniStatProps>(function MiniS
 MiniStat.displayName = "MiniStat";
 
 /* --------------------------------------------------------------------------------------------
- * InfoRow (D-07): tinted rows with an icon tile, as in "رتبه و دستاوردها" (R-02).
+ * InfoRow (D-07): tinted rows with an icon tile, as in an achievements panel.
  * ------------------------------------------------------------------------------------------ */
 
 export const infoRowVariants = cva(
@@ -234,7 +234,7 @@ export const InfoRow = forwardRef<HTMLDivElement, InfoRowProps>(function InfoRow
 InfoRow.displayName = "InfoRow";
 
 /* --------------------------------------------------------------------------------------------
- * HighlightPanel (D-08): the amber "رتبه در دورلنسر" panel (R-02).
+ * HighlightPanel (D-08): an amber panel for one headline figure, such as a rank.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `HighlightPanel`. It also accepts every native `<div>` attribute. */
@@ -258,7 +258,7 @@ export const HighlightPanel = forwardRef<HTMLDivElement, HighlightPanelProps>(
         ref={ref}
         data-slot="highlight-panel"
         className={cn(
-          // The reference fades toward the inline end (`to-l` in RTL); it mirrors in LTR.
+          // Fades toward the inline end (`to-l` in RTL) and mirrors in LTR.
           "rounded-xl border border-amber-100 from-amber-50 to-orange-50 p-3 sm:p-4 ltr:bg-gradient-to-r rtl:bg-gradient-to-l",
           className,
         )}

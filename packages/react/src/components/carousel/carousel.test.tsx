@@ -50,15 +50,15 @@ function emit(event: string) {
   });
 }
 
-function RelatedProjects({ setApi }: { setApi?: (api: unknown) => void }) {
+function RelatedCourses({ setApi }: { setApi?: (api: unknown) => void }) {
   return (
-    <Carousel aria-label="پروژه‌های مرتبط" setApi={setApi}>
+    <Carousel aria-label="دوره‌های مرتبط" setApi={setApi}>
       <CarouselPrevious />
       <CarouselNext />
       <CarouselViewport>
-        <CarouselSlide aria-label="1 از 3">توسعه دهنده php</CarouselSlide>
-        <CarouselSlide aria-label="2 از 3">تبدیل قالب HTML به وردپرس</CarouselSlide>
-        <CarouselSlide aria-label="3 از 3">برنامه‌نویس فول‌استک</CarouselSlide>
+        <CarouselSlide aria-label="1 از 3">مبانی طراحی رابط کاربری</CarouselSlide>
+        <CarouselSlide aria-label="2 از 3">TypeScript برای توسعه‌دهندگان React</CarouselSlide>
+        <CarouselSlide aria-label="3 از 3">تحلیل داده با Python</CarouselSlide>
       </CarouselViewport>
       <CarouselDots />
     </Carousel>
@@ -76,9 +76,9 @@ describe("Carousel", () => {
   });
 
   it("renders a labelled carousel region with labelled slides", () => {
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
 
-    const region = screen.getByRole("region", { name: "پروژه‌های مرتبط" });
+    const region = screen.getByRole("region", { name: "دوره‌های مرتبط" });
     expect(region).toHaveAttribute("aria-roledescription", "carousel");
     expect(screen.getAllByRole("group")).toHaveLength(3);
     expect(screen.getByRole("group", { name: "1 از 3" })).toHaveAttribute(
@@ -88,7 +88,7 @@ describe("Carousel", () => {
   });
 
   it("passes the reading direction and center alignment to Embla", () => {
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
 
     expect(embla.options.current).toMatchObject({ direction: "rtl", align: "center" });
   });
@@ -106,7 +106,7 @@ describe("Carousel", () => {
   });
 
   it("disables the previous button at the start and scrolls forward", async () => {
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
     const previous = screen.getByRole("button", { name: "قبلی" });
     const next = screen.getByRole("button", { name: "بعدی" });
 
@@ -117,7 +117,7 @@ describe("Carousel", () => {
   });
 
   it("updates controls and dots when the slide changes", async () => {
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
 
     embla.state.selected = 2;
     embla.state.canPrev = true;
@@ -136,7 +136,7 @@ describe("Carousel", () => {
   });
 
   it("renders one dot per snap and scrolls to the clicked one", async () => {
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
     const dots = [1, 2, 3].map((index) =>
       screen.getByRole("button", { name: formatMessage("اسلاید {index}", { index }) }),
     );
@@ -162,13 +162,13 @@ describe("Carousel", () => {
 
   it("hides the dots when there is only one position", () => {
     embla.state.snaps = 1;
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
 
     expect(screen.queryByRole("button", { name: "اسلاید 1" })).not.toBeInTheDocument();
   });
 
   it("maps arrow keys to reading direction", async () => {
-    render(<RelatedProjects />);
+    render(<RelatedCourses />);
     screen.getByRole("button", { name: "بعدی" }).focus();
 
     await userEvent.keyboard("{ArrowLeft}");
@@ -181,7 +181,7 @@ describe("Carousel", () => {
   it("maps arrow keys for LTR", async () => {
     render(
       <AveroProvider locale="en-US">
-        <RelatedProjects />
+        <RelatedCourses />
       </AveroProvider>,
     );
     screen.getByRole("button", { name: "Next" }).focus();
@@ -209,7 +209,7 @@ describe("Carousel", () => {
 
   it("hands the Embla API to setApi and unsubscribes on unmount", () => {
     const setApi = vi.fn();
-    const { unmount } = render(<RelatedProjects setApi={setApi} />);
+    const { unmount } = render(<RelatedCourses setApi={setApi} />);
 
     expect(setApi).toHaveBeenCalledWith(embla.api);
     expect(embla.listeners.get("select")?.size).toBe(1);
@@ -226,11 +226,11 @@ describe("Carousel", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<RelatedProjects />)).toContain('aria-roledescription="carousel"');
+    expect(renderToString(<RelatedCourses />)).toContain('aria-roledescription="carousel"');
   });
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<RelatedProjects />);
+    const { container } = render(<RelatedCourses />);
 
     await expectNoAxeViolations(container);
   });

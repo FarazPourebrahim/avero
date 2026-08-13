@@ -74,15 +74,15 @@ describe("Card", () => {
         <CardHeader>
           <CardTitle size="sm">
             <svg aria-hidden="true" />
-            پروژه‌های پیشنهادی
+            دوره‌های پیشنهادی
           </CardTitle>
-          <span>5 پروژه</span>
+          <span>5 دوره</span>
         </CardHeader>
         <CardFooter>footer</CardFooter>
       </Card>,
     );
 
-    const title = screen.getByRole("heading", { level: 3, name: "پروژه‌های پیشنهادی" });
+    const title = screen.getByRole("heading", { level: 3, name: "دوره‌های پیشنهادی" });
     expect(title).toHaveClass("text-xs", "sm:text-sm", "font-bold");
     expect(title.parentElement).toHaveClass("justify-between");
     expect(screen.getByText("footer")).toHaveClass("border-t", "pt-3");

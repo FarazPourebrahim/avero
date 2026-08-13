@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `CoverHeader`. It also accepts every native `<div>` attribute. */
 export type CoverHeaderOwnProps = {
-  /** Cover content, e.g. an `<img>`. Defaults to the reference's blue-to-purple gradient. */
+  /** Cover content, e.g. an `<img>`. Defaults to a blue-to-purple gradient. */
   cover?: ReactNode;
   /** Avatar content, e.g. an `<img>`, placed in the white ring that overlaps the cover. */
   avatar?: ReactNode;
@@ -15,7 +15,7 @@ export type CoverHeaderProps = Omit<HTMLAttributes<HTMLDivElement>, keyof CoverH
   CoverHeaderOwnProps;
 
 /**
- * Profile header (D-23, R-04/R-08): a gradient cover with a bottom shade, an avatar overlapping
+ * Profile header (D-23): a gradient cover with a bottom shade, an avatar overlapping
  * the cover, identity content beside it and an optional footer bar. Children are the identity
  * block (name, badges, meta).
  */

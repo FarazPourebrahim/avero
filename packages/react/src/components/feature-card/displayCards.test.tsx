@@ -15,8 +15,8 @@ describe("FeatureCard", () => {
   it("renders an icon tile, title and description", () => {
     const { container } = render(
       <FeatureCard
-        title="سیستم پرداخت امن و تضمین‌شده"
-        description="حفظ امنیت مالی کارفرما"
+        title="پرداخت امن و بدون دغدغه"
+        description="بازگشت وجه تا هفت روز"
         icon={icon}
         tone="emerald"
       />,
@@ -40,10 +40,10 @@ describe("ActionTile", () => {
     const onClick = vi.fn();
     const { container } = render(
       <ActionTile icon={icon} tone="rose" onClick={onClick}>
-        ارتقای پلن
+        ارتقای اشتراک
       </ActionTile>,
     );
-    const button = screen.getByRole("button", { name: "ارتقای پلن" });
+    const button = screen.getByRole("button", { name: "ارتقای اشتراک" });
 
     await userEvent.click(button);
 
@@ -76,11 +76,11 @@ describe("ActionTile", () => {
   it("styles a link with asChild", () => {
     render(
       <ActionTile asChild icon={icon}>
-        <a href="/services/new">افزودن خدمت</a>
+        <a href="/courses/new">افزودن دوره</a>
       </ActionTile>,
     );
 
-    expect(screen.getByRole("link", { name: "افزودن خدمت" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "افزودن دوره" })).toHaveAttribute(
       "data-slot",
       "action-tile",
     );
@@ -89,9 +89,9 @@ describe("ActionTile", () => {
 
 describe("SectionHeader", () => {
   it("renders a plain section title with actions", () => {
-    render(<SectionHeader title="پروژه‌های مرتبط" actions={<button type="button">بعدی</button>} />);
+    render(<SectionHeader title="دوره‌های مرتبط" actions={<button type="button">بعدی</button>} />);
 
-    const heading = screen.getByRole("heading", { level: 2, name: "پروژه‌های مرتبط" });
+    const heading = screen.getByRole("heading", { level: 2, name: "دوره‌های مرتبط" });
     expect(heading).toHaveClass("text-xl", "md:text-2xl");
     expect(heading.parentElement).toHaveClass("justify-between");
     expect(screen.getByRole("button", { name: "بعدی" })).toBeInTheDocument();
@@ -102,14 +102,14 @@ describe("SectionHeader", () => {
       <SectionHeader
         variant="accentBar"
         as="h1"
-        title="داستان شکل‌گیری دورلنسر"
-        subtitle="روایت یک تصمیم"
+        title="درباره ما"
+        subtitle="داستان ما"
         actions={<span>actions</span>}
       />,
     );
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveClass("font-extrabold");
-    expect(screen.getByText("روایت یک تصمیم")).toHaveClass("text-gray-500");
+    expect(screen.getByText("داستان ما")).toHaveClass("text-gray-500");
     expect(container.querySelector(".gradient-accent-bar")).toHaveAttribute("aria-hidden", "true");
   });
 
@@ -123,9 +123,7 @@ describe("SectionHeader", () => {
   });
 
   it("renders the icon variant", () => {
-    render(
-      <SectionHeader variant="icon" title="چرا دورلنسر؟" icon={icon} actions={<span>x</span>} />,
-    );
+    render(<SectionHeader variant="icon" title="چرا ما؟" icon={icon} actions={<span>x</span>} />);
 
     expect(screen.getByRole("heading")).toHaveClass("text-slate-800");
     expect(screen.getByTestId("icon").parentElement).toHaveClass("text-primary");
@@ -193,9 +191,9 @@ describe("display cards", () => {
   it("have no accessibility violations", async () => {
     const { container } = render(
       <section>
-        <SectionHeader variant="icon" title="چرا دورلنسر؟" icon={icon} />
+        <SectionHeader variant="icon" title="چرا ما؟" icon={icon} />
         <FeatureCard title="t" description="d" icon={icon} titleAs="h3" />
-        <ActionTile icon={icon}>افزودن خدمت</ActionTile>
+        <ActionTile icon={icon}>افزودن دوره</ActionTile>
         <div className="relative">
           <GlowOrbs />
         </div>

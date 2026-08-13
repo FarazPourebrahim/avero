@@ -9,13 +9,13 @@ import { cn } from "../../utils/cn.js";
 export const metaItemVariants = cva("flex items-center [&>svg]:shrink-0", {
   variants: {
     variant: {
-      /** Article meta: icon, label and a medium-weight value (R-01). */
+      /** Article meta: icon, label and a medium-weight value. */
       plain: "gap-2",
-      /** Project meta row: small icon and text (R-07). */
+      /** Compact meta row: small icon and text. */
       compact: "gap-1.5",
-      /** Profile location pill (R-04). */
+      /** Location pill, e.g. on a profile. */
       pill: "gap-1 rounded-lg bg-slate-100/80 px-2.5 py-1 text-slate-600 [&>svg]:size-4",
-      /** Service stats chip (R-05). */
+      /** Bordered stats chip. */
       chip: "gap-1.5 rounded-xl border border-slate-100 bg-slate-50 px-3 py-1.5 [&>svg]:size-4",
     },
   },
@@ -62,12 +62,12 @@ MetaItem.displayName = "MetaItem";
 export const metaBarVariants = cva("flex flex-wrap items-center", {
   variants: {
     variant: {
-      /** Article meta panel (R-01). */
+      /** Article meta panel. */
       panel:
         "gap-5 rounded-2xl border border-gray-100 bg-gray-50/70 px-4 py-3 text-xs text-gray-500 sm:text-sm",
-      /** Project meta row (R-07). */
+      /** Compact meta row. */
       row: "text-sm-plus gap-4 font-normal text-gray-400",
-      /** Profile meta line (R-04). */
+      /** Profile meta line. */
       inline: "gap-4 text-xs font-medium text-gray-500 sm:text-sm",
     },
   },
@@ -100,7 +100,7 @@ export const MetaBar = forwardRef<HTMLDivElement, MetaBarProps>(function MetaBar
 MetaBar.displayName = "MetaBar";
 
 /* --------------------------------------------------------------------------------------------
- * KeyValueRow (D-19): the footer's "ایمیل : …" contact rows.
+ * KeyValueRow (D-19): label/value rows, such as a footer's "ایمیل : …" contact rows.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `KeyValueRow`. It also accepts every native `<div>` attribute. */
@@ -152,7 +152,7 @@ export const KeyValueRow = forwardRef<HTMLDivElement, KeyValueRowProps>(function
 KeyValueRow.displayName = "KeyValueRow";
 
 /* --------------------------------------------------------------------------------------------
- * ContactMethod (D-20): verified contact chips on the service page (R-05).
+ * ContactMethod (D-20): contact chips with an icon, a channel name and a monospace value.
  * ------------------------------------------------------------------------------------------ */
 
 /** Props specific to `ContactMethod`. It also accepts every native `<a>` attribute. */

@@ -7,8 +7,8 @@ import { Eyebrow, Heading, Text } from "./Typography.js";
 
 describe("Heading", () => {
   it("renders a section heading as h2 by default", () => {
-    render(<Heading>خدمات فریلنسرها</Heading>);
-    const heading = screen.getByRole("heading", { level: 2, name: "خدمات فریلنسرها" });
+    render(<Heading>دوره‌های پرطرفدار</Heading>);
+    const heading = screen.getByRole("heading", { level: 2, name: "دوره‌های پرطرفدار" });
 
     expect(heading).toHaveClass("text-xl", "font-bold", "md:text-2xl");
     expect(heading).toHaveAttribute("data-slot", "heading");
@@ -89,9 +89,9 @@ describe("Text", () => {
 
 describe("Eyebrow", () => {
   it("renders the light tone by default", () => {
-    render(<Eyebrow>ارائه‌دهنده خدمت</Eyebrow>);
+    render(<Eyebrow>مدرس دوره</Eyebrow>);
 
-    expect(screen.getByText("ارائه‌دهنده خدمت")).toHaveClass("text-gray-600", "uppercase");
+    expect(screen.getByText("مدرس دوره")).toHaveClass("text-gray-600", "uppercase");
   });
 
   it("renders the dark-background tone", () => {

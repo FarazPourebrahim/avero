@@ -9,9 +9,9 @@ const icon = <svg data-testid="icon" aria-hidden="true" />;
 
 describe("StatCard", () => {
   it("renders the label, value and a tinted icon tile", () => {
-    const { container } = render(<StatCard label="خدمات" value="0" icon={icon} tone="purple" />);
+    const { container } = render(<StatCard label="دوره‌ها" value="0" icon={icon} tone="purple" />);
 
-    expect(screen.getByText("خدمات")).toHaveClass("text-gray-500");
+    expect(screen.getByText("دوره‌ها")).toHaveClass("text-gray-500");
     expect(screen.getByText("0")).toHaveClass("text-xl", "sm:text-2xl", "font-bold");
     expect(container.querySelector('[data-slot="icon-tile"]')).toHaveClass("bg-purple-50");
     expect(container.firstElementChild).toHaveClass("hover:shadow-md", "rounded-2xl");
@@ -27,7 +27,7 @@ describe("StatCard", () => {
 describe("StatTile and StatStrip", () => {
   it("renders a translucent icon tile with a large value and small label", () => {
     const { container } = render(
-      <StatTile label="مدت تجربه کاری" value="3 سال" icon={icon} tone="amber" />,
+      <StatTile label="سابقه تدریس" value="3 سال" icon={icon} tone="amber" />,
     );
 
     expect(container.querySelector('[data-slot="icon-tile"]')).toHaveClass(
@@ -35,14 +35,14 @@ describe("StatTile and StatStrip", () => {
       "size-10",
     );
     expect(screen.getByText("3 سال")).toHaveClass("truncate", "sm:text-2xl");
-    expect(screen.getByText("مدت تجربه کاری")).toHaveClass("text-slate-500");
+    expect(screen.getByText("سابقه تدریس")).toHaveClass("text-slate-500");
   });
 
   it("lays tiles out in a strip with decorative accent bars on both edges", () => {
     const { container } = render(
       <StatStrip>
-        <StatTile label="تعداد نمونه‌کار" value="4" />
-        <StatTile label="تعداد خدمات" value="1" />
+        <StatTile label="دوره‌های منتشرشده" value="4" />
+        <StatTile label="تعداد دوره‌ها" value="1" />
       </StatStrip>,
     );
     const bars = container.querySelectorAll('[aria-hidden="true"]');
@@ -56,9 +56,9 @@ describe("StatTile and StatStrip", () => {
 
 describe("MiniStat", () => {
   it("centers a small label over a bold value with an optional icon", () => {
-    render(<MiniStat label="امتیاز رضایت" value="0.00" icon={icon} />);
+    render(<MiniStat label="امتیاز شرکت‌کنندگان" value="0.00" icon={icon} />);
 
-    expect(screen.getByText("امتیاز رضایت")).toHaveClass("text-3xs", "text-slate-400");
+    expect(screen.getByText("امتیاز شرکت‌کنندگان")).toHaveClass("text-3xs", "text-slate-400");
     expect(screen.getByText("0.00")).toHaveClass("font-black", "justify-center");
     expect(screen.getByText("0.00")).toContainElement(screen.getByTestId("icon"));
   });
@@ -71,7 +71,7 @@ describe("InfoRow", () => {
     ["blue", "bg-blue-50/50", "bg-blue-100"],
   ] as const)("renders the %s tone", (tone, row, tile) => {
     const { container } = render(
-      <InfoRow label="گواهینامه‌ها" value="0 عدد" icon={icon} tone={tone} />,
+      <InfoRow label="گواهی‌ها" value="0 عدد" icon={icon} tone={tone} />,
     );
 
     expect(container.firstElementChild).toHaveClass(row);
@@ -88,7 +88,7 @@ describe("InfoRow", () => {
 describe("HighlightPanel", () => {
   it("renders the amber gradient panel, mirrored per direction", () => {
     const { container } = render(
-      <HighlightPanel label="رتبه در دورلنسر" value="-" aside={<span>aside</span>} />,
+      <HighlightPanel label="رتبه در جدول امتیازها" value="-" aside={<span>aside</span>} />,
     );
 
     expect(container.firstElementChild).toHaveClass(
@@ -129,7 +129,7 @@ describe("stat family", () => {
   it("renders on the server", () => {
     const html = renderToString(
       <StatStrip>
-        <StatTile label="تعداد خدمات" value="1" icon={icon} />
+        <StatTile label="تعداد دوره‌ها" value="1" icon={icon} />
       </StatStrip>,
     );
 
@@ -139,11 +139,11 @@ describe("stat family", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div>
-        <StatCard label="خدمات" value="0" icon={icon} />
+        <StatCard label="دوره‌ها" value="0" icon={icon} />
         <StatStrip>
-          <StatTile label="تعداد خدمات" value="1" icon={icon} />
+          <StatTile label="تعداد دوره‌ها" value="1" icon={icon} />
         </StatStrip>
-        <MiniStat label="تعداد خدمات" value="1" />
+        <MiniStat label="تعداد دوره‌ها" value="1" />
         <InfoRow label="نشان‌ها" value="0 عدد" icon={icon} />
         <HighlightPanel label="رتبه" value="-" />
       </div>,
