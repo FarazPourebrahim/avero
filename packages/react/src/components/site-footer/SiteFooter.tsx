@@ -92,7 +92,7 @@ export type SiteFooterOwnProps = {
   /** Groups rendered as accordions below `md`. */
   groups?: FooterGroup[];
   /**
-   * Desktop link columns, each a heading over chips — the reference's "دسترسی سریع" column. They
+   * Desktop link columns, each a heading over chips, such as a "دسترسی سریع" column. They
    * are hidden below `md`, where the same links belong in `groups` instead.
    */
   linkColumns?: FooterGroup[];
@@ -114,7 +114,7 @@ export type SiteFooterProps = Omit<HTMLAttributes<HTMLElement>, keyof SiteFooter
 /**
  * Site chrome footer (T-03). Everything is data-driven: the category grid, the brand chips, the
  * mobile accordion groups, the contact rows, the about strip and the social tiles are all props,
- * so no reference content is baked in.
+ * so no content is baked in.
  */
 export const SiteFooter = forwardRef<HTMLElement, SiteFooterProps>(function SiteFooter(
   {
@@ -135,7 +135,7 @@ export const SiteFooter = forwardRef<HTMLElement, SiteFooterProps>(function Site
   },
   ref,
 ) {
-  // Below `md` the brand chips become the first accordion group, as in the reference.
+  // Below `md` the brand chips become the first accordion group.
   const accordionGroups: FooterGroup[] = [
     ...(brandLinksTitle && brandLinks?.length
       ? [{ title: brandLinksTitle, links: brandLinks }]

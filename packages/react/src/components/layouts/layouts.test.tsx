@@ -55,7 +55,7 @@ describe("ListingLayout", () => {
   it("renders sticky filters beside the results", () => {
     const { container } = render(
       <ListingLayout
-        header={<h1>خدمات فریلنسرها</h1>}
+        header={<h1>همه دوره‌ها</h1>}
         aside={<form>فیلترها</form>}
         asideLabel="فیلترها"
       >
@@ -65,7 +65,7 @@ describe("ListingLayout", () => {
       </ListingLayout>,
     );
 
-    expect(screen.getByRole("heading", { name: "خدمات فریلنسرها" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "همه دوره‌ها" })).toBeInTheDocument();
     expect(container.querySelector('[data-slot="listing-layout-aside"]')).toHaveClass(
       "md:col-span-3",
       "md:sticky",
@@ -85,7 +85,7 @@ describe("SplitDetailLayout", () => {
   it("swaps the order so the content leads on phones", () => {
     const { container } = render(
       <SplitDetailLayout aside={<div>بنر</div>} asideLabel="کناری">
-        <div>پروژه</div>
+        <div>کارگاه</div>
       </SplitDetailLayout>,
     );
 
@@ -93,7 +93,7 @@ describe("SplitDetailLayout", () => {
       "order-2",
       "lg:order-1",
     );
-    expect(screen.getByText("پروژه").parentElement).toHaveClass("order-1", "lg:order-2");
+    expect(screen.getByText("کارگاه").parentElement).toHaveClass("order-1", "lg:order-2");
   });
 });
 

@@ -28,7 +28,7 @@ export const PublicPage: Story = {
                 <Menu className="size-5" />
               </SiteHeaderMenuButton>
             }
-            logo={<span className="text-primary text-lg font-black">دورلنسر</span>}
+            logo={<span className="text-primary text-lg font-black">Avero</span>}
             nav={
               <>
                 <Link variant="nav" href="#">
@@ -43,7 +43,7 @@ export const PublicPage: Story = {
         }
         footer={
           <SiteFooter
-            logo={<span className="text-primary text-xl font-black">دورلنسر</span>}
+            logo={<span className="text-primary text-xl font-black">Avero</span>}
             brandLinks={[
               { label: "قوانین و مقررات", href: "#" },
               { label: "تماس با ما", href: "#" },

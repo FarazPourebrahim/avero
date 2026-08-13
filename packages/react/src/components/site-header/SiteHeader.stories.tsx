@@ -6,8 +6,8 @@ import { SiteHeader, SiteHeaderMenuButton } from "./SiteHeader.js";
 
 const NAV = [
   { label: "خانه", href: "#" },
-  { label: "پروژه ها", href: "#" },
-  { label: "دیوار", href: "#" },
+  { label: "دوره‌ها", href: "#" },
+  { label: "کارگاه‌ها", href: "#" },
   { label: "وبلاگ", href: "#" },
   { label: "درباره‌ما", href: "#", current: true },
 ];
@@ -33,8 +33,8 @@ export const Default: Story = {
           </SiteHeaderMenuButton>
         }
         logo={
-          <a href="#" aria-label="دورلنسر" className="flex items-center gap-x-3 py-2">
-            <span className="text-primary text-lg font-black">دورلنسر</span>
+          <a href="#" aria-label="Avero" className="flex items-center gap-x-3 py-2">
+            <span className="text-primary text-lg font-black">Avero</span>
           </a>
         }
         nav={NAV.map((item) => (

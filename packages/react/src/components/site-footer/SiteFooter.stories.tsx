@@ -3,11 +3,11 @@ import { FooterSocialTile, SiteFooter } from "./SiteFooter.js";
 import { InstagramIcon, TelegramIcon, LinkedinIcon } from "../../icons/publicIcons.js";
 
 const CATEGORY_COLUMNS = [
-  ["طراحی سایت", "تولید محتوا", "طراحی گرافیک", "سئو"],
-  ["تدوین ویدئو", "React", "طراحی UI/UX", "ادیت ویدئو"],
-  ["موشن گرافیک", "Figma", "وردپرس", "Angular"],
-  ["طراحی بنر", "MySQL", "Node.js", "Flutter"],
-  ["طراحی لوگوتایپ", "پاورپوینت", "سئو وردپرس", "Dart"],
+  ["طراحی رابط کاربری", "برنامه‌نویسی وب", "تحلیل داده", "مدیریت محصول"],
+  ["React", "TypeScript", "Figma", "Python"],
+  ["عکاسی", "تدوین ویدئو", "بازاریابی محتوا", "زبان انگلیسی"],
+  ["Node.js", "SQL", "Flutter", "هوش مصنوعی"],
+  ["نویسندگی", "طراحی گرافیک", "امنیت شبکه", "Docker"],
 ].map((column) => column.map((label) => ({ label, href: "#" })));
 
 const meta: Meta<typeof SiteFooter> = {
@@ -23,8 +23,8 @@ export const Default: Story = {
   render: (args) => (
     <SiteFooter
       {...args}
-      categories={{ title: "دسته بندی مهارت", columns: CATEGORY_COLUMNS }}
-      logo={<span className="text-primary text-xl font-black">دورلنسر</span>}
+      categories={{ title: "دسته‌بندی دوره‌ها", columns: CATEGORY_COLUMNS }}
+      logo={<span className="text-primary text-xl font-black">Avero</span>}
       brandLinks={[
         { label: "قوانین و مقررات", href: "#" },
         { label: "تماس با ما", href: "#" },
@@ -33,11 +33,11 @@ export const Default: Story = {
       brandLinksTitle="درباره ما"
       groups={[
         {
-          title: "مهارت ها",
+          title: "دوره‌ها",
           links: [
-            { label: "طراحی سایت", href: "#" },
-            { label: "تولید محتوا", href: "#" },
-            { label: "سئو", href: "#" },
+            { label: "طراحی رابط کاربری", href: "#" },
+            { label: "برنامه‌نویسی وب", href: "#" },
+            { label: "تحلیل داده", href: "#" },
           ],
         },
         {
@@ -45,7 +45,7 @@ export const Default: Story = {
           links: [
             { label: "صفحه اصلی", href: "#" },
             { label: "وبلاگ", href: "#" },
-            { label: "سوالات متداول", href: "#" },
+            { label: "پرسش‌های متداول", href: "#" },
           ],
         },
       ]}
@@ -53,18 +53,18 @@ export const Default: Story = {
         title: "ارتباط با ما",
         rows: [
           { label: "ایمیل :", value: "hello@example.com", href: "mailto:hello@example.com" },
-          { label: "شماره تماس :", value: "09373860014", href: "tel:09373860014" },
+          { label: "شماره تماس :", value: "021-00000000", href: "tel:+982100000000" },
         ],
       }}
       about={{
-        long: "دورلنسر بستری برای ارتباط مستقیم کارفرمایان و فریلنسرهای متخصص است تا پروژه‌ها سریع‌تر، مطمئن‌تر و با کیفیت بالاتر انجام شوند.",
-        short: "بستری برای ارتباط مستقیم کارفرمایان و فریلنسرهای متخصص.",
+        long: "Avero مجموعه‌ای از دوره‌های کوتاه و کاربردی است که یادگیری مهارت‌های تازه را ساده‌تر و لذت‌بخش‌تر می‌کند.",
+        short: "دوره‌های کوتاه و کاربردی برای یادگیری مهارت‌های تازه.",
       }}
       copyright={
         <>
           تمامی حقوق برای
           <a href="#" className="hover:text-primary mx-1 font-semibold">
-            دورلنسر
+            Avero
           </a>
           محفوظ است
         </>

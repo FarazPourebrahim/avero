@@ -8,10 +8,9 @@ import { XIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Slide-in panel (O-01). It reproduces both reference drawers: the site header's menu
- * (`wide`, inline end, hidden from `md`) and the dashboard's (`panel`, inline start, from `lg`).
- * Radix Dialog supplies the focus trap, `Esc`, scroll lock and the scrim the reference lacks
- * (deviation V-09).
+ * Slide-in panel (O-01) in two sizes: `wide` for a site header menu and `panel` for a dashboard
+ * menu. Radix Dialog supplies the focus trap, `Esc` and scroll lock, and a dimmed scrim keeps the
+ * page behind it from being clicked.
  */
 export const Drawer = DialogPrimitive.Root;
 export const DrawerTrigger = DialogPrimitive.Trigger;
@@ -34,9 +33,9 @@ export const drawerVariants = cva(
         end: "end-0 border-s border-gray-100",
       },
       size: {
-        /** Site header menu: two thirds of the viewport (R-01/R-03). */
+        /** Two thirds of the viewport, e.g. a site header menu. */
         wide: "w-2/3",
-        /** Dashboard menu: 75%, half from `sm`, capped (R-02). */
+        /** 75%, half from `sm`, capped; e.g. a dashboard menu. */
         panel: "w-[75%] max-w-sm sm:w-1/2",
       },
     },

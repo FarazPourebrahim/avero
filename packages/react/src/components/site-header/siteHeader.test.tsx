@@ -12,7 +12,7 @@ function Header(props: { sticky?: boolean }) {
       {...props}
       menu={<SiteHeaderMenuButton aria-label="باز کردن منو" />}
       logo={
-        <a href="/" aria-label="دورلنسر">
+        <a href="/" aria-label="Avero">
           لوگو
         </a>
       }
@@ -42,7 +42,7 @@ describe("SiteHeader", () => {
 
     expect(header).toHaveClass("sticky", "top-12", "backdrop-blur-2xl", "z-(--z-sticky)");
     expect(screen.getByRole("navigation")).toHaveClass("hidden", "md:flex", "gap-10");
-    expect(screen.getByRole("link", { name: "دورلنسر" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Avero" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "پیشخوان" })).toBeInTheDocument();
   });
 

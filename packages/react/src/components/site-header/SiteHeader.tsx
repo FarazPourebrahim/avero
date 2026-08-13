@@ -13,7 +13,7 @@ export type SiteHeaderOwnProps = {
   actions?: ReactNode;
   /** Mobile menu trigger, shown below `md`. Wrap `SiteHeaderMenuButton` in a `DrawerTrigger`. */
   menu?: ReactNode;
-  /** Sticks to the top while scrolling, as the reference does. @defaultValue true */
+  /** Sticks to the top while scrolling. @defaultValue true */
   sticky?: boolean;
 };
 

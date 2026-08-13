@@ -11,7 +11,7 @@ const meta: Meta<typeof Drawer> = {
 export default meta;
 type Story = StoryObj<typeof Drawer>;
 
-const NAV = ["پیشخوان", "مشاهده پروفایل", "خدمات من", "نمونه‌کارها", "تنظیمات"];
+const NAV = ["پیشخوان", "مشاهده پروفایل", "دوره‌های من", "گواهی‌ها", "تنظیمات"];
 
 /**
  * The panel portals into this box rather than `document.body`, so the story is captured inside the

@@ -48,7 +48,7 @@ export const Detail: Story = {
   render: () => (
     <div className="bg-background py-6">
       <DetailLayout
-        asideLabel="اطلاعات خدمت"
+        asideLabel="اطلاعات دوره"
         aside={
           <>
             <Block>قیمت</Block>
@@ -56,7 +56,7 @@ export const Detail: Story = {
           </>
         }
       >
-        <Block className="min-h-64">توضیحات خدمت</Block>
+        <Block className="min-h-64">توضیحات دوره</Block>
       </DetailLayout>
     </div>
   ),
@@ -66,14 +66,14 @@ export const Listing: Story = {
   render: () => (
     <div className="bg-background py-6">
       <ListingLayout
-        header={<h1 className="text-xl font-bold text-slate-900 md:text-2xl">خدمات فریلنسرها</h1>}
+        header={<h1 className="text-xl font-bold text-slate-900 md:text-2xl">همه دوره‌ها</h1>}
         asideLabel="فیلترها"
         aside={<Block className="min-h-48">فیلترها</Block>}
       >
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Block>خدمت</Block>
-          <Block>خدمت</Block>
-          <Block>خدمت</Block>
+          <Block>دوره</Block>
+          <Block>دوره</Block>
+          <Block>دوره</Block>
         </div>
       </ListingLayout>
     </div>
@@ -83,8 +83,8 @@ export const Listing: Story = {
 export const SplitDetail: Story = {
   render: () => (
     <div className="bg-background py-6">
-      <SplitDetailLayout asideLabel="بنر" aside={<Block className="min-h-48">بنر ثبت پروژه</Block>}>
-        <Block className="min-h-64">جزئیات پروژه</Block>
+      <SplitDetailLayout asideLabel="بنر" aside={<Block className="min-h-48">بنر ثبت‌نام</Block>}>
+        <Block className="min-h-64">جزئیات کارگاه</Block>
       </SplitDetailLayout>
     </div>
   ),

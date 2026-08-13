@@ -27,7 +27,7 @@ export type SiteShellProps = Omit<HTMLAttributes<HTMLDivElement>, keyof SiteShel
   SiteShellOwnProps;
 
 /**
- * Public page shell (T-01): skip link, header, content and footer in the reference's vertical
+ * Public page shell (T-01): skip link, header, content and footer with a consistent vertical
  * rhythm. The header and footer are slots, so routing and data stay in the application.
  */
 export const SiteShell = forwardRef<HTMLDivElement, SiteShellProps>(function SiteShell(

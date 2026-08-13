@@ -6,13 +6,13 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { FooterSocialTile, SiteFooter, type SiteFooterProps } from "./SiteFooter.js";
 
 const CATEGORIES = {
-  title: "دسته بندی مهارت",
+  title: "دسته‌بندی دوره‌ها",
   columns: [
     [
-      { label: "طراحی سایت", href: "/c/web" },
-      { label: "سئو", href: "/c/seo" },
+      { label: "طراحی رابط کاربری", href: "/c/ui" },
+      { label: "تحلیل داده", href: "/c/data" },
     ],
-    [{ label: "تولید محتوا", href: "/c/content" }],
+    [{ label: "برنامه‌نویسی وب", href: "/c/web" }],
   ],
 };
 
@@ -25,19 +25,19 @@ function Footer(props: Partial<SiteFooterProps>) {
   return (
     <SiteFooter
       categories={CATEGORIES}
-      logo={<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="دورلنسر" />}
+      logo={<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Avero" />}
       brandLinks={BRAND_LINKS}
       brandLinksTitle="درباره ما"
-      groups={[{ title: "مهارت ها", links: [{ label: "سئو", href: "/c/seo" }] }]}
+      groups={[{ title: "دوره‌ها", links: [{ label: "تحلیل داده", href: "/c/data" }] }]}
       contact={{
         title: "ارتباط با ما",
         rows: [
           { label: "ایمیل :", value: "hello@example.com", href: "mailto:hello@example.com" },
-          { label: "شماره تماس :", value: "09373860014", href: "tel:09373860014" },
+          { label: "شماره تماس :", value: "021-00000000", href: "tel:+982100000000" },
         ],
       }}
       about={{
-        long: "دورلنسر بستری برای ارتباط مستقیم کارفرمایان و فریلنسرها است.",
+        long: "Avero مجموعه‌ای از دوره‌های کوتاه و کاربردی است.",
         short: "خلاصه",
       }}
       trustSeal={<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="نماد اعتماد" />}
@@ -54,10 +54,9 @@ describe("SiteFooter", () => {
     const grid = container.querySelector('[data-slot="footer-categories"]');
 
     expect(grid).toHaveClass("hidden", "md:block");
-    expect(within(grid as HTMLElement).getByRole("link", { name: "طراحی سایت" })).toHaveClass(
-      "text-text-chrome",
-      "rounded-md",
-    );
+    expect(
+      within(grid as HTMLElement).getByRole("link", { name: "طراحی رابط کاربری" }),
+    ).toHaveClass("text-text-chrome", "rounded-md");
     expect(grid?.querySelectorAll('[data-slot="footer-chip"]')).toHaveLength(3);
   });
 
@@ -67,7 +66,7 @@ describe("SiteFooter", () => {
     expect(container.querySelector('[data-slot="footer-groups"]')).toHaveClass("md:hidden");
     // The brand links lead the accordions, then the explicit groups.
     const triggers = screen.getAllByRole("button");
-    expect(triggers.map((trigger) => trigger.textContent)).toEqual(["درباره ما", "مهارت ها"]);
+    expect(triggers.map((trigger) => trigger.textContent)).toEqual(["درباره ما", "دوره‌ها"]);
   });
 
   it("keeps brand links desktop-only without a title", () => {
