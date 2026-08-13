@@ -7,8 +7,8 @@ import { Figure, Image } from "./Image.js";
 
 describe("Image", () => {
   it("renders a lazy, async-decoded cover image by default", () => {
-    render(<Image src="/cover.webp" alt="فریلنسری چیست؟" />);
-    const image = screen.getByRole("img", { name: "فریلنسری چیست؟" });
+    render(<Image src="/cover.webp" alt="آشنایی با طراحی رابط کاربری" />);
+    const image = screen.getByRole("img", { name: "آشنایی با طراحی رابط کاربری" });
 
     expect(image).toHaveAttribute("loading", "lazy");
     expect(image).toHaveAttribute("decoding", "async");
@@ -37,11 +37,11 @@ describe("Image", () => {
 
   it("replaces a broken image with a labelled placeholder and calls onError", () => {
     const onError = vi.fn();
-    render(<Image src="/missing.webp" alt="نمونه کار" radius="xl" onError={onError} />);
+    render(<Image src="/missing.webp" alt="پیش‌نمایش دوره" radius="xl" onError={onError} />);
 
     fireEvent.error(screen.getByRole("img"));
 
-    const placeholder = screen.getByRole("img", { name: "نمونه کار" });
+    const placeholder = screen.getByRole("img", { name: "پیش‌نمایش دوره" });
     expect(placeholder.tagName).toBe("SPAN");
     expect(placeholder).toHaveClass("bg-gray-100", "rounded-xl");
     expect(onError).toHaveBeenCalledTimes(1);

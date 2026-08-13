@@ -5,8 +5,8 @@ const meta: Meta<typeof Textarea> = {
   title: "Forms/Textarea",
   component: Textarea,
   args: {
-    "aria-label": "نظر",
-    placeholder: "نظر خود را درباره این مقاله بنویسید...",
+    "aria-label": "دیدگاه",
+    placeholder: "دیدگاه خود را درباره این مقاله بنویسید…",
   },
   argTypes: {
     variant: { control: "inline-radio", options: ["soft", "slate"] },
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Textarea>;
 export const Soft: Story = {};
 
 export const Slate: Story = {
-  args: { variant: "slate", rows: 3, placeholder: "نظر خود را درباره این خدمت بنویسید..." },
+  args: { variant: "slate", rows: 3, placeholder: "دیدگاه خود را درباره این دوره بنویسید…" },
 };
 
 export const Invalid: Story = {

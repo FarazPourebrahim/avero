@@ -3,9 +3,9 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `FormActions`. It also accepts every native `<div>` attribute. */
 export type FormActionsOwnProps = {
-  /** Text beside the actions, e.g. "نظرات پس از بررسی منتشر خواهند شد.". */
+  /** Text beside the actions, e.g. "دیدگاه‌ها پس از بررسی منتشر می‌شوند.". */
   hint?: ReactNode;
-  /** `between` puts the hint opposite the actions (R-01); `end` keeps actions alone (R-05). @defaultValue the hint decides */
+  /** `between` puts the hint opposite the actions; `end` keeps the actions alone at the end. @defaultValue the hint decides */
   align?: "between" | "end";
 };
 

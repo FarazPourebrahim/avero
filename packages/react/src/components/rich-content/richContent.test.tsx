@@ -5,14 +5,14 @@ import { describe, expect, it, vi } from "vitest";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { RichContent } from "./RichContent.js";
 
-const ARTICLE = "<h2>فریلنسری چیست؟</h2><p>متن <strong>مهم</strong></p><ul><li>یک</li></ul>";
+const ARTICLE = "<h2>سیستم طراحی چیست؟</h2><p>متن <strong>مهم</strong></p><ul><li>یک</li></ul>";
 
 describe("RichContent", () => {
   it("renders sanitized HTML with the content prose class", () => {
     const { container } = render(<RichContent html={ARTICLE} />);
 
     expect(container.firstElementChild).toHaveClass("avero-rich-content");
-    expect(screen.getByRole("heading", { name: "فریلنسری چیست؟" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "سیستم طراحی چیست؟" })).toBeInTheDocument();
     expect(screen.getByRole("listitem")).toHaveTextContent("یک");
   });
 

@@ -8,20 +8,20 @@ import { Progress } from "../progress/Progress.js";
 
 /** Props specific to `CapacityMeter`. It also accepts every native `<div>` attribute. */
 export type CapacityMeterOwnProps = {
-  /** What is being counted, e.g. "ظرفیت دریافت رزومه". Also labels the progress bar. */
+  /** What is being counted, e.g. "ظرفیت ثبت‌نام". Also labels the progress bar. */
   label: ReactNode;
   /** Places taken. */
   value: number;
   /** Total places. */
   max: number;
   /**
-   * `detail` shows "value of max" beside the label (project page); `card` shows a status pill and
-   * a caption row (related-project cards). @defaultValue "detail"
+   * `detail` shows "value of max" beside the label, e.g. on a detail page; `card` shows a status
+   * pill and a caption row, e.g. inside a card. @defaultValue "detail"
    */
   variant?: "detail" | "card";
   /** `card` only: pill text, e.g. "9 جای خالی". Turns red once the meter is full. */
   status?: ReactNode;
-  /** `card` only: caption under the bar's start, e.g. "3 رزومه ارسال شده". */
+  /** `card` only: caption under the bar's start, e.g. "3 نفر ثبت‌نام کرده‌اند". */
   startCaption?: ReactNode;
   /** `card` only: caption under the bar's end, e.g. "حداکثر 12 نفر". */
   endCaption?: ReactNode;
@@ -30,7 +30,7 @@ export type CapacityMeterOwnProps = {
 export type CapacityMeterProps = Omit<HTMLAttributes<HTMLDivElement>, keyof CapacityMeterOwnProps> &
   CapacityMeterOwnProps;
 
-/** Labelled capacity bar (D-16, R-07). Exposes `data-state="full"` once `value` reaches `max`. */
+/** Labelled capacity bar (D-16). Exposes `data-state="full"` once `value` reaches `max`. */
 export const CapacityMeter = forwardRef<HTMLDivElement, CapacityMeterProps>(function CapacityMeter(
   { label, value, max, variant = "detail", status, startCaption, endCaption, className, ...props },
   ref,

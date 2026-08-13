@@ -16,17 +16,17 @@ import {
 function Comparison() {
   return (
     <Table>
-      <TableCaption>فریلنسری بهتر است یا استخدام؟</TableCaption>
+      <TableCaption>دوره آنلاین یا کلاس حضوری؟</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>فریلنسری</TableHead>
-          <TableHead>استخدام</TableHead>
+          <TableHead>دوره آنلاین</TableHead>
+          <TableHead>کلاس حضوری</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell>انعطاف زمانی بیشتر</TableCell>
-          <TableCell>ساعت کاری مشخص‌تر</TableCell>
+          <TableCell>زمان‌بندی آزاد</TableCell>
+          <TableCell>زمان‌بندی ثابت</TableCell>
         </TableRow>
       </TableBody>
     </Table>
@@ -36,7 +36,7 @@ function Comparison() {
 describe("Table", () => {
   it("renders a table inside a rounded, scrollable container", () => {
     render(<Comparison />);
-    const table = screen.getByRole("table", { name: "فریلنسری بهتر است یا استخدام؟" });
+    const table = screen.getByRole("table", { name: "دوره آنلاین یا کلاس حضوری؟" });
 
     expect(table).toHaveClass("min-w-full", "border-collapse", "text-start", "text-sm");
     expect(table.parentElement).toHaveClass("overflow-x-auto", "rounded-xl", "border-gray-200");
@@ -44,7 +44,7 @@ describe("Table", () => {
 
   it("styles header cells with a gray background and column scope", () => {
     render(<Comparison />);
-    const head = screen.getByRole("columnheader", { name: "فریلنسری" });
+    const head = screen.getByRole("columnheader", { name: "دوره آنلاین" });
 
     expect(head).toHaveAttribute("scope", "col");
     expect(head).toHaveClass("bg-gray-100", "font-bold", "p-2.5", "text-start");
@@ -52,7 +52,7 @@ describe("Table", () => {
 
   it("styles body cells and rows", () => {
     render(<Comparison />);
-    const cell = screen.getByRole("cell", { name: "انعطاف زمانی بیشتر" });
+    const cell = screen.getByRole("cell", { name: "زمان‌بندی آزاد" });
 
     expect(cell).toHaveClass("align-top", "text-gray-700", "border-gray-200");
     expect(cell.parentElement).toHaveClass("hover:bg-gray-50/50");
@@ -64,8 +64,8 @@ describe("Table", () => {
       <Table containerClassName="my-4">
         <TableBody>
           <TableRow>
-            <TableHead scope="row">درآمد</TableHead>
-            <TableCell>متغیر</TableCell>
+            <TableHead scope="row">هزینه</TableHead>
+            <TableCell>کمتر</TableCell>
           </TableRow>
         </TableBody>
       </Table>,

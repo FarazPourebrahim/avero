@@ -14,7 +14,7 @@ export type SegmentedControlOwnProps = {
   defaultValue?: string;
   /** Called when the user selects another segment. A segment can't be deselected. */
   onValueChange?: (value: string) => void;
-  /** Accessible name of the group, e.g. "نوع آنالیتیکس". */
+  /** Accessible name of the group, e.g. "نوع گزارش". */
   "aria-label": string;
 };
 
@@ -25,7 +25,7 @@ export type SegmentedControlProps = Omit<
   SegmentedControlOwnProps;
 
 /**
- * A single-choice switch on a gray track (N-05): the dashboard analytics switcher (R-02).
+ * A single-choice switch on a gray track (N-05), e.g. a dashboard report switcher.
  * Arrow keys move between segments in reading direction.
  */
 export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps>(

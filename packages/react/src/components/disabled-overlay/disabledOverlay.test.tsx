@@ -7,7 +7,7 @@ import { DisabledOverlay } from "./DisabledOverlay.js";
 
 describe("DisabledOverlay", () => {
   it("covers the card with a blurred layer and a reason pill", () => {
-    const { container } = render(<DisabledOverlay>تکمیل ظرفیت</DisabledOverlay>);
+    const { container } = render(<DisabledOverlay>ظرفیت تکمیل شد</DisabledOverlay>);
 
     expect(container.firstElementChild).toHaveClass(
       "absolute",
@@ -15,7 +15,11 @@ describe("DisabledOverlay", () => {
       "backdrop-blur-[1px]",
       "rounded-xl",
     );
-    expect(screen.getByText("تکمیل ظرفیت")).toHaveClass("bg-red-500", "text-white", "rounded-xl");
+    expect(screen.getByText("ظرفیت تکمیل شد")).toHaveClass(
+      "bg-red-500",
+      "text-white",
+      "rounded-xl",
+    );
   });
 
   it.each([
@@ -44,14 +48,16 @@ describe("DisabledOverlay", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<DisabledOverlay>تکمیل ظرفیت</DisabledOverlay>)).toContain("تکمیل ظرفیت");
+    expect(renderToString(<DisabledOverlay>ظرفیت تکمیل شد</DisabledOverlay>)).toContain(
+      "ظرفیت تکمیل شد",
+    );
   });
 
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div className="relative" aria-disabled="true">
-        <p>کارت پروژه</p>
-        <DisabledOverlay>تکمیل ظرفیت</DisabledOverlay>
+        <p>کارت دوره</p>
+        <DisabledOverlay>ظرفیت تکمیل شد</DisabledOverlay>
       </div>,
     );
 

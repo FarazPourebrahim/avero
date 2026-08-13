@@ -22,10 +22,10 @@ function FooterGroups() {
           <AccordionLink href="/contact">تماس با ما</AccordionLink>
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="skills">
-        <AccordionTrigger>مهارت ها</AccordionTrigger>
+      <AccordionItem value="courses">
+        <AccordionTrigger>دوره‌ها</AccordionTrigger>
         <AccordionContent>
-          <AccordionLink href="/project?category=web">طراحی سایت</AccordionLink>
+          <AccordionLink href="/courses?topic=ui">طراحی رابط کاربری</AccordionLink>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -35,7 +35,7 @@ function FooterGroups() {
 const trigger = (name: string) => screen.getByRole("button", { name });
 
 describe("Accordion", () => {
-  it("renders collapsed triggers in the reference footer style", () => {
+  it("renders collapsed, muted rounded triggers", () => {
     render(<FooterGroups />);
 
     expect(trigger("درباره ما")).toHaveAttribute("aria-expanded", "false");
@@ -57,13 +57,13 @@ describe("Accordion", () => {
     render(<FooterGroups />);
 
     await userEvent.click(trigger("درباره ما"));
-    await userEvent.click(trigger("مهارت ها"));
+    await userEvent.click(trigger("دوره‌ها"));
 
     expect(trigger("درباره ما")).toHaveAttribute("aria-expanded", "false");
-    expect(trigger("مهارت ها")).toHaveAttribute("aria-expanded", "true");
+    expect(trigger("دوره‌ها")).toHaveAttribute("aria-expanded", "true");
 
-    await userEvent.click(trigger("مهارت ها"));
-    expect(trigger("مهارت ها")).toHaveAttribute("aria-expanded", "false");
+    await userEvent.click(trigger("دوره‌ها"));
+    expect(trigger("دوره‌ها")).toHaveAttribute("aria-expanded", "false");
   });
 
   it("supports keyboard navigation between triggers", async () => {
@@ -71,10 +71,10 @@ describe("Accordion", () => {
     trigger("درباره ما").focus();
 
     await userEvent.keyboard("{ArrowDown}");
-    expect(trigger("مهارت ها")).toHaveFocus();
+    expect(trigger("دوره‌ها")).toHaveFocus();
 
     await userEvent.keyboard("{Enter}");
-    expect(trigger("مهارت ها")).toHaveAttribute("aria-expanded", "true");
+    expect(trigger("دوره‌ها")).toHaveAttribute("aria-expanded", "true");
   });
 
   it("styles panel links and supports asChild", async () => {

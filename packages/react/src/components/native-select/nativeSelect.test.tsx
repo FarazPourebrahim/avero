@@ -17,7 +17,7 @@ function sortOptions() {
 }
 
 describe("NativeSelect", () => {
-  it("renders the listing sort control", () => {
+  it("renders a sort control", () => {
     render(<NativeSelect aria-label="مرتب‌سازی">{sortOptions()}</NativeSelect>);
     const select = screen.getByRole("combobox", { name: "مرتب‌سازی" });
 

@@ -25,7 +25,7 @@ const CELL_SIZE = 14;
 const CELL_GAP = 2;
 const ROWS = 7;
 
-/** Level 0 is an empty day; 1…4 shade from light to dark, as in the reference. */
+/** Level 0 is an empty day; 1…4 shade from light to dark. */
 const LEVEL_CLASSES = [
   "bg-gray-100",
   "bg-emerald-200",
@@ -84,7 +84,7 @@ export type ActivityHeatmapProps = Omit<
   ActivityHeatmapOwnProps;
 
 /**
- * Year-long activity grid (D-18, R-02): weeks as columns, weekdays as rows, month labels above and
+ * Year-long activity grid (D-18): weeks as columns, weekdays as rows, month labels above and
  * a shade legend below. Rendered as an ARIA grid with roving focus, so every day is reachable from
  * the keyboard and announced with its date and count.
  */

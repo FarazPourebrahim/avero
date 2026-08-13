@@ -30,8 +30,8 @@ export const Dashboard: Story = {
       <SidebarNavItem href="#settings" icon={<Settings />}>
         تنظیمات پروفایل
       </SidebarNavItem>
-      <SidebarNavItem href="#resume" icon={<FileText />}>
-        رزومه من
+      <SidebarNavItem href="#certificates" icon={<FileText />}>
+        گواهی‌های من
       </SidebarNavItem>
       <SidebarNavItem tone="danger" icon={<LogOut />}>
         خروج از حساب

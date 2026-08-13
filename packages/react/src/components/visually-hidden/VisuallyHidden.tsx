@@ -24,8 +24,8 @@ export type LiveRegionProps = Omit<HTMLAttributes<HTMLDivElement>, keyof LiveReg
   LiveRegionOwnProps;
 
 /**
- * An invisible announcer for status updates such as "link copied" or "liked"
- * (the reference's `#blog-action-live`, R-01). Change its text to announce a message.
+ * An invisible announcer for status updates such as "link copied" or "liked". Change its text to
+ * announce a message.
  */
 export const LiveRegion = forwardRef<HTMLDivElement, LiveRegionProps>(function LiveRegion(
   { politeness = "polite", className, ...props },

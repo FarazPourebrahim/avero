@@ -4,9 +4,9 @@ import { cn } from "../../utils/cn.js";
 export type NativeSelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
 /**
- * Native `<select>` (FM-04): the listing page's sort control (R-06). It keeps the platform's own
- * dropdown, which stays the most reliable choice on touch devices; use `Select` when the trigger
- * has to match the filter panel's custom style.
+ * Native `<select>` (FM-04), e.g. a listing's sort control. It keeps the platform's own dropdown,
+ * which stays the most reliable choice on touch devices; use `Select` when the trigger has to
+ * match a custom filter panel style.
  */
 export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(function NativeSelect(
   { className, ...props },

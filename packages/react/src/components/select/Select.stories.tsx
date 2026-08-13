@@ -35,8 +35,8 @@ export const Categories: Story = {
         <SelectGroup>
           <SelectLabel>دسته‌ها</SelectLabel>
           <SelectItem value="all">همه دسته‌ها</SelectItem>
-          <SelectItem value="seo">سئو</SelectItem>
-          <SelectItem value="design">طراحی سایت</SelectItem>
+          <SelectItem value="ui">طراحی رابط کاربری</SelectItem>
+          <SelectItem value="data">تحلیل داده</SelectItem>
         </SelectGroup>
         <SelectSeparator />
         <SelectItem value="other">سایر</SelectItem>
@@ -47,13 +47,13 @@ export const Categories: Story = {
 
 export const Selected: Story = {
   render: () => (
-    <Select defaultValue="seo">
+    <Select defaultValue="ui">
       <SelectTrigger aria-label="دسته‌بندی">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="seo">سئو</SelectItem>
-        <SelectItem value="design">طراحی سایت</SelectItem>
+        <SelectItem value="ui">طراحی رابط کاربری</SelectItem>
+        <SelectItem value="data">تحلیل داده</SelectItem>
       </SelectContent>
     </Select>
   ),
@@ -66,7 +66,7 @@ export const Disabled: Story = {
         <SelectValue placeholder="همه دسته‌ها" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="seo">سئو</SelectItem>
+        <SelectItem value="ui">طراحی رابط کاربری</SelectItem>
       </SelectContent>
     </Select>
   ),

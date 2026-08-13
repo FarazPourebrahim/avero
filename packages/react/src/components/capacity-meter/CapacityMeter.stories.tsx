@@ -4,7 +4,7 @@ import { CapacityMeter } from "./CapacityMeter.js";
 const meta: Meta<typeof CapacityMeter> = {
   title: "Data display/CapacityMeter",
   component: CapacityMeter,
-  args: { label: "ظرفیت دریافت رزومه", value: 3, max: 12 },
+  args: { label: "ظرفیت ثبت‌نام", value: 3, max: 12 },
 };
 
 export default meta;
@@ -24,22 +24,22 @@ export const Cards: Story = {
       <div className="rounded-xl border border-gray-200 bg-white p-5">
         <CapacityMeter
           variant="card"
-          label="ظرفیت ارسال رزومه"
+          label="ظرفیت ثبت‌نام"
           value={3}
           max={12}
           status="9 جای خالی"
-          startCaption="3 رزومه ارسال شده"
+          startCaption="3 نفر ثبت‌نام کرده‌اند"
           endCaption="حداکثر 12 نفر"
         />
       </div>
       <div className="rounded-xl border border-gray-200 bg-white p-5">
         <CapacityMeter
           variant="card"
-          label="ظرفیت ارسال رزومه"
+          label="ظرفیت ثبت‌نام"
           value={5}
           max={5}
-          status="تکمیل ظرفیت"
-          startCaption="5 رزومه ارسال شده"
+          status="ظرفیت تکمیل شد"
+          startCaption="5 نفر ثبت‌نام کرده‌اند"
           endCaption="حداکثر 5 نفر"
         />
       </div>

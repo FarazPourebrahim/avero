@@ -3,11 +3,11 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Section headings extracted from the reference (D-21):
- * - accentBar: page header with a gradient bar, title and subtitle (R-03)
- * - dot: blue dot + title, as in "درباره من" (R-04)
- * - icon: primary icon + title, as in "چرا دورلنسر انتخابی متفاوت است؟" (R-03)
- * - plain: bold title with an actions slot, as in "پروژه‌های مرتبط" (R-06, R-07)
+ * Section headings (D-21):
+ * - accentBar: page header with a gradient bar, title and subtitle
+ * - dot: blue dot + title, as in "درباره من"
+ * - icon: primary icon + title, as in "چرا ما را انتخاب کنید؟"
+ * - plain: bold title with an actions slot, as in "دوره‌های مرتبط"
  */
 export const sectionHeaderTitleVariants = cva("", {
   variants: {

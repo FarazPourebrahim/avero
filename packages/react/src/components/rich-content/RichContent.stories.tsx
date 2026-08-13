@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RichContent } from "./RichContent.js";
 
 const ARTICLE = `
-<h2>فریلنسری چیست؟</h2>
-<p>فریلنسری یعنی ارائه‌ی <strong>مهارت تخصصی</strong> به‌صورت مستقل و پروژه‌محور.</p>
-<h3>مراحل یک پروژه</h3>
-<ol><li>ثبت پروژه توسط کارفرما</li><li>بررسی پروژه توسط فریلنسر</li></ol>
-<blockquote>فریلنسری یعنی فروش مهارت، نه صرفاً فروش زمان.</blockquote>
-<table><thead><tr><th scope="col">ویژگی</th><th scope="col">فریلنسری</th></tr></thead>
-<tbody><tr><td>انعطاف زمانی</td><td>بالا</td></tr></tbody></table>
+<h2>سیستم طراحی چیست؟</h2>
+<p>سیستم طراحی مجموعه‌ای از <strong>قواعد و کامپوننت‌های مشترک</strong> است که محصول را یکپارچه نگه می‌دارد.</p>
+<h3>مراحل ساخت</h3>
+<ol><li>فهرست کردن الگوهای موجود</li><li>تعریف توکن‌های رنگ و تایپوگرافی</li></ol>
+<blockquote>سیستم طراحی یک محصول است، نه یک پروژه یک‌باره.</blockquote>
+<table><thead><tr><th scope="col">ویژگی</th><th scope="col">سیستم طراحی</th></tr></thead>
+<tbody><tr><td>سرعت توسعه</td><td>بالا</td></tr></tbody></table>
 <p>اطلاعات بیشتر در <a href="https://example.com" target="_blank">این صفحه</a>.</p>
 `;
 

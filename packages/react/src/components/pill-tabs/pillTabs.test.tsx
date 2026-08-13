@@ -5,17 +5,17 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { PillTab, PillTabs } from "./PillTabs.js";
 
-function ProfileTabs({ current = "portfolio" }: { current?: string }) {
+function ProfileTabs({ current = "certificates" }: { current?: string }) {
   return (
     <PillTabs aria-label="بخش‌های پروفایل">
       <PillTab href="/about" current={current === "about"}>
         درباره من
       </PillTab>
-      <PillTab href="/service" current={current === "service"}>
-        خدمات (1)
+      <PillTab href="/courses" current={current === "courses"}>
+        دوره‌ها (3)
       </PillTab>
-      <PillTab href="/portfolio" current={current === "portfolio"}>
-        نمونه کار (4)
+      <PillTab href="/certificates" current={current === "certificates"}>
+        گواهی‌ها (2)
       </PillTab>
     </PillTabs>
   );
@@ -49,7 +49,7 @@ describe("PillTabs", () => {
 
   it("fills the current tab and marks it", () => {
     render(<ProfileTabs />);
-    const current = screen.getByRole("link", { name: "نمونه کار (4)" });
+    const current = screen.getByRole("link", { name: "گواهی‌ها (2)" });
 
     expect(current).toHaveAttribute("aria-current", "page");
     expect(current).toHaveClass("bg-blue-600", "text-white");

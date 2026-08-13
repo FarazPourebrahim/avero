@@ -8,8 +8,8 @@ import { CapacityMeter } from "./CapacityMeter.js";
 
 describe("CapacityMeter", () => {
   it("renders the detail layout with a labelled bar and a count", () => {
-    const { container } = render(<CapacityMeter label="ظرفیت دریافت رزومه" value={3} max={12} />);
-    const bar = screen.getByRole("progressbar", { name: "ظرفیت دریافت رزومه" });
+    const { container } = render(<CapacityMeter label="ظرفیت ثبت‌نام" value={3} max={12} />);
+    const bar = screen.getByRole("progressbar", { name: "ظرفیت ثبت‌نام" });
 
     expect(bar).toHaveAttribute("aria-valuenow", "3");
     expect(bar).toHaveAttribute("aria-valuemax", "12");
@@ -21,17 +21,17 @@ describe("CapacityMeter", () => {
     render(
       <CapacityMeter
         variant="card"
-        label="ظرفیت ارسال رزومه"
+        label="ظرفیت ثبت‌نام"
         value={3}
         max={12}
         status="9 جای خالی"
-        startCaption="3 رزومه ارسال شده"
+        startCaption="3 نفر ثبت‌نام کرده‌اند"
         endCaption="حداکثر 12 نفر"
       />,
     );
 
     expect(screen.getByText("9 جای خالی")).toHaveClass("bg-green-100", "text-green-700");
-    expect(screen.getByText("ظرفیت ارسال رزومه")).toHaveClass("text-xs", "text-gray-500");
+    expect(screen.getByText("ظرفیت ثبت‌نام")).toHaveClass("text-xs", "text-gray-500");
     expect(screen.getByText("حداکثر 12 نفر").parentElement).toHaveClass(
       "text-2xs",
       "text-gray-400",
@@ -41,10 +41,10 @@ describe("CapacityMeter", () => {
 
   it("turns the status red and marks the meter full at capacity", () => {
     const { container } = render(
-      <CapacityMeter variant="card" label="ظرفیت" value={5} max={5} status="تکمیل ظرفیت" />,
+      <CapacityMeter variant="card" label="ظرفیت" value={5} max={5} status="ظرفیت تکمیل شد" />,
     );
 
-    expect(screen.getByText("تکمیل ظرفیت")).toHaveClass("bg-red-100", "text-red-700");
+    expect(screen.getByText("ظرفیت تکمیل شد")).toHaveClass("bg-red-100", "text-red-700");
     expect(container.firstElementChild).toHaveAttribute("data-state", "full");
     expect(container.querySelector('[data-slot="progress-indicator"]')).toHaveStyle({
       width: "100%",
@@ -83,8 +83,8 @@ describe("CapacityMeter", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div>
-        <CapacityMeter label="ظرفیت دریافت رزومه" value={3} max={12} />
-        <CapacityMeter variant="card" label="ظرفیت" value={5} max={5} status="تکمیل ظرفیت" />
+        <CapacityMeter label="ظرفیت ثبت‌نام" value={3} max={12} />
+        <CapacityMeter variant="card" label="ظرفیت" value={5} max={5} status="ظرفیت تکمیل شد" />
       </div>,
     );
 

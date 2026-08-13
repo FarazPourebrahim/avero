@@ -10,10 +10,10 @@ import {
 } from "./Table.js";
 
 const ROWS = [
-  ["انعطاف زمانی بیشتر", "ساعت کاری مشخص‌تر"],
-  ["امکان همکاری با چند مشتری", "معمولاً یک کارفرما"],
-  ["درآمد متغیر", "درآمد نسبتاً ثابت"],
-  ["آزادی انتخاب پروژه", "وظایف مشخص سازمانی"],
+  ["زمان‌بندی آزاد", "زمان‌بندی ثابت"],
+  ["دسترسی از هر جا", "نیاز به حضور در محل"],
+  ["هزینه کمتر", "هزینه رفت‌وآمد"],
+  ["تمرین با سرعت دلخواه", "هماهنگی با سرعت کلاس"],
 ];
 
 const meta: Meta = {
@@ -27,18 +27,18 @@ export const Comparison: StoryObj = {
   render: () => (
     <div className="max-w-2xl">
       <Table>
-        <TableCaption>فریلنسری بهتر است یا استخدام؟</TableCaption>
+        <TableCaption>دوره آنلاین یا کلاس حضوری؟</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>فریلنسری</TableHead>
-            <TableHead>استخدام</TableHead>
+            <TableHead>دوره آنلاین</TableHead>
+            <TableHead>کلاس حضوری</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {ROWS.map(([freelance, employment]) => (
-            <TableRow key={freelance}>
-              <TableCell>{freelance}</TableCell>
-              <TableCell>{employment}</TableCell>
+          {ROWS.map(([online, inPerson]) => (
+            <TableRow key={online}>
+              <TableCell>{online}</TableCell>
+              <TableCell>{inPerson}</TableCell>
             </TableRow>
           ))}
         </TableBody>

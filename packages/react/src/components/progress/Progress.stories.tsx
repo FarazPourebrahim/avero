@@ -4,7 +4,7 @@ import { Progress } from "./Progress.js";
 const meta = {
   title: "Primitives/Progress",
   component: Progress,
-  args: { value: 3, max: 12, "aria-label": "ظرفیت ارسال رزومه" },
+  args: { value: 3, max: 12, "aria-label": "ظرفیت ثبت‌نام" },
   argTypes: {
     size: { control: "inline-radio", options: ["sm", "md"] },
     tone: { control: "inline-radio", options: ["primary", "success", "danger"] },
@@ -27,11 +27,11 @@ export const Capacity: Story = {
   render: () => (
     <div className="space-y-2">
       <div className="flex items-center justify-between text-sm">
-        <span className="text-gray-600">ظرفیت دریافت رزومه</span>
+        <span className="text-gray-600">ظرفیت ثبت‌نام</span>
         <span className="font-medium text-gray-800">0 از 15</span>
       </div>
-      <Progress value={0} max={15} aria-label="ظرفیت دریافت رزومه" />
-      <Progress value={5} max={5} aria-label="تکمیل ظرفیت" />
+      <Progress value={0} max={15} aria-label="ظرفیت ثبت‌نام" />
+      <Progress value={5} max={5} aria-label="ظرفیت تکمیل شد" />
       <Progress value={null} aria-label="در حال بارگذاری" />
     </div>
   ),

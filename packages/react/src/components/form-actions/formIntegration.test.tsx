@@ -14,7 +14,7 @@ import { FormActions } from "./FormActions.js";
  */
 const schema = z.object({
   name: z.string().min(3, "نام باید حداقل ۳ نویسه باشد."),
-  comment: z.string().min(10, "نظر باید حداقل ۱۰ نویسه باشد."),
+  comment: z.string().min(10, "دیدگاه باید حداقل ۱۰ نویسه باشد."),
   sort: z.enum(["newest", "oldest"]),
 });
 
@@ -44,7 +44,7 @@ function CommentForm({ onValid }: { onValid: (values: Values) => void }) {
       <Input id="name" aria-invalid={Boolean(errors.name)} {...register("name")} />
       {errors.name ? <p role="alert">{errors.name.message}</p> : null}
 
-      <label htmlFor="comment">نظر</label>
+      <label htmlFor="comment">دیدگاه</label>
       <Textarea id="comment" aria-invalid={Boolean(errors.comment)} {...register("comment")} />
       {errors.comment ? <p role="alert">{errors.comment.message}</p> : null}
 
@@ -54,8 +54,8 @@ function CommentForm({ onValid }: { onValid: (values: Values) => void }) {
         <option value="oldest">قدیمی‌ترین</option>
       </NativeSelect>
 
-      <FormActions hint="نظرات پس از بررسی منتشر خواهند شد.">
-        <button type="submit">ثبت نظر</button>
+      <FormActions hint="دیدگاه‌ها پس از بررسی منتشر می‌شوند.">
+        <button type="submit">ارسال دیدگاه</button>
       </FormActions>
     </form>
   );
@@ -66,7 +66,7 @@ describe("form integration (react-hook-form + zod)", () => {
     const onValid = vi.fn();
     render(<CommentForm onValid={onValid} />);
 
-    await userEvent.click(screen.getByRole("button", { name: "ثبت نظر" }));
+    await userEvent.click(screen.getByRole("button", { name: "ارسال دیدگاه" }));
 
     expect(onValid).not.toHaveBeenCalled();
     expect(await screen.findAllByRole("alert")).toHaveLength(2);
@@ -77,14 +77,14 @@ describe("form integration (react-hook-form + zod)", () => {
     const onValid = vi.fn();
     render(<CommentForm onValid={onValid} />);
 
-    await userEvent.type(screen.getByLabelText("نام"), "زینب");
-    await userEvent.type(screen.getByLabelText("نظر"), "مقاله بسیار کاربردی بود، ممنون.");
+    await userEvent.type(screen.getByLabelText("نام"), "سارا");
+    await userEvent.type(screen.getByLabelText("دیدگاه"), "مقاله بسیار کاربردی بود، ممنون.");
     await userEvent.selectOptions(screen.getByLabelText("مرتب‌سازی"), "oldest");
-    await userEvent.click(screen.getByRole("button", { name: "ثبت نظر" }));
+    await userEvent.click(screen.getByRole("button", { name: "ارسال دیدگاه" }));
 
     expect(onValid).toHaveBeenCalledTimes(1);
     expect(onValid.mock.calls[0]![0]).toEqual({
-      name: "زینب",
+      name: "سارا",
       comment: "مقاله بسیار کاربردی بود، ممنون.",
       sort: "oldest",
     });

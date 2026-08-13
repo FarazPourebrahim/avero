@@ -41,7 +41,7 @@ export const ArticleCover: Story = {
     <Figure>
       <Image
         src={ARTWORK}
-        alt="فریلنسری چیست؟"
+        alt="آشنایی با طراحی رابط کاربری"
         radius="2xl"
         zoom="subtle"
         loading="eager"
@@ -54,7 +54,7 @@ export const ArticleCover: Story = {
 export const CardMedia: Story = {
   render: () => (
     <div className="group relative h-52 w-80 overflow-hidden rounded-3xl bg-slate-100">
-      <Image src={ARTWORK} alt="طراحی سایت شرکتی" zoom="group" className="size-full" />
+      <Image src={ARTWORK} alt="مبانی تحلیل داده" zoom="group" className="size-full" />
     </div>
   ),
 };

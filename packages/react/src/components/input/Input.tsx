@@ -3,8 +3,8 @@ import { forwardRef, type InputHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Text input (FM-02). `filter` is the reference's listing filter box (R-06); `soft` and `slate`
- * mirror the two comment-form treatments (R-01, R-05) so an input can sit beside a `Textarea`.
+ * Text input (FM-02). `filter` is a compact box for filter panels; `soft` and `slate` match the
+ * two `Textarea` treatments, so an input can sit beside one.
  */
 export const inputVariants = cva(
   "w-full text-sm transition focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-red-500 aria-invalid:focus:ring-red-500/20",

@@ -8,13 +8,13 @@ import { FormActions } from "./FormActions.js";
 describe("FormActions", () => {
   it("puts the hint opposite the actions", () => {
     const { container } = render(
-      <FormActions hint="نظرات پس از بررسی منتشر خواهند شد.">
-        <button type="submit">ثبت نظر</button>
+      <FormActions hint="دیدگاه‌ها پس از بررسی منتشر می‌شوند.">
+        <button type="submit">ارسال دیدگاه</button>
       </FormActions>,
     );
 
     expect(container.firstElementChild).toHaveClass("justify-between");
-    expect(screen.getByText("نظرات پس از بررسی منتشر خواهند شد.")).toHaveClass(
+    expect(screen.getByText("دیدگاه‌ها پس از بررسی منتشر می‌شوند.")).toHaveClass(
       "text-xs",
       "text-gray-400",
     );

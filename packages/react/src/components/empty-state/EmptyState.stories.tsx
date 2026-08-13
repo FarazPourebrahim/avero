@@ -16,11 +16,11 @@ export const Variants: Story = {
     <div className="flex max-w-2xl flex-col gap-4">
       <div className="rounded-3xl bg-white p-6">
         <EmptyState>
-          هنوز نظری برای این مقاله ثبت نشده است. اولین نفری باشید که نظر ثبت می‌کند!
+          هنوز دیدگاهی برای این مقاله ثبت نشده است. نخستین دیدگاه را شما بنویسید.
         </EmptyState>
       </div>
       <div className="rounded-3xl bg-white p-6">
-        <EmptyState variant="slate">هنوز نظری ثبت نشده است.</EmptyState>
+        <EmptyState variant="slate">هنوز دیدگاهی ثبت نشده است.</EmptyState>
       </div>
       <div className="rounded-2xl border border-gray-100 bg-white p-5">
         <EmptyState variant="icon" icon={<BarChart3 className="mx-auto size-8" />}>
@@ -44,7 +44,7 @@ export const WithAction: Story = {
         icon={<MessageSquare />}
         action={
           <Button size="sm" variant="soft">
-            نوشتن اولین نظر
+            نوشتن نخستین دیدگاه
           </Button>
         }
       >

@@ -23,11 +23,11 @@ type Story = StoryObj<typeof ZoomFrame>;
 export const Gallery: Story = {
   render: (args) => (
     <div className="max-w-2xl space-y-4 rounded-3xl border border-slate-100 bg-white p-4 shadow-xs md:p-6">
-      <h3 className="text-sm font-black text-slate-900">گالری تصاویر و نمونه کارها</h3>
+      <h3 className="text-sm font-black text-slate-900">گالری تصاویر دوره</h3>
       <ZoomFrame {...args}>
         <img
           src={ARTWORK}
-          alt="طراحی سایت و سئو"
+          alt="پیش‌نمایش دوره"
           className="h-[280px] w-full rounded-2xl object-cover md:h-[480px]"
         />
       </ZoomFrame>

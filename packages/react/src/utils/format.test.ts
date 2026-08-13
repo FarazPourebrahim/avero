@@ -124,7 +124,7 @@ describe("formatDate", () => {
 describe("formatRelativeTime", () => {
   const now = SHAHRIVAR_20_1405;
 
-  it("matches the reference's membership format with Latin digits", () => {
+  it("formats a past time with Latin digits", () => {
     const twoWeeksAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
     expect(formatRelativeTime(twoWeeksAgo, { now, digits: "latn" })).toBe("2 هفته پیش");
   });

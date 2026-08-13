@@ -8,15 +8,15 @@ import { Textarea } from "./Textarea.js";
 
 describe("Textarea", () => {
   it("renders the soft comment box by default", () => {
-    render(<Textarea aria-label="نظر" placeholder="نظر خود را بنویسید..." />);
-    const textarea = screen.getByRole("textbox", { name: "نظر" });
+    render(<Textarea aria-label="دیدگاه" placeholder="دیدگاه خود را بنویسید..." />);
+    const textarea = screen.getByRole("textbox", { name: "دیدگاه" });
 
     expect(textarea).toHaveAttribute("rows", "4");
     expect(textarea).toHaveClass("bg-gray-50", "rounded-2xl", "resize-none");
   });
 
   it("renders the slate variant with a resizable box", () => {
-    render(<Textarea aria-label="نظر" variant="slate" resize="vertical" rows={3} />);
+    render(<Textarea aria-label="دیدگاه" variant="slate" resize="vertical" rows={3} />);
     const textarea = screen.getByRole("textbox");
 
     expect(textarea).toHaveClass("border-slate-200", "resize-y");
@@ -24,11 +24,11 @@ describe("Textarea", () => {
   });
 
   it("accepts typed text", async () => {
-    render(<Textarea aria-label="نظر" />);
+    render(<Textarea aria-label="دیدگاه" />);
 
-    await userEvent.type(screen.getByRole("textbox"), "متن نظر");
+    await userEvent.type(screen.getByRole("textbox"), "متن دیدگاه");
 
-    expect(screen.getByRole("textbox")).toHaveValue("متن نظر");
+    expect(screen.getByRole("textbox")).toHaveValue("متن دیدگاه");
   });
 
   it("forwards refs", () => {
@@ -45,7 +45,7 @@ describe("Textarea", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div>
-        <label htmlFor="comment">نظر</label>
+        <label htmlFor="comment">دیدگاه</label>
         <Textarea id="comment" />
       </div>,
     );

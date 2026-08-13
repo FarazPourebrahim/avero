@@ -11,27 +11,25 @@ export default meta;
 export const ArticleBlocks: StoryObj = {
   render: () => (
     <div className="max-w-2xl rounded-3xl bg-white p-8 text-base leading-8 text-gray-700">
-      <p>فرآیند انجام یک پروژه فریلنسری معمولاً شامل چند مرحله است:</p>
+      <p>گذراندن یک دوره آنلاین معمولاً چند مرحله دارد:</p>
       <List ordered>
         <ListItem>
-          <strong className="font-bold text-gray-900">ثبت یا انتشار پروژه توسط کارفرما</strong>
+          <strong className="font-bold text-gray-900">ثبت‌نام و دسترسی به جلسه‌ها</strong>
         </ListItem>
         <ListItem>
-          <strong className="font-bold text-gray-900">بررسی پروژه توسط فریلنسر</strong>
+          <strong className="font-bold text-gray-900">انجام تمرین‌های هر فصل</strong>
         </ListItem>
         <ListItem>
-          <strong className="font-bold text-gray-900">ارسال پیشنهاد همکاری</strong>
+          <strong className="font-bold text-gray-900">ارسال پروژه پایانی</strong>
         </ListItem>
       </List>
       <List>
-        <ListItem>مهارت تخصصی قابل ارائه دارند.</ListItem>
-        <ListItem>از کار مستقل لذت می‌برند.</ListItem>
+        <ListItem>به تمرین منظم عادت دارند.</ListItem>
+        <ListItem>از یادگیری مستقل لذت می‌برند.</ListItem>
       </List>
       <Blockquote>
-        <strong className="font-bold text-gray-900">
-          فریلنسری یعنی فروش مهارت، نه صرفاً فروش زمان.
-        </strong>{" "}
-        هرچه تخصص و نمونه‌کار بیشتری داشته باشید، شانس شما بیشتر است.
+        <strong className="font-bold text-gray-900">یادگیری یعنی تمرین، نه فقط تماشا.</strong> هرچه
+        بیشتر تمرین کنید، مهارت شما ماندگارتر می‌شود.
       </Blockquote>
     </div>
   ),

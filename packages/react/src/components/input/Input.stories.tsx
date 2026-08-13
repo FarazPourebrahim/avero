@@ -33,7 +33,7 @@ export const Variants: Story = {
 export const States: Story = {
   render: (args) => (
     <div className="flex flex-col gap-4">
-      <Input {...args} defaultValue="طراحی سایت" />
+      <Input {...args} defaultValue="طراحی رابط کاربری" />
       <Input {...args} aria-invalid defaultValue="a" />
       <Input {...args} disabled defaultValue="غیرفعال" />
     </div>

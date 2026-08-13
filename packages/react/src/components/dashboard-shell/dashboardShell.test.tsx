@@ -9,7 +9,7 @@ describe("DashboardShell", () => {
   it("puts the content card in a main landmark beside the sidebar", () => {
     const { container } = render(
       <DashboardShell sidebar={<nav aria-label="داشبورد">منو</nav>}>
-        <h1>پیشخوان فریلنسر</h1>
+        <h1>پیشخوان من</h1>
       </DashboardShell>,
     );
 
@@ -19,7 +19,7 @@ describe("DashboardShell", () => {
       "bg-white",
       "min-w-0",
     );
-    expect(screen.getByRole("heading", { name: "پیشخوان فریلنسر" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "پیشخوان من" })).toBeInTheDocument();
   });
 
   it("shows the sidebar only from lg and the mobile bar only below it", () => {

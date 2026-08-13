@@ -9,10 +9,10 @@ import { SegmentedControl, SegmentedControlItem } from "./SegmentedControl.js";
 
 function Analytics(props: { onValueChange?: (value: string) => void }) {
   return (
-    <SegmentedControl aria-label="نوع آنالیتیکس" defaultValue="services" {...props}>
-      <SegmentedControlItem value="services">خدمات</SegmentedControlItem>
-      <SegmentedControlItem value="portfolio">نمونه‌کار</SegmentedControlItem>
-      <SegmentedControlItem value="stories">استوری</SegmentedControlItem>
+    <SegmentedControl aria-label="نوع گزارش" defaultValue="courses" {...props}>
+      <SegmentedControlItem value="courses">دوره‌ها</SegmentedControlItem>
+      <SegmentedControlItem value="certificates">گواهی‌ها</SegmentedControlItem>
+      <SegmentedControlItem value="assignments">تمرین‌ها</SegmentedControlItem>
     </SegmentedControl>
   );
 }
@@ -23,60 +23,60 @@ describe("SegmentedControl", () => {
   it("renders a labelled radio group with the default segment checked", () => {
     render(<Analytics />);
 
-    expect(screen.getByRole("radiogroup", { name: "نوع آنالیتیکس" })).toBeInTheDocument();
-    expect(segment("خدمات")).toHaveAttribute("data-state", "on");
-    expect(segment("خدمات")).toHaveClass("data-[state=on]:bg-white");
-    expect(segment("نمونه‌کار")).toHaveAttribute("data-state", "off");
+    expect(screen.getByRole("radiogroup", { name: "نوع گزارش" })).toBeInTheDocument();
+    expect(segment("دوره‌ها")).toHaveAttribute("data-state", "on");
+    expect(segment("دوره‌ها")).toHaveClass("data-[state=on]:bg-white");
+    expect(segment("گواهی‌ها")).toHaveAttribute("data-state", "off");
   });
 
   it("selects another segment on click and reports it", async () => {
     const onValueChange = vi.fn();
     render(<Analytics onValueChange={onValueChange} />);
 
-    await userEvent.click(segment("استوری"));
+    await userEvent.click(segment("تمرین‌ها"));
 
-    expect(segment("استوری")).toHaveAttribute("data-state", "on");
-    expect(segment("خدمات")).toHaveAttribute("data-state", "off");
-    expect(onValueChange).toHaveBeenCalledWith("stories");
+    expect(segment("تمرین‌ها")).toHaveAttribute("data-state", "on");
+    expect(segment("دوره‌ها")).toHaveAttribute("data-state", "off");
+    expect(onValueChange).toHaveBeenCalledWith("assignments");
   });
 
   it("cannot be emptied by clicking the selected segment", async () => {
     const onValueChange = vi.fn();
     render(<Analytics onValueChange={onValueChange} />);
 
-    await userEvent.click(segment("خدمات"));
+    await userEvent.click(segment("دوره‌ها"));
 
-    expect(segment("خدمات")).toHaveAttribute("data-state", "on");
+    expect(segment("دوره‌ها")).toHaveAttribute("data-state", "on");
     expect(onValueChange).not.toHaveBeenCalled();
   });
 
   it("supports controlled use", async () => {
     function Controlled() {
-      const [value, setValue] = useState("portfolio");
+      const [value, setValue] = useState("certificates");
       return (
         <>
           <output>{value}</output>
           <SegmentedControl aria-label="c" value={value} onValueChange={setValue}>
-            <SegmentedControlItem value="services">خدمات</SegmentedControlItem>
-            <SegmentedControlItem value="portfolio">نمونه‌کار</SegmentedControlItem>
+            <SegmentedControlItem value="courses">دوره‌ها</SegmentedControlItem>
+            <SegmentedControlItem value="certificates">گواهی‌ها</SegmentedControlItem>
           </SegmentedControl>
         </>
       );
     }
     render(<Controlled />);
 
-    await userEvent.click(segment("خدمات"));
+    await userEvent.click(segment("دوره‌ها"));
 
-    expect(screen.getByRole("status")).toHaveTextContent("services");
+    expect(screen.getByRole("status")).toHaveTextContent("courses");
   });
 
   it("moves focus with arrow keys in reading direction (RTL by default)", async () => {
     render(<Analytics />);
-    segment("خدمات").focus();
+    segment("دوره‌ها").focus();
 
     await userEvent.keyboard("{ArrowLeft}");
 
-    expect(segment("نمونه‌کار")).toHaveFocus();
+    expect(segment("گواهی‌ها")).toHaveFocus();
   });
 
   it("follows LTR arrow keys under an English provider", async () => {
@@ -85,11 +85,11 @@ describe("SegmentedControl", () => {
         <Analytics />
       </AveroProvider>,
     );
-    segment("خدمات").focus();
+    segment("دوره‌ها").focus();
 
     await userEvent.keyboard("{ArrowRight}");
 
-    expect(segment("نمونه‌کار")).toHaveFocus();
+    expect(segment("گواهی‌ها")).toHaveFocus();
   });
 
   it("forwards refs", () => {

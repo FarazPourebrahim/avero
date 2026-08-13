@@ -3,11 +3,11 @@ import { cn } from "../../utils/cn.js";
 import { sanitizeHtml } from "../../utils/sanitize.js";
 
 const VARIANT_CLASSES = {
-  /** Rendered article, service and project descriptions (`.content-area`). */
+  /** Rendered articles and descriptions. */
   content: "avero-rich-content",
-  /** Editor preview (`.editor`). */
+  /** Editor preview. */
   editor: "avero-rich-content-editor",
-  /** Question surface (`.question-rendered-content`): shared list rules, inherited typography. */
+  /** Question surface: list rules only, with inherited typography. */
   question: "avero-rich-content-question",
 } as const;
 
@@ -28,7 +28,7 @@ export type RichContentProps = Omit<HTMLAttributes<HTMLDivElement>, keyof RichCo
   RichContentOwnProps;
 
 /**
- * Renders stored HTML with the reference's prose styles (D-12, R-01/R-05/R-07). The HTML is
+ * Renders stored HTML with Avero's prose styles (D-12). The HTML is
  * sanitized on every render, on the server and in the browser alike, so untrusted content
  * (comments, descriptions, editor output) is safe to pass straight in.
  */

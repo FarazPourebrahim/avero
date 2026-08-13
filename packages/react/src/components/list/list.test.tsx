@@ -9,7 +9,7 @@ describe("List", () => {
   it("renders a bulleted list with outside markers", () => {
     render(
       <List>
-        <ListItem>مهارت تخصصی قابل ارائه دارند.</ListItem>
+        <ListItem>به تمرین منظم عادت دارند.</ListItem>
       </List>,
     );
     const list = screen.getByRole("list");
@@ -22,7 +22,7 @@ describe("List", () => {
   it("renders a numbered list", () => {
     render(
       <List ordered>
-        <ListItem>ثبت پروژه</ListItem>
+        <ListItem>ثبت‌نام</ListItem>
       </List>,
     );
 
@@ -48,14 +48,14 @@ describe("List", () => {
 describe("Blockquote", () => {
   it("renders a quotation with a start border and a decorative quote mark", () => {
     const { container } = render(
-      <Blockquote cite="https://example.com">فریلنسری یعنی فروش مهارت.</Blockquote>,
+      <Blockquote cite="https://example.com">یادگیری یعنی تمرین.</Blockquote>,
     );
     const quote = container.querySelector("blockquote");
 
     expect(quote).toHaveAttribute("cite", "https://example.com");
     expect(quote).toHaveClass("border-s-4", "border-indigo-500", "rounded-e-lg", "italic");
     expect(quote?.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
-    expect(screen.getByText("فریلنسری یعنی فروش مهارت.")).toHaveClass("inline");
+    expect(screen.getByText("یادگیری یعنی تمرین.")).toHaveClass("inline");
   });
 
   it("forwards refs", () => {

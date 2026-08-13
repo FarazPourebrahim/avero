@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Rating>;
 
 export const Default: Story = {};
 
-export const ServiceChip: Story = {
+export const StatChip: Story = {
   args: { value: 0, label: "امتیاز:" },
   render: (args) => (
     <div className="flex items-center gap-4 text-xs font-bold text-slate-500">
@@ -28,7 +28,7 @@ export const ProviderStat: Story = {
   args: { value: 5, size: "sm", fractionDigits: 0 },
   render: (args) => (
     <div className="w-40 rounded-2xl border border-slate-100 bg-slate-50 p-3 text-center">
-      <span className="text-3xs block font-bold text-slate-400">امتیاز رضایت</span>
+      <span className="text-3xs block font-bold text-slate-400">امتیاز شرکت‌کنندگان</span>
       <Rating {...args} className="text-base font-black text-slate-900" />
     </div>
   ),

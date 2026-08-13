@@ -35,11 +35,11 @@ function Groups() {
           <AccordionLink href="#about">درباره ما</AccordionLink>
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="skills">
-        <AccordionTrigger>مهارت ها</AccordionTrigger>
+      <AccordionItem value="courses">
+        <AccordionTrigger>دوره‌ها</AccordionTrigger>
         <AccordionContent>
-          <AccordionLink href="#web">طراحی سایت</AccordionLink>
-          <AccordionLink href="#content">تولید محتوا</AccordionLink>
+          <AccordionLink href="#ui">طراحی رابط کاربری</AccordionLink>
+          <AccordionLink href="#data">تحلیل داده</AccordionLink>
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="quick">

@@ -30,7 +30,7 @@ export type ToggleChipGroupProps = Omit<
   ToggleChipGroupOwnProps;
 
 /**
- * A multi-select row of small chips (N-06): the metric toggles above the dashboard charts (R-02).
+ * A multi-select row of small chips (N-06), e.g. metric toggles above a chart.
  * Selected chips fill with their own color, typically the matching chart series color.
  */
 export const ToggleChipGroup = forwardRef<HTMLDivElement, ToggleChipGroupProps>(

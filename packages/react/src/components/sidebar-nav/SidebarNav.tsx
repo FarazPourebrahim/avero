@@ -4,7 +4,7 @@ import { forwardRef, type HTMLAttributes, type ReactNode, type Ref } from "react
 import { cn } from "../../utils/cn.js";
 
 /**
- * Dashboard sidebar navigation extracted from the reference (N-02, R-02):
+ * Dashboard sidebar navigation (N-02):
  * the current page is a filled primary pill, idle items tint on hover, and the
  * logout item is a danger action that fills red on hover.
  */

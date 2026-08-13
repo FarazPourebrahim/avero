@@ -111,9 +111,8 @@ const ENTITIES: ReadonlyArray<readonly [RegExp, string]> = [
  * Returns an HTML string's readable text: markup is removed, the basic entities are decoded once
  * and whitespace is collapsed.
  *
- * The reference stores excerpts as raw HTML and renders them as visible tags — a listing card shows
- * a literal "<p>…" (defect R-08). Avero strips the markup instead (deviation V-03). Use this for
- * plain-text contexts only; to render stored HTML, use `RichContent`, which sanitizes it.
+ * Use it where stored HTML must appear as plain text, such as a card excerpt, so tags never show up
+ * as visible characters. To render stored HTML, use `RichContent`, which sanitizes it.
  */
 export function stripHtml(html: string): string {
   if (!html) return "";

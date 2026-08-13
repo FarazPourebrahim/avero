@@ -11,9 +11,8 @@ import {
 import { cn } from "../../utils/cn.js";
 
 /**
- * Image styles extracted from the reference (P-15): cover images with rounded corners, the
- * hover zoom on article covers (`hover:scale-102 duration-500`, R-01) and the group zoom on
- * cards (`group-hover:scale-105 duration-500`, R-08).
+ * Image styles (P-15): cover images with rounded corners, a subtle hover zoom for article covers
+ * (`hover:scale-102 duration-500`) and a group zoom for cards (`group-hover:scale-105 duration-500`).
  */
 export const imageVariants = cva("block max-w-full", {
   variants: {

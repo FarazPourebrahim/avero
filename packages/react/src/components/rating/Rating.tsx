@@ -12,7 +12,7 @@ export type RatingOwnProps = {
   value: number;
   /** Visible text before the score, e.g. "امتیاز:". */
   label?: ReactNode;
-  /** Fraction digits of the score; the reference shows `0.00`. @defaultValue 2 */
+  /** Fraction digits of the score, e.g. `4.80`. @defaultValue 2 */
   fractionDigits?: number;
   /** Star size: `sm` (14px) or `md` (16px). @defaultValue "md" */
   size?: "sm" | "md";
@@ -22,7 +22,7 @@ export type RatingProps = Omit<HTMLAttributes<HTMLSpanElement>, keyof RatingOwnP
   RatingOwnProps;
 
 /**
- * Filled amber star with a score (D-15, R-04/R-05). Exposed to assistive technology as one image
+ * Filled amber star with a score (D-15). Exposed to assistive technology as one image
  * labelled with the dictionary's `rating` string, e.g. "امتیاز ۴٫۵۰".
  */
 export const Rating = forwardRef<HTMLSpanElement, RatingProps>(function Rating(

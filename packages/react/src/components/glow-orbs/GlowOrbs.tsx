@@ -4,7 +4,7 @@ import { cn } from "../../utils/cn.js";
 export type GlowOrbsProps = HTMLAttributes<HTMLDivElement>;
 
 /**
- * Decorative blurred orbs for dark banners (X-02, R-03): a primary glow at the top inline-start
+ * Decorative blurred orbs for dark banners (X-02): a primary glow at the top inline-start
  * corner and a cyan glow at the bottom inline-end corner. Place it inside a `relative
  * overflow-hidden` container and put the content above it with `relative z-10`.
  */

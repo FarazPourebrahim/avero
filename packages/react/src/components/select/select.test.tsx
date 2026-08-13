@@ -13,10 +13,10 @@ function Categories(props: { onValueChange?: (value: string) => void; defaultVal
         <SelectValue placeholder="همه دسته‌ها" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="seo">سئو</SelectItem>
-        <SelectItem value="design">طراحی سایت</SelectItem>
-        <SelectItem value="content" disabled>
-          تولید محتوا
+        <SelectItem value="ui">طراحی رابط کاربری</SelectItem>
+        <SelectItem value="data">تحلیل داده</SelectItem>
+        <SelectItem value="web" disabled>
+          برنامه‌نویسی وب
         </SelectItem>
       </SelectContent>
     </Select>
@@ -24,7 +24,7 @@ function Categories(props: { onValueChange?: (value: string) => void; defaultVal
 }
 
 describe("Select", () => {
-  it("renders the reference trigger, closed, with a placeholder", () => {
+  it("renders a closed trigger with a placeholder", () => {
     render(<Categories />);
     const trigger = screen.getByRole("combobox", { name: "دسته‌بندی" });
 
@@ -46,10 +46,10 @@ describe("Select", () => {
     expect(trigger).toHaveAttribute("data-state", "open");
     expect(screen.getAllByRole("option")).toHaveLength(3);
 
-    await userEvent.click(screen.getByRole("option", { name: "طراحی سایت" }));
+    await userEvent.click(screen.getByRole("option", { name: "تحلیل داده" }));
 
-    expect(onValueChange).toHaveBeenCalledWith("design");
-    expect(trigger).toHaveTextContent("طراحی سایت");
+    expect(onValueChange).toHaveBeenCalledWith("data");
+    expect(trigger).toHaveTextContent("تحلیل داده");
   });
 
   it("opens from the keyboard", async () => {
@@ -62,12 +62,15 @@ describe("Select", () => {
   });
 
   it("marks the selected option and disables the unavailable one", async () => {
-    render(<Categories defaultValue="seo" />);
+    render(<Categories defaultValue="ui" />);
 
     await userEvent.click(screen.getByRole("combobox"));
 
-    expect(screen.getByRole("option", { name: "سئو" })).toHaveAttribute("aria-selected", "true");
-    expect(screen.getByRole("option", { name: "تولید محتوا" })).toHaveAttribute(
+    expect(screen.getByRole("option", { name: "طراحی رابط کاربری" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+    expect(screen.getByRole("option", { name: "برنامه‌نویسی وب" })).toHaveAttribute(
       "data-disabled",
       "",
     );

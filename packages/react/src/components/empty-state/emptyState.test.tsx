@@ -8,11 +8,11 @@ import { EmptyState } from "./EmptyState.js";
 const icon = <svg data-testid="icon" aria-hidden="true" />;
 
 describe("EmptyState", () => {
-  it("renders the inline comment message by default", () => {
-    const { container } = render(<EmptyState>هنوز نظری ثبت نشده است.</EmptyState>);
+  it("renders a bare text message by default", () => {
+    const { container } = render(<EmptyState>هنوز دیدگاهی ثبت نشده است.</EmptyState>);
 
     expect(container.firstElementChild).toHaveClass("py-8", "text-sm", "text-gray-400");
-    expect(screen.getByText("هنوز نظری ثبت نشده است.")).toBeInTheDocument();
+    expect(screen.getByText("هنوز دیدگاهی ثبت نشده است.")).toBeInTheDocument();
     expect(container.querySelector('[data-slot="empty-state-icon"]')).toBeNull();
   });
 
@@ -64,12 +64,12 @@ describe("EmptyState", () => {
 
   it("renders a next action", () => {
     render(
-      <EmptyState action={<button type="button">افزودن خدمت</button>}>
-        هنوز خدمتی ندارید.
+      <EmptyState action={<button type="button">افزودن دوره</button>}>
+        هنوز دوره‌ای ندارید.
       </EmptyState>,
     );
 
-    expect(screen.getByRole("button", { name: "افزودن خدمت" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "افزودن دوره" })).toBeInTheDocument();
   });
 
   it("forwards refs", () => {
@@ -86,7 +86,7 @@ describe("EmptyState", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(
       <div>
-        <EmptyState>هنوز نظری ثبت نشده است.</EmptyState>
+        <EmptyState>هنوز دیدگاهی ثبت نشده است.</EmptyState>
         <EmptyState variant="circle" icon={icon} action={<button type="button">افزودن</button>}>
           داده‌ای برای نمایش وجود ندارد
         </EmptyState>

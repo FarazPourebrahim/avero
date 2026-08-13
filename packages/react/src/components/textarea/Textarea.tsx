@@ -3,8 +3,8 @@ import { forwardRef, type TextareaHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Multi-line input (FM-03): `soft` is the blog comment box (R-01, gray ground), `slate` the
- * service comment box (R-05, white ground with a slate border).
+ * Multi-line input (FM-03): `soft` has a gray ground, `slate` a white ground with a slate
+ * border.
  */
 export const textareaVariants = cva(
   "w-full p-4 text-sm transition focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-red-500 aria-invalid:focus:ring-red-500/20",

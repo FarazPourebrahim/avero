@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `DisabledOverlay`. It also accepts every native `<div>` attribute. */
 export type DisabledOverlayOwnProps = {
-  /** Why the card is unavailable, e.g. "تکمیل ظرفیت". */
+  /** Why the card is unavailable, e.g. "ظرفیت تکمیل شد". */
   children: ReactNode;
   /** Pill colour. @defaultValue "danger" */
   tone?: "danger" | "neutral";
@@ -20,7 +20,7 @@ export type DisabledOverlayProps = Omit<
 const RADIUS = { xl: "rounded-xl", "2xl": "rounded-2xl", "3xl": "rounded-3xl" } as const;
 
 /**
- * Covers a card that can no longer be acted on (O-10, R-07): a faint blur with a reason pill.
+ * Covers a card that can no longer be acted on (O-10): a faint blur with a reason pill.
  * Put it inside a `relative` container, and give that container `pointer-events-none` plus
  * `aria-disabled` so the card is inert for pointer and keyboard alike.
  */

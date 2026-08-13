@@ -18,8 +18,8 @@ export type FeatureCardProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Featur
   FeatureCardOwnProps;
 
 /**
- * Feature card (D-05), e.g. for a "why choose us" grid: icon tile, title and description; the border tints
- * with the primary color on hover.
+ * Feature card (D-05), e.g. for a "why choose us" grid: icon tile, title and description; the
+ * border tints with the primary color on hover.
  */
 export const FeatureCard = forwardRef<HTMLDivElement, FeatureCardProps>(function FeatureCard(
   { title, description, icon, tone = "blue", titleAs: Title = "h4", className, ...props },

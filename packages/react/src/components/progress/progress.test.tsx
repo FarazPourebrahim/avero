@@ -11,8 +11,8 @@ function indicator(container: HTMLElement) {
 
 describe("Progress", () => {
   it("exposes an accessible progressbar with the current value", () => {
-    render(<Progress value={3} max={12} aria-label="ظرفیت دریافت رزومه" />);
-    const bar = screen.getByRole("progressbar", { name: "ظرفیت دریافت رزومه" });
+    render(<Progress value={3} max={12} aria-label="ظرفیت ثبت‌نام" />);
+    const bar = screen.getByRole("progressbar", { name: "ظرفیت ثبت‌نام" });
 
     expect(bar).toHaveAttribute("aria-valuenow", "3");
     expect(bar).toHaveAttribute("aria-valuemax", "12");

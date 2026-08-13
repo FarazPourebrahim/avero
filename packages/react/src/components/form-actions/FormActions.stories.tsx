@@ -15,11 +15,11 @@ export const CommentForm: Story = {
   render: (args) => (
     <form className="max-w-xl rounded-3xl bg-white p-6">
       <div className="mb-3">
-        <Textarea aria-label="نظر" placeholder="نظر خود را درباره این مقاله بنویسید..." />
+        <Textarea aria-label="دیدگاه" placeholder="دیدگاه خود را درباره این مقاله بنویسید…" />
       </div>
-      <FormActions {...args} hint="نظرات پس از بررسی و تایید مدیر منتشر خواهند شد.">
+      <FormActions {...args} hint="دیدگاه‌ها پس از بررسی منتشر می‌شوند.">
         <Button type="submit" size="sm">
-          ثبت نظر
+          ارسال دیدگاه
         </Button>
       </FormActions>
     </form>
@@ -31,7 +31,7 @@ export const ActionsOnly: Story = {
     <form className="max-w-xl rounded-3xl bg-white p-6">
       <FormActions {...args}>
         <Button type="submit" size="sm">
-          ثبت نظر
+          ارسال دیدگاه
         </Button>
       </FormActions>
     </form>

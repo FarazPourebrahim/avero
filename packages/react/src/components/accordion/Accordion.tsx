@@ -7,8 +7,8 @@ import { ArrowDownIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Accordion in the reference's mobile-footer style (N-08): muted rounded triggers with a rotating
- * down arrow, and panels that animate height and opacity over 300ms.
+ * Accordion (N-08), styled for grouped links such as a mobile footer: muted rounded triggers
+ * with a rotating down arrow, and panels that animate height and opacity over 300ms.
  */
 export type AccordionProps = ComponentPropsWithoutRef<typeof RadixAccordion.Root>;
 

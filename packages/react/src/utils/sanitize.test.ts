@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { richContentAllowList, sanitizeHtml, stripHtml } from "./sanitize.js";
 
 describe("stripHtml", () => {
-  it("returns the readable text of an excerpt stored as HTML (V-03)", () => {
-    expect(stripHtml("<p>انواع طراحی سایت و سئو</p>")).toBe("انواع طراحی سایت و سئو");
+  it("returns the readable text of an excerpt stored as HTML", () => {
+    expect(stripHtml("<p>مبانی طراحی رابط کاربری</p>")).toBe("مبانی طراحی رابط کاربری");
   });
 
   it("keeps the text of nested formatting tags", () => {
@@ -29,7 +29,7 @@ describe("stripHtml", () => {
 });
 
 describe("sanitizeHtml", () => {
-  it("keeps the reference's prose markup", () => {
+  it("keeps the allowed prose markup", () => {
     const html =
       '<h2>عنوان</h2><p class="x">متن <strong>پررنگ</strong></p><ul><li>یک</li></ul>' +
       '<blockquote cite="https://example.com">نقل</blockquote>' +

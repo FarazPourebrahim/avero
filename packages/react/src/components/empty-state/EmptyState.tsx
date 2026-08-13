@@ -3,11 +3,11 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "../../utils/cn.js";
 
 /**
- * Empty state (O-08) in the reference's four shapes:
- * `text` — a bare centred line under a comment list (R-01);
- * `slate` — the same, in the service page's slate palette (R-05);
- * `icon` — a faded icon above the message, used for "coming soon" charts (R-02);
- * `circle` — the icon inside a gray disc, used where a panel has no data yet (R-02).
+ * Empty state (O-08) in four shapes:
+ * `text` — a bare centred line, e.g. under an empty comment list;
+ * `slate` — the same, in a slate palette;
+ * `icon` — a faded icon above the message, e.g. for a "coming soon" chart;
+ * `circle` — the icon inside a gray disc, where a panel has no data yet.
  */
 export const emptyStateVariants = cva("flex flex-col items-center justify-center text-center", {
   variants: {

@@ -10,11 +10,11 @@ type PriceTagVariant = "display" | "inline" | "compact";
 export const priceTagVariants = cva("", {
   variants: {
     variant: {
-      /** Price card: a large black primary amount and a small currency (R-05). */
+      /** A large black primary amount and a small currency, e.g. in a price card. */
       display: "flex items-baseline gap-2",
-      /** Listing card footer: "از ۲۰٬۰۰۰٬۰۰۰ تومان" (R-06). */
+      /** A card footer price such as "از ۴٬۵۰۰٬۰۰۰ تومان". */
       inline: "text-sm-plus text-text-chrome font-normal",
-      /** Related services list: a small, heavy primary price (R-05). */
+      /** A small, heavy primary price, e.g. in a related-items list. */
       compact: "text-primary text-xs font-black",
     },
   },
