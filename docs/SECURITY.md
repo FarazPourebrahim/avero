@@ -5,9 +5,9 @@ Before every release (Phase 12 and Phase 13), verify every item below and record
 
 ## Rendering
 
-- [ ] `dangerouslySetInnerHTML` is used **only** inside `RichContent`, and `RichContent` always sanitizes its input (js-xss, decision D-15) before rendering.
+- [ ] `dangerouslySetInnerHTML` is used **only** inside `RichContent`, and `RichContent` always sanitizes its input (js-xss) before rendering.
 - [ ] Sanitization tests cover `<script>`, inline event handlers (`on*`), `javascript:`/`data:` URLs, `<iframe>`/`<object>`/`<embed>`, SVG script vectors and CSS `expression()`.
-- [ ] Excerpt helpers strip HTML instead of rendering it (deviation V-03).
+- [ ] Excerpt helpers strip HTML instead of rendering it.
 - [ ] No `eval`, `new Function` or string-based `setTimeout`/`setInterval`.
 
 ## Links and navigation
@@ -32,5 +32,5 @@ Before every release (Phase 12 and Phase 13), verify every item below and record
 
 ## Fonts and assets
 
-- [ ] Redistributed font files match the licence terms (decision O-02: redistribution allowed).
+- [ ] Redistributed font files match the licence terms (the Lahzeh licence allows redistribution).
 - [ ] Brand icons are redistributable, with licences recorded next to the icon source.

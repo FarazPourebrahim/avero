@@ -4,7 +4,7 @@ import "./global.css";
 
 export const metadata: Metadata = {
   title: { default: "Avero", template: "%s | Avero" },
-  description: "Avero: an RTL-first React and Tailwind CSS v4 component library.",
+  description: "Avero: a Persian RTL and English LTR React component library built on Radix UI.",
 };
 
 export default function Layout({ children }: LayoutProps<"/">) {

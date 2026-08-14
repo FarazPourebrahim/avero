@@ -6,27 +6,26 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 
 ## Source of truth
 
-- `reference/` is the visual source of truth. It is read-only: never edit, reformat or re-save it.
 - `Avero-plan.md` is the scope, the phase DoDs and the progress tracker. Update its tracker in the same change that completes an item.
-- A component is only built if it appears in the plan's inventory (§7). New rows need a reference source.
+- A component is only built once it has a row in the plan's component inventory. Add the row first, with its purpose and API sketch.
+- New components are designed from the token system in `@avero/tokens`, so they match the existing surfaces, radii, shadows and type scale.
 
 ## Workspace
 
-| Path              | Package         | Purpose                                                                |
-| ----------------- | --------------- | ---------------------------------------------------------------------- |
-| `packages/config` | `@avero/config` | Shared tsconfig bases, ESLint config and the `avero` ESLint plugin     |
-| `packages/tokens` | `@avero/tokens` | Tailwind v4 `@theme` tokens, base styles, token data                   |
-| `packages/react`  | `@avero/react`  | Core components, hooks, utilities                                      |
-| `packages/font`   | `@avero/font`   | Lahzeh `@font-face` + font files (licence allows redistribution, O-02) |
-| `packages/charts` | `@avero/charts` | Recharts wrappers (optional)                                           |
-| `packages/editor` | `@avero/editor` | Tiptap editor (optional)                                               |
-| `apps/storybook`  | private         | Internal stories, a11y and visual tests                                |
-| `apps/docs`       | private         | Public documentation (Next.js + Fumadocs)                              |
-| `apps/replica`    | private         | The 8 reference pages rebuilt with Avero (visual parity gate)          |
+| Path              | Package         | Purpose                                                              |
+| ----------------- | --------------- | -------------------------------------------------------------------- |
+| `packages/config` | `@avero/config` | Shared tsconfig bases, ESLint config and the `avero` ESLint plugin   |
+| `packages/tokens` | `@avero/tokens` | Tailwind v4 `@theme` tokens, base styles, token data                 |
+| `packages/react`  | `@avero/react`  | Core components, blocks, hooks, utilities                            |
+| `packages/font`   | `@avero/font`   | Lahzeh `@font-face` + font files (the licence allows redistribution) |
+| `packages/charts` | `@avero/charts` | Recharts wrappers (optional)                                         |
+| `packages/editor` | `@avero/editor` | Tiptap editor (optional)                                             |
+| `apps/storybook`  | private         | Internal stories, a11y and visual tests                              |
+| `apps/docs`       | private         | Public documentation (Next.js + Fumadocs)                            |
 
 - Package manager: **pnpm only**. Never run npm or yarn installs.
-- Root scripts delegate into apps (`pnpm docs-dev`, `pnpm storybook-dev`, `pnpm replica-dev`). There is no bare `dev` script.
-- Apps resolve workspace packages to their TypeScript source through the `@avero/source` export condition, so no watch build is needed in Storybook or the replica. The docs app (Next.js) consumes the built `dist`, so run `pnpm packages-build` before `pnpm docs-dev`.
+- Root scripts delegate into apps (`pnpm docs-dev`, `pnpm storybook-dev`). There is no bare `dev` script.
+- Apps resolve workspace packages to their TypeScript source through the `@avero/source` export condition, so no watch build is needed in Storybook. The docs app (Next.js) consumes the built `dist`, so run `pnpm packages-build` before `pnpm docs-dev`.
 
 ## Toolchain versions
 
@@ -35,8 +34,8 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 | Node.js                   | ≥ 22.12 (CI: latest 22.x) | Floor set by Vitest 5. Some newer majors (jsdom 30, size-limit 13) need ≥ 22.18/22.22, so they are pinned one major back. |
 | pnpm                      | 9.15.9                    | `packageManager` field                                                                                                    |
 | TypeScript                | ~6.0.3                    | typescript-eslint supports `<6.1.0`; TypeScript 7 (native) is not yet supported by the lint toolchain                     |
-| Tailwind CSS              | ^4.3.3                    | Same major/minor as the reference (`v4.3.0`)                                                                              |
-| React                     | peer `>=18.2.0`; dev 19.x | Decision O-03                                                                                                             |
+| Tailwind CSS              | ^4.3.3                    | The `@theme` token system needs Tailwind v4                                                                               |
+| React                     | peer `>=18.2.0`; dev 19.x | React 18 stays supported for consumers that have not moved to 19                                                          |
 | Vite / Vitest / Storybook | 8.x / 5.x / 10.x          | Current stable                                                                                                            |
 | Next.js / Fumadocs        | 16.3.4 / 16.15.9          | Fumadocs requires Next 16 and React ≥ 19.2 (docs app only)                                                                |
 | jsdom                     | ^28.1                     | Supports Node 22.12                                                                                                       |
@@ -57,7 +56,7 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 - Every component accepts `className` (merged with `cn()`), spreads remaining native props onto its root, forwards its ref (`forwardRef`, because React 18 is supported), sets `displayName`, and marks its root with `data-slot="<name>"`.
 - Styling states are exposed as `data-*` attributes (`data-state`, `data-disabled`, `data-active`), not ad-hoc class toggles in consumers.
 - Variants use `class-variance-authority`. Export the variant function (e.g. `buttonVariants`).
-- Interactive behaviour comes from Radix primitives (decision D-03). Add `"use client"` only to modules that need it.
+- Interactive behaviour comes from Radix primitives. Add `"use client"` only to modules that need it.
 - Stateful components support controlled and uncontrolled use (`value` / `defaultValue` / `onValueChange`).
 - No user-facing string literals inside components. Default strings come from the `AveroProvider` dictionaries (`fa`, `en`) and can be overridden with props.
 
@@ -66,15 +65,14 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 - **Tokens only.** No raw hex, `rgb()`, `hsl()`, `oklch()` etc. in UI source (`avero/no-raw-color`). Use Avero tokens or the Tailwind palette.
 - **Logical direction only.** No `pl-`/`pr-`/`ml-`/`mr-`/`left-`/`right-`/`border-l`/`border-r`/`rounded-l*`/`rounded-r*`/`rounded-tl|tr|bl|br`/`text-left|right`/`float-left|right` (`avero/no-physical-direction`). Use `ps-`/`pe-`/`ms-`/`me-`/`start-`/`end-`/`border-s`/`border-e`/`rounded-s*`/`rounded-e*`/`rounded-ss|se|es|ee`/`text-start|end`.
 - Transforms are physical (`translate-x-*`); pair them with `rtl:`/`ltr:` variants when direction matters (drawers, carousels, arrows).
-- The reference is RTL, so when porting its markup, "right" means inline-**start** and "left" means inline-**end**.
-- Visual conflicts follow decision D-11: reproduce what the browser renders; approved deviations are listed in `Avero-plan.md` §6.2.
+- Design in Persian first: in an RTL layout "right" is inline-**start** and "left" is inline-**end**. Then check every component in English LTR.
 
 ## Testing
 
 - Unit and interaction tests: Vitest + Testing Library in jsdom, co-located as `<name>.test.tsx`, written as Arrange / Act / Assert.
 - Every component test includes an axe check (`expectNoAxeViolations` from `src/test/axe.ts`) and a `renderToString` SSR smoke test.
 - Coverage thresholds per package: statements ≥ 90%, branches ≥ 85%.
-- Visual and browser tests: Playwright against the static Storybook build (`apps/storybook/tests`) and the replica app.
+- Visual and browser tests: Playwright against the static Storybook build (`apps/storybook/tests`).
 - Never commit `.only` or `.skip` (lint rule).
 
 ## Versioning and releases
@@ -82,8 +80,8 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 - Semantic versioning per package via Changesets. Any PR that changes a published package adds a changeset.
 - **Breaking** (major): removing or renaming a component, prop, variant, token or CSS variable; changing a default that alters rendered output; raising a peer dependency floor.
 - **Minor**: new components, props, variants or tokens.
-- **Patch**: bug fixes and visual corrections that restore reference fidelity.
-- Packages are private until 1.0 (decision O-01). The `avero` npm org must be reserved before the first publish (O-06).
+- **Patch**: bug fixes and visual corrections.
+- Packages are private until 1.0. The `avero` npm org must be reserved before the first publish.
 
 ## Git
 
