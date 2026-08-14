@@ -1,9 +1,9 @@
 import { tokens } from "@avero/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-const SAMPLE = "فریلنسری یعنی فروش مهارت — Avero 1234";
+const SAMPLE = "یادگیری یعنی تمرین — Avero 1234";
 
-// Tailwind's default scale (used verbatim by the reference) followed by Avero's micro sizes.
+// Tailwind's default scale followed by Avero's micro sizes.
 const TAILWIND_SIZES = [
   ["text-xs", "0.75rem"],
   ["text-sm", "0.875rem"],
@@ -59,8 +59,8 @@ function TypographySpecimen() {
               {name}
             </span>
             <p className="max-w-md text-base text-gray-700" style={{ lineHeight: value }}>
-              فریلنسری یکی از شکل‌های جدید و انعطاف‌پذیر همکاری است که در آن فرد بدون اینکه الزاماً
-              کارمند یک شرکت باشد، مهارت خود را به‌صورت پروژه‌ای ارائه می‌کند.
+              طراحی خوب فقط زیبایی نیست؛ یعنی کاربر بدون درنگ بداند قدم بعدی چیست و چرا باید آن را
+              بردارد.
             </p>
           </div>
         ))}

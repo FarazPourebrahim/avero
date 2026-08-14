@@ -1,5 +1,5 @@
 // Verifies that every font file referenced by src/lahzeh.css exists in files/.
-// Until the licensed files are added (known debt KD-02) this reports them as missing but only fails
+// Until the licensed files are added this reports them as missing but only fails
 // when AVERO_REQUIRE_FONTS=1, so CI can enforce it once the files are committed.
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -19,7 +19,7 @@ if (missing.length === 0) {
   process.exit(0);
 }
 
-const message = `${missing.length}/${referenced.length} Lahzeh font files are missing (known debt KD-02).`;
+const message = `${missing.length}/${referenced.length} Lahzeh font files are missing.`;
 if (process.env.AVERO_REQUIRE_FONTS === "1") {
   console.error(`${message}\n  ${missing.join("\n  ")}`);
   process.exit(1);

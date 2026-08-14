@@ -6,9 +6,9 @@ import { expectNoAxeViolations } from "../test/axe.js";
 import { ChartCard } from "./ChartCard.js";
 
 describe("ChartCard", () => {
-  it("renders the reference card with a title, actions and a fixed-height body", () => {
+  it("renders a card with a title, actions and a fixed-height body", () => {
     const { container } = render(
-      <ChartCard title="آنالیتیکس خدمات" actions={<button type="button">بازدید</button>}>
+      <ChartCard title="آنالیتیکس دوره‌ها" actions={<button type="button">بازدید</button>}>
         <div>نمودار</div>
       </ChartCard>,
     );
@@ -19,7 +19,7 @@ describe("ChartCard", () => {
       "bg-white",
       "p-3.5",
     );
-    expect(screen.getByRole("heading", { name: "آنالیتیکس خدمات" })).toHaveClass("font-bold");
+    expect(screen.getByRole("heading", { name: "آنالیتیکس دوره‌ها" })).toHaveClass("font-bold");
     expect(container.querySelector('[data-slot="chart-card-body"]')).toHaveClass("h-44", "sm:h-52");
     expect(screen.getByText("نمودار")).toBeInTheDocument();
   });
@@ -75,7 +75,7 @@ describe("ChartCard", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(
-      <ChartCard title="آنالیتیکس خدمات" actions={<button type="button">بازدید</button>}>
+      <ChartCard title="آنالیتیکس دوره‌ها" actions={<button type="button">بازدید</button>}>
         <div>نمودار</div>
       </ChartCard>,
     );

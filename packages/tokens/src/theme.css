@@ -60,7 +60,7 @@
   --color-shadow-brand: #0a66c205;
   --color-shadow-box: #0f172a14;
 
-  /* Chart palette (C-04). Recharts takes colours as props that become SVG attributes, so
+  /* Chart palette. Recharts takes colours as props that become SVG attributes, so
      `@avero/charts` consumes these as token data rather than as utility classes. */
   --color-chart-views: #6366f1;
   --color-chart-likes: #f43f5e;
@@ -129,7 +129,7 @@
   --animate-sway: sway 3s ease-in-out forwards;
   --animate-shimmer: shimmer 1.6s linear infinite;
   --animate-spin-glow: spin-glow 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  /* Accordion open/close (N-08): height and opacity animate over 300ms ease-in-out. */
+  /* Accordion open/close: height and opacity animate over 300ms ease-in-out. */
   --animate-accordion-down: accordion-down 0.3s ease-in-out;
   --animate-accordion-up: accordion-up 0.3s ease-in-out;
 

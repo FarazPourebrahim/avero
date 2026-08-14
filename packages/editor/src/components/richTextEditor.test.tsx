@@ -49,7 +49,7 @@ describe("RichTextEditor", () => {
       instance,
     );
 
-    // `.avero-editor-content .tiptap` is what rich-content.css styles (§5.11).
+    // `.avero-editor-content .tiptap` is what rich-content.css styles.
     expect(container.firstElementChild).toHaveClass("avero-editor-content");
     expect(container.querySelector(".tiptap")).toBeInTheDocument();
   });

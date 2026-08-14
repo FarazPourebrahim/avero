@@ -203,7 +203,7 @@ Translucent colors are composited over their backdrop before measuring.
 
 **Result:** ${rows.length - failures.length}/${rows.length} pairings pass. ${failures.length} fail AA.
 
-Per decision O-04, Avero keeps its default palette. Consumers who need strict AA can override
+Avero keeps these pairings in its default palette. Consumers who need strict AA can override
 \`--color-text-muted\` (and the other tokens below) in their theme.
 
 | Where | Pairing | Size | Ratio | Required | AA |

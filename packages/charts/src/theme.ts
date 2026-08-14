@@ -1,7 +1,6 @@
 /**
- * Chart palette and axis styling (C-04), read from the reference's rendered Recharts output
- * (R-02): an indigo/rose/violet/emerald metric palette, a dashed horizontal-only grid, slate tick
- * labels and a dark tooltip.
+ * Chart palette and axis styling: an indigo/rose/violet/emerald metric palette, a dashed
+ * horizontal-only grid, slate tick labels and a dark tooltip.
  *
  * Recharts takes colours as props that end up as SVG attributes, so these must be literal strings:
  * a utility class cannot reach them, and a `var()` reference would depend on Tailwind emitting a
@@ -10,7 +9,7 @@
  */
 import { tokens } from "@avero/tokens";
 
-/** Metric colours, in the order the reference's analytics card uses them. */
+/** Metric colours, in series order. */
 export const chartPalette = {
   views: tokens.colorChartViews.value,
   likes: tokens.colorChartLikes.value,
@@ -23,7 +22,7 @@ export type ChartMetric = keyof typeof chartPalette;
 /** The palette as an ordered list, for charts with unnamed series. */
 export const chartColors = Object.values(chartPalette);
 
-/** Dashed horizontal grid lines; the reference draws no vertical lines. */
+/** Dashed horizontal grid lines, with no vertical lines. */
 export const chartGrid = {
   stroke: tokens.colorChartGrid.value,
   strokeDasharray: "3 3",
@@ -37,13 +36,13 @@ export const chartAxis = {
   tickLine: false,
 } as const;
 
-/** The hairline the reference draws under the tooltip, tracking the hovered point. */
+/** A hairline cursor under the tooltip, tracking the hovered point. */
 export const chartCursor = {
   stroke: tokens.colorChartCursor.value,
   strokeWidth: 1,
 } as const;
 
-/** Dark tooltip surface, matching the reference's inline styles exactly. */
+/** Dark tooltip surface. */
 export const chartTooltipStyles = {
   contentStyle: {
     margin: 0,

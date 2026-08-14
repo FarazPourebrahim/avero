@@ -14,8 +14,8 @@ import { ChartDataTable } from "./ChartDataTable.js";
 import { ChartTooltip } from "./ChartTooltip.js";
 
 /**
- * Line chart (C-03, R-02): the same grid, axes and palette as the area chart, without the fill.
- * The reference draws no dots, so points appear only in the tooltip.
+ * Line chart: the same grid, axes and palette as the area chart, without the fill.
+ * The lines draw no dots, so points appear only in the tooltip.
  */
 export function LineChart({
   data,

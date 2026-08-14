@@ -5,11 +5,11 @@ import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 
 /** Props specific to `ChartCard`. It also accepts every native `<div>` attribute. */
 export type ChartCardOwnProps = {
-  /** Card title, e.g. "آنالیتیکس خدمات". */
+  /** Card title, e.g. "آنالیتیکس دوره‌ها". */
   title?: ReactNode;
   /** Metric toggles or any other controls, shown beside the title. */
   actions?: ReactNode;
-  /** Chart height. `sm` is the trend card (R-02), `md` the analytics card. @defaultValue "md" */
+  /** Chart height. `sm` is the trend card, `md` the analytics card. @defaultValue "md" */
   size?: "sm" | "md";
   /** Rendered instead of the chart while there is no data. */
   emptyState?: ReactNode;
@@ -25,7 +25,7 @@ export type ChartCardProps = Omit<HTMLAttributes<HTMLDivElement>, keyof ChartCar
   ChartCardOwnProps;
 
 /**
- * Dashboard chart card (C-01, R-02): a bordered white card with a title row, optional metric
+ * Dashboard chart card: a bordered white card with a title row, optional metric
  * toggles and a fixed-height body that holds the chart, its empty state or its loading state.
  */
 export const ChartCard = forwardRef<HTMLDivElement, ChartCardProps>(function ChartCard(

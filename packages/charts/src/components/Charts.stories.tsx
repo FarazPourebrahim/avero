@@ -29,7 +29,7 @@ export const Analytics: Story = {
   render: () => (
     <div className="max-w-xl">
       <ChartCard
-        title="آنالیتیکس خدمات"
+        title="آنالیتیکس دوره‌ها"
         actions={
           <>
             <button
@@ -55,7 +55,7 @@ export const Analytics: Story = {
           </>
         }
       >
-        <AreaChart data={DATA} series={SERIES} label="آنالیتیکس خدمات در هفته گذشته" />
+        <AreaChart data={DATA} series={SERIES} label="آنالیتیکس دوره‌ها در هفته گذشته" />
       </ChartCard>
     </div>
   ),

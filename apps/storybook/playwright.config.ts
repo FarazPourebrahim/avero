@@ -16,7 +16,7 @@ export default defineConfig({
   },
   // Baselines are per platform because font rasterisation differs between operating systems.
   snapshotPathTemplate: "{testDir}/__screenshots__/{platform}/{arg}{ext}",
-  // Locally, missing baselines are written on first run; CI only compares (see known debt KD-06).
+  // Locally, missing baselines are written on first run; CI only compares (see docs/known-debts.md).
   updateSnapshots: process.env.CI ? "none" : "missing",
   expect: {
     toHaveScreenshot: { maxDiffPixelRatio: 0.01, animations: "disabled", caret: "hide" },

@@ -43,8 +43,8 @@ export type CartesianChartProps = {
   /** Hides the tooltip. @defaultValue false */
   hideTooltip?: boolean;
   /**
-   * Reverses the x axis. The reference plots its dates in ascending order across the axis even
-   * though the page is RTL, so per D-11 this stays opt-in. @defaultValue false
+   * Reverses the x axis. Dates usually run in ascending order across the axis even on an RTL
+   * page, so this stays opt-in. @defaultValue false
    */
   reversed?: boolean;
 };
@@ -54,7 +54,7 @@ export function seriesColor(series: ChartSeries, index: number): string {
 }
 
 /**
- * Area chart (C-02, R-02): gradient fills from 30% to transparent, 2px strokes, a dashed
+ * Area chart: gradient fills from 30% to transparent, 2px strokes, a dashed
  * horizontal grid and 10px slate ticks. Sized by its container, so wrap it in `ChartCard`.
  */
 export function AreaChart({

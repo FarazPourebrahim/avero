@@ -31,7 +31,7 @@ export type RichTextEditorProps = Omit<
   RichTextEditorOwnProps;
 
 /**
- * The reference's Tiptap editing surface (E-01). The prose styles live in
+ * Avero's Tiptap editing surface. The prose styles live in
  * `@avero/tokens/rich-content.css` under `.avero-editor-content`, which this component's root
  * carries, so the editor and the rendered article share one stylesheet.
  *

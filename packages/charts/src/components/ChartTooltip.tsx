@@ -7,7 +7,7 @@ import { chartCursor, chartTooltipStyles } from "../theme.js";
 export type ChartTooltipProps = ComponentProps<typeof Tooltip>;
 
 /**
- * Recharts `Tooltip` pre-styled to the reference's dark surface (C-04, R-02): slate-800 ground,
+ * Recharts `Tooltip` pre-styled with a dark surface: slate-800 ground,
  * 12px radius, 12px near-white text and a muted label line. Every Recharts tooltip prop still
  * works, so `formatter` and `labelFormatter` are the place to localise numbers and dates.
  */

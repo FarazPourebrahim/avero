@@ -1,6 +1,6 @@
 # Lahzeh font files
 
-Place the licensed Lahzeh font files here (decision O-02: redistribution is allowed).
+Place the licensed Lahzeh font files here (the licence allows redistribution).
 File names must match exactly, because `src/lahzeh.css` references them:
 
 | Weight | woff2                     | woff                     |

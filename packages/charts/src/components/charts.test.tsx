@@ -32,7 +32,7 @@ describe("AreaChart", () => {
     );
   });
 
-  it("uses the reference's dashed horizontal grid and slate ticks", () => {
+  it("uses a dashed horizontal grid and slate ticks", () => {
     const { container } = box(<AreaChart data={DATA} series={SERIES} />);
     const gridLine = container.querySelector(".recharts-cartesian-grid-horizontal line");
 
@@ -46,20 +46,22 @@ describe("AreaChart", () => {
   });
 
   it("describes the chart for assistive technology", () => {
-    const { container } = box(<AreaChart data={DATA} series={SERIES} label="آنالیتیکس خدمات" />);
+    const { container } = box(<AreaChart data={DATA} series={SERIES} label="آنالیتیکس دوره‌ها" />);
 
     // Recharts renders the SVG's own <title> from the chart's `title` prop.
     expect(container.querySelector(".recharts-surface > title")).toHaveTextContent(
-      "آنالیتیکس خدمات",
+      "آنالیتیکس دوره‌ها",
     );
   });
 
   it("exposes the plotted values as a screen-reader-only data table", () => {
-    const { container } = box(<AreaChart data={DATA} series={SERIES} label="آنالیتیکس خدمات" />);
+    const { container } = box(<AreaChart data={DATA} series={SERIES} label="آنالیتیکس دوره‌ها" />);
     const table = container.querySelector('[data-slot="chart-data-table"]');
 
     expect(table).toHaveClass("sr-only");
-    expect(within(table as HTMLElement).getByRole("table")).toHaveAccessibleName("آنالیتیکس خدمات");
+    expect(within(table as HTMLElement).getByRole("table")).toHaveAccessibleName(
+      "آنالیتیکس دوره‌ها",
+    );
     expect(
       within(table as HTMLElement).getByRole("columnheader", { name: "بازدید" }),
     ).toBeInTheDocument();

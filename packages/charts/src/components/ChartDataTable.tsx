@@ -18,7 +18,7 @@ export type ChartDataTableOwnProps = {
 };
 
 /**
- * The chart's data as a table, visible to assistive technology only (C-04). An SVG conveys shape,
+ * The chart's data as a table, visible to assistive technology only. An SVG conveys shape,
  * not values, so every chart renders this alongside it: screen-reader users get the numbers, and
  * sighted users see the chart. Numbers are localised through the active Avero formatter.
  */

@@ -2,7 +2,7 @@
   "name": "@avero/editor",
   "version": "0.0.0",
   "type": "module",
-  "description": "Avero rich text editor: Tiptap wrapped in the reference's editing surface.",
+  "description": "Avero rich text editor: Tiptap with Avero's editing surface.",
   "sideEffects": false,
   "exports": {
     ".": {
