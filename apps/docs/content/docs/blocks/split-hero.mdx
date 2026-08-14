@@ -3,7 +3,7 @@ title: SplitHero
 description: The about page hero — a column of text beside a framed illustration.
 ---
 
-**Reference:** about page (R-03) · **Tier:** A · **Block:** B-14 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/split-hero)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/split-hero)
 
 ```tsx
 import { SplitHero } from "@avero/react";
@@ -15,19 +15,19 @@ import { SplitHero } from "@avero/react";
 
 ```tsx
 <SplitHero
-  eyebrow="تابستون ۱۴۰۵"
-  note="نقطه آغاز ماجرا"
-  title="یه تصمیم بزرگ برای شکستن مرزهای جغرافیایی کار"
+  eyebrow="از سال ۱۴۰۰"
+  note="داستان ما"
+  title="جایی برای یادگیری ساده و لذت‌بخش"
   image="/illustrations/story.svg"
-  imageAlt="داستان دورلنسر"
-  actions={<Button elevated>مشاهده پروژه‌ها</Button>}
+  imageAlt="تصویر معرفی"
+  actions={<Button elevated>مشاهده دوره‌ها</Button>}
 >
   <p>…</p>
   <p>…</p>
 </SplitHero>
 ```
 
-Body paragraphs are children rather than a single string, because the reference's hero runs to
+Body paragraphs are children rather than a single string, because a hero often runs to two or
 three of them and each needs its own `<p>`. They inherit the justified 15px prose from the
 wrapper, so plain `<p>` elements are all you pass.
 
@@ -49,9 +49,8 @@ illustration sits in its own gradient-tinted frame and scales slightly on hover.
 
 ## RTL and LTR
 
-The reference pins the text column with `text-right`, which is only correct in RTL (defect R-09).
-Avero uses the logical `text-start`, so the hero reads correctly in both directions with no
-change to how it looks in Persian.
+The text column uses the logical `text-start` rather than a physical alignment, so the hero reads
+correctly in both directions with no change to how it looks in Persian.
 
 ## API reference
 

@@ -3,7 +3,7 @@ title: PriceCard
 description: The base price panel — a caption over a large primary amount and its currency.
 ---
 
-**Reference:** service detail sidebar (R-05) · **Tier:** A · **Block:** B-23 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/price-card)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/price-card)
 
 ```tsx
 import { PriceCard } from "@avero/react";
@@ -14,19 +14,19 @@ import { PriceCard } from "@avero/react";
 ## Usage
 
 ```tsx
-<PriceCard amount={service.price} />
+<PriceCard amount={course.price} />
 
-<PriceCard amount={service.price} label="قیمت هر ساعت مشاوره">
-  <Button block>سفارش خدمت</Button>
+<PriceCard amount={session.price} label="قیمت هر جلسه">
+  <Button block>ثبت‌نام در دوره</Button>
 </PriceCard>
 ```
 
 `amount` is a number, not a string: it is formatted with the active locale's digits and grouping,
-so the same value renders "۲۰٬۰۰۰٬۰۰۰" in Persian and "20,000,000" in English. The caption and
+so the same value renders "۴٬۵۰۰٬۰۰۰" in Persian and "4,500,000" in English. The caption and
 currency both come from the dictionary.
 
-Anything passed as children appears under the price. The reference's own card has nothing there —
-it is a price, and the contact panel below it carries the action.
+Anything passed as children appears under the price — a sign-up button, or a note about
+instalments. Leave it empty when a separate panel carries the action.
 
 ## Anatomy
 

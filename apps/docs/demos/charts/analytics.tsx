@@ -20,7 +20,7 @@ export default function ChartsAnalyticsDemo() {
   return (
     <div className="w-full max-w-xl">
       <ChartCard
-        title="آنالیتیکس خدمات"
+        title="آنالیتیکس دوره‌ها"
         actions={
           <>
             <button
@@ -46,7 +46,7 @@ export default function ChartsAnalyticsDemo() {
           </>
         }
       >
-        <AreaChart data={DATA} series={SERIES} label="آنالیتیکس خدمات در هفته گذشته" />
+        <AreaChart data={DATA} series={SERIES} label="آنالیتیکس دوره‌ها در هفته گذشته" />
       </ChartCard>
     </div>
   );

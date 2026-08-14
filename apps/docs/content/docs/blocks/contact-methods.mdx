@@ -1,9 +1,9 @@
 ---
 title: ContactMethods
-description: The direct contact panel — a titled card of verified contact channels.
+description: The direct contact panel — a titled card of contact channels.
 ---
 
-**Reference:** service detail (R-05) · **Tier:** A · **Block:** B-22 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/contact-methods)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/contact-methods)
 
 ```tsx
 import { ContactMethod, ContactMethods } from "@avero/react";
@@ -14,7 +14,7 @@ import { ContactMethod, ContactMethods } from "@avero/react";
 ## Usage
 
 ```tsx
-<ContactMethods title="راه‌های ارتباط مستقیم با ارائه‌دهنده خدمت" description="…">
+<ContactMethods title="راه‌های ارتباط با پشتیبانی" description="…">
   <ContactMethod href="mailto:…" label="email:" value="…" external />
   <ContactMethod href="tel:…" label="phone:" value="…" />
   <ContactMethod
@@ -52,8 +52,8 @@ links work on mobile without any script.
 
 ## Do and don't
 
-- **Do** say in `description` why the channels are there — the reference notes they are verified.
-- **Don't** show a contact channel the provider has not agreed to publish.
+- **Do** say in `description` what the channels are for and when to use them.
+- **Don't** list a channel nobody monitors.
 
 ## Related
 

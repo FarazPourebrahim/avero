@@ -1,9 +1,9 @@
 ---
 title: PriceTag
-description: Prices in the reference's three styles, formatted for the active locale.
+description: Prices in three styles, formatted for the active locale.
 ---
 
-**Reference:** service price card and related services (R-05), listing card footer (R-06) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/price-tag)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/price-tag)
 
 ```tsx
 import { PriceTag } from "@avero/react";
@@ -27,7 +27,7 @@ The amount is formatted with `Intl`, so Persian locales get Persian digits and t
 
 ## Composition
 
-- Wrap `display` in a card with its own label ("قیمت پایه خدمت"), as the reference does.
+- Wrap `display` in a card with its own label ("قیمت پایه دوره"), as [PriceCard](../blocks/price-card) does.
 - `amountClassName` adjusts only the number, e.g. a smaller size inside a dense listing card.
 
 ## Accessibility

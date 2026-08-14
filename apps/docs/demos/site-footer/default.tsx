@@ -5,23 +5,23 @@ export default function SiteFooterDefaultDemo() {
     <div className="w-full">
       <SiteFooter
         categories={{
-          title: "دسته بندی مهارت",
+          title: "دسته‌بندی دوره‌ها",
           columns: [
             [
-              { label: "طراحی سایت", href: "#" },
-              { label: "سئو", href: "#" },
+              { label: "طراحی رابط کاربری", href: "#" },
+              { label: "تحلیل داده", href: "#" },
             ],
             [
-              { label: "تولید محتوا", href: "#" },
+              { label: "برنامه‌نویسی وب", href: "#" },
               { label: "React", href: "#" },
             ],
             [
-              { label: "طراحی گرافیک", href: "#" },
+              { label: "عکاسی", href: "#" },
               { label: "Figma", href: "#" },
             ],
           ],
         }}
-        logo={<span className="text-primary text-xl font-black">دورلنسر</span>}
+        logo={<span className="text-primary text-xl font-black">Avero</span>}
         brandLinks={[
           { label: "قوانین و مقررات", href: "#" },
           { label: "تماس با ما", href: "#" },
@@ -40,12 +40,12 @@ export default function SiteFooterDefaultDemo() {
           title: "ارتباط با ما",
           rows: [
             { label: "ایمیل :", value: "hello@example.com", href: "mailto:hello@example.com" },
-            { label: "شماره تماس :", value: "09373860014", href: "tel:09373860014" },
+            { label: "شماره تماس :", value: "021-00000000", href: "tel:+982100000000" },
           ],
         }}
         about={{
-          long: "دورلنسر بستری برای ارتباط مستقیم کارفرمایان و فریلنسرهای متخصص است.",
-          short: "بستری برای ارتباط مستقیم کارفرمایان و فریلنسرها.",
+          long: "مدرسه‌ای آنلاین برای آموختن مهارت‌های تازه با دوره‌ها، کارگاه‌ها و مقاله‌های کاربردی.",
+          short: "دوره‌ها، کارگاه‌ها و مقاله‌های کاربردی.",
         }}
         copyright="تمامی حقوق محفوظ است"
         social={

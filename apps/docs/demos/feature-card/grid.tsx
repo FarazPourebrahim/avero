@@ -7,26 +7,26 @@ export default function FeatureCardGridDemo() {
       <FeatureCard
         tone="emerald"
         icon={<ShieldCheck className="text-emerald-500" />}
-        title="سیستم پرداخت امن و تضمین‌شده"
-        description="حفظ امنیت مالی کارفرما و تضمین دریافت دستمزد فریلنسر با پرداخت مرحله‌ای و امانی."
+        title="پرداخت امن و بدون دغدغه"
+        description="پرداخت آنلاین امن و بازگشت وجه تا هفت روز پس از ثبت‌نام در هر دوره."
       />
       <FeatureCard
         tone="blue"
         icon={<Users className="text-blue-500" />}
-        title="دسترسی به برترین استعدادها"
-        description="گردهم‌آوری هزاران متخصص و فریلنسر ماهر در حوزه‌های مختلف."
+        title="مدرس‌های باتجربه"
+        description="دوره‌ها را متخصصانی تدریس می‌کنند که سال‌ها در همان حوزه کار کرده‌اند."
       />
       <FeatureCard
         tone="purple"
         icon={<Award className="text-purple-500" />}
-        title="سنجش مهارت و گواهینامه‌های معتبر"
-        description="سیستم پیشرفته آزمون‌های تخصصی برای اعتبارسنجی مهارت‌ها."
+        title="گواهی پایان دوره"
+        description="پس از گذراندن پروژه پایانی، گواهی قابل استعلام دریافت می‌کنید."
       />
       <FeatureCard
         tone="amber"
         icon={<Zap className="text-amber-500" />}
-        title="سرعت، سهولت و پشتیبانی فعال"
-        description="رابط کاربری ساده، سیستم چت اختصاصی و تیم پشتیبانی همراه."
+        title="یادگیری با سرعت خودتان"
+        description="جلسه‌ها همیشه در دسترس‌اند و انجمن پرسش و پاسخ همراه شماست."
       />
     </div>
   );

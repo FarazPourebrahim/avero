@@ -11,10 +11,10 @@ export default function SelectFilterDemo() {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">همه دسته‌ها</SelectItem>
-          <SelectItem value="seo">سئو</SelectItem>
-          <SelectItem value="design">طراحی سایت</SelectItem>
-          <SelectItem value="content" disabled>
-            تولید محتوا
+          <SelectItem value="design">طراحی</SelectItem>
+          <SelectItem value="data">داده</SelectItem>
+          <SelectItem value="photography" disabled>
+            عکاسی
           </SelectItem>
         </SelectContent>
       </Select>

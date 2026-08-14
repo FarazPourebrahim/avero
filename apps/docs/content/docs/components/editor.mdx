@@ -1,9 +1,9 @@
 ---
 title: Editor
-description: The reference's Tiptap editing surface, sharing one stylesheet with rendered prose.
+description: A Tiptap editing surface, sharing one stylesheet with rendered prose.
 ---
 
-**Reference:** `.tiptap-content` editing surface (§5.11) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/editor)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/editor)
 
 The editor lives in a separate package, so the core library never pulls in Tiptap:
 
@@ -22,7 +22,7 @@ import { RichTextEditor } from "@avero/editor";
 | Part    | Slot                           | Notes                                                  |
 | ------- | ------------------------------ | ------------------------------------------------------ |
 | Root    | `data-slot="rich-text-editor"` | Carries `.avero-editor-content`; `data-editable` state |
-| Surface | `.tiptap`                      | Tiptap's contenteditable, styled by §5.11              |
+| Surface | `.tiptap`                      | Tiptap's contenteditable, styled by `rich-content.css` |
 
 ## Styles
 
@@ -41,7 +41,7 @@ types matches what a reader sees:
 - `onReady` hands you the Tiptap `Editor`, which is where a toolbar issues commands from.
 - Extensions are `StarterKit` (headings, lists, bold, italic, underline, strike, code, code blocks,
   blockquote, horizontal rules, links), `TableKit`, `Image` and `Placeholder` — exactly the set the
-  reference's stylesheet has rules for.
+  prose stylesheet has rules for.
 
 ## Sanitization
 

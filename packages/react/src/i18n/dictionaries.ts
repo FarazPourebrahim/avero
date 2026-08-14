@@ -43,9 +43,9 @@ export type AveroDictionary = {
   like: string;
   /** Accessible name of a share control. */
   share: string;
-  /** Overlay call to action on a portfolio card. */
+  /** Overlay call to action on a showcase card. */
   viewDetails: string;
-  /** Label above a service's base price. */
+  /** Label above a base price. */
   basePrice: string;
   /** Dashboard greeting. `{name}` is replaced with the person's name. */
   greeting: string;

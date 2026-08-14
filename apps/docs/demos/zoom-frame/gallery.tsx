@@ -14,7 +14,7 @@ export default function ZoomFrameGalleryDemo() {
       <ZoomFrame>
         <img
           src={ARTWORK}
-          alt="طراحی سایت و سئو"
+          alt="نمونه طرح رابط کاربری"
           className="h-60 w-full rounded-2xl object-cover"
         />
       </ZoomFrame>

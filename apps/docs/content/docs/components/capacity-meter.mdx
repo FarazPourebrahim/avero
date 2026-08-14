@@ -3,7 +3,7 @@ title: CapacityMeter
 description: A labelled capacity bar with a count, or a status pill and captions.
 ---
 
-**Reference:** project capacity (R-07) and related-project cards (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/capacity-meter)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/capacity-meter)
 
 ```tsx
 import { CapacityMeter } from "@avero/react";
@@ -27,8 +27,8 @@ The bar fills from the inline start, and the captions sit at the start and end o
 
 ## Composition
 
-- `detail` is the project page's own meter; `card` is the compact one on related-project cards.
-- The status tone is derived from `value >= max`, so pass the reference's own wording as `status`.
+- `detail` is the full meter for a detail page; `card` is the compact one for cards in a list.
+- The status tone is derived from `value >= max`, so `status` only needs the wording.
 
 ## Accessibility
 

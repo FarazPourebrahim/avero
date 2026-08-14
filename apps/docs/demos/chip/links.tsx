@@ -5,16 +5,16 @@ export default function ChipLinksDemo() {
   return (
     <>
       <Chip asChild variant="link">
-        <a href="#freelancing">فریلنسری</a>
+        <a href="#design">طراحی</a>
       </Chip>
       <Chip asChild variant="tag">
-        <a href="#php">
+        <a href="#react">
           <Tag aria-hidden />
-          <span>PHP</span>
+          <span>React</span>
         </a>
       </Chip>
       <Chip asChild variant="footer">
-        <a href="#web-design">طراحی سایت</a>
+        <a href="#ux">تجربه کاربری</a>
       </Chip>
     </>
   );

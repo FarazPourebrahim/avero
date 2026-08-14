@@ -1,9 +1,9 @@
 ---
 title: ShareBar
-description: The share controls — an icon row beside the article's like button, or a card of named buttons.
+description: The share controls — an icon row beside an article's like button, or a card of named buttons.
 ---
 
-**Reference:** blog article (R-01) and service detail (R-05) · **Tier:** A · **Block:** B-09 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/share-bar)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/share-bar)
 
 ```tsx
 import { ShareBar } from "@avero/react";
@@ -15,14 +15,14 @@ import { ShareBar } from "@avero/react";
 
 ### `icon`
 
-The article's row: a label, then five icon-only buttons — copy link, Telegram, LinkedIn, X and
-WhatsApp, in that order. It has no surface of its own because it sits inside the article's action
-row, beside the like button.
+A label, then five icon-only buttons — copy link, Telegram, LinkedIn, X and WhatsApp, in that
+order. It has no surface of its own because it sits inside an article's action row, beside the
+like button.
 
 ### `labelled`
 
-The service page's own card: a heading with a share glyph on one side and named buttons on the
-other, wrapping onto a second line when the card is narrow.
+A card of its own: a heading with a share glyph on one side and named buttons on the other,
+wrapping onto a second line when the card is narrow.
 
 <ComponentPreview name="share-bar/labelled" />
 
@@ -47,8 +47,8 @@ Pass `channels` to change the set or the order, and `labels` to override a singl
 <ShareBar variant="labelled" channels={["telegram", "copy"]} labels={{ whatsapp: "واتساپ" }} />
 ```
 
-That override exists because the reference spells WhatsApp two ways — "واتس‌اپ" on the article
-page and "واتساپ" on the service page — and the two render differently in Persian.
+Persian spellings of brand names vary — "واتس‌اپ" and "واتساپ" are both common — so use `labels`
+to match the spelling the rest of your product uses.
 
 ## Channel styling
 
@@ -74,10 +74,8 @@ darker text colour, which the block applies as a class rather than inventing a t
 
 ## Accessibility
 
-The reference labels the icon buttons in English — `aria-label="Share on Telegram"` — while their
-tooltips are Persian, so a screen-reader user hears a different language from the one on screen
-(defect R-10). Both come from the dictionary here, so the accessible name and the tooltip always
-agree (deviation V-04).
+The icon buttons' accessible names and their tooltips both come from the dictionary, so a
+screen-reader user hears the same language and wording that appears on screen.
 
 ## API reference
 

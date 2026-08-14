@@ -3,7 +3,7 @@ title: Badge
 description: A small, non-interactive label for statuses, counts and highlights.
 ---
 
-**Reference:** project status and capacity badges, category pills, premium badge, media overlays (R-01, R-03, R-04, R-05, R-07, R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/badge)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/badge)
 
 ```tsx
 import { Badge } from "@avero/react";
@@ -21,7 +21,7 @@ import { Badge } from "@avero/react";
 
 ### Outline
 
-Bordered soft pills from the service page header.
+Bordered soft pills for a detail page header.
 
 <ComponentPreview name="badge/outline" />
 
@@ -38,13 +38,13 @@ Badges are inline-flex with logical gaps, so icons stay before the text in both 
 ## Composition
 
 - Place an icon before the text; size it with `size-3.5` or `size-4`.
-- Adjust padding with `className` (e.g. the reference's `py-1` capacity badge).
+- Adjust padding with `className` (e.g. `py-1` for a taller capacity badge).
 
 ## Accessibility
 
 - Badges are plain text, not interactive, and aren't focusable.
 - Don't rely on color alone: the text itself must convey the status.
-- `solid` danger (white on red-500) is below AA contrast for small text; see the [contrast report](https://github.com/FarazPourebrahim/avero/blob/dev/packages/tokens/reference/contrast-report.md).
+- `solid` danger (white on red-500) is below AA contrast for small text; see the [contrast report](https://github.com/FarazPourebrahim/avero/blob/dev/packages/tokens/reports/contrast-report.md).
 
 ## API reference
 

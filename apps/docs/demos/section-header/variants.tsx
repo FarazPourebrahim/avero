@@ -7,17 +7,12 @@ export default function SectionHeaderVariantsDemo() {
       <SectionHeader
         variant="accentBar"
         as="h3"
-        title="داستان شکل‌گیری دورلنسر"
-        subtitle="روایت یک تصمیم برای تحول فضای دورکاری ✨"
+        title="داستان ما"
+        subtitle="چطور از یک پرسش ساده به یک مدرسه آنلاین رسیدیم ✨"
       />
       <SectionHeader variant="dot" as="h3" title="درباره من" />
-      <SectionHeader
-        variant="icon"
-        as="h3"
-        title="چرا دورلنسر انتخابی متفاوت است؟"
-        icon={<Target />}
-      />
-      <SectionHeader title="پروژه‌های مرتبط" as="h3" />
+      <SectionHeader variant="icon" as="h3" title="چرا دوره‌های ما متفاوت‌اند؟" icon={<Target />} />
+      <SectionHeader title="دوره‌های مرتبط" as="h3" />
     </div>
   );
 }

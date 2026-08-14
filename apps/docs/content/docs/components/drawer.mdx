@@ -1,9 +1,9 @@
 ---
 title: Drawer
-description: The slide-in menu panel, in both of the reference's sizes.
+description: The slide-in menu panel, in two sizes.
 ---
 
-**Reference:** site header menu (R-01/R-03), dashboard menu (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/drawer)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/drawer)
 
 ```tsx
 import {
@@ -24,7 +24,7 @@ import {
 | Part    | Slot                         | Notes                                             |
 | ------- | ---------------------------- | ------------------------------------------------- |
 | Content | `data-slot="drawer-content"` | The panel; 300ms slide, `--z-drawer`              |
-| Overlay | `data-slot="drawer-overlay"` | Dimmed scrim (deviation V-09)                     |
+| Overlay | `data-slot="drawer-overlay"` | Dimmed scrim                                      |
 | Header  | `data-slot="drawer-header"`  | Icon, title and the close button                  |
 | Body    | `data-slot="drawer-body"`    | Scrolls when the content is taller than the panel |
 
@@ -48,8 +48,8 @@ from the left in LTR without any extra work.
 - Radix Dialog supplies the focus trap, `Esc` to close, scroll lock and focus return.
 - The close button is labelled from the dictionary (`closeMenu`), so it reads correctly in both
   languages.
-- The reference ships no scrim at all, which leaves the page clickable behind the drawer; Avero
-  adds one (V-09).
+- The scrim covers the page behind the drawer, so nothing there can be clicked by accident while
+  the menu is open.
 
 ## API reference
 

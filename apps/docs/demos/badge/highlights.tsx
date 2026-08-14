@@ -6,12 +6,12 @@ export default function BadgeHighlightsDemo() {
     <>
       <Badge variant="premium">
         <Sparkles className="size-4 animate-pulse text-amber-500" aria-hidden />
-        <span>پکیج رایگان</span>
+        <span>دوره ویژه</span>
         <ShieldCheck className="size-4 text-amber-600" aria-hidden />
       </Badge>
       <Badge variant="label">
         <Sparkles className="size-4" aria-hidden />
-        تابستون ۱۴۰۵
+        از سال ۱۴۰۰
       </Badge>
       <span className="flex gap-3 rounded-2xl bg-slate-400 p-4">
         <Badge variant="overlay">
@@ -22,7 +22,7 @@ export default function BadgeHighlightsDemo() {
           مشاهده جزئیات کامل
         </Badge>
         <Badge variant="solid" tone="danger">
-          تکمیل ظرفیت
+          ظرفیت تکمیل شد
         </Badge>
       </span>
     </>

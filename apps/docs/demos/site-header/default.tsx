@@ -3,7 +3,7 @@ import { Menu } from "lucide-react";
 
 const NAV = [
   { label: "خانه", href: "#" },
-  { label: "پروژه ها", href: "#" },
+  { label: "دوره‌ها", href: "#" },
   { label: "وبلاگ", href: "#", current: true },
 ];
 
@@ -18,8 +18,8 @@ export default function SiteHeaderDefaultDemo() {
           </SiteHeaderMenuButton>
         }
         logo={
-          <a href="#" aria-label="دورلنسر" className="flex items-center gap-x-3 py-2">
-            <span className="text-primary text-lg font-black">دورلنسر</span>
+          <a href="#" aria-label="Avero" className="flex items-center gap-x-3 py-2">
+            <span className="text-primary text-lg font-black">Avero</span>
           </a>
         }
         nav={NAV.map((item) => (
@@ -35,7 +35,7 @@ export default function SiteHeaderDefaultDemo() {
         ))}
         actions={
           <a href="#" title="پیشخوان">
-            <Avatar name="فراز" size="md" />
+            <Avatar name="سارا محمدی" size="md" />
           </a>
         }
       />

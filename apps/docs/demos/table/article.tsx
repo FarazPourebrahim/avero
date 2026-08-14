@@ -11,12 +11,12 @@ import {
 export default function TableArticleDemo() {
   return (
     <Table containerClassName="max-w-xl">
-      <TableCaption>مقایسه فریلنسری و استخدام تمام‌وقت</TableCaption>
+      <TableCaption>مقایسه دوره آنلاین و حضوری</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>ویژگی</TableHead>
-          <TableHead>فریلنسری</TableHead>
-          <TableHead>استخدام</TableHead>
+          <TableHead>آنلاین</TableHead>
+          <TableHead>حضوری</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -26,9 +26,9 @@ export default function TableArticleDemo() {
           <TableCell>محدود</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>ثبات درآمد</TableCell>
-          <TableCell>متغیر</TableCell>
-          <TableCell>ثابت</TableCell>
+          <TableCell>گفت‌وگو با مدرس</TableCell>
+          <TableCell>در انجمن دوره</TableCell>
+          <TableCell>سر کلاس</TableCell>
         </TableRow>
       </TableBody>
     </Table>

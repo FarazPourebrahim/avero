@@ -5,7 +5,7 @@ const SLIDES = ["۱", "۲", "۳", "۴"];
 export default function CarouselPillDemo() {
   return (
     <div className="w-full max-w-3xl">
-      <Carousel aria-label="پروژه‌ها">
+      <Carousel aria-label="دوره‌ها">
         <CarouselViewport>
           {SLIDES.map((label, index) => (
             <CarouselSlide key={label} aria-label={`${index + 1} از ${SLIDES.length}`}>

@@ -1,30 +1,30 @@
 ---
 title: ProfileHeader
-description: The freelancer profile header — gradient cover, overlapping avatar, identity, tabs and socials.
+description: The profile header — gradient cover, overlapping avatar, identity, tabs and socials.
 ---
 
-**Reference:** profile about (R-04) and portfolio (R-08) · **Tier:** A · **Block:** B-17 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/profile-header)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/profile-header)
 
 ```tsx
 import { ProfileHeader } from "@avero/react";
 ```
 
-<ComponentPreview name="profile-header/freelancer" />
+<ComponentPreview name="profile-header/instructor" />
 
 ## Usage
 
 ```tsx
 <ProfileHeader
-  name={freelancer.name}
-  image={freelancer.avatar}
-  headline={freelancer.headline}
-  badge={<Badge variant="premium">پکیج رایگان</Badge>}
+  name={instructor.name}
+  image={instructor.avatar}
+  headline={instructor.headline}
+  badge={<Badge variant="premium">مدرس برگزیده</Badge>}
   meta={
     <>
       <MetaItem variant="pill" icon={<MapPinIcon />}>
-        {freelancer.city}
+        {instructor.city}
       </MetaItem>
-      <MetaItem icon={<CalendarSolidIcon />}>تاریخ عضویت: {joined}</MetaItem>
+      <MetaItem icon={<CalendarSolidIcon />}>عضویت: {joined}</MetaItem>
     </>
   }
   tabs={
@@ -32,8 +32,8 @@ import { ProfileHeader } from "@avero/react";
       <PillTab href={aboutHref} current={tab === "about"}>
         درباره من
       </PillTab>
-      <PillTab href={portfolioHref} current={tab === "portfolio"}>
-        نمونه کار
+      <PillTab href={coursesHref} current={tab === "courses"}>
+        دوره‌ها
       </PillTab>
     </PillTabs>
   }
@@ -62,8 +62,8 @@ labelled social row.
 
 ## RTL and LTR
 
-The reference pushes the socials label with `ml-1`, which only works in RTL (defect R-09). Avero
-uses the logical `me-1`, so the spacing follows the writing direction.
+The socials label is spaced with the logical `me-1` rather than a physical margin, so the spacing
+follows the writing direction.
 
 ## API reference
 
@@ -73,7 +73,8 @@ uses the logical `me-1`, so the spacing follows the writing direction.
 
 ## Do and don't
 
-- **Do** give every social link an accessible name — the reference labels them only with `title`.
+- **Do** give every social link an accessible name — a `title` attribute alone is not reliably
+  announced.
 - **Don't** stack more than two lines of meta; the header is already tall on a phone.
 
 ## Related

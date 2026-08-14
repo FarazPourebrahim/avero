@@ -3,7 +3,7 @@ title: CommentSection
 description: The comment panel — header with a count, comment form, and the comment list or its empty state.
 ---
 
-**Reference:** blog article (R-01) and service detail (R-05) · **Tier:** A · **Block:** B-08 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/comment-section)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/comment-section)
 
 ```tsx
 import { CommentSection } from "@avero/react";
@@ -13,8 +13,8 @@ import { CommentSection } from "@avero/react";
 
 ## Variants
 
-The reference ships two comment panels that differ in palette, title scale, icon and spacing, so
-they are one block with a `variant`.
+The two comment panels differ in palette, title scale, icon and spacing, so they are one block
+with a `variant`.
 
 ### `article`
 
@@ -23,8 +23,9 @@ count in a `Badge`. The moderation note sits opposite the submit button.
 
 ### `service`
 
-The detail page's slate panel: a Lucide message square, a heavier title that carries the count in
-brackets, and no note — the submit button stands alone at the end of the row.
+The detail page's slate panel, for a course or product page: a Lucide message square, a heavier
+title that carries the count in brackets, and no note — the submit button stands alone at the end
+of the row.
 
 <ComponentPreview name="comment-section/service" />
 
@@ -42,8 +43,8 @@ brackets, and no note — the submit button stands alone at the end of the row.
 ```tsx
 <CommentSection
   count={comments.length}
-  placeholder="نظر خود را درباره این مقاله بنویسید..."
-  hint="نظرات پس از بررسی و تایید مدیر منتشر خواهند شد."
+  placeholder="دیدگاه خود را درباره این مقاله بنویسید…"
+  hint="دیدگاه‌ها پس از بررسی منتشر می‌شوند."
   pending={isSubmitting}
   onSubmitComment={(text) => postComment(text)}
 >
@@ -57,9 +58,9 @@ The draft comment works controlled (`value` + `onValueChange`) or uncontrolled (
 like every other stateful Avero component. `pending` disables the box and puts a spinner in the
 button, so a slow request can never be submitted twice.
 
-Comment rows are not part of this block. The reference never renders one — every captured page
-has an empty comment list — so there is no markup to reproduce, and inventing rows would mean
-guessing. Pass your own as children; the block shows its empty state when there are none.
+Comment rows are not part of this block: their shape — author, date, replies, moderation state —
+varies too much between applications. Pass your own as children; the block shows its empty state
+when there are none.
 
 ## Composition
 
@@ -67,18 +68,13 @@ Built from `Card`, `CardTitle`, `Heading`, `Badge`, `Textarea`, `FormActions`, `
 `EmptyState`. Each of those already carries both palettes — `Textarea` has `soft` and `slate`
 variants, `EmptyState` has `text` and `slate` — so the block only decides which to use.
 
-## Reference defects
+## Form behaviour
 
-Two are fixed here, both without changing what the panel looks like:
-
-- The blog's submit button hovers to the colour it already has, so it gives no hover feedback
-  (defect R-07). It hovers to `primary-hover` instead (deviation V-02).
-- Neither comment box has an accessible name — only a placeholder, which assistive technology may
-  not announce and which disappears once typing starts (defect R-10). The box is labelled with the
-  `commentLabel` dictionary string, overridable per instance (deviation V-04).
-
-The comment box is also marked `required`, as it already is on the service page, so an empty
-comment cannot be submitted from either panel.
+- The submit button hovers to `primary-hover`, so it gives visible feedback in both panels.
+- The comment box is labelled with the `commentLabel` dictionary string, overridable per instance.
+  A placeholder alone may not be announced by assistive technology, and it disappears once typing
+  starts.
+- The comment box is `required`, so an empty comment cannot be submitted from either panel.
 
 ## Accessibility
 

@@ -9,7 +9,7 @@ export default function MetaContactsDemo() {
       </div>
       <div className="flex flex-col gap-y-7">
         <KeyValueRow label="ایمیل :" value="hello@example.com" href="mailto:hello@example.com" />
-        <KeyValueRow label="شماره تماس :" value="09373860014" href="tel:09373860014" />
+        <KeyValueRow label="شماره تماس :" value="021-00000000" href="tel:+982100000000" />
       </div>
     </div>
   );

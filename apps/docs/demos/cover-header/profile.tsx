@@ -12,7 +12,7 @@ export default function CoverHeaderProfileDemo() {
   return (
     <CoverHeader
       className="w-full"
-      avatar={<img src={AVATAR} alt="فلاح" />}
+      avatar={<img src={AVATAR} alt="سارا محمدی" />}
       footer={
         <nav aria-label="بخش‌های پروفایل">
           <ul className="flex min-w-max items-center gap-2 text-xs text-gray-600 sm:gap-3 sm:text-sm">
@@ -23,18 +23,18 @@ export default function CoverHeaderProfileDemo() {
             </li>
             <li>
               <span className="flex items-center gap-1.5 rounded-xl bg-slate-50 px-3.5 py-2 font-bold text-slate-600 sm:px-4 sm:py-2.5">
-                نمونه کار (4)
+                دوره‌ها (3)
               </span>
             </li>
           </ul>
         </nav>
       }
     >
-      <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">فلاح</h3>
-      <p className="mb-3 text-sm font-medium text-gray-600 md:text-base">طراحی انواع سایت و سئو</p>
+      <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">سارا محمدی</h3>
+      <p className="mb-3 text-sm font-medium text-gray-600 md:text-base">مدرس طراحی رابط کاربری</p>
       <MetaBar variant="inline" className="justify-center lg:justify-start">
-        <MetaItem variant="pill">تهران (ایران)</MetaItem>
-        <MetaItem variant="compact">تاریخ عضویت: 2 هفته پیش</MetaItem>
+        <MetaItem variant="pill">اصفهان (ایران)</MetaItem>
+        <MetaItem variant="compact">عضویت: ۳ ماه پیش</MetaItem>
       </MetaBar>
     </CoverHeader>
   );

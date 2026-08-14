@@ -1,9 +1,9 @@
 import { ActionTile, PaperPlaneSolidIcon, QuickActions } from "@avero/react";
 
 const ACTIONS = [
-  { label: "افزودن خدمت", tone: "blue" },
-  { label: "افزودن نمونه‌کار", tone: "purple" },
-  { label: "ثبت استوری", tone: "amber" },
+  { label: "افزودن دوره", tone: "blue" },
+  { label: "افزودن جلسه", tone: "purple" },
+  { label: "ساخت تمرین", tone: "amber" },
   { label: "ویرایش پروفایل", tone: "emerald" },
   { label: "پیام‌ها", tone: "rose" },
   { label: "تنظیمات", tone: "indigo" },

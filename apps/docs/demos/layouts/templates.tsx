@@ -20,7 +20,7 @@ export default function LayoutsTemplatesDemo() {
         <Block className="min-h-40">نتایج (۹ ستون)</Block>
       </ListingLayout>
       <SplitDetailLayout asideLabel="بنر" aside={<Block>بنر</Block>}>
-        <Block className="min-h-40">جزئیات پروژه (۳ از ۴)</Block>
+        <Block className="min-h-40">جزئیات دوره (۳ از ۴)</Block>
       </SplitDetailLayout>
     </div>
   );

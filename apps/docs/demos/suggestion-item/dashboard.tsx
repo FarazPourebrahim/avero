@@ -4,17 +4,17 @@ export default function SuggestionItemDashboardDemo() {
   return (
     <div className="w-full max-w-xl space-y-3">
       <SuggestionItem
-        title="طراحی سایت عمده فروش"
+        title="مبانی تحلیل داده"
         href="#"
-        description="طراحی فروشگاه اینترنتی با پنل مدیریت"
-        tags={["remote"]}
+        description="کار با داده‌های واقعی و رسم نمودار در Python"
+        tags={["آنلاین"]}
         match={8}
       />
       <SuggestionItem
-        title="توسعه اپلیکیشن موبایل"
+        title="طراحی سیستم طراحی در Figma"
         href="#"
-        description="اپلیکیشن فروشگاهی برای اندروید و iOS"
-        tags={["freelance", "remote"]}
+        description="ساختن کتابخانه کامپوننت و توکن‌های طراحی"
+        tags={["پیشرفته", "آنلاین"]}
         match={92}
       />
     </div>

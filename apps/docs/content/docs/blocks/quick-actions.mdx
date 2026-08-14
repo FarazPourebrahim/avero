@@ -3,7 +3,7 @@ title: QuickActions
 description: The dashboard shortcut grid — a responsive row of gradient action tiles.
 ---
 
-**Reference:** freelancer dashboard (R-02) · **Tier:** A · **Block:** B-16 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/quick-actions)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/quick-actions)
 
 ```tsx
 import { ActionTile, QuickActions } from "@avero/react";
@@ -15,11 +15,11 @@ import { ActionTile, QuickActions } from "@avero/react";
 
 ```tsx
 <QuickActions label="دسترسی سریع">
-  <ActionTile icon={<PlusIcon />} onClick={addService}>
-    افزودن خدمت
+  <ActionTile icon={<PlusIcon />} onClick={addCourse}>
+    افزودن دوره
   </ActionTile>
-  <ActionTile icon={<ImageIcon />} tone="purple" onClick={addWork}>
-    افزودن نمونه‌کار
+  <ActionTile icon={<CalendarPlusIcon />} tone="purple" onClick={addSession}>
+    افزودن جلسه
   </ActionTile>
 </QuickActions>
 ```
@@ -29,14 +29,14 @@ shape would rule out a link tile or a disabled one.
 
 ## Columns
 
-Every row starts at two columns on a phone and three on a tablet, as the reference does;
-`columns` sets the count from `lg` up — 4, 5 or 6, with 6 matching the reference.
+Every row starts at two columns on a phone and three on a tablet; `columns` sets the count from
+`lg` up — 4, 5 or 6.
 
 ## Accessibility
 
-The reference's grid is a bare `div`, so its six buttons are announced one after another with
-nothing tying them together. Passing `label` makes it a named group (deviation V-04) — worth doing
-whenever the tiles belong to one heading that is not directly above them.
+Without a label the grid is a bare `div`, so its buttons are announced one after another with
+nothing tying them together. Passing `label` makes it a named group — worth doing whenever the
+tiles belong to one heading that is not directly above them.
 
 ## API reference
 
@@ -51,4 +51,4 @@ whenever the tiles belong to one heading that is not directly above them.
 
 ## Related
 
-[ActionTile](../components/action-tile) · [WelcomeCard](./welcome-card) · [AchievementsPanel](./achievements-panel)
+[ActionTile](../components/feature-card) · [WelcomeCard](./welcome-card) · [AchievementsPanel](./achievements-panel)

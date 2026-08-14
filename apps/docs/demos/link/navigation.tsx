@@ -1,5 +1,5 @@
 import { Link } from "@avero/react";
-import { House, Package } from "lucide-react";
+import { BookOpen, House } from "lucide-react";
 
 export default function LinkNavigationDemo() {
   return (
@@ -8,8 +8,8 @@ export default function LinkNavigationDemo() {
         <Link href="#home" variant="nav" current>
           خانه
         </Link>
-        <Link href="#projects" variant="nav">
-          پروژه ها
+        <Link href="#courses" variant="nav">
+          دوره‌ها
         </Link>
         <Link href="#blog" variant="nav">
           وبلاگ
@@ -20,9 +20,9 @@ export default function LinkNavigationDemo() {
           <House />
           خانه
         </Link>
-        <Link href="#projects" variant="drawer">
-          <Package />
-          پروژه ها
+        <Link href="#courses" variant="drawer">
+          <BookOpen />
+          دوره‌ها
         </Link>
       </nav>
     </div>

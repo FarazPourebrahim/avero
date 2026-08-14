@@ -7,8 +7,8 @@ export default function CommentSectionArticleDemo() {
     <div className="w-full">
       <CommentSection
         count={0}
-        placeholder="نظر خود را درباره این مقاله بنویسید..."
-        hint="نظرات پس از بررسی و تایید مدیر منتشر خواهند شد."
+        placeholder="دیدگاه خود را درباره این مقاله بنویسید…"
+        hint="دیدگاه‌ها پس از بررسی منتشر می‌شوند."
       />
     </div>
   );

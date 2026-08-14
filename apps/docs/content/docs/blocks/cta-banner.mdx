@@ -3,7 +3,7 @@ title: CtaBanner
 description: The dark gradient banner — eyebrow, headline and a statement, over two blurred glows.
 ---
 
-**Reference:** about page (R-03) · **Tier:** A · **Block:** B-13 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/cta-banner)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/cta-banner)
 
 ```tsx
 import { CtaBanner } from "@avero/react";
@@ -14,13 +14,13 @@ import { CtaBanner } from "@avero/react";
 ## Usage
 
 ```tsx
-<CtaBanner eyebrow="مأموریت و چشم‌انداز" title="ساختن آینده‌ای که…">
-  هدف ما در دورلنسر تنها مدیریت چند پروژه نیست…
+<CtaBanner eyebrow="مأموریت ما" title="یادگیری بدون مرز، برای همه">
+  هدف ما فقط برگزاری چند دوره نیست…
 </CtaBanner>
 ```
 
-The reference's banner has no button — it is a statement, not a call to action, despite the name
-this block inherits from the plan. An `actions` slot is there for pages that need one.
+The banner works as a statement on its own, without a button. An `actions` slot is there for
+pages that need a call to action under the text.
 
 ## Anatomy
 
@@ -38,8 +38,8 @@ the markup by hand.
 
 ## Accessibility
 
-- The heading level is yours to set: the reference's is an `h3` because the banner closes a page
-  that already has an `h1` and an `h2`. Pass `titleAs` to fit your own outline.
+- The heading level is yours to set: a banner that closes a page usually follows an `h1` and an
+  `h2`, so pass `titleAs` to fit it into your own outline.
 - The glows are decorative and hidden; there is nothing to describe.
 - The banner's text is white on a dark gradient, which clears AA comfortably at every size used
   here.
@@ -57,4 +57,4 @@ the markup by hand.
 
 ## Related
 
-[SplitHero](./split-hero) · [FeatureGrid](./feature-grid) · [GlowOrbs](../components/glow-orbs)
+[SplitHero](./split-hero) · [FeatureGrid](./feature-grid) · [GlowOrbs](../components/section-header)

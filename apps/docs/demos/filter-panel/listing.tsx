@@ -22,8 +22,8 @@ export default function FilterPanelListingDemo() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">همه دسته‌ها</SelectItem>
-            <SelectItem value="seo">سئو</SelectItem>
-            <SelectItem value="design">طراحی سایت</SelectItem>
+            <SelectItem value="design">طراحی</SelectItem>
+            <SelectItem value="data">داده</SelectItem>
           </SelectContent>
         </Select>
         <NativeSelect aria-label="مرتب‌سازی" defaultValue="newest">

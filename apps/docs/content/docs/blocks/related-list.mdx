@@ -1,33 +1,33 @@
 ---
 title: RelatedList
-description: The related services panel — a titled card over linked thumbnail rows.
+description: The related items panel — a titled card over linked thumbnail rows.
 ---
 
-**Reference:** service detail sidebar (R-05) · **Tier:** A · **Block:** B-24 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/related-list)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/related-list)
 
 ```tsx
 import { RelatedItem, RelatedList } from "@avero/react";
 ```
 
-<ComponentPreview name="related-list/services" />
+<ComponentPreview name="related-list/courses" />
 
 ## Usage
 
 ```tsx
-<RelatedList title="خدمات مرتبط" actions={<Link href="/services">همه</Link>}>
-  {services.map((service) => (
+<RelatedList title="دوره‌های مرتبط" actions={<Link href="/courses">همه</Link>}>
+  {courses.map((course) => (
     <RelatedItem
-      key={service.id}
-      title={service.title}
-      href={`/services/${service.slug}`}
-      image={service.cover}
-      price={service.price}
+      key={course.id}
+      title={course.title}
+      href={`/courses/${course.slug}`}
+      image={course.cover}
+      price={course.price}
     />
   ))}
 </RelatedList>
 ```
 
-A row shows a price when given a number, and anything else through `meta` — "توافقی", a date, a
+A row shows a price when given a number, and anything else through `meta` — "رایگان", a date, a
 rating. `meta` wins when both are passed.
 
 ## Anatomy

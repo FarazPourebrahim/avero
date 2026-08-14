@@ -5,7 +5,7 @@ import { ShareBar } from "@avero/react";
 export default function ShareBarLabelledDemo() {
   return (
     <div className="w-full">
-      <ShareBar variant="labelled" label="اشتراک‌گذاری خدمت:" />
+      <ShareBar variant="labelled" label="اشتراک‌گذاری این دوره:" />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 ---
 title: PostListItem
-description: The related-blog row — a thumbnail beside a clamped title, author and reading time.
+description: The related-post row — a thumbnail beside a clamped title, author and reading time.
 ---
 
-**Reference:** blog article sidebar (R-01) · **Tier:** A · **Block:** B-05 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/post-list-item)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/post-list-item)
 
 ```tsx
 import { PostListItem } from "@avero/react";
@@ -21,18 +21,17 @@ import { PostListItem } from "@avero/react";
 
 ## Usage
 
-The row renders an `<li>`, matching the reference's "بلاگ‌های مرتبط" panel, so wrap a group of them
-in a list:
+The row renders an `<li>`, so wrap a group of them in a list, such as a "مقاله‌های مرتبط" panel:
 
 ```tsx
 <ul className="space-y-4">
-  <PostListItem title="…" href="…" author="محمد ابراهیمی" readTime="5 دقیقه" />
+  <PostListItem title="…" href="…" author="سارا محمدی" readTime="5 دقیقه" />
 </ul>
 ```
 
 ## Composition
 
-Built from `Image` and the vendored `ClockSolidIcon`. The thumbnail is a fixed 64px square
+Built from `Image` and the bundled `ClockSolidIcon`. The thumbnail is a fixed 64px square
 (`size-16`) that fades slightly when the row is hovered, driven by the row's `group` class.
 
 ## Accessibility
@@ -50,7 +49,7 @@ Built from `Image` and the vendored `ClockSolidIcon`. The thumbnail is a fixed 6
 
 ## Do and don't
 
-- **Do** keep the list short — the reference shows three related posts.
+- **Do** keep the list short — three related posts are plenty in a sidebar.
 - **Don't** render it outside a list; an `<li>` needs a list parent.
 
 ## Related

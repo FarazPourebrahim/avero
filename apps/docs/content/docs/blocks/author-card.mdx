@@ -3,7 +3,7 @@ title: AuthorCard
 description: The article author box — avatar, name, role pill and a clamped biography.
 ---
 
-**Reference:** blog article sidebar (R-01) · **Tier:** A · **Block:** B-06 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/author-card)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/author-card)
 
 ```tsx
 import { AuthorCard } from "@avero/react";
@@ -25,10 +25,10 @@ The card sits in the article sidebar, above the related-post panel:
 
 ```tsx
 <AuthorCard
-  name="محمد ابراهیمی"
-  roleLabel="مدیر دورلنسر"
-  image="/authors/ebrahimi.jpg"
-  bio="یه برنامه‌نویس و عاشق دنیای تکنولوژی‌ام…"
+  name="سارا محمدی"
+  roleLabel="سردبیر وبلاگ"
+  image="/authors/sara.jpg"
+  bio="طراح محصول و علاقه‌مند به آموزش…"
 />
 ```
 
@@ -37,12 +37,11 @@ available on the card.
 
 ## Composition
 
-Built from `Card` (`surface` variant, `brand` elevation), `Avatar` (96px, the reference's
-`gray-500/20` four-pixel border) and `Heading` at the `card` scale.
+Built from `Card` (`surface` variant, `brand` elevation), `Avatar` (96px with a four-pixel
+`gray-500/20` border) and `Heading` at the `card` scale.
 
-The reference's own surface carries `shadow-[0_0_20px_0_(--shadow)]`, which compiles to an invalid
-value and renders no shadow at all (defect R-02). Avero ships `shadow-brand-soft` in its place — a
-2%-alpha shadow that is visually indistinguishable from no shadow at card size.
+The surface uses `shadow-brand-soft`, a 2%-alpha shadow that separates the card from the page
+without lifting it into a floating panel.
 
 ## Accessibility
 
@@ -61,8 +60,8 @@ value and renders no shadow at all (defect R-02). Avero ships `shadow-brand-soft
 
 ## Do and don't
 
-- **Do** keep the biography to a few sentences — the reference clamps it at four lines.
-- **Don't** wrap the card in a link; nothing in it is interactive in the reference.
+- **Do** keep the biography to a few sentences — it clamps at four lines.
+- **Don't** wrap the card in a link; nothing in it is interactive.
 
 ## Related
 

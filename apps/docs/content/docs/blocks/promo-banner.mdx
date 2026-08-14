@@ -1,9 +1,9 @@
 ---
 title: PromoBanner
-description: The sidebar promo banner — one artwork that links somewhere, in both reference shapes.
+description: The sidebar promo banner — one artwork that links somewhere, in two shapes.
 ---
 
-**Reference:** services listing (R-06) and projects listing (R-07) sidebars · **Tier:** A · **Block:** B-12 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/promo-banner)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/promo-banner)
 
 ```tsx
 import { PromoBanner } from "@avero/react";
@@ -13,45 +13,37 @@ import { PromoBanner } from "@avero/react";
 
 ## Variants
 
-| Variant   | Reference        | Difference                                   |
-| --------- | ---------------- | -------------------------------------------- |
-| `listing` | Services sidebar | 12px radius, hidden below `md`               |
-| `project` | Projects sidebar | 16px radius, a soft shadow, and a hover fade |
+| Variant   | Use                  | Difference                                   |
+| --------- | -------------------- | -------------------------------------------- |
+| `listing` | Listing sidebars     | 12px radius, hidden below `md`               |
+| `project` | Detail-page sidebars | 16px radius, a soft shadow, and a hover fade |
 
 ## Usage
 
 ```tsx
-<PromoBanner href="/service" image="/banners/services.webp" label="خدمات فریلنسرها" />
+<PromoBanner href="/courses" image="/banners/courses.webp" label="دوره‌های تازه" />
 
 <PromoBanner
   variant="project"
-  href="/dashboard/employer"
-  image="/banners/post-project.webp"
-  label="ثبت پروژه"
+  href="/workshops"
+  image="/banners/workshops.webp"
+  label="ثبت‌نام در کارگاه"
   className="lg:sticky lg:top-4"
 />
 ```
 
 Sticking the banner to the viewport is a placement decision, so it stays a class on the instance
-rather than a prop — the reference only does it on the projects page.
+rather than a prop.
 
 ## Height
 
-The banner has no height of its own: it is as tall as its artwork is, at the sidebar's width.
-
-That is also what the reference renders, though not what it asks for. Its services banner sets
-`w-full h-70` on an `<a>` with no `display` utility, and neither width nor height applies to a
-non-replaced inline element, so the 280px box never exists and the image's `object-cover` never
-crops anything (defect R-19). Avero reproduces the rendered result rather than the intent, per the
-visual-conflict rule — so size the artwork itself, or add an `aspect-*` class if you want a fixed
-box.
+The banner has no height of its own: it is as tall as its artwork is, at the sidebar's width. Size
+the artwork itself, or add an `aspect-*` class if you want a fixed box.
 
 ## Accessibility
 
-The reference's services banner gives its image `alt=""`, and that image is the link's only
-content — which leaves the link with no accessible name at all, announced as just "link" (defect
-R-10). `label` is required here and fills both the link's name and the image's alternative text
-(deviation V-04).
+The artwork is the link's only content, so `label` is required: it fills both the link's accessible
+name and the image's alternative text. Without it the link would be announced as just "link".
 
 ## API reference
 
@@ -61,7 +53,7 @@ R-10). `label` is required here and fills both the link's name and the image's a
 
 ## Do and don't
 
-- **Do** describe the destination in `label` — "ثبت پروژه", not "بنر".
+- **Do** describe the destination in `label` — "ثبت‌نام در کارگاه", not "بنر".
 - **Don't** put text in the artwork alone; it will not be read out, translated, or searchable.
 
 ## Related

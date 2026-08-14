@@ -1,9 +1,9 @@
 ---
 title: Card
-description: The reference's card surfaces, with title, header and footer parts.
+description: Avero's card surfaces, with title, header and footer parts.
 ---
 
-**Reference:** content, dashboard, listing and profile cards (R-01 to R-08) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/card)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/card)
 
 ```tsx
 import { Card, CardFooter, CardHeader, CardTitle } from "@avero/react";
@@ -13,18 +13,18 @@ import { Card, CardFooter, CardHeader, CardTitle } from "@avero/react";
 
 ## Anatomy
 
-| Part       | Slot                      | Notes                                                                                 |
-| ---------- | ------------------------- | ------------------------------------------------------------------------------------- |
-| Card       | `data-slot="card"`        | A `<div>`, or your element with `asChild`                                             |
-| CardHeader | `data-slot="card-header"` | Title at the start, meta or actions at the end                                        |
-| CardTitle  | `data-slot="card-title"`  | An `h3` by default; an icon before the text gets the reference's icon + title pattern |
-| CardFooter | `data-slot="card-footer"` | A row separated by a top border                                                       |
+| Part       | Slot                      | Notes                                                                           |
+| ---------- | ------------------------- | ------------------------------------------------------------------------------- |
+| Card       | `data-slot="card"`        | A `<div>`, or your element with `asChild`                                       |
+| CardHeader | `data-slot="card-header"` | Title at the start, meta or actions at the end                                  |
+| CardTitle  | `data-slot="card-title"`  | An `h3` by default; an icon before the text is sized and tinted as a title icon |
+| CardFooter | `data-slot="card-footer"` | A row separated by a top border                                                 |
 
 ## Examples
 
 - `surface` is the white `rounded-3xl` content card; `flat` the dashboard's `rounded-2xl` card.
 - `glass` is the translucent listing card that turns white on hover; `muted` is the slate tile surface.
-- `elevation` reproduces each reference shadow, from the hairline `xs` to the soft `ambient` and `soft` card shadows.
+- `elevation` picks a card shadow, from the hairline `xs` to the soft `ambient` and `soft` card shadows.
 
 ## Right-to-left
 

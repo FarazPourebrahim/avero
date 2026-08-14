@@ -1,5 +1,5 @@
 import { PillTab, PillTabs } from "@avero/react";
-import { Briefcase, FileText, MessageSquare, Sparkles } from "lucide-react";
+import { Award, BookOpen, FileText, MessageSquare } from "lucide-react";
 
 export default function PillTabsProfileDemo() {
   return (
@@ -7,14 +7,14 @@ export default function PillTabsProfileDemo() {
       <PillTab href="#about" current icon={<FileText />}>
         درباره من
       </PillTab>
-      <PillTab href="#service" icon={<Briefcase />}>
-        خدمات (1)
+      <PillTab href="#courses" icon={<BookOpen />}>
+        دوره‌ها (3)
       </PillTab>
-      <PillTab href="#portfolio" icon={<Sparkles />}>
-        نمونه کار (4)
+      <PillTab href="#certificates" icon={<Award />}>
+        گواهی‌ها (2)
       </PillTab>
       <PillTab href="#comments" icon={<MessageSquare />}>
-        نظرات (0)
+        دیدگاه‌ها (0)
       </PillTab>
     </PillTabs>
   );

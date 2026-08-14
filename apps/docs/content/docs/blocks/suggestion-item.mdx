@@ -1,9 +1,9 @@
 ---
 title: SuggestionItem
-description: The dashboard's suggested project row — title, tags and a match percentage.
+description: A suggestion row, such as a recommended course — title, tags and a match percentage.
 ---
 
-**Reference:** freelancer dashboard (R-02) · **Tier:** A · **Block:** B-04 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/suggestion-item)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/suggestion-item)
 
 ```tsx
 import { SuggestionItem } from "@avero/react";
@@ -26,18 +26,17 @@ Built from `Chip` and `MatchScore`. The score is `MatchScore`, which formats the
 active locale's digits and captions it from the `matchLabel` dictionary entry:
 
 ```tsx
-<SuggestionItem title="طراحی سایت عمده فروش" match={8} tags={["remote"]} />
+<SuggestionItem title="مبانی تحلیل داده" match={8} tags={["آنلاین"]} />
 ```
 
-Stack rows in a `space-y-3` list to reproduce the dashboard's suggested-projects card.
+Stack rows in a `space-y-3` list to build a suggestions card on a dashboard.
 
 ## Accessibility
 
-- The reference renders each row as a plain `div` with no link, so nothing is reachable by keyboard
-  (defect R-10). Passing `href` makes the **title** a link (deviation V-04) without changing how the
-  row looks.
+- Passing `href` makes the **title** a link, so each row is reachable by keyboard without changing
+  how it looks.
 - The title truncates visually but keeps its full text in the DOM, so assistive technology reads the
-  whole project name.
+  whole title.
 
 ## API reference
 

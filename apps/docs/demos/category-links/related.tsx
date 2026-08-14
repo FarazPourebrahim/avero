@@ -1,12 +1,12 @@
 import { CategoryLinks, Chip } from "@avero/react";
 
-const CATEGORIES = ["PHP", "Laravel", "برنامه‌نویسی وب", "API"];
+const CATEGORIES = ["TypeScript", "React", "طراحی رابط کاربری", "دسترس‌پذیری"];
 
 export default function CategoryLinksRelatedDemo() {
   return (
     <CategoryLinks
       title="دسته‌بندی‌های مرتبط"
-      description="دسته‌بندی‌ها و زمینه‌های تخصصی مربوط به این آگهی"
+      description="موضوع‌ها و زمینه‌های مرتبط با این مقاله"
     >
       {CATEGORIES.map((category) => (
         <Chip key={category} asChild variant="tag">

@@ -3,21 +3,21 @@ import { Blockquote, List, ListItem } from "@avero/react";
 export default function ListProseDemo() {
   return (
     <div className="max-w-xl text-base leading-8 text-gray-700">
-      <p>فرآیند انجام یک پروژه فریلنسری معمولاً شامل چند مرحله است:</p>
+      <p>گذراندن یک دوره آنلاین معمولاً چند مرحله دارد:</p>
       <List ordered>
-        <ListItem>ثبت یا انتشار پروژه توسط کارفرما</ListItem>
-        <ListItem>بررسی پروژه توسط فریلنسر</ListItem>
-        <ListItem>ارسال پیشنهاد همکاری</ListItem>
+        <ListItem>انتخاب دوره و ثبت‌نام</ListItem>
+        <ListItem>دیدن جلسه‌ها و انجام تمرین‌ها</ListItem>
+        <ListItem>تحویل پروژه پایانی</ListItem>
       </List>
       <List>
-        <ListItem>مهارت تخصصی قابل ارائه دارند.</ListItem>
-        <ListItem>از کار مستقل لذت می‌برند.</ListItem>
+        <ListItem>هر هفته زمان ثابتی برای یادگیری کنار بگذارید.</ListItem>
+        <ListItem>پرسش‌هایتان را در انجمن دوره مطرح کنید.</ListItem>
       </List>
       <Blockquote>
         <strong className="font-bold text-gray-900">
-          فریلنسری یعنی فروش مهارت، نه صرفاً فروش زمان.
+          یادگیری یعنی تمرین، نه فقط تماشای ویدیو.
         </strong>{" "}
-        هرچه تخصص و نمونه‌کار بیشتری داشته باشید، شانس شما بیشتر است.
+        هرچه زودتر آموخته‌ها را به کار بگیرید، ماندگارتر می‌شوند.
       </Blockquote>
     </div>
   );

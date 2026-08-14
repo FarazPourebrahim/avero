@@ -5,14 +5,14 @@ export default function BadgeOutlineDemo() {
   return (
     <>
       <Badge variant="outline" tone="indigo">
-        سئو
+        طراحی
       </Badge>
       <Badge variant="outline" tone="emerald">
-        همکاری: remote
+        سطح: مقدماتی
       </Badge>
       <Badge variant="outline" tone="amber">
         <MapPin className="size-3.5" aria-hidden />
-        ایران، تهران
+        آنلاین
       </Badge>
     </>
   );

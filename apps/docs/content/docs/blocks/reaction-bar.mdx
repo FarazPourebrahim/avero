@@ -1,44 +1,43 @@
 ---
 title: ReactionBar
-description: The project action row — like, views, remaining capacity and save.
+description: The action row — like, views, remaining capacity and save.
 ---
 
-**Reference:** project detail (R-07) · **Tier:** A · **Block:** B-19 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/reaction-bar)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/reaction-bar)
 
 ```tsx
 import { ReactionBar } from "@avero/react";
 ```
 
-<ComponentPreview name="reaction-bar/project" />
+<ComponentPreview name="reaction-bar/course" />
 
 ## Usage
 
 ```tsx
 <ReactionBar
-  likes={project.likes}
-  liked={project.likedByMe}
+  likes={course.likes}
+  liked={course.likedByMe}
   onLike={toggleLike}
-  views={project.views}
-  capacity="حداکثر ۱۵ رزومه"
-  saved={project.savedByMe}
+  views={course.views}
+  capacity="حداکثر ۱۵ نفر"
+  saved={course.savedByMe}
   onSave={toggleSave}
 />
 ```
 
-Each pill appears only when it has a value, so a project without a capacity limit simply has three
+Each pill appears only when it has a value, so an item without a capacity limit simply has three
 pills. Anything extra goes in as children, at the end of the row.
 
 ## Counts
 
-`likes` and `views` are printed exactly as given, which is what the reference does — its counts are
-Latin digits on a page whose prices are Persian (defect R-16). Format them yourself with
+`likes` and `views` are printed exactly as given, so the digits are your choice. Format them with
 `useAveroFormatter` when you want the locale's digits.
 
 ## Toggles
 
 Both toggles are buttons with `aria-pressed` rather than checkboxes, and the attribute follows
-`liked` and `saved`. The reference sets it too, but hard-codes it to `false`, so a screen reader
-never learns that the viewer has already liked or saved (defect R-10, deviation V-04).
+`liked` and `saved`, so a screen reader learns whether the viewer has already liked or saved the
+item.
 
 ## Anatomy
 

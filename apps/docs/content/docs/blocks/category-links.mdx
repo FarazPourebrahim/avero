@@ -3,7 +3,7 @@ title: CategoryLinks
 description: The related categories section — a small titled header over a row of tag links.
 ---
 
-**Reference:** project detail (R-07) · **Tier:** A · **Block:** B-21 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/category-links)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/category-links)
 
 ```tsx
 import { CategoryLinks, Chip } from "@avero/react";
@@ -16,7 +16,7 @@ import { CategoryLinks, Chip } from "@avero/react";
 ```tsx
 <CategoryLinks
   title="دسته‌بندی‌های مرتبط"
-  description="دسته‌بندی‌ها و زمینه‌های تخصصی مربوط به این آگهی"
+  description="موضوع‌ها و زمینه‌های مرتبط با این مقاله"
   icon={<FolderTreeIcon />}
 >
   {categories.map((category) => (
@@ -27,8 +27,8 @@ import { CategoryLinks, Chip } from "@avero/react";
 </CategoryLinks>
 ```
 
-The links are `Chip`s in their `tag` variant, rendered `asChild` around an anchor — that is the
-reference's own markup, and it keeps the hover treatment on the whole chip rather than the text.
+The links are `Chip`s in their `tag` variant, rendered `asChild` around an anchor, which keeps the
+hover treatment on the whole chip rather than only the text.
 
 ## Anatomy
 
@@ -37,8 +37,8 @@ reference's own markup, and it keeps the hover treatment on the whole chip rathe
 | Root  | `data-slot="category-links"`       | Brings its own top divider |
 | Items | `data-slot="category-links-items"` | The wrapping link row      |
 
-The block closes the project description rather than sitting on its own card, so it carries a
-divider instead of a surface.
+The block usually closes an article or a course description rather than sitting on its own card,
+so it carries a divider instead of a surface.
 
 ## API reference
 
@@ -49,7 +49,7 @@ divider instead of a surface.
 ## Do and don't
 
 - **Do** link every chip somewhere — a category that goes nowhere is a label, not a link.
-- **Don't** repeat the project's own tags here; these are categories, not skills.
+- **Don't** repeat the page's own tags here; these are categories, not keywords.
 
 ## Related
 

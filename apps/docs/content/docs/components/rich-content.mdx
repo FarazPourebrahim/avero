@@ -1,9 +1,9 @@
 ---
 title: RichContent
-description: Renders stored HTML with the reference's prose styles, always sanitized.
+description: Renders stored HTML with Avero's prose styles, always sanitized.
 ---
 
-**Reference:** article body (R-01), service description (R-05), project description (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/rich-content)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/rich-content)
 
 ```tsx
 import { RichContent } from "@avero/react";
@@ -17,7 +17,7 @@ import { RichContent } from "@avero/react";
 | ---- | -------------------------- | ---------------------------------------------- |
 | Root | `data-slot="rich-content"` | Carries the prose class for the chosen variant |
 
-The three variants map to the reference's three prose systems: `content` (`.content-area`),
+The three variants are three separate prose styles: `content` (`.content-area`),
 `editor` (`.editor`) and `question` (`.question-rendered-content`). They are exclusive — each
 variant carries its own typography.
 

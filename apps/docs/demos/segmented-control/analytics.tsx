@@ -1,20 +1,20 @@
 import { SegmentedControl, SegmentedControlItem } from "@avero/react";
-import { Briefcase, Eye, Zap } from "lucide-react";
+import { BookOpen, FileText, Zap } from "lucide-react";
 
 export default function SegmentedControlAnalyticsDemo() {
   return (
-    <SegmentedControl aria-label="نوع آنالیتیکس" defaultValue="services">
-      <SegmentedControlItem value="services">
-        <Briefcase className="size-3.5 sm:size-4" aria-hidden />
-        خدمات
+    <SegmentedControl aria-label="نوع آنالیتیکس" defaultValue="courses">
+      <SegmentedControlItem value="courses">
+        <BookOpen className="size-3.5 sm:size-4" aria-hidden />
+        دوره‌ها
       </SegmentedControlItem>
-      <SegmentedControlItem value="portfolio">
-        <Eye className="size-3.5 sm:size-4" aria-hidden />
-        نمونه‌کار
+      <SegmentedControlItem value="articles">
+        <FileText className="size-3.5 sm:size-4" aria-hidden />
+        مقاله‌ها
       </SegmentedControlItem>
-      <SegmentedControlItem value="stories">
+      <SegmentedControlItem value="workshops">
         <Zap className="size-3.5 sm:size-4" aria-hidden />
-        استوری
+        کارگاه‌ها
       </SegmentedControlItem>
     </SegmentedControl>
   );

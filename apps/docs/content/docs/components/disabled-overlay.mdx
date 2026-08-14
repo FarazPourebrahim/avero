@@ -3,7 +3,7 @@ title: DisabledOverlay
 description: Covers a card that can no longer be acted on, with the reason on a pill.
 ---
 
-**Reference:** "تکمیل ظرفیت" project cards (R-07) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/disabled-overlay)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/disabled-overlay)
 
 ```tsx
 import { DisabledOverlay } from "@avero/react";
@@ -25,8 +25,8 @@ The pill is centred, so the overlay reads the same in both directions.
 ## Composition
 
 - Put it inside a `relative` container and match `radius` to that container's corners.
-- The reference also dims the card itself (`opacity-70 blur-[1px]`) — apply that to the card, not
-  the overlay, so the reason stays legible.
+- To dim the card itself (`opacity-70 blur-[1px]`), apply that to the card, not the overlay, so
+  the reason stays legible.
 - Make the card genuinely inert: `aria-disabled`, `pointer-events-none` and no focusable children.
 
 ## Accessibility
@@ -49,7 +49,7 @@ The pill is centred, so the overlay reads the same in both directions.
 
 ## Do and don't
 
-- **Do** state why — "تکمیل ظرفیت" tells the user more than a greyed-out card.
+- **Do** state why — "ظرفیت تکمیل شد" tells the user more than a greyed-out card.
 - **Don't** leave links inside a covered card focusable.
 
 ## Related

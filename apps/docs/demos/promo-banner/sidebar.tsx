@@ -13,8 +13,8 @@ const ARTWORK =
 export default function PromoBannerSidebarDemo() {
   return (
     <div className="grid w-full gap-6 sm:grid-cols-2">
-      <PromoBanner href="#" image={ARTWORK} label="خدمات فریلنسرها" />
-      <PromoBanner href="#" image={ARTWORK} label="ثبت پروژه" variant="project" />
+      <PromoBanner href="#" image={ARTWORK} label="دوره‌های تازه" />
+      <PromoBanner href="#" image={ARTWORK} label="ثبت‌نام در کارگاه" variant="project" />
     </div>
   );
 }

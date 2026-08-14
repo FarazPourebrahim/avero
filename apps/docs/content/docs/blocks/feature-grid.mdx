@@ -3,7 +3,7 @@ title: FeatureGrid
 description: The "why us" section — an icon title above a responsive grid of feature cards.
 ---
 
-**Reference:** about page (R-03) · **Tier:** A · **Block:** B-15 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/feature-grid)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/feature-grid)
 
 ```tsx
 import { FeatureCard, FeatureGrid } from "@avero/react";
@@ -14,11 +14,11 @@ import { FeatureCard, FeatureGrid } from "@avero/react";
 ## Usage
 
 ```tsx
-<FeatureGrid title="چرا دورلنسر انتخابی متفاوت است؟" icon={<SparklesIcon />}>
-  <FeatureCard title="سیستم پرداخت امن" description="…" tone="emerald" />
-  <FeatureCard title="برترین استعدادها" description="…" tone="blue" />
-  <FeatureCard title="سنجش مهارت" description="…" tone="purple" />
-  <FeatureCard title="پشتیبانی فعال" description="…" tone="amber" />
+<FeatureGrid title="چرا دوره‌های ما متفاوت‌اند؟" icon={<SparklesIcon />}>
+  <FeatureCard title="پرداخت امن و بدون دغدغه" description="…" tone="emerald" />
+  <FeatureCard title="مدرس‌های باتجربه" description="…" tone="blue" />
+  <FeatureCard title="گواهی پایان دوره" description="…" tone="purple" />
+  <FeatureCard title="پشتیبانی همیشگی" description="…" tone="amber" />
 </FeatureGrid>
 ```
 
@@ -28,7 +28,7 @@ that only accepted a fixed shape would rule out mixing in anything else.
 ## Columns
 
 `columns` sets the count at the widest breakpoint. Every value starts at one column on a phone and
-two on a tablet, which is what the reference does:
+two on a tablet:
 
 | `columns`     | sm  | lg  |
 | ------------- | --- | --- |
@@ -46,9 +46,8 @@ two on a tablet, which is what the reference does:
 
 ## Accessibility
 
-The title renders as an `h3` by default, matching the reference's place in the page outline;
-pass `titleAs` when your page nests differently. Without a title the grid is a plain section —
-give it an `aria-label` if it needs to be a landmark.
+The title renders as an `h3` by default; pass `titleAs` when your page nests differently. Without a
+title the grid is a plain section — give it an `aria-label` if it needs to be a landmark.
 
 ## API reference
 

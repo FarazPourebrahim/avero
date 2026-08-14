@@ -4,15 +4,15 @@ export default function PostListItemRelatedDemo() {
   return (
     <ul className="w-full max-w-sm space-y-4">
       <PostListItem
-        title="بهترین مهارت‌های فریلنسری در سال ۲۰۲۶؛ کدام مهارت‌ها آینده بهتری دارند؟"
+        title="ده اصل طراحی رابط کاربری که هر طراح تازه‌کاری باید بداند"
         href="#"
-        author="محمد ابراهیمی"
+        author="سارا محمدی"
         readTime="5 دقیقه"
       />
       <PostListItem
-        title="چطور اولین پروژه فریلنسری خود را بگیریم؟"
+        title="آشنایی با اصول تایپوگرافی فارسی"
         href="#"
-        author="محمد ابراهیمی"
+        author="علی کریمی"
         readTime="7 دقیقه"
       />
     </ul>

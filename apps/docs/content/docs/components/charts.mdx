@@ -3,7 +3,7 @@ title: Charts
 description: Recharts wrappers styled to the dashboard's analytics cards.
 ---
 
-**Reference:** dashboard analytics and trend cards (R-02) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/charts)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/charts)
 
 Charts live in a separate package, so the core library never pulls in Recharts:
 
@@ -36,10 +36,9 @@ import { AreaChart, ChartCard, ChartTooltip, LineChart, chartPalette } from "@av
 
 ## Right-to-left
 
-Recharts lays out in physical directions. The reference itself does **not** mirror its axis: the
-dashboard plots its dates in ascending order across the x axis even though the page is RTL, so
-`reversed` defaults to `false` (decision D-11). Pass `reversed` when you do want the axis mirrored —
-it also moves the y axis to the opposite edge.
+Recharts lays out in physical directions. Time series conventionally run left to right even on
+RTL pages, so dates stay in ascending order across the x axis and `reversed` defaults to `false`.
+Pass `reversed` when you do want the axis mirrored — it also moves the y axis to the opposite edge.
 
 ## Composition
 
@@ -47,7 +46,7 @@ it also moves the y axis to the opposite edge.
   itself fills the body through Recharts' `ResponsiveContainer`.
 - `series` is data-driven: `{ dataKey, name, color }`. Without a colour, the palette is used in
   order — `views`, `likes`, `clicks`, `comments`.
-- `ChartTooltip` is the reference's dark tooltip; use its `formatter` and `labelFormatter` to
+- `ChartTooltip` is the dark tooltip; use its `formatter` and `labelFormatter` to
   localise numbers and dates with Avero's `useAveroFormatter`.
 
 ## Accessibility

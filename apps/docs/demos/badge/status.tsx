@@ -8,9 +8,9 @@ export default function BadgeStatusDemo() {
         9 جای خالی
       </Badge>
       <Badge tone="danger" className="py-1">
-        تکمیل ظرفیت
+        ظرفیت تکمیل شد
       </Badge>
-      <Badge>remote</Badge>
+      <Badge>آنلاین</Badge>
       <Badge variant="counter">0</Badge>
     </>
   );

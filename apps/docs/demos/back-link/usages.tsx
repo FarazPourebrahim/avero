@@ -5,7 +5,7 @@ export default function BackLinkUsagesDemo() {
     <div className="flex flex-col items-start gap-6">
       <BackLink />
       <BackLink variant="soft" />
-      <BackLink variant="subtle" href="#projects" label="بازگشت به لیست پروژه‌ها" />
+      <BackLink variant="subtle" href="#courses" label="بازگشت به فهرست دوره‌ها" />
     </div>
   );
 }

@@ -1,15 +1,15 @@
 ---
 title: ShowcaseCard
-description: The portfolio card — a zooming cover with a hover overlay, tags and an action row.
+description: The showcase card — a zooming cover with a hover overlay, tags and an action row.
 ---
 
-**Reference:** freelancer portfolio (R-08) · **Tier:** A · **Block:** B-02 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/showcase-card)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/showcase-card)
 
 ```tsx
 import { ShowcaseCard } from "@avero/react";
 ```
 
-<ComponentPreview name="showcase-card/portfolio" />
+<ComponentPreview name="showcase-card/showcase" />
 
 ## Anatomy
 
@@ -17,25 +17,24 @@ import { ShowcaseCard } from "@avero/react";
 | ------- | --------------------------------- | ----------------------------------------------- |
 | Root    | `data-slot="showcase-card"`       | `group` card; the cover zooms on hover          |
 | Title   | `data-slot="showcase-card-title"` | Links when `href` is given; turns blue on hover |
-| Tags    | `data-slot="showcase-card-tags"`  | `Chip variant="mini"` technology tags           |
+| Tags    | `data-slot="showcase-card-tags"`  | `Chip variant="mini"` tags                      |
 | Actions | —                                 | Like, share, and a `report` slot                |
 
 ## Composition
 
 Built only from Avero components — `Image`, `Chip`, `Button` and `IconButton`:
 
-- the cover uses `Image zoom="group"`, which is the reference's
-  `transition-transform duration-500 group-hover:scale-105`;
+- the cover uses `Image zoom="group"`, a 500ms `group-hover:scale-105` transition;
 - the like control is `Button variant="soft" tone="slate" size="xs"`;
 - the share control is `IconButton variant="soft" tone="slate"`.
 
-The `slate` tone was added to `Button` so it mirrors the one `IconButton` already had, rather than
-hand-writing the reference's colours into this block.
+`Button` has a `slate` tone that matches the one `IconButton` already has, so the block needs no
+hand-written colours.
 
 ## The report slot
 
-The report control is shared by the service, project and portfolio pages, so it is its own block
-([`ReportAction`](./report), B-10) rather than part of this card. Pass it in:
+The report control is shared by several cards and pages, so it is its own block
+([`ReportAction`](./report)) rather than part of this card. Pass it in:
 
 ```tsx
 <ShowcaseCard title="…" report={<ReportAction onReport={…} />} />
@@ -43,12 +42,10 @@ The report control is shared by the service, project and portfolio pages, so it 
 
 ## Accessibility
 
-- The reference renders the whole card as a `div` with `cursor-pointer` and **no link**, then nests
-  its like, share and report buttons inside it (defect R-10). Nesting controls inside a link is
-  invalid, so here the **title** carries the link and the buttons are its siblings (deviation V-04).
-  The visuals are unchanged.
+- The **title** carries the link, and the like, share and report buttons are its siblings.
+  Nesting controls inside a link is invalid, so the card itself is never the link.
 - The like control exposes `aria-pressed`, and both controls take their accessible names from the
-  `like` and `share` dictionary entries — the reference labels its share button with `title` alone.
+  `like` and `share` dictionary entries.
 - The cover image is decorative (`alt=""`); the title already carries its meaning.
 
 ## API reference

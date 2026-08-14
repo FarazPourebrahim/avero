@@ -20,7 +20,7 @@ import CapacityMeterUsages from "./capacity-meter/usages";
 import CardSurfaces from "./card/surfaces";
 import CoverHeaderProfile from "./cover-header/profile";
 import CarouselPill from "./carousel/pill";
-import CarouselRelatedProjects from "./carousel/related-projects";
+import CarouselRelatedCourses from "./carousel/related-courses";
 import CategoryLinksRelated from "./category-links/related";
 import ChartsAnalytics from "./charts/analytics";
 import ChartsTrend from "./charts/trend";
@@ -30,7 +30,7 @@ import CommentSectionService from "./comment-section/service";
 import ContactMethodsDirect from "./contact-methods/direct";
 import ContainerSizes from "./container/sizes";
 import CtaBannerMission from "./cta-banner/mission";
-import DashboardShellFreelancer from "./dashboard-shell/freelancer";
+import DashboardShellLearner from "./dashboard-shell/learner";
 import ChipStatic from "./chip/static";
 import DisabledOverlayFullCard from "./disabled-overlay/full-card";
 import DividerBasic from "./divider/basic";
@@ -53,7 +53,7 @@ import ImageCardAndFallback from "./image/card-and-fallback";
 import ImageCover from "./image/cover";
 import LayoutsTemplates from "./layouts/templates";
 import LinkInline from "./link/inline";
-import ListingCardService from "./listing-card/service";
+import ListingCardCourse from "./listing-card/course";
 import LinkNavigation from "./link/navigation";
 import ListProse from "./list/prose";
 import MatchScoreSuggested from "./match-score/suggested";
@@ -68,18 +68,18 @@ import PriceTagVariants from "./price-tag/variants";
 import ProgressCapacity from "./progress/capacity";
 import ProgressVariants from "./progress/variants";
 import PromoBannerSidebar from "./promo-banner/sidebar";
-import ProfileHeaderFreelancer from "./profile-header/freelancer";
-import ProviderCardService from "./provider-card/service";
+import ProfileHeaderInstructor from "./profile-header/instructor";
+import ProviderCardInstructor from "./provider-card/instructor";
 import QuickActionsDashboard from "./quick-actions/dashboard";
 import RatingUsages from "./rating/usages";
-import ReactionBarProject from "./reaction-bar/project";
-import RelatedListServices from "./related-list/services";
+import ReactionBarCourse from "./reaction-bar/course";
+import RelatedListCourses from "./related-list/courses";
 import ReportVariants from "./report/variants";
 import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
 import SelectFilter from "./select/filter";
-import ShowcaseCardPortfolio from "./showcase-card/portfolio";
+import ShowcaseCardShowcase from "./showcase-card/showcase";
 import SiteFooterDefault from "./site-footer/default";
 import SiteHeaderDefault from "./site-header/default";
 import SplitHeroAbout from "./split-hero/about";
@@ -116,11 +116,11 @@ export const demos = {
   "table/article": TableArticle,
   "list/prose": ListProse,
   "author-card/sidebar": AuthorCardSidebar,
-  "listing-card/service": ListingCardService,
+  "listing-card/course": ListingCardCourse,
   "opportunity-card/related": OpportunityCardRelated,
   "suggestion-item/dashboard": SuggestionItemDashboard,
   "post-list-item/related": PostListItemRelated,
-  "provider-card/service": ProviderCardService,
+  "provider-card/instructor": ProviderCardInstructor,
   "comment-section/article": CommentSectionArticle,
   "comment-section/service": CommentSectionService,
   "filter-panel/listing": FilterPanelListing,
@@ -131,17 +131,17 @@ export const demos = {
   "achievements-panel/rank": AchievementsPanelRank,
   "price-card/base": PriceCardBase,
   "contact-methods/direct": ContactMethodsDirect,
-  "related-list/services": RelatedListServices,
+  "related-list/courses": RelatedListCourses,
   "article-header/blog-post": ArticleHeaderBlogPost,
-  "profile-header/freelancer": ProfileHeaderFreelancer,
-  "reaction-bar/project": ReactionBarProject,
+  "profile-header/instructor": ProfileHeaderInstructor,
+  "reaction-bar/course": ReactionBarCourse,
   "category-links/related": CategoryLinksRelated,
   "split-hero/about": SplitHeroAbout,
   "feature-grid/why-us": FeatureGridWhyUs,
   "report/variants": ReportVariants,
   "share-bar/icons": ShareBarIcons,
   "share-bar/labelled": ShareBarLabelled,
-  "showcase-card/portfolio": ShowcaseCardPortfolio,
+  "showcase-card/showcase": ShowcaseCardShowcase,
   "meta/article": MetaArticle,
   "meta/contacts": MetaContacts,
   "price-tag/variants": PriceTagVariants,
@@ -164,12 +164,12 @@ export const demos = {
   "container/sizes": ContainerSizes,
   "site-header/default": SiteHeaderDefault,
   "site-footer/default": SiteFooterDefault,
-  "dashboard-shell/freelancer": DashboardShellFreelancer,
+  "dashboard-shell/learner": DashboardShellLearner,
   "layouts/templates": LayoutsTemplates,
   "drawer/menu": DrawerMenu,
   "empty-state/variants": EmptyStateVariants,
   "disabled-overlay/full-card": DisabledOverlayFullCard,
-  "carousel/related-projects": CarouselRelatedProjects,
+  "carousel/related-courses": CarouselRelatedCourses,
   "carousel/pill": CarouselPill,
   "table-of-contents/article": TableOfContentsArticle,
   "avatar/usages": AvatarUsages,

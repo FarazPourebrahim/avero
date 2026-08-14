@@ -3,8 +3,8 @@ import { ContactMethod, ContactMethods, TelegramIcon } from "@avero/react";
 export default function ContactMethodsDirectDemo() {
   return (
     <ContactMethods
-      title="راه‌های ارتباط مستقیم"
-      description="جهت مشاوره و هماهنگی سریع می‌توانید از راه‌های ارتباطی تاییدشده زیر استفاده نمایید:"
+      title="راه‌های ارتباط با پشتیبانی"
+      description="برای پرسش درباره ثبت‌نام یا دسترسی به دوره‌ها از راه‌های زیر با ما در تماس باشید:"
     >
       <ContactMethod
         href="mailto:hello@example.com"
@@ -12,7 +12,7 @@ export default function ContactMethodsDirectDemo() {
         value="hello@example.com"
         external
       />
-      <ContactMethod href="tel:+989221257181" label="phone:" value="۰۹۲۲۱۲۵۷۱۸۱" />
+      <ContactMethod href="tel:+982100000000" label="phone:" value="۰۲۱-۰۰۰۰۰۰۰۰" />
       <ContactMethod
         href="https://t.me/example"
         label="telegram:"

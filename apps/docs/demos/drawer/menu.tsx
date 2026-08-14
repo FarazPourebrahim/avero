@@ -10,7 +10,7 @@ import {
 } from "@avero/react";
 import { LayoutDashboard } from "lucide-react";
 
-const NAV = ["پیشخوان", "مشاهده پروفایل", "خدمات من", "نمونه‌کارها"];
+const NAV = ["پیشخوان", "مشاهده پروفایل", "دوره‌های من", "گواهی‌ها"];
 
 export default function DrawerMenuDemo() {
   return (

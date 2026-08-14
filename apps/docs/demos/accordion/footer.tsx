@@ -17,11 +17,11 @@ export default function AccordionFooterDemo() {
             <AccordionLink href="#contact">تماس با ما</AccordionLink>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="skills">
-          <AccordionTrigger>مهارت ها</AccordionTrigger>
+        <AccordionItem value="categories">
+          <AccordionTrigger>دسته‌بندی دوره‌ها</AccordionTrigger>
           <AccordionContent>
-            <AccordionLink href="#web">طراحی سایت</AccordionLink>
-            <AccordionLink href="#content">تولید محتوا</AccordionLink>
+            <AccordionLink href="#design">طراحی رابط کاربری</AccordionLink>
+            <AccordionLink href="#data">تحلیل داده</AccordionLink>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="quick">

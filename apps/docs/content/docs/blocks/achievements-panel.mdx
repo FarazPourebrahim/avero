@@ -3,7 +3,7 @@ title: AchievementsPanel
 description: The dashboard rank panel — a titled card over a highlight block and tinted rows.
 ---
 
-**Reference:** freelancer dashboard (R-02) · **Tier:** A · **Block:** B-25 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/achievements-panel)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/achievements-panel)
 
 ```tsx
 import { AchievementsPanel, HighlightPanel, InfoRow } from "@avero/react";
@@ -15,14 +15,14 @@ import { AchievementsPanel, HighlightPanel, InfoRow } from "@avero/react";
 
 ```tsx
 <AchievementsPanel title="رتبه و دستاوردها" icon={<TrophyIcon className="size-4 text-amber-500" />}>
-  <HighlightPanel label="رتبه در دورلنسر" value={rank ?? "-"} />
-  <InfoRow label="گواهینامه‌ها" value={`${certificates} عدد`} tone="emerald" icon={<AwardIcon />} />
+  <HighlightPanel label="رتبه در جدول امتیازها" value={rank ?? "-"} />
+  <InfoRow label="گواهی‌ها" value={`${certificates} عدد`} tone="emerald" icon={<AwardIcon />} />
   <InfoRow label="نشان‌ها" value={`${badges} عدد`} tone="purple" icon={<BadgeIcon />} />
 </AchievementsPanel>
 ```
 
 The panel supplies the card, the heading and the rhythm between rows; what goes in it is yours.
-The reference's own contents are one `HighlightPanel` for the rank and three `InfoRow`s.
+A typical panel holds one `HighlightPanel` for the headline figure and a few `InfoRow`s.
 
 ## Anatomy
 
@@ -33,9 +33,9 @@ The reference's own contents are one `HighlightPanel` for the rank and three `In
 
 ## Why not `CardTitle`
 
-`CardTitle` tints every icon it contains indigo, which is right for the panels that use it — but
-the reference's trophy here is amber. The heading is therefore a plain element, and the icon keeps
-whatever colour you give it.
+`CardTitle` tints every icon it contains indigo, which is right for the panels that use it — but a
+trophy or a star usually reads better in amber. The heading is therefore a plain element, and the
+icon keeps whatever colour you give it.
 
 ## API reference
 
@@ -48,7 +48,7 @@ whatever colour you give it.
 
 ## Do and don't
 
-- **Do** show a placeholder like "-" for a rank that does not exist yet, as the reference does.
+- **Do** show a placeholder like "-" for a rank that does not exist yet, rather than a misleading 0.
 - **Don't** let the rows exceed four or five; the panel is a summary, not a table.
 
 ## Related

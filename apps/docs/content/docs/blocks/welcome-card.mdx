@@ -3,7 +3,7 @@ title: WelcomeCard
 description: The dashboard greeting — a bold line naming the person above a quieter welcome.
 ---
 
-**Reference:** freelancer dashboard sidebar (R-02) · **Tier:** A · **Block:** B-18 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/welcome-card)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/welcome-card)
 
 ```tsx
 import { WelcomeCard } from "@avero/react";
@@ -16,10 +16,10 @@ import { WelcomeCard } from "@avero/react";
 ```tsx
 <WelcomeCard name={user.displayName} />
 
-<WelcomeCard name={user.displayName}>۳ پروژه جدید منتظر بررسی توست</WelcomeCard>
+<WelcomeCard name={user.displayName}>امروز دو جلسه تازه در انتظار شماست</WelcomeCard>
 ```
 
-`name` is filled into the `greeting` dictionary string — `"{name} عزیز، سلام 👋"` in Persian,
+`name` is filled into the `greeting` dictionary string — `"سلام {name} 👋"` in Persian,
 `"Hello {name} 👋"` in English — so the sentence structure stays with the locale rather than being
 built by string concatenation at the call site. Pass `greeting` to replace the whole line.
 
@@ -30,11 +30,10 @@ built by string concatenation at the call site. Pass `greeting` to replace the w
 | Root     | `data-slot="welcome-card"`          | A 16px-radius white card |
 | Greeting | `data-slot="welcome-card-greeting"` | The bold first line      |
 
-## Reference defect
+## Shadow
 
-The card's shadow is written `shadow-[0_0_20px_0_(--shadow)]`, which Tailwind compiles to an
-invalid value, so the reference renders no shadow at all (defect R-02). Avero ships
-`shadow-brand-soft` — a 2%-alpha shadow that is visually indistinguishable at this size.
+The card uses `shadow-brand-soft`, a 2%-alpha shadow that separates it from the page background
+without lifting it visually.
 
 ## API reference
 

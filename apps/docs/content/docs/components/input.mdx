@@ -1,9 +1,9 @@
 ---
 title: Input
-description: The single-line text field, in the reference's three field treatments.
+description: The single-line text field, in three field treatments.
 ---
 
-**Reference:** listing filter panel (R-06) · **Tier:** A · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/input)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/input)
 
 ```tsx
 import { Input } from "@avero/react";
@@ -17,8 +17,8 @@ import { Input } from "@avero/react";
 | ---- | ------------------- | ------------------------------------------- |
 | Root | `data-slot="input"` | Native `<input>`; `type` defaults to `text` |
 
-`filter` is the reference's own filter box. `soft` and `slate` mirror the two comment-box
-treatments (R-01, R-05) so an input can sit beside a [Textarea](./textarea) in the same form.
+`filter` is the compact filter box. `soft` and `slate` mirror the two comment-box treatments, so
+an input can sit beside a [Textarea](./textarea) in the same form.
 
 ## Right-to-left
 
@@ -28,7 +28,7 @@ left-to-right values such as emails, phone numbers or URLs.
 ## Composition
 
 - Every input needs a label: a real `<label htmlFor>`, or `aria-label` when the design has none.
-- Set `aria-invalid` while a field fails validation; the border and focus ring turn red (V-08).
+- Set `aria-invalid` while a field fails validation; the border and focus ring turn red.
 
 ## Accessibility
 

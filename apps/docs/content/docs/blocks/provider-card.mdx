@@ -1,15 +1,15 @@
 ---
 title: ProviderCard
-description: The service provider box — identity row, mini statistics and a link to the full profile.
+description: The instructor or host box — identity row, mini statistics and a link to the full profile.
 ---
 
-**Reference:** service detail sidebar (R-05) · **Tier:** A · **Block:** B-07 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/provider-card)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/provider-card)
 
 ```tsx
 import { ProviderCard } from "@avero/react";
 ```
 
-<ComponentPreview name="provider-card/service" />
+<ComponentPreview name="provider-card/instructor" />
 
 ## Anatomy
 
@@ -23,35 +23,34 @@ import { ProviderCard } from "@avero/react";
 
 ```tsx
 <ProviderCard
-  name="زینب فلاح"
-  headline="طراحی سایت و سئو"
-  image="/providers/zeinab.jpg"
+  name="نگار رضایی"
+  headline="مدرس طراحی رابط کاربری"
+  image="/instructors/negar.jpg"
   stats={[
-    { label: "تعداد خدمات", value: "1" },
-    { label: "امتیاز رضایت", value: <Rating value={0} size="sm" /> },
+    { label: "تعداد دوره‌ها", value: "3" },
+    { label: "امتیاز شرکت‌کنندگان", value: <Rating value={4.8} size="sm" /> },
   ]}
-  profileHref="/freelancer/zeinab"
+  profileHref="/instructors/negar"
 />
 ```
 
 The eyebrow and the profile link fall back to the `serviceProvider` and `viewProfile` dictionary
-strings, so both follow the provider's locale without being passed.
+strings, so both follow the active locale without being passed.
 
 ## Composition
 
-Built from `Card` (`surface`, `xs` elevation), `Avatar` (64px with the reference's two-pixel
-indigo ring), `Eyebrow`, `MiniStat` and an outlined `Button` rendered `asChild` as a link.
+Built from `Card` (`surface`, `xs` elevation), `Avatar` (64px with a two-pixel indigo ring),
+`Eyebrow`, `MiniStat` and an outlined `Button` rendered `asChild` as a link.
 
-Statistics are deliberately untyped beyond `label` and `value`: the reference's rating stat is a
-filled star beside a two-decimal score, which is `Rating` rather than a number, and the same slot
-takes plain counts.
+Statistics are deliberately untyped beyond `label` and `value`: a rating stat is a filled star
+beside a two-decimal score, which is `Rating` rather than a number, and the same slot takes plain
+counts.
 
 ## Accessibility
 
-- The provider's name is a real `h4`, so the card joins the page outline beside the other sidebar
-  panels.
+- The name is a real `h4`, so the card joins the page outline beside the other sidebar panels.
 - The profile link is a link, not a button — it navigates.
-- `Rating` exposes itself as one image labelled "امتیاز ۰٫۰۰", so the score is announced as a
+- `Rating` exposes itself as one image labelled with its score, so the score is announced as a
   rating rather than as a bare number.
 
 ## API reference
@@ -66,7 +65,7 @@ Each entry in `stats`:
 
 ## Do and don't
 
-- **Do** keep statistics to an even number — the reference's grid is two columns wide.
+- **Do** keep statistics to an even number — the grid is two columns wide.
 - **Don't** put the whole card in a link; only the profile call to action navigates.
 
 ## Related

@@ -3,7 +3,7 @@ title: ArticleHeader
 description: The blog article header — cover, title and the metadata panel.
 ---
 
-**Reference:** blog article (R-01) · **Tier:** A · **Block:** B-20 · [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/article-header)
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/blocks/article-header)
 
 ```tsx
 import { ArticleHeader } from "@avero/react";
@@ -44,10 +44,10 @@ space evenly whether the card lays them out or this block does.
 
 ## Accessibility
 
-- `titleId` exists so the surrounding `<article>` can point `aria-labelledby` at the title, as the
-  reference does — the article is then announced by its name rather than as an unnamed region.
-- The cover's alternative text falls back to the title, which is what the reference uses. Pass
-  `imageAlt=""` when the cover is pure decoration.
+- `titleId` exists so the surrounding `<article>` can point `aria-labelledby` at the title — the
+  article is then announced by its name rather than as an unnamed region.
+- The cover's alternative text falls back to the title. Pass `imageAlt=""` when the cover is pure
+  decoration.
 - Dates belong in a `<time datetime="…">` inside the meta item, so the machine-readable date
   survives the Jalali formatting.
 
