@@ -226,15 +226,16 @@ export const ActivityHeatmap = forwardRef<HTMLDivElement, ActivityHeatmapProps>(
             >
               {weekdays.map((weekday, row) => (
                 <div role="row" className="contents" key={weekday.long}>
+                  {/* The full name is real text rather than an aria-label: a header whose only
+                      visible glyph is hidden on alternate rows must still have content. */}
                   <div
                     role="rowheader"
-                    aria-label={weekday.long}
-                    className={cn(
-                      "text-4xs flex h-[14px] w-6 items-center justify-center text-gray-400",
-                      row % 2 === 0 && "[&>span]:invisible",
-                    )}
+                    className="text-4xs flex h-[14px] w-6 items-center justify-center text-gray-400"
                   >
-                    <span>{weekday.narrow}</span>
+                    <span aria-hidden="true" className={cn(row % 2 === 0 && "invisible")}>
+                      {weekday.narrow}
+                    </span>
+                    <span className="sr-only">{weekday.long}</span>
                   </div>
                   {Array.from({ length: columns }, (_, column) => {
                     const index = column * ROWS + row;
