@@ -3,6 +3,6 @@
     "name": "cn utility",
     "path": "dist/index.js",
     "import": "{ cn }",
-    "limit": "8 kB"
+    "limit": "9 kB"
   }
 ]
