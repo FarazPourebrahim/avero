@@ -100,6 +100,8 @@
 | D-15 | `RichContent` sanitizer | **js-xss** (`xss`), not DOMPurify: an allowlist filter that needs no DOM, so the same code runs in the browser, in SSR and in tests. `isomorphic-dompurify` would pull jsdom (~10 MB) into every server bundle that renders stored HTML. | Sanitizing is mandatory (D-08) and must not cost a jsdom dependency on the server. | Implementation, 2026-07-05, approved by the user |
 | D-16 | Chart colours | The chart palette, grid, axis, cursor and tooltip colours are defined as `--color-chart-*` tokens in `@avero/tokens` and consumed by `@avero/charts` as generated token data (`tokens.colorChartViews.value`). | Recharts takes colours as props that become SVG attributes: a utility class cannot reach them, and a `var()` reference would depend on Tailwind emitting a theme variable that no class references (plain `@theme` prunes unused variables), which would fail silently. Sourcing them from the tokens package keeps `avero/no-raw-color` passing with no lint exemption. | Implementation, 2026-07-05 |
 | D-17 | Docs props tables | `PropsTable` takes an optional `package` prop, backed by one `fumadocs-typescript` generator per package tsconfig. | A generator resolves types through exactly one tsconfig, and the previous single generator was bound to `packages/react`, so charts types were unreachable. Additive, so the existing call sites are untouched. | Implementation, 2026-07-05 |
+| D-18 | `cn` size budget | **Raised from 8 kB to 9 kB** (brotli, `import { cn }`). | The 8 kB placeholder predates the token-aware merge, so CI failed its size step. Measured at 8.43 kB: `tailwind-merge` + `clsx` 7.52 kB, `extendTailwindMerge` 0.28 kB, token group names 0.6 kB. Nothing in it can shrink meaningfully; 9 kB leaves room for new token groups. | User, 2026-07-30 |
+| D-19 | Browser a11y gate | Playwright runs axe on every story in RTL/`fa` and LTR/`en` (`apps/storybook/tests/a11y.spec.ts`). Every rule blocks at 0 violations except **`color-contrast`, which is reported as a test warning, not enforced**. Page-structure rules (`region`, `landmark-one-main`, `page-has-heading-one`) are off because stories render components in isolation. | O-04 keeps below-AA pairings in the default palette, so enforcing contrast would contradict it. Browser findings feed the contrast report and the Phase 12 contrast review. | User, 2026-07-30 |
 
 ---
 
@@ -528,7 +530,7 @@ packages/react/src/
 
 - TypeScript compiler emit (decision D-13): per-file ESM + `.d.ts`, directives preserved and verified by `scripts/verify-build.mjs`. Subpath exports per component; `sideEffects: false` for JS packages, `["*.css"]` for the tokens package.
 - Changesets for versioning and changelog. `size-limit` enforces per-component budgets.
-- CI (GitHub Actions) runs: install (pnpm, frozen lockfile), lint, format check, packages build, typecheck, unit tests, size-limit, Storybook build, Playwright smoke + a11y (visual on Linux baselines once they exist), docs build.
+- CI (GitHub Actions) runs: install (pnpm, frozen lockfile), lint, format check, packages build, typecheck, unit tests, size-limit, Storybook build, Playwright smoke + a11y (axe on every story in both directions, colour contrast reported rather than enforced per D-19; visual on Linux baselines once they exist), docs build.
 - Git: `main` (releasable) and `dev` (integration), commit format `type(Scope): Title-Style Description` (per CLAUDE.md).
 
 ---
