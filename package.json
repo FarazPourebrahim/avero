@@ -18,7 +18,7 @@
     "format": "prettier --write .",
     "format-check": "prettier --check .",
     "test": "pnpm -r run test",
-    "storybook-test": "cd apps/storybook && pnpm run test",
+    "storybook-test": "cd apps/storybook && pnpm run test-browser",
     "size": "cd packages/react && pnpm run size",
     "changeset": "changeset"
   },
