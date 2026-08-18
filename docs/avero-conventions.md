@@ -20,7 +20,7 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 | `packages/font`   | `@avero/font`   | Lahzeh `@font-face` + font files (the licence allows redistribution) |
 | `packages/charts` | `@avero/charts` | Recharts wrappers (optional)                                         |
 | `packages/editor` | `@avero/editor` | Tiptap editor (optional)                                             |
-| `apps/storybook`  | private         | Internal stories, a11y and visual tests                              |
+| `apps/storybook`  | private         | Internal stories and browser a11y tests                              |
 | `apps/docs`       | private         | Public documentation (Next.js + Fumadocs)                            |
 
 - Package manager: **pnpm only**. Never run npm or yarn installs.
@@ -72,7 +72,7 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 - Unit and interaction tests: Vitest + Testing Library in jsdom, co-located as `<name>.test.tsx`, written as Arrange / Act / Assert.
 - Every component test includes an axe check (`expectNoAxeViolations` from `src/test/axe.ts`) and a `renderToString` SSR smoke test.
 - Coverage thresholds per package: statements ≥ 90%, branches ≥ 85%.
-- Visual and browser tests: Playwright against the static Storybook build (`apps/storybook/tests`).
+- Browser tests: Playwright smoke and axe checks against the static Storybook build (`apps/storybook/tests`). There are no screenshot tests.
 - Never commit `.only` or `.skip` (lint rule).
 
 ## Versioning and releases

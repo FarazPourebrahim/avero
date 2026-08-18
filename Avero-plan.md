@@ -6,7 +6,7 @@
 | --- | --- |
 | Plan version | 2.0 |
 | Created | 2026-06-19 |
-| Last updated | 2026-07-30 |
+| Last updated | 2026-08-18 |
 | Design source of truth | `@avero/tokens` and the design system in §4 |
 | Target stack | React 18.2+/19, TypeScript (strict), Tailwind CSS v4.3, Radix UI primitives, pnpm workspace |
 | Default direction / locale | RTL / `fa-IR`, with full LTR / `en` support |
@@ -50,14 +50,14 @@
 | 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
 | 8 | Layout shells and site chrome | 🟨 | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | |
-| 9 | Charts and editor packages | 🟨 | 8 / 10 | 7 | M | 2026-07-05 | |
-| 10 | Blocks and example templates | 🟨 | 3 / 8 | 4–9 | L | 2026-07-05 | |
+| 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
+| 10 | Blocks and example templates | 🟨 | 3 / 6 | 4–9 | L | 2026-07-05 | |
 | 11 | Documentation site | 🟨 | 0 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 73 / 149 phase-DoD items (≈49%).
+**Overall:** 73 / 146 phase-DoD items (50%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -87,7 +87,7 @@
 | D-01 | Font delivery | The user provides licensed Lahzeh `woff2` files. They are bundled in the optional `@avero/font` package. `@avero/tokens` declares `Lahzeh` with a system fallback stack. | Lahzeh is a commercial Persian typeface with nine weights; consumers who don't have it still get a sensible fallback. | User, 2026-06-19 |
 | D-02 | Dark mode | Light theme only in v1.0, built entirely on semantic tokens so a dark theme can be added later (Phase 14). | Keeps v1.0 focused while leaving the token layer ready for a second theme. | User, 2026-06-19 |
 | D-03 | Interaction primitives | Headless **Radix UI** primitives for behaviour, with Avero's styling on top. | Radix provides focus management, keyboard support and ARIA semantics, plus `DirectionProvider` for RTL. | User, 2026-06-19 (primitive family: Radix, chosen by plan) |
-| D-04 | Documentation | Custom **Next.js + Fumadocs** docs app (`apps/docs`), plus internal Storybook (`apps/storybook`) for visual, interaction and a11y testing. | The user wants "big component library" style docs. | User, 2026-06-19 |
+| D-04 | Documentation | Custom **Next.js + Fumadocs** docs app (`apps/docs`), plus internal Storybook (`apps/storybook`) for interaction and a11y testing. | The user wants "big component library" style docs. | User, 2026-06-19 |
 | D-05 | Styling engine | Tailwind CSS **v4**, variants via `class-variance-authority`, class merging via `tailwind-merge` configured with Avero's custom tokens. | `@theme` tokens compile to CSS variables and utilities from one source, and consumers already on Tailwind v4 get Avero's tokens as classes. | Plan default |
 | D-06 | Icons | `lucide-react` as a peer dependency for general icons. Brand and solid glyphs Lucide doesn't cover (Telegram, WhatsApp, LinkedIn, X, Instagram, a few solid shapes) ship as Avero SVG components, with licences recorded in `THIRD_PARTY_NOTICES.md`. | Avoids pulling a whole icon-font package for a handful of glyphs. | Plan default |
 | D-07 | Charts | `@avero/charts`, an optional package wrapping **Recharts**. | Keeps the core free of heavy dependencies. | Plan default |
@@ -102,6 +102,7 @@
 | D-17 | Docs props tables | `PropsTable` takes an optional `package` prop, backed by one `fumadocs-typescript` generator per package tsconfig. | A generator resolves types through exactly one tsconfig, and the previous single generator was bound to `packages/react`, so charts types were unreachable. Additive, so the existing call sites are untouched. | Implementation, 2026-07-05 |
 | D-18 | `cn` size budget | **Raised from 8 kB to 9 kB** (brotli, `import { cn }`). | The 8 kB placeholder predates the token-aware merge, so CI failed its size step. Measured at 8.43 kB: `tailwind-merge` + `clsx` 7.52 kB, `extendTailwindMerge` 0.28 kB, token group names 0.6 kB. Nothing in it can shrink meaningfully; 9 kB leaves room for new token groups. | User, 2026-07-30 |
 | D-19 | Browser a11y gate | Playwright runs axe on every story in RTL/`fa` and LTR/`en` (`apps/storybook/tests/a11y.spec.ts`). Every rule blocks at 0 violations except **`color-contrast`, which is reported as a test warning, not enforced**. Page-structure rules (`region`, `landmark-one-main`, `page-has-heading-one`) are off because stories render components in isolation. | O-04 keeps below-AA pairings in the default palette, so enforcing contrast would contradict it. Browser findings feed the contrast report and the Phase 12 contrast review. | User, 2026-07-30 |
+| D-20 | Screenshot tests | **None.** The Playwright visual suite and its baselines are removed; browser coverage is the smoke test plus the axe suite (D-19). Plan items that depended on screenshots or template snapshots are dropped. | The per-platform baselines never ran in CI, and regenerating and comparing about a thousand screenshots locally costs more than the regressions it catches. | User, 2026-08-18 |
 
 ---
 
@@ -472,7 +473,7 @@ complib/
 │   └── editor/               # @avero/editor – Tiptap editor (peer: @tiptap/*)
 └── apps/
     ├── docs/                 # Next.js + Fumadocs public documentation
-    └── storybook/            # internal: stories, interaction + a11y + visual tests, example templates
+    └── storybook/            # internal: stories, interaction + a11y tests, example templates
 ```
 
 - Workspace packages use the named scope `@avero/*`. App-internal imports use `@/…`. This is consistent with CLAUDE.md's alias convention.
@@ -530,7 +531,7 @@ packages/react/src/
 
 - TypeScript compiler emit (decision D-13): per-file ESM + `.d.ts`, directives preserved and verified by `scripts/verify-build.mjs`. Subpath exports per component; `sideEffects: false` for JS packages, `["*.css"]` for the tokens package.
 - Changesets for versioning and changelog. `size-limit` enforces per-component budgets.
-- CI (GitHub Actions) runs: install (pnpm, frozen lockfile), lint, format check, packages build, typecheck, unit tests, size-limit, Storybook build, Playwright smoke + a11y (axe on every story in both directions, colour contrast reported rather than enforced per D-19; visual on Linux baselines once they exist), docs build.
+- CI (GitHub Actions) runs: install (pnpm, frozen lockfile), lint, format check, packages build, typecheck, unit tests, size-limit, Storybook build, Playwright smoke + a11y (axe on every story in both directions, colour contrast reported rather than enforced per D-19), docs build.
 - Git: `main` (releasable) and `dev` (integration), commit format `type(Scope): Title-Style Description` (per CLAUDE.md).
 
 ---
@@ -585,7 +586,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Tailwind v4.3.x installed; a smoke component renders a token class in Storybook — Playwright asserts `rgb(10, 102, 194)`
 - [x] Library build producing ESM + `.d.ts` with preserved `"use client"` directives (verified by a script that inspects the output; D-13) — `verify-build.mjs`
 - [x] Vitest + Testing Library + `vitest-axe` configured, with a sample test passing — an `axe-core` helper replaces `vitest-axe` (unmaintained)
-- [x] Playwright configured for visual + axe tests against Storybook
+- [x] Playwright configured for smoke + axe tests against Storybook
 - [x] Storybook (internal) boots with RTL/LTR and locale toolbar toggles
 - [x] `apps/docs` (Next.js + Fumadocs) boots with one MDX page rendering a live Avero component — Button, Badge, Chip on the introduction page
 - [x] Changesets initialised; `size-limit` configured
@@ -665,7 +666,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] N-11 `InfiniteScroll` meets the Global DoD, using IntersectionObserver with a loading slot
 - [ ] Keyboard tables documented for every component in this phase
 
-**Exit gate:** every component in this phase meets the Global DoD; the table of contents, profile tabs, segmented control and carousel are covered by the Phase 10 template snapshots.
+**Exit gate:** every component in this phase meets the Global DoD.
 
 ### Phase 6 — Overlays and feedback  🟨
 
@@ -700,7 +701,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] D-24 `ResponsiveBanner` meets the Global DoD
 - [ ] Every data component renders sensibly with empty, `null`/`undefined` and overflowing content (tests present)
 
-**Exit gate:** every component in this phase meets the Global DoD; the article prose, dashboard stats and profile stat strip are covered by the Phase 10 template snapshots.
+**Exit gate:** every component in this phase meets the Global DoD.
 
 ### Phase 8 — Layout shells and site chrome  🟨
 
@@ -716,9 +717,9 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] `Container` and grid presets documented and used by every shell
 - [x] Shells verified at 320px minimum width with no horizontal scroll — measured at 320px: `scrollWidth` equals `clientWidth`, and the only boxes past the edge are the banner glows, which their `overflow-hidden` parent clips
 
-**Exit gate:** every shell meets the Global DoD and holds at 320px; the header, footer and dashboard chrome are covered by the Phase 10 template snapshots.
+**Exit gate:** every shell meets the Global DoD and holds at 320px.
 
-> Every DoD item is ticked, but the phase stays 🟨 until the Phase 10 template snapshots cover the header, footer and dashboard chrome.
+> Every DoD item is ticked; the phase closes once the exit gate is verified.
 
 ### Phase 9 — Charts and editor packages  🟨
 
@@ -731,12 +732,11 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] C-04 tooltip styling uses the chart tooltip tokens; charts expose an accessible data-table fallback (`ChartDataTable`, a screen-reader-only table captioned by `label`)
 - [x] Charts render RTL correctly (axis direction option documented) — `reversed` defaults to `false`, because time series read left to right even on RTL pages
 - [x] `@avero/editor` is published separately with `@tiptap/*` as peers — StarterKit, `TableKit`, `Image` and `Placeholder`, the exact set `rich-content.css` has rules for
-- [ ] E-01 content styles are covered by a visual snapshot of a real editor render with representative content (`docs/known-debts.md`)
 - [ ] E-02 toolbar meets the Global DoD
 - [x] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests) — every tag in `richContentAllowList` survives `editor.getHTML()` → `sanitizeHtml()`
 - [x] Both packages meet their `size-limit` budgets — charts 8.93 kB of 10 kB, editor 9.8 kB of 11 kB (Recharts and Tiptap ignored as peers)
 
-**Exit gate:** both packages build, tree-shake and stay within their size budgets; the dashboard analytics region is covered by the Phase 10 template snapshots.
+**Exit gate:** both packages build, tree-shake and stay within their size budgets.
 
 ### Phase 10 — Blocks and example templates  🟨
 
@@ -746,13 +746,11 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Every B-* block meets the Global DoD and is built **only** from Avero components (no ad-hoc markup beyond layout) — all 25 built from Avero components, 816 unit/SSR/axe tests
 - [x] Blocks are domain-neutral; all text comes via props or slots, and each docs page describes typical uses
 - [ ] Example templates TP-01…TP-06 composed in Storybook from `@avero/*` exports only, with original sample content
-- [ ] Visual snapshots of every template at 375/768/1280/1536px, generated in the pinned Playwright image
-- [ ] Hover and focus snapshots for every interactive block
 - [ ] Templates score axe 0 violations
-- [ ] Templates render in LTR/`en` without layout breakage (visual review recorded)
+- [ ] Templates render in LTR/`en` without layout breakage (review recorded)
 - [x] `docs/known-debts.md` lists every remaining gap with a justification
 
-**Exit gate:** all template snapshots pass in CI.
+**Exit gate:** every template passes the axe suite in CI.
 
 ### Phase 11 — Documentation site  🟨
 
@@ -800,7 +798,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] SSR/RSC: every export renders in a Next.js App Router Server Component test page without errors; client components are correctly marked
 - [ ] Tree-shaking verified: importing one component pulls in only its own code (bundle analysis artefact)
 - [ ] Per-component `size-limit` budgets met; total core gzip budget recorded
-- [ ] Browser matrix passes visual tests: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome
+- [ ] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome
 - [ ] `docs/SECURITY.md` checklist completed (per CLAUDE.md): sanitization, no `dangerouslySetInnerHTML` outside `RichContent`, external links `rel="noopener noreferrer"`, no `eval`, dependency audit clean (`pnpm audit`), lockfile committed
 - [ ] Supply-chain checks: publish via CI only, npm provenance, 2FA on the npm org, no install scripts in packages
 - [ ] Memory and cleanup: overlays and carousels unmount listeners (tests with StrictMode double-mount)
@@ -953,12 +951,11 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | Risk | Impact | Mitigation |
 | --- | --- | --- |
 | Lahzeh licence forbids redistribution in a public package | Can't publish `@avero/font` publicly | O-02: private registry, or BYO-font mode with `@avero/font` excluded from public publish |
-| Pixel diffs caused by font rendering differences across OSes | Flaky visual snapshots | Run visual tests in a pinned Docker Playwright image; baselines are generated in the same image |
 | tailwind-merge unaware of custom tokens | Silent style-override bugs | Phase 2 DoD requires the tailwind-merge extension plus tests per token group |
 | RSC directive loss during bundling | Consumers' Next.js builds break | Phase 1 DoD requires a test on build output |
 | Scope creep | Delays | §5 is the closed scope; additions require a new inventory row with purpose and API sketch |
 | Design vs accessibility conflicts (contrast) | Either the look or AA suffers | O-04 decision; the contrast report makes the trade-off explicit |
-| Radix styling mismatch (portals, focus rings) | Visual drift between components | Every Radix part styled via `data-state` / `data-slot`; overlays covered by template snapshots |
+| Radix styling mismatch (portals, focus rings) | Visual drift between components | Every Radix part styled via `data-state` / `data-slot`; overlays covered by the browser axe suite |
 | RTL-only assumptions creeping into new components | Broken English layouts | Lint bans physical direction utilities; every story renders in both directions |
 
 ---
