@@ -15,7 +15,7 @@ const index = JSON.parse(
   readFileSync(new URL("../storybook-static/index.json", import.meta.url), "utf8"),
 ) as { entries: Record<string, StoryEntry> };
 
-/** Public stories, minus internal ones and any tagged with `!<suite>` (e.g. `!visual`, `!a11y`). */
+/** Public stories, minus internal ones and any tagged with `!<suite>` (e.g. `!a11y`). */
 export function storiesFor(suite: string): StoryEntry[] {
   return Object.values(index.entries).filter(
     (entry) =>

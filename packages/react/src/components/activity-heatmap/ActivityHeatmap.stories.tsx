@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ActivityHeatmap, type ActivityDay } from "./ActivityHeatmap.js";
 
-/** A deterministic pseudo-random series keeps the visual baselines stable. */
+/** A deterministic pseudo-random series renders the same year on every load. */
 function year(): ActivityDay[] {
   const start = new Date(2025, 8, 8);
   let seed = 7;

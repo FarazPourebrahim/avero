@@ -16,8 +16,6 @@ coverage/
 test-results/
 playwright-report/
 blob-report/
-**/__snapshots__/*-actual.png
-**/__snapshots__/*-diff.png
 
 # Env
 .env

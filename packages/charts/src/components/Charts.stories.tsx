@@ -6,7 +6,7 @@ import { chartPalette } from "../theme.js";
 
 const DAYS = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
 
-// A fixed series keeps the visual baselines stable.
+// A fixed series renders the same chart on every load.
 const DATA = DAYS.map((name, index) => ({
   name,
   views: [4, 7, 3, 9, 6, 11, 8][index],
