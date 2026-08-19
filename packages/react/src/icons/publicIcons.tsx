@@ -154,7 +154,7 @@ export const LinkedinInIcon = createIcon("LinkedinInIcon", {
   ],
 });
 
-/** Instagram logo. Source: icon set and licence not yet verified (known debt). */
+/** Instagram logo. Source: logo-instagram, Ionicons 4.6.3 (MIT). */
 export const InstagramIcon = createIcon("InstagramIcon", {
   viewBox: "0 0 512 512",
   mode: "fill",

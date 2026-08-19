@@ -17,13 +17,16 @@ The icons in `src/icons/publicIcons.tsx` whose source says "Font Awesome Free 5"
 - Copyright: Tailwind Labs, Inc. (https://heroicons.com)
 - Licence: MIT
 
+## Ionicons v4
+
+`InstagramIcon` reproduces the Ionicons 4.6.3 `logo-instagram` glyph, with identical path data.
+
+- Copyright: Ionic (https://ionic.io)
+- Licence: MIT
+
 ## Lucide
 
 `src/icons/internalIcons.tsx` vendors the Lucide glyphs that Avero components render internally (arrow, chevron, copy, star, zoom, heart, share, message, send, user, users, eye, bookmark, folder, flag, award, shield, zap, warning and close icons), so `lucide-react` stays an optional peer dependency.
 
 - Copyright: Lucide Contributors (https://lucide.dev)
 - Licence: ISC
-
-## Pending verification
-
-- `InstagramIcon`: the glyph's source icon set has not been identified yet. Its licence must be verified before release (tracked in `docs/known-debts.md`).
