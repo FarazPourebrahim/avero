@@ -42,7 +42,7 @@
 | # | Phase | Status | Progress | Depends on | Effort | Started | Completed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | Scope and design system | ✅ | 5 / 5 | — | M | 2026-06-19 | 2026-06-19 |
-| 1 | Workspace, tooling and CI | 🟨 | 14 / 15 | 0 | M | 2026-06-19 | |
+| 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
 | 2 | Design tokens and foundations | 🟨 | 7 / 12 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 73 / 146 phase-DoD items (50%).
+**Overall:** 74 / 146 phase-DoD items (≈51%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -573,7 +573,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **Evidence:** this plan (sections 3–5), planning session 2026-06-19.
 **Exit gate:** every inventory item has variants and a phase assigned.
 
-### Phase 1 — Workspace, tooling and CI  🟨
+### Phase 1 — Workspace, tooling and CI  ✅
 
 **Scope:** monorepo skeleton per §6.1, empty packages building, all quality gates wired.
 
@@ -590,10 +590,11 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Storybook (internal) boots with RTL/LTR and locale toolbar toggles
 - [x] `apps/docs` (Next.js + Fumadocs) boots with one MDX page rendering a live Avero component — Button, Badge, Chip on the introduction page
 - [x] Changesets initialised; `size-limit` configured
-- [ ] CI pipeline runs all gates in §6.5 on every PR to `dev` and is green
+- [x] CI pipeline runs all gates in §6.5 on every PR to `dev` and is green — green on `dev`, after raising the `cn` size budget (D-18), adding the browser axe suite (D-19) and removing screenshot tests (D-20)
 - [x] `docs/avero-conventions.md`, `docs/known-debts.md` and `docs/SECURITY.md` created
 - [x] Dependency versions pinned to current stable releases and recorded in `docs/avero-conventions.md`
 
+**Evidence:** GitHub Actions `CI` workflow, green on `dev` (2026-08-18): fresh checkout, frozen-lockfile install, lint, format, packages build, typecheck, unit tests, size budgets, Storybook build, Playwright smoke + axe, docs build.
 **Exit gate:** a fresh clone passes `pnpm install && pnpm -r build && pnpm -r test` with CI green.
 
 ### Phase 2 — Design tokens and foundations  🟨
