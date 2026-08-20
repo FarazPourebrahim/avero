@@ -1,0 +1,19 @@
+---
+title: Z-index
+description: The named stacking layers that keep toasts above dialogs, dialogs above drawers and drawers above the header.
+---
+
+Layers are plain CSS variables rather than a numeric scale, so an overlay never needs a magic
+number. Use them with Tailwind's arbitrary value syntax:
+
+```tsx
+<div className="z-(--z-modal)">…</div>
+```
+
+<ZIndexLayers />
+
+## Guaranteed order
+
+The tokens package verifies on every test run that toasts sit above modals, modals above drawers,
+drawers above dropdowns and dropdowns above the sticky header. Changing a layer value that would
+break that order fails the package's tests.

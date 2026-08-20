@@ -1,0 +1,17 @@
+---
+title: Breakpoints
+description: Tailwind's default breakpoints, which every Avero layout is built against.
+---
+
+Avero keeps Tailwind's breakpoints unchanged. Styles are mobile first: an unprefixed class applies
+everywhere, and `md:` applies from the `md` width up.
+
+<Breakpoints />
+
+## Layout conventions
+
+- The page column is `max-w-7xl` (80rem) with `px-4 sm:px-6 lg:px-8` gutters — use
+  [`Container`](../components/container) rather than repeating it.
+- Asides join the main column from `lg` in the article and detail layouts, and from `md` in the
+  listing layout.
+- Every shell holds at a 320px minimum width without horizontal scrolling.

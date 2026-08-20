@@ -1,0 +1,35 @@
+---
+title: Colors
+description: Avero's brand, surface, text, status and chart colours, with their contrast against the two page grounds.
+---
+
+Every colour below is a CSS variable defined in `@avero/tokens/theme.css`, so it is available as a
+Tailwind utility (`bg-primary`, `text-text-muted`) and as `var(--color-primary)`. The list is
+generated from the token data; it cannot fall out of date.
+
+Contrast is measured against the white card surface and the `#f4f4f4` page background. Normal text
+needs **4.5:1** and large text or icons **3:1** under WCAG 2.2 AA. Translucent colours have no ratio
+of their own, because their contrast depends on what they sit on.
+
+<ColorTokens />
+
+## Palette roles
+
+Avero keeps Tailwind's full default palette and gives each family a consistent job:
+
+| Family                                          | Role                                                             |
+| ----------------------------------------------- | ---------------------------------------------------------------- |
+| `gray`                                          | Default neutral: borders, body and muted text, soft fills        |
+| `slate`                                         | Neutral for profile, detail and about surfaces                   |
+| `zinc`                                          | Neutral for dashboard chrome                                     |
+| `indigo`                                        | Accent: focus rings, active table-of-contents entry, prose links |
+| `blue`                                          | Info and active states: profile tabs, tags, soft buttons         |
+| `emerald`, `amber`, `purple`, `rose` and others | Categorical icon tiles, statuses and charts                      |
+
+## Contrast in context
+
+The ratios above compare each colour with a plain ground. The pairings components actually render —
+text on a tinted button, a caption on a glass card — are measured in the
+[contrast report](https://github.com/FarazPourebrahim/avero/blob/dev/packages/tokens/reports/contrast-report.md).
+Some muted and soft-tone pairings are below AA by design; a theme that needs strict AA overrides the
+tokens involved, such as `--color-text-muted`.

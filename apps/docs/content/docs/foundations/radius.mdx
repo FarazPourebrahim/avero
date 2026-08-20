@@ -1,0 +1,22 @@
+---
+title: Radius
+description: Tailwind's corner radius scale plus Avero's two oversized radii.
+---
+
+Tailwind's radius scale is kept unchanged; Avero adds `rounded-huge` for oversized panels and
+`rounded-leaf` for asymmetric "leaf" corners.
+
+<RadiusScale />
+
+## Where each radius is used
+
+| Radius         | Used for                                      |
+| -------------- | --------------------------------------------- |
+| `rounded-lg`   | Small icon tiles, tags, segmented items       |
+| `rounded-xl`   | Buttons, icon buttons, inputs, sub-cards      |
+| `rounded-2xl`  | Dashboard cards, textareas, nav items, images |
+| `rounded-3xl`  | Primary content cards, profile header         |
+| `rounded-full` | Pills, avatars, progress bars, dots           |
+
+Corners are logical: `rounded-s-*` and `rounded-e-*` follow the reading direction, so a corner that
+is on the right in Persian is on the left in English.

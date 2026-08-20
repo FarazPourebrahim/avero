@@ -1,0 +1,24 @@
+---
+title: Motion
+description: Avero's animations with live previews, plus the durations and easings components use.
+---
+
+## Animations
+
+Each animation is an `animate-<name>` utility. Press **Replay** to run one again.
+
+<AnimationTokens />
+
+## Durations
+
+Components use Tailwind's duration utilities: `duration-150` is the default, `duration-200` the most
+common, `duration-300` drawers and accordions, and `duration-500` image zooms.
+
+## Easings
+
+<EasingTokens />
+
+## Reduced motion
+
+`@avero/tokens/base.css` shortens animations and transitions to near zero under
+`prefers-reduced-motion: reduce`. Import it, or apply the same rule in your own base styles.

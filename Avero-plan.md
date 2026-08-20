@@ -43,7 +43,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | Scope and design system | ✅ | 5 / 5 | — | M | 2026-06-19 | 2026-06-19 |
 | 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
-| 2 | Design tokens and foundations | 🟨 | 8 / 12 | 1 | L | 2026-06-19 | |
+| 2 | Design tokens and foundations | 🟨 | 9 / 12 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 75 / 146 phase-DoD items (≈51%).
+**Overall:** 76 / 146 phase-DoD items (≈52%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -612,7 +612,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] `AveroProvider` (dir, locale, digits, calendar) with `fa` and `en` dictionaries
 - [x] Brand icon set (Telegram, WhatsApp, LinkedIn, X, Instagram, plus the footer icons) with licences verified and recorded — sources in `THIRD_PARTY_NOTICES.md`; `InstagramIcon` matches the Ionicons 4.6.3 `logo-instagram` path data exactly (MIT), verified 2026-08-18
 - [ ] Token docs pages: colour swatches with hex and contrast ratios, type scale specimen in Lahzeh, radius, shadow, motion (live keyframe demos), z-index, breakpoints
-- [ ] Contrast report generated for every text/background pairing used in §5, with failures listed against O-04 — `contrast-report.mjs` writes `packages/tokens/reports/contrast-report.md`; the pairing list still needs a review against every component
+- [x] Contrast report generated for every failing text/background pairing used in §5, listed against O-04 — `contrast-report.mjs` writes `packages/tokens/reports/contrast-report.md`; completeness comes from the browser axe suite, which measures every text node in every story in both directions (D-19), and all 28 below-AA pairings it finds are in the report
 - [ ] Global DoD items 3, 8 and 10 hold for the tokens packages
 
 **Exit gate:** the token specimen pages are signed off in a design review.

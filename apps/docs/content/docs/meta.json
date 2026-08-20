@@ -1,4 +1,12 @@
 {
   "title": "Avero",
-  "pages": ["index", "---Components---", "...components", "---Blocks---", "...blocks"]
+  "pages": [
+    "index",
+    "---Foundations---",
+    "...foundations",
+    "---Components---",
+    "...components",
+    "---Blocks---",
+    "...blocks"
+  ]
 }

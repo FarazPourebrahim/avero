@@ -1,0 +1,47 @@
+---
+title: Typography
+description: The Lahzeh typeface in all nine weights, Tailwind's type scale with Avero's micro sizes, and the Persian line heights.
+---
+
+Avero sets text in **Lahzeh**, a Persian typeface with nine weights, shipped by `@avero/font`.
+Without the font package, the stack falls back to Inter and the system UI font.
+
+```css
+@import "@avero/font/lahzeh.css";
+```
+
+## Font families
+
+<FontFamilies />
+
+## Weights
+
+Medium (500) is the default UI weight.
+
+<FontWeights />
+
+## Type scale
+
+Tailwind's scale is kept unchanged; Avero adds micro sizes for dense UI such as badges, meta rows and
+legends. The micro sizes define no line height, so they inherit the surrounding one.
+
+<TypeScale />
+
+## Line heights
+
+Persian body text reads best loose: `leading-8` (2rem) is the body standard, and Avero adds two
+unitless line heights for prose.
+
+<LineHeights />
+
+## Heading patterns
+
+| Use           | Classes                                                   |
+| ------------- | --------------------------------------------------------- |
+| Page title    | `text-xl md:text-3xl font-extrabold`                      |
+| Article title | `text-2xl sm:text-3xl md:text-4xl font-bold leading-snug` |
+| Section       | `text-xl font-bold md:text-2xl`                           |
+| Card title    | `text-lg font-bold`                                       |
+| Eyebrow       | `text-xs font-semibold tracking-wider uppercase`          |
+
+[`Heading`, `Text` and `Eyebrow`](../components/typography) apply these for you.
