@@ -43,7 +43,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | Scope and design system | ✅ | 5 / 5 | — | M | 2026-06-19 | 2026-06-19 |
 | 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
-| 2 | Design tokens and foundations | 🟨 | 9 / 12 | 1 | L | 2026-06-19 | |
+| 2 | Design tokens and foundations | 🟨 | 12 / 12 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
@@ -52,12 +52,12 @@
 | 8 | Layout shells and site chrome | 🟨 | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
 | 10 | Blocks and example templates | 🟨 | 3 / 6 | 4–9 | L | 2026-07-05 | |
-| 11 | Documentation site | 🟨 | 0 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
+| 11 | Documentation site | 🟨 | 1 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 76 / 146 phase-DoD items (≈52%).
+**Overall:** 80 / 146 phase-DoD items (≈55%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -605,16 +605,17 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] `@avero/tokens/theme.css` defines every token in §4 as Tailwind v4 `@theme` variables (brand, semantic, chart, micro font sizes, leading, shadows, radii, blur, animations) — categorical and heatmap colours reuse the default palette; gradients live in `utilities.css`; z-index layers are `--z-*` properties
 - [x] `tokens.json` (DTCG format) and `tokens.ts` are generated from a single source; a CI check fails if they drift — `generate-token-data.mjs --check` (emits `tokens.js` + `tokens.d.ts`)
 - [x] `base.css`: body defaults, font smoothing, `min-width: 320px`, smooth scroll, `prefers-reduced-motion` override; `utilities.css`: `fancy`/`slim`/`hidden` scrollbars, shimmer, glow ring, typing caret and gradients; keyframes in `theme.css`
-- [ ] `@avero/font`: `@font-face` for all 9 Lahzeh weights with `font-display: swap`, woff2 first; a Playwright test confirms each weight actually loads (`document.fonts.check`)
+- [x] `@avero/font`: `@font-face` for all 9 Lahzeh weights with `font-display: swap`, woff2 first; a Playwright test confirms each weight actually loads (`document.fonts.check`) — `apps/storybook/tests/fonts.spec.ts` also fails if any `.woff` fallback is requested
 - [x] Prose/`RichContent` style layer provides the `content`, `editor` and editing-surface values in §4.11 — `rich-content.css`
 - [x] `cn()` with tailwind-merge extended for every custom token group; unit tests prove that overriding each custom token group merges correctly — groups generated from `@avero/tokens` (`tokenGroups`)
 - [x] Formatting utils: `formatNumber` (fa/latn digits, `٬` grouping), `formatDate` (Jalali/Gregorian via `Intl`), `formatRelativeTime`; 100% unit-test coverage, including edge cases (0, negative, large, NaN) — the currency unit comes from the dictionary (`currencyToman`) and is composed by `PriceTag`, so there is no separate `formatToman`
 - [x] `AveroProvider` (dir, locale, digits, calendar) with `fa` and `en` dictionaries
 - [x] Brand icon set (Telegram, WhatsApp, LinkedIn, X, Instagram, plus the footer icons) with licences verified and recorded — sources in `THIRD_PARTY_NOTICES.md`; `InstagramIcon` matches the Ionicons 4.6.3 `logo-instagram` path data exactly (MIT), verified 2026-08-18
-- [ ] Token docs pages: colour swatches with hex and contrast ratios, type scale specimen in Lahzeh, radius, shadow, motion (live keyframe demos), z-index, breakpoints
+- [x] Token docs pages: colour swatches with hex and contrast ratios, type scale specimen in Lahzeh, radius, shadow, motion (live keyframe demos), z-index, breakpoints — the docs Foundations section, generated from `@avero/tokens` data and Tailwind's installed theme
 - [x] Contrast report generated for every failing text/background pairing used in §5, listed against O-04 — `contrast-report.mjs` writes `packages/tokens/reports/contrast-report.md`; completeness comes from the browser axe suite, which measures every text node in every story in both directions (D-19), and all 28 below-AA pairings it finds are in the report
-- [ ] Global DoD items 3, 8 and 10 hold for the tokens packages
+- [x] Global DoD items 3, 8 and 10 hold for the tokens packages — lint passes with raw values confined to `@avero/tokens` itself, the Foundations pages document them, and CI's typecheck and lint are green
 
+**Evidence:** GitHub Actions `CI` green on `dev` (2026-08-18), including the font-loading test and the docs build with the Foundations pages. The phase stays 🟨 until the exit-gate design review is recorded.
 **Exit gate:** the token specimen pages are signed off in a design review.
 
 ### Phase 3 — Core primitives  ✅
@@ -777,7 +778,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] Props tables are generated from source at build time (never hand-written); the build fails on undocumented public props
 - [ ] Blocks gallery with live preview, copy-paste code and full-page previews
 - [ ] Templates section showing the example templates as full-screen demos
-- [ ] Token pages are generated from `tokens.json`
+- [x] Token pages are generated from `tokens.json` — the Foundations pages read the token data generated from the same source (`@avero/tokens`), never hand-written values
 - [ ] Global site search (Fumadocs search) indexes all pages
 - [ ] Global RTL/LTR and `fa`/`en` switches persist across pages
 - [ ] Docs are themselves built with Avero components and Lahzeh (dogfooding)
