@@ -220,3 +220,15 @@ export const XIcon = createIcon("XIcon", {
   mode: "stroke",
   paths: ["M18 6 6 18", "m6 6 12 12"],
 });
+
+export const CheckIcon = createIcon("CheckIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M20 6 9 17l-5-5"],
+});
+
+export const MinusIcon = createIcon("MinusIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M5 12h14"],
+});
