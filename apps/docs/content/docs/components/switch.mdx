@@ -1,0 +1,64 @@
+---
+title: Switch
+description: An on/off control for settings that take effect immediately, mirrored in right-to-left layouts.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/switch)
+
+```tsx
+import { Switch } from "@avero/react";
+```
+
+<ComponentPreview name="switch/settings" />
+
+## Anatomy
+
+| Part  | Slot                       | Notes                                    |
+| ----- | -------------------------- | ---------------------------------------- |
+| Root  | `data-slot="switch"`       | Radix Switch, a `<button role="switch">` |
+| Thumb | `data-slot="switch-thumb"` | Slides toward the inline end when on     |
+
+`data-state` is `checked` or `unchecked` on both parts.
+
+## Right-to-left
+
+The thumb starts at the inline start and slides toward the inline end: right to left in Persian,
+left to right in English. Switch the preview direction to compare.
+
+## Composition
+
+- Label it with a `<label htmlFor>` or [`Field`](./field); a description in `Field` is announced
+  with the switch.
+- Inside a `<form>`, a hidden native checkbox submits `on` under the switch's `name`.
+
+## Accessibility
+
+| Key                                 | Action                    |
+| ----------------------------------- | ------------------------- |
+| <kbd>Tab</kbd>                      | Moves focus to the switch |
+| <kbd>Space</kbd> / <kbd>Enter</kbd> | Turns it on or off        |
+
+- The state is exposed as `aria-checked`.
+- The off track is `gray-500`, which meets the 3:1 contrast WCAG requires against a white page.
+
+## API reference
+
+`Switch` accepts the [Radix Switch](https://www.radix-ui.com/primitives/docs/components/switch) root
+props unchanged: `checked`, `defaultChecked`, `onCheckedChange`, `disabled`, `required`, `name` and
+`value`.
+
+## Theming
+
+| Token              | Used by         |
+| ------------------ | --------------- |
+| `--color-primary`  | On track, focus |
+| `--color-gray-500` | Off track       |
+
+## Do and don't
+
+- **Do** apply the setting as soon as the switch changes.
+- **Don't** use a switch inside a form that only takes effect on submit; use a [Checkbox](./checkbox).
+
+## Related
+
+[Checkbox](./checkbox) · [Field](./field)

@@ -1,0 +1,65 @@
+---
+title: RadioGroup
+description: One choice from a short list, with arrow-key navigation in reading direction.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/radio-group)
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@avero/react";
+```
+
+<ComponentPreview name="radio-group/delivery" />
+
+## Anatomy
+
+| Part           | Slot                                | Notes                                  |
+| -------------- | ----------------------------------- | -------------------------------------- |
+| RadioGroup     | `data-slot="radio-group"`           | `role="radiogroup"`, a grid of options |
+| RadioGroupItem | `data-slot="radio-group-item"`      | `role="radio"`, a round button         |
+| Indicator      | `data-slot="radio-group-indicator"` | The primary dot of the chosen option   |
+
+## Right-to-left
+
+`RadioGroup` reads its direction from `AveroProvider`, so in Persian <kbd>←</kbd> moves to the next
+option and in English <kbd>→</kbd> does. Pass `dir` to override it for one group.
+
+## Composition
+
+- Name the group: give it `aria-labelledby` pointing at a visible heading, or `aria-label`.
+- Give each item its own `<label htmlFor>`; clicking the label selects the option.
+- Inside a `<form>`, the chosen `value` is submitted under the group's `name`.
+
+## Accessibility
+
+| Key                                                 | Action                                             |
+| --------------------------------------------------- | -------------------------------------------------- |
+| <kbd>Tab</kbd>                                      | Moves focus to the chosen option, or the first one |
+| <kbd>↓</kbd> <kbd>↑</kbd> <kbd>←</kbd> <kbd>→</kbd> | Moves to and selects the next or previous option   |
+| <kbd>Space</kbd>                                    | Selects the focused option                         |
+
+- The group is a single tab stop; disabled options are skipped.
+- The resting border is `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
+
+## API reference
+
+`RadioGroup` and `RadioGroupItem` accept the
+[Radix Radio Group](https://www.radix-ui.com/primitives/docs/components/radio-group) props unchanged:
+`value`, `defaultValue`, `onValueChange`, `name`, `required`, `disabled`, `orientation` and `dir` on
+the group, and `value` and `disabled` on each item.
+
+## Theming
+
+| Token              | Used by                      |
+| ------------------ | ---------------------------- |
+| `--color-primary`  | Chosen border and dot, focus |
+| `--color-gray-500` | Resting border               |
+
+## Do and don't
+
+- **Do** use a radio group for two to about six mutually exclusive options.
+- **Don't** leave a group without a default when one answer is clearly the common one.
+
+## Related
+
+[Checkbox](./checkbox) · [SegmentedControl](./segmented-control) · [Select](./select)

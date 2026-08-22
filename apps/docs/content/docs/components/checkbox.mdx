@@ -1,0 +1,75 @@
+---
+title: Checkbox
+description: Independent on/off choices, with an indeterminate state for "select all" rows.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/checkbox)
+
+```tsx
+import { Checkbox } from "@avero/react";
+```
+
+<ComponentPreview name="checkbox/preferences" />
+
+## Anatomy
+
+| Part      | Slot                             | Notes                                             |
+| --------- | -------------------------------- | ------------------------------------------------- |
+| Root      | `data-slot="checkbox"`           | Radix Checkbox, a `<button role="checkbox">`      |
+| Indicator | `data-slot="checkbox-indicator"` | A check when checked, a dash when `indeterminate` |
+
+`data-state` is `checked`, `unchecked` or `indeterminate`.
+
+## Examples
+
+The preview's "all topics" checkbox shows the indeterminate state: it is `indeterminate` while only
+some topics are selected, and checking it selects every topic.
+
+```tsx
+<Checkbox checked={allState} onCheckedChange={(checked) => selectAll(checked === true)} />
+```
+
+## Right-to-left
+
+The box sits before its label in reading order, and the check glyph is symmetrical, so nothing needs
+to flip.
+
+## Composition
+
+- Pair it with a `<label htmlFor>` or wrap it in [`Field`](./field) — clicking the label toggles it.
+- Inside a `<form>`, a hidden native checkbox carries `name` and `value` (default `on`) to the
+  submission.
+- With react-hook-form, use `Controller`: the control is a button, not a native input, so `register`
+  cannot read its value.
+
+## Accessibility
+
+| Key              | Action                      |
+| ---------------- | --------------------------- |
+| <kbd>Tab</kbd>   | Moves focus to the checkbox |
+| <kbd>Space</kbd> | Toggles it                  |
+
+- The indeterminate state is exposed as `aria-checked="mixed"`.
+- The resting border is `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
+
+## API reference
+
+`Checkbox` accepts the [Radix Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox)
+root props unchanged: `checked`, `defaultChecked`, `onCheckedChange`, `disabled`, `required`, `name`
+and `value`.
+
+## Theming
+
+| Token              | Used by             |
+| ------------------ | ------------------- |
+| `--color-primary`  | Checked fill, focus |
+| `--color-gray-500` | Resting border      |
+
+## Do and don't
+
+- **Do** use checkboxes when any number of options can be chosen.
+- **Don't** use a checkbox for a setting that applies immediately; use a [Switch](./switch).
+
+## Related
+
+[RadioGroup](./radio-group) · [Switch](./switch) · [Field](./field)
