@@ -44,6 +44,7 @@ import FormActionsCommentForm from "./form-actions/comment-form";
 import FeatureCardGrid from "./feature-card/grid";
 import CheckboxPreferences from "./checkbox/preferences";
 import FieldProfileForm from "./field/profile-form";
+import OtpInputVerify from "./otp-input/verify";
 import RadioGroupDelivery from "./radio-group/delivery";
 import SwitchSettings from "./switch/settings";
 import IconButtonChrome from "./icon-button/chrome";
@@ -159,6 +160,7 @@ export const demos = {
   "activity-heatmap/year": ActivityHeatmapYear,
   "checkbox/preferences": CheckboxPreferences,
   "field/profile-form": FieldProfileForm,
+  "otp-input/verify": OtpInputVerify,
   "radio-group/delivery": RadioGroupDelivery,
   "switch/settings": SwitchSettings,
   "input/variants": InputVariants,

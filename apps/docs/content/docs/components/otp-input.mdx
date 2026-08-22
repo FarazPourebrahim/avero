@@ -1,0 +1,90 @@
+---
+title: OtpInput
+description: A one-time code field with SMS autofill, paste cleanup and Persian digit support.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/otp-input)
+
+```tsx
+import { OtpInput } from "@avero/react";
+```
+
+<ComponentPreview name="otp-input/verify" />
+
+## Anatomy
+
+| Part      | Slot                              | Notes                                                             |
+| --------- | --------------------------------- | ----------------------------------------------------------------- |
+| Container | `data-slot="otp-input-container"` | Lays out the boxes left to right; `data-invalid`, `data-disabled` |
+| Slot      | `data-slot="otp-input-slot"`      | One decorative digit box; `data-active` marks the next to fill    |
+| Input     | `data-slot="otp-input"`           | The one real, invisible input laid over the boxes                 |
+
+## Usage
+
+```tsx
+<OtpInput aria-label="کد تأیید" onComplete={(code) => verify(code)} />
+```
+
+`onComplete` fires once, when the last digit is entered. `onValueChange` reports every change.
+
+## Why one input
+
+The boxes are drawn, not typed into: a single `<input>` covers them. That keeps everything the
+platform does for one-time codes working — iOS and Android offer the SMS code above the keyboard
+(`autocomplete="one-time-code"`), paste fills every box at once, and a screen reader hears one
+textbox holding the code rather than six unnamed fields.
+
+## Digits and paste
+
+- Persian (`۰–۹`) and Arabic (`٠–٩`) digits are converted to Latin, so the value you receive and
+  submit is always `0–9`.
+- Anything else is dropped: pasting `۱۲۳-۴۵۶` gives `123456`.
+- The value stops at `length`; extra digits are ignored rather than cut off before cleaning.
+- The boxes show the locale's digits — `۱۲۳` under a Persian `AveroProvider`, `123` under English.
+
+## Right-to-left
+
+Codes are read left to right even inside Persian text, so the boxes and the input are always
+`dir="ltr"`. Typing and Backspace work from the end of the code.
+
+## Composition
+
+- Label it with [`Field`](./field) or `aria-label`; the description is announced with the code.
+- Give it a `name` to submit it with a form, or read it from `onComplete`.
+- Resize or respace the boxes with `slotClassName` and `containerClassName`.
+
+## Accessibility
+
+| Key                  | Action                                 |
+| -------------------- | -------------------------------------- |
+| <kbd>Tab</kbd>       | Moves focus to the code                |
+| Digits               | Fill the next box                      |
+| <kbd>Backspace</kbd> | Removes the last digit                 |
+| Paste                | Fills the boxes from the pasted digits |
+
+- The boxes are `aria-hidden`; the input carries the value, name and description.
+- `inputmode="numeric"` opens the number keyboard on phones.
+- The box borders are `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
+
+## API reference
+
+`OtpInput` accepts every native `<input>` attribute plus:
+
+<PropsTable file="components/otp-input/OtpInput.tsx" name="OtpInputOwnProps" />
+
+## Theming
+
+| Token              | Used by                 |
+| ------------------ | ----------------------- |
+| `--color-primary`  | Active box border, ring |
+| `--color-gray-500` | Box borders             |
+| `--animate-blink`  | Caret in the next box   |
+
+## Do and don't
+
+- **Do** submit as soon as `onComplete` fires; there is no need for a separate button.
+- **Don't** clear the code on a wrong attempt without saying why — keep it and show the error.
+
+## Related
+
+[Field](./field) · [Input](./input)
