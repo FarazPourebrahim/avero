@@ -16,6 +16,7 @@
     "typography",
     "visually-hidden",
     "---Forms---",
+    "field",
     "input",
     "textarea",
     "native-select",

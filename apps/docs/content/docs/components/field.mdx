@@ -1,0 +1,92 @@
+---
+title: Field
+description: Label, description and error for any form control, with the ids and ARIA attributes wired for you.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/field)
+
+```tsx
+import { Field, FieldControl, FieldDescription, FieldError, FieldLabel } from "@avero/react";
+```
+
+<ComponentPreview name="field/profile-form" />
+
+## Anatomy
+
+| Part             | Slot                            | Notes                                                         |
+| ---------------- | ------------------------------- | ------------------------------------------------------------- |
+| Field            | `data-slot="field"`             | Holds the ids; `data-invalid` and `data-disabled` mark state  |
+| FieldLabel       | `data-slot="field-label"`       | A `<label>` pointing at the control, with a `*` when required |
+| FieldControl     | —                               | Renders no element: passes ids and ARIA to its only child     |
+| FieldDescription | `data-slot="field-description"` | Help text, always read with the control                       |
+| FieldError       | `data-slot="field-error"`       | Shown only while the field is invalid and has a message       |
+
+## Usage
+
+```tsx
+<Field invalid={Boolean(errors.email)} required>
+  <FieldLabel>ایمیل</FieldLabel>
+  <FieldControl>
+    <Input type="email" {...register("email")} />
+  </FieldControl>
+  <FieldDescription>برای ارسال رسید پرداخت</FieldDescription>
+  <FieldError>{errors.email?.message}</FieldError>
+</Field>
+```
+
+`FieldControl` works with every Avero control — `Input`, `Textarea`, `NativeSelect`, a `Select`
+trigger — and with your own, because it adds attributes to the child rather than rendering a
+control of its own. It forwards refs, so react-hook-form's `register` works unchanged.
+
+## What gets wired
+
+| On the control     | Comes from                                                                     |
+| ------------------ | ------------------------------------------------------------------------------ |
+| `id`               | Generated, or `Field`'s `id` prop; the label's `htmlFor` matches               |
+| `aria-describedby` | The description, then the error while it is shown; your own ids are kept first |
+| `aria-invalid`     | `invalid` on `Field`                                                           |
+| `aria-required`    | `required` on `Field`                                                          |
+| `disabled`         | `disabled` on `Field`                                                          |
+
+`required` marks the control for assistive technology only. Add the native `required` attribute
+yourself if you also want the browser's own validation.
+
+## Right-to-left
+
+The label, description and error align to the inline start, and the required asterisk follows the
+label text, so the field reads correctly in both directions.
+
+## Accessibility
+
+- The label names the control, and the description and error are announced as its description.
+- The error renders with `role="alert"` when it appears, so it is read out without moving focus.
+- The asterisk is `aria-hidden`: `aria-required` already tells assistive technology the field is
+  required, so it is not announced twice.
+
+## API reference
+
+`Field` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/field/Field.tsx" name="FieldOwnProps" />
+
+`FieldLabel`, `FieldDescription` and `FieldError` accept the native attributes of the `<label>` and
+`<p>` elements they render. `FieldControl` accepts attributes to pass on to its child.
+
+## Theming
+
+| Token              | Used by     |
+| ------------------ | ----------- |
+| `--color-gray-700` | Label       |
+| `--color-gray-500` | Description |
+| `--color-red-600`  | Error, `*`  |
+
+## Do and don't
+
+- **Do** keep the description to a sentence; long help belongs next to the form.
+- **Do** pass `invalid` from your form state, so the error and the control's state always agree.
+- **Don't** put more than one control in a `FieldControl`; group checkboxes and radios with a
+  fieldset instead.
+
+## Related
+
+[Input](./input) · [Textarea](./textarea) · [Select](./select) · [FormActions](./form-actions)
