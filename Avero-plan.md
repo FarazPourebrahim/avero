@@ -43,13 +43,13 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | Scope and design system | ✅ | 5 / 5 | — | M | 2026-06-19 | 2026-06-19 |
 | 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
-| 2 | Design tokens and foundations | 🟨 | 12 / 12 | 1 | L | 2026-06-19 | |
+| 2 | Design tokens and foundations | ✅ | 12 / 12 | 1 | L | 2026-06-19 | 2026-08-18 |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | 🟨 | 6 / 10 | 3 | L | 2026-07-05 | |
 | 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
 | 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
-| 8 | Layout shells and site chrome | 🟨 | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | |
+| 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
 | 10 | Blocks and example templates | 🟨 | 3 / 6 | 4–9 | L | 2026-07-05 | |
 | 11 | Documentation site | 🟨 | 1 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
@@ -597,7 +597,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **Evidence:** GitHub Actions `CI` workflow, green on `dev` (2026-08-18): fresh checkout, frozen-lockfile install, lint, format, packages build, typecheck, unit tests, size budgets, Storybook build, Playwright smoke + axe, docs build.
 **Exit gate:** a fresh clone passes `pnpm install && pnpm -r build && pnpm -r test` with CI green.
 
-### Phase 2 — Design tokens and foundations  🟨
+### Phase 2 — Design tokens and foundations  ✅
 
 **Scope:** F-01…F-13.
 
@@ -615,8 +615,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Contrast report generated for every failing text/background pairing used in §5, listed against O-04 — `contrast-report.mjs` writes `packages/tokens/reports/contrast-report.md`; completeness comes from the browser axe suite, which measures every text node in every story in both directions (D-19), and all 28 below-AA pairings it finds are in the report
 - [x] Global DoD items 3, 8 and 10 hold for the tokens packages — lint passes with raw values confined to `@avero/tokens` itself, the Foundations pages document them, and CI's typecheck and lint are green
 
-**Evidence:** GitHub Actions `CI` green on `dev` (2026-08-18), including the font-loading test and the docs build with the Foundations pages. The phase stays 🟨 until the exit-gate design review is recorded.
-**Exit gate:** the token specimen pages are signed off in a design review.
+**Evidence:** GitHub Actions `CI` green on `dev` (2026-08-18), including the font-loading test and the docs build with the Foundations pages. Design review of the token specimen pages signed off by the user on 2026-08-18.
+**Exit gate:** the token specimen pages are signed off in a design review. ✅ Signed off by the user, 2026-08-18.
 
 ### Phase 3 — Core primitives  ✅
 
@@ -633,7 +633,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] P-14 `VisuallyHidden`/`LiveRegion` and P-15 `Image`/`Figure` meet the Global DoD
 - [x] P-06b `AvatarGroup`, P-11 `Spinner` and P-12 `Skeleton` are split out as backlog rows in §9, so this phase does not wait on them
 
-**Exit gate:** a Storybook "Primitives" review page is signed off in a design review.
+**Exit gate:** a Storybook "Primitives" review page is signed off in a design review. ✅ Signed off by the user, 2026-08-18.
 
 ### Phase 4 — Forms  🟨
 
@@ -705,7 +705,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** every component in this phase meets the Global DoD.
 
-### Phase 8 — Layout shells and site chrome  🟨
+### Phase 8 — Layout shells and site chrome  ✅
 
 **Scope:** T-01…T-09.
 
@@ -719,9 +719,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] `Container` and grid presets documented and used by every shell
 - [x] Shells verified at 320px minimum width with no horizontal scroll — measured at 320px: `scrollWidth` equals `clientWidth`, and the only boxes past the edge are the banner glows, which their `overflow-hidden` parent clips
 
-**Exit gate:** every shell meets the Global DoD and holds at 320px.
-
-> Every DoD item is ticked; the phase closes once the exit gate is verified.
+**Exit gate:** every shell meets the Global DoD and holds at 320px. ✅ 320px measurement above; design review of the shells signed off by the user, 2026-08-18.
 
 ### Phase 9 — Charts and editor packages  🟨
 
