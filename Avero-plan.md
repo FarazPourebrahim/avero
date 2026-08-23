@@ -45,7 +45,7 @@
 | 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
 | 2 | Design tokens and foundations | 🟨 | 12 / 12 | 1 | L | 2026-06-19 | |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
-| 4 | Forms | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
+| 4 | Forms | 🟨 | 5 / 10 | 3 | L | 2026-07-05 | |
 | 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
 | 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 80 / 146 phase-DoD items (≈55%).
+**Overall:** 82 / 146 phase-DoD items (≈56%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -642,10 +642,10 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **DoD:**
 - [x] FM-02 `Input`, FM-03 `Textarea`, FM-04 `NativeSelect` and FM-15 `FormActions` meet the Global DoD
 - [x] FM-05 `Select` (Radix) meets the Global DoD, with the listbox designed from the token system
-- [ ] FM-01 `Field` wires label, description and error ids (`aria-describedby`, `aria-invalid`) automatically
+- [x] FM-01 `Field` wires label, description and error ids (`aria-describedby`, `aria-invalid`) automatically — `FieldControl` passes `id`, `aria-describedby`, `aria-invalid`, `aria-required` and `disabled` to any child control, including react-hook-form's `register` (CI green)
 - [x] A react-hook-form + zod integration example passes a test for register, validation errors and submit
 - [ ] FM-06 `Combobox` meets the Global DoD
-- [ ] FM-07 `Checkbox`, FM-08 `Radio` and FM-09 `Switch` meet the Global DoD
+- [x] FM-07 `Checkbox`, FM-08 `Radio` and FM-09 `Switch` meet the Global DoD — Radix-based, with an indeterminate checkbox state, direction-aware radio arrow keys and a mirrored switch thumb; resting borders and the off track are `gray-500` to meet 3:1 non-text contrast (CI green)
 - [ ] FM-10 `FileInput` meets the Global DoD, including keyboard access and file-type/size props
 - [ ] FM-11 `PriceInput` and FM-12 `TagInput` meet the Global DoD, including Persian digit input normalisation
 - [ ] FM-13 `DatePicker` (Jalali) meets the Global DoD, using `Intl` only, with RTL grid navigation
@@ -863,15 +863,15 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | P-13 | Progress | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-14 | VisuallyHidden / LiveRegion | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-15 | Image / Figure | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| FM-01 | Field | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-01 | Field | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-02 | Input | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-03 | Textarea | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-04 | NativeSelect | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-05 | Select | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-06 | Combobox | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| FM-07 | Checkbox | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| FM-08 | Radio | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| FM-09 | Switch | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-07 | Checkbox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| FM-08 | Radio | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| FM-09 | Switch | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-10 | FileInput | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | FM-11 | PriceInput | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | FM-12 | TagInput | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
