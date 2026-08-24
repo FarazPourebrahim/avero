@@ -95,6 +95,8 @@ export type AveroDictionary = {
   chartDataTable: string;
   /** Header of a chart data table's first column, holding the x value of each row. */
   chartCategory: string;
+  /** Message shown when no combobox option matches the typed text. */
+  comboboxEmpty: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -152,6 +154,7 @@ export const fa: AveroDictionary = {
   editorPlaceholder: "متن خود را بنویسید…",
   chartDataTable: "جدول داده‌های نمودار",
   chartCategory: "دسته",
+  comboboxEmpty: "موردی یافت نشد",
 };
 
 export const en: AveroDictionary = {
@@ -207,6 +210,7 @@ export const en: AveroDictionary = {
   editorPlaceholder: "Write your text…",
   chartDataTable: "Chart data table",
   chartCategory: "Category",
+  comboboxEmpty: "No matches found",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
