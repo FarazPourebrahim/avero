@@ -6,12 +6,7 @@ import { describe, expect, it, vi } from "vitest";
 import { AveroProvider } from "../../i18n/AveroProvider.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { Field, FieldControl, FieldLabel } from "../field/Field.js";
-import {
-  Combobox,
-  normalizeSearchText,
-  type ComboboxItem,
-  type ComboboxOption,
-} from "./Combobox.js";
+import { Combobox, type ComboboxItem, type ComboboxOption } from "./Combobox.js";
 
 const CITIES: ComboboxOption[] = [
   { value: "tehran", label: "تهران", keywords: ["Tehran"] },
@@ -40,13 +35,6 @@ const COURSES: ComboboxItem[] = [
 function optionNames(): string[] {
   return screen.getAllByRole("option").map((option) => option.textContent ?? "");
 }
-
-describe("normalizeSearchText", () => {
-  it("folds Arabic letters, non-joiners, diacritics, digits and case", () => {
-    expect(normalizeSearchText("  كيك‌ها ۱۲٣ ABC ")).toBe("کیک ها 123 abc");
-    expect(normalizeSearchText("مُحَمَّد")).toBe("محمد");
-  });
-});
 
 describe("Combobox", () => {
   it("renders a closed, labelled combobox input", () => {

@@ -15,8 +15,8 @@ import { useControllableState } from "../../hooks/useControllableState.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { ChevronDownIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
-import { toLatinDigits } from "../../utils/format.js";
 import { mergeRefs } from "../../utils/refs.js";
+import { normalizeSearchText } from "../../utils/search.js";
 
 export type ComboboxOption = {
   /** Submitted and reported value. Must be unique across the whole list. */
@@ -38,20 +38,6 @@ export type ComboboxItem = ComboboxOption | ComboboxGroup;
 
 function isGroup(item: ComboboxItem): item is ComboboxGroup {
   return "options" in item;
-}
-
-/**
- * Folds the differences that make Persian text look the same but compare unequal: Arabic yeh and
- * kaf, zero-width non-joiners, tatweel, diacritics, Persian and Arabic digits, and letter case.
- */
-export function normalizeSearchText(text: string): string {
-  return toLatinDigits(text)
-    .replace(/[\u064A\u0649]/g, "\u06CC")
-    .replace(/\u0643/g, "\u06A9")
-    .replace(/[\u064B-\u065F\u0670\u0640]/g, "")
-    .replace(/[\u200C\s]+/g, " ")
-    .trim()
-    .toLowerCase();
 }
 
 function defaultFilter(option: ComboboxOption, query: string): boolean {
