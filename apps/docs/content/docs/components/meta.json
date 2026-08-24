@@ -26,6 +26,7 @@
     "radio-group",
     "switch",
     "otp-input",
+    "file-input",
     "form-actions",
     "---Navigation---",
     "accordion",

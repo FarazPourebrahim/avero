@@ -26,6 +26,7 @@ import ChartsAnalytics from "./charts/analytics";
 import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
 import ComboboxCategories from "./combobox/categories";
+import FileInputAttachments from "./file-input/attachments";
 import CommentSectionArticle from "./comment-section/article";
 import CommentSectionService from "./comment-section/service";
 import ContactMethodsDirect from "./contact-methods/direct";
@@ -168,6 +169,7 @@ export const demos = {
   "textarea/variants": TextareaVariants,
   "native-select/sort": NativeSelectSort,
   "combobox/categories": ComboboxCategories,
+  "file-input/attachments": FileInputAttachments,
   "select/filter": SelectFilter,
   "form-actions/comment-form": FormActionsCommentForm,
   "charts/analytics": ChartsAnalytics,

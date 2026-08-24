@@ -1,0 +1,104 @@
+---
+title: FileInput
+description: A drop area for choosing files by drag and drop, click or keyboard, with type and size limits.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/file-input)
+
+```tsx
+import { FileInput, formatFileSize, type FileRejection } from "@avero/react";
+```
+
+<ComponentPreview name="file-input/attachments" />
+
+## Anatomy
+
+| Part      | Slot                              | Notes                                                         |
+| --------- | --------------------------------- | ------------------------------------------------------------- |
+| Root      | `data-slot="file-input"`          | Stacks the drop area, errors and list; `data-disabled`        |
+| Drop area | `data-slot="file-input-dropzone"` | `data-dragging`, `data-invalid`, `data-disabled`              |
+| Control   | `data-slot="file-input-control"`  | The real, visually hidden `<input type="file">`; gets the ref |
+| Error     | `data-slot="file-input-error"`    | `role="alert"`; one line per rejected file                    |
+| List      | `data-slot="file-input-list"`     | Rendered once a file is chosen                                |
+| Item      | `data-slot="file-input-item"`     | File name, size and a remove button                           |
+
+## Usage
+
+```tsx
+<FileInput
+  aria-label="رزومه"
+  accept=".pdf"
+  maxSize={5 * 1024 * 1024}
+  onValueChange={setFiles}
+  onReject={(rejections: FileRejection[]) => report(rejections)}
+/>
+```
+
+`onValueChange` always receives the whole list of chosen files, not just the new ones.
+
+## Limits
+
+- `accept` takes the native list — extensions (`.pdf`), MIME types (`application/pdf`) and
+  wildcards (`image/*`). It filters the picker and is checked again for dropped files, which the
+  picker never sees.
+- `maxSize` is in bytes. The hint under the title shows it, formatted with `formatFileSize` in the
+  locale's digits.
+- Without `multiple`, a new file replaces the old one. With `multiple`, new files are added until
+  `maxFiles`; the rest are rejected, not dropped silently.
+
+Every rejected file is reported to `onReject` with a reason — `type`, `size` or `count` — and shown
+under the drop area. The messages come from the dictionary.
+
+## Forms
+
+Give it a `name` and the files shown in the list are sent with a normal form submission: the
+component keeps the input's `FileList` in step with the list. Validate again on the server — the
+browser's file type is only a hint.
+
+## Right-to-left
+
+The drop area is centred, and the file rows use logical spacing, so they mirror with
+`AveroProvider`. File names use `dir="auto"`, so a Latin name reads correctly on a Persian page.
+
+## Composition
+
+- Label it with [`Field`](./field) or `aria-label`. Without either (and without an `id` for a
+  `<label>`), the drop area's title names the input.
+- Use `title` and `hint` to describe what to upload; `className` styles the drop area and
+  `containerClassName` the wrapper.
+
+## Accessibility
+
+| Key                                 | Action                                             |
+| ----------------------------------- | -------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Focuses the file input; the drop area shows a ring |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Opens the file picker                              |
+| <kbd>Tab</kbd> to a remove button   | <kbd>Enter</kbd> removes that file                 |
+
+- Drag and drop is an extra, never the only way in: every action works from the keyboard.
+- Errors are announced with `role="alert"` and linked to the input with `aria-describedby`.
+- Removing a file moves focus back to the input, since its row disappears.
+
+## API reference
+
+`FileInput` accepts every native `<input>` attribute plus:
+
+<PropsTable file="components/file-input/FileInput.tsx" name="FileInputOwnProps" />
+
+## Theming
+
+| Token              | Used by                      |
+| ------------------ | ---------------------------- |
+| `--color-gray-300` | Dashed border                |
+| `--color-primary`  | Focus, drag and hover border |
+| `--color-blue-50`  | Drop area while dragging     |
+| `--color-red-500`  | Invalid border               |
+
+## Do and don't
+
+- **Do** say which types and sizes are allowed in `hint` before people pick a file.
+- **Don't** rely on `accept` for security; check files on the server.
+
+## Related
+
+[Field](./field) · [Input](./input)
