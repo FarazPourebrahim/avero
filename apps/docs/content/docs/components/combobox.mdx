@@ -1,0 +1,108 @@
+---
+title: Combobox
+description: A searchable single select with category groups and Persian-aware matching.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/combobox)
+
+```tsx
+import { Combobox, normalizeSearchText, type ComboboxItem } from "@avero/react";
+```
+
+<ComponentPreview name="combobox/categories" />
+
+## Anatomy
+
+| Part        | Slot                               | Notes                                                      |
+| ----------- | ---------------------------------- | ---------------------------------------------------------- |
+| Root        | `data-slot="combobox"`             | Wraps the input and chevron; `data-state`, `data-disabled` |
+| Input       | `data-slot="combobox-input"`       | `role="combobox"`; receives the ref and native props       |
+| Content     | `data-slot="combobox-content"`     | Portalled popover, as wide as the input                    |
+| Listbox     | `data-slot="combobox-listbox"`     | Rendered while at least one option matches                 |
+| Group       | `data-slot="combobox-group"`       | `role="group"`, named by its category label                |
+| Group label | `data-slot="combobox-group-label"` | Category heading                                           |
+| Option      | `data-slot="combobox-option"`      | `data-state`, `data-highlighted`, `data-disabled`          |
+| Empty       | `data-slot="combobox-empty"`       | Shown instead of the listbox when nothing matches          |
+
+## Usage
+
+Pass options, or groups of options under a category heading:
+
+```tsx
+const options: ComboboxItem[] = [
+  { label: "طراحی", options: [{ value: "ui", label: "طراحی رابط کاربری" }] },
+  {
+    label: "داده",
+    options: [{ value: "analytics", label: "تحلیل داده", keywords: ["Analytics"] }],
+  },
+];
+
+<Combobox aria-label="دوره" options={options} onValueChange={setCourse} />;
+```
+
+Groups and plain options can be mixed. Groups with no matching option are hidden while filtering.
+
+## Matching
+
+The default filter keeps an option when its label or one of its `keywords` contains the typed text,
+after both pass through `normalizeSearchText`:
+
+- Arabic `ي`, `ى` and `ك` match Persian `ی` and `ک`, so an Arabic keyboard layout still finds results.
+- A zero-width non-joiner matches a space: `برنامه نویسی` finds `برنامه‌نویسی`.
+- Diacritics and tatweel are ignored, Persian and Arabic digits match Latin digits, and case is ignored.
+
+Use `keywords` for synonyms or English names. Pass `filter` to replace the matching entirely.
+
+## Right-to-left
+
+The chevron sits at the inline end and the list opens under the input at its full width, so the
+layout mirrors with `AveroProvider`. Typed text follows the input's direction.
+
+## Composition
+
+- Label it with [`Field`](./field) or `aria-label`. The list takes its name from the same label.
+- Give it a `name` to submit the selected **value** (not the label) through a hidden input.
+- With react-hook-form, use `Controller` and bind `value` and `onValueChange`: `register` would
+  read the typed text instead of the value.
+- For a short list that doesn't need searching, [Select](./select) is simpler.
+
+## Accessibility
+
+Follows the WAI-ARIA combobox pattern with list autocomplete. Focus stays in the input, and the
+highlighted option is exposed through `aria-activedescendant`.
+
+| Key                                       | Action                                                              |
+| ----------------------------------------- | ------------------------------------------------------------------- |
+| Typing                                    | Filters the list and highlights the first enabled match             |
+| <kbd>ArrowDown</kbd> / <kbd>ArrowUp</kbd> | Opens the list, then moves the highlight, skipping disabled options |
+| <kbd>Enter</kbd>                          | Picks the highlighted option without submitting the form            |
+| <kbd>Escape</kbd>                         | Closes the list and restores the selected option's label            |
+| <kbd>Tab</kbd>                            | Closes the list and moves on                                        |
+
+- Disabled options carry `aria-disabled` and can't be picked.
+- The "no matches" message comes from the dictionary's `comboboxEmpty` entry.
+
+## API reference
+
+`Combobox` accepts every native `<input>` attribute plus:
+
+<PropsTable file="components/combobox/Combobox.tsx" name="ComboboxOwnProps" />
+
+## Theming
+
+| Token                  | Used by            |
+| ---------------------- | ------------------ |
+| `--color-gray-300`     | Input border       |
+| `--color-blue-500`     | Focus ring         |
+| `--color-blue-50`      | Highlighted option |
+| `--shadow-card-raised` | List               |
+| `--z-dropdown`         | List layer         |
+
+## Do and don't
+
+- **Do** add `keywords` when people might search in another script or by a synonym.
+- **Don't** use it for free text entry: only listed options can be picked.
+
+## Related
+
+[Select](./select) · [NativeSelect](./native-select) · [Field](./field)

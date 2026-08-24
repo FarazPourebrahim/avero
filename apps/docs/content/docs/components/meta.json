@@ -21,6 +21,7 @@
     "textarea",
     "native-select",
     "select",
+    "combobox",
     "checkbox",
     "radio-group",
     "switch",
