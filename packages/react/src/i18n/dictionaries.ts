@@ -109,6 +109,8 @@ export type AveroDictionary = {
   fileInputRejectedCount: string;
   /** Accessible name of a chosen file's remove button. `{name}` is replaced. */
   fileInputRemove: string;
+  /** Accessible name of a tag's remove button. `{tag}` is replaced. */
+  tagInputRemove: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -173,6 +175,7 @@ export const fa: AveroDictionary = {
   fileInputRejectedSize: "حجم «{name}» بیشتر از {size} است.",
   fileInputRejectedCount: "حداکثر {count} فایل می‌توانید انتخاب کنید.",
   fileInputRemove: "حذف {name}",
+  tagInputRemove: "حذف {tag}",
 };
 
 export const en: AveroDictionary = {
@@ -235,6 +238,7 @@ export const en: AveroDictionary = {
   fileInputRejectedSize: "“{name}” is larger than {size}.",
   fileInputRejectedCount: "You can choose up to {count} files.",
   fileInputRemove: "Remove {name}",
+  tagInputRemove: "Remove {tag}",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };

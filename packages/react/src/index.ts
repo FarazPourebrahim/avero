@@ -128,9 +128,11 @@ export * from "./components/form-actions/index.js";
 export * from "./components/input/index.js";
 export * from "./components/native-select/index.js";
 export * from "./components/otp-input/index.js";
+export * from "./components/price-input/index.js";
 export * from "./components/radio-group/index.js";
 export * from "./components/select/index.js";
 export * from "./components/switch/index.js";
+export * from "./components/tag-input/index.js";
 export * from "./components/textarea/index.js";
 
 // Navigation
