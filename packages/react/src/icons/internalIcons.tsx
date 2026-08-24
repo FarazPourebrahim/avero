@@ -232,3 +232,18 @@ export const MinusIcon = createIcon("MinusIcon", {
   mode: "stroke",
   paths: ["M5 12h14"],
 });
+
+export const UploadIcon = createIcon("UploadIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M12 3v12", "m17 8-5-5-5 5", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"],
+});
+
+export const FileIcon = createIcon("FileIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: [
+    "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
+    "M14 2v5a1 1 0 0 0 1 1h5",
+  ],
+});

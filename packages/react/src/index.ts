@@ -3,6 +3,7 @@ export { cn } from "./utils/cn.js";
 export { richContentAllowList, sanitizeHtml, stripHtml } from "./utils/sanitize.js";
 export {
   formatDate,
+  formatFileSize,
   formatNumber,
   formatRelativeTime,
   toLatinDigits,
@@ -122,6 +123,7 @@ export * from "./components/empty-state/index.js";
 export * from "./components/checkbox/index.js";
 export * from "./components/combobox/index.js";
 export * from "./components/field/index.js";
+export * from "./components/file-input/index.js";
 export * from "./components/form-actions/index.js";
 export * from "./components/input/index.js";
 export * from "./components/native-select/index.js";

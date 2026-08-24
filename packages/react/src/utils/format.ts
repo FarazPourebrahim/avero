@@ -96,6 +96,31 @@ export function formatNumber(value: number, options: FormatNumberOptions = {}): 
   }).format(value);
 }
 
+const FILE_SIZE_UNITS = ["byte", "kilobyte", "megabyte", "gigabyte"] as const;
+
+/**
+ * Formats a byte count in the largest binary unit (1024-based) that keeps the value at least 1,
+ * with locale-aware digits and unit names, e.g. `1.5 MB`.
+ * Negative and non-finite values format as an empty string.
+ */
+export function formatFileSize(bytes: number, options: LocaleOptions = {}): string {
+  if (!Number.isFinite(bytes) || bytes < 0) return "";
+  const locale = options.locale ?? DEFAULT_LOCALE;
+  const digits = options.digits ?? defaultDigits(locale);
+  let value = bytes;
+  let unitIndex = 0;
+  while (value >= 1024 && unitIndex < FILE_SIZE_UNITS.length - 1) {
+    value /= 1024;
+    unitIndex += 1;
+  }
+  return new Intl.NumberFormat(withExtensions(locale, digits), {
+    style: "unit",
+    unit: FILE_SIZE_UNITS[unitIndex],
+    unitDisplay: "short",
+    maximumFractionDigits: 1,
+  }).format(value);
+}
+
 /**
  * Formats a date. Persian locales default to the Solar Hijri (Jalali) calendar:
  * `long` → `۳ شهریور ۱۴۰۵`, `numeric` → `۱۴۰۵/۶/۱۹`, `dayMonth` → `۲۰ شهریور`.

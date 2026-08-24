@@ -26,7 +26,7 @@ The icons in `src/icons/publicIcons.tsx` whose source says "Font Awesome Free 5"
 
 ## Lucide
 
-`src/icons/internalIcons.tsx` vendors the Lucide glyphs that Avero components render internally (arrow, chevron, copy, star, zoom, heart, share, message, send, user, users, eye, bookmark, folder, flag, award, shield, zap, warning, close, check and minus icons), so `lucide-react` stays an optional peer dependency.
+`src/icons/internalIcons.tsx` vendors the Lucide glyphs that Avero components render internally (arrow, chevron, copy, star, zoom, heart, share, message, send, user, users, eye, bookmark, folder, flag, award, shield, zap, warning, close, check, minus, upload and file icons), so `lucide-react` stays an optional peer dependency.
 
 - Copyright: Lucide Contributors (https://lucide.dev)
 - Licence: ISC

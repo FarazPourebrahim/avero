@@ -97,6 +97,18 @@ export type AveroDictionary = {
   chartCategory: string;
   /** Message shown when no combobox option matches the typed text. */
   comboboxEmpty: string;
+  /** Main line of a file drop area. */
+  fileInputTitle: string;
+  /** Hint under a file drop area. `{size}` is replaced with the largest allowed file size. */
+  fileInputMaxSize: string;
+  /** Error for a file of a type the input does not accept. `{name}` is replaced. */
+  fileInputRejectedType: string;
+  /** Error for a file over the size limit. `{name}` and `{size}` are replaced. */
+  fileInputRejectedSize: string;
+  /** Error when more files are chosen than allowed. `{count}` is replaced with the limit. */
+  fileInputRejectedCount: string;
+  /** Accessible name of a chosen file's remove button. `{name}` is replaced. */
+  fileInputRemove: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -155,6 +167,12 @@ export const fa: AveroDictionary = {
   chartDataTable: "جدول داده‌های نمودار",
   chartCategory: "دسته",
   comboboxEmpty: "موردی یافت نشد",
+  fileInputTitle: "فایل را اینجا رها کنید یا برای انتخاب کلیک کنید",
+  fileInputMaxSize: "حداکثر حجم هر فایل: {size}",
+  fileInputRejectedType: "نوع فایل «{name}» مجاز نیست.",
+  fileInputRejectedSize: "حجم «{name}» بیشتر از {size} است.",
+  fileInputRejectedCount: "حداکثر {count} فایل می‌توانید انتخاب کنید.",
+  fileInputRemove: "حذف {name}",
 };
 
 export const en: AveroDictionary = {
@@ -211,6 +229,12 @@ export const en: AveroDictionary = {
   chartDataTable: "Chart data table",
   chartCategory: "Category",
   comboboxEmpty: "No matches found",
+  fileInputTitle: "Drop a file here or click to browse",
+  fileInputMaxSize: "Up to {size} per file",
+  fileInputRejectedType: "“{name}” isn't an accepted file type.",
+  fileInputRejectedSize: "“{name}” is larger than {size}.",
+  fileInputRejectedCount: "You can choose up to {count} files.",
+  fileInputRemove: "Remove {name}",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };

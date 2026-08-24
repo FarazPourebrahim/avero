@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   formatDate,
+  formatFileSize,
   formatNumber,
   formatRelativeTime,
   toLatinDigits,
@@ -82,6 +83,33 @@ describe("formatNumber", () => {
   it("returns an empty string for non-finite values", () => {
     expect(formatNumber(Number.NaN)).toBe("");
     expect(formatNumber(Number.POSITIVE_INFINITY)).toBe("");
+  });
+});
+
+describe("formatFileSize", () => {
+  it("formats bytes below one kilobyte as bytes", () => {
+    expect(formatFileSize(0, { locale: "en-US" })).toBe("0 byte");
+    expect(formatFileSize(512, { locale: "en-US" })).toBe("512 byte");
+  });
+
+  it("switches to the largest 1024-based unit and keeps one decimal", () => {
+    expect(formatFileSize(1536, { locale: "en-US" })).toBe("1.5 kB");
+    expect(formatFileSize(2 * 1024 ** 2, { locale: "en-US" })).toBe("2 MB");
+    expect(formatFileSize(3 * 1024 ** 3, { locale: "en-US" })).toBe("3 GB");
+  });
+
+  it("stops at gigabytes", () => {
+    expect(formatFileSize(1024 ** 4, { locale: "en-US" })).toBe("1,024 GB");
+  });
+
+  it("uses Persian digits and separators by default", () => {
+    expect(formatFileSize(1.2 * 1024 ** 2)).toBe("۱٫۲ MB");
+  });
+
+  it("formats invalid sizes as an empty string", () => {
+    expect(formatFileSize(-1)).toBe("");
+    expect(formatFileSize(Number.NaN)).toBe("");
+    expect(formatFileSize(Number.POSITIVE_INFINITY)).toBe("");
   });
 });
 
