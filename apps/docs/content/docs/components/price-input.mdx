@@ -1,0 +1,90 @@
+---
+title: PriceInput
+description: An amount field that groups digits as you type and accepts Persian and Arabic digits.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/price-input)
+
+```tsx
+import { PriceInput } from "@avero/react";
+```
+
+<ComponentPreview name="price-input/budget" />
+
+## Anatomy
+
+| Part     | Slot                               | Notes                                             |
+| -------- | ---------------------------------- | ------------------------------------------------- |
+| Root     | `data-slot="price-input"`          | Positions the unit; `data-disabled`               |
+| Control  | `data-slot="price-input-control"`  | The text input; receives the ref and native props |
+| Currency | `data-slot="price-input-currency"` | The unit at the inline end; describes the input   |
+
+## Usage
+
+```tsx
+const [budget, setBudget] = useState<number | null>(null);
+
+<PriceInput aria-label="بودجه" value={budget} onValueChange={setBudget} />;
+```
+
+The value is a whole number, or `null` when the field is empty.
+
+## Digits and grouping
+
+- Latin (`0–9`), Persian (`۰–۹`) and Arabic (`٠–٩`) digits are all accepted; anything else is ignored.
+- The amount is shown in the locale's digits and grouping: `۲٬۵۰۰٬۰۰۰` under a Persian
+  `AveroProvider`, `2,500,000` under English.
+- The caret stays after the digit you typed, even when a separator is added or removed.
+- Leading zeros are dropped. Amounts stop at `max`, and never go past JavaScript's largest safe integer.
+- Amounts are whole and non-negative; there is no decimal or minus sign.
+
+## Forms
+
+Give it a `name` to submit the amount in Latin digits (`2500000`) through a hidden input. With
+react-hook-form, use `Controller` and bind `value` and `onValueChange`.
+
+## Right-to-left
+
+The unit sits at the inline end, so it follows the text on Persian pages and precedes nothing in
+English. Digits always read left to right inside the grouped amount.
+
+## Composition
+
+- Label it with [`Field`](./field) or `aria-label`. The unit is added to the input's description.
+- `currency` replaces the unit (for example `ریال`); `currency={null}` hides it.
+- `variant` shares [`Input`](./input)'s `filter`, `soft` and `slate` treatments.
+- To display a price rather than edit one, use [PriceTag](./price-tag).
+
+## Accessibility
+
+| Key            | Action                          |
+| -------------- | ------------------------------- |
+| <kbd>Tab</kbd> | Focuses the field               |
+| Digits         | Insert at the caret and regroup |
+| Letters        | Ignored; the caret doesn't move |
+
+- `inputmode="numeric"` opens the number keyboard on phones.
+- The input stays a textbox rather than a spinbutton, so grouped digits are read as a number.
+
+## API reference
+
+`PriceInput` accepts every native `<input>` attribute plus:
+
+<PropsTable file="components/price-input/PriceInput.tsx" name="PriceInputOwnProps" />
+
+## Theming
+
+| Token              | Used by               |
+| ------------------ | --------------------- |
+| `--color-gray-300` | Border (`filter`)     |
+| `--color-blue-500` | Focus ring (`filter`) |
+| `--color-gray-500` | Unit                  |
+
+## Do and don't
+
+- **Do** keep amounts in the smallest unit you store (toman or rial) and label the unit.
+- **Don't** use it for prices with decimals; it only accepts whole numbers.
+
+## Related
+
+[PriceTag](./price-tag) · [Input](./input) · [Field](./field)

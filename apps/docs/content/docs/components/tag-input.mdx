@@ -1,0 +1,92 @@
+---
+title: TagInput
+description: A text field that turns entries into removable tags, with Persian-aware duplicate checks.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/tag-input)
+
+```tsx
+import { TagInput } from "@avero/react";
+```
+
+<ComponentPreview name="tag-input/skills" />
+
+## Anatomy
+
+| Part    | Slot                            | Notes                                                          |
+| ------- | ------------------------------- | -------------------------------------------------------------- |
+| Root    | `data-slot="tag-input"`         | The bordered box; `data-invalid`, `data-disabled`, `data-full` |
+| List    | `data-slot="tag-input-list"`    | Rendered once there is a tag                                   |
+| Tag     | `data-slot="tag-input-tag"`     | A `skill` [Chip](./chip) with a remove button                  |
+| Control | `data-slot="tag-input-control"` | The text input; receives the ref and native props              |
+
+## Usage
+
+```tsx
+<TagInput aria-label="مهارت‌ها" defaultValue={["React"]} onValueChange={setSkills} />
+```
+
+`onValueChange` receives the whole list after every addition or removal.
+
+## Adding and removing
+
+- <kbd>Enter</kbd>, a comma (`,`) or a Persian comma (`،`) turns the typed text into a tag.
+- Pasting `UX, UI، Figma` adds `UX` and `UI` and leaves `Figma` in the field to finish.
+- Leaving the field adds what was typed.
+- Spaces are trimmed and collapsed. A tag that matches an existing one — ignoring case, Arabic
+  `ي`/`ك`, zero-width non-joiners and digit systems — is not added again.
+- <kbd>Backspace</kbd> in an empty field removes the last tag; each tag also has a remove button.
+- With `maxTags`, the field stops adding tags and keeps the typed text, and the root gets
+  `data-full`.
+
+## Forms
+
+Give it a `name` and every tag is submitted as its own value, so
+`new FormData(form).getAll("skills")` returns the list. <kbd>Enter</kbd> only submits the form when
+the field is empty. With react-hook-form, use `Controller`.
+
+## Right-to-left
+
+Tags flow from the inline start and wrap onto new lines, so the box mirrors with `AveroProvider`.
+
+## Composition
+
+- Label it with [`Field`](./field) or `aria-label`.
+- `className` styles the bordered box; native attributes such as `placeholder` go to the text
+  input. The placeholder only shows while there are no tags.
+
+## Accessibility
+
+| Key                          | Action                                  |
+| ---------------------------- | --------------------------------------- |
+| <kbd>Enter</kbd> / `,` / `،` | Adds the typed text as a tag            |
+| <kbd>Backspace</kbd>         | In an empty field, removes the last tag |
+| <kbd>Tab</kbd>               | Moves through the remove buttons and on |
+
+- Tags are a list, so screen readers announce how many there are.
+- Each remove button is named from the dictionary (`حذف React`), and removing a tag returns focus to
+  the input.
+
+## API reference
+
+`TagInput` accepts every native `<input>` attribute plus:
+
+<PropsTable file="components/tag-input/TagInput.tsx" name="TagInputOwnProps" />
+
+## Theming
+
+| Token              | Used by    |
+| ------------------ | ---------- |
+| `--color-gray-300` | Box border |
+| `--color-blue-500` | Focus ring |
+| `--color-blue-50`  | Tag        |
+| `--color-blue-700` | Tag text   |
+
+## Do and don't
+
+- **Do** say how to separate tags in the field's description.
+- **Don't** use it to pick from a fixed list; use [Combobox](./combobox) or checkboxes.
+
+## Related
+
+[Chip](./chip) · [Combobox](./combobox) · [Field](./field)

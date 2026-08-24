@@ -27,6 +27,8 @@ import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
 import ComboboxCategories from "./combobox/categories";
 import FileInputAttachments from "./file-input/attachments";
+import PriceInputBudget from "./price-input/budget";
+import TagInputSkills from "./tag-input/skills";
 import CommentSectionArticle from "./comment-section/article";
 import CommentSectionService from "./comment-section/service";
 import ContactMethodsDirect from "./contact-methods/direct";
@@ -170,6 +172,8 @@ export const demos = {
   "native-select/sort": NativeSelectSort,
   "combobox/categories": ComboboxCategories,
   "file-input/attachments": FileInputAttachments,
+  "price-input/budget": PriceInputBudget,
+  "tag-input/skills": TagInputSkills,
   "select/filter": SelectFilter,
   "form-actions/comment-form": FormActionsCommentForm,
   "charts/analytics": ChartsAnalytics,

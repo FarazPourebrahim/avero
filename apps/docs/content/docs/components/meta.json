@@ -27,6 +27,8 @@
     "switch",
     "otp-input",
     "file-input",
+    "price-input",
+    "tag-input",
     "form-actions",
     "---Navigation---",
     "accordion",
