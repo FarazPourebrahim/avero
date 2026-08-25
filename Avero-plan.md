@@ -45,7 +45,7 @@
 | 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
 | 2 | Design tokens and foundations | ✅ | 12 / 12 | 1 | L | 2026-06-19 | 2026-08-18 |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
-| 4 | Forms | 🟨 | 6 / 10 | 3 | L | 2026-07-05 | |
+| 4 | Forms | 🟨 | 8 / 10 | 3 | L | 2026-07-05 | |
 | 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
 | 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 83 / 146 phase-DoD items (≈57%).
+**Overall:** 85 / 146 phase-DoD items (≈58%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -324,7 +324,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-10 | `FileInput` / upload |
 | FM-11 | `PriceInput` (toman, thousands separators, Persian digit normalisation) |
 | FM-12 | `TagInput` |
-| FM-13 | `DatePicker` (Jalali) |
+| FM-13 | `DatePicker` (Jalali): `single` and `range` modes, ISO `YYYY-MM-DD` values, typed entry in Persian or Latin digits plus a calendar popover (user, 2026-08-18) |
 | FM-14 | `OtpInput` |
 | FM-15 | `FormActions` row (hint text + submit) |
 
@@ -644,9 +644,9 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] FM-05 `Select` (Radix) meets the Global DoD, with the listbox designed from the token system
 - [x] FM-01 `Field` wires label, description and error ids (`aria-describedby`, `aria-invalid`) automatically — `FieldControl` passes `id`, `aria-describedby`, `aria-invalid`, `aria-required` and `disabled` to any child control, including react-hook-form's `register` (CI green)
 - [x] A react-hook-form + zod integration example passes a test for register, validation errors and submit
-- [ ] FM-06 `Combobox` meets the Global DoD
+- [x] FM-06 `Combobox` meets the Global DoD — WAI-ARIA combobox on Radix Popover (no new dependency), grouped category options, Persian-aware matching via `normalizeSearchText` (CI green)
 - [x] FM-07 `Checkbox`, FM-08 `Radio` and FM-09 `Switch` meet the Global DoD — Radix-based, with an indeterminate checkbox state, direction-aware radio arrow keys and a mirrored switch thumb; resting borders and the off track are `gray-500` to meet 3:1 non-text contrast (CI green)
-- [ ] FM-10 `FileInput` meets the Global DoD, including keyboard access and file-type/size props
+- [x] FM-10 `FileInput` meets the Global DoD, including keyboard access and file-type/size props — drop area over a real file input, `accept`/`maxSize`/`maxFiles` with `onReject` reasons, file list synced to the native `FileList` (CI green)
 - [ ] FM-11 `PriceInput` and FM-12 `TagInput` meet the Global DoD, including Persian digit input normalisation
 - [ ] FM-13 `DatePicker` (Jalali) meets the Global DoD, using `Intl` only, with RTL grid navigation
 - [x] FM-14 `OtpInput` meets the Global DoD, including paste handling and `autocomplete="one-time-code"` — one real input over decorative boxes, Persian and Arabic digits normalised, pasted separators dropped, boxes left to right on RTL pages (CI green)
@@ -866,11 +866,11 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | FM-03 | Textarea | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-04 | NativeSelect | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-05 | Select | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| FM-06 | Combobox | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-06 | Combobox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-07 | Checkbox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-08 | Radio | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-09 | Switch | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| FM-10 | FileInput | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-10 | FileInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-11 | PriceInput | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | FM-12 | TagInput | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | FM-13 | DatePicker (Jalali) | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
