@@ -122,6 +122,7 @@ export * from "./components/empty-state/index.js";
 // Forms
 export * from "./components/checkbox/index.js";
 export * from "./components/combobox/index.js";
+export * from "./components/date-picker/index.js";
 export * from "./components/field/index.js";
 export * from "./components/file-input/index.js";
 export * from "./components/form-actions/index.js";

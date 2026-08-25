@@ -233,6 +233,18 @@ export const MinusIcon = createIcon("MinusIcon", {
   paths: ["M5 12h14"],
 });
 
+export const CalendarIcon = createIcon("CalendarIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  // Lucide draws the page as an 18×18 rect with rx 2; the path below is the same rounded rect.
+  paths: [
+    "M8 2v3",
+    "M16 2v3",
+    "M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",
+    "M3 9h18",
+  ],
+});
+
 export const UploadIcon = createIcon("UploadIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",

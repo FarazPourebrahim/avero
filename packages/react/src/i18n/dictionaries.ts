@@ -111,6 +111,20 @@ export type AveroDictionary = {
   fileInputRemove: string;
   /** Accessible name of a tag's remove button. `{tag}` is replaced. */
   tagInputRemove: string;
+  /** Accessible name of the button that opens a date picker's calendar. */
+  datePickerOpen: string;
+  /** Accessible name of the calendar popup. */
+  datePickerCalendar: string;
+  /** Calendar button that shows the previous month. */
+  datePickerPreviousMonth: string;
+  /** Calendar button that shows the next month. */
+  datePickerNextMonth: string;
+  /** Placeholder showing the typed date format. */
+  datePickerFormat: string;
+  /** Name of a date range's first input. */
+  datePickerFrom: string;
+  /** Name of a date range's second input. */
+  datePickerTo: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -176,6 +190,13 @@ export const fa: AveroDictionary = {
   fileInputRejectedCount: "حداکثر {count} فایل می‌توانید انتخاب کنید.",
   fileInputRemove: "حذف {name}",
   tagInputRemove: "حذف {tag}",
+  datePickerOpen: "باز کردن تقویم",
+  datePickerCalendar: "تقویم",
+  datePickerPreviousMonth: "ماه قبل",
+  datePickerNextMonth: "ماه بعد",
+  datePickerFormat: "سال/ماه/روز",
+  datePickerFrom: "از تاریخ",
+  datePickerTo: "تا تاریخ",
 };
 
 export const en: AveroDictionary = {
@@ -239,6 +260,13 @@ export const en: AveroDictionary = {
   fileInputRejectedCount: "You can choose up to {count} files.",
   fileInputRemove: "Remove {name}",
   tagInputRemove: "Remove {tag}",
+  datePickerOpen: "Open calendar",
+  datePickerCalendar: "Calendar",
+  datePickerPreviousMonth: "Previous month",
+  datePickerNextMonth: "Next month",
+  datePickerFormat: "yyyy/mm/dd",
+  datePickerFrom: "Start date",
+  datePickerTo: "End date",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
