@@ -29,6 +29,7 @@
     "file-input",
     "price-input",
     "tag-input",
+    "date-picker",
     "form-actions",
     "---Navigation---",
     "accordion",

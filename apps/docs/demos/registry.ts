@@ -26,6 +26,7 @@ import ChartsAnalytics from "./charts/analytics";
 import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
 import ComboboxCategories from "./combobox/categories";
+import DatePickerBooking from "./date-picker/booking";
 import FileInputAttachments from "./file-input/attachments";
 import PriceInputBudget from "./price-input/budget";
 import TagInputSkills from "./tag-input/skills";
@@ -171,6 +172,7 @@ export const demos = {
   "textarea/variants": TextareaVariants,
   "native-select/sort": NativeSelectSort,
   "combobox/categories": ComboboxCategories,
+  "date-picker/booking": DatePickerBooking,
   "file-input/attachments": FileInputAttachments,
   "price-input/budget": PriceInputBudget,
   "tag-input/skills": TagInputSkills,

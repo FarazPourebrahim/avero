@@ -1,0 +1,126 @@
+---
+title: DatePicker
+description: A Solar Hijri–first date field with typed entry, a calendar popup and a range mode.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/date-picker)
+
+```tsx
+import { DatePicker, type DateRange } from "@avero/react";
+```
+
+<ComponentPreview name="date-picker/booking" />
+
+## Anatomy
+
+| Part        | Slot                                   | Notes                                                            |
+| ----------- | -------------------------------------- | ---------------------------------------------------------------- |
+| Root        | `data-slot="date-picker"`              | The bordered field; `data-mode`, `data-invalid`, `data-disabled` |
+| Input       | `data-slot="date-picker-input"`        | `single` mode; receives the ref and native props                 |
+| Start / end | `data-slot="date-picker-from"` / `-to` | `range` mode; the start input receives the ref                   |
+| Content     | `data-slot="date-picker-content"`      | The calendar popup, a modal dialog                               |
+| Title       | `data-slot="date-picker-title"`        | Month and year; names the grid and is announced when it changes  |
+| Grid        | `data-slot="date-picker-grid"`         | `role="grid"`                                                    |
+| Day         | `data-slot="date-picker-day"`          | `data-date`, `data-range` (`start`, `middle`, `end`)             |
+
+## Usage
+
+```tsx
+const [date, setDate] = useState<string | null>(null);
+<DatePicker aria-label="تاریخ شروع" value={date} onValueChange={setDate} />;
+
+const [stay, setStay] = useState<DateRange>({ from: null, to: null });
+<DatePicker mode="range" aria-label="مدت اقامت" value={stay} onValueChange={setStay} />;
+```
+
+## Values and calendars
+
+- Values are always `YYYY-MM-DD` strings — a calendar date with no time or time zone, so it can't
+  shift by a day between the browser and the server. `2026-09-11` is `۱۴۰۵/۰۶/۲۰`.
+- Typing and display follow the calendar from `AveroProvider` (Solar Hijri for Persian locales,
+  Gregorian otherwise). Pass `calendar` to choose one explicitly.
+- Conversions use `Intl` only; there is no date library.
+
+## Typing
+
+- Dates are typed year first: `۱۴۰۵/۰۶/۲۰`. `-` and `.` also work as separators, months and days can
+  have one digit, and Persian, Arabic or Latin digits are all accepted.
+- The text is committed on blur or <kbd>Enter</kbd> and rewritten in full. <kbd>Enter</kbd> doesn't
+  submit the form while there is typed text.
+- Text that isn't a real, available date stays in the field with `aria-invalid`, and the value
+  doesn't change. Erasing the text clears the value.
+
+## Ranges
+
+- In `range` mode, pick the start, then the end; picking an earlier end swaps them. The first pick
+  reports `{ from, to: null }`, the second the full range.
+- Typed ends are ordered too.
+- `fromName` and `toName` submit the ends with a form.
+
+## Limits
+
+`min`, `max` and `isDateDisabled` mark days as unavailable: they can be focused but not picked, and
+typed dates outside them are invalid. The calendar opens within the limits, and the month buttons
+stop at them.
+
+## Right-to-left
+
+Arrow keys follow the page: in Persian, <kbd>ArrowLeft</kbd> moves to the next day. Weeks start on
+Saturday for Persian locales (`weekStartsOn` changes it), and the popup aligns with the field's
+inline end.
+
+## Composition
+
+- Label it with [`Field`](./field) or `aria-label`. In `range` mode the two inputs are named
+  "<label> از تاریخ" and "<label> تا تاریخ".
+- `className` styles the bordered field.
+- For showing a date rather than choosing one, use `useAveroFormatter().date`.
+
+## Accessibility
+
+Follows the WAI-ARIA date picker dialog pattern.
+
+| Key                                                        | Action                                        |
+| ---------------------------------------------------------- | --------------------------------------------- |
+| <kbd>ArrowLeft</kbd> / <kbd>ArrowRight</kbd>               | Previous or next day, following the direction |
+| <kbd>ArrowUp</kbd> / <kbd>ArrowDown</kbd>                  | Same day of the previous or next week         |
+| <kbd>Home</kbd> / <kbd>End</kbd>                           | First or last day of the week                 |
+| <kbd>PageUp</kbd> / <kbd>PageDown</kbd>                    | Same day of the previous or next month        |
+| <kbd>Shift</kbd> + <kbd>PageUp</kbd> / <kbd>PageDown</kbd> | Same day of the previous or next year         |
+| <kbd>Enter</kbd> / <kbd>Space</kbd>                        | Picks the focused day                         |
+| <kbd>Escape</kbd>                                          | Closes the calendar                           |
+
+- Opening focuses the selected day, or today. Closing returns focus to the calendar button.
+- Each day is named with its full date; today has `aria-current="date"`, and unavailable days have
+  `aria-disabled`.
+
+## API reference
+
+`single` mode accepts every native `<input>` attribute plus:
+
+<PropsTable file="components/date-picker/DatePicker.tsx" name="DatePickerSingleOwnProps" />
+
+`range` mode passes native attributes to the start input, plus:
+
+<PropsTable file="components/date-picker/DatePicker.tsx" name="DatePickerRangeOwnProps" />
+
+## Theming
+
+| Token                  | Used by             |
+| ---------------------- | ------------------- |
+| `--color-gray-300`     | Field border        |
+| `--color-blue-500`     | Focus ring          |
+| `--color-primary`      | Selected day, today |
+| `--color-blue-50`      | Days inside a range |
+| `--shadow-card-raised` | Calendar popup      |
+| `--z-dropdown`         | Calendar layer      |
+
+## Do and don't
+
+- **Do** store and send the ISO value; format it for display with the locale.
+- **Don't** convert values to `Date` and back just to compare them — ISO strings compare correctly
+  as text.
+
+## Related
+
+[Field](./field) · [Input](./input)
