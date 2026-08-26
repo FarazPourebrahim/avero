@@ -140,6 +140,8 @@ export * from "./components/textarea/index.js";
 export * from "./components/accordion/index.js";
 export * from "./components/back-link/index.js";
 export * from "./components/carousel/index.js";
+export * from "./components/infinite-scroll/index.js";
+export * from "./components/pagination/index.js";
 export * from "./components/table-of-contents/index.js";
 export * from "./components/pill-tabs/index.js";
 export * from "./components/segmented-control/index.js";

@@ -125,6 +125,12 @@ export type AveroDictionary = {
   datePickerFrom: string;
   /** Name of a date range's second input. */
   datePickerTo: string;
+  /** Accessible name of a pagination navigation. */
+  paginationLabel: string;
+  /** Accessible name of a page link. `{page}` is replaced with the page number. */
+  paginationPage: string;
+  /** Button that loads the next batch of items when automatic loading isn't available. */
+  loadMore: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -197,6 +203,9 @@ export const fa: AveroDictionary = {
   datePickerFormat: "سال/ماه/روز",
   datePickerFrom: "از تاریخ",
   datePickerTo: "تا تاریخ",
+  paginationLabel: "صفحه‌بندی",
+  paginationPage: "صفحه {page}",
+  loadMore: "نمایش موارد بیشتر",
 };
 
 export const en: AveroDictionary = {
@@ -267,6 +276,9 @@ export const en: AveroDictionary = {
   datePickerFormat: "yyyy/mm/dd",
   datePickerFrom: "Start date",
   datePickerTo: "End date",
+  paginationLabel: "Pagination",
+  paginationPage: "Page {page}",
+  loadMore: "Load more",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
