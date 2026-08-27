@@ -9,6 +9,7 @@ import { cva, type VariantProps } from "class-variance-authority";
  * - outline: secondary links such as "view profile"
  * - inverse: a filled button that turns glass on hover
  * - warning: amber call to action
+ * - danger: destructive actions such as deleting
  */
 export const buttonVariants = cva(
   [
@@ -28,6 +29,7 @@ export const buttonVariants = cva(
         inverse:
           "border-primary bg-primary hover:bg-surface-glass hover:text-primary border text-white",
         warning: "bg-warning hover:bg-warning-hover text-white",
+        danger: "bg-red-600 text-white hover:bg-red-700",
       },
       tone: {
         neutral: "",
@@ -88,7 +90,11 @@ export const buttonVariants = cva(
       { variant: "soft", tone: "rose", class: "bg-rose-50 text-rose-600 hover:bg-rose-100" },
       { variant: "soft", tone: "red", class: "bg-red-50 text-red-600 hover:bg-red-100" },
       { variant: "primary", elevated: true, class: "shadow-primary/20 shadow-md" },
-      { variant: ["secondary", "inverse", "warning"], elevated: true, class: "shadow-sm" },
+      {
+        variant: ["secondary", "inverse", "warning", "danger"],
+        elevated: true,
+        class: "shadow-sm",
+      },
     ],
     defaultVariants: {
       variant: "primary",

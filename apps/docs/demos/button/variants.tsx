@@ -10,6 +10,7 @@ export default function ButtonVariantsDemo() {
       <Button variant="outline">outline</Button>
       <Button variant="inverse">inverse</Button>
       <Button variant="warning">warning</Button>
+      <Button variant="danger">danger</Button>
     </>
   );
 }

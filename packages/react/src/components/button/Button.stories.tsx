@@ -9,7 +9,7 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary", "soft", "ghost", "outline", "inverse", "warning"],
+      options: ["primary", "secondary", "soft", "ghost", "outline", "inverse", "warning", "danger"],
     },
     tone: {
       control: "select",
@@ -44,6 +44,7 @@ export const Variants: Story = {
         مشاهده پروفایل
       </Button>
       <Button variant="warning">ارتقا</Button>
+      <Button variant="danger">حذف دوره</Button>
     </div>
   ),
 };

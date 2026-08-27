@@ -26,6 +26,9 @@ A single `<button>` (or, with `asChild`, your own element) with an optional lead
 
 <ComponentPreview name="button/variants" />
 
+Use `danger` only for destructive actions such as deleting, usually as the confirm button of a
+[ConfirmDialog](./confirm-dialog). Its white label on `red-600` meets the 4.5:1 contrast AA requires.
+
 ### Soft tones
 
 The `soft` variant takes its color from `tone`. Use them for share, report and similar secondary actions.
@@ -83,6 +86,7 @@ as in the first example. Use the RTL/LTR switch above each preview to compare.
 | `--color-primary` / `--color-primary-hover` | `primary`, `inverse`, focus ring |
 | `--color-secondary`                         | `secondary`                      |
 | `--color-warning` / `--color-warning-hover` | `warning`                        |
+| `--color-red-600` / `--color-red-700`       | `danger`                         |
 | `--color-surface-glass`                     | `inverse` hover                  |
 
 ## Do and don't

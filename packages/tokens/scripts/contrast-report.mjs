@@ -96,6 +96,8 @@ const PAIRS = [
   { fg: "white", bg: "primary-hover", size: "normal", where: "Primary button (hover)" },
   { fg: "white", bg: "secondary", size: "normal", where: "Secondary (orange) button" },
   { fg: "white", bg: "warning", size: "normal", where: "Warning button" },
+  { fg: "white", bg: "red-600", size: "normal", where: "Danger button" },
+  { fg: "white", bg: "red-700", size: "normal", where: "Danger button (hover)" },
   { fg: "slate-700", bg: "slate-100", size: "normal", where: "Soft neutral button" },
   { fg: "sky-600", bg: "sky-50", size: "normal", where: "Soft sky button (Telegram)" },
   { fg: "emerald-600", bg: "emerald-50", size: "normal", where: "Soft emerald button (WhatsApp)" },

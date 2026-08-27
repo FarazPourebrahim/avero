@@ -34,6 +34,7 @@ describe("Button", () => {
     ["outline", "border-slate-200"],
     ["inverse", "hover:bg-surface-glass"],
     ["warning", "bg-warning"],
+    ["danger", "bg-red-600"],
   ] as const)("applies the %s variant", (variant, expected) => {
     render(<Button variant={variant}>Action</Button>);
 
