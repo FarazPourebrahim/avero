@@ -1,0 +1,87 @@
+---
+title: InfiniteScroll
+description: Loads the next batch of items as the end of a list scrolls into view.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/infinite-scroll)
+
+```tsx
+import { InfiniteScroll } from "@avero/react";
+```
+
+<ComponentPreview name="infinite-scroll/feed" />
+
+## Anatomy
+
+| Part      | Slot                                    | Notes                                               |
+| --------- | --------------------------------------- | --------------------------------------------------- |
+| Root      | `data-slot="infinite-scroll"`           | Wraps your list                                     |
+| Sentinel  | `data-slot="infinite-scroll-sentinel"`  | An invisible marker after the list that is observed |
+| Status    | `data-slot="infinite-scroll-status"`    | `role="status"`; holds the loader while loading     |
+| Load more | `data-slot="infinite-scroll-load-more"` | Shown only where `IntersectionObserver` is missing  |
+
+## Usage
+
+```tsx
+<InfiniteScroll hasMore={hasNextPage} loading={isFetchingNextPage} onLoadMore={fetchNextPage}>
+  <ul>
+    {items.map((item) => (
+      <li key={item.id}>{item.title}</li>
+    ))}
+  </ul>
+</InfiniteScroll>
+```
+
+It pairs directly with TanStack Query's `useInfiniteQuery`: `hasNextPage`, `isFetchingNextPage` and
+`fetchNextPage` map onto the three props.
+
+## Loading rules
+
+- `onLoadMore` runs when the sentinel comes within `rootMargin` (default `200px`) of the viewport.
+- Nothing more is requested while `loading` is true. When loading ends and the end of the list is
+  still in view, the next batch is requested right away, so a short first page fills the screen.
+- Loading stops for good once `hasMore` is false.
+- The component never fetches; your data layer does, and passes the state back in.
+
+## Right-to-left
+
+The component adds no layout of its own; your list decides direction and spacing.
+
+## Composition
+
+- Put it inside the element that scrolls. Inside a scrolling panel, the observer still watches the
+  viewport, so keep the panel on screen or use a larger `rootMargin`.
+- Replace the default loading text with `loader`, for example skeleton rows.
+- Show an [EmptyState](./empty-state) when the first page is empty, instead of the component.
+
+## Accessibility
+
+| Key              | Action                                                      |
+| ---------------- | ----------------------------------------------------------- |
+| <kbd>Tab</kbd>   | Moves through the list; new items appear after the last one |
+| <kbd>Enter</kbd> | Activates the load more button, where it is shown           |
+
+- The loader sits in a `role="status"` region, so "در حال بارگذاری" is announced without moving focus.
+- Endless lists make it hard to reach content after them, such as a footer. For search results and
+  anything people need to return to, prefer [Pagination](./pagination).
+
+## API reference
+
+`InfiniteScroll` accepts every native `<div>` attribute plus:
+
+<PropsTable file="components/infinite-scroll/InfiniteScroll.tsx" name="InfiniteScrollOwnProps" />
+
+## Theming
+
+| Token              | Used by      |
+| ------------------ | ------------ |
+| `--color-gray-500` | Loading text |
+
+## Do and don't
+
+- **Do** keep `loading` true for the whole request, so the same page isn't requested twice.
+- **Don't** put essential links below an infinite list.
+
+## Related
+
+[Pagination](./pagination) · [EmptyState](./empty-state)

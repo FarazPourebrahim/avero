@@ -35,6 +35,8 @@
     "accordion",
     "back-link",
     "carousel",
+    "infinite-scroll",
+    "pagination",
     "pill-tabs",
     "segmented-control",
     "sidebar-nav",

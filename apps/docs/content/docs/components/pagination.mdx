@@ -1,0 +1,93 @@
+---
+title: Pagination
+description: Page navigation with previous and next controls, as links or buttons.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/pagination)
+
+```tsx
+import { Pagination, paginationRange } from "@avero/react";
+```
+
+<ComponentPreview name="pagination/results" />
+
+## Anatomy
+
+| Part | Slot                                        | Notes                                                   |
+| ---- | ------------------------------------------- | ------------------------------------------------------- |
+| Root | `data-slot="pagination"`                    | A named `<nav>` holding a list                          |
+| Step | `data-slot="pagination-previous"` / `-next` | Disabled on the first or last page                      |
+| Page | `data-slot="pagination-page"`               | The current page has `aria-current="page"`              |
+| Gap  | `data-slot="pagination-ellipsis"`           | Stands in for skipped pages; hidden from screen readers |
+
+## Links or buttons
+
+Pass `getHref` when each page has its own URL. Pages become real links: they work before
+JavaScript loads, can be opened in a new tab, and previous/next carry `rel="prev"` and `rel="next"`.
+
+```tsx
+<Pagination pageCount={24} page={page} getHref={(page) => `/courses?page=${page}`} />
+```
+
+Without `getHref`, pages are buttons and `onPageChange` reports the page, for lists that change in
+place.
+
+```tsx
+<Pagination pageCount={24} page={page} onPageChange={setPage} />
+```
+
+With a client-side router, keep `getHref` for the URLs and navigate in `onPageChange`.
+
+## Which pages are shown
+
+The first and last pages are always shown, with `siblingCount` pages on each side of the current
+one (default `1`). A gap replaces two or more skipped pages; a single skipped page is shown
+instead. The number of controls stays the same as you move through the middle, so nothing jumps
+under the pointer. `paginationRange(page, pageCount, siblingCount)` returns the same list for custom
+layouts.
+
+## Right-to-left
+
+Pages run from the inline start, and the chevrons point along the reading direction: in Persian,
+"previous" points right. Page numbers use the locale's digits.
+
+## Composition
+
+- Controlled (`page` + `onPageChange`) or uncontrolled (`defaultPage`).
+- Nothing renders when `pageCount` is below 1; show an [EmptyState](./empty-state) for empty results.
+- For feeds that keep growing, [InfiniteScroll](./infinite-scroll) loads more as you scroll.
+
+## Accessibility
+
+| Key              | Action                                  |
+| ---------------- | --------------------------------------- |
+| <kbd>Tab</kbd>   | Moves through previous, pages and next  |
+| <kbd>Enter</kbd> | Goes to the focused page                |
+| <kbd>Space</kbd> | Goes to the focused page (button pages) |
+
+- The navigation is named from the dictionary ("صفحه‌بندی"), and each page from `paginationPage`
+  ("صفحه ۳"), which includes the visible number.
+- The current page has `aria-current="page"`.
+
+## API reference
+
+`Pagination` accepts every native `<nav>` attribute plus:
+
+<PropsTable file="components/pagination/Pagination.tsx" name="PaginationOwnProps" />
+
+## Theming
+
+| Token              | Used by              |
+| ------------------ | -------------------- |
+| `--color-primary`  | Current page         |
+| `--color-gray-100` | Page hover           |
+| `--color-gray-200` | Previous/next border |
+
+## Do and don't
+
+- **Do** use `getHref` when the page is part of the URL, so results can be shared and bookmarked.
+- **Don't** reset to page 1 silently when filters change without telling people.
+
+## Related
+
+[InfiniteScroll](./infinite-scroll) · [PillTabs](./pill-tabs)

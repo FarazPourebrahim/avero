@@ -27,6 +27,8 @@ import ChartsTrend from "./charts/trend";
 import ChipLinks from "./chip/links";
 import ComboboxCategories from "./combobox/categories";
 import DatePickerBooking from "./date-picker/booking";
+import InfiniteScrollFeed from "./infinite-scroll/feed";
+import PaginationResults from "./pagination/results";
 import FileInputAttachments from "./file-input/attachments";
 import PriceInputBudget from "./price-input/budget";
 import TagInputSkills from "./tag-input/skills";
@@ -173,6 +175,8 @@ export const demos = {
   "native-select/sort": NativeSelectSort,
   "combobox/categories": ComboboxCategories,
   "date-picker/booking": DatePickerBooking,
+  "infinite-scroll/feed": InfiniteScrollFeed,
+  "pagination/results": PaginationResults,
   "file-input/attachments": FileInputAttachments,
   "price-input/budget": PriceInputBudget,
   "tag-input/skills": TagInputSkills,
