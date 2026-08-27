@@ -45,7 +45,7 @@
 | 1 | Workspace, tooling and CI | ✅ | 15 / 15 | 0 | M | 2026-06-19 | 2026-08-18 |
 | 2 | Design tokens and foundations | ✅ | 12 / 12 | 1 | L | 2026-06-19 | 2026-08-18 |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
-| 4 | Forms | 🟨 | 9 / 10 | 3 | L | 2026-07-05 | |
+| 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
 | 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 86 / 146 phase-DoD items (≈59%).
+**Overall:** 87 / 146 phase-DoD items (≈60%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -635,7 +635,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** a Storybook "Primitives" review page is signed off in a design review. ✅ Signed off by the user, 2026-08-18.
 
-### Phase 4 — Forms  🟨
+### Phase 4 — Forms  ✅
 
 **Scope:** FM-01…FM-15.
 
@@ -648,10 +648,10 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] FM-07 `Checkbox`, FM-08 `Radio` and FM-09 `Switch` meet the Global DoD — Radix-based, with an indeterminate checkbox state, direction-aware radio arrow keys and a mirrored switch thumb; resting borders and the off track are `gray-500` to meet 3:1 non-text contrast (CI green)
 - [x] FM-10 `FileInput` meets the Global DoD, including keyboard access and file-type/size props — drop area over a real file input, `accept`/`maxSize`/`maxFiles` with `onReject` reasons, file list synced to the native `FileList` (CI green)
 - [x] FM-11 `PriceInput` and FM-12 `TagInput` meet the Global DoD, including Persian digit input normalisation — `PriceInput` groups Latin/Persian/Arabic digits in the locale's digits with a stable caret and reports `number | null`; `TagInput` splits on Enter, `,` and `،`, and drops duplicates through `normalizeSearchText` (CI green)
-- [ ] FM-13 `DatePicker` (Jalali) meets the Global DoD, using `Intl` only, with RTL grid navigation
+- [x] FM-13 `DatePicker` (Jalali) meets the Global DoD, using `Intl` only, with RTL grid navigation — `single` and `range` modes, ISO values, typed entry in any digit system, WAI-ARIA date picker dialog; Solar Hijri conversion by `Intl` search, round-trip tested over 2019–2031 (CI green)
 - [x] FM-14 `OtpInput` meets the Global DoD, including paste handling and `autocomplete="one-time-code"` — one real input over decorative boxes, Persian and Arabic digits normalised, pasted separators dropped, boxes left to right on RTL pages (CI green)
 
-**Exit gate:** a "Forms" demo form (every control, validation on) passes axe and keyboard-only completion in Playwright.
+**Exit gate:** a "Forms" demo form (every control, validation on) passes axe and keyboard-only completion in Playwright. ✅ `Patterns/Forms Demo` story and `apps/storybook/tests/forms.spec.ts`, in RTL/fa and LTR/en, with axe in the error and submitted states (CI green).
 
 ### Phase 5 — Navigation, disclosure and carousel  🟨
 
@@ -873,7 +873,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | FM-10 | FileInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-11 | PriceInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-12 | TagInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| FM-13 | DatePicker (Jalali) | 4 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| FM-13 | DatePicker (Jalali) | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-14 | OtpInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-15 | FormActions | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | N-01 | NavLink (provided by `Link` `nav` / `drawer` variants) | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
