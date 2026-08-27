@@ -39,6 +39,20 @@
   canvas {
     max-width: 100%;
   }
+
+  /* Overlays (Dialog, Drawer, Popover) lock scrolling through react-remove-scroll-bar, which makes
+     up for the hidden scrollbar with a margin on the physical right. Browsers put a right-to-left
+     page's scrollbar on different sides, so instead the viewport keeps the scrollbar's space on
+     whichever side it is, and the margin is dropped: the page doesn't move in either direction.
+     Important declarations in a layer outrank the library's unlayered ones. */
+  html:has(body[data-scroll-locked]) {
+    scrollbar-gutter: stable;
+  }
+
+  body[data-scroll-locked] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 
 /* Honour reduced-motion preferences for every animation and transition. */
