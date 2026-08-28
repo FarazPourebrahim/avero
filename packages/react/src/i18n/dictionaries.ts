@@ -131,6 +131,10 @@ export type AveroDictionary = {
   paginationPage: string;
   /** Button that loads the next batch of items when automatic loading isn't available. */
   loadMore: string;
+  /** Default label of a confirm dialog's confirm button. */
+  confirm: string;
+  /** Default label of a dialog's cancel button. */
+  cancel: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -206,6 +210,8 @@ export const fa: AveroDictionary = {
   paginationLabel: "صفحه‌بندی",
   paginationPage: "صفحه {page}",
   loadMore: "نمایش موارد بیشتر",
+  confirm: "تأیید",
+  cancel: "انصراف",
 };
 
 export const en: AveroDictionary = {
@@ -279,6 +285,8 @@ export const en: AveroDictionary = {
   paginationLabel: "Pagination",
   paginationPage: "Page {page}",
   loadMore: "Load more",
+  confirm: "Confirm",
+  cancel: "Cancel",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };

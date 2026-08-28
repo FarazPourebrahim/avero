@@ -1,0 +1,22 @@
+export {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  type DialogBodyProps,
+  type DialogCloseProps,
+  type DialogContentOwnProps,
+  type DialogContentProps,
+  type DialogDescriptionProps,
+  type DialogFooterProps,
+  type DialogHeaderProps,
+  type DialogProps,
+  type DialogTitleProps,
+  type DialogTriggerProps,
+} from "./Dialog.js";
+export { dialogContentVariants, type DialogContentVariantProps } from "./dialog.variants.js";
