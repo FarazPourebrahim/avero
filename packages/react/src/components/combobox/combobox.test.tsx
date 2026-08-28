@@ -60,6 +60,8 @@ describe("Combobox", () => {
     expect(screen.getByRole("listbox")).toHaveAccessibleName("شهر");
     expect(optionNames()).toEqual(["تهران", "شیراز", "کرمان", "کرج"]);
     expect(input).toHaveFocus();
+    // Above drawers and dialogs, so the list isn't hidden behind one it is used in.
+    expect(document.querySelector('[data-slot="combobox-content"]')).toHaveClass("z-(--z-popover)");
   });
 
   it("filters as the user types and highlights the first match", async () => {

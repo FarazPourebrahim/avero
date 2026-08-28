@@ -71,7 +71,7 @@ export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>(func
         sideOffset={sideOffset}
         data-slot="select-content"
         className={cn(
-          "shadow-card-raised z-(--z-dropdown) max-h-72 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-xl border border-gray-200 bg-white",
+          "shadow-card-raised z-(--z-popover) max-h-72 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-xl border border-gray-200 bg-white",
           className,
         )}
         {...props}

@@ -132,7 +132,7 @@ describe("DatePicker (single)", () => {
 
     await userEvent.click(screen.getByRole("button", { name: "باز کردن تقویم" }));
 
-    expect(screen.getByRole("dialog", { name: "تقویم" })).toBeInTheDocument();
+    expect(screen.getByRole("dialog", { name: "تقویم" })).toHaveClass("z-(--z-popover)");
     expect(screen.getByRole("grid")).toHaveAccessibleName("شهریور ۱۴۰۵");
     expect(screen.getAllByRole("columnheader")).toHaveLength(7);
     expect(focusedDate()).toBe(SHAHRIVAR_20);

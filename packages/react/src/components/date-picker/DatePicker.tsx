@@ -168,7 +168,7 @@ function CalendarPopover({
         align={dir === "rtl" ? "start" : "end"}
         sideOffset={6}
         data-slot="date-picker-content"
-        className="shadow-card-raised z-(--z-dropdown) rounded-2xl border border-gray-200 bg-white"
+        className="shadow-card-raised z-(--z-popover) rounded-2xl border border-gray-200 bg-white"
         // The calendar focuses the selected or current date itself.
         onOpenAutoFocus={(event) => event.preventDefault()}
       >

@@ -61,6 +61,14 @@ describe("Select", () => {
     expect(screen.getByRole("listbox")).toBeInTheDocument();
   });
 
+  it("layers the listbox above drawers and dialogs", async () => {
+    render(<Categories />);
+
+    await userEvent.click(screen.getByRole("combobox"));
+
+    expect(document.querySelector('[data-slot="select-content"]')).toHaveClass("z-(--z-popover)");
+  });
+
   it("marks the selected option and disables the unavailable one", async () => {
     render(<Categories defaultValue="ui" />);
 

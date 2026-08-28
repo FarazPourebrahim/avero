@@ -307,7 +307,7 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(function Com
           sideOffset={6}
           data-slot="combobox-content"
           className={cn(
-            "shadow-card-raised scrollbar-fancy z-(--z-dropdown) max-h-72 w-(--radix-popover-trigger-width) overflow-y-auto rounded-xl border border-gray-200 bg-white p-1.5",
+            "shadow-card-raised scrollbar-fancy z-(--z-popover) max-h-72 w-(--radix-popover-trigger-width) overflow-y-auto rounded-xl border border-gray-200 bg-white p-1.5",
             contentClassName,
           )}
           onOpenAutoFocus={(event) => event.preventDefault()}
