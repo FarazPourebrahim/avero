@@ -1,0 +1,95 @@
+---
+title: Dialog
+description: A modal panel over a blurred scrim, with header, body and footer parts.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/dialog)
+
+```tsx
+import {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@avero/react";
+```
+
+<ComponentPreview name="dialog/edit-profile" />
+
+## Anatomy
+
+| Part        | Slot                             | Notes                                                                            |
+| ----------- | -------------------------------- | -------------------------------------------------------------------------------- |
+| Overlay     | `data-slot="dialog-overlay"`     | `bg-black/50` with a blur, on the `--z-modal` layer                              |
+| Content     | `data-slot="dialog-content"`     | `role="dialog"`; `rounded-3xl`, `shadow-modal`, up to 90% of the viewport height |
+| Close       | `data-slot="dialog-close"`       | Corner button at the inline end                                                  |
+| Header      | `data-slot="dialog-header"`      | Holds the title and description                                                  |
+| Title       | `data-slot="dialog-title"`       | The dialog's accessible name                                                     |
+| Description | `data-slot="dialog-description"` | Announced with the title                                                         |
+| Body        | `data-slot="dialog-body"`        | Scrolls when the content is taller than the panel                                |
+| Footer      | `data-slot="dialog-footer"`      | Actions at the inline end                                                        |
+
+## Sizes
+
+`size` sets the panel width: `sm` for short messages, `md` (default) for forms, `lg` for rich
+content. On narrow screens the panel keeps a 1rem margin on each side.
+
+## Right-to-left
+
+The panel is centred with logical insets, the close button sits at the inline end, and footer
+actions align to the inline end, so everything mirrors with `AveroProvider`. While a dialog is open,
+`@avero/tokens/base.css` keeps the page from shifting sideways when its scrollbar is hidden, in
+both directions.
+
+## Composition
+
+- Wrap buttons in `DialogClose asChild` to close the dialog from the footer.
+- Use `DialogTrigger asChild` with a [`Button`](./button), or control `open` and `onOpenChange`
+  yourself.
+- To confirm an action, use [ConfirmDialog](./confirm-dialog). For side panels, use
+  [Drawer](./drawer).
+
+## Accessibility
+
+| Key                                                | Action                                       |
+| -------------------------------------------------- | -------------------------------------------- |
+| <kbd>Enter</kbd> / <kbd>Space</kbd>                | On the trigger, opens the dialog             |
+| <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves through the dialog; focus stays inside |
+| <kbd>Escape</kbd>                                  | Closes the dialog                            |
+
+- Opening moves focus to the first focusable element in the content; closing returns it to the
+  trigger. The page behind is inert and doesn't scroll.
+- Every dialog needs a `DialogTitle`. Without a `DialogDescription`, pass
+  `aria-describedby={undefined}` to `DialogContent`.
+
+## API reference
+
+`DialogContent` accepts every Radix dialog content prop plus:
+
+<PropsTable file="components/dialog/Dialog.tsx" name="DialogContentOwnProps" />
+
+`Dialog`, `DialogTrigger` and `DialogClose` accept their Radix props unchanged; the layout parts
+accept native `<div>` attributes.
+
+## Theming
+
+| Token               | Used by                   |
+| ------------------- | ------------------------- |
+| `--shadow-modal`    | Panel                     |
+| `--z-modal`         | Scrim                     |
+| `--z-modal-content` | Panel                     |
+| `--color-gray-100`  | Header and footer borders |
+
+## Do and don't
+
+- **Do** keep dialogs short and focused on one task.
+- **Don't** open a dialog from inside another dialog.
+
+## Related
+
+[ConfirmDialog](./confirm-dialog) · [Drawer](./drawer)

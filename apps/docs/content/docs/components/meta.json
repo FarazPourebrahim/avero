@@ -54,6 +54,8 @@
     "dashboard-shell",
     "layouts",
     "---Overlays---",
+    "dialog",
+    "confirm-dialog",
     "drawer",
     "empty-state",
     "disabled-overlay",

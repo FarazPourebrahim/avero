@@ -1,0 +1,95 @@
+---
+title: ConfirmDialog
+description: Asks before an action goes ahead, with a busy state for async actions.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/confirm-dialog)
+
+```tsx
+import { ConfirmDialog } from "@avero/react";
+```
+
+<ComponentPreview name="confirm-dialog/delete-course" />
+
+## Anatomy
+
+| Part        | Slot                                     | Notes                                       |
+| ----------- | ---------------------------------------- | ------------------------------------------- |
+| Content     | `data-slot="confirm-dialog"`             | `role="alertdialog"`; `data-tone`           |
+| Title       | `data-slot="confirm-dialog-title"`       | The question; the accessible name           |
+| Description | `data-slot="confirm-dialog-description"` | What happens next                           |
+| Actions     | `data-slot="confirm-dialog-actions"`     | Cancel, then confirm                        |
+| Confirm     | `data-slot="confirm-dialog-confirm"`     | `primary`, or `danger` with `tone="danger"` |
+
+## Usage
+
+```tsx
+<ConfirmDialog
+  trigger={<Button variant="danger">حذف دوره</Button>}
+  title="این دوره حذف شود؟"
+  description="همه جلسه‌ها و دیدگاه‌های دوره برای همیشه پاک می‌شوند."
+  confirmLabel="حذف دوره"
+  tone="danger"
+  onConfirm={() => deleteCourse.mutateAsync(courseId)}
+/>
+```
+
+## Async actions
+
+When `onConfirm` returns a promise, the dialog stays open with a busy confirm button until the
+promise settles. Cancel, <kbd>Escape</kbd> and the confirm button are blocked meanwhile.
+
+- **Resolves:** the dialog closes.
+- **Rejects:** the dialog stays open and the buttons come back, so the action can be retried. Show
+  the error yourself, for example with a toast or inside the dialog as `children`.
+
+A mutation hook's `mutateAsync` fits directly.
+
+## Right-to-left
+
+Buttons align to the inline end and the panel is centred with logical insets, so the dialog mirrors
+with `AveroProvider`.
+
+## Composition
+
+- Use a verb in `confirmLabel` ("حذف دوره"), not "تأیید", so the button says what it does.
+- `tone="danger"` uses the `danger` [Button](./button); keep it for destructive actions.
+- Control it with `open` and `onOpenChange` when the action starts somewhere other than a trigger,
+  such as a row menu.
+- For anything more than a yes-or-no question, use [Dialog](./dialog).
+
+## Accessibility
+
+| Key                                 | Action                               |
+| ----------------------------------- | ------------------------------------ |
+| <kbd>Tab</kbd>                      | Moves between cancel and confirm     |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates the focused button         |
+| <kbd>Escape</kbd>                   | Cancels, unless an action is running |
+
+- Built on Radix AlertDialog: focus starts on cancel, so a stray <kbd>Enter</kbd> never confirms,
+  and clicking outside doesn't dismiss it.
+- The title names the dialog and the description is announced with it.
+- While an action runs, the confirm button has `aria-busy="true"`.
+
+## API reference
+
+`ConfirmDialog` accepts every Radix alert dialog content prop plus:
+
+<PropsTable file="components/confirm-dialog/ConfirmDialog.tsx" name="ConfirmDialogOwnProps" />
+
+## Theming
+
+| Token             | Used by                      |
+| ----------------- | ---------------------------- |
+| `--shadow-modal`  | Panel                        |
+| `--color-red-600` | Confirm button with `danger` |
+| `--color-primary` | Confirm button by default    |
+
+## Do and don't
+
+- **Do** describe the consequence in `description`, especially when it can't be undone.
+- **Don't** ask for confirmation on actions that can simply be undone.
+
+## Related
+
+[Dialog](./dialog) · [Button](./button)

@@ -29,6 +29,8 @@ import ComboboxCategories from "./combobox/categories";
 import DatePickerBooking from "./date-picker/booking";
 import InfiniteScrollFeed from "./infinite-scroll/feed";
 import PaginationResults from "./pagination/results";
+import ConfirmDialogDeleteCourse from "./confirm-dialog/delete-course";
+import DialogEditProfile from "./dialog/edit-profile";
 import FileInputAttachments from "./file-input/attachments";
 import PriceInputBudget from "./price-input/budget";
 import TagInputSkills from "./tag-input/skills";
@@ -177,6 +179,8 @@ export const demos = {
   "date-picker/booking": DatePickerBooking,
   "infinite-scroll/feed": InfiniteScrollFeed,
   "pagination/results": PaginationResults,
+  "confirm-dialog/delete-course": ConfirmDialogDeleteCourse,
+  "dialog/edit-profile": DialogEditProfile,
   "file-input/attachments": FileInputAttachments,
   "price-input/budget": PriceInputBudget,
   "tag-input/skills": TagInputSkills,
