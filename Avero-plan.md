@@ -46,7 +46,7 @@
 | 2 | Design tokens and foundations | ✅ | 12 / 12 | 1 | L | 2026-06-19 | 2026-08-18 |
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
-| 5 | Navigation, disclosure and carousel | 🟨 | 6 / 9 | 3 | M | 2026-06-19 | |
+| 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
 | 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 87 / 146 phase-DoD items (≈60%).
+**Overall:** 90 / 146 phase-DoD items (≈62%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -653,7 +653,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** a "Forms" demo form (every control, validation on) passes axe and keyboard-only completion in Playwright. ✅ `Patterns/Forms Demo` story and `apps/storybook/tests/forms.spec.ts`, in RTL/fa and LTR/en, with axe in the error and submitted states (CI green).
 
-### Phase 5 — Navigation, disclosure and carousel  🟨
+### Phase 5 — Navigation, disclosure and carousel  ✅
 
 **Scope:** N-01…N-11.
 
@@ -664,11 +664,11 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] N-07 `TableOfContents` meets the Global DoD, including scroll-spy active state and nested levels
 - [x] N-08 `Accordion`/`Collapsible` meets the Global DoD, with a 300ms height animation
 - [x] N-09 `Carousel` meets the Global DoD: snap, chevron controls with disabled state, dot pagination, pill pagination (28px active), RTL drag direction
-- [ ] N-10 `Pagination` meets the Global DoD
-- [ ] N-11 `InfiniteScroll` meets the Global DoD, using IntersectionObserver with a loading slot
-- [ ] Keyboard tables documented for every component in this phase
+- [x] N-10 `Pagination` meets the Global DoD — links (`getHref`, `rel="prev"`/`"next"`) or buttons, first/last pages with a sibling window and gaps (`paginationRange`), `aria-current="page"`, locale digits (CI green)
+- [x] N-11 `InfiniteScroll` meets the Global DoD, using IntersectionObserver with a loading slot — pauses while `loading`, stops at `hasMore={false}`, `role="status"` loader, load-more button without IntersectionObserver (CI green)
+- [x] Keyboard tables documented for every component in this phase — `pill-tabs` was the only page missing one (CI green)
 
-**Exit gate:** every component in this phase meets the Global DoD.
+**Exit gate:** every component in this phase meets the Global DoD. ✅ Every N-* row in §9 is ✅ (CI green).
 
 ### Phase 6 — Overlays and feedback  🟨
 
@@ -885,8 +885,8 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | N-07 | TableOfContents | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | N-08 | Accordion / Collapsible | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | N-09 | Carousel | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| N-10 | Pagination | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| N-11 | InfiniteScroll | 5 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| N-10 | Pagination | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| N-11 | InfiniteScroll | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-01 | Drawer / Sheet | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-02 | Dialog | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-03 | ConfirmDialog | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
