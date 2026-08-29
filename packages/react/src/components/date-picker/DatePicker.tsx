@@ -164,8 +164,10 @@ function CalendarPopover({
     <Popover.Portal>
       <Popover.Content
         aria-label={label}
-        // Aligns the calendar with the field's inline end, where the button is.
-        align={dir === "rtl" ? "start" : "end"}
+        // Portalled out of the page, so the direction is set here. floating-ui mirrors `end` for
+        // right-to-left, which keeps the calendar at the field's inline end, by the button.
+        dir={dir}
+        align="end"
         sideOffset={6}
         data-slot="date-picker-content"
         className="shadow-card-raised z-(--z-popover) rounded-2xl border border-gray-200 bg-white"

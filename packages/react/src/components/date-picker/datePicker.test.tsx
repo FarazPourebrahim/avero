@@ -140,6 +140,24 @@ describe("DatePicker (single)", () => {
     expect(day(SHAHRIVAR_20)).toHaveAccessibleName("۲۰ شهریور ۱۴۰۵");
   });
 
+  it("aligns the calendar with the field's inline end in either direction", async () => {
+    const { unmount } = render(<DatePicker aria-label="تاریخ" defaultValue={SHAHRIVAR_20} />);
+    await userEvent.click(screen.getByRole("button", { name: "باز کردن تقویم" }));
+
+    const persian = screen.getByRole("dialog", { name: "تقویم" });
+    // `end` stays logical: floating-ui mirrors it for the wrapper's direction.
+    expect(persian).toHaveAttribute("data-align", "end");
+    expect(persian.closest("[data-radix-popper-content-wrapper]")).toHaveAttribute("dir", "rtl");
+    unmount();
+
+    render(inEnglish(<DatePicker aria-label="Date" defaultValue={SHAHRIVAR_20} />));
+    await userEvent.click(screen.getByRole("button", { name: "Open calendar" }));
+
+    const english = screen.getByRole("dialog", { name: "Calendar" });
+    expect(english).toHaveAttribute("data-align", "end");
+    expect(english.closest("[data-radix-popper-content-wrapper]")).toHaveAttribute("dir", "ltr");
+  });
+
   it("opens on today, marked as the current date, when empty", async () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(2026, 8, 11, 10));
