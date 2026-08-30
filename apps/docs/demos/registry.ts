@@ -44,6 +44,8 @@ import ChipStatic from "./chip/static";
 import DisabledOverlayFullCard from "./disabled-overlay/full-card";
 import DividerBasic from "./divider/basic";
 import DrawerMenu from "./drawer/menu";
+import DropdownMenuUserMenu from "./dropdown-menu/user-menu";
+import PopoverNotifications from "./popover/notifications";
 import EditorBasic from "./editor/basic";
 import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
@@ -195,6 +197,8 @@ export const demos = {
   "dashboard-shell/learner": DashboardShellLearner,
   "layouts/templates": LayoutsTemplates,
   "drawer/menu": DrawerMenu,
+  "dropdown-menu/user-menu": DropdownMenuUserMenu,
+  "popover/notifications": PopoverNotifications,
   "empty-state/variants": EmptyStateVariants,
   "disabled-overlay/full-card": DisabledOverlayFullCard,
   "carousel/related-courses": CarouselRelatedCourses,

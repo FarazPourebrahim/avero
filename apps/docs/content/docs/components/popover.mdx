@@ -1,0 +1,74 @@
+---
+title: Popover
+description: A floating panel anchored to its trigger, for notification lists and small forms.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/popover)
+
+```tsx
+import { Popover, PopoverAnchor, PopoverClose, PopoverContent, PopoverTrigger } from "@avero/react";
+```
+
+<ComponentPreview name="popover/notifications" />
+
+## Anatomy
+
+| Part    | Slot                          | Notes                                                               |
+| ------- | ----------------------------- | ------------------------------------------------------------------- |
+| Trigger | —                             | Usually a [`Button`](./button) or [`IconButton`](./icon-button)     |
+| Anchor  | —                             | Optional; positions the panel against another element               |
+| Content | `data-slot="popover-content"` | `role="dialog"`; `rounded-2xl`, `shadow-pop-wide`, on `--z-popover` |
+| Close   | —                             | Closes the popover; use `asChild` with a button                     |
+
+## Right-to-left
+
+`align="start"` and `align="end"` are logical. `PopoverContent` passes the `AveroProvider`
+direction to the portalled panel, so a panel aligned to the end of a header icon sits under the
+icon's left edge in Persian and its right edge in English.
+
+## Composition
+
+- **Notification menu:** an `IconButton` trigger whose `label` includes the unread count, a
+  `PopoverContent` named by its heading through `aria-labelledby`, a list of notifications, and a
+  `PopoverClose` button that leads to the full list. Remove the padding with `className="p-0"` and
+  let each section pad itself.
+- **Filter form:** checkboxes and an apply button wrapped in `PopoverClose`.
+- For a list of actions, use [DropdownMenu](./dropdown-menu) instead; it gives menu semantics and
+  arrow-key navigation.
+
+## Accessibility
+
+| Key                                                | Action                                            |
+| -------------------------------------------------- | ------------------------------------------------- |
+| <kbd>Enter</kbd> / <kbd>Space</kbd>                | On the trigger, opens the panel                   |
+| <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves through the panel's focusable content       |
+| <kbd>Escape</kbd>                                  | Closes the panel and returns focus to the trigger |
+
+- Opening moves focus into the panel; closing returns it to the trigger. Clicking outside closes it.
+- The panel is announced as a dialog, so name it with `aria-label` or `aria-labelledby`.
+- The trigger carries `aria-expanded` and `aria-controls`.
+
+## API reference
+
+`PopoverContent` accepts every Radix popover content prop plus:
+
+<PropsTable file="components/popover/Popover.tsx" name="PopoverContentOwnProps" />
+
+`Popover`, `PopoverTrigger`, `PopoverAnchor` and `PopoverClose` accept their Radix props unchanged.
+
+## Theming
+
+| Token               | Used by      |
+| ------------------- | ------------ |
+| `--shadow-pop-wide` | Panel        |
+| `--z-popover`       | Panel        |
+| `--color-gray-200`  | Panel border |
+
+## Do and don't
+
+- **Do** keep popovers small: a short list or a handful of fields.
+- **Don't** put a long form in a popover; use a [Dialog](./dialog) or [Drawer](./drawer).
+
+## Related
+
+[DropdownMenu](./dropdown-menu) · [Dialog](./dialog) · [IconButton](./icon-button)

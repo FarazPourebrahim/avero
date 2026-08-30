@@ -1,0 +1,103 @@
+---
+title: DropdownMenu
+description: A menu of actions opened from a button, with checkbox, radio and submenu items.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/dropdown-menu)
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@avero/react";
+```
+
+<ComponentPreview name="dropdown-menu/user-menu" />
+
+## Anatomy
+
+| Part          | Slot                                      | Notes                                              |
+| ------------- | ----------------------------------------- | -------------------------------------------------- |
+| Content       | `data-slot="dropdown-menu-content"`       | `role="menu"`; `shadow-pop-wide`, on `--z-popover` |
+| Item          | `data-slot="dropdown-menu-item"`          | `data-tone` is `default` or `danger`               |
+| Checkbox item | `data-slot="dropdown-menu-checkbox-item"` | Check at the inline start                          |
+| Radio item    | `data-slot="dropdown-menu-radio-item"`    | Dot at the inline start                            |
+| Label         | `data-slot="dropdown-menu-label"`         | Heading for a group of items                       |
+| Separator     | `data-slot="dropdown-menu-separator"`     | Divides groups                                     |
+| Sub trigger   | `data-slot="dropdown-menu-sub-trigger"`   | Chevron points toward the submenu                  |
+| Sub content   | `data-slot="dropdown-menu-sub-content"`   | The submenu panel                                  |
+
+## Tones
+
+`tone="danger"` colours an item red for destructive actions such as signing out or deleting.
+
+## Right-to-left
+
+`DropdownMenu` reads the direction from `AveroProvider`. Submenus open toward the reading
+direction, the arrow key that opens them follows it (<kbd>←</kbd> in Persian, <kbd>→</kbd> in
+English), and the sub-trigger chevron mirrors.
+
+## Composition
+
+- **User menu:** an [`Avatar`](./avatar) inside a button trigger, a label with the person's name,
+  items with a leading icon, and a `danger` sign-out item after a separator.
+- **View options:** `DropdownMenuCheckboxItem` for toggles and a `DropdownMenuRadioGroup` for
+  sorting. Both are controlled with `checked` / `onCheckedChange` and `value` / `onValueChange`.
+- Use `asChild` on an item to render a link. To open a [ConfirmDialog](./confirm-dialog) from an
+  item, control the dialog with `open` and set it from the item's `onSelect`.
+
+## Accessibility
+
+| Key                                 | Action                                                                            |
+| ----------------------------------- | --------------------------------------------------------------------------------- |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | On the trigger, opens the menu and focuses the first item; on an item, selects it |
+| <kbd>↓</kbd> / <kbd>↑</kbd>         | Moves between items                                                               |
+| <kbd>←</kbd> / <kbd>→</kbd>         | Opens or closes a submenu, following the reading direction                        |
+| Type a letter                       | Moves to the next item starting with it                                           |
+| <kbd>Escape</kbd>                   | Closes the menu and returns focus to the trigger                                  |
+
+- Follows the WAI-ARIA menu button pattern: the trigger has `aria-haspopup="menu"` and
+  `aria-expanded`; items are `menuitem`, `menuitemcheckbox` or `menuitemradio` with `aria-checked`.
+- Disabled items stay in the menu with `aria-disabled="true"` and are skipped by the arrow keys.
+- Give an icon-only trigger an `aria-label`.
+
+## API reference
+
+`DropdownMenuContent` accepts every Radix menu content prop plus:
+
+<PropsTable file="components/dropdown-menu/DropdownMenu.tsx" name="DropdownMenuContentOwnProps" />
+
+`DropdownMenuItem` accepts every Radix menu item prop plus:
+
+<PropsTable file="components/dropdown-menu/DropdownMenu.tsx" name="DropdownMenuItemOwnProps" />
+
+The other parts accept their Radix props unchanged.
+
+## Theming
+
+| Token               | Used by                   |
+| ------------------- | ------------------------- |
+| `--shadow-pop-wide` | Menu and submenu panels   |
+| `--z-popover`       | Menu and submenu panels   |
+| `--color-primary`   | Check and radio indicator |
+| `--color-red-600`   | `danger` items            |
+
+## Do and don't
+
+- **Do** keep destructive items last, after a separator.
+- **Don't** put form fields in a menu; use a [Popover](./popover).
+
+## Related
+
+[Popover](./popover) · [ConfirmDialog](./confirm-dialog) · [Avatar](./avatar)

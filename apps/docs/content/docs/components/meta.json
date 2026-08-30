@@ -57,6 +57,8 @@
     "dialog",
     "confirm-dialog",
     "drawer",
+    "popover",
+    "dropdown-menu",
     "empty-state",
     "disabled-overlay",
     "---Data display---",
