@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { AveroProvider } from "../../i18n/AveroProvider.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { Button } from "../button/Button.js";
+import { IconButton } from "../icon-button/IconButton.js";
 import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from "./Popover.js";
 
 function FilterPopover(props: { defaultOpen?: boolean; align?: "start" | "center" | "end" }) {
@@ -105,5 +106,46 @@ describe("Popover", () => {
     render(<FilterPopover defaultOpen />);
 
     await expectNoAxeViolations(screen.getByRole("dialog"));
+  });
+});
+
+describe("Popover notification menu composition", () => {
+  function NotificationMenu() {
+    return (
+      <Popover>
+        <PopoverTrigger asChild>
+          <IconButton label="اعلان‌ها، ۲ خوانده‌نشده">
+            <span aria-hidden>🔔</span>
+          </IconButton>
+        </PopoverTrigger>
+        <PopoverContent align="end" aria-labelledby="notifications-title" className="p-0">
+          <p id="notifications-title">اعلان‌ها</p>
+          <ul>
+            <li>سارا محمدی به دیدگاه شما پاسخ داد.</li>
+            <li>گواهی دوره شما صادر شد.</li>
+          </ul>
+          <PopoverClose asChild>
+            <Button variant="ghost">مشاهده همه اعلان‌ها</Button>
+          </PopoverClose>
+        </PopoverContent>
+      </Popover>
+    );
+  }
+
+  it("opens a named notification list from an icon button and closes back to it", async () => {
+    render(<NotificationMenu />);
+    const trigger = screen.getByRole("button", { name: "اعلان‌ها، ۲ خوانده‌نشده" });
+
+    await userEvent.click(trigger);
+
+    const panel = screen.getByRole("dialog", { name: "اعلان‌ها" });
+    expect(panel).toHaveAttribute("data-align", "end");
+    expect(screen.getAllByRole("listitem")).toHaveLength(2);
+    await expectNoAxeViolations(panel);
+
+    await userEvent.click(screen.getByRole("button", { name: "مشاهده همه اعلان‌ها" }));
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(trigger).toHaveFocus();
   });
 });
