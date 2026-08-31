@@ -121,6 +121,7 @@ export * from "./components/dialog/index.js";
 export * from "./components/drawer/index.js";
 export * from "./components/dropdown-menu/index.js";
 export * from "./components/popover/index.js";
+export * from "./components/tooltip/index.js";
 export * from "./components/empty-state/index.js";
 
 // Forms
