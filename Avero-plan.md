@@ -47,7 +47,7 @@
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
-| 6 | Overlays and feedback | 🟨 | 3 / 10 | 3 | L | 2026-07-05 | |
+| 6 | Overlays and feedback | 🟨 | 5 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 90 / 146 phase-DoD items (≈62%).
+**Overall:** 92 / 146 phase-DoD items (≈63%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -678,8 +678,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **DoD:**
 - [x] O-01 `Drawer`/`Sheet` meets the Global DoD: focus trap, `Esc`, scroll lock, start/end sides mirror in LTR, both panel sizes, dimmed scrim
-- [ ] O-02 `Dialog` and O-03 `ConfirmDialog` meet the Global DoD
-- [ ] O-04 `Popover`/`DropdownMenu` meet the Global DoD, including the notification-menu composition
+- [x] O-02 `Dialog` and O-03 `ConfirmDialog` meet the Global DoD — Radix Dialog and AlertDialog, three panel sizes, dictionary-labelled close, async `onConfirm` busy state; unit, SSR and axe tests and docs pages
+- [x] O-04 `Popover`/`DropdownMenu` meet the Global DoD, including the notification-menu composition — logical `align` in both directions, checkbox/radio/submenu items, `danger` tone; notification menu as a story, a docs demo and a unit test with axe (docs pages)
 - [ ] O-05 `Tooltip` meets the Global DoD
 - [ ] O-06 `Toast` meets the Global DoD: success, error, info and warning variants, stacking, 480px mobile behaviour, and a pause-on-hover progress bar
 - [ ] O-07 `Lightbox` meets the Global DoD, including keyboard navigation and focus return
@@ -890,9 +890,9 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | N-10 | Pagination | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | N-11 | InfiniteScroll | 5 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-01 | Drawer / Sheet | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| O-02 | Dialog | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| O-03 | ConfirmDialog | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| O-04 | Popover / DropdownMenu | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-02 | Dialog | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| O-03 | ConfirmDialog | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| O-04 | Popover / DropdownMenu | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-05 | Tooltip | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-06 | Toast | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-07 | Lightbox | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
