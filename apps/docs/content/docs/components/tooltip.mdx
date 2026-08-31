@@ -1,0 +1,84 @@
+---
+title: Tooltip
+description: A short description shown when a control is hovered or focused.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/tooltip)
+
+```tsx
+import { Tooltip, TooltipProvider } from "@avero/react";
+```
+
+<ComponentPreview name="tooltip/share-actions" />
+
+## Anatomy
+
+| Part    | Slot                        | Notes                                                              |
+| ------- | --------------------------- | ------------------------------------------------------------------ |
+| Trigger | —                           | The single child element; it keeps its own accessible name         |
+| Content | `data-slot="tooltip"`       | `bg-slate-800` panel, `rounded-lg`, `shadow-pop`, on `--z-popover` |
+| Arrow   | `data-slot="tooltip-arrow"` | Points at the trigger; hide it with `showArrow={false}`            |
+
+## Usage
+
+```tsx
+<Tooltip content="لینک در حافظه کپی می‌شود">
+  <IconButton label="کپی لینک">
+    <Copy aria-hidden />
+  </IconButton>
+</Tooltip>
+```
+
+`side` places the tooltip (`top` by default) and `align` lines it up along that side.
+
+## Right-to-left
+
+`align="start"` and `align="end"` are logical: the tooltip receives the `AveroProvider` direction, so
+it mirrors in English, and Persian text inside it reads right to left.
+
+## Composition
+
+- Wrap a toolbar or a row of icon buttons in one `TooltipProvider`. Once a tooltip has opened,
+  moving to the next trigger opens its tooltip at once instead of waiting for the delay again.
+- Without a `TooltipProvider`, each `Tooltip` supplies its own.
+- The trigger must be focusable. To explain a disabled button, put the tooltip on a wrapping
+  `span` with `tabIndex={0}`.
+
+## Accessibility
+
+| Key               | Action                                             |
+| ----------------- | -------------------------------------------------- |
+| <kbd>Tab</kbd>    | Focusing the trigger opens the tooltip immediately |
+| <kbd>Escape</kbd> | Closes the tooltip; focus stays on the trigger     |
+
+- The tooltip is linked to its trigger with `aria-describedby`, so it is announced as a description
+  after the trigger's name. It never replaces the name: an `IconButton` still needs its `label`.
+- Tooltips hold text only. Links and buttons inside a tooltip can't be reached; use a
+  [Popover](./popover) for interactive content.
+- Touch devices don't hover, so never hide information that is needed to complete a task in a
+  tooltip.
+
+## API reference
+
+`Tooltip` accepts every Radix tooltip content prop plus:
+
+<PropsTable file="components/tooltip/Tooltip.tsx" name="TooltipOwnProps" />
+
+`TooltipProvider` accepts the Radix tooltip provider props; `delayDuration` defaults to 300.
+
+## Theming
+
+| Token               | Used by         |
+| ------------------- | --------------- |
+| `--shadow-pop`      | Panel           |
+| `--z-popover`       | Panel           |
+| `--color-slate-800` | Panel and arrow |
+
+## Do and don't
+
+- **Do** keep tooltips to a few words that add to the trigger's name.
+- **Don't** repeat the trigger's label in its tooltip.
+
+## Related
+
+[IconButton](./icon-button) · [Popover](./popover)

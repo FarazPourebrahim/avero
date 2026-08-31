@@ -46,6 +46,7 @@ import DividerBasic from "./divider/basic";
 import DrawerMenu from "./drawer/menu";
 import DropdownMenuUserMenu from "./dropdown-menu/user-menu";
 import PopoverNotifications from "./popover/notifications";
+import TooltipShareActions from "./tooltip/share-actions";
 import EditorBasic from "./editor/basic";
 import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
@@ -199,6 +200,7 @@ export const demos = {
   "drawer/menu": DrawerMenu,
   "dropdown-menu/user-menu": DropdownMenuUserMenu,
   "popover/notifications": PopoverNotifications,
+  "tooltip/share-actions": TooltipShareActions,
   "empty-state/variants": EmptyStateVariants,
   "disabled-overlay/full-card": DisabledOverlayFullCard,
   "carousel/related-courses": CarouselRelatedCourses,
