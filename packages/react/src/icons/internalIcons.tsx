@@ -221,6 +221,25 @@ export const XIcon = createIcon("XIcon", {
   paths: ["M18 6 6 18", "m6 6 12 12"],
 });
 
+// Lucide draws the circle in the three glyphs below as <circle r="10">; the arcs are the same circle.
+export const InfoIcon = createIcon("InfoIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0", "M12 16v-4", "M12 8h.01"],
+});
+
+export const CircleCheckIcon = createIcon("CircleCheckIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0", "m9 12 2 2 4-4"],
+});
+
+export const CircleAlertIcon = createIcon("CircleAlertIcon", {
+  viewBox: "0 0 24 24",
+  mode: "stroke",
+  paths: ["M2 12a10 10 0 1 0 20 0a10 10 0 1 0 -20 0", "M12 8v4", "M12 16h.01"],
+});
+
 export const CheckIcon = createIcon("CheckIcon", {
   viewBox: "0 0 24 24",
   mode: "stroke",

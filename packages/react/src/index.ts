@@ -115,6 +115,7 @@ export * from "./components/site-footer/index.js";
 export * from "./components/site-header/index.js";
 
 // Overlays and feedback
+export * from "./components/alert/index.js";
 export * from "./components/disabled-overlay/index.js";
 export * from "./components/confirm-dialog/index.js";
 export * from "./components/dialog/index.js";
