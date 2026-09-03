@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import AccordionFooter from "./accordion/footer";
+import AlertTones from "./alert/tones";
 import AchievementsPanelRank from "./achievements-panel/rank";
 import ActivityHeatmapYear from "./activity-heatmap/year";
 import AuthorCardSidebar from "./author-card/sidebar";
@@ -122,6 +123,7 @@ import ZoomFrameGallery from "./zoom-frame/gallery";
 /** Every live demo, keyed by its file path under `demos/` (without extension). */
 export const demos = {
   "accordion/footer": AccordionFooter,
+  "alert/tones": AlertTones,
   "card/surfaces": CardSurfaces,
   "feature-card/grid": FeatureCardGrid,
   "feature-card/actions": FeatureCardActions,

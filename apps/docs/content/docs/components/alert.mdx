@@ -1,0 +1,88 @@
+---
+title: Alert
+description: A tinted or bordered message panel in five tones, also used as a callout.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/alert)
+
+```tsx
+import { Alert } from "@avero/react";
+```
+
+<ComponentPreview name="alert/tones" />
+
+## Anatomy
+
+| Part        | Slot                            | Notes                                                  |
+| ----------- | ------------------------------- | ------------------------------------------------------ |
+| Root        | `data-slot="alert"`             | `data-tone` and `data-variant`                         |
+| Icon        | `data-slot="alert-icon"`        | The tone's icon by default; decorative                 |
+| Title       | `data-slot="alert-title"`       | Bold headline                                          |
+| Description | `data-slot="alert-description"` | The message                                            |
+| Action      | `data-slot="alert-action"`      | Buttons or links below the message                     |
+| Dismiss     | `data-slot="alert-dismiss"`     | Close button at the inline end, shown with `onDismiss` |
+
+## Tones and variants
+
+| Tone      | Use for                                         | Icon                |
+| --------- | ----------------------------------------------- | ------------------- |
+| `info`    | Neutral information (default)                   | `InfoIcon`          |
+| `success` | A completed action                              | `CircleCheckIcon`   |
+| `warning` | Something that needs attention soon             | `TriangleAlertIcon` |
+| `danger`  | A failure or a consequence that can't be undone | `CircleAlertIcon`   |
+| `neutral` | Quiet notes                                     | `InfoIcon`          |
+
+`variant="tinted"` (default) fills the panel with the tone. `variant="bordered"` is a white panel
+with a 4px accent bar at the inline start, for callouts inside articles.
+
+## Right-to-left
+
+The icon sits at the inline start, the dismiss button at the inline end, and the bordered accent
+bar uses `border-s`, so the alert mirrors with `AveroProvider`.
+
+## Composition
+
+- **Form errors:** render `<Alert tone="danger" role="alert">` above the form after a failed
+  submit, and map field errors onto the fields themselves.
+- **Dismissible notices:** `onDismiss` only reports the click; keep the visibility in your own
+  state and stop rendering the alert.
+- For messages that appear and disappear on their own, use a toast instead.
+
+## Accessibility
+
+| Key                                 | Action                                      |
+| ----------------------------------- | ------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves to the actions and the dismiss button |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Activates the focused button                |
+
+- An alert is not a live region by default, because a message that is on the page from the start
+  shouldn't interrupt. Pass `role="alert"` when it appears in response to an action, or
+  `role="status"` for a polite announcement.
+- The icon is decorative; the tone must also be clear from the title or message, not colour alone.
+- The dismiss button is labelled from the dictionary's `close` entry; override it with
+  `dismissLabel`.
+- Titles and messages on the tinted variant use the `-800`/`-900` shade of the tone, which meets
+  4.5:1 on its `-50` background.
+
+## API reference
+
+<PropsTable file="components/alert/Alert.tsx" name="AlertOwnProps" />
+
+`Alert` also accepts every native `<div>` attribute except `title`.
+
+## Theming
+
+| Token                               | Used by                             |
+| ----------------------------------- | ----------------------------------- |
+| `--color-blue-*`, `--color-green-*` | `info` and `success` tones          |
+| `--color-amber-*`, `--color-red-*`  | `warning` and `danger` tones        |
+| `--color-gray-*`                    | `neutral` tone and `bordered` panel |
+
+## Do and don't
+
+- **Do** say what happened and what to do next in one or two sentences.
+- **Don't** stack several alerts of the same tone; combine them into one message.
+
+## Related
+
+[EmptyState](./empty-state) · [DisabledOverlay](./disabled-overlay) · [Button](./button)

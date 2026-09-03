@@ -54,6 +54,7 @@
     "dashboard-shell",
     "layouts",
     "---Overlays---",
+    "alert",
     "dialog",
     "confirm-dialog",
     "drawer",
