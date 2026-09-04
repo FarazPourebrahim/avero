@@ -1,0 +1,116 @@
+---
+title: Toast
+description: Short messages that appear at the bottom of the screen and close on their own.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/toast)
+
+```tsx
+import { ToastProvider, useToast } from "@avero/react";
+```
+
+<ComponentPreview name="toast/tones" />
+
+## Anatomy
+
+| Part        | Slot                            | Notes                                                  |
+| ----------- | ------------------------------- | ------------------------------------------------------ |
+| Viewport    | `data-slot="toast-viewport"`    | Fixed region on `--z-toast`; `role="region"`           |
+| Toast       | `data-slot="toast"`             | `data-tone`, `data-paused`, `data-state`, `data-swipe` |
+| Icon        | `data-slot="toast-icon"`        | The tone's icon                                        |
+| Title       | `data-slot="toast-title"`       | Bold headline                                          |
+| Description | `data-slot="toast-description"` | The message                                            |
+| Action      | `data-slot="toast-action"`      | Optional button; clicking it also closes the toast     |
+| Close       | `data-slot="toast-close"`       | Corner button at the inline end                        |
+| Progress    | `data-slot="toast-progress"`    | Drains over the duration; hidden with reduced motion   |
+
+## Setup
+
+Render one `ToastProvider` near the root, inside `AveroProvider`. Anything inside it can call
+`useToast`.
+
+```tsx
+<AveroProvider locale="fa-IR">
+  <ToastProvider>
+    <App />
+  </ToastProvider>
+</AveroProvider>
+```
+
+## Usage
+
+```tsx
+const { toast, dismiss } = useToast();
+
+toast({ tone: "success", title: "ذخیره شد", description: "تغییرات پروفایل ذخیره شد." });
+
+const id = toast({ tone: "info", title: "در حال بارگذاری فایل…", duration: Infinity });
+dismiss(id);
+```
+
+- **Tones:** `info` (default), `success`, `warning` and `danger`.
+- **Duration:** 5 seconds by default; set it per toast or on the provider. `Infinity` keeps a toast
+  open until it is closed.
+- **Stacking:** new toasts join the bottom of the stack. With more than `limit` (3 by default), the
+  oldest closes.
+- **Pause on hover:** the timer and the progress bar pause while a toast is hovered or focused, and
+  while the window is in the background.
+
+## Mobile
+
+Up to 480px wide, toasts span the screen with a small gutter. Wider screens show them in a 24rem
+column at the bottom of the inline end. Swipe a toast toward that edge to dismiss it.
+
+## Right-to-left
+
+The column sits at the bottom left in Persian and the bottom right in English. The swipe direction,
+the close button and the progress bar, which drains toward the inline start, all follow the
+`AveroProvider` direction.
+
+## Composition
+
+- Show a toast from a mutation's `onSuccess` or `onError`, with the `messageKey` of an API error
+  translated as the description.
+- Offer **Undo** as an `action` after a reversible delete, and describe another way to undo it in
+  `altText`.
+- For a message that must stay until the problem is fixed, use an [Alert](./alert).
+
+## Accessibility
+
+| Key                                                | Action                                 |
+| -------------------------------------------------- | -------------------------------------- |
+| <kbd>F8</kbd>                                      | Moves focus to the toast region        |
+| <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves between toasts and their buttons |
+| <kbd>Escape</kbd>                                  | Closes the focused toast               |
+
+- Toasts are announced by a live region: `danger` toasts assertively, the others politely.
+- Focus is never moved to a toast, so reading or typing isn't interrupted.
+- Anything a toast action does must also be possible elsewhere in the page, since a toast can close
+  before a keyboard or screen reader user reaches it. `altText` tells screen reader users where.
+- The region is labelled from the dictionary's `toastRegion` entry.
+
+## API reference
+
+<PropsTable file="components/toast/Toast.tsx" name="ToastProviderProps" />
+
+`toast()` accepts:
+
+<PropsTable file="components/toast/Toast.tsx" name="ToastOptions" />
+
+## Theming
+
+| Token                                                                           | Used by         |
+| ------------------------------------------------------------------------------- | --------------- |
+| `--shadow-elevated`                                                             | Toast           |
+| `--z-toast`                                                                     | Viewport        |
+| `--animate-slide-up`                                                            | Entering toasts |
+| `--color-blue-500`, `--color-green-500`, `--color-amber-500`, `--color-red-500` | Progress bars   |
+
+## Do and don't
+
+- **Do** keep toasts to one short sentence about something that just happened.
+- **Don't** put errors that block the task in a toast; show them next to the form or field.
+
+## Related
+
+[Alert](./alert) · [ConfirmDialog](./confirm-dialog)

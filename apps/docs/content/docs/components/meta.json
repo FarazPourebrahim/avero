@@ -60,6 +60,7 @@
     "drawer",
     "popover",
     "dropdown-menu",
+    "toast",
     "tooltip",
     "empty-state",
     "disabled-overlay",
