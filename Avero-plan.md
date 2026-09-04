@@ -47,7 +47,7 @@
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
-| 6 | Overlays and feedback | 🟨 | 6 / 10 | 3 | L | 2026-07-05 | |
+| 6 | Overlays and feedback | 🟨 | 7 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 93 / 146 phase-DoD items (≈64%).
+**Overall:** 94 / 146 phase-DoD items (≈64%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -684,7 +684,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] O-06 `Toast` meets the Global DoD: success, error, info and warning variants, stacking, 480px mobile behaviour, and a pause-on-hover progress bar
 - [ ] O-07 `Lightbox` meets the Global DoD, including keyboard navigation and focus return
 - [x] O-08 `EmptyState` meets the Global DoD with all 4 variants, and distinguishes "no results" from "nothing yet"
-- [ ] O-09 `Alert` and O-10 `DisabledOverlay` meet the Global DoD
+- [x] O-09 `Alert` and O-10 `DisabledOverlay` meet the Global DoD — `Alert` in five tones, `tinted` and `bordered` (callout) variants, title, actions, dictionary-labelled dismiss, opt-in live region; tinted text uses the tone's `-800`/`-900` shade for AA
 - [x] Z-index layers finalised (§4.8), with a layering test proving toast > modal > drawer > dropdown > header — `packages/tokens/scripts/check-z-order.mjs`, run by the tokens test
 - [ ] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled)
 
@@ -897,7 +897,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | O-06 | Toast | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-07 | Lightbox | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-08 | EmptyState | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| O-09 | Alert / Callout | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-09 | Alert / Callout | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-10 | DisabledOverlay | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | D-01 | Card family | 7 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | D-02 | StatCard | 7 | ✅ | ✅ | ✅ | ✅ | ✅ |
