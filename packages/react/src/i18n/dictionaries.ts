@@ -135,6 +135,10 @@ export type AveroDictionary = {
   confirm: string;
   /** Default label of a dialog's cancel button. */
   cancel: string;
+  /** Accessible name of the toast region. `{hotkey}` is replaced with the shortcut that focuses it. */
+  toastRegion: string;
+  /** Word announced before a toast's content, e.g. "Notification". */
+  toastLabel: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -212,6 +216,8 @@ export const fa: AveroDictionary = {
   loadMore: "نمایش موارد بیشتر",
   confirm: "تأیید",
   cancel: "انصراف",
+  toastRegion: "اعلان‌ها ({hotkey})",
+  toastLabel: "اعلان",
 };
 
 export const en: AveroDictionary = {
@@ -287,6 +293,8 @@ export const en: AveroDictionary = {
   loadMore: "Load more",
   confirm: "Confirm",
   cancel: "Cancel",
+  toastRegion: "Notifications ({hotkey})",
+  toastLabel: "Notification",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
