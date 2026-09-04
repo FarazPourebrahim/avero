@@ -47,7 +47,7 @@
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
-| 6 | Overlays and feedback | 🟨 | 7 / 10 | 3 | L | 2026-07-05 | |
+| 6 | Overlays and feedback | 🟨 | 8 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 94 / 146 phase-DoD items (≈64%).
+**Overall:** 95 / 146 phase-DoD items (≈65%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -105,6 +105,7 @@
 | D-20 | Screenshot tests | **None.** The Playwright visual suite and its baselines are removed; browser coverage is the smoke test plus the axe suite (D-19). Plan items that depended on screenshots or template snapshots are dropped. | The per-platform baselines never ran in CI, and regenerating and comparing about a thousand screenshots locally costs more than the regressions it catches. | User, 2026-08-18 |
 | D-21 | Floating panel layer | Portalled floating panels (Select, Combobox, DatePicker, Popover, DropdownMenu, Tooltip) use `--z-popover`; `--z-dropdown` is for in-page dropdowns only. | The panels were on `--z-dropdown` (60), below `--z-drawer` (70) and `--z-modal-content` (115), so they opened behind a drawer or dialog they were used in. `check-z-order.mjs` already keeps `--z-popover` above the modal layers and below toasts. | User, 2026-08-18 |
 | D-22 | Scroll lock without layout shift | While an overlay locks scrolling, `base.css` keeps the viewport's scrollbar gutter (`html:has(body[data-scroll-locked]) { scrollbar-gutter: stable }`) and drops react-remove-scroll-bar's right margin. | The library compensates with a physical right margin, but browsers place a right-to-left page's scrollbar on different sides, so a direction-specific fix can't be right everywhere. A Playwright spec measures the shift in RTL and LTR. | User, 2026-08-18 |
+| D-23 | Toast API | A `ToastProvider` with a `useToast()` hook (`toast`, `dismiss`), not a module-level store. Tones are `info`, `success`, `warning` and `danger`; `danger` is the plan's "error" variant. | A context keeps toasts per React tree, so nothing is shared between server requests, and it matches the hook-based data layer consumers use. `danger` keeps one tone vocabulary with `Alert`, `Button` and `DropdownMenuItem`. | Implementation, 2026-08-18 |
 
 ---
 
@@ -681,7 +682,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] O-02 `Dialog` and O-03 `ConfirmDialog` meet the Global DoD — Radix Dialog and AlertDialog, three panel sizes, dictionary-labelled close, async `onConfirm` busy state; unit, SSR and axe tests and docs pages
 - [x] O-04 `Popover`/`DropdownMenu` meet the Global DoD, including the notification-menu composition — logical `align` in both directions, checkbox/radio/submenu items, `danger` tone; notification menu as a story, a docs demo and a unit test with axe (docs pages)
 - [x] O-05 `Tooltip` meets the Global DoD — Radix Tooltip on `--z-popover` (D-21), `aria-describedby` link, focus and hover opening, logical `align` in both directions, optional `TooltipProvider` whose delay nested tooltips share; the chart tooltip is C-04
-- [ ] O-06 `Toast` meets the Global DoD: success, error, info and warning variants, stacking, 480px mobile behaviour, and a pause-on-hover progress bar
+- [x] O-06 `Toast` meets the Global DoD: success, error, info and warning variants, stacking, 480px mobile behaviour, and a pause-on-hover progress bar — `ToastProvider` + `useToast` on Radix Toast; the error variant is the `danger` tone, matching `Alert` and `Button`, and is announced assertively; `limit` keeps the newest; full width to 480px, then a 24rem column at the inline end; the Web Animations progress bar pauses with Radix's timer (D-23)
 - [ ] O-07 `Lightbox` meets the Global DoD, including keyboard navigation and focus return
 - [x] O-08 `EmptyState` meets the Global DoD with all 4 variants, and distinguishes "no results" from "nothing yet"
 - [x] O-09 `Alert` and O-10 `DisabledOverlay` meet the Global DoD — `Alert` in five tones, `tinted` and `bordered` (callout) variants, title, actions, dictionary-labelled dismiss, opt-in live region; tinted text uses the tone's `-800`/`-900` shade for AA
@@ -894,7 +895,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | O-03 | ConfirmDialog | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-04 | Popover / DropdownMenu | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-05 | Tooltip | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| O-06 | Toast | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-06 | Toast | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-07 | Lightbox | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
 | O-08 | EmptyState | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-09 | Alert / Callout | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
