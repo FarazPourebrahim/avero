@@ -1,0 +1,112 @@
+---
+title: Lightbox
+description: A full-screen image viewer with paging, zoom and keyboard navigation.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/lightbox)
+
+```tsx
+import { Lightbox, type LightboxImage } from "@avero/react";
+```
+
+<ComponentPreview name="lightbox/gallery" />
+
+## Anatomy
+
+| Part     | Slot                            | Notes                                                   |
+| -------- | ------------------------------- | ------------------------------------------------------- |
+| Overlay  | `data-slot="lightbox-overlay"`  | `bg-black/90` with a blur, on `--z-modal`               |
+| Content  | `data-slot="lightbox"`          | `role="dialog"`, full screen on `--z-modal-content`     |
+| Counter  | `data-slot="lightbox-counter"`  | "2 of 3" in the locale's digits; a polite live region   |
+| Zoom     | `data-slot="lightbox-zoom"`     | Toggle button with `aria-pressed`                       |
+| Close    | `data-slot="lightbox-close"`    | Closes the lightbox                                     |
+| Image    | `data-slot="lightbox-image"`    | `shadow-lightbox`; `cursor-zoom-in` / `cursor-zoom-out` |
+| Previous | `data-slot="lightbox-previous"` | At the inline start; disabled on the first image        |
+| Next     | `data-slot="lightbox-next"`     | At the inline end; disabled on the last image           |
+| Caption  | `data-slot="lightbox-caption"`  | The current image's `caption`                           |
+
+## Usage
+
+Open the lightbox from a [ZoomFrame](./zoom-frame) around each thumbnail, and control both the open
+state and the index:
+
+```tsx
+function Gallery({ images }: { images: LightboxImage[] }) {
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  return (
+    <>
+      {images.map((image, position) => (
+        <ZoomFrame
+          key={image.src}
+          onClick={() => {
+            setIndex(position);
+            setOpen(true);
+          }}
+        >
+          <img src={image.src} alt={image.alt} />
+        </ZoomFrame>
+      ))}
+      <Lightbox
+        images={images}
+        open={open}
+        onOpenChange={setOpen}
+        index={index}
+        onIndexChange={setIndex}
+      />
+    </>
+  );
+}
+```
+
+When it closes, focus returns to the element that had focus when it opened, such as the
+`ZoomFrame` that was clicked.
+
+`defaultOpen` and `defaultIndex` work too when the lightbox manages its own state.
+
+## Right-to-left
+
+Next is always further along the reading direction: <kbd>←</kbd> and the button at the left edge in
+Persian, <kbd>→</kbd> and the right edge in English. The chevrons mirror, and the counter uses the
+`AveroProvider` digits.
+
+## Accessibility
+
+| Key                                                | Action                                                   |
+| -------------------------------------------------- | -------------------------------------------------------- |
+| <kbd>←</kbd> / <kbd>→</kbd>                        | Previous or next image, following the reading direction  |
+| <kbd>Home</kbd> / <kbd>End</kbd>                   | First or last image                                      |
+| <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves between the controls; focus stays inside           |
+| <kbd>Enter</kbd> / <kbd>Space</kbd>                | Activates the focused control, including the zoom toggle |
+| <kbd>Escape</kbd>                                  | Closes the lightbox and returns focus to what opened it  |
+
+- The dialog is named by the dictionary's `lightboxLabel`; override it with `label`.
+- Each image's `alt` is required and is announced as the image changes; the counter is announced
+  politely.
+- Clicking the image zooms it as a pointer shortcut; keyboard and screen reader users use the zoom
+  button, which reports its state with `aria-pressed`.
+- The page behind is inert and doesn't scroll.
+
+## API reference
+
+`Lightbox` accepts every Radix dialog content prop plus:
+
+<PropsTable file="components/lightbox/Lightbox.tsx" name="LightboxOwnProps" />
+
+## Theming
+
+| Token               | Used by |
+| ------------------- | ------- |
+| `--shadow-lightbox` | Image   |
+| `--z-modal`         | Scrim   |
+| `--z-modal-content` | Viewer  |
+
+## Do and don't
+
+- **Do** give every image a meaningful `alt` and use `caption` for extra context.
+- **Don't** put anything but images in a lightbox; use a [Dialog](./dialog) for other content.
+
+## Related
+
+[ZoomFrame](./zoom-frame) · [Dialog](./dialog) · [Carousel](./carousel)

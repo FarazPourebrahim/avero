@@ -46,6 +46,7 @@ import DisabledOverlayFullCard from "./disabled-overlay/full-card";
 import DividerBasic from "./divider/basic";
 import DrawerMenu from "./drawer/menu";
 import DropdownMenuUserMenu from "./dropdown-menu/user-menu";
+import LightboxGallery from "./lightbox/gallery";
 import PopoverNotifications from "./popover/notifications";
 import ToastTones from "./toast/tones";
 import TooltipShareActions from "./tooltip/share-actions";
@@ -202,6 +203,7 @@ export const demos = {
   "layouts/templates": LayoutsTemplates,
   "drawer/menu": DrawerMenu,
   "dropdown-menu/user-menu": DropdownMenuUserMenu,
+  "lightbox/gallery": LightboxGallery,
   "popover/notifications": PopoverNotifications,
   "toast/tones": ToastTones,
   "tooltip/share-actions": TooltipShareActions,
