@@ -47,7 +47,7 @@
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
-| 6 | Overlays and feedback | 🟨 | 8 / 10 | 3 | L | 2026-07-05 | |
+| 6 | Overlays and feedback | 🟨 | 9 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | 🟨 | 7 / 9 | 3 | L | 2026-06-19 | |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 95 / 146 phase-DoD items (≈65%).
+**Overall:** 96 / 146 phase-DoD items (≈66%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -683,13 +683,13 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] O-04 `Popover`/`DropdownMenu` meet the Global DoD, including the notification-menu composition — logical `align` in both directions, checkbox/radio/submenu items, `danger` tone; notification menu as a story, a docs demo and a unit test with axe (docs pages)
 - [x] O-05 `Tooltip` meets the Global DoD — Radix Tooltip on `--z-popover` (D-21), `aria-describedby` link, focus and hover opening, logical `align` in both directions, optional `TooltipProvider` whose delay nested tooltips share; the chart tooltip is C-04
 - [x] O-06 `Toast` meets the Global DoD: success, error, info and warning variants, stacking, 480px mobile behaviour, and a pause-on-hover progress bar — `ToastProvider` + `useToast` on Radix Toast; the error variant is the `danger` tone, matching `Alert` and `Button`, and is announced assertively; `limit` keeps the newest; full width to 480px, then a 24rem column at the inline end; the Web Animations progress bar pauses with Radix's timer (D-23)
-- [ ] O-07 `Lightbox` meets the Global DoD, including keyboard navigation and focus return
+- [x] O-07 `Lightbox` meets the Global DoD, including keyboard navigation and focus return — Radix Dialog over a `bg-black/90` scrim; arrow keys follow the reading direction, `Home`/`End`; zoom toggle with `aria-pressed` plus `cursor-zoom-in`/`-out` on the image; focus returns to whatever opened it, since it has no Radix trigger
 - [x] O-08 `EmptyState` meets the Global DoD with all 4 variants, and distinguishes "no results" from "nothing yet"
 - [x] O-09 `Alert` and O-10 `DisabledOverlay` meet the Global DoD — `Alert` in five tones, `tinted` and `bordered` (callout) variants, title, actions, dictionary-labelled dismiss, opt-in live region; tinted text uses the tone's `-800`/`-900` shade for AA
 - [x] Z-index layers finalised (§4.8), with a layering test proving toast > modal > drawer > dropdown > header — `packages/tokens/scripts/check-z-order.mjs`, run by the tokens test
 - [ ] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled)
 
-**Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn.
+**Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn. 🟨 Written, awaiting CI: `apps/storybook/tests/overlays.spec.ts` on the `Internal/Overlay Stack` story opens all eight overlays in RTL and LTR with axe, and checks a popover above a drawer and a toast above a dialog.
 
 ### Phase 7 — Data display  🟨
 
@@ -896,7 +896,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | O-04 | Popover / DropdownMenu | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-05 | Tooltip | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-06 | Toast | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| O-07 | Lightbox | 6 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| O-07 | Lightbox | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-08 | EmptyState | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-09 | Alert / Callout | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-10 | DisabledOverlay | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
