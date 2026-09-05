@@ -139,6 +139,8 @@ export type AveroDictionary = {
   toastRegion: string;
   /** Word announced before a toast's content, e.g. "Notification". */
   toastLabel: string;
+  /** Accessible name of the lightbox dialog. */
+  lightboxLabel: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -218,6 +220,7 @@ export const fa: AveroDictionary = {
   cancel: "انصراف",
   toastRegion: "اعلان‌ها ({hotkey})",
   toastLabel: "اعلان",
+  lightboxLabel: "گالری تصاویر",
 };
 
 export const en: AveroDictionary = {
@@ -295,6 +298,7 @@ export const en: AveroDictionary = {
   cancel: "Cancel",
   toastRegion: "Notifications ({hotkey})",
   toastLabel: "Notification",
+  lightboxLabel: "Image gallery",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
