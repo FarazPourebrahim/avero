@@ -95,6 +95,7 @@ import RatingUsages from "./rating/usages";
 import ReactionBarCourse from "./reaction-bar/course";
 import RelatedListCourses from "./related-list/courses";
 import ReportVariants from "./report/variants";
+import ResponsiveBannerCampaign from "./responsive-banner/campaign";
 import RichContentArticle from "./rich-content/article";
 import RichContentSanitized from "./rich-content/sanitized";
 import SectionHeaderDarkBanner from "./section-header/dark-banner";
@@ -171,6 +172,7 @@ export const demos = {
   "match-score/suggested": MatchScoreSuggested,
   "zoom-frame/gallery": ZoomFrameGallery,
   "cover-header/profile": CoverHeaderProfile,
+  "responsive-banner/campaign": ResponsiveBannerCampaign,
   "rich-content/article": RichContentArticle,
   "rich-content/sanitized": RichContentSanitized,
   "activity-heatmap/year": ActivityHeatmapYear,

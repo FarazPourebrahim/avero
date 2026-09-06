@@ -1,0 +1,71 @@
+---
+title: ResponsiveBanner
+description: A banner with separate artwork for mobile and desktop screens.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/responsive-banner)
+
+```tsx
+import { ResponsiveBanner } from "@avero/react";
+```
+
+<ComponentPreview name="responsive-banner/campaign" />
+
+## Anatomy
+
+| Part    | Slot                            | Notes                                                   |
+| ------- | ------------------------------- | ------------------------------------------------------- |
+| Picture | `data-slot="responsive-banner"` | `<picture>` with one `<source>` for the desktop artwork |
+| Image   | `data-slot="image"`             | The mobile artwork and fallback; receives the ref       |
+
+## Usage
+
+```tsx
+<ResponsiveBanner
+  desktopSrc="/banners/autumn-wide.webp"
+  mobileSrc="/banners/autumn-tall.webp"
+  alt="جشنواره ثبت‌نام پاییز با تخفیف ویژه"
+/>
+```
+
+- `breakpoint` picks where the desktop artwork takes over: `sm` (40rem), `md` (48rem, default) or
+  `lg` (64rem).
+- The browser chooses the file, so only one image downloads and nothing changes after hydration.
+- It accepts the [Image](./image) options: `radius` (default `2xl`), `fit`, `aspect`, `loading` and
+  a `fallback` for artwork that fails to load.
+- To make the banner a link, wrap it in an `<a>`; the image's `alt` names the link.
+
+## Right-to-left
+
+Artwork is an image, so it doesn't mirror. If a banner has text or arrows baked in, supply
+direction-specific files and pick them from `useAvero().dir`.
+
+## Accessibility
+
+- `alt` is required and is shared by both artworks, so describe the message, not the picture.
+  Pass `alt=""` when the banner is purely decorative.
+- Keep important text out of the artwork where possible; images of text don't scale or translate.
+
+## API reference
+
+`ResponsiveBanner` accepts every [Image](./image) prop except `src`, plus:
+
+<PropsTable
+  file="components/responsive-banner/ResponsiveBanner.tsx"
+  name="ResponsiveBannerOwnProps"
+/>
+
+## Theming
+
+| Token          | Used by        |
+| -------------- | -------------- |
+| `--radius-2xl` | Default corner |
+
+## Do and don't
+
+- **Do** give both artworks the same message and call to action.
+- **Don't** hide content that is only in one of the two artworks.
+
+## Related
+
+[Image](./image) · [PromoBanner](../blocks/promo-banner)
