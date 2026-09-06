@@ -9,7 +9,7 @@ import { cn } from "../../utils/cn.js";
  * - icon: primary icon + title, as in "چرا ما را انتخاب کنید؟"
  * - plain: bold title with an actions slot, as in "دوره‌های مرتبط"
  */
-export const sectionHeaderTitleVariants = cva("", {
+export const sectionHeaderTitleVariants = cva("min-w-0 wrap-anywhere", {
   variants: {
     variant: {
       accentBar: "text-xl font-extrabold text-slate-900 md:text-3xl",
@@ -75,7 +75,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(func
       >
         <span aria-hidden="true" className="size-2.5 rounded-full bg-blue-600" />
         {heading}
-        {actions ? <div className="ms-auto">{actions}</div> : null}
+        {actions ? <div className="ms-auto shrink-0">{actions}</div> : null}
       </div>
     );
   }
@@ -94,7 +94,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(func
           </span>
         ) : null}
         {heading}
-        {actions ? <div className="ms-auto">{actions}</div> : null}
+        {actions ? <div className="ms-auto shrink-0">{actions}</div> : null}
       </div>
     );
   }

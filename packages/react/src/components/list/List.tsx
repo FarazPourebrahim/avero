@@ -67,7 +67,7 @@ export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(function
       ref={ref}
       data-slot="blockquote"
       className={cn(
-        "relative my-4 rounded-e-lg border-s-4 border-indigo-500 bg-indigo-50/30 py-2.5 ps-4 pe-2 text-gray-600 italic",
+        "relative my-4 rounded-e-lg border-s-4 border-indigo-500 bg-indigo-50/30 py-2.5 ps-4 pe-2 wrap-anywhere text-gray-600 italic",
         className,
       )}
       {...props}

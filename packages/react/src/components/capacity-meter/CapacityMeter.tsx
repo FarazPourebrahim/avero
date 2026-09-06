@@ -50,9 +50,12 @@ export const CapacityMeter = forwardRef<HTMLDivElement, CapacityMeterProps>(func
       {...props}
     >
       <div
-        className={cn("flex items-center justify-between", card ? "flex-wrap gap-2" : "text-sm")}
+        className={cn("flex items-center justify-between gap-2", card ? "flex-wrap" : "text-sm")}
       >
-        <span id={labelId} className={card ? "text-xs text-gray-500" : "text-gray-600"}>
+        <span
+          id={labelId}
+          className={cn("min-w-0 wrap-anywhere", card ? "text-xs text-gray-500" : "text-gray-600")}
+        >
           {label}
         </span>
         {card ? (

@@ -60,7 +60,7 @@ export const ActionTile = forwardRef<HTMLButtonElement, ActionTileProps>(functio
         >
           {icon}
         </IconTile>
-        <span className="text-2xs text-center leading-tight font-medium text-gray-600 transition-colors duration-300 group-hover:text-white sm:text-xs">
+        <span className="text-2xs max-w-full text-center leading-tight font-medium wrap-anywhere text-gray-600 transition-colors duration-300 group-hover:text-white sm:text-xs">
           {asChild ? null : children}
         </span>
       </span>

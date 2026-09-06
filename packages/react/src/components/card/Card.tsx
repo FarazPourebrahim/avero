@@ -102,19 +102,22 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(function C
 
 CardHeader.displayName = "CardHeader";
 
-export const cardTitleVariants = cva("flex items-center gap-2 [&>svg]:shrink-0", {
-  variants: {
-    size: {
-      /** Compact panel titles, e.g. on a dashboard. */
-      sm: "text-xs font-bold text-gray-800 sm:text-sm [&>svg]:text-indigo-600",
-      /** Section titles. */
-      md: "text-lg font-bold text-slate-900 [&>svg]:size-5",
-      /** Prominent section titles on detail pages. */
-      lg: "text-xl font-black text-slate-900 [&>svg]:size-5 [&>svg]:text-indigo-600",
+export const cardTitleVariants = cva(
+  "flex min-w-0 items-center gap-2 wrap-anywhere [&>svg]:shrink-0",
+  {
+    variants: {
+      size: {
+        /** Compact panel titles, e.g. on a dashboard. */
+        sm: "text-xs font-bold text-gray-800 sm:text-sm [&>svg]:text-indigo-600",
+        /** Section titles. */
+        md: "text-lg font-bold text-slate-900 [&>svg]:size-5",
+        /** Prominent section titles on detail pages. */
+        lg: "text-xl font-black text-slate-900 [&>svg]:size-5 [&>svg]:text-indigo-600",
+      },
     },
+    defaultVariants: { size: "md" },
   },
-  defaultVariants: { size: "md" },
-});
+);
 
 /** Props specific to `CardTitle`. It also accepts every native heading attribute. */
 export type CardTitleOwnProps = {

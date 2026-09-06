@@ -6,7 +6,7 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `MatchScore`. It also accepts every native `<div>` attribute. */
 export type MatchScoreOwnProps = {
-  /** Match percentage, clamped to `0…100`. */
+  /** Match percentage, clamped to `0…100`; a value that isn't a finite number shows as 0. */
   value: number;
   /** Caption under the percentage. @defaultValue the dictionary's `matchLabel` ("تطابق" / "Match") */
   label?: ReactNode;
@@ -22,7 +22,7 @@ export const MatchScore = forwardRef<HTMLDivElement, MatchScoreProps>(function M
 ) {
   const { dictionary } = useAvero();
   const format = useAveroFormatter();
-  const percent = Math.min(Math.max(value, 0), 100);
+  const percent = Number.isFinite(value) ? Math.min(Math.max(value, 0), 100) : 0;
 
   return (
     <div

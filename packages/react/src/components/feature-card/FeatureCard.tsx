@@ -40,8 +40,10 @@ export const FeatureCard = forwardRef<HTMLDivElement, FeatureCardProps>(function
           {icon}
         </IconTile>
       ) : null}
-      <Title className="text-base font-bold text-slate-800">{title}</Title>
-      <p className="text-start text-xs leading-6 text-gray-500 md:text-sm">{description}</p>
+      <Title className="max-w-full text-base font-bold wrap-anywhere text-slate-800">{title}</Title>
+      <p className="max-w-full text-start text-xs leading-6 wrap-anywhere text-gray-500 md:text-sm">
+        {description}
+      </p>
     </div>
   );
 });

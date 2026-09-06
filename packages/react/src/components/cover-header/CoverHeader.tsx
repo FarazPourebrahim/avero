@@ -53,7 +53,10 @@ export const CoverHeader = forwardRef<HTMLDivElement, CoverHeaderProps>(function
                 </div>
               </div>
             ) : null}
-            <div data-slot="cover-header-content" className="mt-3 flex-1 lg:mt-4">
+            <div
+              data-slot="cover-header-content"
+              className="mt-3 max-w-full min-w-0 flex-1 wrap-anywhere lg:mt-4"
+            >
               {children}
             </div>
           </div>

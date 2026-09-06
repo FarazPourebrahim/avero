@@ -49,9 +49,9 @@ export const MetaItem = forwardRef<HTMLDivElement, MetaItemProps>(function MetaI
       {icon}
       {label ? <span>{label}</span> : null}
       {variant === "plain" || variant === undefined ? (
-        <span className="font-medium text-gray-700">{children}</span>
+        <span className="min-w-0 font-medium wrap-anywhere text-gray-700">{children}</span>
       ) : (
-        <span>{children}</span>
+        <span className="min-w-0 wrap-anywhere">{children}</span>
       )}
     </div>
   );
@@ -125,23 +125,24 @@ export const KeyValueRow = forwardRef<HTMLDivElement, KeyValueRowProps>(function
     <div
       ref={ref}
       data-slot="key-value-row"
-      className={cn("flex flex-row items-center justify-between", className)}
+      className={cn("flex flex-row items-center justify-between gap-3", className)}
       {...props}
     >
-      <span className={valueClasses}>{label}</span>
+      <span className={cn(valueClasses, "shrink-0")}>{label}</span>
       {href ? (
         <a
           href={href}
           dir={valueDir}
           className={cn(
             valueClasses,
+            "min-w-0 wrap-anywhere",
             "hover:text-text-chrome-hover transition-all duration-200 ease-linear",
           )}
         >
           {value}
         </a>
       ) : (
-        <span dir={valueDir} className={valueClasses}>
+        <span dir={valueDir} className={cn(valueClasses, "min-w-0 wrap-anywhere")}>
           {value}
         </span>
       )}
@@ -183,15 +184,15 @@ export const ContactMethod = forwardRef<HTMLAnchorElement, ContactMethodProps>(
         data-slot="contact-method"
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={cn(
-          "inline-flex items-center gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50 [&>svg]:size-4",
+          "inline-flex max-w-full items-center gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50 [&>svg]:size-4",
           "focus-visible:ring-primary/40 focus-visible:ring-2 focus-visible:outline-none",
           className,
         )}
         {...props}
       >
         {icon}
-        <span className="capitalize">{label}</span>
-        <span dir="ltr" className="font-mono text-slate-600">
+        <span className="shrink-0 capitalize">{label}</span>
+        <span dir="ltr" className="min-w-0 font-mono wrap-anywhere text-slate-600">
           {value}
         </span>
       </a>

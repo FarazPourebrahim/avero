@@ -36,15 +36,17 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(function StatC
       )}
       {...props}
     >
-      <div className="mb-2 flex items-center justify-between sm:mb-3">
-        <span className="text-2xs font-medium text-gray-500 sm:text-xs">{label}</span>
+      <div className="mb-2 flex items-center justify-between gap-2 sm:mb-3">
+        <span className="text-2xs min-w-0 font-medium wrap-anywhere text-gray-500 sm:text-xs">
+          {label}
+        </span>
         {icon ? (
           <IconTile tone={tone} size="xs">
             {icon}
           </IconTile>
         ) : null}
       </div>
-      <div className="text-xl font-bold text-gray-900 sm:text-2xl">{value}</div>
+      <div className="text-xl font-bold wrap-anywhere text-gray-900 sm:text-2xl">{value}</div>
     </div>
   );
 });
@@ -161,8 +163,8 @@ export const MiniStat = forwardRef<HTMLDivElement, MiniStatProps>(function MiniS
       className={cn("rounded-2xl border border-slate-100 bg-slate-50 p-3 text-center", className)}
       {...props}
     >
-      <span className="text-3xs block font-bold text-slate-400">{label}</span>
-      <span className="flex items-center justify-center gap-1 text-base font-black text-slate-900">
+      <span className="text-3xs block font-bold wrap-anywhere text-slate-400">{label}</span>
+      <span className="flex items-center justify-center gap-1 text-base font-black wrap-anywhere text-slate-900">
         {icon}
         {value}
       </span>
@@ -224,8 +226,8 @@ export const InfoRow = forwardRef<HTMLDivElement, InfoRowProps>(function InfoRow
         </IconTile>
       ) : null}
       <div className="min-w-0 flex-1">
-        <p className="text-2xs text-gray-500 sm:text-xs">{label}</p>
-        <p className="text-xs font-bold text-gray-800 sm:text-sm">{value}</p>
+        <p className="text-2xs wrap-anywhere text-gray-500 sm:text-xs">{label}</p>
+        <p className="text-xs font-bold wrap-anywhere text-gray-800 sm:text-sm">{value}</p>
       </div>
     </div>
   );
@@ -264,8 +266,8 @@ export const HighlightPanel = forwardRef<HTMLDivElement, HighlightPanelProps>(
         )}
         {...props}
       >
-        <div className="flex items-center justify-between">
-          <div>
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0 wrap-anywhere">
             <p className="text-2xs mb-0.5 text-amber-600 sm:mb-1 sm:text-xs">{label}</p>
             <p className="text-xl font-bold text-amber-700 sm:text-2xl">{value}</p>
           </div>
