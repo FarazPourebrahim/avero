@@ -73,6 +73,7 @@ export * from "./components/match-score/index.js";
 export * from "./components/meta/index.js";
 export * from "./components/price-tag/index.js";
 export * from "./components/rating/index.js";
+export * from "./components/responsive-banner/index.js";
 export * from "./components/rich-content/index.js";
 export * from "./components/section-header/index.js";
 export * from "./components/stat/index.js";
