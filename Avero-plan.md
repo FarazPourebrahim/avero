@@ -48,7 +48,7 @@
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
 | 6 | Overlays and feedback | 🟨 | 9 / 10 | 3 | L | 2026-07-05 | |
-| 7 | Data display | 🟨 | 8 / 9 | 3 | L | 2026-06-19 | |
+| 7 | Data display | ✅ | 9 / 9 | 3 | L | 2026-06-19 | 2026-08-18 |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
 | 10 | Blocks and example templates | 🟨 | 3 / 6 | 4–9 | L | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 97 / 146 phase-DoD items (≈66%).
+**Overall:** 98 / 146 phase-DoD items (≈67%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -704,9 +704,9 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] D-18 `ActivityHeatmap` meets the Global DoD: accessible (each cell has a label with date and count), keyboard-navigable grid, legend, Jalali/Gregorian months
 - [x] D-19…D-23 key-value, contact, section header, zoom frame and cover header meet the Global DoD
 - [x] D-24 `ResponsiveBanner` meets the Global DoD — a `<picture>` whose `<source>` swaps at `sm`/`md`/`lg`, so only one artwork downloads without JavaScript; built on `Image` for radius, aspect and fallback
-- [ ] Every data component renders sensibly with empty, `null`/`undefined` and overflowing content (tests present)
+- [x] Every data component renders sensibly with empty, `null`/`undefined` and overflowing content (tests present) — `src/test/dataDisplayEdgeCases.test.tsx`; the sweep made 14 components wrap long unbroken text and made `MatchScore` show 0 for non-finite values
 
-**Exit gate:** every component in this phase meets the Global DoD.
+**Exit gate:** every component in this phase meets the Global DoD. ✅ Every D-* row in §9 is ✅.
 
 ### Phase 8 — Layout shells and site chrome  ✅
 
