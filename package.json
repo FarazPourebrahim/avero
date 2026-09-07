@@ -19,7 +19,7 @@
     "format-check": "prettier --check .",
     "test": "pnpm -r run test",
     "storybook-test": "cd apps/storybook && pnpm run test-browser",
-    "size": "cd packages/react && pnpm run size",
+    "size": "pnpm --filter \"./packages/**\" run --if-present size",
     "changeset": "changeset"
   },
   "devDependencies": {
