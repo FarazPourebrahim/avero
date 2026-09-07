@@ -141,6 +141,32 @@ export type AveroDictionary = {
   toastLabel: string;
   /** Accessible name of the lightbox dialog. */
   lightboxLabel: string;
+  /** Accessible name of the rich text editor's toolbar. */
+  editorToolbar: string;
+  /** Editor toolbar button that toggles bold text. */
+  editorBold: string;
+  /** Editor toolbar button that toggles italic text. */
+  editorItalic: string;
+  /** Editor toolbar button that toggles underlined text. */
+  editorUnderline: string;
+  /** Editor toolbar button that toggles struck-through text. */
+  editorStrike: string;
+  /** Editor toolbar button that toggles a section heading (h2). */
+  editorHeading: string;
+  /** Editor toolbar button that toggles a subheading (h3). */
+  editorSubheading: string;
+  /** Editor toolbar button that toggles a bulleted list. */
+  editorBulletList: string;
+  /** Editor toolbar button that toggles a numbered list. */
+  editorOrderedList: string;
+  /** Editor toolbar button that toggles a quote. */
+  editorBlockquote: string;
+  /** Editor toolbar button that toggles a code block. */
+  editorCodeBlock: string;
+  /** Editor toolbar button that undoes the last change. */
+  editorUndo: string;
+  /** Editor toolbar button that redoes the last undone change. */
+  editorRedo: string;
 };
 
 export type AveroLanguage = "fa" | "en";
@@ -221,6 +247,19 @@ export const fa: AveroDictionary = {
   toastRegion: "اعلان‌ها ({hotkey})",
   toastLabel: "اعلان",
   lightboxLabel: "گالری تصاویر",
+  editorToolbar: "نوار ابزار ویرایشگر",
+  editorBold: "پررنگ",
+  editorItalic: "کج",
+  editorUnderline: "زیرخط",
+  editorStrike: "خط‌خورده",
+  editorHeading: "عنوان بخش",
+  editorSubheading: "زیرعنوان",
+  editorBulletList: "فهرست نقطه‌ای",
+  editorOrderedList: "فهرست شماره‌دار",
+  editorBlockquote: "نقل قول",
+  editorCodeBlock: "بلوک کد",
+  editorUndo: "واگرد",
+  editorRedo: "ازنو",
 };
 
 export const en: AveroDictionary = {
@@ -299,6 +338,19 @@ export const en: AveroDictionary = {
   toastRegion: "Notifications ({hotkey})",
   toastLabel: "Notification",
   lightboxLabel: "Image gallery",
+  editorToolbar: "Editor toolbar",
+  editorBold: "Bold",
+  editorItalic: "Italic",
+  editorUnderline: "Underline",
+  editorStrike: "Strikethrough",
+  editorHeading: "Heading",
+  editorSubheading: "Subheading",
+  editorBulletList: "Bulleted list",
+  editorOrderedList: "Numbered list",
+  editorBlockquote: "Quote",
+  editorCodeBlock: "Code block",
+  editorUndo: "Undo",
+  editorRedo: "Redo",
 };
 
 export const dictionaries: Record<AveroLanguage, AveroDictionary> = { fa, en };
