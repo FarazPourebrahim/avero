@@ -12,17 +12,46 @@ pnpm add @avero/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/exte
 ```
 
 ```tsx
-import { RichTextEditor } from "@avero/editor";
+import { EditorToolbar, RichTextEditor } from "@avero/editor";
 ```
 
-<ComponentPreview name="editor/basic" />
+<ComponentPreview name="editor/with-toolbar" />
 
 ## Anatomy
 
-| Part    | Slot                           | Notes                                                  |
-| ------- | ------------------------------ | ------------------------------------------------------ |
-| Root    | `data-slot="rich-text-editor"` | Carries `.avero-editor-content`; `data-editable` state |
-| Surface | `.tiptap`                      | Tiptap's contenteditable, styled by `rich-content.css` |
+| Part            | Slot                                   | Notes                                                  |
+| --------------- | -------------------------------------- | ------------------------------------------------------ |
+| Root            | `data-slot="rich-text-editor"`         | Carries `.avero-editor-content`; `data-editable` state |
+| Surface         | `.tiptap`                              | Tiptap's contenteditable, styled by `rich-content.css` |
+| Toolbar         | `data-slot="editor-toolbar"`           | `role="toolbar"`, named by `editorToolbar`             |
+| Toolbar button  | `data-slot="editor-toolbar-button"`    | `aria-pressed` on formatting toggles                   |
+| Toolbar divider | `data-slot="editor-toolbar-separator"` | Between the four button groups                         |
+
+## Toolbar
+
+`EditorToolbar` is a separate component, so a page can place it anywhere or leave it out. Keep the
+editor from `onReady` in state and pass it in:
+
+```tsx
+function CourseDescription() {
+  const [editor, setEditor] = useState<Editor | null>(null);
+
+  return (
+    <>
+      <EditorToolbar editor={editor} />
+      <RichTextEditor onReady={setEditor} />
+    </>
+  );
+}
+```
+
+It has four groups: bold, italic, underline and strikethrough; heading, subheading, quote and code
+block; bulleted and numbered lists; undo and redo. Every button is disabled until the editor exists
+and while it is read-only; undo and redo are also disabled when there is nothing to undo or redo.
+
+Tiptap's shortcuts work with or without it, e.g. <kbd>Ctrl</kbd> + <kbd>B</kbd> for bold.
+
+<ComponentPreview name="editor/basic" />
 
 ## Styles
 
@@ -57,11 +86,29 @@ every tag in `richContentAllowList` survives it, so allowed formatting is never 
   part of the document's text.
 - Direction follows `AveroProvider`, so the surface reads correctly in both `rtl` and `ltr`.
 
+The toolbar follows the WAI-ARIA toolbar pattern:
+
+| Key                                 | Action                                                      |
+| ----------------------------------- | ----------------------------------------------------------- |
+| <kbd>Tab</kbd>                      | Moves into the toolbar, to the last focused button, and out |
+| <kbd>←</kbd> / <kbd>→</kbd>         | Moves between buttons, following the reading direction      |
+| <kbd>Home</kbd> / <kbd>End</kbd>    | First or last available button                              |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Applies the focused button's formatting                     |
+
+- Each button is named from the dictionary (`editorBold`, `editorHeading`, …), and formatting
+  toggles report whether the selection has that formatting with `aria-pressed`.
+- Disabled buttons are skipped by the arrow keys.
+- Icons for lists, quotes and undo/redo mirror in right-to-left layouts.
+
 ## API reference
 
 `RichTextEditor` accepts every native `<div>` attribute plus:
 
 <PropsTable package="editor" file="components/RichTextEditor.tsx" name="RichTextEditorOwnProps" />
+
+`EditorToolbar` accepts every Radix toolbar root prop plus:
+
+<PropsTable package="editor" file="components/EditorToolbar.tsx" name="EditorToolbarOwnProps" />
 
 ## Do and don't
 

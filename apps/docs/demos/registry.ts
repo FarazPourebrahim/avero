@@ -51,6 +51,7 @@ import PopoverNotifications from "./popover/notifications";
 import ToastTones from "./toast/tones";
 import TooltipShareActions from "./tooltip/share-actions";
 import EditorBasic from "./editor/basic";
+import EditorWithToolbar from "./editor/with-toolbar";
 import EmptyStateVariants from "./empty-state/variants";
 import FeatureCardActions from "./feature-card/actions";
 import FeatureGridWhyUs from "./feature-grid/why-us";
@@ -198,6 +199,7 @@ export const demos = {
   "charts/analytics": ChartsAnalytics,
   "charts/trend": ChartsTrend,
   "editor/basic": EditorBasic,
+  "editor/with-toolbar": EditorWithToolbar,
   "container/sizes": ContainerSizes,
   "site-header/default": SiteHeaderDefault,
   "site-footer/default": SiteFooterDefault,
