@@ -51,13 +51,13 @@
 | 7 | Data display | ✅ | 9 / 9 | 3 | L | 2026-06-19 | 2026-08-18 |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 9 / 9 | 7 | M | 2026-07-05 | |
-| 10 | Blocks and example templates | 🟨 | 3 / 6 | 4–9 | L | 2026-07-05 | |
+| 10 | Blocks and example templates | 🟨 | 4 / 6 | 4–9 | L | 2026-07-05 | |
 | 11 | Documentation site | 🟨 | 1 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 99 / 146 phase-DoD items (≈68%).
+**Overall:** 100 / 146 phase-DoD items (≈68%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -748,8 +748,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **DoD:**
 - [x] Every B-* block meets the Global DoD and is built **only** from Avero components (no ad-hoc markup beyond layout) — all 25 built from Avero components, 816 unit/SSR/axe tests
 - [x] Blocks are domain-neutral; all text comes via props or slots, and each docs page describes typical uses
-- [ ] Example templates TP-01…TP-06 composed in Storybook from `@avero/*` exports only, with original sample content
-- [ ] Templates score axe 0 violations
+- [x] Example templates TP-01…TP-06 composed in Storybook from `@avero/*` exports only, with original sample content — `apps/storybook/src/templates` (`Templates/*` stories): article, course detail, course listing, instructor profile, learner dashboard and about page, with shared site chrome and token-built inline artwork; headings are ordered around the blocks' fixed levels
+- [ ] Templates score axe 0 violations — covered by the browser axe suite, which runs every non-internal story in RTL and LTR; awaiting CI
 - [ ] Templates render in LTR/`en` without layout breakage (review recorded)
 - [x] `docs/known-debts.md` lists every remaining gap with a justification
 
@@ -943,9 +943,14 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | T-08 | SplitDetailLayout | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | T-09 | ProfileLayout | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | B-01…B-25 | Blocks (see §5.10) — all 25 implemented | 10 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| TP-01…TP-06 | Example templates | 10 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| TP-01 | Article template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
+| TP-02 | Course detail template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
+| TP-03 | Course listing template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
+| TP-04 | Instructor profile template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
+| TP-05 | Learner dashboard template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
+| TP-06 | About page template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
 
-> When template work starts, expand the `B-*` and `TP-*` summary rows into one row per ID.
+> Template rows: Test and A11y wait on the browser axe suite in CI; Docs is the Templates section of the docs site (Phase 11).
 
 ---
 
