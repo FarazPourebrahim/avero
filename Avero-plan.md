@@ -50,14 +50,14 @@
 | 6 | Overlays and feedback | 🟨 | 9 / 10 | 3 | L | 2026-07-05 | |
 | 7 | Data display | ✅ | 9 / 9 | 3 | L | 2026-06-19 | 2026-08-18 |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
-| 9 | Charts and editor packages | 🟨 | 8 / 9 | 7 | M | 2026-07-05 | |
+| 9 | Charts and editor packages | 🟨 | 9 / 9 | 7 | M | 2026-07-05 | |
 | 10 | Blocks and example templates | 🟨 | 3 / 6 | 4–9 | L | 2026-07-05 | |
 | 11 | Documentation site | 🟨 | 1 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 98 / 146 phase-DoD items (≈67%).
+**Overall:** 99 / 146 phase-DoD items (≈68%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -735,11 +735,11 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] C-04 tooltip styling uses the chart tooltip tokens; charts expose an accessible data-table fallback (`ChartDataTable`, a screen-reader-only table captioned by `label`)
 - [x] Charts render RTL correctly (axis direction option documented) — `reversed` defaults to `false`, because time series read left to right even on RTL pages
 - [x] `@avero/editor` is published separately with `@tiptap/*` as peers — StarterKit, `TableKit`, `Image` and `Placeholder`, the exact set `rich-content.css` has rules for
-- [ ] E-02 toolbar meets the Global DoD
+- [x] E-02 toolbar meets the Global DoD — `EditorToolbar` on Radix Toolbar: text marks, heading/subheading, quote, code block, lists, undo/redo; one tab stop with direction-aware arrow keys, `aria-pressed` toggles, disabled without an editor or while read-only; glyphs vendored from Lucide
 - [x] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests) — every tag in `richContentAllowList` survives `editor.getHTML()` → `sanitizeHtml()`
 - [x] Both packages meet their `size-limit` budgets — charts 8.93 kB of 10 kB, editor 9.8 kB of 11 kB (Recharts and Tiptap ignored as peers)
 
-**Exit gate:** both packages build, tree-shake and stay within their size budgets.
+**Exit gate:** both packages build, tree-shake and stay within their size budgets. 🟨 Awaiting CI: the root `size` script ran only `@avero/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's, and `EditorToolbar` has not been measured yet.
 
 ### Phase 10 — Blocks and example templates  🟨
 
@@ -929,7 +929,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | C-03 | LineChart | 9 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | C-04 | ChartTooltip / palette | 9 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | E-01 | Editor content styles | 9 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| E-02 | Editor toolbar | 9 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| E-02 | Editor toolbar | 9 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | X-01 | Animation utilities | 2 | ✅ | ✅ | ⬜ | ⬜ | 🟨 |
 | X-02 | GlowOrbs | 7 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | X-04 | Container | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
