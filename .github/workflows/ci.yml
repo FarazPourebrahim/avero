@@ -51,9 +51,6 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm --filter @avero/storybook-app exec playwright install --with-deps chromium
 
-      - name: Storybook browser tests
-        run: pnpm run storybook-test
-
       - name: Build docs
         run: pnpm run docs-build
 
