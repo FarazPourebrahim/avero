@@ -106,6 +106,7 @@
 | D-21 | Floating panel layer | Portalled floating panels (Select, Combobox, DatePicker, Popover, DropdownMenu, Tooltip) use `--z-popover`; `--z-dropdown` is for in-page dropdowns only. | The panels were on `--z-dropdown` (60), below `--z-drawer` (70) and `--z-modal-content` (115), so they opened behind a drawer or dialog they were used in. `check-z-order.mjs` already keeps `--z-popover` above the modal layers and below toasts. | User, 2026-08-18 |
 | D-22 | Scroll lock without layout shift | While an overlay locks scrolling, `base.css` keeps the viewport's scrollbar gutter (`html:has(body[data-scroll-locked]) { scrollbar-gutter: stable }`) and drops react-remove-scroll-bar's right margin. | The library compensates with a physical right margin, but browsers place a right-to-left page's scrollbar on different sides, so a direction-specific fix can't be right everywhere. A Playwright spec measures the shift in RTL and LTR. | User, 2026-08-18 |
 | D-23 | Toast API | A `ToastProvider` with a `useToast()` hook (`toast`, `dismiss`), not a module-level store. Tones are `info`, `success`, `warning` and `danger`; `danger` is the plan's "error" variant. | A context keeps toasts per React tree, so nothing is shared between server requests, and it matches the hook-based data layer consumers use. `danger` keeps one tone vocabulary with `Alert`, `Button` and `DropdownMenuItem`. | Implementation, 2026-08-18 |
+| D-24 | `@avero/editor` size budget | **Raised from 11 kB to 12 kB** (brotli, `import { RichTextEditor }`, Tiptap ignored). | CI measured 11.18 kB. `EditorToolbar` is tree-shaken out of that import; the growth is the shared `fa`/`en` dictionary from `@avero/react`, which `useAvero` pulls in whole and which the Toast, Lightbox and editor toolbar strings grew by about 300 B. 12 kB leaves room for new strings. | User, 2026-09-09 |
 
 ---
 
@@ -739,7 +740,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests) — every tag in `richContentAllowList` survives `editor.getHTML()` → `sanitizeHtml()`
 - [x] Both packages meet their `size-limit` budgets — charts 8.93 kB of 10 kB, editor 9.8 kB of 11 kB (Recharts and Tiptap ignored as peers)
 
-**Exit gate:** both packages build, tree-shake and stay within their size budgets. 🟨 Awaiting CI: the root `size` script ran only `@avero/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's, and `EditorToolbar` has not been measured yet.
+**Exit gate:** both packages build, tree-shake and stay within their size budgets. 🟨 The root `size` script ran only `@avero/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's. First CI run: charts 8.78 kB of 10 kB; editor 11.18 kB of 11 kB, budget raised to 12 kB (D-24); awaiting the rerun.
 
 ### Phase 10 — Blocks and example templates  🟨
 
