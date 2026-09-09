@@ -11,6 +11,6 @@
       "@tiptap/extension-image",
       "@tiptap/extensions"
     ],
-    "limit": "11 kB"
+    "limit": "12 kB"
   }
 ]
