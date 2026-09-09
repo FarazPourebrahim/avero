@@ -47,7 +47,7 @@
 | 3 | Core primitives | ✅ | 9 / 9 | 2 | L | 2026-06-19 | 2026-07-30 |
 | 4 | Forms | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-08-18 |
 | 5 | Navigation, disclosure and carousel | ✅ | 9 / 9 | 3 | M | 2026-06-19 | 2026-08-18 |
-| 6 | Overlays and feedback | 🟨 | 9 / 10 | 3 | L | 2026-07-05 | |
+| 6 | Overlays and feedback | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-09-10 |
 | 7 | Data display | ✅ | 9 / 9 | 3 | L | 2026-06-19 | 2026-08-18 |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | 🟨 | 9 / 9 | 7 | M | 2026-07-05 | |
@@ -57,7 +57,7 @@
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 100 / 146 phase-DoD items (≈68%).
+**Overall:** 101 / 146 phase-DoD items (≈69%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -674,7 +674,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** every component in this phase meets the Global DoD. ✅ Every N-* row in §9 is ✅ (CI green).
 
-### Phase 6 — Overlays and feedback  🟨
+### Phase 6 — Overlays and feedback  ✅
 
 **Scope:** O-01…O-10.
 
@@ -688,9 +688,10 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] O-08 `EmptyState` meets the Global DoD with all 4 variants, and distinguishes "no results" from "nothing yet"
 - [x] O-09 `Alert` and O-10 `DisabledOverlay` meet the Global DoD — `Alert` in five tones, `tinted` and `bordered` (callout) variants, title, actions, dictionary-labelled dismiss, opt-in live region; tinted text uses the tone's `-800`/`-900` shade for AA
 - [x] Z-index layers finalised (§4.8), with a layering test proving toast > modal > drawer > dropdown > header — `packages/tokens/scripts/check-z-order.mjs`, run by the tokens test
-- [ ] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled) — `apps/storybook/tests/scroll-lock.spec.ts` opens a dialog, drawer, select and dropdown menu on a scrolling page in both directions and measures an in-flow bar, a fixed bar, the viewport width and the scroll position across each; it also asserts the D-22 mechanism (`scrollbar-gutter: stable`, no compensating body margin) and that scrolling stops while a dialog is open and resumes, in place, once it closes; awaiting CI
+- [x] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled) — `apps/storybook/tests/scroll-lock.spec.ts` opens a dialog, drawer, select and dropdown menu on a scrolling page in both directions and measures an in-flow bar, a fixed bar, the viewport width and the scroll position across each; it also asserts the D-22 mechanism (`scrollbar-gutter: stable`, no compensating body margin) and that scrolling stops while a dialog is open and resumes, in place, once it closes (CI green)
 
-**Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn. 🟨 Written, awaiting CI: `apps/storybook/tests/overlays.spec.ts` on the `Internal/Overlay Stack` story opens all eight overlays in RTL and LTR with axe, and checks a popover above a drawer and a toast above a dialog.
+**Evidence:** GitHub Actions `CI` green on `dev` (2026-09-10), including the overlay-stacking and scroll-lock suites in RTL/`fa` and LTR/`en`.
+**Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn. ✅ `apps/storybook/tests/overlays.spec.ts` on the `Internal/Overlay Stack` story opens all eight overlays in RTL and LTR with axe, and checks a popover above a drawer and a toast above a dialog (CI green).
 
 ### Phase 7 — Data display  🟨
 
