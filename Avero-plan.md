@@ -6,7 +6,7 @@
 | --- | --- |
 | Plan version | 2.0 |
 | Created | 2026-06-19 |
-| Last updated | 2026-08-18 |
+| Last updated | 2026-09-10 |
 | Design source of truth | `@avero/tokens` and the design system in §4 |
 | Target stack | React 18.2+/19, TypeScript (strict), Tailwind CSS v4.3, Radix UI primitives, pnpm workspace |
 | Default direction / locale | RTL / `fa-IR`, with full LTR / `en` support |
@@ -688,7 +688,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] O-08 `EmptyState` meets the Global DoD with all 4 variants, and distinguishes "no results" from "nothing yet"
 - [x] O-09 `Alert` and O-10 `DisabledOverlay` meet the Global DoD — `Alert` in five tones, `tinted` and `bordered` (callout) variants, title, actions, dictionary-labelled dismiss, opt-in live region; tinted text uses the tone's `-800`/`-900` shade for AA
 - [x] Z-index layers finalised (§4.8), with a layering test proving toast > modal > drawer > dropdown > header — `packages/tokens/scripts/check-z-order.mjs`, run by the tokens test
-- [ ] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled)
+- [ ] Scroll-lock behaviour is verified not to shift layout, both RTL and LTR (scrollbar-gutter handled) — `apps/storybook/tests/scroll-lock.spec.ts` opens a dialog, drawer, select and dropdown menu on a scrolling page in both directions and measures an in-flow bar, a fixed bar, the viewport width and the scroll position across each; it also asserts the D-22 mechanism (`scrollbar-gutter: stable`, no compensating body margin) and that scrolling stops while a dialog is open and resumes, in place, once it closes; awaiting CI
 
 **Exit gate:** a Playwright overlay-stacking test and axe pass on a page containing every overlay open in turn. 🟨 Written, awaiting CI: `apps/storybook/tests/overlays.spec.ts` on the `Internal/Overlay Stack` story opens all eight overlays in RTL and LTR with axe, and checks a popover above a drawer and a toast above a dialog.
 
