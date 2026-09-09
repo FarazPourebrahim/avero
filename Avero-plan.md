@@ -535,7 +535,7 @@ packages/react/src/
 
 - TypeScript compiler emit (decision D-13): per-file ESM + `.d.ts`, directives preserved and verified by `scripts/verify-build.mjs`. Subpath exports per component; `sideEffects: false` for JS packages, `["*.css"]` for the tokens package.
 - Changesets for versioning and changelog. `size-limit` enforces per-component budgets.
-- CI (GitHub Actions) runs: install (pnpm, frozen lockfile), lint, format check, packages build, typecheck, unit tests, size-limit, Storybook build, Playwright smoke + a11y (axe on every story in both directions, colour contrast reported rather than enforced per D-19), docs build.
+- CI (GitHub Actions) runs on every PR: install (pnpm, frozen lockfile), lint, format check, packages build, typecheck, unit tests, size-limit, Storybook build, docs build. The Playwright suites — smoke, axe on every story in both directions (colour contrast reported rather than enforced per D-19), overlay stacking and scroll lock — are built and installed for but no longer run by that pipeline; see `docs/known-debts.md`.
 - Git: `main` (releasable) and `dev` (integration), commit format `type(Scope): Title-Style Description` (per CLAUDE.md).
 
 ---
