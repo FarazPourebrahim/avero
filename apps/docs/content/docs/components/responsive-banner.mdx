@@ -40,6 +40,17 @@ import { ResponsiveBanner } from "@avero/react";
 Artwork is an image, so it doesn't mirror. If a banner has text or arrows baked in, supply
 direction-specific files and pick them from `useAvero().dir`.
 
+## Composition
+
+- It renders an [Image](./image) inside a `<picture>`, so the image options compose as usual:
+  `aspect` to hold the space before the artwork lands, `radius` to match the surface around it, and
+  `fallback` for artwork that fails.
+- [PromoBanner](../blocks/promo-banner) is the sidebar promo block and takes one image. Use
+  `ResponsiveBanner` when the artwork itself differs between phone and desktop — a tall crop and a
+  wide one — rather than the same file at two sizes.
+- For a banner that links, wrap it in your router's link; keep the `alt` on the banner, since it
+  names the link.
+
 ## Accessibility
 
 - `alt` is required and is shared by both artworks, so describe the message, not the picture.

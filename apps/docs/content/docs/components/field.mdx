@@ -56,6 +56,18 @@ yourself if you also want the browser's own validation.
 The label, description and error align to the inline start, and the required asterisk follows the
 label text, so the field reads correctly in both directions.
 
+## Composition
+
+- One control per `Field`. For a set of checkboxes or radios, wrap the set in a `<fieldset>` with a
+  `<legend>` and give each control its own label.
+- Close a form with [FormActions](./form-actions), which pairs a hint with the submit button. Blocks
+  that own a single unlabelled control, such as `CommentSection`, use `Textarea` and `FormActions`
+  directly; reach for `Field` as soon as the control needs a label, help text or an error.
+- Inside [FilterPanel](../blocks/filter-panel), fields stack as the panel's controls with its own 12px
+  rhythm, so pass them as children without extra wrappers.
+- With react-hook-form, keep `invalid` tied to the form state — `invalid={Boolean(errors.email)}` —
+  so the control's styling and its `aria-invalid` can never disagree with the message below it.
+
 ## Accessibility
 
 - The label names the control, and the description and error are announced as its description.

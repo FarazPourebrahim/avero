@@ -5,17 +5,24 @@ description: A Tiptap editing surface, sharing one stylesheet with rendered pros
 
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/editor)
 
-The editor lives in a separate package, so the core library never pulls in Tiptap:
-
-```bash
-pnpm add @avero/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extension-table @tiptap/extension-image @tiptap/extensions
-```
+The editor lives in a separate package, so the core library never pulls in Tiptap.
 
 ```tsx
 import { EditorToolbar, RichTextEditor } from "@avero/editor";
 ```
 
 <ComponentPreview name="editor/with-toolbar" />
+
+## Installation
+
+```bash
+pnpm add @avero/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extension-table @tiptap/extension-image @tiptap/extensions
+```
+
+Every `@tiptap/*` package is a peer dependency (`>=3.0.0`), so your app owns the versions and the
+editor shares the single Tiptap instance your app already runs. The list is exactly the extension
+set the prose stylesheet has rules for, and every one is imported at module load, so leaving one out
+is a resolution error rather than a quietly missing command.
 
 ## Anatomy
 
@@ -63,6 +70,17 @@ types matches what a reader sees:
 @import "@avero/tokens/rich-content.css";
 ```
 
+## Right-to-left
+
+- The surface takes its direction from `AveroProvider`, and its text aligns to the inline start, so
+  Persian and English both read correctly with no per-instance setting.
+- Lists and blockquotes are indented with `padding-inline-start`, so their indent moves to the right
+  edge on a right-to-left page.
+- Toolbar arrow keys follow the reading direction, and the list, quote and history icons mirror with
+  it. Code blocks stay left-to-right, because code does.
+- Mixed text needs no markup: a Latin quotation inside a Persian paragraph is laid out by the
+  browser's bidi algorithm, and code blocks opt out of it with `direction: ltr`.
+
 ## Composition
 
 - The editor is **uncontrolled**: `defaultValue` seeds the document, and later changes to it are
@@ -109,6 +127,21 @@ The toolbar follows the WAI-ARIA toolbar pattern:
 `EditorToolbar` accepts every Radix toolbar root prop plus:
 
 <PropsTable package="editor" file="components/EditorToolbar.tsx" name="EditorToolbarOwnProps" />
+
+## Theming
+
+The toolbar is styled from the Tailwind palette roles the rest of Avero uses:
+
+| Token                                   | Used by                             |
+| --------------------------------------- | ----------------------------------- |
+| `--color-gray-100`                      | Toolbar bottom border, button hover |
+| `--color-gray-600` / `--color-gray-900` | Button glyph, hover glyph           |
+| `--color-indigo-50` / `-700`            | A pressed formatting toggle         |
+| `--color-indigo-500`                    | Focus ring, at 40% opacity          |
+
+The editing surface itself is styled by `.avero-editor-content` in `rich-content.css`, not by
+classes on the component, so its type scale and colours are changed by redeclaring those rules after
+the import rather than by passing `className`.
 
 ## Do and don't
 

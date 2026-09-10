@@ -71,6 +71,17 @@ Next is always further along the reading direction: <kbd>←</kbd> and the butto
 Persian, <kbd>→</kbd> and the right edge in English. The chevrons mirror, and the counter uses the
 `AveroProvider` digits.
 
+## Composition
+
+- One lightbox per gallery, not one per thumbnail: hold `index` alongside `open` and set both from
+  whichever thumbnail was clicked, as in the example above.
+- The same pattern drives a [Carousel](./carousel) of thumbnails — set `index` to the slide the
+  reader activated and the viewer opens on that image.
+- `images` is the single source for paging, the counter and the captions, so build the array once
+  from your data rather than per render, and give each entry the `alt` its thumbnail already uses.
+- `container` puts the portal somewhere other than `document.body`, which is what a gallery rendered
+  inside a modal or a shadow root needs.
+
 ## Accessibility
 
 | Key                                                | Action                                                   |
