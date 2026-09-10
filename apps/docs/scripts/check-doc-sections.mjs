@@ -6,7 +6,7 @@
 //   node scripts/check-doc-sections.mjs            report every incomplete page
 //   node scripts/check-doc-sections.mjs --rules    report the totals per rule only
 
-import { readdir, readFile } from "node:fs/promises";
+import { readdir, readFile, stat } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -34,8 +34,8 @@ const TEMPLATE = [
       },
       {
         id: "view-source",
-        describe: "a `[View source](…)` link",
-        test: (page) => /\[View source\]\(/.test(page.body),
+        describe: "a `[View source](…)` link to a path that exists in the repository",
+        test: (page) => page.source.exists,
       },
       {
         id: "import",
@@ -86,7 +86,11 @@ const TEMPLATE = [
     rules: [
       {
         id: "props-table",
-        describe: "a generated `<PropsTable>`, not a hand-written list",
+        describe: "a generated `<PropsTable>` for the props it adds, not a hand-written list",
+        // A component that only passes its primitive's props straight through has nothing of its
+        // own to generate — a table of one would be hundreds of rows of DOM attributes — so its
+        // page describes the underlying props in prose instead.
+        appliesTo: (page) => page.source.ownProps,
         test: (page) => /<PropsTable\b/.test(page.body),
       },
     ],
@@ -103,7 +107,29 @@ function withoutCodeFences(body) {
   return body.replace(/^```[\s\S]*?^```/gm, "");
 }
 
-function parsePage(path, source) {
+/** What a page's "View source" link points at, and whether that component adds props of its own. */
+async function readSource(link) {
+  const path = link?.split("/tree/dev/")[1];
+  if (!path) return { exists: false, ownProps: false };
+
+  const target = join(REPO_ROOT, path);
+  const stats = await stat(target).catch(() => undefined);
+  if (!stats) return { exists: false, ownProps: false };
+
+  const files = stats.isDirectory()
+    ? (await readdir(target)).map((name) => join(target, name))
+    : [target];
+
+  for (const file of files.filter((name) => name.endsWith(".tsx"))) {
+    if (/export type \w+OwnProps\b/.test(await readFile(file, "utf8"))) {
+      return { exists: true, ownProps: true };
+    }
+  }
+
+  return { exists: true, ownProps: false };
+}
+
+async function parsePage(path, source) {
   const frontmatter = /^---\n([\s\S]*?)\n---\n/.exec(source);
   const fields = frontmatter?.[1] ?? "";
   const body = frontmatter ? source.slice(frontmatter[0].length) : source;
@@ -113,6 +139,7 @@ function parsePage(path, source) {
 
   return {
     path,
+    source: await readSource(/\[View source\]\(([^)]+)\)/.exec(prose)?.[1]),
     title: /^title:\s*(\S.*)$/m.exec(fields)?.[1]?.trim(),
     description: /^description:\s*(\S.*)$/m.exec(fields)?.[1]?.trim(),
     body: prose,
@@ -162,7 +189,7 @@ async function main() {
 
   for (const file of files) {
     const path = join(PAGES_DIR, file);
-    const page = parsePage(path, await readFile(path, "utf8"));
+    const page = await parsePage(path, await readFile(path, "utf8"));
     const gaps = findGaps(page);
     if (gaps.length === 0) continue;
 
