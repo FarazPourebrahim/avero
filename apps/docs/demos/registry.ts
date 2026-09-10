@@ -116,6 +116,28 @@ import StatsProfile from "./stats/profile";
 import SuggestionItemDashboard from "./suggestion-item/dashboard";
 import TableArticle from "./table/article";
 import TextareaVariants from "./textarea/variants";
+import InputPrimary from "./input/primary";
+import TextareaPrimary from "./textarea/primary";
+import CheckboxStates from "./checkbox/states";
+import ComboboxFlat from "./combobox/flat";
+import DatePickerCalendars from "./date-picker/calendars";
+import DatePickerLimits from "./date-picker/limits";
+import FieldControls from "./field/controls";
+import FileInputRejections from "./file-input/rejections";
+import FormActionsAlignment from "./form-actions/alignment";
+import InputStates from "./input/states";
+import InputTypes from "./input/types";
+import NativeSelectGrouped from "./native-select/grouped";
+import NativeSelectStates from "./native-select/states";
+import OtpInputLengths from "./otp-input/lengths";
+import PriceInputVariants from "./price-input/variants";
+import RadioGroupValidation from "./radio-group/validation";
+import SelectGroups from "./select/groups";
+import SelectStates from "./select/states";
+import SwitchControlled from "./switch/controlled";
+import TagInputStates from "./tag-input/states";
+import TextareaResize from "./textarea/resize";
+import TextareaStates from "./textarea/states";
 import TableOfContentsArticle from "./table-of-contents/article";
 import ToggleChipGroupMetrics from "./toggle-chip-group/metrics";
 import TypographyHeadings from "./typography/headings";
@@ -196,6 +218,28 @@ export const demos = {
   "tag-input/skills": TagInputSkills,
   "select/filter": SelectFilter,
   "form-actions/comment-form": FormActionsCommentForm,
+  "checkbox/states": CheckboxStates,
+  "combobox/flat": ComboboxFlat,
+  "date-picker/calendars": DatePickerCalendars,
+  "date-picker/limits": DatePickerLimits,
+  "field/controls": FieldControls,
+  "file-input/rejections": FileInputRejections,
+  "form-actions/alignment": FormActionsAlignment,
+  "input/states": InputStates,
+  "input/types": InputTypes,
+  "native-select/grouped": NativeSelectGrouped,
+  "native-select/states": NativeSelectStates,
+  "otp-input/lengths": OtpInputLengths,
+  "price-input/variants": PriceInputVariants,
+  "radio-group/validation": RadioGroupValidation,
+  "select/groups": SelectGroups,
+  "select/states": SelectStates,
+  "switch/controlled": SwitchControlled,
+  "tag-input/states": TagInputStates,
+  "textarea/resize": TextareaResize,
+  "textarea/states": TextareaStates,
+  "input/primary": InputPrimary,
+  "textarea/primary": TextareaPrimary,
   "charts/analytics": ChartsAnalytics,
   "charts/trend": ChartsTrend,
   "editor/basic": EditorBasic,

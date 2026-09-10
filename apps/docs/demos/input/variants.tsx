@@ -6,8 +6,6 @@ export default function InputVariantsDemo() {
       <Input aria-label="جستجو" placeholder="جستجو..." />
       <Input variant="soft" aria-label="عنوان" placeholder="عنوان دوره" />
       <Input variant="slate" aria-label="ایمیل" placeholder="hello@example.com" />
-      <Input aria-label="نامعتبر" aria-invalid defaultValue="a" />
-      <Input aria-label="غیرفعال" disabled defaultValue="غیرفعال" />
     </div>
   );
 }
