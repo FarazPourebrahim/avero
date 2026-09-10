@@ -50,14 +50,14 @@
 | 6 | Overlays and feedback | ✅ | 10 / 10 | 3 | L | 2026-07-05 | 2026-09-10 |
 | 7 | Data display | ✅ | 9 / 9 | 3 | L | 2026-06-19 | 2026-08-18 |
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
-| 9 | Charts and editor packages | 🟨 | 9 / 9 | 7 | M | 2026-07-05 | |
-| 10 | Blocks and example templates | 🟨 | 4 / 6 | 4–9 | L | 2026-07-05 | |
+| 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
+| 10 | Blocks and example templates | 🟨 | 5 / 6 | 4–9 | L | 2026-07-05 | |
 | 11 | Documentation site | 🟨 | 1 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 101 / 146 phase-DoD items (≈69%).
+**Overall:** 102 / 146 phase-DoD items (≈70%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -726,7 +726,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** every shell meets the Global DoD and holds at 320px. ✅ 320px measurement above; design review of the shells signed off by the user, 2026-08-18.
 
-### Phase 9 — Charts and editor packages  🟨
+### Phase 9 — Charts and editor packages  ✅
 
 **Scope:** C-01…C-04, E-01…E-02.
 
@@ -741,7 +741,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests) — every tag in `richContentAllowList` survives `editor.getHTML()` → `sanitizeHtml()`
 - [x] Both packages meet their `size-limit` budgets — charts 8.93 kB of 10 kB, editor 9.8 kB of 11 kB (Recharts and Tiptap ignored as peers)
 
-**Exit gate:** both packages build, tree-shake and stay within their size budgets. 🟨 The root `size` script ran only `@avero/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's. First CI run: charts 8.78 kB of 10 kB; editor 11.18 kB of 11 kB, budget raised to 12 kB (D-24); awaiting the rerun.
+**Evidence:** GitHub Actions `CI` green on `dev` (2026-09-10), covering every package's size budgets.
+**Exit gate:** both packages build, tree-shake and stay within their size budgets. ✅ The root `size` script ran only `@avero/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's. The first run put charts at 8.78 kB of 10 kB and the editor at 11.18 kB of an 11 kB budget, raised to 12 kB (D-24); the rerun passes both (CI green).
 
 ### Phase 10 — Blocks and example templates  🟨
 
@@ -751,7 +752,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Every B-* block meets the Global DoD and is built **only** from Avero components (no ad-hoc markup beyond layout) — all 25 built from Avero components, 816 unit/SSR/axe tests
 - [x] Blocks are domain-neutral; all text comes via props or slots, and each docs page describes typical uses
 - [x] Example templates TP-01…TP-06 composed in Storybook from `@avero/*` exports only, with original sample content — `apps/storybook/src/templates` (`Templates/*` stories): article, course detail, course listing, instructor profile, learner dashboard and about page, with shared site chrome and token-built inline artwork; headings are ordered around the blocks' fixed levels
-- [ ] Templates score axe 0 violations — covered by the browser axe suite, which runs every non-internal story in RTL and LTR; awaiting CI
+- [x] Templates score axe 0 violations — covered by the browser axe suite, which runs every non-internal story in RTL and LTR, the six `Templates/*` stories included (CI green)
 - [ ] Templates render in LTR/`en` without layout breakage (review recorded)
 - [x] `docs/known-debts.md` lists every remaining gap with a justification
 
@@ -945,14 +946,14 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | T-08 | SplitDetailLayout | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | T-09 | ProfileLayout | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | B-01…B-25 | Blocks (see §5.10) — all 25 implemented | 10 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| TP-01 | Article template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
-| TP-02 | Course detail template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
-| TP-03 | Course listing template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
-| TP-04 | Instructor profile template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
-| TP-05 | Learner dashboard template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
-| TP-06 | About page template | 10 | ✅ | 🟨 | 🟨 | ⬜ | 🟨 |
+| TP-01 | Article template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
+| TP-02 | Course detail template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
+| TP-03 | Course listing template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
+| TP-04 | Instructor profile template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
+| TP-05 | Learner dashboard template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
+| TP-06 | About page template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
 
-> Template rows: Test and A11y wait on the browser axe suite in CI; Docs is the Templates section of the docs site (Phase 11).
+> Template rows: Test and A11y are the browser axe suite, green; Docs is the Templates section of the docs site (Phase 11).
 
 ---
 
