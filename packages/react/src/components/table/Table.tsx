@@ -6,15 +6,18 @@ import {
 } from "react";
 import { cn } from "../../utils/cn.js";
 
-/**
- * Bordered data table: a rounded, horizontally
- * scrollable container, gray header cells and a subtle row hover.
- */
-export type TableProps = HTMLAttributes<HTMLTableElement> & {
+/** Props specific to `Table`. It also accepts every native `<table>` attribute. */
+export type TableOwnProps = {
   /** Classes for the scroll container around the table. */
   containerClassName?: string;
 };
 
+export type TableProps = HTMLAttributes<HTMLTableElement> & TableOwnProps;
+
+/**
+ * Bordered data table: a rounded, horizontally scrollable container, gray header cells and a subtle
+ * row hover.
+ */
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   { className, containerClassName, ...props },
   ref,

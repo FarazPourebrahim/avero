@@ -97,10 +97,13 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps
 
 AccordionContent.displayName = "AccordionContent";
 
-export type AccordionLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+/** Props specific to `AccordionLink`. It also accepts every native `<a>` attribute. */
+export type AccordionLinkOwnProps = {
   /** Renders the child element (e.g. a router link) with accordion-link styles. @defaultValue false */
   asChild?: boolean;
 };
+
+export type AccordionLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & AccordionLinkOwnProps;
 
 /** A link row inside an accordion panel, like the footer's category links. */
 export const AccordionLink = forwardRef<HTMLAnchorElement, AccordionLinkProps>(
