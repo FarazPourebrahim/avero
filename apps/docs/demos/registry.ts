@@ -135,6 +135,18 @@ import RatingSizes from "./rating/sizes";
 import ResponsiveBannerBreakpoints from "./responsive-banner/breakpoints";
 import TableScroll from "./table/scroll";
 import ZoomFrameHint from "./zoom-frame/hint";
+import AlertDismissible from "./alert/dismissible";
+import AlertVariants from "./alert/variants";
+import ConfirmDialogTones from "./confirm-dialog/tones";
+import DialogSizes from "./dialog/sizes";
+import DisabledOverlayTones from "./disabled-overlay/tones";
+import DrawerSides from "./drawer/sides";
+import DropdownMenuSelection from "./dropdown-menu/selection";
+import EmptyStateDistinct from "./empty-state/distinct";
+import LightboxCaptions from "./lightbox/captions";
+import PopoverAlignment from "./popover/alignment";
+import ToastAction from "./toast/action";
+import TooltipOptions from "./tooltip/options";
 import CheckboxStates from "./checkbox/states";
 import ComboboxFlat from "./combobox/flat";
 import DatePickerCalendars from "./date-picker/calendars";
@@ -274,6 +286,18 @@ export const demos = {
   "responsive-banner/breakpoints": ResponsiveBannerBreakpoints,
   "table/scroll": TableScroll,
   "zoom-frame/hint": ZoomFrameHint,
+  "alert/dismissible": AlertDismissible,
+  "alert/variants": AlertVariants,
+  "confirm-dialog/tones": ConfirmDialogTones,
+  "dialog/sizes": DialogSizes,
+  "disabled-overlay/tones": DisabledOverlayTones,
+  "drawer/sides": DrawerSides,
+  "dropdown-menu/selection": DropdownMenuSelection,
+  "empty-state/distinct": EmptyStateDistinct,
+  "lightbox/captions": LightboxCaptions,
+  "popover/alignment": PopoverAlignment,
+  "toast/action": ToastAction,
+  "tooltip/options": TooltipOptions,
   "charts/analytics": ChartsAnalytics,
   "charts/trend": ChartsTrend,
   "editor/basic": EditorBasic,
