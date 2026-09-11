@@ -20,6 +20,21 @@ import { ActivityHeatmap } from "@avero/react";
 | Day    | `data-slot="activity-heatmap-day"`    | `role="gridcell"` button, `data-level` 0–4   |
 | Legend | `data-slot="activity-heatmap-legend"` | Decorative "less → more" scale               |
 
+## Examples
+
+### The shade scale
+
+`maxCount` fixes which count reaches the darkest shade, so two heatmaps can be compared. `legend`
+hides the "less → more" key, and `weekStartsOn` sets which weekday leads the column.
+
+<ComponentPreview name="activity-heatmap/scale" />
+
+### No activity yet
+
+`emptyState` replaces the grid when `days` is empty, rather than drawing a year of blank cells.
+
+<ComponentPreview name="activity-heatmap/empty" />
+
 ## Right-to-left
 
 Weeks run from the inline start, so the oldest week is on the right in RTL and on the left in LTR.

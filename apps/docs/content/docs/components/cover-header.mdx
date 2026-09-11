@@ -21,6 +21,15 @@ import { CoverHeader } from "@avero/react";
 | Content | `data-slot="cover-header-content"` | Name, badges and meta (the children)              |
 | Footer  | `data-slot="cover-header-footer"`  | Divider plus tabs and social buttons              |
 
+## Examples
+
+### Cover and avatar
+
+Both slots are optional: without a `cover` the header falls back to the blue-to-purple gradient, and
+the avatar ring takes any content, including initials.
+
+<ComponentPreview name="cover-header/defaults" />
+
 ## Right-to-left
 
 The avatar sits at the inline start from `lg` up and is centred below it; the default gradient

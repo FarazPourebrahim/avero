@@ -19,6 +19,15 @@ import { MatchScore } from "@avero/react";
 | Percent | —                         | Formatted with `Intl`, rounded to a whole |
 | Caption | —                         | "تطابق" / "Match" from the dictionary     |
 
+## Examples
+
+### Scores
+
+The value is clamped to 0–100, and anything that isn't a finite number shows as zero rather than
+`NaN`. `label` replaces the dictionary's caption.
+
+<ComponentPreview name="match-score/values" />
+
 ## Right-to-left
 
 The percentage is formatted for the locale: `۸٪` in Persian, `8%` in English.

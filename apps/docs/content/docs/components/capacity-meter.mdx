@@ -21,6 +21,15 @@ import { CapacityMeter } from "@avero/react";
 | Status | `data-slot="capacity-meter-status"` | `card`: green pill, red once full         |
 | Bar    | `data-slot="progress"`              | [Progress](./progress)                    |
 
+## Examples
+
+### Full and empty
+
+Once the count reaches the maximum, the `card` variant's pill turns red. An empty meter keeps its
+bar and captions, so the row's height never jumps as places fill.
+
+<ComponentPreview name="capacity-meter/full" />
+
 ## Right-to-left
 
 The bar fills from the inline start, and the captions sit at the start and end of the bar.

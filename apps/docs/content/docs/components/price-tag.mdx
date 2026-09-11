@@ -9,7 +9,7 @@ description: Prices in three styles, formatted for the active locale.
 import { PriceTag } from "@avero/react";
 ```
 
-<ComponentPreview name="price-tag/variants" />
+<ComponentPreview name="price-tag/display" />
 
 ## Anatomy
 
@@ -19,6 +19,22 @@ import { PriceTag } from "@avero/react";
 | Prefix   | `data-slot="price-tag-prefix"`   | "از" / "From", `inline` variant by default |
 | Amount   | `data-slot="price-tag-amount"`   | Formatted with the locale's digits         |
 | Currency | `data-slot="price-tag-currency"` | "تومان" / "Toman" by default               |
+
+## Examples
+
+### Variants
+
+`display` is the large price on a detail page, `inline` the "from …" line in a card, and `compact`
+the tight one for dense rows.
+
+<ComponentPreview name="price-tag/variants" />
+
+### Prefix and currency
+
+`prefix` puts a word before the amount and `currency` replaces the dictionary's unit — or drops it
+entirely when the number is not money.
+
+<ComponentPreview name="price-tag/currency" />
 
 ## Right-to-left
 

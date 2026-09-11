@@ -35,6 +35,15 @@ import { ResponsiveBanner } from "@avero/react";
   a `fallback` for artwork that fails to load.
 - To make the banner a link, wrap it in an `<a>`; the image's `alt` names the link.
 
+## Examples
+
+### Breakpoints
+
+`breakpoint` decides where the desktop artwork takes over: `sm` swaps early for a banner in a narrow
+column, `lg` keeps the tall crop until the full page width.
+
+<ComponentPreview name="responsive-banner/breakpoints" />
+
 ## Right-to-left
 
 Artwork is an image, so it doesn't mirror. If a banner has text or arrows baked in, supply

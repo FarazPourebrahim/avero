@@ -9,7 +9,7 @@ description: Avero's card surfaces, with title, header and footer parts.
 import { Card, CardFooter, CardHeader, CardTitle } from "@avero/react";
 ```
 
-<ComponentPreview name="card/surfaces" />
+<ComponentPreview name="card/primary" />
 
 ## Anatomy
 
@@ -22,15 +22,37 @@ import { Card, CardFooter, CardHeader, CardTitle } from "@avero/react";
 
 ## Examples
 
-- `surface` is the white `rounded-3xl` content card; `flat` the dashboard's `rounded-2xl` card.
-- `glass` is the translucent listing card that turns white on hover; `muted` is the slate tile surface.
-- `elevation` picks a card shadow, from the hairline `xs` to the soft `ambient` and `soft` card shadows.
+### Surfaces
+
+`surface` is the white `rounded-3xl` content card and `flat` the dashboard's `rounded-2xl` one.
+`glass` is the translucent listing card that turns white on hover, and `muted` the slate tile.
+
+<ComponentPreview name="card/variants" />
+
+### Elevation
+
+The shadow scale runs from the hairline `xs` to the soft `ambient` and brand-tinted `brand`. Pick
+one tier per surface level and keep it consistent across a page.
+
+<ComponentPreview name="card/elevation" />
+
+### Clickable cards
+
+`interactive` lifts the shadow on hover. Pair it with `asChild` so the whole card is one real link
+rather than a div with a click handler.
+
+<ComponentPreview name="card/interactive" />
 
 ## Right-to-left
 
 Cards have no direction-specific styling; headers and footers mirror automatically.
 
 ## Composition
+
+Cards are containers, so the surfaces are meant to nest: a `surface` content card holding `flat` or
+`muted` sub-cards is the dashboard's usual shape.
+
+<ComponentPreview name="card/surfaces" />
 
 - Use `asChild` to render an `<article>` or make the whole card a link.
 - `interactive` adds the hover shadow used by clickable cards.

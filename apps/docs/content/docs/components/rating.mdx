@@ -19,6 +19,21 @@ import { Rating } from "@avero/react";
 | Star  | —                    | Amber filled star, `aria-hidden`                 |
 | Score | —                    | Formatted with the locale's digits, `0.00` style |
 
+## Examples
+
+### Sizes
+
+`sm` is the 14px star for dense rows; `md` is the default.
+
+<ComponentPreview name="rating/sizes" />
+
+### Precision and no score
+
+`fractionDigits` sets how precise the score reads. A score of zero renders as an empty rating, which
+is what an item with no reviews yet should show.
+
+<ComponentPreview name="rating/precision" />
+
 ## Right-to-left
 
 The star leads at the inline start. The score uses the locale's decimal separator: `۴٫۵۰` in

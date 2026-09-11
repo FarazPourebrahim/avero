@@ -32,6 +32,15 @@ import {
 | TableCell    | `data-slot="table-cell"`      | `<td>`, top-aligned                               |
 | TableCaption | `data-slot="table-caption"`   | `<caption>`                                       |
 
+## Examples
+
+### Wide tables
+
+A table wider than its container scrolls inside its own rounded box, so the page never scrolls
+sideways. `containerClassName` styles that box.
+
+<ComponentPreview name="table/scroll" />
+
 ## Right-to-left
 
 Cells align to the inline start, so the table reads correctly in both directions. The container
