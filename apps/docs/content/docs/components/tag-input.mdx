@@ -45,6 +45,15 @@ Give it a `name` and every tag is submitted as its own value, so
 `new FormData(form).getAll("skills")` returns the list. <kbd>Enter</kbd> only submits the form when
 the field is empty. With react-hook-form, use `Controller`.
 
+## Examples
+
+### Validation and disabled state
+
+Controlled tags drive the field's own validation; a disabled field shows its tags without their
+remove buttons.
+
+<ComponentPreview name="tag-input/states" />
+
 ## Right-to-left
 
 Tags flow from the inline start and wrap onto new lines, so the box mirrors with `AveroProvider`.

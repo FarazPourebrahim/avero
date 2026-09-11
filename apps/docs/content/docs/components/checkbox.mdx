@@ -29,6 +29,13 @@ some topics are selected, and checking it selects every topic.
 <Checkbox checked={allState} onCheckedChange={(checked) => selectAll(checked === true)} />
 ```
 
+### States
+
+`checked="indeterminate"` is the mixed state of a parent checkbox, and reports as `mixed` to
+assistive technology. Inside a [Field](./field), invalid and disabled come from the field.
+
+<ComponentPreview name="checkbox/states" />
+
 ## Right-to-left
 
 The box sits before its label in reading order, and the check glyph is symmetrical, so nothing needs

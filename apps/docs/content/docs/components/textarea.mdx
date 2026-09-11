@@ -9,13 +9,32 @@ description: The comment box, in a soft gray and a slate treatment.
 import { Textarea } from "@avero/react";
 ```
 
-<ComponentPreview name="textarea/variants" />
+<ComponentPreview name="textarea/primary" />
 
 ## Anatomy
 
 | Part | Slot                   | Notes                                     |
 | ---- | ---------------------- | ----------------------------------------- |
 | Root | `data-slot="textarea"` | Native `<textarea>`; `rows` defaults to 4 |
+
+## Examples
+
+### Variants
+
+`soft` is the gray comment box and `slate` the bordered one; both take the indigo focus ring.
+
+<ComponentPreview name="textarea/variants" />
+
+### Resizing
+
+The box is fixed by default, so a form's rhythm holds. `resize="vertical"` lets a reader drag it
+taller for a long answer.
+
+<ComponentPreview name="textarea/resize" />
+
+### States
+
+<ComponentPreview name="textarea/states" />
 
 ## Right-to-left
 

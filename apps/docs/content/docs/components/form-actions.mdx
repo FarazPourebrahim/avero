@@ -18,6 +18,15 @@ import { FormActions } from "@avero/react";
 | Root | `data-slot="form-actions"`      | `justify-between` with a hint, else `justify-end` |
 | Hint | `data-slot="form-actions-hint"` | Muted explanatory text                            |
 
+## Examples
+
+### Alignment
+
+With a hint the row splits, hint at the inline start and actions at the end. `align="end"` keeps the
+actions alone at the end, which suits a cancel-and-submit pair.
+
+<ComponentPreview name="form-actions/alignment" />
+
 ## Right-to-left
 
 The hint sits at the inline start and the actions at the inline end, so the submit button stays

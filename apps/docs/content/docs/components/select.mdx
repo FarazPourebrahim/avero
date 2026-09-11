@@ -33,6 +33,22 @@ import {
 The trigger matches the other filter controls. The listbox takes its surface, shadow and layer
 from the token system, so it sits consistently above cards and sticky headers.
 
+## Examples
+
+### Groups and separators
+
+`SelectGroup` with a `SelectLabel` heads each section, and `SelectSeparator` draws the rule between
+them.
+
+<ComponentPreview name="select/groups" />
+
+### States
+
+A trigger with no value shows its placeholder in a lighter weight. Inside a [Field](./field), the
+invalid and disabled states come from the field.
+
+<ComponentPreview name="select/states" />
+
 ## Right-to-left
 
 Radix reads the direction from `AveroProvider`, so the listbox aligns and animates from the

@@ -9,7 +9,7 @@ description: The single-line text field, in three field treatments.
 import { Input } from "@avero/react";
 ```
 
-<ComponentPreview name="input/variants" />
+<ComponentPreview name="input/primary" />
 
 ## Anatomy
 
@@ -19,6 +19,29 @@ import { Input } from "@avero/react";
 
 `filter` is the compact filter box. `soft` and `slate` mirror the two comment-box treatments, so
 an input can sit beside a [Textarea](./textarea) in the same form.
+
+## Examples
+
+### Variants
+
+`filter` is the compact filter box. `soft` and `slate` mirror the two comment-box treatments, so an
+input can sit beside a [Textarea](./textarea) in the same form.
+
+<ComponentPreview name="input/variants" />
+
+### Input types
+
+The native `type` is untouched, so email, telephone and search inputs keep their keyboards and
+autofill. Give a field whose value is always Latin — an address, a number — `dir="ltr"`.
+
+<ComponentPreview name="input/types" />
+
+### States
+
+`aria-invalid` turns the border and focus ring red, `readOnly` keeps the value selectable, and
+`disabled` dims the box and blocks interaction.
+
+<ComponentPreview name="input/states" />
 
 ## Right-to-left
 

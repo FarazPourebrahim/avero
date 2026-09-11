@@ -19,6 +19,16 @@ import { RadioGroup, RadioGroupItem } from "@avero/react";
 | RadioGroupItem | `data-slot="radio-group-item"`      | `role="radio"`, a round button         |
 | Indicator      | `data-slot="radio-group-indicator"` | The primary dot of the chosen option   |
 
+## Examples
+
+### Validation
+
+A radio group is labelled by its own heading with `aria-labelledby`, not by a `<label>`, because a
+group is not a labelable element. Wire the message with `aria-describedby` and mark the group
+`aria-invalid` while it is unanswered.
+
+<ComponentPreview name="radio-group/validation" />
+
 ## Right-to-left
 
 `RadioGroup` reads its direction from `AveroProvider`, so in Persian <kbd>←</kbd> moves to the next

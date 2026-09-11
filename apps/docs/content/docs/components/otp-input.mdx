@@ -42,6 +42,15 @@ textbox holding the code rather than six unnamed fields.
 - The value stops at `length`; extra digits are ignored rather than cut off before cleaning.
 - The boxes show the locale's digits — `۱۲۳` under a Persian `AveroProvider`, `123` under English.
 
+## Examples
+
+### Length and disabled state
+
+`length` sets how many digits the code has — four and six are the usual ones. A disabled field keeps
+showing the code it holds.
+
+<ComponentPreview name="otp-input/lengths" />
+
 ## Right-to-left
 
 Codes are read left to right even inside Persian text, so the boxes and the input are always

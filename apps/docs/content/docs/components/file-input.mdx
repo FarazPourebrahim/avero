@@ -55,6 +55,15 @@ Give it a `name` and the files shown in the list are sent with a normal form sub
 component keeps the input's `FileList` in step with the list. Validate again on the server — the
 browser's file type is only a hint.
 
+## Examples
+
+### Rejected files
+
+`onReject` reports what was turned away and why — `type`, `size` or `count` — so the form can say it
+in its own words.
+
+<ComponentPreview name="file-input/rejections" />
+
 ## Right-to-left
 
 The drop area is centred, and the file rows use logical spacing, so they mirror with

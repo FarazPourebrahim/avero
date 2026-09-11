@@ -43,6 +43,15 @@ The value is a whole number, or `null` when the field is empty.
 Give it a `name` to submit the amount in Latin digits (`2500000`) through a hidden input. With
 react-hook-form, use `Controller` and bind `value` and `onValueChange`.
 
+## Examples
+
+### Variants and units
+
+The variants are `Input`'s, so a price field matches the other controls in its form. Clearing
+`currency` drops the unit, which is what a plain count needs.
+
+<ComponentPreview name="price-input/variants" />
+
 ## Right-to-left
 
 The unit sits at the inline end, so it follows the text on Persian pages and precedes nothing in

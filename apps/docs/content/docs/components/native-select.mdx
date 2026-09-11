@@ -17,6 +17,21 @@ import { NativeSelect } from "@avero/react";
 | ---- | --------------------------- | ---------------------------------------- |
 | Root | `data-slot="native-select"` | Native `<select>`, keeping its own arrow |
 
+## Examples
+
+### Option groups
+
+`<optgroup>` works as it does natively, which is the cheapest way to group a long list.
+
+<ComponentPreview name="native-select/grouped" />
+
+### States
+
+Inside a [Field](./field), the invalid and disabled states come from the field rather than from
+attributes on the control.
+
+<ComponentPreview name="native-select/states" />
+
 ## Right-to-left
 
 The native control follows the document direction, and the platform draws the arrow on the

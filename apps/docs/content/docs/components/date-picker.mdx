@@ -63,6 +63,22 @@ const [stay, setStay] = useState<DateRange>({ from: null, to: null });
 typed dates outside them are invalid. The calendar opens within the limits, and the month buttons
 stop at them.
 
+## Examples
+
+### Limits
+
+`min` and `max` bound the range, and `isDateDisabled` rules out individual dates, such as the
+weekend. Both the calendar and typed entry respect them.
+
+<ComponentPreview name="date-picker/limits" />
+
+### Gregorian calendar
+
+`calendar="gregory"` switches the field and calendar without changing the stored value, which stays
+an ISO date. `weekStartsOn` sets the first column.
+
+<ComponentPreview name="date-picker/calendars" />
+
 ## Right-to-left
 
 Arrow keys follow the page: in Persian, <kbd>ArrowLeft</kbd> moves to the next day. Weeks start on

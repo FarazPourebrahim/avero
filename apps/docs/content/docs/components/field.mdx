@@ -51,6 +51,15 @@ control of its own. It forwards refs, so react-hook-form's `register` works unch
 `required` marks the control for assistive technology only. Add the native `required` attribute
 yourself if you also want the browser's own validation.
 
+## Examples
+
+### Any control
+
+`FieldControl` renders no element of its own, so the same wiring works for a `Textarea`, a
+`NativeSelect`, a `Select` trigger or your own control.
+
+<ComponentPreview name="field/controls" />
+
 ## Right-to-left
 
 The label, description and error align to the inline start, and the required asterisk follows the
