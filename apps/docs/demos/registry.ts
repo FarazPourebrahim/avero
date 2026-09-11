@@ -118,6 +118,23 @@ import TableArticle from "./table/article";
 import TextareaVariants from "./textarea/variants";
 import InputPrimary from "./input/primary";
 import TextareaPrimary from "./textarea/primary";
+import ActivityHeatmapEmpty from "./activity-heatmap/empty";
+import ActivityHeatmapScale from "./activity-heatmap/scale";
+import CardElevation from "./card/elevation";
+import CardInteractive from "./card/interactive";
+import CardPrimary from "./card/primary";
+import CardVariants from "./card/variants";
+import CapacityMeterFull from "./capacity-meter/full";
+import CoverHeaderDefaults from "./cover-header/defaults";
+import ListNested from "./list/nested";
+import MatchScoreValues from "./match-score/values";
+import PriceTagCurrency from "./price-tag/currency";
+import PriceTagDisplay from "./price-tag/display";
+import RatingPrecision from "./rating/precision";
+import RatingSizes from "./rating/sizes";
+import ResponsiveBannerBreakpoints from "./responsive-banner/breakpoints";
+import TableScroll from "./table/scroll";
+import ZoomFrameHint from "./zoom-frame/hint";
 import CheckboxStates from "./checkbox/states";
 import ComboboxFlat from "./combobox/flat";
 import DatePickerCalendars from "./date-picker/calendars";
@@ -240,6 +257,23 @@ export const demos = {
   "textarea/states": TextareaStates,
   "input/primary": InputPrimary,
   "textarea/primary": TextareaPrimary,
+  "activity-heatmap/empty": ActivityHeatmapEmpty,
+  "activity-heatmap/scale": ActivityHeatmapScale,
+  "card/elevation": CardElevation,
+  "card/interactive": CardInteractive,
+  "card/primary": CardPrimary,
+  "card/variants": CardVariants,
+  "capacity-meter/full": CapacityMeterFull,
+  "cover-header/defaults": CoverHeaderDefaults,
+  "list/nested": ListNested,
+  "match-score/values": MatchScoreValues,
+  "price-tag/currency": PriceTagCurrency,
+  "price-tag/display": PriceTagDisplay,
+  "rating/precision": RatingPrecision,
+  "rating/sizes": RatingSizes,
+  "responsive-banner/breakpoints": ResponsiveBannerBreakpoints,
+  "table/scroll": TableScroll,
+  "zoom-frame/hint": ZoomFrameHint,
   "charts/analytics": ChartsAnalytics,
   "charts/trend": ChartsTrend,
   "editor/basic": EditorBasic,
