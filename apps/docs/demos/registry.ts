@@ -147,6 +147,24 @@ import LightboxCaptions from "./lightbox/captions";
 import PopoverAlignment from "./popover/alignment";
 import ToastAction from "./toast/action";
 import TooltipOptions from "./tooltip/options";
+import AccordionFaq from "./accordion/faq";
+import BackLinkActions from "./back-link/actions";
+import ContainerGutters from "./container/gutters";
+import DashboardShellSections from "./dashboard-shell/sections";
+import DividerTones from "./divider/tones";
+import IconsSizes from "./icons/sizes";
+import InfiniteScrollEnd from "./infinite-scroll/end";
+import LayoutsDetail from "./layouts/detail";
+import PaginationLinks from "./pagination/links";
+import PillTabsCounts from "./pill-tabs/counts";
+import SegmentedControlControlled from "./segmented-control/controlled";
+import SidebarNavTones from "./sidebar-nav/tones";
+import SiteFooterMinimal from "./site-footer/minimal";
+import SiteHeaderActions from "./site-header/actions";
+import SiteShellPage from "./site-shell/page";
+import TableOfContentsLevels from "./table-of-contents/levels";
+import ToggleChipGroupControlled from "./toggle-chip-group/controlled";
+import VisuallyHiddenLabel from "./visually-hidden/label";
 import CheckboxStates from "./checkbox/states";
 import ComboboxFlat from "./combobox/flat";
 import DatePickerCalendars from "./date-picker/calendars";
@@ -298,6 +316,24 @@ export const demos = {
   "popover/alignment": PopoverAlignment,
   "toast/action": ToastAction,
   "tooltip/options": TooltipOptions,
+  "accordion/faq": AccordionFaq,
+  "back-link/actions": BackLinkActions,
+  "container/gutters": ContainerGutters,
+  "dashboard-shell/sections": DashboardShellSections,
+  "divider/tones": DividerTones,
+  "icons/sizes": IconsSizes,
+  "infinite-scroll/end": InfiniteScrollEnd,
+  "layouts/detail": LayoutsDetail,
+  "pagination/links": PaginationLinks,
+  "pill-tabs/counts": PillTabsCounts,
+  "segmented-control/controlled": SegmentedControlControlled,
+  "sidebar-nav/tones": SidebarNavTones,
+  "site-footer/minimal": SiteFooterMinimal,
+  "site-header/actions": SiteHeaderActions,
+  "site-shell/page": SiteShellPage,
+  "table-of-contents/levels": TableOfContentsLevels,
+  "toggle-chip-group/controlled": ToggleChipGroupControlled,
+  "visually-hidden/label": VisuallyHiddenLabel,
   "charts/analytics": ChartsAnalytics,
   "charts/trend": ChartsTrend,
   "editor/basic": EditorBasic,
