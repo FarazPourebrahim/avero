@@ -31,6 +31,15 @@ import { Tooltip, TooltipProvider } from "@avero/react";
 
 `side` places the tooltip (`top` by default) and `align` lines it up along that side.
 
+## Examples
+
+### Arrow and delay
+
+`showArrow={false}` drops the pointer for a tooltip on a dense row, and `delayDuration` overrides
+the provider's shared delay for one trigger.
+
+<ComponentPreview name="tooltip/options" />
+
 ## Right-to-left
 
 `align="start"` and `align="end"` are logical: the tooltip receives the `AveroProvider` direction, so

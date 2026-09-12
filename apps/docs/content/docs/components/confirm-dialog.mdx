@@ -45,6 +45,15 @@ promise settles. Cancel, <kbd>Escape</kbd> and the confirm button are blocked me
 
 A mutation hook's `mutateAsync` fits directly.
 
+## Examples
+
+### Tones and labels
+
+The default tone is for ordinary confirmations; `danger` turns the confirm button red for
+destructive ones. `confirmLabel` and `cancelLabel` name the actual action rather than "OK".
+
+<ComponentPreview name="confirm-dialog/tones" />
+
 ## Right-to-left
 
 Buttons align to the inline end and the panel is centred with logical insets, so the dialog mirrors

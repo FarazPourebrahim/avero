@@ -20,6 +20,15 @@ import { Popover, PopoverAnchor, PopoverClose, PopoverContent, PopoverTrigger } 
 | Content | `data-slot="popover-content"` | `role="dialog"`; `rounded-2xl`, `shadow-pop-wide`, on `--z-popover` |
 | Close   | —                             | Closes the popover; use `asChild` with a button                     |
 
+## Examples
+
+### Alignment
+
+`align` follows the reading direction, so `start` sits at the trigger's inline start in both
+directions. The panel flips to stay on screen near an edge.
+
+<ComponentPreview name="popover/alignment" />
+
 ## Right-to-left
 
 `align="start"` and `align="end"` are logical. `PopoverContent` passes the `AveroProvider`

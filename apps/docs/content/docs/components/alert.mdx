@@ -35,6 +35,22 @@ import { Alert } from "@avero/react";
 `variant="tinted"` (default) fills the panel with the tone. `variant="bordered"` is a white panel
 with a 4px accent bar at the inline start, for callouts inside articles.
 
+## Examples
+
+### Tinted and bordered
+
+`tinted` fills the panel with the tone and suits a message inside a form. `bordered` is white with
+an accent bar at the inline start, which sits better on a tinted page background.
+
+<ComponentPreview name="alert/variants" />
+
+### Dismissing and bare messages
+
+`onDismiss` shows the close button but does not hide the alert — remove it yourself, so the
+decision stays with the page. `icon={false}` drops the icon for a plain note.
+
+<ComponentPreview name="alert/dismissible" />
+
 ## Right-to-left
 
 The icon sits at the inline start, the dismiss button at the inline end, and the bordered accent

@@ -39,6 +39,15 @@ import {
 `size` sets the panel width: `sm` for short messages, `md` (default) for forms, `lg` for rich
 content. On narrow screens the panel keeps a 1rem margin on each side.
 
+## Examples
+
+### Sizes
+
+`sm` is for short confirmations, `md` — the default — for forms, and `lg` for rich content such as
+a preview. The panel never grows past `90vh`; its body scrolls instead.
+
+<ComponentPreview name="dialog/sizes" />
+
 ## Right-to-left
 
 The panel is centred with logical insets, the close button sits at the inline end, and footer

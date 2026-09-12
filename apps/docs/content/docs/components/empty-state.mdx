@@ -19,6 +19,15 @@ import { EmptyState } from "@avero/react";
 | Icon   | `data-slot="empty-state-icon"`   | `icon` fades it; `circle` puts it in a disc |
 | Action | `data-slot="empty-state-action"` | Optional next step                          |
 
+## Examples
+
+### Saying which kind of empty
+
+"No results for this search" and "you have nothing here yet" are different states and need
+different words. Give the second one an `action` that starts the thing that is missing.
+
+<ComponentPreview name="empty-state/distinct" />
+
 ## Right-to-left
 
 Everything is centred, so the layout is direction-agnostic; only the message changes.

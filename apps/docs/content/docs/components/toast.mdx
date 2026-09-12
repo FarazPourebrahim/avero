@@ -61,6 +61,16 @@ dismiss(id);
 Up to 480px wide, toasts span the screen with a small gutter. Wider screens show them in a 24rem
 column at the bottom of the inline end. Swipe a toast toward that edge to dismiss it.
 
+## Examples
+
+### Actions and lifetime
+
+`action` puts one button beside the message and closes the toast when it is used; its `altText`
+tells a screen reader user how to do the same thing without it. `duration: Infinity` keeps a toast
+until it is dismissed, and the provider's `limit` caps how many stack at once.
+
+<ComponentPreview name="toast/action" />
+
 ## Right-to-left
 
 The column sits at the bottom left in Persian and the bottom right in English. The swipe direction,
