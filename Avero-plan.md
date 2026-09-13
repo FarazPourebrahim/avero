@@ -52,12 +52,12 @@
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
-| 11 | Documentation site | 🟨 | 1 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
+| 11 | Documentation site | 🟨 | 2 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 103 / 146 phase-DoD items (≈71%).
+**Overall:** 104 / 146 phase-DoD items (≈71%).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -778,7 +778,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **DoD:**
 - [ ] Information architecture: Getting Started (Introduction, Installation for Tailwind v4 and precompiled CSS, Fonts, RTL & i18n, Theming, Tokens, Changelog), Foundations, Components, Blocks, Templates, Utilities, Charts, Editor
-- [ ] Every Done component in §9 has a page with all 12 template sections (CI check: a script validates headings per page)
+- [x] Every Done component in §9 has a page with all 12 template sections — `apps/docs/scripts/check-doc-sections.mjs` encodes the template as an ordered table (the required headings, plus a `View source` link that resolves, an import line, a primary demo above the first section, separate demos per variant, a generated `<PropsTable>` wherever the component adds props of its own, and an `Installation` section for packages with peers) and runs as a CI gate; all 73 pages pass (CI green)
 - [ ] Props tables are generated from source at build time (never hand-written); the build fails on undocumented public props
 - [ ] Blocks gallery with live preview, copy-paste code and full-page previews
 - [ ] Templates section showing the example templates as full-screen demos
