@@ -23,6 +23,13 @@ import { TableOfContents, type TocItem } from "@avero/react";
 
 Level-3 entries render smaller as sub-items. With `spy` (on by default), the entry whose heading is at the top of the viewport is highlighted while scrolling.
 
+### Levels and controlled state
+
+Level 3 entries render as indented sub-items. Pass `activeId` with `spy={false}` when the page owns
+the highlight, such as a route-driven list.
+
+<ComponentPreview name="table-of-contents/levels" />
+
 ## Right-to-left
 
 The active border sits at the inline start, on the right in RTL.

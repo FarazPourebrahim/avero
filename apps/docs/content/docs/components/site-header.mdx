@@ -20,6 +20,15 @@ import { SiteHeader, SiteHeaderMenuButton } from "@avero/react";
 | Actions     | `data-slot="site-header-actions"`     | Avatar, dashboard link, call to action         |
 | Menu button | `data-slot="site-header-menu-button"` | Shown below `md`                               |
 
+## Examples
+
+### Signed-out actions
+
+The `actions` slot takes whatever the session needs — an avatar when signed in, sign-in and sign-up
+buttons when not. Everything else about the header stays the same.
+
+<ComponentPreview name="site-header/actions" />
+
 ## Right-to-left
 
 Logo and navigation sit at the inline start, actions at the inline end, so the bar mirrors

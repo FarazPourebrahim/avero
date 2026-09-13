@@ -43,6 +43,15 @@ It pairs directly with TanStack Query's `useInfiniteQuery`: `hasNextPage`, `isFe
 - Loading stops for good once `hasMore` is false.
 - The component never fetches; your data layer does, and passes the state back in.
 
+## Examples
+
+### Reaching the end
+
+`hasMore={false}` stops the observer for good, so the end of the list is a state the page renders
+itself. `loader` replaces the dictionary's text while a batch is in flight.
+
+<ComponentPreview name="infinite-scroll/end" />
+
 ## Right-to-left
 
 The component adds no layout of its own; your list decides direction and spacing.

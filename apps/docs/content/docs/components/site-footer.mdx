@@ -25,6 +25,15 @@ import { FooterSocialTile, SiteFooter } from "@avero/react";
 | Chip       | `data-slot="footer-chip"`        | One bordered link chip                      |
 | Social     | `data-slot="footer-social-tile"` | One square social tile                      |
 
+## Examples
+
+### A smaller footer
+
+Every region is optional. Pass only the groups a site actually has and the footer collapses to them,
+so a small site doesn't ship an empty chip grid.
+
+<ComponentPreview name="site-footer/minimal" />
+
 ## Right-to-left
 
 Chips, accordions and contact rows all use logical properties, and contact values stay `dir="ltr"`

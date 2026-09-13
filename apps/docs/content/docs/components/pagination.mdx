@@ -46,6 +46,16 @@ instead. The number of controls stays the same as you move through the middle, s
 under the pointer. `paginationRange(page, pageCount, siblingCount)` returns the same list for custom
 layouts.
 
+## Examples
+
+### Links and the page window
+
+`getHref` renders pages as real links, so they open in a new tab and are crawlable; without it they
+are buttons. `siblingCount` widens the window around the current page, and a short list shows every
+page with no gaps.
+
+<ComponentPreview name="pagination/links" />
+
 ## Right-to-left
 
 Pages run from the inline start, and the chevrons point along the reading direction: in Persian,

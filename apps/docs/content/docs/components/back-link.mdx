@@ -23,6 +23,13 @@ import { BackLink } from "@avero/react";
 
 The three variants above are `text` for article pages, `soft` for detail pages with a card header, and `subtle` for returning to a list.
 
+### As a button
+
+Without `href` the component renders a `<button>`, for going back a step in a flow rather than to a
+URL. The arrow still points against the reading direction.
+
+<ComponentPreview name="back-link/actions" />
+
 ## Right-to-left
 
 In RTL the arrow points right, toward where reading started; in LTR it points left. Switch the preview direction to compare.

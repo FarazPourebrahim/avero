@@ -21,6 +21,15 @@ import { DashboardShell } from "@avero/react";
 | Mobile bar | `data-slot="dashboard-shell-mobile-bar"` | Card shown below `lg`                  |
 | Content    | `data-slot="dashboard-shell-content"`    | Two thirds, white card, `min-w-0`      |
 
+## Examples
+
+### Content sections
+
+Whatever is passed as children sits inside the shell's content card, so a dashboard's own cards nest
+inside it rather than repeating its padding.
+
+<ComponentPreview name="dashboard-shell/sections" />
+
 ## Right-to-left
 
 The grid mirrors with the document direction, so the sidebar sits at the inline start either way.

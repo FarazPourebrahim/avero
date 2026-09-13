@@ -24,6 +24,15 @@ import { SiteShell } from "@avero/react";
 | Root      | `data-slot="site-shell"`           | `flex flex-col gap-y-10`      |
 | Skip link | `data-slot="site-shell-skip-link"` | Visually hidden until focused |
 
+## Examples
+
+### A whole page
+
+The shell stacks header, page content and footer, and puts the skip link ahead of them. The content
+supplies the `main` landmark, either through a layout template or a `Container as="main"`.
+
+<ComponentPreview name="site-shell/page" />
+
 ## Right-to-left
 
 The skip link anchors to the inline start when focused, so it appears on the correct side in both
