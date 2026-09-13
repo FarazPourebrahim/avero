@@ -1,0 +1,217 @@
+---
+title: Installation
+description: Adding Avero to a Tailwind CSS v4 application, and verifying the setup works.
+---
+
+Avero is distributed as a set of workspace packages styled with Tailwind CSS v4. The tokens are a
+Tailwind `@theme` block, so **Tailwind v4 is required** — see [Without Tailwind](#without-tailwind)
+if that is a problem.
+
+## Install the packages
+
+<Tabs items={["pnpm", "npm", "yarn"]}>
+
+<Tab value="pnpm">
+
+```bash
+pnpm add @avero/react @avero/tokens @avero/font
+pnpm add -D tailwindcss @tailwindcss/postcss
+```
+
+</Tab>
+
+<Tab value="npm">
+
+```bash
+npm install @avero/react @avero/tokens @avero/font
+npm install -D tailwindcss @tailwindcss/postcss
+```
+
+</Tab>
+
+<Tab value="yarn">
+
+```bash
+yarn add @avero/react @avero/tokens @avero/font
+yarn add -D tailwindcss @tailwindcss/postcss
+```
+
+</Tab>
+
+</Tabs>
+
+`@avero/react` declares `react`, `react-dom` and `lucide-react` as peer dependencies, so add
+`lucide-react` if your project does not already have it:
+
+```bash
+pnpm add lucide-react
+```
+
+`@avero/charts` (Recharts) and `@avero/editor` (Tiptap) are optional and installed separately, with
+their own peers. Their pages cover that.
+
+| Package         | Required | Contains                                                   |
+| --------------- | -------- | ---------------------------------------------------------- |
+| `@avero/react`  | Yes      | Components, blocks, layout shells, hooks, utilities, icons |
+| `@avero/tokens` | Yes      | The Tailwind `@theme` tokens and base styles               |
+| `@avero/font`   | Optional | The Lahzeh typeface — see [Fonts](./fonts)                 |
+| `@avero/charts` | Optional | Recharts wrappers                                          |
+| `@avero/editor` | Optional | Tiptap rich-text editor                                    |
+
+### Requirements
+
+|              | Version                                         |
+| ------------ | ----------------------------------------------- |
+| React        | 18.2 or newer, including 19                     |
+| Tailwind CSS | 4.3 or newer                                    |
+| Node         | 22.12 or newer (for the build, not the browser) |
+
+## Set up the stylesheet
+
+Import Tailwind, then Avero's tokens, in your entry stylesheet. Order matters: the tokens must come
+after Tailwind so the `@theme` block is registered.
+
+```css title="src/app.css"
+@import "tailwindcss";
+
+@import "@avero/tokens/theme.css";
+@import "@avero/tokens/base.css";
+@import "@avero/tokens/utilities.css";
+@import "@avero/font/lahzeh.css";
+
+@source "../node_modules/@avero/react/dist";
+```
+
+What each line does:
+
+- **`theme.css`** — required. Every Avero token, as Tailwind `@theme` variables.
+- **`base.css`** — optional. Document defaults on `html`/`body`: page background, text colour, font,
+  `min-width: 320px`, reduced-motion handling and the overlay scroll-lock gutter. Import it in an
+  app built on Avero end to end; leave it out if the host already owns its page chrome.
+- **`utilities.css`** — import when you use the named utilities: `scrollbar-fancy`,
+  `skeleton-shimmer`, `glow-ring`, `typing-caret` and the gradient utilities.
+- **`lahzeh.css`** — optional, and covered in [Fonts](./fonts).
+- **`@source`** — **not optional.** Read the next section.
+
+### The `@source` line
+
+This is the step that is easiest to miss and hardest to debug. Tailwind v4 only scans your own
+source files, so it never sees the class names inside Avero's compiled JavaScript. Without
+`@source`, components render with structure but no styling — and only in production, because dev
+servers often have other classes lying around that mask it.
+
+Point it at the package's `dist` directory, relative to the stylesheet:
+
+```css
+@source "../node_modules/@avero/react/dist";
+```
+
+With pnpm's symlinked store, some setups need the resolved path instead:
+
+```css
+@source "../node_modules/.pnpm/@avero+react@*/node_modules/@avero/react/dist";
+```
+
+If you use `@avero/charts` or `@avero/editor`, add a line for each.
+
+### PostCSS
+
+If your bundler does not configure Tailwind for you:
+
+```js title="postcss.config.mjs"
+export default {
+  plugins: { "@tailwindcss/postcss": {} },
+};
+```
+
+## Wrap the app
+
+`AveroProvider` supplies direction, locale, digits, calendar and the built-in strings. Mount it once,
+as high in the tree as you can, and set the matching `dir` and `lang` on the document.
+
+```tsx title="src/main.tsx"
+import { AveroProvider } from "@avero/react";
+import "./app.css";
+
+export function App() {
+  return (
+    <AveroProvider locale="fa-IR">
+      <YourRoutes />
+    </AveroProvider>
+  );
+}
+```
+
+The default locale is `fa-IR`, which gives right-to-left layout, Persian digits and Jalali dates.
+Pass `locale="en-US"` for English. [RTL and i18n](./rtl-and-i18n) covers the rest.
+
+## Verify it works
+
+Render a component that uses several tokens at once. If the token setup is correct, the button is
+solid brand blue with a soft shadow and a 12px radius, and the badge is a green pill:
+
+```tsx
+import { Badge, Button } from "@avero/react";
+
+export function SetupCheck() {
+  return (
+    <div className="flex items-center gap-3 p-6">
+      <Button>ثبت‌نام</Button>
+      <Badge tone="success">منتشر شده</Badge>
+    </div>
+  );
+}
+```
+
+Unstyled or half-styled output almost always means the `@source` line is missing or pointing at the
+wrong path.
+
+## Framework notes
+
+### Next.js App Router
+
+Avero marks interactive components with `"use client"`, and the build preserves those directives
+per file, so Server Components can import from `@avero/react` directly. `AveroProvider` is a client
+component — put it in the root layout:
+
+```tsx title="app/layout.tsx"
+import { AveroProvider } from "@avero/react";
+import "./app.css";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="fa" dir="rtl">
+      <body>
+        <AveroProvider locale="fa-IR">{children}</AveroProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### Vite
+
+No extra configuration beyond the Tailwind PostCSS plugin. Import the stylesheet from your entry
+module.
+
+## Tree shaking
+
+`@avero/react` compiles to per-file ES modules with `sideEffects: false`, so a bundler drops what
+you do not import. The root import is enough:
+
+```tsx
+import { Button, Card } from "@avero/react";
+```
+
+Per-component subpaths exist for bundlers that cannot tree-shake a barrel file:
+
+```tsx
+import { Button } from "@avero/react/button";
+```
+
+## Without Tailwind
+
+Avero currently requires Tailwind v4. A precompiled stylesheet for non-Tailwind consumers is
+planned but does not ship yet — it is tracked in the project's known debts. Until it lands, a
+project without Tailwind would have to compile Avero's classes itself, which is not a supported
+path.

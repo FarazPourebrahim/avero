@@ -1,0 +1,156 @@
+---
+title: RTL and i18n
+description: How direction, locale, digits, calendar and built-in strings work across the library.
+---
+
+Avero is Persian-first: the default locale is `fa-IR`, which means right-to-left layout, Persian
+digits and the Jalali calendar. English is not a translation layer bolted on afterwards — the same
+components render left-to-right from the same code.
+
+## AveroProvider
+
+One provider supplies direction, locale, formatting and built-in strings to everything below it.
+Wrap your app once, as high as possible.
+
+```tsx title="app.tsx"
+import { AveroProvider, Button } from "@avero/react";
+
+export function App() {
+  return (
+    <AveroProvider locale="fa-IR">
+      <Button>ثبت‌نام</Button>
+    </AveroProvider>
+  );
+}
+```
+
+Components work without a provider too, falling back to the Persian defaults. The provider is how
+you switch to English, override a string, or force a digit system.
+
+<PropsTable file="i18n/AveroProvider.tsx" name="AveroProviderProps" />
+
+### Everything derives from the locale
+
+You normally set `locale` and nothing else. The rest is inferred:
+
+| Locale            | `dir` | `digits`      | `calendar`         | Dictionary |
+| ----------------- | ----- | ------------- | ------------------ | ---------- |
+| `fa-IR` (default) | `rtl` | `fa` (۰۱۲۳)   | `persian` (Jalali) | `fa`       |
+| `en-US`           | `ltr` | `latn` (0123) | `gregory`          | `en`       |
+
+Any locale whose language subtag is `fa` is treated as Persian; everything else falls back to the
+English dictionary and Gregorian dates. Each derived value can be overridden individually — Persian
+layout with Latin digits is `locale="fa-IR" digits="latn"`.
+
+`AveroProvider` wraps Radix's `DirectionProvider`, so Radix primitives get the direction too and
+arrow keys follow the reading order without extra wiring.
+
+## Setting the document direction
+
+The provider sets direction for components, not for the page. Set it on the document as well, so
+native text selection, scrollbars and untouched HTML agree with the library:
+
+```tsx title="app/layout.tsx"
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="fa" dir="rtl">
+      <body>
+        <AveroProvider locale="fa-IR">{children}</AveroProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Switching direction at runtime
+
+Both values are plain props, so a language switch is ordinary React state:
+
+```tsx
+const [locale, setLocale] = useState("fa-IR");
+const dir = locale.startsWith("fa") ? "rtl" : "ltr";
+
+useEffect(() => {
+  document.documentElement.lang = locale.split("-")[0];
+  document.documentElement.dir = dir;
+}, [locale, dir]);
+
+return <AveroProvider locale={locale}>{children}</AveroProvider>;
+```
+
+## Formatting numbers and dates
+
+Formatting goes through `Intl` only — Avero ships no date library. Use `useAveroFormatter` to get
+functions already bound to the active locale, digits and calendar:
+
+```tsx
+import { useAveroFormatter } from "@avero/react";
+
+function Receipt({ total, paidAt }: { total: number; paidAt: string }) {
+  const format = useAveroFormatter();
+
+  return (
+    <dl>
+      <dd>{format.number(total)}</dd> {/* ۱۲۵٬۰۰۰ */}
+      <dd>{format.date(paidAt)}</dd> {/* ۲۷ شهریور ۱۴۰۵ */}
+      <dd>{format.relativeTime(paidAt)}</dd> {/* ۳ روز پیش */}
+    </dl>
+  );
+}
+```
+
+The standalone `formatNumber`, `formatDate` and `formatRelativeTime` functions take an explicit
+`locale` and work outside React. See [Formatting](../utilities/formatting) for the full API.
+
+Persian number grouping uses the Persian thousands separator `٬`, not a comma. Digit conversion in
+both directions is available as `toPersianDigits` and `toLatinDigits`.
+
+## Built-in strings
+
+No component contains a user-facing literal. Every built-in string — "close", "next", "loading",
+"skip to content", the heatmap labels, the toman currency unit — comes from the active dictionary.
+There are 88 entries, each present in both `fa` and `en`.
+
+Override individual entries globally:
+
+```tsx
+<AveroProvider locale="fa-IR" dictionary={{ currencyToman: "ریال", skipToContent: "پرش به محتوا" }}>
+  {children}
+</AveroProvider>
+```
+
+Unspecified keys fall back to the locale's dictionary, so a partial override is safe. For a one-off
+change, prefer the component's own label prop over a global override.
+
+Entries with placeholders use `{name}` syntax and are filled with `formatMessage`:
+
+```tsx
+import { formatMessage, useAvero } from "@avero/react";
+
+const { dictionary } = useAvero();
+formatMessage(dictionary.goToSlide, { index: 3 }); // "رفتن به اسلاید ۳"
+```
+
+## Writing direction-safe styles
+
+If you extend Avero or build alongside it, the same two rules the library enforces on itself apply:
+
+- **Logical properties only.** `ps-4` not `pl-4`, `ms-auto` not `ml-auto`, `border-s` not
+  `border-l`, `rounded-s-xl` not `rounded-l-xl`, `text-start` not `text-left`. Physical utilities
+  are banned by the `avero/no-physical-direction` lint rule.
+- **Transforms are physical.** `translate-x-*` does not flip on its own; pair it with `rtl:` and
+  `ltr:` variants wherever direction matters, such as drawers, carousels and arrow icons.
+
+Think in Persian first: in an RTL layout "right" is the inline **start** and "left" is the inline
+**end**. Then check the result in English.
+
+## Icons that imply direction
+
+Chevrons and arrows that mean "forward" or "back" must flip with the reading direction. Components
+that own such icons already do this. When you place one yourself, flip it with a variant:
+
+```tsx
+<ChevronLeft className="size-4 rtl:rotate-180" />
+```
+
+Icons that mean a fixed physical thing — a download arrow, an external-link glyph — never flip.

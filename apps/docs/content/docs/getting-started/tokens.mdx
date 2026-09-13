@@ -1,0 +1,125 @@
+---
+title: Tokens
+description: Consuming Avero's design tokens as CSS variables, Tailwind classes, JSON or typed data.
+---
+
+Avero's tokens are defined once, in `packages/tokens/src/theme.css`, and exposed in four shapes so
+they can be used from a stylesheet, a Tailwind class, a design tool or TypeScript. All four are
+generated from that one file, and CI fails if they drift.
+
+For the values themselves — swatches, the type specimen, the shadow and motion scales — see
+[Foundations](../foundations/colors). This page is about getting at them from code.
+
+## As Tailwind classes
+
+Tokens are declared in a Tailwind v4 `@theme` block, so each one becomes a utility class
+automatically. This is the normal way to use them:
+
+```tsx
+<div className="bg-surface text-text-strong shadow-card-soft rounded-3xl" />
+```
+
+`--color-surface` becomes `bg-surface` / `text-surface` / `border-surface`, `--shadow-card-soft`
+becomes `shadow-card-soft`, `--text-md` becomes `text-md`, and so on.
+
+## As CSS variables
+
+The same tokens are plain custom properties, available anywhere in your CSS:
+
+```css
+.custom-panel {
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-huge);
+  box-shadow: var(--shadow-elevated);
+}
+```
+
+The z-index layers are used this way deliberately — they are not classes:
+
+```tsx
+<div className="z-(--z-popover)" />
+```
+
+## As typed data
+
+`@avero/tokens` has a default export with all 98 tokens, each carrying its CSS variable name and
+resolved value. Use it when a value must reach JavaScript rather than CSS — most often a third-party
+library that takes colours as props.
+
+```ts
+import { tokens } from "@avero/tokens";
+
+tokens.colorPrimary.cssVar; // "--color-primary"
+tokens.colorPrimary.value; // "#0a66c2"
+```
+
+`TokenName` is a union of every token key, so a typo is a type error.
+
+This is how `@avero/charts` colours its series: Recharts takes colours as props that end up as SVG
+attributes, where a utility class cannot reach and a bare `var()` reference would depend on Tailwind
+emitting a variable that no class references — which it prunes. Reading the value from the token
+data keeps charts on the palette with no silent failure.
+
+## As DTCG JSON
+
+`@avero/tokens/tokens.json` is the same set in [Design Tokens Community Group](https://tr.designtokens.org/format/)
+format, for design tools and token pipelines:
+
+```json
+{
+  "color": {
+    "$type": "color",
+    "primary": { "$value": "#0a66c2" }
+  }
+}
+```
+
+```ts
+import tokens from "@avero/tokens/tokens.json" with { type: "json" };
+```
+
+## Keeping the shapes in sync
+
+`theme.css` is the only file anyone edits. `scripts/generate-token-data.mjs` derives `tokens.json`,
+`tokens.js` and `tokens.d.ts` from it, and the tokens package's test runs the same script with
+`--check`, which fails if the committed output no longer matches the stylesheet. Adding a token is
+therefore: edit `theme.css`, run `pnpm --filter @avero/tokens generate`, commit both.
+
+## Naming
+
+CSS variable names follow Tailwind v4's namespaces, so the class name is predictable from the token
+name:
+
+| Namespace     | Example token           | Becomes                                  |
+| ------------- | ----------------------- | ---------------------------------------- |
+| `--color-*`   | `--color-surface-muted` | `bg-surface-muted`, `text-surface-muted` |
+| `--text-*`    | `--text-sm-plus`        | `text-sm-plus`                           |
+| `--font-*`    | `--font-code`           | `font-code`                              |
+| `--radius-*`  | `--radius-leaf`         | `rounded-leaf`                           |
+| `--shadow-*`  | `--shadow-float-hover`  | `shadow-float-hover`                     |
+| `--blur-*`    | `--blur-orb`            | `blur-orb`                               |
+| `--animate-*` | `--animate-shimmer`     | `animate-shimmer`                        |
+| `--leading-*` | `--leading-prose`       | `leading-prose`                          |
+
+The typed-data keys are the same names in camelCase: `--color-surface-muted` is
+`tokens.colorSurfaceMuted`.
+
+The `--z-*` layers are the exception. They are ordinary custom properties rather than a Tailwind
+namespace, so they are used as `z-(--z-modal)`.
+
+## Adding your own
+
+Extend rather than replace. A new token belongs in your app's `@theme` block, after the Avero
+import, using Tailwind's namespaces so it behaves like the built-in ones:
+
+```css
+@theme {
+  --color-brand-accent: #7c3aed;
+  --shadow-brand-glow: 0 0 32px var(--color-brand-accent);
+}
+```
+
+If you add a token in a namespace that `cn()` merges — a font size, radius, shadow or z-index —
+remember that `tailwind-merge` is configured from Avero's token list. Your new class will merge
+correctly against Tailwind's built-ins, but `cn("shadow-card-soft", "shadow-brand-glow")` will keep
+both until your token is registered in the merge configuration.

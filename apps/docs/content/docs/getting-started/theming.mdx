@@ -1,0 +1,142 @@
+---
+title: Theming
+description: Overriding Avero's tokens to brand the library, and what each stylesheet contributes.
+---
+
+A theme in Avero is a set of CSS custom properties, not a fork. Every component reads its colours,
+radii, shadows and type from `@avero/tokens`, so redefining a token restyles every component that
+uses it — including the blocks and layout shells.
+
+## The four stylesheets
+
+`@avero/tokens` ships four entry points. Import them in this order; only `theme.css` is required.
+
+| Import                           | Contributes                                                                     | When to import                        |
+| -------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------- |
+| `@avero/tokens/theme.css`        | The `@theme` block: every Avero token, plus keyframes                           | Always                                |
+| `@avero/tokens/base.css`         | Document defaults on `html`/`body`, reduced-motion handling, scroll-lock gutter | Apps built on Avero end to end        |
+| `@avero/tokens/utilities.css`    | Named utilities: scrollbars, shimmer, glow ring, typing caret, gradients        | Whenever you use those utilities      |
+| `@avero/tokens/rich-content.css` | Prose styles for `RichContent` and the editor                                   | With `RichContent` or `@avero/editor` |
+
+`base.css` is deliberately opt-in: it styles `body`, so a host that already owns its page chrome
+(a docs site, an app embedding Avero in one panel) should import only `theme.css` and
+`utilities.css`.
+
+## Overriding a token
+
+Add your own `@theme` block **after** the Avero import. Later declarations win.
+
+```css title="app.css"
+@import "tailwindcss";
+@import "@avero/tokens/theme.css";
+
+@theme {
+  --color-primary: #7c3aed;
+  --color-primary-hover: #5b21b6;
+  --radius-huge: 2rem;
+}
+```
+
+Every primary button, active tab, focus accent and brand gradient follows. No component code
+changes, and no class overrides are needed.
+
+## Which tokens to reach for
+
+Avero's tokens fall into three groups, and they are not equally safe to change.
+
+**Brand and semantic colours — change these freely.** `--color-primary`, `--color-primary-hover`,
+`--color-secondary`, `--color-background`, `--color-foreground`, the `--color-surface-*` family, the
+`--color-text-*` family and `--color-warning`. These exist precisely so a consumer can rebrand.
+
+**Scales — change with care.** Radii (`--radius-huge`, `--radius-leaf`), shadows
+(`--shadow-brand-*`, `--shadow-card-*`, `--shadow-float-*`), blurs and the micro font sizes
+(`--text-4xs` … `--text-xl-plus`). Changing one step changes every component at that step, which is
+usually what you want; changing several inconsistently is what makes a library look incoherent.
+
+**Structural tokens — avoid.** The z-index layers (`--z-*`) are ordered so overlays stack correctly;
+`check-z-order.mjs` enforces toast &gt; modal &gt; drawer &gt; dropdown &gt; header. Reordering them
+breaks overlay stacking. The chart tokens (`--color-chart-*`) are read as data by `@avero/charts`
+rather than as classes, so they can be recoloured but not removed.
+
+See [Foundations](../foundations/colors) for every token with its live value.
+
+## Branding with a single hue
+
+Most rebrands only need the primary pair. Pick a hue, then a darker step for the hover and gradient
+end:
+
+```css
+@theme {
+  --color-primary: #0f766e; /* teal-700  */
+  --color-primary-hover: #115e59; /* teal-800  */
+}
+```
+
+Keep roughly the same lightness difference between the two as the default pair
+(`#0a66c2` → `#004182`): buttons use the darker value for hover and for the end of the brand
+gradient, so too small a gap makes hover invisible and too large a gap makes it flash.
+
+## Contrast
+
+Avero's default palette keeps several muted pairings that fall below WCAG AA for small text —
+`--color-text-muted` on white is the main one. That is a deliberate design decision, recorded as
+O-04 in the project plan, and the affected pairings are listed in the contrast report shipped with
+the tokens package.
+
+If your product needs strict AA, darken the tokens rather than patching components:
+
+```css
+@theme {
+  --color-text-muted: var(--color-gray-600);
+  --color-text-chrome: var(--color-slate-600);
+  --color-icon-muted: var(--color-gray-500);
+}
+```
+
+## Dark mode
+
+Avero 1.0 ships a light theme only. The token layer was built for a second theme — components
+reference semantic tokens, never raw colours — so a dark theme can be added without touching
+component code. It is planned as a class or `data-theme` strategy rather than a
+`prefers-color-scheme` media variant, so the choice stays under the consumer's control.
+
+Until then, you can build your own by redefining the surface and text tokens under a selector:
+
+```css
+[data-theme="dark"] {
+  --color-background: #0b1220;
+  --color-surface: #131c2e;
+  --color-foreground: #cbd5e1;
+  --color-text-strong: #f8fafc;
+}
+```
+
+This is unsupported territory: the categorical tile palette and the chart colours are tuned for
+light surfaces and will need their own values.
+
+## Making Tailwind see Avero's classes
+
+Avero ships compiled JavaScript with Tailwind classes in it. Tailwind v4 only scans your own
+source by default, so point it at the package as well, or half the styles will be missing in
+production:
+
+```css
+@source "../node_modules/@avero/react/dist";
+```
+
+Adjust the relative path to wherever your stylesheet sits. With pnpm, resolve the real location if
+the symlinked path is not scanned — `@source "../node_modules/.pnpm/@avero+react@*/node_modules/@avero/react/dist";`
+
+## Overriding a single component
+
+Tokens are the first tool; `className` is the second. Every component merges an incoming
+`className` with `cn()`, which is `tailwind-merge` configured with **all** of Avero's custom token
+groups. That means an override actually replaces the built-in class rather than sitting beside it:
+
+```tsx
+<Card className="shadow-card-ambient rounded-2xl" />
+```
+
+Without the token-aware configuration, `shadow-card-ambient` and the component's own
+`shadow-card-soft` would both survive and the last one in the stylesheet would win at random. Use
+this for one-off adjustments; if you find yourself repeating an override, change the token instead.

@@ -3,6 +3,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
+import { UnreleasedChanges, UnreleasedCount } from "./Changesets";
 import { ComponentPreview } from "./ComponentPreview";
 import { ColorTokens } from "./foundations/ColorTokens";
 import { BlurScale, RadiusScale, ShadowScale } from "./foundations/ElevationTokens";
@@ -12,7 +13,15 @@ import { FontFamilies, FontWeights, LineHeights, TypeScale } from "./foundations
 import { PropsTable } from "./PropsTable";
 
 // Components available in every MDX page without an import.
-const docsComponents = { ComponentPreview, PropsTable, Tab, Tabs, TypeTable };
+const docsComponents = {
+  ComponentPreview,
+  PropsTable,
+  Tab,
+  Tabs,
+  TypeTable,
+  UnreleasedChanges,
+  UnreleasedCount,
+};
 const averoComponents = { Badge, Button, Chip };
 const foundationComponents = {
   AnimationTokens,

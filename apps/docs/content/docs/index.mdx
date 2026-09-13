@@ -14,3 +14,82 @@ same code, with Jalali dates, Persian digits and accessible behaviour built in.
   <Badge tone="success">منتشر شده</Badge>
   <Chip variant="skill">React</Chip>
 </div>
+
+## What makes it different
+
+**Bidirectional by default, not by translation.** Every component uses logical CSS properties
+(`ps-`, `me-`, `border-s`, `text-start`) and direction-aware keyboard handling. A lint rule bans the
+physical equivalents, so an RTL assumption cannot quietly creep into a new component. Arrows and
+chevrons that mean "forward" flip; download arrows do not.
+
+**Persian-ready.** Jalali dates and Persian digits through `Intl` alone — no date library in the
+core. Number grouping uses the Persian separator `٬`. The Lahzeh typeface ships in an optional
+package with all nine weights. Every built-in string exists in both `fa` and `en`.
+
+**Accessible.** Behaviour comes from Radix, so focus management, keyboard support and ARIA semantics
+are not reimplemented. Every component test runs axe, and a Playwright suite runs axe over every
+story in both directions.
+
+**Token-driven.** Colours, radii, shadows, motion and type come from `@avero/tokens` as Tailwind v4
+`@theme` variables. Rebranding is a handful of CSS custom properties, not a fork — and no component
+contains a raw hex value, which a lint rule enforces.
+
+## Packages
+
+| Package         | Contains                                                              |
+| --------------- | --------------------------------------------------------------------- |
+| `@avero/react`  | Components, blocks, layout shells, hooks, formatting utilities, icons |
+| `@avero/tokens` | Tailwind v4 `@theme` tokens, base styles, prose styles, token data    |
+| `@avero/font`   | Lahzeh `@font-face` declarations and font files                       |
+| `@avero/charts` | Recharts wrappers (optional)                                          |
+| `@avero/editor` | Tiptap rich-text editor sharing the prose styles (optional)           |
+
+## Quick start
+
+```bash
+pnpm add @avero/react @avero/tokens @avero/font
+```
+
+```css title="app.css"
+@import "tailwindcss";
+@import "@avero/tokens/theme.css";
+@import "@avero/font/lahzeh.css";
+
+@source "../node_modules/@avero/react/dist";
+```
+
+```tsx
+import { AveroProvider, Button } from "@avero/react";
+
+export function App() {
+  return (
+    <AveroProvider locale="fa-IR">
+      <Button>ثبت‌نام</Button>
+    </AveroProvider>
+  );
+}
+```
+
+[Installation](./getting-started/installation) covers this properly, including the `@source` line —
+the one step whose absence produces unstyled components in production.
+
+## How the docs are organised
+
+- **[Getting Started](./getting-started/installation)** — installing, fonts, direction and locale,
+  theming, tokens and versioning.
+- **[Foundations](./foundations/colors)** — the design system itself: colour, type, radius,
+  elevation, motion, z-index and breakpoints, generated from the token source.
+- **Components** — the library, grouped as primitives, forms, navigation, overlays, data display and
+  layout shells. Every page has live demos in both directions, a generated props table, a keyboard
+  table and the tokens the component consumes.
+- **Blocks** — larger compositions built only from Avero components: cards, panels, headers and
+  banners, ready to copy.
+
+## Scope
+
+Avero is a UI library and nothing more. It has no data fetching, no routing, no auth and no business
+logic. Components never navigate on their own — you pass a link or a callback. Nothing reads or
+writes storage, and the core makes no network requests.
+
+Names are domain-neutral (`ListingCard`, `ShowcaseCard`, `OpportunityCard`) because the library is
+meant to be reused across products rather than tied to one.

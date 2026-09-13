@@ -1,0 +1,84 @@
+---
+title: Fonts
+description: Bundling the Lahzeh typeface, the fallback stack, and running Avero with your own font.
+---
+
+Avero is designed around **Lahzeh**, a Persian typeface with nine weights. The font is optional: the
+`--font-sans` token declares Lahzeh first and falls back to a system stack, so components render
+correctly whether or not the files are installed.
+
+## Installing Lahzeh
+
+`@avero/font` ships the licensed `woff2` and `woff` files together with an `@font-face` declaration
+for every weight. Import it once, after the theme.
+
+```css title="app.css"
+@import "tailwindcss";
+@import "@avero/tokens/theme.css";
+@import "@avero/font/lahzeh.css";
+```
+
+That single import declares all nine weights. `font-display: swap` keeps text visible while the
+files load, and `woff2` is listed first so modern browsers never download the larger `woff`.
+
+## Weights
+
+| Weight | Name       | Tailwind class    |
+| ------ | ---------- | ----------------- |
+| 100    | Thin       | `font-thin`       |
+| 200    | ExtraLight | `font-extralight` |
+| 300    | Light      | `font-light`      |
+| 400    | Regular    | `font-normal`     |
+| 500    | Medium     | `font-medium`     |
+| 600    | SemiBold   | `font-semibold`   |
+| 700    | Bold       | `font-bold`       |
+| 800    | ExtraBold  | `font-extrabold`  |
+| 900    | Black      | `font-black`      |
+
+**500 Medium is Avero's default UI weight.** Persian text at 400 reads lighter than Latin text at the
+same weight, so the body default is one step up.
+
+## The fallback stack
+
+When Lahzeh is absent, `--font-sans` resolves to the next available family:
+
+```
+Lahzeh, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+"Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", sans-serif
+```
+
+Nothing breaks, but Persian line heights are tuned for Lahzeh's vertical metrics. If you ship a
+different Persian face, check the [typography foundations](../foundations/typography) page and
+adjust `--leading-prose` to taste.
+
+## Using your own font
+
+Override `--font-sans` after importing the theme, and skip the `@avero/font` import entirely:
+
+```css title="app.css"
+@import "tailwindcss";
+@import "@avero/tokens/theme.css";
+
+@theme {
+  --font-sans: "Vazirmatn", system-ui, sans-serif;
+}
+```
+
+Every component reads the token, so one line re-types the whole library.
+
+## Code and monospace text
+
+`--font-code` is a separate token used by inline code, code blocks and any value that must stay
+left-to-right (phone numbers, IDs, prices in Latin digits):
+
+```
+"Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace
+```
+
+Avero does not bundle a monospace font — the stack resolves to whatever the system provides.
+
+## Licensing
+
+The Lahzeh licence permits redistribution, which is why the files can ship inside `@avero/font`.
+If you fork Avero or vendor the files elsewhere, keep `packages/font/files/README.md` alongside
+them: it records the licence terms.

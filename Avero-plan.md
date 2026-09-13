@@ -107,6 +107,8 @@
 | D-22 | Scroll lock without layout shift | While an overlay locks scrolling, `base.css` keeps the viewport's scrollbar gutter (`html:has(body[data-scroll-locked]) { scrollbar-gutter: stable }`) and drops react-remove-scroll-bar's right margin. | The library compensates with a physical right margin, but browsers place a right-to-left page's scrollbar on different sides, so a direction-specific fix can't be right everywhere. A Playwright spec measures the shift in RTL and LTR. | User, 2026-08-18 |
 | D-23 | Toast API | A `ToastProvider` with a `useToast()` hook (`toast`, `dismiss`), not a module-level store. Tones are `info`, `success`, `warning` and `danger`; `danger` is the plan's "error" variant. | A context keeps toasts per React tree, so nothing is shared between server requests, and it matches the hook-based data layer consumers use. `danger` keeps one tone vocabulary with `Alert`, `Button` and `DropdownMenuItem`. | Implementation, 2026-08-18 |
 | D-24 | `@avero/editor` size budget | **Raised from 11 kB to 12 kB** (brotli, `import { RichTextEditor }`, Tiptap ignored). | CI measured 11.18 kB. `EditorToolbar` is tree-shaken out of that import; the growth is the shared `fa`/`en` dictionary from `@avero/react`, which `useAvero` pulls in whole and which the Toast, Lightbox and editor toolbar strings grew by about 300 B. 12 kB leaves room for new strings. | User, 2026-09-09 |
+| D-25 | Precompiled CSS for non-Tailwind consumers | **Deferred out of Phase 11.** Avero requires Tailwind v4. The Installation page documents the Tailwind path only and states the limitation; the missing `@avero/react/styles.css` promised by §6.3 is recorded in `docs/known-debts.md`. | The stylesheet is a packaging feature, not documentation: it needs a Tailwind CLI build step, two exports and a size budget. Documenting a path that does not ship would be worse than naming the gap. | User, 2026-09-10 |
+| D-26 | Versioned docs | **Deferred to Phase 13.** The Phase 11 item is conditional on a previous major existing, and nothing is published yet. | Building a version tree with one version in it is scaffolding without content; 1.0 is the first point at which versioning means anything. | User, 2026-09-10 |
 
 ---
 
@@ -777,7 +779,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 12. Related components.
 
 **DoD:**
-- [ ] Information architecture: Getting Started (Introduction, Installation for Tailwind v4 and precompiled CSS, Fonts, RTL & i18n, Theming, Tokens, Changelog), Foundations, Components, Blocks, Templates, Utilities, Charts, Editor
+- [ ] Information architecture: Getting Started (Introduction, Installation for Tailwind v4, Fonts, RTL & i18n, Theming, Tokens, Changelog), Foundations, Components, Blocks, Templates, Utilities, Charts, Editor — Getting Started is complete (six pages plus an expanded Introduction; the Changelog page reads the `.changeset` directory so it cannot drift). The precompiled-CSS path is dropped from this item by D-25. Templates, Utilities, Charts and Editor sections remain.
 - [x] Every Done component in §9 has a page with all 12 template sections — `apps/docs/scripts/check-doc-sections.mjs` encodes the template as an ordered table (the required headings, plus a `View source` link that resolves, an import line, a primary demo above the first section, separate demos per variant, a generated `<PropsTable>` wherever the component adds props of its own, and an `Installation` section for packages with peers) and runs as a CI gate; all 73 pages pass (CI green)
 - [ ] Props tables are generated from source at build time (never hand-written); the build fails on undocumented public props
 - [ ] Blocks gallery with live preview, copy-paste code and full-page previews
@@ -789,7 +791,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] Every code example on the site is type-checked in CI (examples compile)
 - [ ] Lighthouse on the docs home page and one component page: Performance ≥ 90, Accessibility 100, Best Practices ≥ 95
 - [ ] Broken-link check passes in CI
-- [ ] Versioned docs (at least "latest" plus the previous major, once one exists)
+- [⏸️] Versioned docs (at least "latest" plus the previous major, once one exists) — deferred to Phase 13 by D-26: no major version exists yet, so there is nothing to version against.
 - [ ] Contributing guide and `docs/avero-conventions.md` are linked from the site
 
 **Exit gate:** a reviewer can install Avero in a blank Vite + Tailwind v4 app using only the docs, and render a block in under 15 minutes (recorded walkthrough).

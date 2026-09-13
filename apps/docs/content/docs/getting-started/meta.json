@@ -1,0 +1,4 @@
+{
+  "title": "Getting Started",
+  "pages": ["installation", "fonts", "rtl-and-i18n", "theming", "tokens", "changelog"]
+}
