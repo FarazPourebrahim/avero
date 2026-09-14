@@ -57,6 +57,9 @@ jobs:
       - name: Docs props coverage
         run: pnpm --filter @avero/docs run check-props
 
+      - name: Docs internal links
+        run: pnpm --filter @avero/docs run check-links
+
       - name: Build docs
         run: pnpm run docs-build
 
