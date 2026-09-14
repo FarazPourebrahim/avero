@@ -91,9 +91,3 @@ export async function UnreleasedChanges() {
     </div>
   );
 }
-
-/** Renders the number of pending changesets, so prose can quote it without hardcoding a count. */
-export async function UnreleasedCount() {
-  const changes = await readChangesets();
-  return <>{changes.length}</>;
-}
