@@ -1,0 +1,162 @@
+---
+title: Hooks and helpers
+description: useControllableState, mergeRefs, useAvero and the dictionary helpers.
+---
+
+The hooks Avero exports are the ones its own components are built from. They are here because
+components you write alongside Avero should follow the same conventions — a control that is
+controllable the same way, and a ref that composes.
+
+## useControllableState
+
+```ts
+useControllableState<T>(options: {
+  value?: T;
+  defaultValue: T;
+  onChange?: (value: T) => void;
+}): [T, (next: T) => void];
+```
+
+Every stateful Avero component works in both modes: controlled with `value` + `onChange`, or
+uncontrolled with `defaultValue`. This hook is that behaviour.
+
+```tsx
+import { useControllableState } from "@avero/react";
+
+type RatingInputProps = {
+  value?: number;
+  defaultValue?: number;
+  onValueChange?: (value: number) => void;
+};
+
+export function RatingInput({ value, defaultValue = 0, onValueChange }: RatingInputProps) {
+  const [rating, setRating] = useControllableState({
+    value,
+    defaultValue,
+    onChange: onValueChange,
+  });
+
+  return (
+    <div role="radiogroup">
+      {[1, 2, 3, 4, 5].map((score) => (
+        <button key={score} aria-pressed={rating === score} onClick={() => setRating(score)}>
+          {score}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
+
+The rules it enforces:
+
+- **`value !== undefined` means controlled.** The internal state is then ignored, so the component
+  cannot drift from the prop.
+- **`onChange` fires in both modes**, with every requested change. An uncontrolled component still
+  reports what the user did.
+- **The mode is decided per render**, so passing `undefined` for `value` falls back to uncontrolled
+  rather than freezing the control.
+- **`onChange` is held in a ref**, so the returned setter is stable and passing an inline arrow
+  function does not invalidate memoised children.
+
+Do not switch a component between controlled and uncontrolled after mount. React warns about this
+for native inputs and the reason applies here too: the value jumps to whatever the other source
+holds.
+
+## mergeRefs
+
+```ts
+mergeRefs<T>(...refs: Array<Ref<T> | undefined>): RefCallback<T>;
+```
+
+Combines several refs — callback refs, object refs, or `undefined` — into one callback ref. Needed
+whenever a component forwards a ref but also wants its own handle on the node:
+
+```tsx
+import { mergeRefs } from "@avero/react";
+import { forwardRef, useRef } from "react";
+
+export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(props, forwardedRef) {
+  const localRef = useRef<HTMLInputElement>(null);
+
+  // The caller gets its ref, and the component keeps one for focus management.
+  return <input ref={mergeRefs(localRef, forwardedRef)} {...props} />;
+});
+```
+
+`undefined` entries are skipped, so an optional ref prop needs no guard.
+
+## useAvero
+
+```ts
+useAvero(): {
+  dir: "rtl" | "ltr";
+  locale: string;
+  digits: "fa" | "latn";
+  calendar: "persian" | "gregory";
+  dictionary: AveroDictionary;
+};
+```
+
+Returns the active settings from the nearest [`AveroProvider`](../getting-started/rtl-and-i18n),
+or the Persian defaults when there is none.
+
+```tsx
+import { useAvero } from "@avero/react";
+
+function DirectionalHint() {
+  const { dir, dictionary } = useAvero();
+  return <span>{dir === "rtl" ? dictionary.previous : dictionary.next}</span>;
+}
+```
+
+Reach for it when behaviour genuinely depends on direction — a drag gesture, a manual scroll
+calculation. For styling, use `rtl:` and `ltr:` variants instead: they do not need JavaScript and
+they work during server rendering.
+
+## useAveroFormatter
+
+Covered in [Formatting](./formatting). It returns `number`, `date` and `relativeTime` bound to the
+active locale, digits and calendar.
+
+## Dictionary helpers
+
+```ts
+getDictionary(locale: string): AveroDictionary;
+formatMessage(template: string, values: Record<string, string | number>): string;
+```
+
+`getDictionary` returns the built-in strings for a locale, falling back to English for any language
+other than `fa`. `dictionaries`, `fa` and `en` are exported too, which is the easiest way to see
+every key:
+
+```ts
+import { en, fa } from "@avero/react";
+```
+
+`formatMessage` fills `{name}` placeholders. Unknown placeholders are left in place rather than
+replaced with `undefined`, so a missing value shows up as `{count}` instead of silently
+disappearing:
+
+```ts
+formatMessage(dictionary.goToSlide, { index: 3 }); // "رفتن به اسلاید ۳"
+```
+
+Use both together when you extend Avero with your own strings, so overridden and built-in copy work
+the same way.
+
+## resolveAveroSettings
+
+```ts
+resolveAveroSettings(options?: Omit<AveroProviderProps, "children">): AveroSettings;
+```
+
+The same derivation `AveroProvider` performs — locale to direction, digits, calendar and dictionary
+— exposed as a plain function. Use it outside React, where there is no provider to read:
+
+```ts
+const { dir, dictionary } = resolveAveroSettings({ locale: "en-US" });
+```
+
+It is useful in server code that needs the direction for a `<html dir>` attribute before rendering,
+and in tests that assert against the same defaults the provider would apply.

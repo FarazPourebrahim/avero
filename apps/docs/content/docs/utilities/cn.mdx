@@ -1,0 +1,88 @@
+---
+title: cn
+description: The class merge function, configured so overriding an Avero token class actually replaces it.
+---
+
+`cn` joins class names and resolves Tailwind conflicts. It is `clsx` for the conditional syntax plus
+`tailwind-merge` for the conflict resolution — **extended with every one of Avero's custom token
+scales**, which is the part that matters.
+
+```tsx
+import { cn } from "@avero/react";
+
+cn("px-4", condition && "px-6"); // "px-6"
+cn("shadow-card-soft", "shadow-md"); // "shadow-md"
+```
+
+## Why the extension matters
+
+`tailwind-merge` knows Tailwind's built-in scales, so it understands that `px-4` and `px-6` conflict.
+It does not know about `shadow-card-soft`, `text-sm-plus`, `rounded-leaf` or `animate-shimmer`,
+because those are Avero's own tokens.
+
+Without the extension, `cn("shadow-card-soft", "shadow-md")` returns **both** classes. Which one
+wins then depends on their order in the compiled stylesheet, not on the order you wrote them — so an
+override works on one build and silently stops working on the next.
+
+Avero registers all of its scales, so overriding behaves the way you would expect:
+
+| Scale           | Registered from                                         |
+| --------------- | ------------------------------------------------------- |
+| `text-*`        | the micro font sizes (`text-4xs` … `text-xl-plus`)      |
+| `leading-*`     | `leading-prose`, `leading-airy`                         |
+| `rounded-*`     | `rounded-huge`, `rounded-leaf`                          |
+| `shadow-*`      | the brand, card, elevated, float, pop and modal shadows |
+| `drop-shadow-*` | `drop-shadow-soft`, the amber glows                     |
+| `blur-*`        | `blur-hair` … `blur-haze`                               |
+| `animate-*`     | every keyframe animation                                |
+| `scrollbar-*`   | `scrollbar-fancy`, `scrollbar-slim`, `scrollbar-hidden` |
+| `gradient-*`    | the gradient utilities                                  |
+| effects         | `skeleton-shimmer`, `glow-ring`, `typing-caret`         |
+
+The lists are read from `@avero/tokens` rather than written out here, so a new token is picked up
+without touching `cn`.
+
+## Using it
+
+Every Avero component already merges an incoming `className` with `cn`, so you rarely call it
+yourself on Avero components — you just pass `className` and it does the right thing:
+
+```tsx
+<Card className="shadow-float rounded-2xl" />
+```
+
+Call it directly in your own components, following the same convention:
+
+```tsx
+type PanelProps = { className?: string; children: ReactNode };
+
+export function Panel({ className, children }: PanelProps) {
+  return <div className={cn("bg-surface rounded-3xl p-6", className)}>{children}</div>;
+}
+```
+
+The incoming `className` goes last so the caller can override the defaults.
+
+## Accepted input
+
+Anything `clsx` accepts — strings, conditionals, arrays and objects. Falsy values are dropped:
+
+```tsx
+cn("btn", isActive && "btn-active", { "btn-disabled": disabled }, ["extra", null]);
+```
+
+## Limits
+
+- **It resolves conflicts, not specificity.** Two classes that do different things both survive, as
+  they should.
+- **Arbitrary values are merged by property**, so `p-[10px]` and `p-4` conflict correctly, but a
+  class whose effect Tailwind cannot infer from its name does not.
+- **Tokens you add yourself are not registered.** If you define `--shadow-brand-glow` in your own
+  `@theme` block, `cn("shadow-card-soft", "shadow-brand-glow")` keeps both. Register your scales
+  with your own `extendTailwindMerge` wrapper if you need them to merge.
+
+## Size
+
+`cn` is the one import with a meaningful fixed cost: about 8.4 kB brotli, nearly all of it
+`tailwind-merge` and `clsx`. It is measured with a 9 kB budget in CI. That cost is shared — it does
+not grow per component, and any project using Tailwind at runtime pays it once.

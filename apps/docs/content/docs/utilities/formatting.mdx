@@ -1,0 +1,176 @@
+---
+title: Formatting
+description: Numbers, dates, relative times, file sizes and digit conversion — through Intl only.
+---
+
+Avero formats numbers and dates with the platform's `Intl` API and nothing else. There is no date
+library in the core, which is why Jalali dates cost no bundle size: `Intl` already ships the Solar
+Hijri calendar.
+
+Every function takes an explicit `locale`, defaulting to `fa-IR`. Inside React, prefer
+[`useAveroFormatter`](#inside-react), which binds them to the active provider settings.
+
+```tsx
+import { formatDate, formatNumber, formatRelativeTime } from "@avero/react";
+
+formatNumber(125000); // "۱۲۵٬۰۰۰"
+formatDate("2026-09-18"); // "۲۷ شهریور ۱۴۰۵"
+formatRelativeTime("2026-09-15"); // "۳ روز پیش"
+```
+
+## formatNumber
+
+```ts
+formatNumber(value: number, options?: FormatNumberOptions): string
+```
+
+<TypeTable
+  type={{
+    locale: { type: "string", default: '"fa-IR"', description: "BCP 47 language tag." },
+    digits: {
+      type: '"fa" | "latn"',
+      description: "Digit system. Defaults to the locale's native digits.",
+    },
+    grouping: { type: "boolean", default: "true", description: "Thousands separators." },
+    minimumFractionDigits: { type: "number", default: "0" },
+    maximumFractionDigits: { type: "number", default: "2" },
+    style: {
+      type: '"decimal" | "percent"',
+      default: '"decimal"',
+      description: "`percent` multiplies by 100 and appends the locale's percent sign.",
+    },
+  }}
+/>
+
+Persian grouping uses the Persian thousands separator `٬`, not a comma. The separator follows the
+digit system rather than the locale, so Latin digits bring a Latin comma with them:
+
+```ts
+formatNumber(1234567); // "۱٬۲۳۴٬۵۶۷"
+formatNumber(1234567, { locale: "en-US" }); // "1,234,567"
+formatNumber(1234567, { digits: "latn" }); // "1,234,567"
+formatNumber(0.42, { style: "percent" }); // "۴۲٪"
+formatNumber(4.5, { minimumFractionDigits: 2 }); // "۴٫۵۰"
+```
+
+`NaN` and non-finite values format as an empty string rather than throwing or printing "NaN".
+
+### Prices
+
+There is no `formatToman`. The currency unit is a dictionary entry (`currencyToman`), so it
+translates with the locale, and [`PriceTag`](../components/price-tag) composes it with the number.
+Use that component rather than building the string yourself.
+
+## formatDate
+
+```ts
+formatDate(value: Date | number | string, options?: FormatDateOptions): string
+```
+
+<TypeTable
+  type={{
+    locale: { type: "string", default: '"fa-IR"' },
+    digits: { type: '"fa" | "latn"' },
+    calendar: {
+      type: '"persian" | "gregory"',
+      description: "Defaults to `persian` for Persian locales, `gregory` otherwise.",
+    },
+    preset: { type: '"long" | "numeric" | "dayMonth" | "month"', default: '"long"' },
+  }}
+/>
+
+| Preset     | `fa-IR`          | `en-US`              |
+| ---------- | ---------------- | -------------------- |
+| `long`     | `۲۷ شهریور ۱۴۰۵` | `September 18, 2026` |
+| `numeric`  | `۱۴۰۵/۶/۲۷`      | `9/18/2026`          |
+| `dayMonth` | `۲۷ شهریور`      | `September 18`       |
+| `month`    | `شهریور`         | `September`          |
+
+The calendar and the digit system are independent: Jalali dates in Latin digits are
+`{ calendar: "persian", digits: "latn" }`, and Gregorian dates in Persian digits are the reverse.
+
+Invalid dates format as an empty string, so a malformed value from an API renders as nothing rather
+than "Invalid Date".
+
+## formatRelativeTime
+
+```ts
+formatRelativeTime(value: Date | number | string, options?: FormatRelativeTimeOptions): string
+```
+
+Formats the distance from now, picking the largest fitting unit:
+
+```ts
+formatRelativeTime("2026-09-17"); // "دیروز"
+formatRelativeTime("2026-09-04"); // "۲ هفته پیش"
+formatRelativeTime("2026-09-25"); // "هفتهٔ آینده"
+```
+
+Pass `now` to make the output deterministic — do this in tests, and in server rendering where the
+client and server clocks differ:
+
+```ts
+formatRelativeTime(publishedAt, { now: new Date("2026-09-18T00:00:00Z") });
+```
+
+Invalid dates format as an empty string.
+
+## formatFileSize
+
+```ts
+formatFileSize(bytes: number, options?: LocaleOptions): string
+```
+
+```ts
+formatFileSize(2_400_000); // "۲٫۳ MB"
+formatFileSize(2_400_000, { locale: "en-US" }); // "2.3 MB"
+```
+
+Units are binary (1024-based) and the largest unit that keeps the value at or above 1 is chosen.
+Digits localise, but **the unit name does not** — `Intl`'s short unit display returns `MB` in Persian
+as well as English. Negative and non-finite values format as an empty string.
+
+Used by [`FileInput`](../components/file-input) for its size labels and rejection messages.
+
+## Digit conversion
+
+```ts
+toPersianDigits(value: string | number): string
+toLatinDigits(value: string): string
+```
+
+`toLatinDigits` accepts **both** Persian (`۰۱۲۳`) and Arabic-Indic (`٠١٢٣`) digits, which matters
+because Persian keyboards and Arabic keyboards produce different code points for what looks like the
+same numeral. Normalise before parsing anything a user typed:
+
+```ts
+const parsed = Number(toLatinDigits(input)); // "۱۲۳۴" and "١٢٣٤" both → 1234
+```
+
+Avero's own inputs — [`PriceInput`](../components/price-input),
+[`OtpInput`](../components/otp-input), [`DatePicker`](../components/date-picker) — already do this,
+and report Latin values to your `onChange`.
+
+## Inside React
+
+`useAveroFormatter` returns the same three functions bound to the provider's locale, digits and
+calendar, so components do not repeat the options:
+
+```tsx
+import { useAveroFormatter } from "@avero/react";
+
+function PublishedMeta({ at, views }: { at: string; views: number }) {
+  const format = useAveroFormatter();
+
+  return (
+    <p>
+      {format.date(at)} · {format.number(views)} · {format.relativeTime(at)}
+    </p>
+  );
+}
+```
+
+Options still override per call: `format.date(at, { preset: "numeric" })`.
+
+Use the standalone functions outside React — in loaders, server code, tests and anywhere without a
+provider — and pass `locale` explicitly there.

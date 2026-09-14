@@ -1,0 +1,134 @@
+---
+title: Sanitization
+description: The allow-list HTML filter behind RichContent, and the helper that reduces HTML to text.
+---
+
+Stored HTML — an article body, a description written in the editor — is the one place a component
+library can hand an attacker script execution. Avero's answer is a single allow-list filter that
+runs **every time**, with no opt-out.
+
+```tsx
+import { sanitizeHtml, stripHtml } from "@avero/react";
+```
+
+You do not normally call `sanitizeHtml` yourself. [`RichContent`](../components/rich-content) calls
+it on every render, so rendering untrusted HTML is the ordinary path rather than the careful one:
+
+```tsx
+<RichContent html={article.body} />
+```
+
+## sanitizeHtml
+
+```ts
+sanitizeHtml(html: string): string
+```
+
+Removes every tag, attribute and URL scheme outside the allow list, then hardens links. Examples of
+what that means in practice:
+
+```ts
+sanitizeHtml("<script>alert(1)</script><p>hi</p>");
+// "<p>hi</p>"
+
+sanitizeHtml("<img src=x onerror=alert(1)>");
+// "<img src>"                      — the handler is gone
+
+sanitizeHtml('<a href="javascript:alert(1)">x</a>');
+// "<a href>x</a>"                  — the scheme is rejected
+
+sanitizeHtml('<p style="color:red">x</p>');
+// "<p>x</p>"                       — inline styles are dropped
+
+sanitizeHtml('<iframe src="https://a.com">body</iframe>');
+// ""                               — tag and content both removed
+
+sanitizeHtml("<custom>kept text</custom>");
+// "kept text"                      — unknown tag, text preserved
+```
+
+Two removal behaviours, deliberately different:
+
+- **Unknown tags lose their markup but keep their text.** A `<custom>` wrapper disappears and its
+  words survive, so stripping a tag never silently deletes an author's content.
+- **Script-like tags lose their content too.** `script`, `style`, `iframe`, `frame`, `frameset`,
+  `object`, `embed`, `applet`, `noscript`, `template`, `svg`, `math` and `form` are removed with
+  everything inside them, because their content is code or a nested document rather than prose.
+
+### Links are hardened
+
+Any `<a>` with a `target` gains `rel="noopener noreferrer"` if it has no `rel` of its own, so a link
+that opens a new tab cannot reach back through `window.opener`:
+
+```ts
+sanitizeHtml('<a href="https://a.com" target="_blank">x</a>');
+// '<a href="https://a.com" target="_blank" rel="noopener noreferrer">x</a>'
+```
+
+### The allow list
+
+`richContentAllowList` is exported, so you can inspect exactly what survives:
+
+```ts
+import { richContentAllowList } from "@avero/react";
+```
+
+| Group            | Tags                                                                                                            |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- |
+| Text             | `p` `br` `hr` `span` `div` `h1`–`h6`                                                                            |
+| Inline marks     | `strong` `b` `em` `i` `u` `s` `mark` `small` `sub` `sup`                                                        |
+| Links            | `a` (`href`, `title`, `target`, `rel`)                                                                          |
+| Lists            | `ul` `ol` (`start`) `li`                                                                                        |
+| Quotes and media | `blockquote` (`cite`) `figure` `figcaption` `img` (`src`, `alt`, `title`, `width`, `height`, `loading`)         |
+| Tables           | `table` `thead` `tbody` `tfoot` `tr` `th` (`scope`, `colspan`, `rowspan`) `td` (`colspan`, `rowspan`) `caption` |
+| Code             | `pre` `code`                                                                                                    |
+
+Attributes not listed for a tag are dropped — including `class`, `id` and `style`. Styling comes
+from the prose stylesheet, so the markup does not need to carry any.
+
+The list is also the contract with [`@avero/editor`](../components/editor): every tag the editor can
+produce is in it, and a test round-trips the editor's output through `sanitizeHtml` to prove no
+allowed formatting is lost.
+
+## stripHtml
+
+```ts
+stripHtml(html: string): string
+```
+
+Reduces HTML to its readable text: markup removed, basic entities decoded once, whitespace
+collapsed.
+
+```ts
+stripHtml("<p>Hello <strong>world</strong>&amp; more</p>");
+// "Hello world& more"
+```
+
+Use it wherever HTML must not be rendered at all — an excerpt, a meta description, a search index,
+an `aria-label`:
+
+```tsx
+<meta name="description" content={stripHtml(article.body).slice(0, 160)} />
+```
+
+Entities are decoded **once**, on purpose. Decoding repeatedly would turn `&amp;lt;script&gt;` back
+into a live tag, which is how double-decoding bugs become injection bugs.
+
+## Why js-xss
+
+Avero filters with [`js-xss`](https://github.com/leizongmin/js-xss) rather than DOMPurify. DOMPurify
+needs a DOM, so using it on the server means pulling in jsdom — roughly 10 MB — into every server
+bundle that renders stored HTML. `js-xss` is a string-based allow-list filter with no DOM
+dependency, so the same code runs in the browser, during server rendering and in tests, with
+identical output.
+
+## What this does not cover
+
+Sanitization protects the rendering path. It is not a substitute for the rest:
+
+- **Sanitize on write as well.** Storing raw input and cleaning it on every read means every other
+  consumer of that data — an export, an email, a different client — is unprotected.
+- **`RichContent` is the only component that renders HTML.** Nothing else in Avero uses
+  `dangerouslySetInnerHTML`, and the security checklist verifies that.
+- **Images and links still point outward.** The filter validates schemes, not destinations. If you
+  need to restrict which hosts can be embedded, do it before storing.
