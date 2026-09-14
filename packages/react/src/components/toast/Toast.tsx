@@ -39,7 +39,9 @@ export type ToastAction = {
 export type ToastOptions = {
   /** Meaning, icon and progress colour. `danger` toasts are announced assertively. @defaultValue "info" */
   tone?: ToastTone;
+  /** The message. Keep it short: a toast is read once, in passing. */
   title: ReactNode;
+  /** Optional second line with detail the title cannot carry. */
   description?: ReactNode;
   /** One button next to the message. Clicking it also closes the toast. */
   action?: ToastAction;

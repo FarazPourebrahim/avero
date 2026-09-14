@@ -1,11 +1,14 @@
 import { forwardRef, type SVGProps } from "react";
 
-export type IconProps = Omit<SVGProps<SVGSVGElement>, "ref" | "children"> & {
+export type IconOwnProps = {
   /** Width and height. Defaults to `1em` so the icon scales with the surrounding font size. */
   size?: number | string;
   /** Accessible name. Without it the icon is decorative and hidden from assistive technology. */
   title?: string;
 };
+
+export type IconProps = Omit<SVGProps<SVGSVGElement>, "ref" | "children" | keyof IconOwnProps> &
+  IconOwnProps;
 
 export type IconDefinition = {
   viewBox: string;

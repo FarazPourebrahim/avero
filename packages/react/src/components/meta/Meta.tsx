@@ -105,9 +105,11 @@ MetaBar.displayName = "MetaBar";
 
 /** Props specific to `KeyValueRow`. It also accepts every native `<div>` attribute. */
 export type KeyValueRowOwnProps = {
+  /** Name of the field, shown at the inline start. */
   label: ReactNode;
   /** The value; rendered as a link when `href` is set. */
   value: ReactNode;
+  /** Turns the value into a link, e.g. `mailto:`, `tel:` or `https:`. */
   href?: string;
   /** Direction of the value. Contact details such as emails and phone numbers read left to right. @defaultValue "ltr" */
   valueDir?: "ltr" | "rtl" | "auto";
@@ -160,6 +162,7 @@ KeyValueRow.displayName = "KeyValueRow";
 export type ContactMethodOwnProps = {
   /** Link to the contact channel, e.g. `mailto:`, `tel:` or `https:`. */
   href: string;
+  /** Channel glyph shown before the label. */
   icon?: ReactNode;
   /** Channel name, e.g. "email:". */
   label: ReactNode;

@@ -11,7 +11,9 @@ type Tone = NonNullable<IconTileOwnProps["tone"]>;
 
 /** Props specific to `StatCard`. It also accepts every native `<div>` attribute. */
 export type StatCardOwnProps = {
+  /** What the figure measures, shown above it. */
   label: ReactNode;
+  /** The figure itself. Format numbers with the locale's digits before passing them. */
   value: ReactNode;
   /** Icon shown in a tinted tile beside the label. */
   icon?: ReactNode;
@@ -59,7 +61,9 @@ StatCard.displayName = "StatCard";
 
 /** Props specific to `StatTile`. It also accepts every native `<div>` attribute. */
 export type StatTileOwnProps = {
+  /** What the figure measures, shown under it. */
   label: ReactNode;
+  /** The figure itself. Format numbers with the locale's digits before passing them. */
   value: ReactNode;
   /** Icon shown in a translucent tile. */
   icon?: ReactNode;
@@ -143,7 +147,9 @@ StatStrip.displayName = "StatStrip";
 
 /** Props specific to `MiniStat`. It also accepts every native `<div>` attribute. */
 export type MiniStatOwnProps = {
+  /** What the figure measures, shown under it. */
   label: ReactNode;
+  /** The figure itself. Format numbers with the locale's digits before passing them. */
   value: ReactNode;
   /** Optional icon before the value, e.g. a filled star for ratings. */
   icon?: ReactNode;
@@ -199,8 +205,11 @@ export const infoRowVariants = cva(
 
 /** Props specific to `InfoRow`. It also accepts every native `<div>` attribute. */
 export type InfoRowOwnProps = {
+  /** Name of the field, shown at the inline start. */
   label: ReactNode;
+  /** The value, shown at the inline end. */
   value: ReactNode;
+  /** Icon shown in a tinted tile before the label. */
   icon?: ReactNode;
   /** Row and icon tile color. @defaultValue "blue" */
   tone?: VariantProps<typeof infoRowVariants>["tone"];
@@ -241,7 +250,9 @@ InfoRow.displayName = "InfoRow";
 
 /** Props specific to `HighlightPanel`. It also accepts every native `<div>` attribute. */
 export type HighlightPanelOwnProps = {
+  /** What the headline figure measures. */
   label: ReactNode;
+  /** The headline figure itself. */
   value: ReactNode;
   /** Content at the inline end, e.g. an icon or a badge. */
   aside?: ReactNode;

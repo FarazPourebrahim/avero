@@ -25,6 +25,7 @@ export type AveroSettings = {
 };
 
 export type AveroProviderProps = {
+  /** The tree that receives the direction, locale and dictionary. */
   children: ReactNode;
   /** Text direction. Defaults to `rtl` for Persian locales and `ltr` otherwise. */
   dir?: TextDirection;

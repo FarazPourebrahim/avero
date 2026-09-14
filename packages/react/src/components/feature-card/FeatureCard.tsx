@@ -4,7 +4,9 @@ import { IconTile, type IconTileOwnProps } from "../icon-tile/IconTile.js";
 
 /** Props specific to `FeatureCard`. It also accepts every native `<div>` attribute. */
 export type FeatureCardOwnProps = {
+  /** Feature name, rendered as the heading. */
   title: ReactNode;
+  /** One or two lines explaining the feature. */
   description: ReactNode;
   /** Icon shown in a padded, tinted tile. */
   icon?: ReactNode;

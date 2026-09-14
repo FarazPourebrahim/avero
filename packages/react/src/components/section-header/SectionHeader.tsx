@@ -25,6 +25,7 @@ type HeadingLevel = "h1" | "h2" | "h3" | "h4";
 
 /** Props specific to `SectionHeader`. It also accepts every native `<div>` attribute. */
 export type SectionHeaderOwnProps = {
+  /** Section name, rendered as the heading. */
   title: ReactNode;
   /** Visual style. @defaultValue "plain" */
   variant?: VariantProps<typeof sectionHeaderTitleVariants>["variant"];

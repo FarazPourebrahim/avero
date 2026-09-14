@@ -54,6 +54,9 @@ jobs:
       - name: Docs page template
         run: pnpm --filter @avero/docs run check-sections
 
+      - name: Docs props coverage
+        run: pnpm --filter @avero/docs run check-props
+
       - name: Build docs
         run: pnpm run docs-build
 
