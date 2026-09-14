@@ -10,7 +10,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "check-sections": "node scripts/check-doc-sections.mjs",
     "check-props": "node scripts/check-props-documented.mjs",
-    "check-links": "node scripts/check-links.mjs"
+    "check-links": "node scripts/check-links.mjs",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "@avero/charts": "workspace:^",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@avero/config": "workspace:^",
+    "@lhci/cli": "^0.15.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/mdx": "^2.0.14",
     "@types/node": "^22.20.2",

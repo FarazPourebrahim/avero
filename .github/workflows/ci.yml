@@ -63,6 +63,20 @@ jobs:
       - name: Build docs
         run: pnpm run docs-build
 
+      - name: Lighthouse
+        run: pnpm --filter @avero/docs exec lhci autorun
+        env:
+          # The docs build already ran above; autorun starts it and asserts the budgets.
+          LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
+
+      - name: Upload Lighthouse report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: apps/docs/.lighthouseci
+          retention-days: 14
+
       - name: Upload Playwright report
         if: failure()
         uses: actions/upload-artifact@v4
