@@ -52,12 +52,12 @@
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
-| 11 | Documentation site | 🟨 | 2 / 14 | 3 (can start in parallel) | L | 2026-06-19 | |
+| 11 | Documentation site | 🟨 | 3 / 12 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 104 / 146 phase-DoD items (≈71%).
+**Overall:** 105 / 144 phase-DoD items (≈73%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -109,6 +109,7 @@
 | D-24 | `@avero/editor` size budget | **Raised from 11 kB to 12 kB** (brotli, `import { RichTextEditor }`, Tiptap ignored). | CI measured 11.18 kB. `EditorToolbar` is tree-shaken out of that import; the growth is the shared `fa`/`en` dictionary from `@avero/react`, which `useAvero` pulls in whole and which the Toast, Lightbox and editor toolbar strings grew by about 300 B. 12 kB leaves room for new strings. | User, 2026-09-09 |
 | D-25 | Precompiled CSS for non-Tailwind consumers | **Deferred out of Phase 11.** Avero requires Tailwind v4. The Installation page documents the Tailwind path only and states the limitation; the missing `@avero/react/styles.css` promised by §6.3 is recorded in `docs/known-debts.md`. | The stylesheet is a packaging feature, not documentation: it needs a Tailwind CLI build step, two exports and a size budget. Documenting a path that does not ship would be worse than naming the gap. | User, 2026-09-10 |
 | D-26 | Versioned docs | **Deferred to Phase 13.** The Phase 11 item is conditional on a previous major existing, and nothing is published yet. | Building a version tree with one version in it is scaffolding without content; 1.0 is the first point at which versioning means anything. | User, 2026-09-10 |
+| D-27 | Where the example templates live | **Storybook only.** TP-01…TP-06 stay in `apps/storybook/src/templates`. The docs site does not embed them and gains no Templates section. | The templates are a review and a11y surface, not reference documentation: the browser axe suite runs against their story IDs. Sharing them with the docs app would need a new workspace package for content that only ever gets reviewed, and duplicating them would let the two copies drift. | User, 2026-09-10 |
 
 ---
 
@@ -779,11 +780,11 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 12. Related components.
 
 **DoD:**
-- [ ] Information architecture: Getting Started (Introduction, Installation for Tailwind v4, Fonts, RTL & i18n, Theming, Tokens, Changelog), Foundations, Components, Blocks, Templates, Utilities, Charts, Editor — Getting Started is complete (six pages plus an expanded Introduction; the Changelog page reads the `.changeset` directory so it cannot drift). The precompiled-CSS path is dropped from this item by D-25. Templates, Utilities, Charts and Editor sections remain.
+- [x] Information architecture: Getting Started (Introduction, Installation for Tailwind v4, Fonts, RTL & i18n, Theming, Tokens, Changelog), Foundations, Components, Blocks, Utilities, Charts, Editor — Getting Started is six pages plus an expanded Introduction, and its Changelog page reads the `.changeset` directory so it cannot drift; Utilities is `cn`, formatting, sanitization and hooks; Charts and Editor are their own sidebar groups. The precompiled-CSS path is dropped by D-25 and the Templates section by D-27.
 - [x] Every Done component in §9 has a page with all 12 template sections — `apps/docs/scripts/check-doc-sections.mjs` encodes the template as an ordered table (the required headings, plus a `View source` link that resolves, an import line, a primary demo above the first section, separate demos per variant, a generated `<PropsTable>` wherever the component adds props of its own, and an `Installation` section for packages with peers) and runs as a CI gate; all 73 pages pass (CI green)
 - [ ] Props tables are generated from source at build time (never hand-written); the build fails on undocumented public props
 - [ ] Blocks gallery with live preview, copy-paste code and full-page previews
-- [ ] Templates section showing the example templates as full-screen demos
+- [~] Templates section showing the example templates as full-screen demos — **dropped by D-27.** The example templates stay in Storybook; the docs site carries no Templates section.
 - [x] Token pages are generated from `tokens.json` — the Foundations pages read the token data generated from the same source (`@avero/tokens`), never hand-written values
 - [ ] Global site search (Fumadocs search) indexes all pages
 - [ ] Global RTL/LTR and `fa`/`en` switches persist across pages
@@ -948,14 +949,14 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | T-08 | SplitDetailLayout | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | T-09 | ProfileLayout | 8 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | B-01…B-25 | Blocks (see §5.10) — all 25 implemented | 10 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| TP-01 | Article template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
-| TP-02 | Course detail template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
-| TP-03 | Course listing template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
-| TP-04 | Instructor profile template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
-| TP-05 | Learner dashboard template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
-| TP-06 | About page template | 10 | ✅ | ✅ | ✅ | ⬜ | 🟨 |
+| TP-01 | Article template | 10 | ✅ | ✅ | ✅ | — | ✅ |
+| TP-02 | Course detail template | 10 | ✅ | ✅ | ✅ | — | ✅ |
+| TP-03 | Course listing template | 10 | ✅ | ✅ | ✅ | — | ✅ |
+| TP-04 | Instructor profile template | 10 | ✅ | ✅ | ✅ | — | ✅ |
+| TP-05 | Learner dashboard template | 10 | ✅ | ✅ | ✅ | — | ✅ |
+| TP-06 | About page template | 10 | ✅ | ✅ | ✅ | — | ✅ |
 
-> Template rows: Test and A11y are the browser axe suite, green; Docs is the Templates section of the docs site (Phase 11).
+> Template rows: Test and A11y are the browser axe suite, green. The Docs column does not apply to them — by D-27 the example templates live only in Storybook, so their Storybook stories are the deliverable.
 
 ---
 
