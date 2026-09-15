@@ -11,7 +11,8 @@
     "check-sections": "node scripts/check-doc-sections.mjs",
     "check-props": "node scripts/check-props-documented.mjs",
     "check-links": "node scripts/check-links.mjs",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "lhci autorun",
+    "check-demos": "node scripts/check-demos.mjs"
   },
   "dependencies": {
     "@avero/charts": "workspace:^",

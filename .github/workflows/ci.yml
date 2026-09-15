@@ -60,6 +60,9 @@ jobs:
       - name: Docs internal links
         run: pnpm --filter @avero/docs run check-links
 
+      - name: Docs live demos
+        run: pnpm --filter @avero/docs run check-demos
+
       - name: Build docs
         run: pnpm run docs-build
 

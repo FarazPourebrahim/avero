@@ -3,6 +3,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
+import { BlocksGallery } from "./BlocksGallery";
 import { UnreleasedChanges } from "./Changesets";
 import { ComponentPreview } from "./ComponentPreview";
 import { ColorTokens } from "./foundations/ColorTokens";
@@ -14,6 +15,7 @@ import { PropsTable } from "./PropsTable";
 
 // Components available in every MDX page without an import.
 const docsComponents = {
+  BlocksGallery,
   ComponentPreview,
   PropsTable,
   Tab,
