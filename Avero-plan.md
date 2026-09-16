@@ -52,12 +52,12 @@
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
-| 11 | Documentation site | 🟨 | 12 / 12 | 3 (can start in parallel) | L | 2026-06-19 | |
-| 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
+| 11 | Documentation site | ✅ | 12 / 12 | 3 (can start in parallel) | L | 2026-06-19 | 2026-09-10 |
+| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 0 / 13 | 10, 11 | M | 2026-09-10 | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 114 / 144 phase-DoD items (≈79%). Phase 11's DoD is complete; the phase stays 🟨 until its exit gate — the recorded install-and-render walkthrough — is done. Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
+**Overall:** 114 / 144 phase-DoD items (≈79%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -762,7 +762,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** every template passes the axe suite in CI. ✅ The browser axe suite covers the six `Templates/*` stories in both directions (CI green).
 
-### Phase 11 — Documentation site  🟨
+### Phase 11 — Documentation site  ✅
 
 **Scope:** `apps/docs`, modelled on large libraries (shadcn/ui, MUI, Chakra, Radix).
 
@@ -798,9 +798,9 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Evidence:** GitHub Actions `CI` green on `dev` (2026-09-10), covering the four docs gates (page template, props coverage, internal links, live demos), the docs build and Lighthouse. Locally the same run: `lhci autorun` green on 2026-09-10 (accessibility 1.00 on both pages across six runs, performance 0.98/0.97, best practices 0.96); `pnpm packages-build` and `pnpm docs-build` green locally on 2026-09-10 — 314 static pages (117 documentation pages and 193 full-page previews), with the four docs gates, `pnpm typecheck` and `pnpm lint` clean. Spot-checked against the production server: search returns results, the new Getting Started, Utilities, gallery and preview routes serve 200, the changelog lists the 24 pending changesets, and the Icons page no longer expands the inherited SVG attributes.
 
-**Exit gate:** a reviewer can install Avero in a blank Vite + Tailwind v4 app using only the docs, and render a block in under 15 minutes (recorded walkthrough).
+**Exit gate:** a reviewer can install Avero in a blank Vite + Tailwind v4 app using only the docs, and render a block in under 15 minutes (recorded walkthrough). ✅ Walkthrough completed and signed off by the user, 2026-09-10.
 
-### Phase 12 — Hardening: a11y, performance, SSR, security  ⬜
+### Phase 12 — Hardening: a11y, performance, SSR, security  🟨
 
 **DoD:**
 - [ ] Full axe pass across every story and example template: 0 violations
