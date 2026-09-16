@@ -91,7 +91,7 @@ export const ReactionBar = forwardRef<HTMLDivElement, ReactionBarProps>(function
         <span
           data-slot="reaction-bar-views"
           aria-label={dictionary.views}
-          className={cn(PILL, "bg-gray-100 text-gray-500")}
+          className={cn(PILL, "bg-gray-100 text-gray-600")}
         >
           <EyeIcon />
           {views}

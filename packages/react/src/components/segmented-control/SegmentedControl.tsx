@@ -69,7 +69,7 @@ export const SegmentedControlItem = forwardRef<HTMLButtonElement, SegmentedContr
         data-slot="segmented-control-item"
         className={cn(
           "text-2xs flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-2.5 py-1.5 font-medium transition-all sm:flex-initial sm:px-3 sm:text-xs",
-          "data-[state=off]:text-gray-500 data-[state=off]:hover:text-gray-700",
+          "data-[state=off]:text-gray-600 data-[state=off]:hover:text-gray-800",
           "data-[state=on]:bg-white data-[state=on]:text-indigo-600 data-[state=on]:shadow-xs",
           "focus-visible:ring-primary/40 focus-visible:ring-2 focus-visible:outline-none",
           className,

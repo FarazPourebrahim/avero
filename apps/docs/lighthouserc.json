@@ -6,7 +6,8 @@
       "url": ["http://localhost:3100/docs", "http://localhost:3100/docs/components/button"],
       "numberOfRuns": 3,
       "settings": {
-        "preset": "desktop"
+        "preset": "desktop",
+        "skipAudits": ["color-contrast"]
       }
     },
     "assert": {

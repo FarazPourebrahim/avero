@@ -114,7 +114,7 @@ const PAIRS = [
     where: "Meta text directly on the page background",
   },
   {
-    fg: "gray-500",
+    fg: "gray-600",
     bg: "gray-100",
     size: "normal",
     where: "Segmented control and reaction pills (idle)",
