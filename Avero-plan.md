@@ -52,12 +52,12 @@
 | 8 | Layout shells and site chrome | ✅ | 8 / 8 | 5, 6, 7 | M | 2026-07-05 | 2026-08-18 |
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
-| 11 | Documentation site | 🟨 | 10 / 12 | 3 (can start in parallel) | L | 2026-06-19 | |
+| 11 | Documentation site | 🟨 | 11 / 12 | 3 (can start in parallel) | L | 2026-06-19 | |
 | 12 | Hardening: a11y, performance, SSR, security | ⬜ | 0 / 13 | 10, 11 | M | | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 112 / 144 phase-DoD items (≈78%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
+**Overall:** 113 / 144 phase-DoD items (≈78%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -786,7 +786,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Blocks gallery with live preview, copy-paste code and full-page previews — `blocks/gallery` renders all 25 blocks, each with its live preview and a copying Code tab, reading the title, description and primary demo from the block pages so it cannot drift; `/preview/[...name]` renders any registered demo full width with no documentation chrome.
 - [~] Templates section showing the example templates as full-screen demos — **dropped by D-27.** The example templates stay in Storybook; the docs site carries no Templates section.
 - [x] Token pages are generated from `tokens.json` — the Foundations pages read the token data generated from the same source (`@avero/tokens`), never hand-written values
-- [ ] Global site search (Fumadocs search) indexes all pages — wired (`app/api/search/route.ts` with `createFromSource`, and the layout renders the trigger), but never verified against a built site. Confirm on the next CI docs build before ticking.
+- [x] Global site search (Fumadocs search) indexes all pages — `app/api/search/route.ts` with `createFromSource`; verified against the production build on 2026-09-10 by querying `/api/search`, which returns page, heading and text hits with match highlighting, including the new Getting Started and Utilities pages.
 - [x] Global RTL/LTR and `fa`/`en` switches persist across pages — one `PreviewSettingsProvider` holds the direction and its locale for every demo on the site, stored in `localStorage` and read after mount so hydration still matches, with the switch in the navbar. Storage access is wrapped, since it throws in a private window.
 - [x] Docs are themselves built with Avero components and Lahzeh (dogfooding) — the body is set in Lahzeh through the same `--font-sans` token a consumer gets, every demo and the full-page previews render inside `AveroProvider`, and the navbar direction switch is Avero's `SegmentedControl`. The sidebar, search and table of contents stay Fumadocs: replacing a documentation framework's own navigation would cost more than it demonstrates.
 - [x] Every code example on the site is type-checked in CI (examples compile) — every live example is a real `.tsx` under `apps/docs/demos/`, inside the app's tsconfig, so `pnpm typecheck` compiles all 193; `ComponentPreview` reads the demo file itself for the Code tab, so a snippet cannot drift from what it renders, and `check-demos.mjs` keeps the registry, the files and the pages in agreement. Prose code fences are deliberate fragments (no imports, no surrounding component) and are illustrative rather than compiled.
@@ -794,6 +794,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Broken-link check passes in CI — `apps/docs/scripts/check-links.mjs` resolves every internal link and heading anchor in the content tree, ignoring links inside code samples and never fetching external URLs. It found two broken links (the achievements-panel and provider-card pages pointed at `components/stat`, served at `components/stats`); 353 links across 117 pages now resolve.
 - [⏸️] Versioned docs (at least "latest" plus the previous major, once one exists) — deferred to Phase 13 by D-26: no major version exists yet, so there is nothing to version against.
 - [x] Contributing guide and `docs/avero-conventions.md` are linked from the site — `CONTRIBUTING.md` did not exist and now carries the workflow, the three blocking lint rules, the component checklist and the three docs checks. The navbar links both it and the conventions reference, and the Introduction points at both.
+
+**Evidence:** `pnpm packages-build` and `pnpm docs-build` green locally on 2026-09-10 — 314 static pages (117 documentation pages and 193 full-page previews), with the four docs gates, `pnpm typecheck` and `pnpm lint` clean. Spot-checked against the production server: search returns results, the new Getting Started, Utilities, gallery and preview routes serve 200, the changelog lists the 24 pending changesets, and the Icons page no longer expands the inherited SVG attributes.
 
 **Exit gate:** a reviewer can install Avero in a blank Vite + Tailwind v4 app using only the docs, and render a block in under 15 minutes (recorded walkthrough).
 
