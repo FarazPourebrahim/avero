@@ -10,6 +10,22 @@ globalThis.ResizeObserver ??= class ResizeObserver {
   disconnect() {}
 };
 
+// Embla reads media queries when it activates. Without this it throws on mount, which would leave
+// the carousel testable only against a mock — and a mock cannot show whether listeners are removed.
+if (typeof window !== "undefined") {
+  window.matchMedia ??= (query: string) =>
+    ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      addListener: () => {},
+      removeListener: () => {},
+      dispatchEvent: () => false,
+    }) as MediaQueryList;
+}
+
 if (typeof Element !== "undefined") {
   Element.prototype.hasPointerCapture ??= () => false;
   Element.prototype.setPointerCapture ??= () => {};

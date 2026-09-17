@@ -63,6 +63,31 @@ describe("sanitizeHtml", () => {
     );
   });
 
+  it("neutralises dangerous URL schemes written to evade a plain string match", () => {
+    // Case variations and HTML entities resolve to the same scheme, so matching on the literal
+    // text "javascript:" would miss both.
+    expect(sanitizeHtml('<a href="JaVaScRiPt:alert(1)">x</a>')).not.toContain("alert");
+    expect(sanitizeHtml('<a href="&#106;avascript:alert(1)">x</a>')).not.toContain("alert");
+    expect(sanitizeHtml('<a href="vbscript:alert(1)">x</a>')).not.toContain("vbscript");
+  });
+
+  it("drops data URLs that carry markup but keeps inline images", () => {
+    expect(sanitizeHtml('<a href="data:text/html;base64,PHNjcmlwdD4=">x</a>')).toBe(
+      "<a href>x</a>",
+    );
+    expect(sanitizeHtml('<img src="data:text/html,<script>alert(1)</script>">')).toBe("<img src>");
+    expect(sanitizeHtml('<img src="data:image/png;base64,iVBORw0KGgo=">')).toBe(
+      '<img src="data:image/png;base64,iVBORw0KGgo=">',
+    );
+  });
+
+  it("drops inline styles, including CSS expressions and script URLs", () => {
+    expect(sanitizeHtml('<p style="width:expression(alert(1))">x</p>')).toBe("<p>x</p>");
+    expect(sanitizeHtml('<div style="background:url(javascript:alert(1))">x</div>')).toBe(
+      "<div>x</div>",
+    );
+  });
+
   it("drops embedded frames and objects entirely", () => {
     expect(sanitizeHtml('<iframe src="https://evil.test"></iframe><p>a</p>')).toBe("<p>a</p>");
     expect(sanitizeHtml('<object data="x"></object><p>a</p>')).toBe("<p>a</p>");

@@ -53,11 +53,11 @@
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
 | 11 | Documentation site | ✅ | 12 / 12 | 3 (can start in parallel) | L | 2026-06-19 | 2026-09-10 |
-| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 0 / 13 | 10, 11 | M | 2026-09-10 | |
+| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 2 / 13 | 10, 11 | M | 2026-09-10 | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 114 / 144 phase-DoD items (≈79%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
+**Overall:** 116 / 144 phase-DoD items (≈81%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -813,8 +813,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [ ] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome
 - [ ] `docs/SECURITY.md` checklist completed (per CLAUDE.md): sanitization, no `dangerouslySetInnerHTML` outside `RichContent`, external links `rel="noopener noreferrer"`, no `eval`, dependency audit clean (`pnpm audit`), lockfile committed
 - [ ] Supply-chain checks: publish via CI only, npm provenance, 2FA on the npm org, no install scripts in packages
-- [ ] Memory and cleanup: overlays and carousels unmount listeners (tests with StrictMode double-mount)
-- [ ] No `console.*`, `debugger`, `.only` or `.skip` anywhere (lint + CI grep)
+- [x] Memory and cleanup: overlays and carousels unmount listeners (tests with StrictMode double-mount) — `src/test/strictModeCleanup.test.tsx` renders `Carousel`, `InfiniteScroll`, `TableOfContents`, `Dialog` and `Drawer` under `StrictMode`, counts every `window` and `document` listener through wrapped add/remove, and asserts none survives unmount; overlays are opened first, since they only subscribe once open. React's own leftovers (`selectionchange`) are measured from a bare element each run rather than hardcoded, so a React upgrade cannot turn into a false failure. A separate case proves every `IntersectionObserver` is disconnected. `setup.ts` gained a `matchMedia` stub so the real Embla mounts — a mocked carousel could not show whether listeners are removed.
+- [x] No `console.*`, `debugger`, `.only` or `.skip` anywhere (lint + CI grep) — `no-console` is enforced by ESLint and `pnpm lint` is green at 0 warnings; a repository-wide grep over `packages/*/src`, `apps/*/src` and the docs app returns nothing.
 - [ ] `docs/known-debts.md` reviewed; no high-severity items open
 
 **Exit gate:** a release-candidate build passes the complete CI matrix twice consecutively.
