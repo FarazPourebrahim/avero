@@ -1,6 +1,6 @@
 {
   "name": "@avero/tokens",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Avero design tokens: Tailwind CSS v4 theme, base styles, utilities and token data.",
   "sideEffects": [

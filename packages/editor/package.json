@@ -1,6 +1,6 @@
 {
   "name": "@avero/editor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Tiptap rich-text editor sharing Avero's prose styles.",
   "sideEffects": false,
