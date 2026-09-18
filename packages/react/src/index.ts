@@ -53,6 +53,7 @@ export * from "./icons/publicIcons.js";
 
 // Primitives
 export * from "./components/avatar/index.js";
+export * from "./components/avatar-group/index.js";
 export * from "./components/badge/index.js";
 export * from "./components/button/index.js";
 export * from "./components/chip/index.js";
@@ -62,6 +63,8 @@ export * from "./components/icon-tile/index.js";
 export * from "./components/image/index.js";
 export * from "./components/link/index.js";
 export * from "./components/progress/index.js";
+export * from "./components/skeleton/index.js";
+export * from "./components/spinner/index.js";
 export * from "./components/typography/index.js";
 export * from "./components/visually-hidden/index.js";
 

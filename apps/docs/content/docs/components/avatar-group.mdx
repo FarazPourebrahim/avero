@@ -1,0 +1,116 @@
+---
+title: AvatarGroup
+description: Overlapping avatars for a small group, with the remainder collapsed into a counted tile.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/avatar-group)
+
+```tsx
+import { Avatar, AvatarGroup } from "@avero/react";
+```
+
+<ComponentPreview name="avatar-group/participants" />
+
+## Anatomy
+
+| Part     | Slot                                | Notes                                              |
+| -------- | ----------------------------------- | -------------------------------------------------- |
+| Root     | `data-slot="avatar-group"`          | `role="group"`, named by `label`                   |
+| Avatars  | the `Avatar` children you pass      | Overlapped with a negative logical margin          |
+| Overflow | `data-slot="avatar-group-overflow"` | The "+N" tile, shown only when `max` hides someone |
+
+The group does not create avatars. You pass `Avatar` children, so their size, shape and border stay
+yours to set.
+
+## Examples
+
+### Participants with an overflow count
+
+Beyond `max`, the remainder collapses into a counted tile, so a long list never pushes the layout.
+
+<ComponentPreview name="avatar-group/participants" />
+
+### Overlap
+
+Three overlap distances. Tighter reads as a denser group; looser keeps faces legible at small sizes.
+
+<ComponentPreview name="avatar-group/overlap" />
+
+## Right-to-left
+
+The stack overlaps towards the reading direction: each avatar sits on top of the previous one, with
+the first face nearest the inline start. That comes from a negative **logical** margin (`-ms-*`), so
+the order reverses with the direction and the first child stays the one the eye meets first.
+
+The count is formatted with the active locale's digits, so it reads `+۲` in Persian and `+2` in
+English, and its accessible name comes from the dictionary.
+
+## Composition
+
+Size the group by sizing its children, and match the overflow tile with `size`:
+
+```tsx
+<AvatarGroup label="شرکت‌کنندگان" max={4} size="xs">
+  {people.map((person) => (
+    <Avatar key={person.id} name={person.name} src={person.avatar} size="xs" />
+  ))}
+</AvatarGroup>
+```
+
+It is most often used inside a card's meta row, beside a capacity count:
+
+```tsx
+<div className="flex items-center gap-3">
+  <AvatarGroup label="ثبت‌نام‌شده‌ها" max={3} size="xs">
+    …
+  </AvatarGroup>
+  <CapacityMeter value={12} max={20} />
+</div>
+```
+
+## Accessibility
+
+The root is a `role="group"`. **Give it a `label`** — without one, a screen reader meets a cluster of
+images with no explanation of what the group is.
+
+Each avatar keeps its own accessible name, so the people are readable individually. The overflow
+tile is an image with a name from the dictionary's `avatarGroupOverflow` entry, so "+۲" is announced
+as "۲ نفر دیگر" rather than as a stray plus sign.
+
+| Element       | Role    | Accessible name                     |
+| ------------- | ------- | ----------------------------------- |
+| Root          | `group` | `label`                             |
+| Each avatar   | `img`   | The person's name                   |
+| Overflow tile | `img`   | "{count} more", from the dictionary |
+
+The group is not focusable and has no keyboard behaviour: it presents people, it does not select
+them. If a group member needs to be actionable, wrap each avatar in a link or button yourself.
+
+## API reference
+
+<PropsTable file="components/avatar-group/AvatarGroup.tsx" name="AvatarGroupOwnProps" />
+
+The root carries `data-slot="avatar-group"`, and the overflow tile
+`data-slot="avatar-group-overflow"`.
+
+## Theming
+
+| Token              | Used for                                   |
+| ------------------ | ------------------------------------------ |
+| `--color-gray-100` | The overflow tile's fill                   |
+| `--color-gray-600` | The overflow tile's text (AA on that fill) |
+| `--color-white`    | The ring that separates overlapped avatars |
+
+The tile reuses `avatarVariants`, so it always matches the avatars it sits beside.
+
+## Do and don't
+
+- **Do** set `label`; the group is meaningless to a screen reader without it.
+- **Do** give the overflow tile the same `size` as the avatars around it.
+- **Don't** stack more than about five faces before collapsing — past that the overlap hides them
+  and the count communicates more.
+- **Don't** use it as a control. It presents people; selection belongs to a list or a menu.
+
+## Related
+
+[Avatar](./avatar) · [CapacityMeter](./capacity-meter) · [MetaItem and MetaBar](./meta)

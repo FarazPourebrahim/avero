@@ -1,0 +1,135 @@
+---
+title: Skeleton
+description: Placeholders that hold the shape of content while it loads, so the layout does not jump.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/skeleton)
+
+```tsx
+import { Skeleton, SkeletonCard, SkeletonText } from "@avero/react";
+```
+
+<ComponentPreview name="skeleton/card" />
+
+## Anatomy
+
+| Part     | Slot                        | Notes                                          |
+| -------- | --------------------------- | ---------------------------------------------- |
+| Skeleton | `data-slot="skeleton"`      | One bar, block or circle; always `aria-hidden` |
+| Text     | `data-slot="skeleton-text"` | A column of lines, the last one short          |
+| Card     | `data-slot="skeleton-card"` | Cover, title, two lines and an optional byline |
+
+`SkeletonText` and `SkeletonCard` are presets composed from `Skeleton`; anything they do not cover
+you build from the base component.
+
+## Examples
+
+### Shapes
+
+`line` and `title` stand in for text, `block` for media, `circle` for an avatar. Width is yours to
+set — the shape only fixes the height and the corner radius.
+
+<ComponentPreview name="skeleton/shapes" />
+
+### Animations
+
+`shimmer` sweeps a highlight across the placeholder and suits a first load. `pulse` is quieter and
+reads better when many skeletons are on screen at once. `none` keeps the shape without motion.
+
+<ComponentPreview name="skeleton/animations" />
+
+### Card preset
+
+`SkeletonCard` matches the proportions of a listing or showcase card, so a grid keeps its geometry
+while the data arrives.
+
+<ComponentPreview name="skeleton/card" />
+
+## Right-to-left
+
+Skeletons are plain rectangles, so they mirror by being direction-neutral: widths, gaps and the
+short last line all use logical properties.
+
+The shimmer sweeps along the inline axis and is not reversed per direction. It reads as a highlight
+passing over a surface rather than as motion with a start and an end, so a direction-specific sweep
+would draw attention without adding meaning.
+
+## Composition
+
+Match the skeleton to the shape of what is coming. A skeleton that does not resemble the final
+content is worse than none, because the layout jumps twice:
+
+```tsx
+{
+  isLoading ? (
+    <div className="grid gap-4 sm:grid-cols-2">
+      <SkeletonCard footer />
+      <SkeletonCard footer />
+    </div>
+  ) : (
+    items.map((item) => <ListingCard key={item.id} {...item} />)
+  );
+}
+```
+
+For a paginated list, show skeletons for the first load only. Loading _more_ appends a small
+indicator below the existing rows and must not replace content the reader is already looking at —
+see [`InfiniteScroll`](./infinite-scroll).
+
+For a short inline wait, or where the shape is unknown, use [`Spinner`](./spinner) instead.
+
+## Accessibility
+
+**Skeletons are hidden from assistive technology.** Each one renders `aria-hidden="true"`: a screen
+reader should hear the loading state once, from the region that owns it, not once per placeholder
+bar.
+
+Put the announcement on that region:
+
+```tsx
+<section aria-busy={isLoading} aria-label="دوره‌ها">
+  {isLoading ? <SkeletonCard /> : <ListingCard {...course} />}
+</section>
+```
+
+The loading state must be visibly distinct from the [empty state](./empty-state) — a reader should
+never mistake "still arriving" for "there is nothing here".
+
+Under `prefers-reduced-motion` the token layer disables the shimmer and the pulse, leaving the
+shapes in place.
+
+## API reference
+
+<PropsTable file="components/skeleton/Skeleton.tsx" name="SkeletonOwnProps" />
+
+### SkeletonText
+
+<PropsTable file="components/skeleton/Skeleton.tsx" name="SkeletonTextOwnProps" />
+
+### SkeletonCard
+
+<PropsTable file="components/skeleton/Skeleton.tsx" name="SkeletonCardOwnProps" />
+
+The roots carry `data-slot="skeleton"`, `"skeleton-text"` and `"skeleton-card"`.
+
+## Theming
+
+| Token               | Used for                                      |
+| ------------------- | --------------------------------------------- |
+| `--color-slate-100` | The resting placeholder fill                  |
+| `--color-slate-200` | The bright band in the shimmer gradient       |
+| `--animate-shimmer` | The sweep, via the `skeleton-shimmer` utility |
+| `--color-surface`   | The card preset's surface                     |
+
+## Do and don't
+
+- **Do** mirror the real layout: the same number of lines, roughly the same widths.
+- **Do** announce the loading state once, on the region, not on each placeholder.
+- **Don't** use skeletons for an action the reader just triggered — a button should show its own
+  pending state instead.
+- **Don't** leave skeletons on screen indefinitely. A load that can fail resolves into an error
+  state.
+
+## Related
+
+[Spinner](./spinner) · [Progress](./progress) · [EmptyState](./empty-state) · [InfiniteScroll](./infinite-scroll)

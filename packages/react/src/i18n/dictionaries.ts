@@ -25,6 +25,10 @@ export type AveroDictionary = {
   goToSlide: string;
   /** "{value} of {max}", e.g. for capacity counts. */
   ofTotal: string;
+  /** Overflow count on an avatar group. `{count}` is replaced with how many are hidden. */
+  avatarGroupOverflow: string;
+  /** Accessible name of a busy indicator. */
+  busy: string;
   /** Caption under a match percentage. */
   matchLabel: string;
   /** Hint shown when hovering a zoomable image. */
@@ -189,6 +193,8 @@ export const fa: AveroDictionary = {
   tocTitle: "فهرست مطالب",
   goToSlide: "اسلاید {index}",
   ofTotal: "{value} از {max}",
+  avatarGroupOverflow: "{count} نفر دیگر",
+  busy: "در حال بارگذاری",
   matchLabel: "تطابق",
   zoomHint: "نمایش بزرگ‌تر",
   rating: "امتیاز {value}",
@@ -280,6 +286,8 @@ export const en: AveroDictionary = {
   tocTitle: "On this page",
   goToSlide: "Go to slide {index}",
   ofTotal: "{value} of {max}",
+  avatarGroupOverflow: "{count} more",
+  busy: "Busy",
   matchLabel: "Match",
   zoomHint: "View larger",
   rating: "Rating {value}",

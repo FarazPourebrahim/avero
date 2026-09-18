@@ -3,6 +3,7 @@
   "pages": [
     "---Primitives---",
     "avatar",
+    "avatar-group",
     "badge",
     "button",
     "chip",
@@ -13,6 +14,8 @@
     "image",
     "link",
     "progress",
+    "skeleton",
+    "spinner",
     "typography",
     "visually-hidden",
     "---Forms---",

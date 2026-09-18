@@ -640,7 +640,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] P-07 `IconTile` and P-08 `Icon` meet the Global DoD, including all categorical colours
 - [x] P-13 `Progress` meets the Global DoD (`role="progressbar"`, `aria-valuenow`)
 - [x] P-14 `VisuallyHidden`/`LiveRegion` and P-15 `Image`/`Figure` meet the Global DoD
-- [x] P-06b `AvatarGroup`, P-11 `Spinner` and P-12 `Skeleton` are split out as backlog rows in §9, so this phase does not wait on them
+- [x] P-06b `AvatarGroup`, P-11 `Spinner` and P-12 `Skeleton` are split out as backlog rows in §9, so this phase does not wait on them — all three built on 2026-09-19, after 1.0.0, with unit, SSR and axe tests, stories and docs pages; they ship in 1.1.0.
 
 **Exit gate:** a Storybook "Primitives" review page is signed off in a design review. ✅ Signed off by the user, 2026-08-18.
 
@@ -864,13 +864,13 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | P-04 | Badge | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-05 | Chip / Tag | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-06 | Avatar | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| P-06b | AvatarGroup | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| P-06b | AvatarGroup | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-07 | IconTile | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-08 | Icon + brand icons | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-09 | Divider | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-10 | Heading / Text / Eyebrow | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| P-11 | Spinner | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
-| P-12 | Skeleton | 3 | ⬜ | ⬜ | ⬜ | ⬜ | ⬜ |
+| P-11 | Spinner | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| P-12 | Skeleton | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-13 | Progress | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-14 | VisuallyHidden / LiveRegion | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | P-15 | Image / Figure | 3 | ✅ | ✅ | ✅ | ✅ | ✅ |

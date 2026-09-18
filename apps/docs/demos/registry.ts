@@ -192,6 +192,14 @@ import TypographyText from "./typography/text";
 import VisuallyHiddenLiveRegion from "./visually-hidden/live-region";
 import WelcomeCardDashboard from "./welcome-card/dashboard";
 import ZoomFrameGallery from "./zoom-frame/gallery";
+import AvatarGroupOverlap from "./avatar-group/overlap";
+import AvatarGroupParticipants from "./avatar-group/participants";
+import SkeletonAnimations from "./skeleton/animations";
+import SkeletonCardDemo from "./skeleton/card";
+import SkeletonShapes from "./skeleton/shapes";
+import SpinnerInContext from "./spinner/in-context";
+import SpinnerSizes from "./spinner/sizes";
+import SpinnerTones from "./spinner/tones";
 
 /** Every live demo, keyed by its file path under `demos/` (without extension). */
 export const demos = {
@@ -388,6 +396,14 @@ export const demos = {
   "typography/headings": TypographyHeadings,
   "typography/text": TypographyText,
   "visually-hidden/live-region": VisuallyHiddenLiveRegion,
+  "avatar-group/overlap": AvatarGroupOverlap,
+  "avatar-group/participants": AvatarGroupParticipants,
+  "skeleton/animations": SkeletonAnimations,
+  "skeleton/card": SkeletonCardDemo,
+  "skeleton/shapes": SkeletonShapes,
+  "spinner/in-context": SpinnerInContext,
+  "spinner/sizes": SpinnerSizes,
+  "spinner/tones": SpinnerTones,
 } satisfies Record<string, ComponentType>;
 
 export type DemoName = keyof typeof demos;

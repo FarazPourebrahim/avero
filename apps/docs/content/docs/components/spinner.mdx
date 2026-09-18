@@ -1,0 +1,121 @@
+---
+title: Spinner
+description: A busy indicator — a spinning ring, or the glow ring used while a page loads.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/spinner)
+
+```tsx
+import { Spinner } from "@avero/react";
+```
+
+<ComponentPreview name="spinner/sizes" />
+
+## Anatomy
+
+| Part | Slot                  | Notes                                           |
+| ---- | --------------------- | ----------------------------------------------- |
+| Root | `data-slot="spinner"` | A `<span>`; `aria-hidden` unless it is labelled |
+
+A spinner has no inner structure: the ring is a border with one transparent side, and the glow
+variant is the `glow-ring` utility.
+
+## Examples
+
+### Sizes
+
+Five diameters, from 14px to 32px. `sm` matches body text, `md` sits beside a heading.
+
+<ComponentPreview name="spinner/sizes" />
+
+### Tones and the glow variant
+
+`current` inherits the surrounding colour, which is what a button needs. The `glow` variant is the
+indigo spin used on a full-page wait.
+
+<ComponentPreview name="spinner/tones" />
+
+### In context
+
+Inside a control that already reports itself busy, the spinner stays decorative. Where it is the
+only sign of progress, the surrounding region carries the live announcement.
+
+<ComponentPreview name="spinner/in-context" />
+
+## Right-to-left
+
+The spinner is radially symmetric, so it does not mirror. Its rotation direction is the same in both
+locales — a clockwise spinner reads as "working" everywhere and is not a directional cue.
+
+Spacing around it uses logical properties, so `ms-2` puts a gap on the correct side in both
+directions.
+
+## Composition
+
+`Button` renders a spinner itself when `loading` is set, so you rarely place one there by hand:
+
+```tsx
+<Button loading>در حال ارسال</Button>
+```
+
+Use `Spinner` directly for inline waits — a list fetching more rows, a panel refreshing — and pair
+it with a region that owns the announcement:
+
+```tsx
+<p role="status" className="flex items-center gap-2">
+  <Spinner size="sm" />
+  در حال بارگذاری نظرات…
+</p>
+```
+
+For a first load of structured content, prefer [`Skeleton`](./skeleton): it holds the shape of what
+is coming, so the layout does not jump when the content lands.
+
+## Accessibility
+
+**The spinner is decorative by default.** It renders `aria-hidden`, because the common case is
+inside a `Button` that already sets `aria-busy` — announcing both would read the state twice.
+
+Set `labelled` (or pass `label`) when the spinner is the only thing reporting progress. It then
+renders `role="status"` with an accessible name from the dictionary's `busy` entry.
+
+| Property        | Decorative (default) | Labelled          |
+| --------------- | -------------------- | ----------------- |
+| `aria-hidden`   | `true`               | absent            |
+| `role`          | absent               | `status`          |
+| Accessible name | none                 | `label` or `busy` |
+
+A spinner that can fail must resolve into an explicit error state. Never leave one running forever.
+
+Under `prefers-reduced-motion` the token layer shortens or disables the animation, leaving a static
+ring.
+
+## API reference
+
+<PropsTable file="components/spinner/Spinner.tsx" name="SpinnerOwnProps" />
+
+The root carries `data-slot="spinner"`.
+
+## Theming
+
+| Token                 | Used for                      |
+| --------------------- | ----------------------------- |
+| `--color-primary`     | The `primary` tone            |
+| `--animate-spin-glow` | The `glow` variant's rotation |
+| `--color-gray-400`    | The `muted` tone              |
+
+The `ring` variant draws with `currentColor`, so it takes the colour of whatever contains it —
+override with a text colour rather than a spinner prop.
+
+## Do and don't
+
+- **Do** leave the spinner decorative inside a control that already announces itself busy.
+- **Do** use `tone="current"` inside buttons and links so it follows the label colour.
+- **Don't** show a bare spinner for a first page load where the shape of the content is known —
+  use [`Skeleton`](./skeleton).
+- **Don't** use a spinner for progress you can measure. [`Progress`](./progress) tells the reader
+  how much is left; a spinner cannot.
+
+## Related
+
+[Skeleton](./skeleton) · [Progress](./progress) · [Button](./button) · [EmptyState](./empty-state)
