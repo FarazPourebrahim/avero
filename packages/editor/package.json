@@ -2,7 +2,7 @@
   "name": "@avero/editor",
   "version": "0.0.0",
   "type": "module",
-  "description": "Avero rich text editor: Tiptap with Avero's editing surface.",
+  "description": "Tiptap rich-text editor sharing Avero's prose styles.",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -14,7 +14,8 @@
   },
   "files": [
     "dist",
-    "THIRD_PARTY_NOTICES.md"
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE"
   ],
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
@@ -69,5 +70,20 @@
     "typescript": "~6.0.3",
     "vite": "^8.3.0",
     "vitest": "^5.0.0"
+  },
+  "license": "MIT",
+  "author": "Faraz Pourebrahim",
+  "homepage": "https://github.com/FarazPourebrahim/avero",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarazPourebrahim/avero.git",
+    "directory": "packages/editor"
+  },
+  "bugs": {
+    "url": "https://github.com/FarazPourebrahim/avero/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

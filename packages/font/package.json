@@ -12,9 +12,25 @@
   },
   "files": [
     "src",
-    "files"
+    "files",
+    "LICENSE"
   ],
   "scripts": {
     "test": "node scripts/check-font-files.mjs"
+  },
+  "license": "MIT",
+  "author": "Faraz Pourebrahim",
+  "homepage": "https://github.com/FarazPourebrahim/avero",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarazPourebrahim/avero.git",
+    "directory": "packages/font"
+  },
+  "bugs": {
+    "url": "https://github.com/FarazPourebrahim/avero/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

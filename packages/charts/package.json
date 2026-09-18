@@ -2,7 +2,7 @@
   "name": "@avero/charts",
   "version": "0.0.0",
   "type": "module",
-  "description": "Avero chart components: Recharts wrappers styled to the Avero design system.",
+  "description": "Recharts wrappers styled with Avero's chart tokens.",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -13,7 +13,8 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
@@ -56,5 +57,20 @@
     "typescript": "~6.0.3",
     "vite": "^8.3.0",
     "vitest": "^5.0.0"
+  },
+  "license": "MIT",
+  "author": "Faraz Pourebrahim",
+  "homepage": "https://github.com/FarazPourebrahim/avero",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarazPourebrahim/avero.git",
+    "directory": "packages/charts"
+  },
+  "bugs": {
+    "url": "https://github.com/FarazPourebrahim/avero/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

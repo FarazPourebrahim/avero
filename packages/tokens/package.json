@@ -19,7 +19,8 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "src"
+    "src",
+    "LICENSE"
   ],
   "scripts": {
     "generate": "node scripts/generate-token-data.mjs",
@@ -32,5 +33,20 @@
   "devDependencies": {
     "lightningcss": "1.32.0",
     "tailwindcss": "^4.3.3"
+  },
+  "license": "MIT",
+  "author": "Faraz Pourebrahim",
+  "homepage": "https://github.com/FarazPourebrahim/avero",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarazPourebrahim/avero.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/FarazPourebrahim/avero/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

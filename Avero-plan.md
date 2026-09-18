@@ -53,11 +53,11 @@
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
 | 11 | Documentation site | ✅ | 12 / 12 | 3 (can start in parallel) | L | 2026-06-19 | 2026-09-10 |
-| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 7 / 13 | 10, 11 | M | 2026-09-10 | |
-| 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
+| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 11 / 13 | 10, 11 | M | 2026-09-10 | |
+| 13 | Release 1.0 | 🟨 | 3 / 10 | 12 | S | 2026-09-19 | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 121 / 144 phase-DoD items (≈84%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
+**Overall:** 128 / 144 phase-DoD items (≈89%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -111,6 +111,7 @@
 | D-26 | Versioned docs | **Deferred to Phase 13.** The Phase 11 item is conditional on a previous major existing, and nothing is published yet. | Building a version tree with one version in it is scaffolding without content; 1.0 is the first point at which versioning means anything. | User, 2026-09-10 |
 | D-27 | Where the example templates live | **Storybook only.** TP-01…TP-06 stay in `apps/storybook/src/templates`. The docs site does not embed them and gains no Templates section. | The templates are a review and a11y surface, not reference documentation: the browser axe suite runs against their story IDs. Sharing them with the docs app would need a new workspace package for content that only ever gets reviewed, and duplicating them would let the two copies drift. | User, 2026-09-10 |
 | D-28 | Lighthouse and colour contrast | **`color-contrast` is skipped in `lighthouserc.json`**, so the accessibility category is asserted at 1.00 without it. `SegmentedControl` and `ReactionBar`'s idle text moved from `gray-500` to `gray-600` on their `gray-100` track (4.39:1 → 6.87:1), because putting the segmented control in the docs navbar placed that pairing on every page. | Identical to D-19's reasoning for the axe suite: O-04 keeps below-AA pairings in the default palette, so enforcing contrast would contradict it. Every other accessibility audit passes at 1.00 on both pages, so the skip keeps a real gate — a new accessibility regression still fails CI — rather than lowering the threshold to a number that would absorb one. Phase 12's contrast review removes the skip. | User, 2026-09-10 |
+| D-29 | Licence and registry | **MIT**, published to **public npm** under the `avero` scope with provenance. The Lahzeh font files keep their own licence, which permits redistribution (O-02). | MIT is what the ecosystem Avero sits in uses — React, Radix, Tailwind — so it adds no friction for anyone evaluating the library, and a public registry matches a library whose components are deliberately domain-neutral and whose documentation is written for an outside reader. | User, 2026-09-19 |
 
 ---
 
@@ -803,14 +804,14 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 ### Phase 12 — Hardening: a11y, performance, SSR, security  🟨
 
 **DoD:**
-- [ ] Full axe pass across every story and example template: 0 violations — the suite existed but CI installed Playwright's browsers without ever running them, so this had only ever been checked on demand. CI now runs `pnpm run storybook-test` (smoke, axe over every story in both directions, overlay stacking, scroll lock, fonts). Tick once that step is green.
-- [ ] Manual screen-reader pass (NVDA + Firefox, VoiceOver + Safari) on every interactive component, with findings fixed or logged in `known-debts.md` — needs a human on Windows and macOS; logged in `docs/known-debts.md`.
-- [ ] Keyboard-only walkthrough of every example template recorded — needs a human; logged in `docs/known-debts.md`.
+- [x] Full axe pass across every story and example template: 0 violations — the suite existed but CI installed Playwright's browsers without ever running them, so this had only ever been checked on demand. CI now runs `pnpm run storybook-test` (smoke, axe over every story in both directions, overlay stacking, scroll lock, fonts), and the user confirmed the step green on 2026-09-19.
+- [x] Manual screen-reader pass (NVDA + Firefox, VoiceOver + Safari) on every interactive component, with findings fixed or logged in `known-debts.md` — completed and signed off by the user, 2026-09-19.
+- [x] Keyboard-only walkthrough of every example template recorded — completed and signed off by the user, 2026-09-19.
 - [x] Contrast report reviewed; O-04 decision applied — all 27 failing pairings reviewed on 2026-09-10 and O-04 upheld. `docs/known-debts.md` now carries the review: 13 pairings are fixable by overriding a token, with a ready-to-paste strict-AA `@theme` block whose every value was measured (6.87–7.58 for the text tokens, 4.24–5.18 for the rest); the other 14 are Tailwind palette classes inside components, which a theme cannot reach and which need a code change, listed with the shade each should move to.
 - [x] SSR/RSC: every export renders in a Next.js App Router Server Component test page without errors; client components are correctly marked — `apps/docs/app/rsc-check/page.tsx` is a Server Component (no `"use client"`, no hooks) rendering the server-safe surface: primitives, typography, prose, `RichContent`, the form controls, the data-display family and `Table`. It prerenders as static in the docs build, so a server-safe module that started depending on client-only React would fail the build. 96 `renderToString` smoke tests cover the rest, and `verify-build.mjs` confirms all 54 `"use client"` directives survive the build.
 - [x] Tree-shaking verified: importing one component pulls in only its own code (bundle analysis artefact) — measured with `size-limit`, which bundles each import in isolation: the whole library is 111.89 kB brotli, `{ Badge }` is 9.21 kB and `{ DashboardShell }` 9.13 kB. 8.45 kB of that is `cn` (`tailwind-merge` + `clsx`), the shared floor every component pays once, so a primitive's own code is under a kilobyte.
 - [x] Per-component `size-limit` budgets met; total core gzip budget recorded — `@avero/react` had a budget for `cn` alone. It now measures the whole library (120 kB budget, 111.89 kB measured) plus eleven components spanning the range: Badge 9.21, DashboardShell 9.13, Button 10.8, ActivityHeatmap 12.98, RichContent 14.33, Carousel 22.85, SiteFooter 22.99, Dialog 25.66, Combobox 36.15, DatePicker 38.95 kB. All pass, alongside charts 8.93/10 kB and the editor 11.18/12 kB.
-- [ ] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome — the Playwright config defines all six targets (Chromium, Edge via the `msedge` channel, Firefox, WebKit, iPhone 14, Pixel 7) and `.github/workflows/browser-matrix.yml` runs them nightly and on request, so pull requests stay on Chromium. Playwright ships one version per engine, so "latest 2 versions" is not expressible; recorded in `docs/known-debts.md`. Tick once the nightly run is green.
+- [x] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome — the Playwright config defines all six targets (Chromium, Edge via the `msedge` channel, Firefox, WebKit, iPhone 14, Pixel 7) and `.github/workflows/browser-matrix.yml` runs them nightly and on request, so pull requests stay on Chromium. The user confirmed the nightly run green on 2026-09-19. Playwright ships one version per engine, so "latest 2 versions" is not expressible; that limitation stays recorded in `docs/known-debts.md`.
 - [x] `docs/SECURITY.md` checklist completed (per CLAUDE.md): sanitization, no `dangerouslySetInnerHTML` outside `RichContent`, external links `rel="noopener noreferrer"`, no `eval`, dependency audit clean (`pnpm audit`), lockfile committed — 16 of 17 items verified on 2026-09-10 with the evidence recorded inline. Notable: Avero builds no share or contact URLs at all (`ShareBar` reports the channel through `onShare`), and package source contains no storage, cookie, network or navigation API. The seventeenth waits on the npm organisation.
 - [ ] Supply-chain checks: publish via CI only, npm provenance, 2FA on the npm org, no install scripts in packages — `.github/workflows/release.yml` publishes from `main` through Changesets with `NPM_CONFIG_PROVENANCE` and an OIDC token, and no published package defines an install hook. The `avero` organisation is still unreserved (O-06), so 2FA cannot be enabled and the workflow has never run.
 - [x] Memory and cleanup: overlays and carousels unmount listeners (tests with StrictMode double-mount) — `src/test/strictModeCleanup.test.tsx` renders `Carousel`, `InfiniteScroll`, `TableOfContents`, `Dialog` and `Drawer` under `StrictMode`, counts every `window` and `document` listener through wrapped add/remove, and asserts none survives unmount; overlays are opened first, since they only subscribe once open. React's own leftovers (`selectionchange`) are measured from a bare element each run rather than hardcoded, so a React upgrade cannot turn into a false failure. A separate case proves every `IntersectionObserver` is disconnected. `setup.ts` gained a `matchMedia` stub so the real Embla mounts — a mocked carousel could not show whether listeners are removed.
@@ -819,15 +820,15 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 
 **Exit gate:** a release-candidate build passes the complete CI matrix twice consecutively.
 
-### Phase 13 — Release 1.0  ⬜
+### Phase 13 — Release 1.0  🟨
 
 **DoD:**
 - [ ] All §9 rows are ✅, or ⏸️ with the user's written approval
-- [ ] Semantic versioning policy documented (what counts as breaking: props, tokens, class output)
+- [x] Semantic versioning policy documented (what counts as breaking: props, tokens, class output) — the docs Changelog page states it: the five published packages are linked so they move together, and the rule that Avero's emitted class list is part of its contract, so a change that stops a documented override applying is breaking even when the props are untouched. `docs/avero-conventions.md` carries the same policy.
 - [ ] Changesets produce the 1.0.0 changelog for every package
 - [ ] Packages published to the registry chosen in O-01, with provenance
-- [ ] `LICENSE` files in place; font licence constraints respected (O-02)
-- [ ] README per package with install, usage and a link to the docs
+- [x] `LICENSE` files in place; font licence constraints respected (O-02) — MIT at the repository root and in all six packages, with `license: "MIT"` in every `package.json`; `npm pack --dry-run` confirms each tarball carries it. The Lahzeh files keep their own licence, which permits redistribution, recorded in `packages/font/files/README.md` next to the nine weights, and `@avero/font`'s README says so rather than implying MIT covers them.
+- [x] README per package with install, usage and a link to the docs — all five published packages. Each covers install with its peers, the stylesheet or provider setup, what the package contains and its licence; `@avero/react`'s leads with the `@source` line, the step whose absence produces unstyled components. Verified present in every tarball.
 - [ ] Docs deployed at the production URL, pinned to the 1.0 version
 - [ ] Clean-install smoke tests pass in fresh Vite, Next.js App Router and Remix/React Router projects
 - [ ] Theming guide: overriding tokens, adding a brand colour, and building a custom theme on the semantic tokens
@@ -981,7 +982,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 
 | ID | Question | Recommendation | Needed by |
 | --- | --- | --- | --- |
-| O-01 | Registry: public npm, private npm org or GitHub Packages? | Private until 1.0 is stable; decide public vs private at Phase 13 | ✅ Resolved 2026-06-19: as recommended |
+| O-01 | Registry: public npm, private npm org or GitHub Packages? | Private until 1.0 is stable; decide public vs private at Phase 13 | ✅ Resolved 2026-09-19: **public npm**. `publishConfig` is `access: public` with provenance on all five published packages, and the Changesets config matches. Licence: **MIT** (D-29). |
 | O-02 | Does your Lahzeh licence allow redistribution inside an npm package (and to which users)? | If unclear, keep `@avero/font` private and document BYO font | ✅ Resolved 2026-06-19: **yes**, redistribution allowed; `@avero/font` bundles the files |
 | O-03 | Minimum React version: 18.2+ and 19, or 19 only? | 18.2+ and 19 (wider adoption; `forwardRef` kept) | ✅ Resolved 2026-06-19: as recommended |
 | O-04 | Muted-text contrast (e.g. `gray-400` meta text is below AA): keep the look, or darken? | Keep the look by default, expose `--color-text-muted` so consumers can darken, and list failures in docs | ✅ Resolved 2026-06-19: as recommended |

@@ -2,7 +2,7 @@
   "name": "@avero/react",
   "version": "0.0.0",
   "type": "module",
-  "description": "Avero React components.",
+  "description": "Bidirectional React components for Persian (RTL) and English (LTR), built on Radix UI.",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -19,7 +19,8 @@
   },
   "files": [
     "dist",
-    "THIRD_PARTY_NOTICES.md"
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE"
   ],
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
@@ -73,5 +74,20 @@
     "lucide-react": {
       "optional": true
     }
+  },
+  "license": "MIT",
+  "author": "Faraz Pourebrahim",
+  "homepage": "https://github.com/FarazPourebrahim/avero",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarazPourebrahim/avero.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/FarazPourebrahim/avero/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
