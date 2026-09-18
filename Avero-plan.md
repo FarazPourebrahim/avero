@@ -641,7 +641,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] P-07 `IconTile` and P-08 `Icon` meet the Global DoD, including all categorical colours
 - [x] P-13 `Progress` meets the Global DoD (`role="progressbar"`, `aria-valuenow`)
 - [x] P-14 `VisuallyHidden`/`LiveRegion` and P-15 `Image`/`Figure` meet the Global DoD
-- [x] P-06b `AvatarGroup`, P-11 `Spinner` and P-12 `Skeleton` are split out as backlog rows in §9, so this phase does not wait on them — all three built on 2026-09-19, after 1.0.0, with unit, SSR and axe tests, stories and docs pages; they ship in 1.1.0.
+- [x] P-06b `AvatarGroup`, P-11 `Spinner` and P-12 `Skeleton` are split out as backlog rows in §9, so this phase does not wait on them — all three built on 2026-09-19 with unit, SSR and axe tests, stories and docs pages. Nothing had been published yet, so they were folded into the 1.0.0 changelog rather than held for 1.1.0.
 
 **Exit gate:** a Storybook "Primitives" review page is signed off in a design review. ✅ Signed off by the user, 2026-08-18.
 
