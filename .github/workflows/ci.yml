@@ -51,6 +51,10 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm --filter @avero/storybook-app exec playwright install --with-deps chromium
 
+      # Smoke, axe on every story in both directions, overlay stacking, scroll lock and fonts.
+      - name: Storybook browser suites
+        run: pnpm run storybook-test
+
       - name: Docs page template
         run: pnpm --filter @avero/docs run check-sections
 

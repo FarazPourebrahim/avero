@@ -1,0 +1,43 @@
+name: Browser matrix
+
+# The full engine sweep is slow, so it runs nightly and on request rather than on every pull
+# request, where CI covers Chromium.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm run packages-build
+
+      - name: Build Storybook
+        run: pnpm run storybook-build
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @avero/storybook-app exec playwright install --with-deps
+
+      - name: Chromium, Edge, Firefox, WebKit, iOS Safari and Android Chrome
+        run: pnpm run storybook-test-matrix
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-matrix-report
+          path: apps/storybook/playwright-report
+          retention-days: 14

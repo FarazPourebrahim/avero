@@ -7,8 +7,9 @@
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o storybook-static --quiet",
     "serve-static": "sirv storybook-static --host 127.0.0.1 --port 6007 --quiet",
-    "test-browser": "playwright test",
-    "typecheck": "tsc -p tsconfig.json"
+    "test-browser": "playwright test --project=chromium",
+    "typecheck": "tsc -p tsconfig.json",
+    "test-browser-matrix": "playwright test"
   },
   "devDependencies": {
     "@avero/config": "workspace:^",

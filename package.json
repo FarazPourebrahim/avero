@@ -19,8 +19,11 @@
     "format-check": "prettier --check .",
     "test": "pnpm -r run test",
     "storybook-test": "cd apps/storybook && pnpm run test-browser",
+    "storybook-test-matrix": "cd apps/storybook && pnpm run test-browser-matrix",
     "size": "pnpm --filter \"./packages/**\" run --if-present size",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "version": "changeset version && pnpm install --lockfile-only",
+    "release": "pnpm run packages-build && changeset publish"
   },
   "devDependencies": {
     "@avero/config": "workspace:^",

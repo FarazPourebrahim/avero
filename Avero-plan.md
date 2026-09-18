@@ -53,11 +53,11 @@
 | 9 | Charts and editor packages | ✅ | 9 / 9 | 7 | M | 2026-07-05 | 2026-09-10 |
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
 | 11 | Documentation site | ✅ | 12 / 12 | 3 (can start in parallel) | L | 2026-06-19 | 2026-09-10 |
-| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 2 / 13 | 10, 11 | M | 2026-09-10 | |
+| 12 | Hardening: a11y, performance, SSR, security | 🟨 | 7 / 13 | 10, 11 | M | 2026-09-10 | |
 | 13 | Release 1.0 | ⬜ | 0 / 10 | 12 | S | | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 116 / 144 phase-DoD items (≈81%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
+**Overall:** 121 / 144 phase-DoD items (≈84%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -803,19 +803,19 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 ### Phase 12 — Hardening: a11y, performance, SSR, security  🟨
 
 **DoD:**
-- [ ] Full axe pass across every story and example template: 0 violations
-- [ ] Manual screen-reader pass (NVDA + Firefox, VoiceOver + Safari) on every interactive component, with findings fixed or logged in `known-debts.md`
-- [ ] Keyboard-only walkthrough of every example template recorded
-- [ ] Contrast report reviewed; O-04 decision applied
-- [ ] SSR/RSC: every export renders in a Next.js App Router Server Component test page without errors; client components are correctly marked
-- [ ] Tree-shaking verified: importing one component pulls in only its own code (bundle analysis artefact)
-- [ ] Per-component `size-limit` budgets met; total core gzip budget recorded
-- [ ] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome
-- [ ] `docs/SECURITY.md` checklist completed (per CLAUDE.md): sanitization, no `dangerouslySetInnerHTML` outside `RichContent`, external links `rel="noopener noreferrer"`, no `eval`, dependency audit clean (`pnpm audit`), lockfile committed
-- [ ] Supply-chain checks: publish via CI only, npm provenance, 2FA on the npm org, no install scripts in packages
+- [ ] Full axe pass across every story and example template: 0 violations — the suite existed but CI installed Playwright's browsers without ever running them, so this had only ever been checked on demand. CI now runs `pnpm run storybook-test` (smoke, axe over every story in both directions, overlay stacking, scroll lock, fonts). Tick once that step is green.
+- [ ] Manual screen-reader pass (NVDA + Firefox, VoiceOver + Safari) on every interactive component, with findings fixed or logged in `known-debts.md` — needs a human on Windows and macOS; logged in `docs/known-debts.md`.
+- [ ] Keyboard-only walkthrough of every example template recorded — needs a human; logged in `docs/known-debts.md`.
+- [x] Contrast report reviewed; O-04 decision applied — all 27 failing pairings reviewed on 2026-09-10 and O-04 upheld. `docs/known-debts.md` now carries the review: 13 pairings are fixable by overriding a token, with a ready-to-paste strict-AA `@theme` block whose every value was measured (6.87–7.58 for the text tokens, 4.24–5.18 for the rest); the other 14 are Tailwind palette classes inside components, which a theme cannot reach and which need a code change, listed with the shade each should move to.
+- [x] SSR/RSC: every export renders in a Next.js App Router Server Component test page without errors; client components are correctly marked — `apps/docs/app/rsc-check/page.tsx` is a Server Component (no `"use client"`, no hooks) rendering the server-safe surface: primitives, typography, prose, `RichContent`, the form controls, the data-display family and `Table`. It prerenders as static in the docs build, so a server-safe module that started depending on client-only React would fail the build. 96 `renderToString` smoke tests cover the rest, and `verify-build.mjs` confirms all 54 `"use client"` directives survive the build.
+- [x] Tree-shaking verified: importing one component pulls in only its own code (bundle analysis artefact) — measured with `size-limit`, which bundles each import in isolation: the whole library is 111.89 kB brotli, `{ Badge }` is 9.21 kB and `{ DashboardShell }` 9.13 kB. 8.45 kB of that is `cn` (`tailwind-merge` + `clsx`), the shared floor every component pays once, so a primitive's own code is under a kilobyte.
+- [x] Per-component `size-limit` budgets met; total core gzip budget recorded — `@avero/react` had a budget for `cn` alone. It now measures the whole library (120 kB budget, 111.89 kB measured) plus eleven components spanning the range: Badge 9.21, DashboardShell 9.13, Button 10.8, ActivityHeatmap 12.98, RichContent 14.33, Carousel 22.85, SiteFooter 22.99, Dialog 25.66, Combobox 36.15, DatePicker 38.95 kB. All pass, alongside charts 8.93/10 kB and the editor 11.18/12 kB.
+- [ ] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome — the Playwright config defines all six targets (Chromium, Edge via the `msedge` channel, Firefox, WebKit, iPhone 14, Pixel 7) and `.github/workflows/browser-matrix.yml` runs them nightly and on request, so pull requests stay on Chromium. Playwright ships one version per engine, so "latest 2 versions" is not expressible; recorded in `docs/known-debts.md`. Tick once the nightly run is green.
+- [x] `docs/SECURITY.md` checklist completed (per CLAUDE.md): sanitization, no `dangerouslySetInnerHTML` outside `RichContent`, external links `rel="noopener noreferrer"`, no `eval`, dependency audit clean (`pnpm audit`), lockfile committed — 16 of 17 items verified on 2026-09-10 with the evidence recorded inline. Notable: Avero builds no share or contact URLs at all (`ShareBar` reports the channel through `onShare`), and package source contains no storage, cookie, network or navigation API. The seventeenth waits on the npm organisation.
+- [ ] Supply-chain checks: publish via CI only, npm provenance, 2FA on the npm org, no install scripts in packages — `.github/workflows/release.yml` publishes from `main` through Changesets with `NPM_CONFIG_PROVENANCE` and an OIDC token, and no published package defines an install hook. The `avero` organisation is still unreserved (O-06), so 2FA cannot be enabled and the workflow has never run.
 - [x] Memory and cleanup: overlays and carousels unmount listeners (tests with StrictMode double-mount) — `src/test/strictModeCleanup.test.tsx` renders `Carousel`, `InfiniteScroll`, `TableOfContents`, `Dialog` and `Drawer` under `StrictMode`, counts every `window` and `document` listener through wrapped add/remove, and asserts none survives unmount; overlays are opened first, since they only subscribe once open. React's own leftovers (`selectionchange`) are measured from a bare element each run rather than hardcoded, so a React upgrade cannot turn into a false failure. A separate case proves every `IntersectionObserver` is disconnected. `setup.ts` gained a `matchMedia` stub so the real Embla mounts — a mocked carousel could not show whether listeners are removed.
 - [x] No `console.*`, `debugger`, `.only` or `.skip` anywhere (lint + CI grep) — `no-console` is enforced by ESLint and `pnpm lint` is green at 0 warnings; a repository-wide grep over `packages/*/src`, `apps/*/src` and the docs app returns nothing.
-- [ ] `docs/known-debts.md` reviewed; no high-severity items open
+- [ ] `docs/known-debts.md` reviewed; no high-severity items open — reviewed on 2026-09-10 and four entries added for what this phase could not close (screen readers, the keyboard walkthrough, one browser version per engine, the npm organisation). Tick once the items blocked on a human are done.
 
 **Exit gate:** a release-candidate build passes the complete CI matrix twice consecutively.
 

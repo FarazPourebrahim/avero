@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { StrictMode, type ReactElement } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Carousel, CarouselSlide, CarouselViewport } from "../components/carousel/Carousel.js";
@@ -84,10 +84,10 @@ describe("StrictMode double-mount cleanup", () => {
     baseline = reactBaseline();
     originalObserver = globalThis.IntersectionObserver;
 
-    class TrackedObserver implements IntersectionObserver {
+    class TrackedObserver {
       readonly root = null;
       readonly rootMargin = "";
-      readonly thresholds = [];
+      readonly thresholds: number[] = [];
       #record: { disconnected: boolean };
 
       constructor() {
@@ -134,8 +134,8 @@ describe("StrictMode double-mount cleanup", () => {
         key="a"
         spy
         items={[
-          { id: "one", title: "یک", level: 2 },
-          { id: "two", title: "دو", level: 2 },
+          { id: "one", label: "یک", level: 2 },
+          { id: "two", label: "دو", level: 2 },
         ]}
       />,
     ],
