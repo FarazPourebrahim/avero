@@ -13,7 +13,7 @@ One provider supplies direction, locale, formatting and built-in strings to ever
 Wrap your app once, as high as possible.
 
 ```tsx title="app.tsx"
-import { AveroProvider, Button } from "@avero/react";
+import { AveroProvider, Button } from "@averoui/react";
 
 export function App() {
   return (
@@ -84,7 +84,7 @@ Formatting goes through `Intl` only — Avero ships no date library. Use `useAve
 functions already bound to the active locale, digits and calendar:
 
 ```tsx
-import { useAveroFormatter } from "@avero/react";
+import { useAveroFormatter } from "@averoui/react";
 
 function Receipt({ total, paidAt }: { total: number; paidAt: string }) {
   const format = useAveroFormatter();
@@ -125,7 +125,7 @@ change, prefer the component's own label prop over a global override.
 Entries with placeholders use `{name}` syntax and are filled with `formatMessage`:
 
 ```tsx
-import { formatMessage, useAvero } from "@avero/react";
+import { formatMessage, useAvero } from "@averoui/react";
 
 const { dictionary } = useAvero();
 formatMessage(dictionary.goToSlide, { index: 3 }); // "رفتن به اسلاید ۳"

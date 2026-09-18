@@ -1,4 +1,4 @@
-import { Alert } from "@avero/react";
+import { Alert } from "@averoui/react";
 
 export default function AlertVariantsDemo() {
   return (

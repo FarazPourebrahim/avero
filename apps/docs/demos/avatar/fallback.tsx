@@ -1,4 +1,4 @@
-import { Avatar } from "@avero/react";
+import { Avatar } from "@averoui/react";
 
 export default function AvatarFallbackDemo() {
   return (

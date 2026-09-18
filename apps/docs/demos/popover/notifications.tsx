@@ -8,7 +8,7 @@ import {
   PopoverClose,
   PopoverContent,
   PopoverTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 import { Bell } from "lucide-react";
 
 const notifications = [

@@ -1,4 +1,4 @@
-import { IconButton } from "@avero/react";
+import { IconButton } from "@averoui/react";
 import { Bell, House, Menu, X } from "lucide-react";
 
 export default function IconButtonChromeDemo() {

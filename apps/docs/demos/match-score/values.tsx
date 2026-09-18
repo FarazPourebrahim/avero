@@ -1,4 +1,4 @@
-import { MatchScore } from "@avero/react";
+import { MatchScore } from "@averoui/react";
 
 export default function MatchScoreValuesDemo() {
   return (

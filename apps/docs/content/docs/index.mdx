@@ -30,36 +30,36 @@ package with all nine weights. Every built-in string exists in both `fa` and `en
 are not reimplemented. Every component test runs axe, and a Playwright suite runs axe over every
 story in both directions.
 
-**Token-driven.** Colours, radii, shadows, motion and type come from `@avero/tokens` as Tailwind v4
+**Token-driven.** Colours, radii, shadows, motion and type come from `@averoui/tokens` as Tailwind v4
 `@theme` variables. Rebranding is a handful of CSS custom properties, not a fork — and no component
 contains a raw hex value, which a lint rule enforces.
 
 ## Packages
 
-| Package         | Contains                                                              |
-| --------------- | --------------------------------------------------------------------- |
-| `@avero/react`  | Components, blocks, layout shells, hooks, formatting utilities, icons |
-| `@avero/tokens` | Tailwind v4 `@theme` tokens, base styles, prose styles, token data    |
-| `@avero/font`   | Lahzeh `@font-face` declarations and font files                       |
-| `@avero/charts` | Recharts wrappers (optional)                                          |
-| `@avero/editor` | Tiptap rich-text editor sharing the prose styles (optional)           |
+| Package           | Contains                                                              |
+| ----------------- | --------------------------------------------------------------------- |
+| `@averoui/react`  | Components, blocks, layout shells, hooks, formatting utilities, icons |
+| `@averoui/tokens` | Tailwind v4 `@theme` tokens, base styles, prose styles, token data    |
+| `@averoui/font`   | Lahzeh `@font-face` declarations and font files                       |
+| `@averoui/charts` | Recharts wrappers (optional)                                          |
+| `@averoui/editor` | Tiptap rich-text editor sharing the prose styles (optional)           |
 
 ## Quick start
 
 ```bash
-pnpm add @avero/react @avero/tokens @avero/font
+pnpm add @averoui/react @averoui/tokens @averoui/font
 ```
 
 ```css title="app.css"
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
-@import "@avero/font/lahzeh.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/font/lahzeh.css";
 
-@source "../node_modules/@avero/react/dist";
+@source "../node_modules/@averoui/react/dist";
 ```
 
 ```tsx
-import { AveroProvider, Button } from "@avero/react";
+import { AveroProvider, Button } from "@averoui/react";
 
 export function App() {
   return (

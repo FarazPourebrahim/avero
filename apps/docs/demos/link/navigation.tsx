@@ -1,4 +1,4 @@
-import { Link } from "@avero/react";
+import { Link } from "@averoui/react";
 import { BookOpen, House } from "lucide-react";
 
 export default function LinkNavigationDemo() {

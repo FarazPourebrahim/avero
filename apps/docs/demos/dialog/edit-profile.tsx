@@ -15,7 +15,7 @@ import {
   FieldControl,
   FieldLabel,
   Input,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function DialogEditProfileDemo() {
   return (

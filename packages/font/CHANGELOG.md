@@ -1,4 +1,4 @@
-# @avero/font
+# @averoui/font
 
 ## 1.0.0
 
@@ -18,5 +18,5 @@
 
   Behaviour comes from Radix, so focus management, keyboard support and ARIA semantics are not
   reimplemented; every component test runs axe and a browser suite runs axe over every story in both
-  directions. Colours, radii, shadows, motion and type come from `@avero/tokens`, so a theme is a set
+  directions. Colours, radii, shadows, motion and type come from `@averoui/tokens`, so a theme is a set
   of CSS custom properties rather than a fork.

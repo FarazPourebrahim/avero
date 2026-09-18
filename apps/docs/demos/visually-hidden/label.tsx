@@ -1,4 +1,4 @@
-import { Button, VisuallyHidden } from "@avero/react";
+import { Button, VisuallyHidden } from "@averoui/react";
 
 export default function VisuallyHiddenLabelDemo() {
   return (

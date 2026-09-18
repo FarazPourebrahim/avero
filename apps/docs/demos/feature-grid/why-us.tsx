@@ -1,4 +1,4 @@
-import { FeatureCard, FeatureGrid } from "@avero/react";
+import { FeatureCard, FeatureGrid } from "@averoui/react";
 
 const CARDS = [
   {

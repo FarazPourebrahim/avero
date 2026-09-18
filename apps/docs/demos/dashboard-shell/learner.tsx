@@ -1,4 +1,4 @@
-import { Avatar, DashboardShell, SidebarNav, SidebarNavItem, StatCard } from "@avero/react";
+import { Avatar, DashboardShell, SidebarNav, SidebarNavItem, StatCard } from "@averoui/react";
 import { Bell, LayoutDashboard, LogOut, Menu, User } from "lucide-react";
 
 export default function DashboardShellLearnerDemo() {

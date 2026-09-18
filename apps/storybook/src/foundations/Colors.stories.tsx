@@ -1,4 +1,4 @@
-import { tokens, type TokenName } from "@avero/tokens";
+import { tokens, type TokenName } from "@averoui/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 type Swatch = { name: string; cssVar: string; value: string };

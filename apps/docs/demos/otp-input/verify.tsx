@@ -1,6 +1,6 @@
 "use client";
 
-import { Field, FieldControl, FieldDescription, FieldLabel, OtpInput } from "@avero/react";
+import { Field, FieldControl, FieldDescription, FieldLabel, OtpInput } from "@averoui/react";
 import { useState } from "react";
 
 export default function OtpInputVerifyDemo() {

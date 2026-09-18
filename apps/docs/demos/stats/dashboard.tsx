@@ -1,4 +1,4 @@
-import { StatCard } from "@avero/react";
+import { StatCard } from "@averoui/react";
 import { Award, BookOpen, Calendar, Trophy, Zap } from "lucide-react";
 
 const icon = "size-4 sm:size-[18px]";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactionBar } from "@avero/react";
+import { ReactionBar } from "@averoui/react";
 
 export default function ReactionBarCourseDemo() {
   return (

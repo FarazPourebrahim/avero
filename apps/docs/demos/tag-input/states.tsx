@@ -1,6 +1,6 @@
 "use client";
 
-import { Field, FieldControl, FieldError, FieldLabel, TagInput } from "@avero/react";
+import { Field, FieldControl, FieldError, FieldLabel, TagInput } from "@averoui/react";
 import { useState } from "react";
 
 export default function TagInputStatesDemo() {

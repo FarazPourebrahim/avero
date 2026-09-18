@@ -1,4 +1,4 @@
-import { RichContent } from "@avero/react";
+import { RichContent } from "@averoui/react";
 
 const ARTICLE = `
 <h2>سیستم طراحی چیست؟</h2>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@avero/react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@averoui/react";
 
 export default function SelectFilterDemo() {
   return (

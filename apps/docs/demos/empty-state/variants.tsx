@@ -1,4 +1,4 @@
-import { EmptyState } from "@avero/react";
+import { EmptyState } from "@averoui/react";
 import { BarChart3, Bell } from "lucide-react";
 
 export default function EmptyStateVariantsDemo() {

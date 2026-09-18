@@ -1,5 +1,5 @@
-import { ResponsiveBanner } from "@avero/react";
-import { tokens } from "@avero/tokens";
+import { ResponsiveBanner } from "@averoui/react";
+import { tokens } from "@averoui/tokens";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 function artwork(width: number, height: number, from: string, to: string) {

@@ -1,4 +1,4 @@
-import { CapacityMeter } from "@avero/react";
+import { CapacityMeter } from "@averoui/react";
 
 export default function CapacityMeterFullDemo() {
   return (

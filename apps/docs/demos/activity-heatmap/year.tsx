@@ -1,4 +1,4 @@
-import { ActivityHeatmap, type ActivityDay } from "@avero/react";
+import { ActivityHeatmap, type ActivityDay } from "@averoui/react";
 
 /** A deterministic pseudo-random series keeps the demo stable between builds. */
 function year(): ActivityDay[] {

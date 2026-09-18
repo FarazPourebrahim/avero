@@ -2,7 +2,7 @@
 
 // `getHref` is a function, and a Server Component cannot hand a function to a Client Component, so
 // a demo of the link mode is itself a Client Component.
-import { Pagination } from "@avero/react";
+import { Pagination } from "@averoui/react";
 
 export default function PaginationLinksDemo() {
   return (

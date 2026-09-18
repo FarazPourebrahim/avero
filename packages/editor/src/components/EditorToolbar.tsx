@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, useAvero, type AveroDictionary } from "@avero/react";
+import { cn, useAvero, type AveroDictionary } from "@averoui/react";
 import { useEditorState, type Editor } from "@tiptap/react";
 import { Toolbar as ToolbarPrimitive } from "radix-ui";
 import { forwardRef, Fragment, type ComponentPropsWithoutRef, type ReactNode } from "react";

@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 
 const SIZES = [
   { size: "sm", label: "کوچک", body: "برای تأییدهای کوتاه." },

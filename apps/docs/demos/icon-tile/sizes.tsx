@@ -1,4 +1,4 @@
-import { IconTile } from "@avero/react";
+import { IconTile } from "@averoui/react";
 import { Briefcase } from "lucide-react";
 
 const SIZES = ["xs", "sm", "md", "lg", "xl", "padded"] as const;

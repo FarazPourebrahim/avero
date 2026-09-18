@@ -1,4 +1,4 @@
-import { IconButton, InstagramIcon, LinkedinInIcon, TelegramPlaneIcon } from "@avero/react";
+import { IconButton, InstagramIcon, LinkedinInIcon, TelegramPlaneIcon } from "@averoui/react";
 import { ChevronLeft, ChevronRight, Globe } from "lucide-react";
 
 export default function IconButtonSocialDemo() {

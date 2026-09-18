@@ -1,4 +1,4 @@
-import { Divider } from "@avero/react";
+import { Divider } from "@averoui/react";
 
 export default function DividerBasicDemo() {
   return (

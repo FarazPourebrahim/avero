@@ -1,4 +1,4 @@
-import { Container, Link, SiteFooter, SiteHeader, SiteShell } from "@avero/react";
+import { Container, Link, SiteFooter, SiteHeader, SiteShell } from "@averoui/react";
 
 export default function SiteShellPageDemo() {
   return (

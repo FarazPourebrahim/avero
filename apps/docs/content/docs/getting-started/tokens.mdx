@@ -42,12 +42,12 @@ The z-index layers are used this way deliberately — they are not classes:
 
 ## As typed data
 
-`@avero/tokens` has a default export with all 98 tokens, each carrying its CSS variable name and
+`@averoui/tokens` has a default export with all 98 tokens, each carrying its CSS variable name and
 resolved value. Use it when a value must reach JavaScript rather than CSS — most often a third-party
 library that takes colours as props.
 
 ```ts
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 
 tokens.colorPrimary.cssVar; // "--color-primary"
 tokens.colorPrimary.value; // "#0a66c2"
@@ -55,14 +55,14 @@ tokens.colorPrimary.value; // "#0a66c2"
 
 `TokenName` is a union of every token key, so a typo is a type error.
 
-This is how `@avero/charts` colours its series: Recharts takes colours as props that end up as SVG
+This is how `@averoui/charts` colours its series: Recharts takes colours as props that end up as SVG
 attributes, where a utility class cannot reach and a bare `var()` reference would depend on Tailwind
 emitting a variable that no class references — which it prunes. Reading the value from the token
 data keeps charts on the palette with no silent failure.
 
 ## As DTCG JSON
 
-`@avero/tokens/tokens.json` is the same set in [Design Tokens Community Group](https://tr.designtokens.org/format/)
+`@averoui/tokens/tokens.json` is the same set in [Design Tokens Community Group](https://tr.designtokens.org/format/)
 format, for design tools and token pipelines:
 
 ```json
@@ -75,7 +75,7 @@ format, for design tools and token pipelines:
 ```
 
 ```ts
-import tokens from "@avero/tokens/tokens.json" with { type: "json" };
+import tokens from "@averoui/tokens/tokens.json" with { type: "json" };
 ```
 
 ## Keeping the shapes in sync
@@ -83,7 +83,7 @@ import tokens from "@avero/tokens/tokens.json" with { type: "json" };
 `theme.css` is the only file anyone edits. `scripts/generate-token-data.mjs` derives `tokens.json`,
 `tokens.js` and `tokens.d.ts` from it, and the tokens package's test runs the same script with
 `--check`, which fails if the committed output no longer matches the stylesheet. Adding a token is
-therefore: edit `theme.css`, run `pnpm --filter @avero/tokens generate`, commit both.
+therefore: edit `theme.css`, run `pnpm --filter @averoui/tokens generate`, commit both.
 
 ## Naming
 

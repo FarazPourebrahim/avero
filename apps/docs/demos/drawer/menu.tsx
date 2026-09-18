@@ -7,7 +7,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 import { LayoutDashboard } from "lucide-react";
 
 const NAV = ["پیشخوان", "مشاهده پروفایل", "دوره‌های من", "گواهی‌ها"];

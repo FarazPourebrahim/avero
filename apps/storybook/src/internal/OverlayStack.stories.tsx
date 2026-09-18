@@ -25,7 +25,7 @@ import {
   Tooltip,
   useToast,
   type LightboxImage,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 

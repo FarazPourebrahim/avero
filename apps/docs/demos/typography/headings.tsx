@@ -1,4 +1,4 @@
-import { Heading } from "@avero/react";
+import { Heading } from "@averoui/react";
 
 export default function TypographyHeadingsDemo() {
   return (

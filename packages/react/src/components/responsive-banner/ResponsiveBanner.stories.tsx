@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 import { ResponsiveBanner } from "./ResponsiveBanner.js";
 
 // Inline SVG artwork keeps the stories deterministic and offline (no remote images). The two

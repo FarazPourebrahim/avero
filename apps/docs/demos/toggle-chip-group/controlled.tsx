@@ -1,6 +1,6 @@
 "use client";
 
-import { ToggleChip, ToggleChipGroup } from "@avero/react";
+import { ToggleChip, ToggleChipGroup } from "@averoui/react";
 import { useState } from "react";
 
 export default function ToggleChipGroupControlledDemo() {

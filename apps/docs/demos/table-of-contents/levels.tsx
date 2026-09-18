@@ -1,6 +1,6 @@
 "use client";
 
-import { TableOfContents, type TocItem } from "@avero/react";
+import { TableOfContents, type TocItem } from "@averoui/react";
 import { useState } from "react";
 
 const ITEMS: TocItem[] = [

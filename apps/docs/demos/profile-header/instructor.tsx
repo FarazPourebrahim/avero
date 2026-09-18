@@ -8,8 +8,8 @@ import {
   PillTabs,
   ProfileHeader,
   TelegramIcon,
-} from "@avero/react";
-import { tokens } from "@avero/tokens";
+} from "@averoui/react";
+import { tokens } from "@averoui/tokens";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 const GROUND = tokens.colorPrimary.value;

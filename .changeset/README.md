@@ -1,6 +1,6 @@
 # Changesets
 
-Every PR that changes a published package (`@avero/*` under `packages/`) adds a changeset:
+Every PR that changes a published package (`@averoui/*` under `packages/`) adds a changeset:
 
 ```sh
 pnpm changeset

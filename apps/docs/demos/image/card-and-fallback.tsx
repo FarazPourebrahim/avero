@@ -1,4 +1,4 @@
-import { Image } from "@avero/react";
+import { Image } from "@averoui/react";
 import { cover } from "../artwork";
 
 export default function ImageCardAndFallbackDemo() {

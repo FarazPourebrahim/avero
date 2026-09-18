@@ -10,19 +10,19 @@ tokens, so every component works in both directions from the same code.
   `en` dictionaries for every built-in string.
 - **Accessible.** Radix behaviour for interactive components, axe checks in every component test,
   and screen-reader-friendly charts and rich content.
-- **Token-driven.** Colours, radii, shadows and type come from `@avero/tokens`, so a theme is a set
+- **Token-driven.** Colours, radii, shadows and type come from `@averoui/tokens`, so a theme is a set
   of CSS variables rather than a fork.
 
 ## Packages
 
-| Package         | Contents                                                         |
-| --------------- | ---------------------------------------------------------------- |
-| `@avero/react`  | Components, page blocks, layouts, hooks and formatting utilities |
-| `@avero/tokens` | Tailwind v4 `@theme` tokens, base styles and prose styles        |
-| `@avero/font`   | Lahzeh `@font-face` declarations and font files                  |
-| `@avero/charts` | Recharts wrappers (optional)                                     |
-| `@avero/editor` | Tiptap rich-text editor sharing the prose styles (optional)      |
-| `@avero/config` | Shared TypeScript and ESLint configuration                       |
+| Package           | Contents                                                         |
+| ----------------- | ---------------------------------------------------------------- |
+| `@averoui/react`  | Components, page blocks, layouts, hooks and formatting utilities |
+| `@averoui/tokens` | Tailwind v4 `@theme` tokens, base styles and prose styles        |
+| `@averoui/font`   | Lahzeh `@font-face` declarations and font files                  |
+| `@averoui/charts` | Recharts wrappers (optional)                                     |
+| `@averoui/editor` | Tiptap rich-text editor sharing the prose styles (optional)      |
+| `@averoui/config` | Shared TypeScript and ESLint configuration                       |
 
 ## Usage
 
@@ -30,15 +30,15 @@ Add the tokens to your Tailwind CSS entry stylesheet:
 
 ```css
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
-@import "@avero/font/lahzeh.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/font/lahzeh.css";
 ```
 
 Wrap the app in `AveroProvider`. The locale decides the direction, digits and calendar: `fa-IR`
 (the default) renders right-to-left with Jalali dates, and `en-US` renders left-to-right.
 
 ```tsx
-import { AveroProvider, Button } from "@avero/react";
+import { AveroProvider, Button } from "@averoui/react";
 
 export function App() {
   return (

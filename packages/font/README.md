@@ -1,4 +1,4 @@
-# @avero/font
+# @averoui/font
 
 The **Lahzeh** typeface packaged for [Avero](https://github.com/FarazPourebrahim/avero): nine
 weights as `@font-face` declarations plus the font files. Optional — Avero's `--font-sans` token
@@ -7,13 +7,13 @@ falls back to a system stack without it.
 ## Install
 
 ```bash
-pnpm add @avero/font
+pnpm add @averoui/font
 ```
 
 ```css
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
-@import "@avero/font/lahzeh.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/font/lahzeh.css";
 ```
 
 One import declares all nine weights (100 Thin to 900 Black). `font-display: swap` keeps text

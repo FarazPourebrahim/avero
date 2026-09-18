@@ -1,4 +1,4 @@
-import { CategoryLinks, Chip } from "@avero/react";
+import { CategoryLinks, Chip } from "@averoui/react";
 
 const CATEGORIES = ["TypeScript", "React", "طراحی رابط کاربری", "دسترس‌پذیری"];
 

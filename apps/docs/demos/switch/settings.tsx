@@ -1,4 +1,4 @@
-import { Switch } from "@avero/react";
+import { Switch } from "@averoui/react";
 
 const SETTINGS = [
   { id: "weekly-email", label: "ایمیل هفتگی", defaultChecked: false },

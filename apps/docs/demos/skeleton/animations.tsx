@@ -1,4 +1,4 @@
-import { SkeletonText } from "@avero/react";
+import { SkeletonText } from "@averoui/react";
 
 export default function SkeletonAnimations() {
   return (

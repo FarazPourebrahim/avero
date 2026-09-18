@@ -5,7 +5,7 @@ import {
   FieldLabel,
   NativeSelect,
   Textarea,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function FieldControlsDemo() {
   return (

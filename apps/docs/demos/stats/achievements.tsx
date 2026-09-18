@@ -1,4 +1,4 @@
-import { HighlightPanel, InfoRow, MiniStat } from "@avero/react";
+import { HighlightPanel, InfoRow, MiniStat } from "@averoui/react";
 import { FileCheck, Shield, Star, Trophy } from "lucide-react";
 
 const icon = "size-4 sm:size-[18px]";

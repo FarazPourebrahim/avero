@@ -1,4 +1,4 @@
-import { Button, FormActions, Textarea } from "@avero/react";
+import { Button, FormActions, Textarea } from "@averoui/react";
 
 export default function FormActionsCommentFormDemo() {
   return (

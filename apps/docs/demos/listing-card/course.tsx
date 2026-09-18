@@ -1,4 +1,4 @@
-import { ListingCard } from "@avero/react";
+import { ListingCard } from "@averoui/react";
 
 export default function ListingCardCourseDemo() {
   return (

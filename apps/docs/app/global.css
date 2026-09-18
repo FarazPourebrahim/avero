@@ -1,15 +1,15 @@
 @import "tailwindcss";
-@import "@avero/font/lahzeh.css";
+@import "@averoui/font/lahzeh.css";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 /* `theme(static)` emits every Avero token, not only those a scanned class uses: the Foundations pages
    render swatches, shadows and animations from token names at runtime. */
-@import "@avero/tokens/theme.css" theme(static);
-@import "@avero/tokens/utilities.css";
-@import "@avero/tokens/rich-content.css";
+@import "@averoui/tokens/theme.css" theme(static);
+@import "@averoui/tokens/utilities.css";
+@import "@averoui/tokens/rich-content.css";
 
 /* Avero components ship as compiled JS; Tailwind scans them for the classes they use. */
-@source "../node_modules/@avero/react/dist";
+@source "../node_modules/@averoui/react/dist";
 @source "../content";
 @source "../demos";
 @source "../components";
@@ -19,7 +19,7 @@ html {
 }
 
 /* The documentation is set in the typeface it documents: --font-sans resolves to Lahzeh from
-   @avero/tokens, with the same fallback stack a consumer gets. */
+   @averoui/tokens, with the same fallback stack a consumer gets. */
 body {
   font-family: var(--font-sans);
 }

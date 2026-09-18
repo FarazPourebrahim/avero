@@ -1,4 +1,4 @@
-// Generated from @avero/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.
+// Generated from @averoui/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.
 export type TokenName =
   | "fontFamilySans"
   | "fontFamilyCode"

@@ -1,4 +1,4 @@
-import { ActivityHeatmap, EmptyState } from "@avero/react";
+import { ActivityHeatmap, EmptyState } from "@averoui/react";
 import { CalendarOff } from "lucide-react";
 
 export default function ActivityHeatmapEmptyDemo() {

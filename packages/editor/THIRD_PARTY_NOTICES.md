@@ -1,6 +1,6 @@
 # Third-party notices
 
-`@avero/editor` redistributes the following third-party assets.
+`@averoui/editor` redistributes the following third-party assets.
 
 ## Lucide
 

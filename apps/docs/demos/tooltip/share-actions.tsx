@@ -1,6 +1,6 @@
 "use client";
 
-import { IconButton, Tooltip, TooltipProvider } from "@avero/react";
+import { IconButton, Tooltip, TooltipProvider } from "@averoui/react";
 import { Bookmark, Copy, Share2 } from "lucide-react";
 
 export default function TooltipShareActionsDemo() {

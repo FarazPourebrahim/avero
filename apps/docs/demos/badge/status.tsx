@@ -1,4 +1,4 @@
-import { Badge } from "@avero/react";
+import { Badge } from "@averoui/react";
 
 export default function BadgeStatusDemo() {
   return (

@@ -1,4 +1,4 @@
-import { Badge, Button, Chip } from "@avero/react";
+import { Badge, Button, Chip } from "@averoui/react";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import defaultMdxComponents from "fumadocs-ui/mdx";

@@ -1,6 +1,6 @@
 "use client";
 
-import { WelcomeCard } from "@avero/react";
+import { WelcomeCard } from "@averoui/react";
 
 export default function WelcomeCardDashboardDemo() {
   return (

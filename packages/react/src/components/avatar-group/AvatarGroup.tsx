@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { formatMessage } from "../../i18n/dictionaries.js";

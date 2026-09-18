@@ -1,4 +1,4 @@
-import { CalendarSolidIcon, ClockSolidIcon, EyeSolidIcon, MetaBar, MetaItem } from "@avero/react";
+import { CalendarSolidIcon, ClockSolidIcon, EyeSolidIcon, MetaBar, MetaItem } from "@averoui/react";
 
 export default function MetaArticleDemo() {
   return (

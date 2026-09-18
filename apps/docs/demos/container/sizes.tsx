@@ -1,4 +1,4 @@
-import { Container } from "@avero/react";
+import { Container } from "@averoui/react";
 
 export default function ContainerSizesDemo() {
   return (

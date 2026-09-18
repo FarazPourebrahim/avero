@@ -4,10 +4,10 @@
  *
  * Recharts takes colours as props that end up as SVG attributes, so these must be literal strings:
  * a utility class cannot reach them, and a `var()` reference would depend on Tailwind emitting a
- * theme variable that no class references. They are therefore sourced from `@avero/tokens`, whose
+ * theme variable that no class references. They are therefore sourced from `@averoui/tokens`, whose
  * generated token map exists for exactly this case.
  */
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 
 /** Metric colours, in series order. */
 export const chartPalette = {

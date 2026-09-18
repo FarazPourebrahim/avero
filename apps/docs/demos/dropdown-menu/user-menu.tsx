@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 import { Award, LogOut, Settings, User } from "lucide-react";
 
 export default function DropdownMenuUserMenuDemo() {

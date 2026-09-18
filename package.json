@@ -26,7 +26,7 @@
     "release": "pnpm run packages-build && changeset publish"
   },
   "devDependencies": {
-    "@avero/config": "workspace:^",
+    "@averoui/config": "workspace:^",
     "@changesets/cli": "^3.0.2",
     "eslint": "^10",
     "prettier": "^3.9.6",

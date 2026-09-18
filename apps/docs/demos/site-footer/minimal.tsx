@@ -1,4 +1,4 @@
-import { SiteFooter } from "@avero/react";
+import { SiteFooter } from "@averoui/react";
 
 export default function SiteFooterMinimalDemo() {
   return (

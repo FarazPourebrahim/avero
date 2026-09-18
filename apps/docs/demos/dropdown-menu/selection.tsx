@@ -14,7 +14,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 import { useState } from "react";
 
 export default function DropdownMenuSelectionDemo() {

@@ -1,4 +1,4 @@
-import { StatStrip, StatTile } from "@avero/react";
+import { StatStrip, StatTile } from "@averoui/react";
 import { BookOpen, GraduationCap, Star, Users } from "lucide-react";
 
 const icon = "size-5 sm:size-6";

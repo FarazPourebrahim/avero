@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Popover, PopoverContent, PopoverTrigger } from "@avero/react";
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@averoui/react";
 
 const ALIGNMENTS = [
   { align: "start", label: "ابتدا" },

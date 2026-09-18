@@ -1,4 +1,4 @@
-import { HeartSolidIcon, TelegramIcon } from "@avero/react";
+import { HeartSolidIcon, TelegramIcon } from "@averoui/react";
 
 const SIZES = [
   { className: "size-3.5", label: "۱۴px" },

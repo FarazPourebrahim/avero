@@ -1,4 +1,4 @@
-import { RichContent } from "@avero/react";
+import { RichContent } from "@averoui/react";
 
 // Everything dangerous here is removed before it reaches the DOM.
 const UNTRUSTED = `

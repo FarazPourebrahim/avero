@@ -21,6 +21,7 @@ import {
   NativeSelect,
   RichContent,
   SectionHeader,
+  SkeletonCard,
   StatCard,
   StatTile,
   Table,
@@ -32,7 +33,7 @@ import {
   Text,
   Textarea,
   VisuallyHidden,
-} from "@avero/react";
+} from "@averoui/react";
 
 /**
  * Phase 12 SSR/RSC check. This page is a React Server Component — it carries no `"use client"` and
@@ -98,6 +99,10 @@ export default function Page() {
         </TableBody>
       </Table>
       <EmptyState title="چیزی اینجا نیست">هنوز موردی ثبت نشده است.</EmptyState>
+
+      {/* Skeleton uses no hooks, so it stays server-safe; Spinner and AvatarGroup read the
+          dictionary and are client components. */}
+      <SkeletonCard footer />
     </Container>
   );
 }

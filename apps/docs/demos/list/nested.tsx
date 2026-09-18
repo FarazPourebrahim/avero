@@ -1,4 +1,4 @@
-import { List, ListItem } from "@avero/react";
+import { List, ListItem } from "@averoui/react";
 
 export default function ListNestedDemo() {
   return (

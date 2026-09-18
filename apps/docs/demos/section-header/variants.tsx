@@ -1,4 +1,4 @@
-import { SectionHeader } from "@avero/react";
+import { SectionHeader } from "@averoui/react";
 import { Target } from "lucide-react";
 
 export default function SectionHeaderVariantsDemo() {

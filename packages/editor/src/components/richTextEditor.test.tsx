@@ -1,4 +1,4 @@
-import { sanitizeHtml } from "@avero/react";
+import { sanitizeHtml } from "@averoui/react";
 import { render, screen, waitFor } from "@testing-library/react";
 import type { Editor } from "@tiptap/react";
 import { createRef } from "react";

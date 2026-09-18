@@ -1,4 +1,4 @@
-import { Badge } from "@avero/react";
+import { Badge } from "@averoui/react";
 import { ShieldCheck, Sparkles, ZoomIn } from "lucide-react";
 
 export default function BadgeHighlightsDemo() {

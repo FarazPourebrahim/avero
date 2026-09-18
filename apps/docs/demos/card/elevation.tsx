@@ -1,4 +1,4 @@
-import { Card } from "@avero/react";
+import { Card } from "@averoui/react";
 
 const ELEVATIONS = ["none", "xs", "sm", "soft", "ambient", "faint", "brand"] as const;
 

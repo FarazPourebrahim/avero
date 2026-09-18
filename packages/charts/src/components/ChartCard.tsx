@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@avero/react";
+import { cn } from "@averoui/react";
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 
 /** Props specific to `ChartCard`. It also accepts every native `<div>` attribute. */

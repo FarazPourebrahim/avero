@@ -8,7 +8,7 @@ description: Recharts wrappers styled to the dashboard's analytics cards.
 Charts live in a separate package, so the core library never pulls in Recharts.
 
 ```tsx
-import { AreaChart, ChartCard, ChartTooltip, LineChart, chartPalette } from "@avero/charts";
+import { AreaChart, ChartCard, ChartTooltip, LineChart, chartPalette } from "@averoui/charts";
 ```
 
 <ComponentPreview name="charts/analytics" />
@@ -16,12 +16,12 @@ import { AreaChart, ChartCard, ChartTooltip, LineChart, chartPalette } from "@av
 ## Installation
 
 ```bash
-pnpm add @avero/charts recharts
+pnpm add @averoui/charts recharts
 ```
 
 `recharts` is a peer dependency (`>=3.0.0`), so your app owns the version and only ever bundles one
-copy of it. The palette, grid, axis and tooltip colours come from `@avero/tokens`, which
-`@avero/charts` depends on directly — there is nothing more to import.
+copy of it. The palette, grid, axis and tooltip colours come from `@averoui/tokens`, which
+`@averoui/charts` depends on directly — there is nothing more to import.
 
 ## Anatomy
 

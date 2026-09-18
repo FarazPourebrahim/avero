@@ -18,7 +18,7 @@ import {
   RelatedList,
   RichContent,
   ShareBar,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { portraitArt, PublicPage } from "./templateChrome";
 

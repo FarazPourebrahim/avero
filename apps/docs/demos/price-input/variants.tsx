@@ -1,4 +1,4 @@
-import { Field, FieldControl, FieldDescription, FieldLabel, PriceInput } from "@avero/react";
+import { Field, FieldControl, FieldDescription, FieldLabel, PriceInput } from "@averoui/react";
 
 export default function PriceInputVariantsDemo() {
   return (

@@ -1,4 +1,4 @@
-import { RadioGroup, RadioGroupItem } from "@avero/react";
+import { RadioGroup, RadioGroupItem } from "@averoui/react";
 
 const OPTIONS = [
   { value: "online", label: "آنلاین" },

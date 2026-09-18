@@ -1,4 +1,4 @@
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const shadowTokens = Object.values(tokens).filter((token) => token.cssVar.startsWith("--shadow-"));

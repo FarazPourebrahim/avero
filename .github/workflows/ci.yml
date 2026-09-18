@@ -49,29 +49,29 @@ jobs:
         run: pnpm run storybook-build
 
       - name: Install Playwright browsers
-        run: pnpm --filter @avero/storybook-app exec playwright install --with-deps chromium
+        run: pnpm --filter @averoui/storybook-app exec playwright install --with-deps chromium
 
       # Smoke, axe on every story in both directions, overlay stacking, scroll lock and fonts.
       - name: Storybook browser suites
         run: pnpm run storybook-test
 
       - name: Docs page template
-        run: pnpm --filter @avero/docs run check-sections
+        run: pnpm --filter @averoui/docs run check-sections
 
       - name: Docs props coverage
-        run: pnpm --filter @avero/docs run check-props
+        run: pnpm --filter @averoui/docs run check-props
 
       - name: Docs internal links
-        run: pnpm --filter @avero/docs run check-links
+        run: pnpm --filter @averoui/docs run check-links
 
       - name: Docs live demos
-        run: pnpm --filter @avero/docs run check-demos
+        run: pnpm --filter @averoui/docs run check-demos
 
       - name: Build docs
         run: pnpm run docs-build
 
       - name: Lighthouse
-        run: pnpm --filter @avero/docs exec lhci autorun
+        run: pnpm --filter @averoui/docs exec lhci autorun
         env:
           # The docs build already ran above; autorun starts it and asserts the budgets.
           LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}

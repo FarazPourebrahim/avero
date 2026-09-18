@@ -9,7 +9,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function FilterPanelListingDemo() {
   return (

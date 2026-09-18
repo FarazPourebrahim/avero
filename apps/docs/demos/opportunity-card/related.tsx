@@ -1,6 +1,6 @@
 "use client";
 
-import { OpportunityCard } from "@avero/react";
+import { OpportunityCard } from "@averoui/react";
 
 export default function OpportunityCardRelatedDemo() {
   return (

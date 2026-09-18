@@ -1,6 +1,6 @@
 "use client";
 
-import { ShareBar } from "@avero/react";
+import { ShareBar } from "@averoui/react";
 
 export default function ShareBarIconsDemo() {
   return <ShareBar />;

@@ -1,6 +1,6 @@
 "use client";
 
-import { SegmentedControl, SegmentedControlItem } from "@avero/react";
+import { SegmentedControl, SegmentedControlItem } from "@averoui/react";
 import { useState } from "react";
 
 const RANGES = [

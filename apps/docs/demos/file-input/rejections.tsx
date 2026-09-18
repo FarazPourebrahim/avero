@@ -1,6 +1,6 @@
 "use client";
 
-import { Field, FieldControl, FieldDescription, FieldLabel, FileInput } from "@avero/react";
+import { Field, FieldControl, FieldDescription, FieldLabel, FileInput } from "@averoui/react";
 import { useState } from "react";
 
 const MB = 1024 * 1024;

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-// Every Lahzeh weight declared by @avero/font loads in a real browser, and only as woff2: the woff
+// Every Lahzeh weight declared by @averoui/font loads in a real browser, and only as woff2: the woff
 // fallback listed second must never be downloaded by a browser that supports woff2.
 
 const WEIGHTS = [100, 200, 300, 400, 500, 600, 700, 800, 900];

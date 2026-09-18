@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, useAvero } from "@avero/react";
+import { cn, useAvero } from "@averoui/react";
 import { Image } from "@tiptap/extension-image";
 import { TableKit } from "@tiptap/extension-table";
 import { Placeholder } from "@tiptap/extensions";
@@ -32,7 +32,7 @@ export type RichTextEditorProps = Omit<
 
 /**
  * Avero's Tiptap editing surface. The prose styles live in
- * `@avero/tokens/rich-content.css` under `.avero-editor-content`, which this component's root
+ * `@averoui/tokens/rich-content.css` under `.avero-editor-content`, which this component's root
  * carries, so the editor and the rendered article share one stylesheet.
  *
  * Output is plain HTML and is meant to be rendered back through `RichContent`, which sanitizes it.

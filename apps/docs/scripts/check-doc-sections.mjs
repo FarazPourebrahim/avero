@@ -16,7 +16,7 @@ const REPO_ROOT = resolve(DOCS_ROOT, "../..");
 
 // Packages whose pages need an installation section, because they carry peer dependencies of their
 // own (template section 3 is conditional on exactly that).
-const PACKAGES_WITH_PEERS = ["@avero/charts", "@avero/editor"];
+const PACKAGES_WITH_PEERS = ["@averoui/charts", "@averoui/editor"];
 
 /**
  * The template's sections, in the order it lists them. `heading` is the `##` a page must carry;
@@ -147,7 +147,7 @@ async function parsePage(path, source) {
     previews: [...prose.matchAll(/<ComponentPreview\b/g)].length,
     previewBeforeFirstHeading:
       firstPreview !== -1 && (firstHeading === -1 || firstPreview < firstHeading),
-    importedPackages: [...source.matchAll(/from "(@avero\/[a-z]+)"/g)].map((match) => match[1]),
+    importedPackages: [...source.matchAll(/from "(@averoui\/[a-z]+)"/g)].map((match) => match[1]),
   };
 }
 

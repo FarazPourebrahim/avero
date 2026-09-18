@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@avero/react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@averoui/react";
 
 const QUESTIONS = [
   {

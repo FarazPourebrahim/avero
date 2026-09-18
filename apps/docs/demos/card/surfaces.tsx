@@ -1,4 +1,4 @@
-import { Card, CardFooter, CardHeader, CardTitle } from "@avero/react";
+import { Card, CardFooter, CardHeader, CardTitle } from "@averoui/react";
 import { Layers, MessageSquare, Target } from "lucide-react";
 
 export default function CardSurfacesDemo() {

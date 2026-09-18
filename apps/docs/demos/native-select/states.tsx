@@ -1,4 +1,4 @@
-import { Field, FieldControl, FieldError, FieldLabel, NativeSelect } from "@avero/react";
+import { Field, FieldControl, FieldError, FieldLabel, NativeSelect } from "@averoui/react";
 
 export default function NativeSelectStatesDemo() {
   return (

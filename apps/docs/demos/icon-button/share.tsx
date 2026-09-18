@@ -5,7 +5,7 @@ import {
   TelegramIcon,
   TwitterIcon,
   WhatsappIcon,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function IconButtonShareDemo() {
   return (

@@ -7,7 +7,7 @@ import {
   FieldDescription,
   FieldLabel,
   type DateRange,
-} from "@avero/react";
+} from "@averoui/react";
 import { useState } from "react";
 
 export default function DatePickerBookingDemo() {

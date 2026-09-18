@@ -27,7 +27,7 @@ import {
   UsersIcon,
   WelcomeCard,
   ZapIcon,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // TP-05: a learner dashboard. The shell has no `main` of its own, so the page supplies it.

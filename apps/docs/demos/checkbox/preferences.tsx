@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkbox } from "@avero/react";
+import { Checkbox } from "@averoui/react";
 import { useState } from "react";
 
 const TOPICS = [

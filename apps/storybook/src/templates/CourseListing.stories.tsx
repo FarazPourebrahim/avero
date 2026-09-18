@@ -7,7 +7,7 @@ import {
   Pagination,
   PromoBanner,
   SectionHeader,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { bannerArt, coolArt, coverArt, portraitArt, PublicPage, warmArt } from "./templateChrome";
 

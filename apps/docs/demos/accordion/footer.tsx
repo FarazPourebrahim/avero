@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionLink,
   AccordionTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function AccordionFooterDemo() {
   return (

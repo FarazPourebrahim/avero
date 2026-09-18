@@ -1,4 +1,4 @@
-import { Eyebrow, GlowOrbs, Heading } from "@avero/react";
+import { Eyebrow, GlowOrbs, Heading } from "@averoui/react";
 
 export default function DarkBannerDemo() {
   return (

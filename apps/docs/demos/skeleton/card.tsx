@@ -1,4 +1,4 @@
-import { SkeletonCard } from "@avero/react";
+import { SkeletonCard } from "@averoui/react";
 
 export default function SkeletonCardDemo() {
   return (

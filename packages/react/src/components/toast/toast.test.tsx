@@ -116,7 +116,9 @@ describe("ToastProvider and useToast", () => {
   });
 
   it("closes on its own after the duration", async () => {
-    render(<Harness duration={30} />);
+    // Long enough that an awaited click cannot outlast it on a loaded machine, which would close
+    // the toast before the "it is showing" assertion below and fail for the wrong reason.
+    render(<Harness duration={300} />);
 
     await userEvent.click(screen.getByRole("button", { name: "نمایش" }));
 

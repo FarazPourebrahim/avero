@@ -1,4 +1,4 @@
-import { SuggestionItem } from "@avero/react";
+import { SuggestionItem } from "@averoui/react";
 
 export default function SuggestionItemDashboardDemo() {
   return (

@@ -1,4 +1,4 @@
-import { Skeleton } from "@avero/react";
+import { Skeleton } from "@averoui/react";
 
 export default function SkeletonShapes() {
   return (

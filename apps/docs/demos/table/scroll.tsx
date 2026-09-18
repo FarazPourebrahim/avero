@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@avero/react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@averoui/react";
 
 const SESSIONS = [
   ["۱", "آشنایی با داده", "۴۵ دقیقه", "تمرین ۱", "۲۴ شهریور", "آنلاین"],

@@ -46,7 +46,7 @@ const UTILITIES_FILE = join(PACKAGE_DIR, "src", "utilities.css");
 
 const properties = readCustomProperties(stripComments(readFileSync(THEME_FILE, "utf8")));
 const dtcg = {
-  $description: "Avero design tokens. Generated from @avero/tokens/src/theme.css; do not edit.",
+  $description: "Avero design tokens. Generated from @averoui/tokens/src/theme.css; do not edit.",
 };
 const flat = {};
 // Class-name suffixes per token group, e.g. fontSize: ["4xs", …] → `text-4xs`. Used by tailwind-merge.
@@ -68,13 +68,13 @@ groups.utility = [
 
 const json = `${JSON.stringify(dtcg, null, 2)}\n`;
 const js =
-  "// Generated from @avero/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.\n" +
+  "// Generated from @averoui/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.\n" +
   `export const tokens = ${JSON.stringify(flat, null, 2)};\n\n` +
   `export const tokenGroups = ${JSON.stringify(groups, null, 2)};\n\n` +
   "/** Returns the CSS `var()` reference for a token, for use in style props. */\n" +
   "export function tokenVar(name) {\n  return `var(${tokens[name].cssVar})`;\n}\n";
 const dts =
-  "// Generated from @avero/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.\n" +
+  "// Generated from @averoui/tokens/src/theme.css by scripts/generate-token-data.mjs. Do not edit.\n" +
   "export type TokenName =\n" +
   Object.keys(flat)
     .map((key) => `  | ${JSON.stringify(key)}`)
@@ -100,7 +100,7 @@ if (CHECK) {
     .map(([file]) => file);
   if (stale.length > 0) {
     console.error(
-      `Token data is out of date (${stale.join(", ")}). Run \`pnpm --filter @avero/tokens generate\`.`,
+      `Token data is out of date (${stale.join(", ")}). Run \`pnpm --filter @averoui/tokens generate\`.`,
     );
     process.exit(1);
   }

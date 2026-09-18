@@ -1,4 +1,4 @@
-import { ToggleChip, ToggleChipGroup } from "@avero/react";
+import { ToggleChip, ToggleChipGroup } from "@averoui/react";
 
 export default function ToggleChipGroupMetricsDemo() {
   return (

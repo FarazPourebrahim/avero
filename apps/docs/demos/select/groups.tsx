@@ -9,7 +9,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function SelectGroupsDemo() {
   return (

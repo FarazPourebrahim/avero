@@ -1,4 +1,4 @@
-import { Card, CardTitle } from "@avero/react";
+import { Card, CardTitle } from "@averoui/react";
 
 const VARIANTS = [
   { variant: "surface", label: "surface — کارت محتوای اصلی" },

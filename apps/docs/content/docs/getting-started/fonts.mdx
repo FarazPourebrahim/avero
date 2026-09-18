@@ -9,13 +9,13 @@ correctly whether or not the files are installed.
 
 ## Installing Lahzeh
 
-`@avero/font` ships the licensed `woff2` and `woff` files together with an `@font-face` declaration
+`@averoui/font` ships the licensed `woff2` and `woff` files together with an `@font-face` declaration
 for every weight. Import it once, after the theme.
 
 ```css title="app.css"
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
-@import "@avero/font/lahzeh.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/font/lahzeh.css";
 ```
 
 That single import declares all nine weights. `font-display: swap` keeps text visible while the
@@ -53,11 +53,11 @@ adjust `--leading-prose` to taste.
 
 ## Using your own font
 
-Override `--font-sans` after importing the theme, and skip the `@avero/font` import entirely:
+Override `--font-sans` after importing the theme, and skip the `@averoui/font` import entirely:
 
 ```css title="app.css"
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
+@import "@averoui/tokens/theme.css";
 
 @theme {
   --font-sans: "Vazirmatn", system-ui, sans-serif;
@@ -79,6 +79,6 @@ Avero does not bundle a monospace font — the stack resolves to whatever the sy
 
 ## Licensing
 
-The Lahzeh licence permits redistribution, which is why the files can ship inside `@avero/font`.
+The Lahzeh licence permits redistribution, which is why the files can ship inside `@averoui/font`.
 If you fork Avero or vendor the files elsewhere, keep `packages/font/files/README.md` alongside
 them: it records the licence terms.

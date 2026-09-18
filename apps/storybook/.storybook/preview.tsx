@@ -1,4 +1,4 @@
-import { AveroProvider } from "@avero/react";
+import { AveroProvider } from "@averoui/react";
 import type { Decorator, Preview } from "@storybook/react-vite";
 import "../src/styles.css";
 

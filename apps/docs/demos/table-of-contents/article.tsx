@@ -1,4 +1,4 @@
-import { TableOfContents, type TocItem } from "@avero/react";
+import { TableOfContents, type TocItem } from "@averoui/react";
 
 const ITEMS: TocItem[] = [
   { id: "what", label: "سیستم طراحی چیست؟" },

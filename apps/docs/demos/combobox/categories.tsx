@@ -1,7 +1,7 @@
 "use client";
 
-import { Combobox, Field, FieldControl, FieldDescription, FieldLabel } from "@avero/react";
-import type { ComboboxItem } from "@avero/react";
+import { Combobox, Field, FieldControl, FieldDescription, FieldLabel } from "@averoui/react";
+import type { ComboboxItem } from "@averoui/react";
 
 const COURSES: ComboboxItem[] = [
   {

@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@avero/react";
+} from "@averoui/react";
 
 export default function TableArticleDemo() {
   return (

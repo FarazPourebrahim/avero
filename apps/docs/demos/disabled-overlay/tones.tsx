@@ -1,4 +1,4 @@
-import { Card, CardTitle, DisabledOverlay } from "@avero/react";
+import { Card, CardTitle, DisabledOverlay } from "@averoui/react";
 
 export default function DisabledOverlayTonesDemo() {
   return (

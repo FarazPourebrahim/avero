@@ -1,4 +1,4 @@
-# @avero/charts
+# @averoui/charts
 
 ## 1.0.0
 
@@ -18,7 +18,7 @@
 
   Behaviour comes from Radix, so focus management, keyboard support and ARIA semantics are not
   reimplemented; every component test runs axe and a browser suite runs axe over every story in both
-  directions. Colours, radii, shadows, motion and type come from `@avero/tokens`, so a theme is a set
+  directions. Colours, radii, shadows, motion and type come from `@averoui/tokens`, so a theme is a set
   of CSS custom properties rather than a fork.
 
 ### Patch Changes
@@ -51,5 +51,5 @@
 - Updated dependencies [2bcd63b]
 - Updated dependencies [fb4cf08]
 - Updated dependencies [9ab5791]
-  - @avero/react@1.0.0
-  - @avero/tokens@1.0.0
+  - @averoui/react@1.0.0
+  - @averoui/tokens@1.0.0

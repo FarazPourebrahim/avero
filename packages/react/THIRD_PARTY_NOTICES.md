@@ -1,6 +1,6 @@
 # Third-party notices
 
-`@avero/react` redistributes the following third-party assets.
+`@averoui/react` redistributes the following third-party assets.
 
 ## Font Awesome Free 5 icons
 

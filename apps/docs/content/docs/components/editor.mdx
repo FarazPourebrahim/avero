@@ -8,7 +8,7 @@ description: A Tiptap editing surface, sharing one stylesheet with rendered pros
 The editor lives in a separate package, so the core library never pulls in Tiptap.
 
 ```tsx
-import { EditorToolbar, RichTextEditor } from "@avero/editor";
+import { EditorToolbar, RichTextEditor } from "@averoui/editor";
 ```
 
 <ComponentPreview name="editor/with-toolbar" />
@@ -16,7 +16,7 @@ import { EditorToolbar, RichTextEditor } from "@avero/editor";
 ## Installation
 
 ```bash
-pnpm add @avero/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extension-table @tiptap/extension-image @tiptap/extensions
+pnpm add @averoui/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extension-table @tiptap/extension-image @tiptap/extensions
 ```
 
 Every `@tiptap/*` package is a peer dependency (`>=3.0.0`), so your app owns the versions and the
@@ -62,12 +62,12 @@ Tiptap's shortcuts work with or without it, e.g. <kbd>Ctrl</kbd> + <kbd>B</kbd> 
 
 ## Styles
 
-The editor does **not** ship its own CSS. Its prose styles live in `@avero/tokens/rich-content.css`
+The editor does **not** ship its own CSS. Its prose styles live in `@averoui/tokens/rich-content.css`
 under `.avero-editor-content`, the same stylesheet that styles rendered articles — so what an author
 types matches what a reader sees:
 
 ```css
-@import "@avero/tokens/rich-content.css";
+@import "@averoui/tokens/rich-content.css";
 ```
 
 ## Right-to-left

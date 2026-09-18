@@ -1,4 +1,4 @@
-import { Button, FormActions } from "@avero/react";
+import { Button, FormActions } from "@averoui/react";
 
 export default function FormActionsAlignmentDemo() {
   return (

@@ -1,4 +1,4 @@
-import { IconTile } from "@avero/react";
+import { IconTile } from "@averoui/react";
 import { Zap } from "lucide-react";
 
 const TONES = ["blue", "purple", "amber", "emerald", "rose", "indigo", "slate"] as const;

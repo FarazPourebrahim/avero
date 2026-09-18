@@ -1,4 +1,4 @@
-import { Textarea } from "@avero/react";
+import { Textarea } from "@averoui/react";
 
 export default function TextareaVariantsDemo() {
   return (

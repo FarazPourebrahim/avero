@@ -1,4 +1,4 @@
-import { Rating } from "@avero/react";
+import { Rating } from "@averoui/react";
 
 export default function RatingPrecisionDemo() {
   return (

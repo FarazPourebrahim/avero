@@ -1,4 +1,4 @@
-import { Chip } from "@avero/react";
+import { Chip } from "@averoui/react";
 import { Tag } from "lucide-react";
 
 export default function ChipLinksDemo() {

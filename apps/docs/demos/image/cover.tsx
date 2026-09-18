@@ -1,4 +1,4 @@
-import { Figure, Image } from "@avero/react";
+import { Figure, Image } from "@averoui/react";
 import { cover } from "../artwork";
 
 export default function ImageCoverDemo() {

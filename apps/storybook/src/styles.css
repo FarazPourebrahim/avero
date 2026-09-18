@@ -1,9 +1,9 @@
 @import "tailwindcss";
-@import "@avero/font/lahzeh.css";
-@import "@avero/tokens/theme.css";
-@import "@avero/tokens/base.css";
-@import "@avero/tokens/utilities.css";
-@import "@avero/tokens/rich-content.css";
+@import "@averoui/font/lahzeh.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/tokens/base.css";
+@import "@averoui/tokens/utilities.css";
+@import "@averoui/tokens/rich-content.css";
 
 @source "../../../packages/react/src";
 @source "./";

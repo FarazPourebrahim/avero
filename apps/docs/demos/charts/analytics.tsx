@@ -1,6 +1,6 @@
 "use client";
 
-import { AreaChart, ChartCard, chartPalette } from "@avero/charts";
+import { AreaChart, ChartCard, chartPalette } from "@averoui/charts";
 
 const DAYS = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه"];
 

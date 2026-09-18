@@ -1,6 +1,6 @@
 "use client";
 
-import { DatePicker, Field, FieldControl, FieldDescription, FieldLabel } from "@avero/react";
+import { DatePicker, Field, FieldControl, FieldDescription, FieldLabel } from "@averoui/react";
 import { useState } from "react";
 
 export default function DatePickerCalendarsDemo() {

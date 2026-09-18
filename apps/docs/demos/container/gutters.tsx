@@ -1,4 +1,4 @@
-import { Container } from "@avero/react";
+import { Container } from "@averoui/react";
 
 const GUTTERS = [
   { gutter: "default", label: "default — صفحه‌های سایت (۱۶ تا ۳۲px)" },

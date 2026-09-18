@@ -25,7 +25,7 @@ import {
   TagInput,
   Textarea,
   type ComboboxItem,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useId, useState, type FormEvent } from "react";
 

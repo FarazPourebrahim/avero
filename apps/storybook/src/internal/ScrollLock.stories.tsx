@@ -21,7 +21,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // Used by tests/scroll-lock.spec.ts: a page taller than the viewport, so there is a scrollbar for

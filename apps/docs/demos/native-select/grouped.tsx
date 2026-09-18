@@ -1,4 +1,4 @@
-import { NativeSelect } from "@avero/react";
+import { NativeSelect } from "@averoui/react";
 
 export default function NativeSelectGroupedDemo() {
   return (

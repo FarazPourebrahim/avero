@@ -1,4 +1,4 @@
-import { Carousel, CarouselDots, CarouselSlide, CarouselViewport } from "@avero/react";
+import { Carousel, CarouselDots, CarouselSlide, CarouselViewport } from "@averoui/react";
 
 const SLIDES = ["۱", "۲", "۳", "۴"];
 

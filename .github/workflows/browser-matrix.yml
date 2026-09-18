@@ -29,7 +29,7 @@ jobs:
         run: pnpm run storybook-build
 
       - name: Install Playwright browsers
-        run: pnpm --filter @avero/storybook-app exec playwright install --with-deps
+        run: pnpm --filter @averoui/storybook-app exec playwright install --with-deps
 
       - name: Chromium, Edge, Firefox, WebKit, iOS Safari and Android Chrome
         run: pnpm run storybook-test-matrix

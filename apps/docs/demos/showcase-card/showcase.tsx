@@ -1,6 +1,6 @@
 "use client";
 
-import { ShowcaseCard } from "@avero/react";
+import { ShowcaseCard } from "@averoui/react";
 
 export default function ShowcaseCardShowcaseDemo() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, LiveRegion, VisuallyHidden } from "@avero/react";
+import { Button, LiveRegion, VisuallyHidden } from "@averoui/react";
 import { useState } from "react";
 
 export default function LiveRegionDemo() {

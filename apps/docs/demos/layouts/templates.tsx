@@ -1,4 +1,4 @@
-import { ArticleLayout, ListingLayout, SplitDetailLayout } from "@avero/react";
+import { ArticleLayout, ListingLayout, SplitDetailLayout } from "@averoui/react";
 
 function Block({ children, className }: { children: string; className?: string }) {
   return (

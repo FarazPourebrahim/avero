@@ -1,6 +1,6 @@
 "use client";
 
-import { RichTextEditor } from "@avero/editor";
+import { RichTextEditor } from "@averoui/editor";
 
 const CONTENT = [
   "<h2>درباره این دوره</h2>",

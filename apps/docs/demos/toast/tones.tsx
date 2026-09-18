@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ToastProvider, useToast } from "@avero/react";
+import { Button, ToastProvider, useToast } from "@averoui/react";
 
 function Triggers() {
   const { toast } = useToast();

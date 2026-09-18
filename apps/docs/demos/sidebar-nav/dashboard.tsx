@@ -1,4 +1,4 @@
-import { SidebarNav, SidebarNavItem } from "@avero/react";
+import { SidebarNav, SidebarNavItem } from "@averoui/react";
 import { Eye, FileText, House, LogOut, Settings } from "lucide-react";
 
 export default function SidebarNavDashboardDemo() {

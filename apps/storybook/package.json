@@ -1,5 +1,5 @@
 {
-  "name": "@avero/storybook-app",
+  "name": "@averoui/storybook-app",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,10 +12,10 @@
     "test-browser-matrix": "playwright test"
   },
   "devDependencies": {
-    "@avero/config": "workspace:^",
-    "@avero/font": "workspace:^",
-    "@avero/react": "workspace:^",
-    "@avero/tokens": "workspace:^",
+    "@averoui/config": "workspace:^",
+    "@averoui/font": "workspace:^",
+    "@averoui/react": "workspace:^",
+    "@averoui/tokens": "workspace:^",
     "@playwright/test": "^1.63.0",
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/react-vite": "^10.6.0",

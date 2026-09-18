@@ -1,7 +1,7 @@
 # Contributing to Avero
 
 Avero is a bidirectional React component library. Everything in it is built from the design tokens
-in `@avero/tokens` and works in Persian (RTL) and English (LTR) from the same code. These rules
+in `@averoui/tokens` and works in Persian (RTL) and English (LTR) from the same code. These rules
 exist to keep that true as the library grows.
 
 Read [`docs/avero-conventions.md`](docs/avero-conventions.md) before your first change. It is the
@@ -73,7 +73,7 @@ Done:
 - [ ] `"use client"` only where it is genuinely needed.
 - [ ] Tests cover render, every variant, interaction, keyboard and the edge cases (empty, long text,
       disabled, loading), and include an axe check and a `renderToString` SSR smoke test.
-- [ ] A docs page with all twelve template sections — `pnpm --filter @avero/docs run check-sections`
+- [ ] A docs page with all twelve template sections — `pnpm --filter @averoui/docs run check-sections`
       is the gate.
 - [ ] A changeset.
 
@@ -86,9 +86,9 @@ demo file for the Code tab — so a snippet can never drift from what it renders
 Three checks run in CI and are worth running locally before pushing:
 
 ```bash
-pnpm --filter @avero/docs run check-sections   # the twelve-section page template
-pnpm --filter @avero/docs run check-props      # every documented prop has a description
-pnpm --filter @avero/docs run check-links      # every internal link and anchor resolves
+pnpm --filter @averoui/docs run check-sections   # the twelve-section page template
+pnpm --filter @averoui/docs run check-props      # every documented prop has a description
+pnpm --filter @averoui/docs run check-links      # every internal link and anchor resolves
 ```
 
 Props tables are generated from TypeScript source. Never write one by hand.

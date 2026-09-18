@@ -4,19 +4,19 @@ description: Overriding Avero's tokens to brand the library, and what each style
 ---
 
 A theme in Avero is a set of CSS custom properties, not a fork. Every component reads its colours,
-radii, shadows and type from `@avero/tokens`, so redefining a token restyles every component that
+radii, shadows and type from `@averoui/tokens`, so redefining a token restyles every component that
 uses it — including the blocks and layout shells.
 
 ## The four stylesheets
 
-`@avero/tokens` ships four entry points. Import them in this order; only `theme.css` is required.
+`@averoui/tokens` ships four entry points. Import them in this order; only `theme.css` is required.
 
-| Import                           | Contributes                                                                     | When to import                        |
-| -------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------- |
-| `@avero/tokens/theme.css`        | The `@theme` block: every Avero token, plus keyframes                           | Always                                |
-| `@avero/tokens/base.css`         | Document defaults on `html`/`body`, reduced-motion handling, scroll-lock gutter | Apps built on Avero end to end        |
-| `@avero/tokens/utilities.css`    | Named utilities: scrollbars, shimmer, glow ring, typing caret, gradients        | Whenever you use those utilities      |
-| `@avero/tokens/rich-content.css` | Prose styles for `RichContent` and the editor                                   | With `RichContent` or `@avero/editor` |
+| Import                             | Contributes                                                                     | When to import                          |
+| ---------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------- |
+| `@averoui/tokens/theme.css`        | The `@theme` block: every Avero token, plus keyframes                           | Always                                  |
+| `@averoui/tokens/base.css`         | Document defaults on `html`/`body`, reduced-motion handling, scroll-lock gutter | Apps built on Avero end to end          |
+| `@averoui/tokens/utilities.css`    | Named utilities: scrollbars, shimmer, glow ring, typing caret, gradients        | Whenever you use those utilities        |
+| `@averoui/tokens/rich-content.css` | Prose styles for `RichContent` and the editor                                   | With `RichContent` or `@averoui/editor` |
 
 `base.css` is deliberately opt-in: it styles `body`, so a host that already owns its page chrome
 (a docs site, an app embedding Avero in one panel) should import only `theme.css` and
@@ -28,7 +28,7 @@ Add your own `@theme` block **after** the Avero import. Later declarations win.
 
 ```css title="app.css"
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
+@import "@averoui/tokens/theme.css";
 
 @theme {
   --color-primary: #7c3aed;
@@ -55,7 +55,7 @@ usually what you want; changing several inconsistently is what makes a library l
 
 **Structural tokens — avoid.** The z-index layers (`--z-*`) are ordered so overlays stack correctly;
 `check-z-order.mjs` enforces toast &gt; modal &gt; drawer &gt; dropdown &gt; header. Reordering them
-breaks overlay stacking. The chart tokens (`--color-chart-*`) are read as data by `@avero/charts`
+breaks overlay stacking. The chart tokens (`--color-chart-*`) are read as data by `@averoui/charts`
 rather than as classes, so they can be recoloured but not removed.
 
 See [Foundations](../foundations/colors) for every token with its live value.
@@ -121,11 +121,11 @@ source by default, so point it at the package as well, or half the styles will b
 production:
 
 ```css
-@source "../node_modules/@avero/react/dist";
+@source "../node_modules/@averoui/react/dist";
 ```
 
 Adjust the relative path to wherever your stylesheet sits. With pnpm, resolve the real location if
-the symlinked path is not scanned — `@source "../node_modules/.pnpm/@avero+react@*/node_modules/@avero/react/dist";`
+the symlinked path is not scanned — `@source "../node_modules/.pnpm/@averoui+react@*/node_modules/@averoui/react/dist";`
 
 ## Overriding a single component
 

@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle } from "@avero/react";
+import { Card, CardHeader, CardTitle } from "@averoui/react";
 
 export default function CardPrimaryDemo() {
   return (

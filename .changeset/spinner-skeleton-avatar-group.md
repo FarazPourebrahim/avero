@@ -1,5 +1,5 @@
 ---
-"@avero/react": minor
+"@averoui/react": minor
 ---
 
 Adds the three primitives the inventory had left as backlog.

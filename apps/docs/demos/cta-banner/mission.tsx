@@ -1,4 +1,4 @@
-import { CtaBanner } from "@avero/react";
+import { CtaBanner } from "@averoui/react";
 
 export default function CtaBannerMissionDemo() {
   return (

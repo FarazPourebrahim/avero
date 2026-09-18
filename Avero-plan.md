@@ -7,7 +7,7 @@
 | Plan version | 2.0 |
 | Created | 2026-06-19 |
 | Last updated | 2026-09-10 |
-| Design source of truth | `@avero/tokens` and the design system in §4 |
+| Design source of truth | `@averoui/tokens` and the design system in §4 |
 | Target stack | React 18.2+/19, TypeScript (strict), Tailwind CSS v4.3, Radix UI primitives, pnpm workspace |
 | Default direction / locale | RTL / `fa-IR`, with full LTR / `en` support |
 
@@ -84,21 +84,21 @@
 
 | ID | Decision | Choice | Rationale | Decided by / date |
 | --- | --- | --- | --- | --- |
-| D-01 | Font delivery | The user provides licensed Lahzeh `woff2` files. They are bundled in the optional `@avero/font` package. `@avero/tokens` declares `Lahzeh` with a system fallback stack. | Lahzeh is a commercial Persian typeface with nine weights; consumers who don't have it still get a sensible fallback. | User, 2026-06-19 |
+| D-01 | Font delivery | The user provides licensed Lahzeh `woff2` files. They are bundled in the optional `@averoui/font` package. `@averoui/tokens` declares `Lahzeh` with a system fallback stack. | Lahzeh is a commercial Persian typeface with nine weights; consumers who don't have it still get a sensible fallback. | User, 2026-06-19 |
 | D-02 | Dark mode | Light theme only in v1.0, built entirely on semantic tokens so a dark theme can be added later (Phase 14). | Keeps v1.0 focused while leaving the token layer ready for a second theme. | User, 2026-06-19 |
 | D-03 | Interaction primitives | Headless **Radix UI** primitives for behaviour, with Avero's styling on top. | Radix provides focus management, keyboard support and ARIA semantics, plus `DirectionProvider` for RTL. | User, 2026-06-19 (primitive family: Radix, chosen by plan) |
 | D-04 | Documentation | Custom **Next.js + Fumadocs** docs app (`apps/docs`), plus internal Storybook (`apps/storybook`) for interaction and a11y testing. | The user wants "big component library" style docs. | User, 2026-06-19 |
 | D-05 | Styling engine | Tailwind CSS **v4**, variants via `class-variance-authority`, class merging via `tailwind-merge` configured with Avero's custom tokens. | `@theme` tokens compile to CSS variables and utilities from one source, and consumers already on Tailwind v4 get Avero's tokens as classes. | Plan default |
 | D-06 | Icons | `lucide-react` as a peer dependency for general icons. Brand and solid glyphs Lucide doesn't cover (Telegram, WhatsApp, LinkedIn, X, Instagram, a few solid shapes) ship as Avero SVG components, with licences recorded in `THIRD_PARTY_NOTICES.md`. | Avoids pulling a whole icon-font package for a handful of glyphs. | Plan default |
-| D-07 | Charts | `@avero/charts`, an optional package wrapping **Recharts**. | Keeps the core free of heavy dependencies. | Plan default |
-| D-08 | Rich text | `@avero/editor`, an optional package wrapping **Tiptap**. `RichContent` (the renderer) lives in core and always sanitizes. | Heavy dependency is optional; the renderer is needed everywhere. | Plan default |
+| D-07 | Charts | `@averoui/charts`, an optional package wrapping **Recharts**. | Keeps the core free of heavy dependencies. | Plan default |
+| D-08 | Rich text | `@averoui/editor`, an optional package wrapping **Tiptap**. `RichContent` (the renderer) lives in core and always sanitizes. | Heavy dependency is optional; the renderer is needed everywhere. | Plan default |
 | D-09 | Carousel | **Embla Carousel** (headless), styled with scroll snap, chevron controls and dot or pill pagination. | Headless, matches D-03. | Plan default |
 | D-10 | Toasts | Radix Toast styled from the token system and set in Lahzeh. | One primitive family. | Plan default |
 | D-12 | Monorepo | pnpm workspace following `.claude/CLAUDE.md` (`apps/*`, `packages/*`). The `packages/contracts` package from CLAUDE.md is **not applicable** because there is no backend and no cross-app API contracts. | Follows the working agreement and records the deliberate omission. | Plan default |
 | D-13 | Library build | **Changed from Vite library mode to the TypeScript compiler** (`tsc`, per-file ESM + `.d.ts`). Library source uses `.js`-suffixed relative imports (`module: NodeNext`). | No bundler plugins are needed to keep `"use client"` directives. Output is valid Node ESM and tree-shakes per file. | Implementation, 2026-06-19 |
 | D-14 | Toolchain pins | TypeScript ~6.0.3 (typescript-eslint supports `<6.1.0`); Node floor ≥ 22.12; jsdom ^28.1 and size-limit ^12.1 (newer majors need Node ≥ 22.18/22.22). | Keeps lint working and supports the local Node 22.16. | Implementation, 2026-06-19 |
 | D-15 | `RichContent` sanitizer | **js-xss** (`xss`), not DOMPurify: an allowlist filter that needs no DOM, so the same code runs in the browser, in SSR and in tests. `isomorphic-dompurify` would pull jsdom (~10 MB) into every server bundle that renders stored HTML. | Sanitizing is mandatory (D-08) and must not cost a jsdom dependency on the server. | Implementation, 2026-07-05, approved by the user |
-| D-16 | Chart colours | The chart palette, grid, axis, cursor and tooltip colours are defined as `--color-chart-*` tokens in `@avero/tokens` and consumed by `@avero/charts` as generated token data (`tokens.colorChartViews.value`). | Recharts takes colours as props that become SVG attributes: a utility class cannot reach them, and a `var()` reference would depend on Tailwind emitting a theme variable that no class references (plain `@theme` prunes unused variables), which would fail silently. Sourcing them from the tokens package keeps `avero/no-raw-color` passing with no lint exemption. | Implementation, 2026-07-05 |
+| D-16 | Chart colours | The chart palette, grid, axis, cursor and tooltip colours are defined as `--color-chart-*` tokens in `@averoui/tokens` and consumed by `@averoui/charts` as generated token data (`tokens.colorChartViews.value`). | Recharts takes colours as props that become SVG attributes: a utility class cannot reach them, and a `var()` reference would depend on Tailwind emitting a theme variable that no class references (plain `@theme` prunes unused variables), which would fail silently. Sourcing them from the tokens package keeps `avero/no-raw-color` passing with no lint exemption. | Implementation, 2026-07-05 |
 | D-17 | Docs props tables | `PropsTable` takes an optional `package` prop, backed by one `fumadocs-typescript` generator per package tsconfig. | A generator resolves types through exactly one tsconfig, and the previous single generator was bound to `packages/react`, so charts types were unreachable. Additive, so the existing call sites are untouched. | Implementation, 2026-07-05 |
 | D-18 | `cn` size budget | **Raised from 8 kB to 9 kB** (brotli, `import { cn }`). | The 8 kB placeholder predates the token-aware merge, so CI failed its size step. Measured at 8.43 kB: `tailwind-merge` + `clsx` 7.52 kB, `extendTailwindMerge` 0.28 kB, token group names 0.6 kB. Nothing in it can shrink meaningfully; 9 kB leaves room for new token groups. | User, 2026-07-30 |
 | D-19 | Browser a11y gate | Playwright runs axe on every story in RTL/`fa` and LTR/`en` (`apps/storybook/tests/a11y.spec.ts`). Every rule blocks at 0 violations except **`color-contrast`, which is reported as a test warning, not enforced**. Page-structure rules (`region`, `landmark-one-main`, `page-has-heading-one`) are off because stories render components in isolation. | O-04 keeps below-AA pairings in the default palette, so enforcing contrast would contradict it. Browser findings feed the contrast report and the Phase 12 contrast review. | User, 2026-07-30 |
@@ -106,12 +106,13 @@
 | D-21 | Floating panel layer | Portalled floating panels (Select, Combobox, DatePicker, Popover, DropdownMenu, Tooltip) use `--z-popover`; `--z-dropdown` is for in-page dropdowns only. | The panels were on `--z-dropdown` (60), below `--z-drawer` (70) and `--z-modal-content` (115), so they opened behind a drawer or dialog they were used in. `check-z-order.mjs` already keeps `--z-popover` above the modal layers and below toasts. | User, 2026-08-18 |
 | D-22 | Scroll lock without layout shift | While an overlay locks scrolling, `base.css` keeps the viewport's scrollbar gutter (`html:has(body[data-scroll-locked]) { scrollbar-gutter: stable }`) and drops react-remove-scroll-bar's right margin. | The library compensates with a physical right margin, but browsers place a right-to-left page's scrollbar on different sides, so a direction-specific fix can't be right everywhere. A Playwright spec measures the shift in RTL and LTR. | User, 2026-08-18 |
 | D-23 | Toast API | A `ToastProvider` with a `useToast()` hook (`toast`, `dismiss`), not a module-level store. Tones are `info`, `success`, `warning` and `danger`; `danger` is the plan's "error" variant. | A context keeps toasts per React tree, so nothing is shared between server requests, and it matches the hook-based data layer consumers use. `danger` keeps one tone vocabulary with `Alert`, `Button` and `DropdownMenuItem`. | Implementation, 2026-08-18 |
-| D-24 | `@avero/editor` size budget | **Raised from 11 kB to 12 kB** (brotli, `import { RichTextEditor }`, Tiptap ignored). | CI measured 11.18 kB. `EditorToolbar` is tree-shaken out of that import; the growth is the shared `fa`/`en` dictionary from `@avero/react`, which `useAvero` pulls in whole and which the Toast, Lightbox and editor toolbar strings grew by about 300 B. 12 kB leaves room for new strings. | User, 2026-09-09 |
-| D-25 | Precompiled CSS for non-Tailwind consumers | **Deferred out of Phase 11.** Avero requires Tailwind v4. The Installation page documents the Tailwind path only and states the limitation; the missing `@avero/react/styles.css` promised by §6.3 is recorded in `docs/known-debts.md`. | The stylesheet is a packaging feature, not documentation: it needs a Tailwind CLI build step, two exports and a size budget. Documenting a path that does not ship would be worse than naming the gap. | User, 2026-09-10 |
+| D-24 | `@averoui/editor` size budget | **Raised from 11 kB to 12 kB** (brotli, `import { RichTextEditor }`, Tiptap ignored). | CI measured 11.18 kB. `EditorToolbar` is tree-shaken out of that import; the growth is the shared `fa`/`en` dictionary from `@averoui/react`, which `useAvero` pulls in whole and which the Toast, Lightbox and editor toolbar strings grew by about 300 B. 12 kB leaves room for new strings. | User, 2026-09-09 |
+| D-25 | Precompiled CSS for non-Tailwind consumers | **Deferred out of Phase 11.** Avero requires Tailwind v4. The Installation page documents the Tailwind path only and states the limitation; the missing `@averoui/react/styles.css` promised by §6.3 is recorded in `docs/known-debts.md`. | The stylesheet is a packaging feature, not documentation: it needs a Tailwind CLI build step, two exports and a size budget. Documenting a path that does not ship would be worse than naming the gap. | User, 2026-09-10 |
 | D-26 | Versioned docs | **Deferred to Phase 13.** The Phase 11 item is conditional on a previous major existing, and nothing is published yet. | Building a version tree with one version in it is scaffolding without content; 1.0 is the first point at which versioning means anything. | User, 2026-09-10 |
 | D-27 | Where the example templates live | **Storybook only.** TP-01…TP-06 stay in `apps/storybook/src/templates`. The docs site does not embed them and gains no Templates section. | The templates are a review and a11y surface, not reference documentation: the browser axe suite runs against their story IDs. Sharing them with the docs app would need a new workspace package for content that only ever gets reviewed, and duplicating them would let the two copies drift. | User, 2026-09-10 |
 | D-28 | Lighthouse and colour contrast | **`color-contrast` is skipped in `lighthouserc.json`**, so the accessibility category is asserted at 1.00 without it. `SegmentedControl` and `ReactionBar`'s idle text moved from `gray-500` to `gray-600` on their `gray-100` track (4.39:1 → 6.87:1), because putting the segmented control in the docs navbar placed that pairing on every page. | Identical to D-19's reasoning for the axe suite: O-04 keeps below-AA pairings in the default palette, so enforcing contrast would contradict it. Every other accessibility audit passes at 1.00 on both pages, so the skip keeps a real gate — a new accessibility regression still fails CI — rather than lowering the threshold to a number that would absorb one. Phase 12's contrast review removes the skip. | User, 2026-09-10 |
-| D-29 | Licence and registry | **MIT**, published to **public npm** under the `avero` scope with provenance. The Lahzeh font files keep their own licence, which permits redistribution (O-02). | MIT is what the ecosystem Avero sits in uses — React, Radix, Tailwind — so it adds no friction for anyone evaluating the library, and a public registry matches a library whose components are deliberately domain-neutral and whose documentation is written for an outside reader. | User, 2026-09-19 |
+| D-29 | Licence and registry | **MIT**, published to **public npm** with provenance (the scope is `@averoui`, see D-30). The Lahzeh font files keep their own licence, which permits redistribution (O-02). | MIT is what the ecosystem Avero sits in uses — React, Radix, Tailwind — so it adds no friction for anyone evaluating the library, and a public registry matches a library whose components are deliberately domain-neutral and whose documentation is written for an outside reader. | User, 2026-09-19 |
+| D-30 | Package scope | **`@averoui/*`**, because the `avero` organisation was already taken on npm. Every package, workspace filter, import and the `@averoui/source` export condition moved in one change; 692 references across 410 files. | The library keeps the name Avero — only the registry scope differs, which is ordinary when a short name is gone. Renaming the private packages and the custom resolution condition too keeps one scope across the repository rather than a mix that has to be explained. Nothing had been published under the old scope, so 1.0.0 is simply cut under the new one. | User, 2026-09-19 |
 
 ---
 
@@ -394,7 +395,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | D-23 | `CoverHeader` (gradient cover + overlapping avatar + footer bar) |
 | D-24 | `ResponsiveBanner` (desktop/mobile image swap) |
 
-### 5.7 Charts: `@avero/charts` (C)
+### 5.7 Charts: `@averoui/charts` (C)
 | ID | Component |
 | --- | --- |
 | C-01 | `ChartCard` (title, toggle chips, body, empty and loading states) |
@@ -402,7 +403,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | C-03 | `LineChart` |
 | C-04 | `ChartTooltip`, axis/grid styling, palette |
 
-### 5.8 Editor: `@avero/editor` (E)
+### 5.8 Editor: `@averoui/editor` (E)
 | ID | Component |
 | --- | --- |
 | E-01 | `RichTextEditor` content styles (headings, lists, code, tables, placeholder, selection) |
@@ -474,20 +475,20 @@ complib/
 │   ├── known-debts.md
 │   └── SECURITY.md
 ├── packages/
-│   ├── config/               # @avero/config – shared tsconfig, eslint, prettier, tailwind-merge config
-│   ├── tokens/               # @avero/tokens – theme.css (@theme), base.css, utilities.css, rich-content.css, token data
-│   ├── font/                 # @avero/font – Lahzeh @font-face + licensed woff2 (see O-02)
-│   ├── react/                # @avero/react – all core components, blocks, hooks, utils, icons
-│   ├── charts/               # @avero/charts – Recharts wrappers (peer: recharts)
-│   └── editor/               # @avero/editor – Tiptap editor (peer: @tiptap/*)
+│   ├── config/               # @averoui/config – shared tsconfig, eslint, prettier, tailwind-merge config
+│   ├── tokens/               # @averoui/tokens – theme.css (@theme), base.css, utilities.css, rich-content.css, token data
+│   ├── font/                 # @averoui/font – Lahzeh @font-face + licensed woff2 (see O-02)
+│   ├── react/                # @averoui/react – all core components, blocks, hooks, utils, icons
+│   ├── charts/               # @averoui/charts – Recharts wrappers (peer: recharts)
+│   └── editor/               # @averoui/editor – Tiptap editor (peer: @tiptap/*)
 └── apps/
     ├── docs/                 # Next.js + Fumadocs public documentation
     └── storybook/            # internal: stories, interaction + a11y tests, example templates
 ```
 
-- Workspace packages use the named scope `@avero/*`. App-internal imports use `@/…`. This is consistent with CLAUDE.md's alias convention.
+- Workspace packages use the named scope `@averoui/*`. App-internal imports use `@/…`. This is consistent with CLAUDE.md's alias convention.
 
-### 6.2 Package internals (`@avero/react`)
+### 6.2 Package internals (`@averoui/react`)
 
 ```
 packages/react/src/
@@ -511,13 +512,13 @@ packages/react/src/
 - **Tailwind v4 consumers (primary path):**
   ```css
   @import "tailwindcss";
-  @import "@avero/tokens/theme.css";      /* @theme tokens */
-  @import "@avero/tokens/base.css";       /* body defaults, reduced motion (opt-in) */
-  @import "@avero/tokens/utilities.css";  /* scrollbars, gradients, shimmer */
-  @import "@avero/font/lahzeh.css";       /* optional */
-  @source "../node_modules/@avero/react/dist";
+  @import "@averoui/tokens/theme.css";      /* @theme tokens */
+  @import "@averoui/tokens/base.css";       /* body defaults, reduced motion (opt-in) */
+  @import "@averoui/tokens/utilities.css";  /* scrollbars, gradients, shimmer */
+  @import "@averoui/font/lahzeh.css";       /* optional */
+  @source "../node_modules/@averoui/react/dist";
   ```
-- **Non-Tailwind consumers:** a precompiled `@avero/react/styles.css` containing only the classes Avero uses, with an option that omits preflight.
+- **Non-Tailwind consumers:** a precompiled `@averoui/react/styles.css` containing only the classes Avero uses, with an option that omits preflight.
 - `cn()` = `clsx` + `tailwind-merge`, **extended with every custom token** (font sizes, shadows, radii, z-index). Otherwise overrides like `className="shadow-card-soft"` would merge incorrectly.
 - Components contain no raw hex or rgb values. They use tokens or Tailwind palette classes only (enforced by lint, Phase 1).
 - Logical properties only (`ps-`, `pe-`, `ms-`, `me-`, `start-`, `end-`, `border-s`, `rounded-s`, `text-start`). Physical `left`/`right`/`pl`/`pr`/`ml`/`mr` are banned by lint.
@@ -589,7 +590,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **DoD:**
 - [x] Git initialised or verified with `main` and `dev` branches; work happens on `dev`
 - [x] `pnpm-workspace.yaml` and root `package.json` with per-app cd-scripts only (no bare `dev`), `packageManager` pinned
-- [x] `@avero/config` providing strict `tsconfig` bases, ESLint flat config and Prettier config, consumed by all packages
+- [x] `@averoui/config` providing strict `tsconfig` bases, ESLint flat config and Prettier config, consumed by all packages
 - [x] TypeScript strict and `noUncheckedIndexedAccess` on; `tsc -b` at root passes — equivalent `pnpm typecheck` runs `tsc` in every project (per-package `NodeNext`/`Bundler` configs)
 - [x] Custom lint rules active: no raw hex/rgb/hsl in `packages/react/src/**`; no physical direction utilities (`pl-`, `pr-`, `ml-`, `mr-`, `left-`, `right-`, `border-l`, `border-r`, `rounded-l`, `rounded-r`, `text-left`, `text-right`); `no-console` — `avero/no-raw-color`, `avero/no-physical-direction`, 26 RuleTester cases
 - [x] Tailwind v4.3.x installed; a smoke component renders a token class in Storybook — Playwright asserts `rgb(10, 102, 194)`
@@ -611,18 +612,18 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **Scope:** F-01…F-13.
 
 **DoD:**
-- [x] `@avero/tokens/theme.css` defines every token in §4 as Tailwind v4 `@theme` variables (brand, semantic, chart, micro font sizes, leading, shadows, radii, blur, animations) — categorical and heatmap colours reuse the default palette; gradients live in `utilities.css`; z-index layers are `--z-*` properties
+- [x] `@averoui/tokens/theme.css` defines every token in §4 as Tailwind v4 `@theme` variables (brand, semantic, chart, micro font sizes, leading, shadows, radii, blur, animations) — categorical and heatmap colours reuse the default palette; gradients live in `utilities.css`; z-index layers are `--z-*` properties
 - [x] `tokens.json` (DTCG format) and `tokens.ts` are generated from a single source; a CI check fails if they drift — `generate-token-data.mjs --check` (emits `tokens.js` + `tokens.d.ts`)
 - [x] `base.css`: body defaults, font smoothing, `min-width: 320px`, smooth scroll, `prefers-reduced-motion` override; `utilities.css`: `fancy`/`slim`/`hidden` scrollbars, shimmer, glow ring, typing caret and gradients; keyframes in `theme.css`
-- [x] `@avero/font`: `@font-face` for all 9 Lahzeh weights with `font-display: swap`, woff2 first; a Playwright test confirms each weight actually loads (`document.fonts.check`) — `apps/storybook/tests/fonts.spec.ts` also fails if any `.woff` fallback is requested
+- [x] `@averoui/font`: `@font-face` for all 9 Lahzeh weights with `font-display: swap`, woff2 first; a Playwright test confirms each weight actually loads (`document.fonts.check`) — `apps/storybook/tests/fonts.spec.ts` also fails if any `.woff` fallback is requested
 - [x] Prose/`RichContent` style layer provides the `content`, `editor` and editing-surface values in §4.11 — `rich-content.css`
-- [x] `cn()` with tailwind-merge extended for every custom token group; unit tests prove that overriding each custom token group merges correctly — groups generated from `@avero/tokens` (`tokenGroups`)
+- [x] `cn()` with tailwind-merge extended for every custom token group; unit tests prove that overriding each custom token group merges correctly — groups generated from `@averoui/tokens` (`tokenGroups`)
 - [x] Formatting utils: `formatNumber` (fa/latn digits, `٬` grouping), `formatDate` (Jalali/Gregorian via `Intl`), `formatRelativeTime`; 100% unit-test coverage, including edge cases (0, negative, large, NaN) — the currency unit comes from the dictionary (`currencyToman`) and is composed by `PriceTag`, so there is no separate `formatToman`
 - [x] `AveroProvider` (dir, locale, digits, calendar) with `fa` and `en` dictionaries
 - [x] Brand icon set (Telegram, WhatsApp, LinkedIn, X, Instagram, plus the footer icons) with licences verified and recorded — sources in `THIRD_PARTY_NOTICES.md`; `InstagramIcon` matches the Ionicons 4.6.3 `logo-instagram` path data exactly (MIT), verified 2026-08-18
-- [x] Token docs pages: colour swatches with hex and contrast ratios, type scale specimen in Lahzeh, radius, shadow, motion (live keyframe demos), z-index, breakpoints — the docs Foundations section, generated from `@avero/tokens` data and Tailwind's installed theme
+- [x] Token docs pages: colour swatches with hex and contrast ratios, type scale specimen in Lahzeh, radius, shadow, motion (live keyframe demos), z-index, breakpoints — the docs Foundations section, generated from `@averoui/tokens` data and Tailwind's installed theme
 - [x] Contrast report generated for every failing text/background pairing used in §5, listed against O-04 — `contrast-report.mjs` writes `packages/tokens/reports/contrast-report.md`; completeness comes from the browser axe suite, which measures every text node in every story in both directions (D-19), and all 28 below-AA pairings it finds are in the report
-- [x] Global DoD items 3, 8 and 10 hold for the tokens packages — lint passes with raw values confined to `@avero/tokens` itself, the Foundations pages document them, and CI's typecheck and lint are green
+- [x] Global DoD items 3, 8 and 10 hold for the tokens packages — lint passes with raw values confined to `@averoui/tokens` itself, the Foundations pages document them, and CI's typecheck and lint are green
 
 **Evidence:** GitHub Actions `CI` green on `dev` (2026-08-18), including the font-loading test and the docs build with the Foundations pages. Design review of the token specimen pages signed off by the user on 2026-08-18.
 **Exit gate:** the token specimen pages are signed off in a design review. ✅ Signed off by the user, 2026-08-18.
@@ -736,18 +737,18 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **Scope:** C-01…C-04, E-01…E-02.
 
 **DoD:**
-- [x] `@avero/charts` is published as a separate package with `recharts` as a peer; the core package has no recharts import (verified by a bundle check) — `size-limit` measures `ChartCard` with recharts ignored at 8.93 kB of a 10 kB budget
+- [x] `@averoui/charts` is published as a separate package with `recharts` as a peer; the core package has no recharts import (verified by a bundle check) — `size-limit` measures `ChartCard` with recharts ignored at 8.93 kB of a 10 kB budget
 - [x] C-01 `ChartCard` meets the Global DoD, including toggle chips, empty state and loading state (`data-state` is `ready`/`empty`/`loading`)
 - [x] C-02 `AreaChart` and C-03 `LineChart` meet the Global DoD, using the chart palette, grid and axis tokens
 - [x] C-04 tooltip styling uses the chart tooltip tokens; charts expose an accessible data-table fallback (`ChartDataTable`, a screen-reader-only table captioned by `label`)
 - [x] Charts render RTL correctly (axis direction option documented) — `reversed` defaults to `false`, because time series read left to right even on RTL pages
-- [x] `@avero/editor` is published separately with `@tiptap/*` as peers — StarterKit, `TableKit`, `Image` and `Placeholder`, the exact set `rich-content.css` has rules for
+- [x] `@averoui/editor` is published separately with `@tiptap/*` as peers — StarterKit, `TableKit`, `Image` and `Placeholder`, the exact set `rich-content.css` has rules for
 - [x] E-02 toolbar meets the Global DoD — `EditorToolbar` on Radix Toolbar: text marks, heading/subheading, quote, code block, lists, undo/redo; one tab stop with direction-aware arrow keys, `aria-pressed` toggles, disabled without an editor or while read-only; glyphs vendored from Lucide
 - [x] Editor output round-trips through `RichContent` sanitization without losing allowed formatting (tests) — every tag in `richContentAllowList` survives `editor.getHTML()` → `sanitizeHtml()`
 - [x] Both packages meet their `size-limit` budgets — charts 8.93 kB of 10 kB, editor 9.8 kB of 11 kB (Recharts and Tiptap ignored as peers)
 
 **Evidence:** GitHub Actions `CI` green on `dev` (2026-09-10), covering every package's size budgets.
-**Exit gate:** both packages build, tree-shake and stay within their size budgets. ✅ The root `size` script ran only `@avero/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's. The first run put charts at 8.78 kB of 10 kB and the editor at 11.18 kB of an 11 kB budget, raised to 12 kB (D-24); the rerun passes both (CI green).
+**Exit gate:** both packages build, tree-shake and stay within their size budgets. ✅ The root `size` script ran only `@averoui/react`'s budgets, so CI never checked the charts and editor budgets; it now runs every package's. The first run put charts at 8.78 kB of 10 kB and the editor at 11.18 kB of an 11 kB budget, raised to 12 kB (D-24); the rerun passes both (CI green).
 
 ### Phase 10 — Blocks and example templates  ✅
 
@@ -756,7 +757,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **DoD:**
 - [x] Every B-* block meets the Global DoD and is built **only** from Avero components (no ad-hoc markup beyond layout) — all 25 built from Avero components, 816 unit/SSR/axe tests
 - [x] Blocks are domain-neutral; all text comes via props or slots, and each docs page describes typical uses
-- [x] Example templates TP-01…TP-06 composed in Storybook from `@avero/*` exports only, with original sample content — `apps/storybook/src/templates` (`Templates/*` stories): article, course detail, course listing, instructor profile, learner dashboard and about page, with shared site chrome and token-built inline artwork; headings are ordered around the blocks' fixed levels
+- [x] Example templates TP-01…TP-06 composed in Storybook from `@averoui/*` exports only, with original sample content — `apps/storybook/src/templates` (`Templates/*` stories): article, course detail, course listing, instructor profile, learner dashboard and about page, with shared site chrome and token-built inline artwork; headings are ordered around the blocks' fixed levels
 - [x] Templates score axe 0 violations — covered by the browser axe suite, which runs every non-internal story in RTL and LTR, the six `Templates/*` stories included (CI green)
 - [x] Templates render in LTR/`en` without layout breakage (review recorded) — all six `Templates/*` stories reviewed in LTR/`en`, signed off by the user, 2026-09-10
 - [x] `docs/known-debts.md` lists every remaining gap with a justification
@@ -787,7 +788,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Props tables are generated from source at build time (never hand-written); the build fails on undocumented public props — generation is `fumadocs-typescript` per package (D-17); `apps/docs/scripts/check-props-documented.mjs` reads every `<PropsTable>` on the site through the same generator and fails on any entry without a TSDoc description, and runs as a CI gate. The first run found 454 gaps, 434 of them inherited SVG attributes from `IconProps`, which now splits `IconOwnProps` like every other component; 559 props across 121 tables pass.
 - [x] Blocks gallery with live preview, copy-paste code and full-page previews — `blocks/gallery` renders all 25 blocks, each with its live preview and a copying Code tab, reading the title, description and primary demo from the block pages so it cannot drift; `/preview/[...name]` renders any registered demo full width with no documentation chrome.
 - [~] Templates section showing the example templates as full-screen demos — **dropped by D-27.** The example templates stay in Storybook; the docs site carries no Templates section.
-- [x] Token pages are generated from `tokens.json` — the Foundations pages read the token data generated from the same source (`@avero/tokens`), never hand-written values
+- [x] Token pages are generated from `tokens.json` — the Foundations pages read the token data generated from the same source (`@averoui/tokens`), never hand-written values
 - [x] Global site search (Fumadocs search) indexes all pages — `app/api/search/route.ts` with `createFromSource`; verified against the production build on 2026-09-10 by querying `/api/search`, which returns page, heading and text hits with match highlighting, including the new Getting Started and Utilities pages.
 - [x] Global RTL/LTR and `fa`/`en` switches persist across pages — one `PreviewSettingsProvider` holds the direction and its locale for every demo on the site, stored in `localStorage` and read after mount so hydration still matches, with the switch in the navbar. Storage access is wrapped, since it throws in a private window.
 - [x] Docs are themselves built with Avero components and Lahzeh (dogfooding) — the body is set in Lahzeh through the same `--font-sans` token a consumer gets, every demo and the full-page previews render inside `AveroProvider`, and the navbar direction switch is Avero's `SegmentedControl`. The sidebar, search and table of contents stay Fumadocs: replacing a documentation framework's own navigation would cost more than it demonstrates.
@@ -810,7 +811,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Contrast report reviewed; O-04 decision applied — all 27 failing pairings reviewed on 2026-09-10 and O-04 upheld. `docs/known-debts.md` now carries the review: 13 pairings are fixable by overriding a token, with a ready-to-paste strict-AA `@theme` block whose every value was measured (6.87–7.58 for the text tokens, 4.24–5.18 for the rest); the other 14 are Tailwind palette classes inside components, which a theme cannot reach and which need a code change, listed with the shade each should move to.
 - [x] SSR/RSC: every export renders in a Next.js App Router Server Component test page without errors; client components are correctly marked — `apps/docs/app/rsc-check/page.tsx` is a Server Component (no `"use client"`, no hooks) rendering the server-safe surface: primitives, typography, prose, `RichContent`, the form controls, the data-display family and `Table`. It prerenders as static in the docs build, so a server-safe module that started depending on client-only React would fail the build. 96 `renderToString` smoke tests cover the rest, and `verify-build.mjs` confirms all 54 `"use client"` directives survive the build.
 - [x] Tree-shaking verified: importing one component pulls in only its own code (bundle analysis artefact) — measured with `size-limit`, which bundles each import in isolation: the whole library is 111.89 kB brotli, `{ Badge }` is 9.21 kB and `{ DashboardShell }` 9.13 kB. 8.45 kB of that is `cn` (`tailwind-merge` + `clsx`), the shared floor every component pays once, so a primitive's own code is under a kilobyte.
-- [x] Per-component `size-limit` budgets met; total core gzip budget recorded — `@avero/react` had a budget for `cn` alone. It now measures the whole library (120 kB budget, 111.89 kB measured) plus eleven components spanning the range: Badge 9.21, DashboardShell 9.13, Button 10.8, ActivityHeatmap 12.98, RichContent 14.33, Carousel 22.85, SiteFooter 22.99, Dialog 25.66, Combobox 36.15, DatePicker 38.95 kB. All pass, alongside charts 8.93/10 kB and the editor 11.18/12 kB.
+- [x] Per-component `size-limit` budgets met; total core gzip budget recorded — `@averoui/react` had a budget for `cn` alone. It now measures the whole library (120 kB budget, 111.89 kB measured) plus eleven components spanning the range: Badge 9.21, DashboardShell 9.13, Button 10.8, ActivityHeatmap 12.98, RichContent 14.33, Carousel 22.85, SiteFooter 22.99, Dialog 25.66, Combobox 36.15, DatePicker 38.95 kB. All pass, alongside charts 8.93/10 kB and the editor 11.18/12 kB.
 - [x] Browser matrix passes the Playwright smoke and axe suites: latest 2 versions of Chrome, Edge, Firefox and Safari, plus iOS Safari and Android Chrome — the Playwright config defines all six targets (Chromium, Edge via the `msedge` channel, Firefox, WebKit, iPhone 14, Pixel 7) and `.github/workflows/browser-matrix.yml` runs them nightly and on request, so pull requests stay on Chromium. The user confirmed the nightly run green on 2026-09-19. Playwright ships one version per engine, so "latest 2 versions" is not expressible; that limitation stays recorded in `docs/known-debts.md`.
 - [x] `docs/SECURITY.md` checklist completed (per CLAUDE.md): sanitization, no `dangerouslySetInnerHTML` outside `RichContent`, external links `rel="noopener noreferrer"`, no `eval`, dependency audit clean (`pnpm audit`), lockfile committed — 16 of 17 items verified on 2026-09-10 with the evidence recorded inline. Notable: Avero builds no share or contact URLs at all (`ShareBar` reports the channel through `onShare`), and package source contains no storage, cookie, network or navigation API. The seventeenth waits on the npm organisation.
 - [ ] Supply-chain checks: publish via CI only, npm provenance, 2FA on the npm org, no install scripts in packages — `.github/workflows/release.yml` publishes from `main` through Changesets with `NPM_CONFIG_PROVENANCE` and an OIDC token, and no published package defines an install hook. The `avero` organisation is still unreserved (O-06), so 2FA cannot be enabled and the workflow has never run.
@@ -827,8 +828,8 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 - [x] Semantic versioning policy documented (what counts as breaking: props, tokens, class output) — the docs Changelog page states it: the five published packages are linked so they move together, and the rule that Avero's emitted class list is part of its contract, so a change that stops a documented override applying is breaking even when the props are untouched. `docs/avero-conventions.md` carries the same policy.
 - [x] Changesets produce the 1.0.0 changelog for every package — all 27 pending changesets consumed on 2026-09-19. The five linked packages moved together to 1.0.0, each with a generated `CHANGELOG.md`, and the docs Changelog page no longer describes Avero as pre-1.0 and workspace-only.
 - [ ] Packages published to the registry chosen in O-01, with provenance
-- [x] `LICENSE` files in place; font licence constraints respected (O-02) — MIT at the repository root and in all six packages, with `license: "MIT"` in every `package.json`; `npm pack --dry-run` confirms each tarball carries it. The Lahzeh files keep their own licence, which permits redistribution, recorded in `packages/font/files/README.md` next to the nine weights, and `@avero/font`'s README says so rather than implying MIT covers them.
-- [x] README per package with install, usage and a link to the docs — all five published packages. Each covers install with its peers, the stylesheet or provider setup, what the package contains and its licence; `@avero/react`'s leads with the `@source` line, the step whose absence produces unstyled components. Verified present in every tarball.
+- [x] `LICENSE` files in place; font licence constraints respected (O-02) — MIT at the repository root and in all six packages, with `license: "MIT"` in every `package.json`; `npm pack --dry-run` confirms each tarball carries it. The Lahzeh files keep their own licence, which permits redistribution, recorded in `packages/font/files/README.md` next to the nine weights, and `@averoui/font`'s README says so rather than implying MIT covers them.
+- [x] README per package with install, usage and a link to the docs — all five published packages. Each covers install with its peers, the stylesheet or provider setup, what the package contains and its licence; `@averoui/react`'s leads with the `@source` line, the step whose absence produces unstyled components. Verified present in every tarball.
 - [ ] Docs deployed at the production URL, pinned to the 1.0 version
 - [ ] Clean-install smoke tests pass in fresh Vite, Next.js App Router and Remix/React Router projects
 - [ ] Theming guide: overriding tokens, adding a brand colour, and building a custom theme on the semantic tokens
@@ -968,7 +969,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 
 | Risk | Impact | Mitigation |
 | --- | --- | --- |
-| Lahzeh licence forbids redistribution in a public package | Can't publish `@avero/font` publicly | O-02: private registry, or BYO-font mode with `@avero/font` excluded from public publish |
+| Lahzeh licence forbids redistribution in a public package | Can't publish `@averoui/font` publicly | O-02: private registry, or BYO-font mode with `@averoui/font` excluded from public publish |
 | tailwind-merge unaware of custom tokens | Silent style-override bugs | Phase 2 DoD requires the tailwind-merge extension plus tests per token group |
 | RSC directive loss during bundling | Consumers' Next.js builds break | Phase 1 DoD requires a test on build output |
 | Scope creep | Delays | §5 is the closed scope; additions require a new inventory row with purpose and API sketch |
@@ -983,7 +984,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | ID | Question | Recommendation | Needed by |
 | --- | --- | --- | --- |
 | O-01 | Registry: public npm, private npm org or GitHub Packages? | Private until 1.0 is stable; decide public vs private at Phase 13 | ✅ Resolved 2026-09-19: **public npm**. `publishConfig` is `access: public` with provenance on all five published packages, and the Changesets config matches. Licence: **MIT** (D-29). |
-| O-02 | Does your Lahzeh licence allow redistribution inside an npm package (and to which users)? | If unclear, keep `@avero/font` private and document BYO font | ✅ Resolved 2026-06-19: **yes**, redistribution allowed; `@avero/font` bundles the files |
+| O-02 | Does your Lahzeh licence allow redistribution inside an npm package (and to which users)? | If unclear, keep `@averoui/font` private and document BYO font | ✅ Resolved 2026-06-19: **yes**, redistribution allowed; `@averoui/font` bundles the files |
 | O-03 | Minimum React version: 18.2+ and 19, or 19 only? | 18.2+ and 19 (wider adoption; `forwardRef` kept) | ✅ Resolved 2026-06-19: as recommended |
 | O-04 | Muted-text contrast (e.g. `gray-400` meta text is below AA): keep the look, or darken? | Keep the look by default, expose `--color-text-muted` so consumers can darken, and list failures in docs | ✅ Resolved 2026-06-19: as recommended |
-| O-06 | Package scope: is `@avero` available and yours on the registry? | Check and reserve now | 🟨 2026-06-19: available, **not yet reserved**. Action for the user: create the `avero` npm org before the first publish (Phase 13). Until then packages are workspace-only. |
+| O-06 | Package scope: is `@avero` available and yours on the registry? | Check and reserve now | ✅ Resolved 2026-09-19: **`avero` was taken**, so the organisation is `averoui` and every package is scoped `@averoui/*` (D-30). The name Avero is unchanged; only the npm scope differs. |

@@ -1,4 +1,4 @@
-import { PillTab, PillTabs } from "@avero/react";
+import { PillTab, PillTabs } from "@averoui/react";
 import { Award, BookOpen, FileText, MessageSquare, Star, Users } from "lucide-react";
 
 const TABS = [

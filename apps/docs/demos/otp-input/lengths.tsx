@@ -1,4 +1,4 @@
-import { Field, FieldControl, FieldDescription, FieldLabel, OtpInput } from "@avero/react";
+import { Field, FieldControl, FieldDescription, FieldLabel, OtpInput } from "@averoui/react";
 
 export default function OtpInputLengthsDemo() {
   return (

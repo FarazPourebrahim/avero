@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination } from "@avero/react";
+import { Pagination } from "@averoui/react";
 import { useState } from "react";
 
 export default function PaginationResultsDemo() {

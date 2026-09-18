@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup } from "@avero/react";
+import { Avatar, AvatarGroup } from "@averoui/react";
 
 const PEOPLE = ["سارا محمدی", "علی رضایی", "نیکا کریمی", "رضا احمدی", "مینا شریفی", "حسین نوری"];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Button } from "@avero/react";
+import { Alert, Button } from "@averoui/react";
 
 export default function AlertTonesDemo() {
   return (

@@ -1,4 +1,4 @@
-import { Blockquote, List, ListItem } from "@avero/react";
+import { Blockquote, List, ListItem } from "@averoui/react";
 
 export default function ListProseDemo() {
   return (

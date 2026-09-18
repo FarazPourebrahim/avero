@@ -1,5 +1,5 @@
 {
-  "extends": "@avero/config/tsconfig.app.json",
+  "extends": "@averoui/config/tsconfig.app.json",
   "compilerOptions": {
     "allowJs": true,
     "incremental": true,

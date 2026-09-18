@@ -1,4 +1,4 @@
-import { PriceTag } from "@avero/react";
+import { PriceTag } from "@averoui/react";
 
 export default function PriceTagVariantsDemo() {
   return (

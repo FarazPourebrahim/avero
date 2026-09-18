@@ -1,4 +1,4 @@
-import { Button } from "@avero/react";
+import { Button } from "@averoui/react";
 import { ArrowLeft } from "lucide-react";
 
 export default function ButtonPrimaryDemo() {

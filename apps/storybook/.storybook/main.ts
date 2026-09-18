@@ -12,7 +12,7 @@ const config: StorybookConfig = {
     // Resolve workspace packages to their TypeScript source for instant feedback.
     viteConfig.resolve = {
       ...viteConfig.resolve,
-      conditions: ["@avero/source", ...defaultClientConditions],
+      conditions: ["@averoui/source", ...defaultClientConditions],
     };
     return viteConfig;
   },

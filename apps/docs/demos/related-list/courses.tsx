@@ -1,6 +1,6 @@
 "use client";
 
-import { RelatedItem, RelatedList } from "@avero/react";
+import { RelatedItem, RelatedList } from "@averoui/react";
 
 export default function RelatedListCoursesDemo() {
   return (

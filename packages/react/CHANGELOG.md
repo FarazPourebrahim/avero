@@ -1,4 +1,4 @@
-# @avero/react
+# @averoui/react
 
 ## 1.0.0
 
@@ -18,7 +18,7 @@
 
   Behaviour comes from Radix, so focus management, keyboard support and ARIA semantics are not
   reimplemented; every component test runs axe and a browser suite runs axe over every story in both
-  directions. Colours, radii, shadows, motion and type come from `@avero/tokens`, so a theme is a set
+  directions. Colours, radii, shadows, motion and type come from `@averoui/tokens`, so a theme is a set
   of CSS custom properties rather than a fork.
 
 ### Minor Changes
@@ -29,7 +29,7 @@
 - b482fd4: Add `Combobox`, a searchable single select on Radix Popover. Options can be grouped under category headings, and matching ignores the differences between Arabic and Persian letters, zero-width non-joiners and digit systems. It follows the WAI-ARIA combobox pattern, works with `Field`, and submits its value through `name`. Also adds the `comboboxEmpty` dictionary entry and the `normalizeSearchText` helper.
 - 82ad692: Add `DatePicker`, a Solar Hijri–first date field with `single` and `range` modes. Values are `YYYY-MM-DD` strings; dates can be typed year first in Persian, Arabic or Latin digits, or picked from a calendar that follows the WAI-ARIA date picker dialog pattern with direction-aware arrow keys. It supports `min`, `max` and `isDateDisabled`, follows the `AveroProvider` calendar and digits, and converts between calendars with `Intl` only. Also adds `CalendarIcon` and the `datePicker*` dictionary entries.
 - f7544ee: Add `Dialog` (with `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogBody`, `DialogFooter` and `DialogClose`) and `ConfirmDialog`. `Dialog` is a modal panel over a blurred scrim in three sizes, with a dictionary-labelled close button. `ConfirmDialog` is built on Radix AlertDialog: focus starts on cancel, a `danger` tone uses the new danger button, and an async `onConfirm` keeps the dialog open and busy until it settles. Also adds the `confirm` and `cancel` dictionary entries.
-- fd6969c: `@avero/editor`: add `EditorToolbar`, formatting buttons for `RichTextEditor`: bold, italic, underline, strikethrough, heading and subheading, quote, code block, bulleted and numbered lists, undo and redo. It follows the WAI-ARIA toolbar pattern with one tab stop and arrow keys that follow the reading direction, shows active formatting with `aria-pressed`, and disables itself while there is no editor or the editor is read-only. `@avero/react`: add the `editorToolbar`, `editorBold`, `editorItalic`, `editorUnderline`, `editorStrike`, `editorHeading`, `editorSubheading`, `editorBulletList`, `editorOrderedList`, `editorBlockquote`, `editorCodeBlock`, `editorUndo` and `editorRedo` dictionary entries.
+- fd6969c: `@averoui/editor`: add `EditorToolbar`, formatting buttons for `RichTextEditor`: bold, italic, underline, strikethrough, heading and subheading, quote, code block, bulleted and numbered lists, undo and redo. It follows the WAI-ARIA toolbar pattern with one tab stop and arrow keys that follow the reading direction, shows active formatting with `aria-pressed`, and disables itself while there is no editor or the editor is read-only. `@averoui/react`: add the `editorToolbar`, `editorBold`, `editorItalic`, `editorUnderline`, `editorStrike`, `editorHeading`, `editorSubheading`, `editorBulletList`, `editorOrderedList`, `editorBlockquote`, `editorCodeBlock`, `editorUndo` and `editorRedo` dictionary entries.
 - 07ca132: Add `Field`, with `FieldLabel`, `FieldControl`, `FieldDescription` and `FieldError`. It wires the control's `id`, `aria-describedby`, `aria-invalid`, `aria-required` and `disabled` from one place, and works with any control, including react-hook-form's `register`.
 - 17d55b8: Add `FileInput`, a drop area with a file list. Files can be dragged in, clicked in or picked from the keyboard; `accept`, `maxSize` and `maxFiles` reject what doesn't fit and report it through `onReject` and a dictionary message. The chosen files submit with a form through `name`. Also adds `formatFileSize`, the `UploadIcon` and `FileIcon` glyphs, and the `fileInput*` dictionary entries.
 - fd50244: `createIcon` now names the props it adds as `IconOwnProps`, matching every other component, so the
@@ -66,4 +66,4 @@
   `expression()` and case- and entity-obfuscated script schemes. No runtime behaviour changes.
 - Updated dependencies
 - Updated dependencies [eccfcdf]
-  - @avero/tokens@1.0.0
+  - @averoui/tokens@1.0.0

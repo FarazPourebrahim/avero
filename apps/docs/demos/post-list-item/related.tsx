@@ -1,4 +1,4 @@
-import { PostListItem } from "@avero/react";
+import { PostListItem } from "@averoui/react";
 
 export default function PostListItemRelatedDemo() {
   return (

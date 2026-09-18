@@ -1,4 +1,4 @@
-import { Card, CardTitle, DashboardShell, SidebarNav, SidebarNavItem } from "@avero/react";
+import { Card, CardTitle, DashboardShell, SidebarNav, SidebarNavItem } from "@averoui/react";
 import { BookOpen, LayoutDashboard, Menu } from "lucide-react";
 
 export default function DashboardShellSectionsDemo() {

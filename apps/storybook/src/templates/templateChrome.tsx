@@ -9,12 +9,12 @@ import {
   SiteHeaderMenuButton,
   SiteShell,
   TelegramIcon,
-} from "@avero/react";
-import { tokens } from "@avero/tokens";
+} from "@averoui/react";
+import { tokens } from "@averoui/tokens";
 import type { ReactNode } from "react";
 
 // Shared by the example templates (Phase 10, TP-01…TP-06): the public site chrome and inline
-// artwork. Templates are composed from `@avero/*` exports only, and the artwork is inline SVG built
+// artwork. Templates are composed from `@averoui/*` exports only, and the artwork is inline SVG built
 // from tokens, so every page renders offline and deterministically.
 
 function svg(markup: string) {

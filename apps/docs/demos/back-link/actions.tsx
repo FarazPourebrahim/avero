@@ -1,6 +1,6 @@
 "use client";
 
-import { BackLink } from "@avero/react";
+import { BackLink } from "@averoui/react";
 import { useState } from "react";
 
 export default function BackLinkActionsDemo() {

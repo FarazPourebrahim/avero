@@ -1,6 +1,6 @@
 "use client";
 
-import { ChartCard, LineChart, chartPalette } from "@avero/charts";
+import { ChartCard, LineChart, chartPalette } from "@averoui/charts";
 
 const DATA = [4, 7, 3, 9, 6, 11, 8].map((views, index) => ({ name: `${index + 1}`, views }));
 

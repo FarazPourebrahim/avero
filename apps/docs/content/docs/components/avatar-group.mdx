@@ -6,7 +6,7 @@ description: Overlapping avatars for a small group, with the remainder collapsed
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/avatar-group)
 
 ```tsx
-import { Avatar, AvatarGroup } from "@avero/react";
+import { Avatar, AvatarGroup } from "@averoui/react";
 ```
 
 <ComponentPreview name="avatar-group/participants" />
@@ -77,11 +77,11 @@ Each avatar keeps its own accessible name, so the people are readable individual
 tile is an image with a name from the dictionary's `avatarGroupOverflow` entry, so "+۲" is announced
 as "۲ نفر دیگر" rather than as a stray plus sign.
 
-| Element       | Role    | Accessible name                     |
-| ------------- | ------- | ----------------------------------- |
-| Root          | `group` | `label`                             |
-| Each avatar   | `img`   | The person's name                   |
-| Overflow tile | `img`   | "{count} more", from the dictionary |
+| Element       | Role    | Accessible name                       |
+| ------------- | ------- | ------------------------------------- |
+| Root          | `group` | `label`                               |
+| Each avatar   | `img`   | The person's name                     |
+| Overflow tile | `img`   | `"{count} more"`, from the dictionary |
 
 The group is not focusable and has no keyboard behaviour: it presents people, it does not select
 them. If a group member needs to be actionable, wrap each avatar in a link or button yourself.

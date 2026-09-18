@@ -1,6 +1,6 @@
 "use client";
 
-import { ReportAction, ReportCard } from "@avero/react";
+import { ReportAction, ReportCard } from "@averoui/react";
 
 export default function ReportVariantsDemo() {
   return (

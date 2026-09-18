@@ -1,4 +1,4 @@
-import { ProviderCard, Rating } from "@avero/react";
+import { ProviderCard, Rating } from "@averoui/react";
 
 export default function ProviderCardInstructorDemo() {
   return (

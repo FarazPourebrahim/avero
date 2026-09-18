@@ -18,7 +18,7 @@ import {
   TelegramPlaneIcon,
   TwitterIcon,
   WhatsappIcon,
-} from "@avero/react";
+} from "@averoui/react";
 
 const ICONS = [
   ["ArrowRightSolidIcon", ArrowRightSolidIcon],

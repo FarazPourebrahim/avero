@@ -1,4 +1,4 @@
-import { Progress } from "@avero/react";
+import { Progress } from "@averoui/react";
 
 export default function ProgressVariantsDemo() {
   return (

@@ -1,6 +1,13 @@
 "use client";
 
-import { Field, FieldControl, FieldDescription, FieldError, FieldLabel, Input } from "@avero/react";
+import {
+  Field,
+  FieldControl,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+  Input,
+} from "@averoui/react";
 import { useState } from "react";
 
 export default function FieldProfileFormDemo() {

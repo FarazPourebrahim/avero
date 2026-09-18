@@ -15,7 +15,7 @@ import {
   StatTile,
   TelegramIcon,
   UsersIcon,
-} from "@avero/react";
+} from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { coverArt, PublicPage } from "./templateChrome";
 

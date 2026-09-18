@@ -1,6 +1,6 @@
 // Lucide glyphs for the editor toolbar, vendored so that lucide-react stays an optional peer.
 // Source: Lucide (https://lucide.dev), ISC licence. See THIRD_PARTY_NOTICES.md.
-import { createIcon } from "@avero/react";
+import { createIcon } from "@averoui/react";
 
 export const BoldIcon = createIcon("BoldIcon", {
   viewBox: "0 0 24 24",

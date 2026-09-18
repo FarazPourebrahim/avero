@@ -1,6 +1,6 @@
 "use client";
 
-import { InfiniteScroll } from "@avero/react";
+import { InfiniteScroll } from "@averoui/react";
 import { useState } from "react";
 
 const TOTAL = 48;

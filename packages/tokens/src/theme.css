@@ -61,7 +61,7 @@
   --color-shadow-box: #0f172a14;
 
   /* Chart palette. Recharts takes colours as props that become SVG attributes, so
-     `@avero/charts` consumes these as token data rather than as utility classes. */
+     `@averoui/charts` consumes these as token data rather than as utility classes. */
   --color-chart-views: #6366f1;
   --color-chart-likes: #f43f5e;
   --color-chart-clicks: #8b5cf6;

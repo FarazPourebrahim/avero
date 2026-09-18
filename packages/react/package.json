@@ -1,17 +1,17 @@
 {
-  "name": "@avero/react",
+  "name": "@averoui/react",
   "version": "1.0.0",
   "type": "module",
   "description": "Bidirectional React components for Persian (RTL) and English (LTR), built on Radix UI.",
   "sideEffects": false,
   "exports": {
     ".": {
-      "@avero/source": "./src/index.ts",
+      "@averoui/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
     "./*": {
-      "@avero/source": "./src/components/*/index.ts",
+      "@averoui/source": "./src/components/*/index.ts",
       "types": "./dist/components/*/index.d.ts",
       "import": "./dist/components/*/index.js"
     },
@@ -37,7 +37,7 @@
     "react-dom": ">=18.2.0"
   },
   "dependencies": {
-    "@avero/tokens": "workspace:^",
+    "@averoui/tokens": "workspace:^",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
@@ -46,7 +46,7 @@
     "xss": "^1.0.15"
   },
   "devDependencies": {
-    "@avero/config": "workspace:^",
+    "@averoui/config": "workspace:^",
     "@size-limit/preset-small-lib": "^12.1.0",
     "@storybook/react-vite": "^10.6.0",
     "@testing-library/dom": "^10.4.1",

@@ -8,24 +8,24 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 
 - `Avero-plan.md` is the scope, the phase DoDs and the progress tracker. Update its tracker in the same change that completes an item.
 - A component is only built once it has a row in the plan's component inventory. Add the row first, with its purpose and API sketch.
-- New components are designed from the token system in `@avero/tokens`, so they match the existing surfaces, radii, shadows and type scale.
+- New components are designed from the token system in `@averoui/tokens`, so they match the existing surfaces, radii, shadows and type scale.
 
 ## Workspace
 
-| Path              | Package         | Purpose                                                              |
-| ----------------- | --------------- | -------------------------------------------------------------------- |
-| `packages/config` | `@avero/config` | Shared tsconfig bases, ESLint config and the `avero` ESLint plugin   |
-| `packages/tokens` | `@avero/tokens` | Tailwind v4 `@theme` tokens, base styles, token data                 |
-| `packages/react`  | `@avero/react`  | Core components, blocks, hooks, utilities                            |
-| `packages/font`   | `@avero/font`   | Lahzeh `@font-face` + font files (the licence allows redistribution) |
-| `packages/charts` | `@avero/charts` | Recharts wrappers (optional)                                         |
-| `packages/editor` | `@avero/editor` | Tiptap editor (optional)                                             |
-| `apps/storybook`  | private         | Internal stories and browser a11y tests                              |
-| `apps/docs`       | private         | Public documentation (Next.js + Fumadocs)                            |
+| Path              | Package           | Purpose                                                              |
+| ----------------- | ----------------- | -------------------------------------------------------------------- |
+| `packages/config` | `@averoui/config` | Shared tsconfig bases, ESLint config and the `avero` ESLint plugin   |
+| `packages/tokens` | `@averoui/tokens` | Tailwind v4 `@theme` tokens, base styles, token data                 |
+| `packages/react`  | `@averoui/react`  | Core components, blocks, hooks, utilities                            |
+| `packages/font`   | `@averoui/font`   | Lahzeh `@font-face` + font files (the licence allows redistribution) |
+| `packages/charts` | `@averoui/charts` | Recharts wrappers (optional)                                         |
+| `packages/editor` | `@averoui/editor` | Tiptap editor (optional)                                             |
+| `apps/storybook`  | private           | Internal stories and browser a11y tests                              |
+| `apps/docs`       | private           | Public documentation (Next.js + Fumadocs)                            |
 
 - Package manager: **pnpm only**. Never run npm or yarn installs.
 - Root scripts delegate into apps (`pnpm docs-dev`, `pnpm storybook-dev`). There is no bare `dev` script.
-- Apps resolve workspace packages to their TypeScript source through the `@avero/source` export condition, so no watch build is needed in Storybook. The docs app (Next.js) consumes the built `dist`, so run `pnpm packages-build` before `pnpm docs-dev`.
+- Apps resolve workspace packages to their TypeScript source through the `@averoui/source` export condition, so no watch build is needed in Storybook. The docs app (Next.js) consumes the built `dist`, so run `pnpm packages-build` before `pnpm docs-dev`.
 
 ## Toolchain versions
 
@@ -43,7 +43,7 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 
 ## Library build
 
-`@avero/react` is compiled with the TypeScript compiler (`tsc -p tsconfig.build.json`) into per-file ES modules plus `.d.ts` files. No bundler is involved, so:
+`@averoui/react` is compiled with the TypeScript compiler (`tsc -p tsconfig.build.json`) into per-file ES modules plus `.d.ts` files. No bundler is involved, so:
 
 - module-level directives such as `"use client"` are preserved exactly (verified by `scripts/verify-build.mjs` after every build);
 - consumers' bundlers tree-shake at file granularity;

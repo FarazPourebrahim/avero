@@ -1,6 +1,6 @@
 "use client";
 
-import { AveroProvider, SegmentedControl, SegmentedControlItem } from "@avero/react";
+import { AveroProvider, SegmentedControl, SegmentedControlItem } from "@averoui/react";
 import { usePreviewSettings, type PreviewDirection } from "./preview-settings.context";
 
 const OPTIONS: ReadonlyArray<{ value: PreviewDirection; label: string }> = [

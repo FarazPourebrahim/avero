@@ -1,6 +1,6 @@
 "use client";
 
-import { RadioGroup, RadioGroupItem } from "@avero/react";
+import { RadioGroup, RadioGroupItem } from "@averoui/react";
 import { useId, useState } from "react";
 
 const PLANS = [

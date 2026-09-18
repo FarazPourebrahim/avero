@@ -1,4 +1,4 @@
-import { ContactMethod, ContactMethods, TelegramIcon } from "@avero/react";
+import { ContactMethod, ContactMethods, TelegramIcon } from "@averoui/react";
 
 export default function ContactMethodsDirectDemo() {
   return (

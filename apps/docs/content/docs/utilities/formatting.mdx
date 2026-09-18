@@ -11,7 +11,7 @@ Every function takes an explicit `locale`, defaulting to `fa-IR`. Inside React, 
 [`useAveroFormatter`](#inside-react), which binds them to the active provider settings.
 
 ```tsx
-import { formatDate, formatNumber, formatRelativeTime } from "@avero/react";
+import { formatDate, formatNumber, formatRelativeTime } from "@averoui/react";
 
 formatNumber(125000); // "۱۲۵٬۰۰۰"
 formatDate("2026-09-18"); // "۲۷ شهریور ۱۴۰۵"
@@ -157,7 +157,7 @@ and report Latin values to your `onChange`.
 calendar, so components do not repeat the options:
 
 ```tsx
-import { useAveroFormatter } from "@avero/react";
+import { useAveroFormatter } from "@averoui/react";
 
 function PublishedMeta({ at, views }: { at: string; views: number }) {
   const format = useAveroFormatter();

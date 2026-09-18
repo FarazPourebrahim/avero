@@ -1,4 +1,4 @@
-import { BackLink } from "@avero/react";
+import { BackLink } from "@averoui/react";
 
 export default function BackLinkUsagesDemo() {
   return (

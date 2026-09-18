@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@avero/react";
+} from "@averoui/react";
 
 const PANELS = [
   { side: "end", size: "panel", label: "از انتهای خط (پیش‌فرض)" },

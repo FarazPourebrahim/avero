@@ -1,4 +1,4 @@
-import { Spinner } from "@avero/react";
+import { Spinner } from "@averoui/react";
 
 export default function SpinnerSizes() {
   return (

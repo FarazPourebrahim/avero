@@ -14,7 +14,7 @@ if that is a problem.
 <Tab value="pnpm">
 
 ```bash
-pnpm add @avero/react @avero/tokens @avero/font
+pnpm add @averoui/react @averoui/tokens @averoui/font
 pnpm add -D tailwindcss @tailwindcss/postcss
 ```
 
@@ -23,7 +23,7 @@ pnpm add -D tailwindcss @tailwindcss/postcss
 <Tab value="npm">
 
 ```bash
-npm install @avero/react @avero/tokens @avero/font
+npm install @averoui/react @averoui/tokens @averoui/font
 npm install -D tailwindcss @tailwindcss/postcss
 ```
 
@@ -32,7 +32,7 @@ npm install -D tailwindcss @tailwindcss/postcss
 <Tab value="yarn">
 
 ```bash
-yarn add @avero/react @avero/tokens @avero/font
+yarn add @averoui/react @averoui/tokens @averoui/font
 yarn add -D tailwindcss @tailwindcss/postcss
 ```
 
@@ -40,23 +40,23 @@ yarn add -D tailwindcss @tailwindcss/postcss
 
 </Tabs>
 
-`@avero/react` declares `react`, `react-dom` and `lucide-react` as peer dependencies, so add
+`@averoui/react` declares `react`, `react-dom` and `lucide-react` as peer dependencies, so add
 `lucide-react` if your project does not already have it:
 
 ```bash
 pnpm add lucide-react
 ```
 
-`@avero/charts` (Recharts) and `@avero/editor` (Tiptap) are optional and installed separately, with
+`@averoui/charts` (Recharts) and `@averoui/editor` (Tiptap) are optional and installed separately, with
 their own peers. Their pages cover that.
 
-| Package         | Required | Contains                                                   |
-| --------------- | -------- | ---------------------------------------------------------- |
-| `@avero/react`  | Yes      | Components, blocks, layout shells, hooks, utilities, icons |
-| `@avero/tokens` | Yes      | The Tailwind `@theme` tokens and base styles               |
-| `@avero/font`   | Optional | The Lahzeh typeface — see [Fonts](./fonts)                 |
-| `@avero/charts` | Optional | Recharts wrappers                                          |
-| `@avero/editor` | Optional | Tiptap rich-text editor                                    |
+| Package           | Required | Contains                                                   |
+| ----------------- | -------- | ---------------------------------------------------------- |
+| `@averoui/react`  | Yes      | Components, blocks, layout shells, hooks, utilities, icons |
+| `@averoui/tokens` | Yes      | The Tailwind `@theme` tokens and base styles               |
+| `@averoui/font`   | Optional | The Lahzeh typeface — see [Fonts](./fonts)                 |
+| `@averoui/charts` | Optional | Recharts wrappers                                          |
+| `@averoui/editor` | Optional | Tiptap rich-text editor                                    |
 
 ### Requirements
 
@@ -74,12 +74,12 @@ after Tailwind so the `@theme` block is registered.
 ```css title="src/app.css"
 @import "tailwindcss";
 
-@import "@avero/tokens/theme.css";
-@import "@avero/tokens/base.css";
-@import "@avero/tokens/utilities.css";
-@import "@avero/font/lahzeh.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/tokens/base.css";
+@import "@averoui/tokens/utilities.css";
+@import "@averoui/font/lahzeh.css";
 
-@source "../node_modules/@avero/react/dist";
+@source "../node_modules/@averoui/react/dist";
 ```
 
 What each line does:
@@ -103,16 +103,16 @@ servers often have other classes lying around that mask it.
 Point it at the package's `dist` directory, relative to the stylesheet:
 
 ```css
-@source "../node_modules/@avero/react/dist";
+@source "../node_modules/@averoui/react/dist";
 ```
 
 With pnpm's symlinked store, some setups need the resolved path instead:
 
 ```css
-@source "../node_modules/.pnpm/@avero+react@*/node_modules/@avero/react/dist";
+@source "../node_modules/.pnpm/@averoui+react@*/node_modules/@averoui/react/dist";
 ```
 
-If you use `@avero/charts` or `@avero/editor`, add a line for each.
+If you use `@averoui/charts` or `@averoui/editor`, add a line for each.
 
 ### PostCSS
 
@@ -130,7 +130,7 @@ export default {
 as high in the tree as you can, and set the matching `dir` and `lang` on the document.
 
 ```tsx title="src/main.tsx"
-import { AveroProvider } from "@avero/react";
+import { AveroProvider } from "@averoui/react";
 import "./app.css";
 
 export function App() {
@@ -151,7 +151,7 @@ Render a component that uses several tokens at once. If the token setup is corre
 solid brand blue with a soft shadow and a 12px radius, and the badge is a green pill:
 
 ```tsx
-import { Badge, Button } from "@avero/react";
+import { Badge, Button } from "@averoui/react";
 
 export function SetupCheck() {
   return (
@@ -171,11 +171,11 @@ wrong path.
 ### Next.js App Router
 
 Avero marks interactive components with `"use client"`, and the build preserves those directives
-per file, so Server Components can import from `@avero/react` directly. `AveroProvider` is a client
+per file, so Server Components can import from `@averoui/react` directly. `AveroProvider` is a client
 component — put it in the root layout:
 
 ```tsx title="app/layout.tsx"
-import { AveroProvider } from "@avero/react";
+import { AveroProvider } from "@averoui/react";
 import "./app.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -196,17 +196,17 @@ module.
 
 ## Tree shaking
 
-`@avero/react` compiles to per-file ES modules with `sideEffects: false`, so a bundler drops what
+`@averoui/react` compiles to per-file ES modules with `sideEffects: false`, so a bundler drops what
 you do not import. The root import is enough:
 
 ```tsx
-import { Button, Card } from "@avero/react";
+import { Button, Card } from "@averoui/react";
 ```
 
 Per-component subpaths exist for bundlers that cannot tree-shake a barrel file:
 
 ```tsx
-import { Button } from "@avero/react/button";
+import { Button } from "@averoui/react/button";
 ```
 
 ## Without Tailwind

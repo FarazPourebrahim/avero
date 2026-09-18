@@ -28,7 +28,7 @@ Before every release (Phase 12 and Phase 13), verify every item below and record
 - [x] The lockfile is committed and CI installs with `--frozen-lockfile`. — Verified 2026-09-10.
 - [x] Published packages have no `install`/`postinstall` scripts. — Verified 2026-09-10: none of the five published packages defines an install hook.
 - [ ] Publishing happens from CI only, with npm provenance and 2FA on the npm organisation. — `.github/workflows/release.yml` publishes from CI with `NPM_CONFIG_PROVENANCE`; the `avero` npm organisation is not reserved yet (O-06), so 2FA cannot be enabled and nothing has been published.
-- [x] Runtime dependencies are limited to the ones listed in `docs/avero-conventions.md`. New runtime dependencies need review. — Verified 2026-09-10: `@avero/react` depends on `@avero/tokens`, `class-variance-authority`, `clsx`, `embla-carousel-react`, `radix-ui` and `xss`, with React and `lucide-react` as peers.
+- [x] Runtime dependencies are limited to the ones listed in `docs/avero-conventions.md`. New runtime dependencies need review. — Verified 2026-09-10: `@averoui/react` depends on `@averoui/tokens`, `class-variance-authority`, `clsx`, `embla-carousel-react`, `radix-ui` and `xss`, with React and `lucide-react` as peers.
 
 ## Fonts and assets
 

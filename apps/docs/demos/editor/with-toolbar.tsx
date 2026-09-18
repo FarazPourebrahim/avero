@@ -1,6 +1,6 @@
 "use client";
 
-import { EditorToolbar, RichTextEditor } from "@avero/editor";
+import { EditorToolbar, RichTextEditor } from "@averoui/editor";
 import type { Editor } from "@tiptap/react";
 import { useState } from "react";
 

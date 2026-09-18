@@ -1,4 +1,4 @@
-import { Link } from "@avero/react";
+import { Link } from "@averoui/react";
 import { ArrowRight } from "lucide-react";
 
 export default function LinkInlineDemo() {

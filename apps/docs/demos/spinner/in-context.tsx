@@ -1,4 +1,4 @@
-import { Button, Spinner } from "@avero/react";
+import { Button, Spinner } from "@averoui/react";
 
 export default function SpinnerInContext() {
   return (

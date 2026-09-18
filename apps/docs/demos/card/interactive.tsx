@@ -1,4 +1,4 @@
-import { Card, CardTitle } from "@avero/react";
+import { Card, CardTitle } from "@averoui/react";
 
 export default function CardInteractiveDemo() {
   return (

@@ -1,4 +1,4 @@
-import { AuthorCard } from "@avero/react";
+import { AuthorCard } from "@averoui/react";
 
 export default function AuthorCardSidebarDemo() {
   return (

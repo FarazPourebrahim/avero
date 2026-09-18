@@ -1,6 +1,6 @@
 "use client";
 
-import { Switch } from "@avero/react";
+import { Switch } from "@averoui/react";
 import { useState } from "react";
 
 export default function SwitchControlledDemo() {

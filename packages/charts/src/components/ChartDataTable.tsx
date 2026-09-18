@@ -1,6 +1,6 @@
 "use client";
 
-import { useAvero, useAveroFormatter } from "@avero/react";
+import { useAvero, useAveroFormatter } from "@averoui/react";
 import type { ChartSeries } from "./AreaChart.js";
 
 /** Props specific to `ChartDataTable`. */

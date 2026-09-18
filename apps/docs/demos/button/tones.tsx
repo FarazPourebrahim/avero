@@ -1,4 +1,4 @@
-import { Button } from "@avero/react";
+import { Button } from "@averoui/react";
 
 const TONES = [
   "neutral",

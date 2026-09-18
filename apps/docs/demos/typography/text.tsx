@@ -1,4 +1,4 @@
-import { Eyebrow, Text } from "@avero/react";
+import { Eyebrow, Text } from "@averoui/react";
 
 export default function TypographyTextDemo() {
   return (

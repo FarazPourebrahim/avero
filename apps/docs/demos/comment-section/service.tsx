@@ -1,6 +1,6 @@
 "use client";
 
-import { CommentSection } from "@avero/react";
+import { CommentSection } from "@averoui/react";
 
 export default function CommentSectionServiceDemo() {
   return (

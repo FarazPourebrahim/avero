@@ -1,1 +1,1 @@
-export { default } from "@avero/config/eslint";
+export { default } from "@averoui/config/eslint";

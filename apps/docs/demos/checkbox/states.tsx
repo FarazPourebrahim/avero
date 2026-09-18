@@ -1,4 +1,4 @@
-import { Checkbox, Field, FieldControl, FieldError, FieldLabel } from "@avero/react";
+import { Checkbox, Field, FieldControl, FieldError, FieldLabel } from "@averoui/react";
 
 const STATES = [
   { id: "state-on", label: "انتخاب‌شده", checked: true as const },

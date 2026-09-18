@@ -1,4 +1,4 @@
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "../../components/button/index.js";
 import { SplitHero } from "./SplitHero.js";

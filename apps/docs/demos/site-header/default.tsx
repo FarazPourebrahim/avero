@@ -1,4 +1,4 @@
-import { Avatar, Link, SiteHeader, SiteHeaderMenuButton } from "@avero/react";
+import { Avatar, Link, SiteHeader, SiteHeaderMenuButton } from "@averoui/react";
 import { Menu } from "lucide-react";
 
 const NAV = [

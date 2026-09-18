@@ -1,9 +1,9 @@
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 
-// Data for the Foundations pages. Avero's own tokens come from @avero/tokens; Tailwind's default
+// Data for the Foundations pages. Avero's own tokens come from @averoui/tokens; Tailwind's default
 // scales are read from the installed tailwindcss/theme.css, so the pages always show what a
 // consumer actually gets. Nothing here is written by hand.
 

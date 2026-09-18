@@ -1,4 +1,4 @@
-import { AveroProvider } from "@avero/react";
+import { AveroProvider } from "@averoui/react";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import type { Editor } from "@tiptap/react";

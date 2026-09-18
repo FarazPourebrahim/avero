@@ -1,6 +1,6 @@
 "use client";
 
-import { AveroProvider } from "@avero/react";
+import { AveroProvider } from "@averoui/react";
 import type { ReactNode } from "react";
 import { DirectionSwitch } from "./DirectionSwitch";
 import { usePreviewSettings } from "./preview-settings.context";

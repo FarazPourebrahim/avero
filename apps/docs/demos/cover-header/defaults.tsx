@@ -1,4 +1,4 @@
-import { CoverHeader } from "@avero/react";
+import { CoverHeader } from "@averoui/react";
 
 export default function CoverHeaderDefaultsDemo() {
   return (

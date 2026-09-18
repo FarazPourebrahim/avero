@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ConfirmDialog } from "@avero/react";
+import { Button, ConfirmDialog } from "@averoui/react";
 import { useState } from "react";
 
 export default function ConfirmDialogDeleteCourseDemo() {

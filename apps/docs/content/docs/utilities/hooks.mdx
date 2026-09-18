@@ -21,7 +21,7 @@ Every stateful Avero component works in both modes: controlled with `value` + `o
 uncontrolled with `defaultValue`. This hook is that behaviour.
 
 ```tsx
-import { useControllableState } from "@avero/react";
+import { useControllableState } from "@averoui/react";
 
 type RatingInputProps = {
   value?: number;
@@ -73,7 +73,7 @@ Combines several refs — callback refs, object refs, or `undefined` — into on
 whenever a component forwards a ref but also wants its own handle on the node:
 
 ```tsx
-import { mergeRefs } from "@avero/react";
+import { mergeRefs } from "@averoui/react";
 import { forwardRef, useRef } from "react";
 
 export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(props, forwardedRef) {
@@ -102,7 +102,7 @@ Returns the active settings from the nearest [`AveroProvider`](../getting-starte
 or the Persian defaults when there is none.
 
 ```tsx
-import { useAvero } from "@avero/react";
+import { useAvero } from "@averoui/react";
 
 function DirectionalHint() {
   const { dir, dictionary } = useAvero();
@@ -131,7 +131,7 @@ other than `fa`. `dictionaries`, `fa` and `en` are exported too, which is the ea
 every key:
 
 ```ts
-import { en, fa } from "@avero/react";
+import { en, fa } from "@averoui/react";
 ```
 
 `formatMessage` fills `{name}` placeholders. Unknown placeholders are left in place rather than

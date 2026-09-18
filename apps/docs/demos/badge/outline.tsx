@@ -1,4 +1,4 @@
-import { Badge } from "@avero/react";
+import { Badge } from "@averoui/react";
 import { MapPin } from "lucide-react";
 
 export default function BadgeOutlineDemo() {

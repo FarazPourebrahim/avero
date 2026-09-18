@@ -1,4 +1,4 @@
-import { Button, EmptyState } from "@avero/react";
+import { Button, EmptyState } from "@averoui/react";
 import { BookOpen, SearchX } from "lucide-react";
 
 export default function EmptyStateDistinctDemo() {

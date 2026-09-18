@@ -1,4 +1,4 @@
-import { FooterSocialTile, SiteFooter, TelegramIcon, LinkedinIcon } from "@avero/react";
+import { FooterSocialTile, SiteFooter, TelegramIcon, LinkedinIcon } from "@averoui/react";
 
 export default function SiteFooterDefaultDemo() {
   return (

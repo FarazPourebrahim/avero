@@ -5,7 +5,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   plugins: [react()],
   // Resolve workspace packages to their TypeScript source, so tests never run against a stale dist.
-  resolve: { conditions: ["@avero/source", ...defaultClientConditions] },
+  resolve: { conditions: ["@averoui/source", ...defaultClientConditions] },
   test: {
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],

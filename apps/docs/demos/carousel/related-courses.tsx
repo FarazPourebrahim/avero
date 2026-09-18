@@ -5,7 +5,7 @@ import {
   CarouselPrevious,
   CarouselSlide,
   CarouselViewport,
-} from "@avero/react";
+} from "@averoui/react";
 
 const COURSES = [
   "مبانی طراحی رابط کاربری",

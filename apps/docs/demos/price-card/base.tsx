@@ -1,6 +1,6 @@
 "use client";
 
-import { PriceCard } from "@avero/react";
+import { PriceCard } from "@averoui/react";
 
 export default function PriceCardBaseDemo() {
   return (

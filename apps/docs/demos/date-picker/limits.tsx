@@ -1,6 +1,6 @@
 "use client";
 
-import { DatePicker, Field, FieldControl, FieldDescription, FieldLabel } from "@avero/react";
+import { DatePicker, Field, FieldControl, FieldDescription, FieldLabel } from "@averoui/react";
 import { useState } from "react";
 
 /** Fridays are the weekend in Iran, so no session is held on one. */

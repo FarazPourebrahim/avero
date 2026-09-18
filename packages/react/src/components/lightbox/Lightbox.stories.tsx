@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 import { useState } from "react";
 import { ZoomFrame } from "../zoom-frame/ZoomFrame.js";
 import { Lightbox, type LightboxImage } from "./Lightbox.js";

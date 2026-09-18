@@ -1,4 +1,4 @@
-import { ContactMethod, KeyValueRow } from "@avero/react";
+import { ContactMethod, KeyValueRow } from "@averoui/react";
 
 export default function MetaContactsDemo() {
   return (

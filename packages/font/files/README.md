@@ -15,4 +15,4 @@ File names must match exactly, because `src/lahzeh.css` references them:
 | 800    | `Lahzeh-ExtraBold.woff2`  | `Lahzeh-ExtraBold.woff`  |
 | 900    | `Lahzeh-Black.woff2`      | `Lahzeh-Black.woff`      |
 
-Run `pnpm --filter @avero/font test` to verify that every file is present.
+Run `pnpm --filter @averoui/font test` to verify that every file is present.

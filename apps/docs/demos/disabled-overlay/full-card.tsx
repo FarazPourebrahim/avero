@@ -1,4 +1,4 @@
-import { CapacityMeter, DisabledOverlay } from "@avero/react";
+import { CapacityMeter, DisabledOverlay } from "@averoui/react";
 
 export default function DisabledOverlayFullCardDemo() {
   return (

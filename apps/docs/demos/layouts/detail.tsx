@@ -1,4 +1,4 @@
-import { DetailLayout, ProfileLayout } from "@avero/react";
+import { DetailLayout, ProfileLayout } from "@averoui/react";
 
 function Block({ children, className }: { children: string; className?: string }) {
   return (

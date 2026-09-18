@@ -1,4 +1,4 @@
-import { ActivityHeatmap, type ActivityDay } from "@avero/react";
+import { ActivityHeatmap, type ActivityDay } from "@averoui/react";
 
 /** Eight weeks of steadily busier days, so the five shades appear in order. */
 function weeks(): ActivityDay[] {

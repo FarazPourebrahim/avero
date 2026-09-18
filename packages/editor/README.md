@@ -1,4 +1,4 @@
-# @avero/editor
+# @averoui/editor
 
 A [Tiptap](https://tiptap.dev) rich-text editor for
 [Avero](https://github.com/FarazPourebrahim/avero), sharing the prose styles that `RichContent`
@@ -7,19 +7,19 @@ renders with. A separate package so the core library never pulls in the editor.
 ## Install
 
 ```bash
-pnpm add @avero/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extensions @tiptap/extension-table @tiptap/extension-image
+pnpm add @averoui/editor @tiptap/react @tiptap/pm @tiptap/starter-kit @tiptap/extensions @tiptap/extension-table @tiptap/extension-image
 ```
 
 The Tiptap packages are peer dependencies.
 
 ```tsx
-import { EditorToolbar, RichTextEditor } from "@avero/editor";
+import { EditorToolbar, RichTextEditor } from "@averoui/editor";
 ```
 
 Import the prose stylesheet once:
 
 ```css
-@import "@avero/tokens/rich-content.css";
+@import "@averoui/tokens/rich-content.css";
 ```
 
 ## Notes

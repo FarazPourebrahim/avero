@@ -8,7 +8,7 @@ library can hand an attacker script execution. Avero's answer is a single allow-
 runs **every time**, with no opt-out.
 
 ```tsx
-import { sanitizeHtml, stripHtml } from "@avero/react";
+import { sanitizeHtml, stripHtml } from "@averoui/react";
 ```
 
 You do not normally call `sanitizeHtml` yourself. [`RichContent`](../components/rich-content) calls
@@ -70,7 +70,7 @@ sanitizeHtml('<a href="https://a.com" target="_blank">x</a>');
 `richContentAllowList` is exported, so you can inspect exactly what survives:
 
 ```ts
-import { richContentAllowList } from "@avero/react";
+import { richContentAllowList } from "@averoui/react";
 ```
 
 | Group            | Tags                                                                                                            |
@@ -86,7 +86,7 @@ import { richContentAllowList } from "@avero/react";
 Attributes not listed for a tag are dropped — including `class`, `id` and `style`. Styling comes
 from the prose stylesheet, so the markup does not need to carry any.
 
-The list is also the contract with [`@avero/editor`](../components/editor): every tag the editor can
+The list is also the contract with [`@averoui/editor`](../components/editor): every tag the editor can
 produce is in it, and a test round-trips the editor's output through `sanitizeHtml` to prove no
 allowed formatting is lost.
 

@@ -1,4 +1,4 @@
-# @avero/editor
+# @averoui/editor
 
 ## 1.0.0
 
@@ -18,12 +18,12 @@
 
   Behaviour comes from Radix, so focus management, keyboard support and ARIA semantics are not
   reimplemented; every component test runs axe and a browser suite runs axe over every story in both
-  directions. Colours, radii, shadows, motion and type come from `@avero/tokens`, so a theme is a set
+  directions. Colours, radii, shadows, motion and type come from `@averoui/tokens`, so a theme is a set
   of CSS custom properties rather than a fork.
 
 ### Minor Changes
 
-- fd6969c: `@avero/editor`: add `EditorToolbar`, formatting buttons for `RichTextEditor`: bold, italic, underline, strikethrough, heading and subheading, quote, code block, bulleted and numbered lists, undo and redo. It follows the WAI-ARIA toolbar pattern with one tab stop and arrow keys that follow the reading direction, shows active formatting with `aria-pressed`, and disables itself while there is no editor or the editor is read-only. `@avero/react`: add the `editorToolbar`, `editorBold`, `editorItalic`, `editorUnderline`, `editorStrike`, `editorHeading`, `editorSubheading`, `editorBulletList`, `editorOrderedList`, `editorBlockquote`, `editorCodeBlock`, `editorUndo` and `editorRedo` dictionary entries.
+- fd6969c: `@averoui/editor`: add `EditorToolbar`, formatting buttons for `RichTextEditor`: bold, italic, underline, strikethrough, heading and subheading, quote, code block, bulleted and numbered lists, undo and redo. It follows the WAI-ARIA toolbar pattern with one tab stop and arrow keys that follow the reading direction, shows active formatting with `aria-pressed`, and disables itself while there is no editor or the editor is read-only. `@averoui/react`: add the `editorToolbar`, `editorBold`, `editorItalic`, `editorUnderline`, `editorStrike`, `editorHeading`, `editorSubheading`, `editorBulletList`, `editorOrderedList`, `editorBlockquote`, `editorCodeBlock`, `editorUndo` and `editorRedo` dictionary entries.
 
 ### Patch Changes
 
@@ -55,5 +55,5 @@
 - Updated dependencies [2bcd63b]
 - Updated dependencies [fb4cf08]
 - Updated dependencies [9ab5791]
-  - @avero/react@1.0.0
-  - @avero/tokens@1.0.0
+  - @averoui/react@1.0.0
+  - @averoui/tokens@1.0.0

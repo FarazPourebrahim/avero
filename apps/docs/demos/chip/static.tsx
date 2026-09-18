@@ -1,4 +1,4 @@
-import { Chip } from "@avero/react";
+import { Chip } from "@averoui/react";
 
 export default function ChipStaticDemo() {
   return (

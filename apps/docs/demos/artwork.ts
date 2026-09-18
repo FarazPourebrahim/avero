@@ -1,4 +1,4 @@
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 
 // Inline SVG artwork keeps demos deterministic and offline; colors come from Avero tokens.
 function svg(markup: string) {

@@ -1,4 +1,4 @@
-import { ActionTile } from "@avero/react";
+import { ActionTile } from "@averoui/react";
 import { Award, BookOpen, CalendarPlus, Shield, TrendingUp, Zap } from "lucide-react";
 
 const icon = "size-4 sm:size-5";

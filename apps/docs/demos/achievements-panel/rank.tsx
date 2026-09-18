@@ -1,4 +1,4 @@
-import { AchievementsPanel, HighlightPanel, InfoRow } from "@avero/react";
+import { AchievementsPanel, HighlightPanel, InfoRow } from "@averoui/react";
 
 export default function AchievementsPanelRankDemo() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { SidebarNav, SidebarNavItem } from "@avero/react";
+import { SidebarNav, SidebarNavItem } from "@averoui/react";
 import { BookOpen, LayoutDashboard, LogOut, Settings } from "lucide-react";
 
 export default function SidebarNavTonesDemo() {

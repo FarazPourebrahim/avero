@@ -1,4 +1,4 @@
-import { ActionTile, PaperPlaneSolidIcon, QuickActions } from "@avero/react";
+import { ActionTile, PaperPlaneSolidIcon, QuickActions } from "@averoui/react";
 
 const ACTIONS = [
   { label: "افزودن دوره", tone: "blue" },

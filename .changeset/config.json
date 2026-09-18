@@ -3,9 +3,11 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [["@avero/tokens", "@avero/react", "@avero/font", "@avero/charts", "@avero/editor"]],
+  "linked": [
+    ["@averoui/tokens", "@averoui/react", "@averoui/font", "@averoui/charts", "@averoui/editor"]
+  ],
   "access": "public",
   "baseBranch": "dev",
   "updateInternalDependencies": "patch",
-  "ignore": ["@avero/storybook-app", "@avero/docs"]
+  "ignore": ["@averoui/storybook-app", "@averoui/docs"]
 }

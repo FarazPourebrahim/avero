@@ -1,4 +1,4 @@
-import { FeatureCard } from "@avero/react";
+import { FeatureCard } from "@averoui/react";
 import { Award, ShieldCheck, Users, Zap } from "lucide-react";
 
 export default function FeatureCardGridDemo() {

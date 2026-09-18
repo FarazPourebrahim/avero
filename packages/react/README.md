@@ -1,4 +1,4 @@
-# @avero/react
+# @averoui/react
 
 Bidirectional React components for products that speak **Persian (RTL)** and **English (LTR)**,
 built on [Radix UI](https://www.radix-ui.com) primitives and styled with Tailwind CSS v4 tokens.
@@ -10,7 +10,7 @@ shells, hooks, formatting utilities and icons.
 ## Install
 
 ```bash
-pnpm add @avero/react @avero/tokens lucide-react
+pnpm add @averoui/react @averoui/tokens lucide-react
 ```
 
 `react`, `react-dom` (>= 18.2) and `lucide-react` are peer dependencies. Tailwind CSS v4 is
@@ -20,19 +20,19 @@ required — the design tokens are a Tailwind `@theme` block.
 
 ```css title="app.css"
 @import "tailwindcss";
-@import "@avero/tokens/theme.css";
-@import "@avero/tokens/base.css";
-@import "@avero/tokens/utilities.css";
+@import "@averoui/tokens/theme.css";
+@import "@averoui/tokens/base.css";
+@import "@averoui/tokens/utilities.css";
 
 /* Avero ships compiled JS; Tailwind must scan it for the classes it uses. */
-@source "../node_modules/@avero/react/dist";
+@source "../node_modules/@averoui/react/dist";
 ```
 
 That `@source` line is the step that is easiest to miss: without it components render with
 structure but no styling.
 
 ```tsx
-import { AveroProvider, Button } from "@avero/react";
+import { AveroProvider, Button } from "@averoui/react";
 
 export function App() {
   return (

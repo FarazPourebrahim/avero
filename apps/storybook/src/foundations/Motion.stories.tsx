@@ -1,4 +1,4 @@
-import { tokens } from "@avero/tokens";
+import { tokens } from "@averoui/tokens";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // Accordion animations depend on a Radix-provided height variable, so they are component internals.

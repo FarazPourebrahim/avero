@@ -1,4 +1,4 @@
-import { Input } from "@avero/react";
+import { Input } from "@averoui/react";
 
 export default function InputPrimaryDemo() {
   return (

@@ -1,4 +1,4 @@
-import { Divider } from "@avero/react";
+import { Divider } from "@averoui/react";
 
 const TONES = [
   { tone: "gray", label: "gray — داخل کارت‌ها" },

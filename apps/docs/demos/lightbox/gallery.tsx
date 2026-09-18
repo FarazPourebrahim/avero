@@ -1,7 +1,7 @@
 "use client";
 
-import { Lightbox, ZoomFrame, type LightboxImage } from "@avero/react";
-import { tokens } from "@avero/tokens";
+import { Lightbox, ZoomFrame, type LightboxImage } from "@averoui/react";
+import { tokens } from "@averoui/tokens";
 import { useState } from "react";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).

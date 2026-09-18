@@ -8,7 +8,7 @@ description: The class merge function, configured so overriding an Avero token c
 scales**, which is the part that matters.
 
 ```tsx
-import { cn } from "@avero/react";
+import { cn } from "@averoui/react";
 
 cn("px-4", condition && "px-6"); // "px-6"
 cn("shadow-card-soft", "shadow-md"); // "shadow-md"
@@ -39,7 +39,7 @@ Avero registers all of its scales, so overriding behaves the way you would expec
 | `gradient-*`    | the gradient utilities                                  |
 | effects         | `skeleton-shimmer`, `glow-ring`, `typing-caret`         |
 
-The lists are read from `@avero/tokens` rather than written out here, so a new token is picked up
+The lists are read from `@averoui/tokens` rather than written out here, so a new token is picked up
 without touching `cn`.
 
 ## Using it
