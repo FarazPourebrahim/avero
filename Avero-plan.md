@@ -54,10 +54,10 @@
 | 10 | Blocks and example templates | ✅ | 6 / 6 | 4–9 | L | 2026-07-05 | 2026-09-10 |
 | 11 | Documentation site | ✅ | 12 / 12 | 3 (can start in parallel) | L | 2026-06-19 | 2026-09-10 |
 | 12 | Hardening: a11y, performance, SSR, security | 🟨 | 11 / 13 | 10, 11 | M | 2026-09-10 | |
-| 13 | Release 1.0 | 🟨 | 3 / 10 | 12 | S | 2026-09-19 | |
+| 13 | Release 1.0 | 🟨 | 5 / 10 | 12 | S | 2026-09-19 | |
 | 14 | Dark theme | ⏸️ | 0 / 7 | 13 | L | | |
 
-**Overall:** 128 / 144 phase-DoD items (≈89%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
+**Overall:** 130 / 144 phase-DoD items (≈90%). Two Phase 11 items left the count: the Templates section (dropped, D-27) and versioned docs (deferred to Phase 13, D-26).
 
 > Phase 3 note (updated 2026-07-30): the primitives are implemented, unit/SSR/axe-tested and documented with live RTL/LTR previews and generated props tables, so their §9 rows are ✅. The same holds for most of phases 4–9. Global DoD item 2 also asks for a recorded design review in Storybook, which each phase's exit gate names.
 
@@ -823,16 +823,16 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 ### Phase 13 — Release 1.0  🟨
 
 **DoD:**
-- [ ] All §9 rows are ✅, or ⏸️ with the user's written approval
+- [ ] All §9 rows are ✅, or ⏸️ with the user's written approval — **not met at the time of the 1.0.0 release.** Five rows are open: P-06b `AvatarGroup`, P-11 `Spinner` and P-12 `Skeleton` are unbuilt backlog, and the Foundations and X-01 rows still lack their A11y and Docs columns. The user chose to publish 1.0.0 first and address them afterwards; they are additive, so they land in 1.1.0 rather than breaking the released surface.
 - [x] Semantic versioning policy documented (what counts as breaking: props, tokens, class output) — the docs Changelog page states it: the five published packages are linked so they move together, and the rule that Avero's emitted class list is part of its contract, so a change that stops a documented override applying is breaking even when the props are untouched. `docs/avero-conventions.md` carries the same policy.
-- [ ] Changesets produce the 1.0.0 changelog for every package
+- [x] Changesets produce the 1.0.0 changelog for every package — all 27 pending changesets consumed on 2026-09-19. The five linked packages moved together to 1.0.0, each with a generated `CHANGELOG.md`, and the docs Changelog page no longer describes Avero as pre-1.0 and workspace-only.
 - [ ] Packages published to the registry chosen in O-01, with provenance
 - [x] `LICENSE` files in place; font licence constraints respected (O-02) — MIT at the repository root and in all six packages, with `license: "MIT"` in every `package.json`; `npm pack --dry-run` confirms each tarball carries it. The Lahzeh files keep their own licence, which permits redistribution, recorded in `packages/font/files/README.md` next to the nine weights, and `@avero/font`'s README says so rather than implying MIT covers them.
 - [x] README per package with install, usage and a link to the docs — all five published packages. Each covers install with its peers, the stylesheet or provider setup, what the package contains and its licence; `@avero/react`'s leads with the `@source` line, the step whose absence produces unstyled components. Verified present in every tarball.
 - [ ] Docs deployed at the production URL, pinned to the 1.0 version
 - [ ] Clean-install smoke tests pass in fresh Vite, Next.js App Router and Remix/React Router projects
 - [ ] Theming guide: overriding tokens, adding a brand colour, and building a custom theme on the semantic tokens
-- [ ] `dev` merged into `main` and a release tag created
+- [x] `dev` merged into `main` and a release tag created — `main` fast-forwarded from the initial commit to the release commit and tagged `v1.0.0`, both pushed on 2026-09-19. That push is what triggers the Release workflow.
 
 **Exit gate:** the three fresh-project smoke tests pass against the published packages (not workspace links).
 
