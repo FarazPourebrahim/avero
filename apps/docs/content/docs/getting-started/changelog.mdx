@@ -22,24 +22,35 @@ The five published packages — `@averoui/tokens`, `@averoui/react`, `@averoui/f
 `@averoui/editor` — are **linked**, so they move to the same version together. A consumer can
 therefore match versions across packages without a compatibility table.
 
-**Major — breaking.**
+Avero reads a version as **big update · surface change · fix**, which is not what semver reads.
+The difference is in the first two digits, and it matters when you pick a range.
+
+**First digit — a big update.**
+
+- A milestone the project treats as a new generation: a redesign, or an architecture change that
+  reshapes how the library is used.
+- Reserved for that. A breaking change on its own does not earn one.
+
+**Second digit — the surface changed, breaking or not.**
 
 - Removing or renaming a component, prop, variant, token or CSS variable.
 - Changing a default value in a way that alters what gets rendered.
 - Raising a peer dependency floor (React, Tailwind, Radix, `lucide-react`).
 - Reordering the z-index layers, or changing what a `data-*` attribute means.
-
-**Minor — additive.**
-
-- New components, blocks, props, variants or tokens.
-- New dictionary entries, and new locales.
+- New components, blocks, props, variants, tokens, dictionary entries or locales.
 - Relaxing a type so more input is accepted.
 
-**Patch.**
+**Third digit — a fix.**
 
 - Bug fixes and visual corrections that restore the documented behaviour.
 - Accessibility fixes that do not change the API.
 - Dependency bumps with no API effect.
+
+<Callout type="warn">
+  Because a breaking change lands in the second digit, a caret range (`^2.0.0`) can install one. Pin
+  the first two digits (`~2.1.0`) if you would rather review every surface change before taking it.
+  Every entry that breaks something opens by naming what broke and how to migrate.
+</Callout>
 
 Because Avero's output is CSS classes as much as it is markup, the class list a component emits is
 part of its contract: a change that makes a documented override stop applying is breaking even if
