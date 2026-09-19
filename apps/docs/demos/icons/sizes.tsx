@@ -1,4 +1,7 @@
+"use client";
+
 import { HeartSolidIcon, TelegramIcon } from "@averoui/react";
+import { useCopy } from "../copy";
 
 // Measurements, not sample copy: the size scale reads the same in either direction, so the digits
 // stay Latin alongside the Latin unit.
@@ -10,6 +13,17 @@ const SIZES = [
 ];
 
 export default function IconsSizesDemo() {
+  const t = useCopy({
+    fa: {
+      telegram: "تلگرام",
+      note: "آیکن‌ها به‌صورت پیش‌فرض `aria-hidden` هستند؛ برای آیکن معنادار نامی بدهید.",
+    },
+    en: {
+      telegram: "Telegram",
+      note: "Icons are `aria-hidden` by default; give a meaningful icon a name.",
+    },
+  });
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-end gap-6">
@@ -25,9 +39,9 @@ export default function IconsSizesDemo() {
           className="size-5 text-sky-500"
           aria-hidden={false}
           role="img"
-          aria-label="تلگرام"
+          aria-label={t.telegram}
         />
-        <span>آیکن‌ها به‌صورت پیش‌فرض `aria-hidden` هستند؛ برای آیکن معنادار نامی بدهید.</span>
+        <span>{t.note}</span>
       </div>
     </div>
   );
