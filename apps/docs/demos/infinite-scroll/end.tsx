@@ -2,6 +2,7 @@
 
 import { InfiniteScroll } from "@averoui/react";
 import { useState } from "react";
+import { useCopy } from "../copy";
 
 const PAGE_SIZE = 4;
 const TOTAL = 12;
@@ -10,6 +11,20 @@ export default function InfiniteScrollEndDemo() {
   const [count, setCount] = useState(PAGE_SIZE);
   const [loading, setLoading] = useState(false);
   const hasMore = count < TOTAL;
+  const t = useCopy({
+    fa: {
+      label: "جلسه‌های دوره",
+      loader: "در حال آوردن جلسه‌های بعدی…",
+      item: (index: number) => `جلسه ${index}`,
+      end: "پایان فهرست — ۱۲ جلسه",
+    },
+    en: {
+      label: "Course sessions",
+      loader: "Loading the next sessions…",
+      item: (index: number) => `Session ${index}`,
+      end: "End of the list — 12 sessions",
+    },
+  });
 
   function loadMore() {
     setLoading(true);
@@ -27,19 +42,17 @@ export default function InfiniteScrollEndDemo() {
         hasMore={hasMore}
         loading={loading}
         rootMargin="40px"
-        loader="در حال آوردن جلسه‌های بعدی…"
+        loader={t.loader}
       >
-        <ul aria-label="جلسه‌های دوره" className="flex flex-col gap-2">
+        <ul aria-label={t.label} className="flex flex-col gap-2">
           {Array.from({ length: count }, (_, index) => (
             <li key={index} className="rounded-xl bg-gray-50 px-4 py-3 text-sm text-gray-700">
-              جلسه {index + 1}
+              {t.item(index + 1)}
             </li>
           ))}
         </ul>
       </InfiniteScroll>
-      {hasMore ? null : (
-        <p className="py-3 text-center text-sm text-gray-500">پایان فهرست — ۱۲ جلسه</p>
-      )}
+      {hasMore ? null : <p className="py-3 text-center text-sm text-gray-500">{t.end}</p>}
     </div>
   );
 }

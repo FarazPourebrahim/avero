@@ -2,27 +2,40 @@
 
 import { SegmentedControl, SegmentedControlItem } from "@averoui/react";
 import { useState } from "react";
+import { useCopy } from "../copy";
 
-const RANGES = [
-  { value: "week", label: "۷ روز" },
-  { value: "month", label: "۳۰ روز" },
-  { value: "year", label: "یک سال" },
-];
+const RANGES = ["week", "month", "year"] as const;
 
 export default function SegmentedControlControlledDemo() {
-  const [range, setRange] = useState("month");
+  const [range, setRange] = useState<(typeof RANGES)[number]>("month");
+  const t = useCopy({
+    fa: {
+      label: "بازه گزارش",
+      ranges: { week: "۷ روز", month: "۳۰ روز", year: "یک سال" },
+      status: (label: string) => `گزارش ${label}`,
+    },
+    en: {
+      label: "Report range",
+      ranges: { week: "7 days", month: "30 days", year: "One year" },
+      status: (label: string) => `${label} report`,
+    },
+  });
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <SegmentedControl aria-label="بازه گزارش" value={range} onValueChange={setRange}>
-        {RANGES.map((option) => (
-          <SegmentedControlItem key={option.value} value={option.value}>
-            {option.label}
+      <SegmentedControl
+        aria-label={t.label}
+        value={range}
+        onValueChange={(value) => setRange(value as (typeof RANGES)[number])}
+      >
+        {RANGES.map((value) => (
+          <SegmentedControlItem key={value} value={value}>
+            {t.ranges[value]}
           </SegmentedControlItem>
         ))}
       </SegmentedControl>
       <p role="status" className="text-sm text-gray-700">
-        گزارش {RANGES.find((option) => option.value === range)?.label}
+        {t.status(t.ranges[range])}
       </p>
     </div>
   );
