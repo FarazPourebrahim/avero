@@ -60,11 +60,37 @@ their own peers. Their pages cover that.
 
 ### Requirements
 
-|              | Version                                         |
-| ------------ | ----------------------------------------------- |
-| React        | 18.2 or newer, including 19                     |
-| Tailwind CSS | 4.3 or newer                                    |
-| Node         | 22.12 or newer (for the build, not the browser) |
+|              | Version                                           |
+| ------------ | ------------------------------------------------- |
+| React        | 18.2 or newer, including 19                       |
+| Tailwind CSS | 4.3 or newer                                      |
+| Node         | 22.12 or newer (for the build, not the browser)   |
+| TypeScript   | Optional, but see [TypeScript](#typescript) below |
+
+### TypeScript
+
+Avero ships its own type declarations, exposed through the `exports` map in each package. If your
+editor offers no prop completions on an Avero component, check this setting first:
+
+```jsonc title="tsconfig.json"
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler", // or "node16" / "nodenext"
+  },
+}
+```
+
+TypeScript reads a package's `exports` map only under those three settings. The legacy `"node"`
+setting — which is also what an editor assumes for a file that no `tsconfig.json` covers — ignores
+it, and the props fall back to `any`: no completions, and no error when a prop is misspelled or
+given the wrong type. Restart the TypeScript server after changing it (in VS Code,
+**TypeScript: Restart TS Server**); it does not pick the change up on its own.
+
+The packages also carry a top-level `types` field, so the legacy setting still gets the component
+prop names and most of their types. What it does not get are the props whose values come from
+`class-variance-authority` — `variant`, `tone`, `size` and `radius` — which stay `any`, because that
+package reaches its own declarations only through its `exports` map. `"bundler"` is the setting to
+be on.
 
 ## Set up the stylesheet
 
