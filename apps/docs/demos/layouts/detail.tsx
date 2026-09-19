@@ -1,4 +1,7 @@
+"use client";
+
 import { DetailLayout, ProfileLayout } from "@averoui/react";
+import { useCopy } from "../copy";
 
 function Block({ children, className }: { children: string; className?: string }) {
   return (
@@ -11,14 +14,31 @@ function Block({ children, className }: { children: string; className?: string }
 }
 
 export default function LayoutsDetailDemo() {
+  const t = useCopy({
+    fa: {
+      summary: "خلاصه دوره",
+      signup: "کارت ثبت‌نام",
+      detail: "جزئیات (۸ ستون)",
+      profileHeader: "سربرگ پروفایل",
+      instructorCourses: "دوره‌های مدرس",
+    },
+    en: {
+      summary: "Course summary",
+      signup: "Sign-up card",
+      detail: "Detail (8 columns)",
+      profileHeader: "Profile header",
+      instructorCourses: "The instructor's courses",
+    },
+  });
+
   return (
     <div className="w-full space-y-6 rounded-2xl bg-gray-100 py-4">
-      <DetailLayout asideLabel="خلاصه دوره" aside={<Block>کارت ثبت‌نام</Block>}>
-        <Block className="min-h-40">جزئیات (۸ ستون)</Block>
+      <DetailLayout asideLabel={t.summary} aside={<Block>{t.signup}</Block>}>
+        <Block className="min-h-40">{t.detail}</Block>
       </DetailLayout>
       <ProfileLayout>
-        <Block>سربرگ پروفایل</Block>
-        <Block className="min-h-40">دوره‌های مدرس</Block>
+        <Block>{t.profileHeader}</Block>
+        <Block className="min-h-40">{t.instructorCourses}</Block>
       </ProfileLayout>
     </div>
   );
