@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
@@ -5,29 +7,53 @@ import {
   AccordionLink,
   AccordionTrigger,
 } from "@averoui/react";
+import { useCopy } from "../copy";
 
 export default function AccordionFooterDemo() {
+  const t = useCopy({
+    fa: {
+      about: "درباره ما",
+      rules: "قوانین و مقررات",
+      contact: "تماس با ما",
+      categories: "دسته‌بندی دوره‌ها",
+      design: "طراحی رابط کاربری",
+      data: "تحلیل داده",
+      quick: "دسترسی سریع",
+      home: "صفحه اصلی",
+    },
+    en: {
+      about: "About us",
+      rules: "Terms and conditions",
+      contact: "Contact us",
+      categories: "Course categories",
+      design: "UI design",
+      data: "Data analysis",
+      quick: "Quick links",
+      home: "Home",
+    },
+  });
+
   return (
     <div className="w-full max-w-md">
       <Accordion type="single" collapsible defaultValue="about">
         <AccordionItem value="about">
-          <AccordionTrigger>درباره ما</AccordionTrigger>
+          <AccordionTrigger>{t.about}</AccordionTrigger>
           <AccordionContent>
-            <AccordionLink href="#rules">قوانین و مقررات</AccordionLink>
-            <AccordionLink href="#contact">تماس با ما</AccordionLink>
+            <AccordionLink href="#rules">{t.rules}</AccordionLink>
+            <AccordionLink href="#contact">{t.contact}</AccordionLink>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="categories">
-          <AccordionTrigger>دسته‌بندی دوره‌ها</AccordionTrigger>
+          <AccordionTrigger>{t.categories}</AccordionTrigger>
           <AccordionContent>
-            <AccordionLink href="#design">طراحی رابط کاربری</AccordionLink>
-            <AccordionLink href="#data">تحلیل داده</AccordionLink>
+            <AccordionLink href="#design">{t.design}</AccordionLink>
+            <AccordionLink href="#data">{t.data}</AccordionLink>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="quick">
-          <AccordionTrigger>دسترسی سریع</AccordionTrigger>
+          <AccordionTrigger>{t.quick}</AccordionTrigger>
           <AccordionContent>
-            <AccordionLink href="#home">صفحه اصلی</AccordionLink>
+            <AccordionLink href="#home">{t.home}</AccordionLink>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
