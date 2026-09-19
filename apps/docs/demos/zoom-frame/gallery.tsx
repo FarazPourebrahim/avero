@@ -1,5 +1,8 @@
+"use client";
+
 import { ZoomFrame } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 const ARTWORK =
@@ -9,14 +12,15 @@ const ARTWORK =
   );
 
 export default function ZoomFrameGalleryDemo() {
+  const t = useCopy({
+    fa: { alt: "نمونه طرح رابط کاربری" },
+    en: { alt: "A sample interface design" },
+  });
+
   return (
     <div className="w-full max-w-xl">
       <ZoomFrame>
-        <img
-          src={ARTWORK}
-          alt="نمونه طرح رابط کاربری"
-          className="h-60 w-full rounded-2xl object-cover"
-        />
+        <img src={ARTWORK} alt={t.alt} className="h-60 w-full rounded-2xl object-cover" />
       </ZoomFrame>
     </div>
   );
