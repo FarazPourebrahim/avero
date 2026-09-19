@@ -2,17 +2,25 @@
 
 import { Checkbox } from "@averoui/react";
 import { useState } from "react";
+import { useCopy } from "../copy";
 
-const TOPICS = [
-  { id: "design", label: "طراحی رابط کاربری" },
-  { id: "data", label: "تحلیل داده" },
-  { id: "web", label: "برنامه‌نویسی وب" },
-];
+const TOPIC_IDS = ["design", "data", "web"] as const;
 
 export default function CheckboxPreferencesDemo() {
   const [selected, setSelected] = useState<string[]>(["design"]);
+  const t = useCopy({
+    fa: {
+      all: "همه موضوع‌ها",
+      topics: { design: "طراحی رابط کاربری", data: "تحلیل داده", web: "برنامه‌نویسی وب" },
+    },
+    en: {
+      all: "All topics",
+      topics: { design: "UI design", data: "Data analysis", web: "Web development" },
+    },
+  });
+
   const allState =
-    selected.length === TOPICS.length ? true : selected.length === 0 ? false : "indeterminate";
+    selected.length === TOPIC_IDS.length ? true : selected.length === 0 ? false : "indeterminate";
 
   const toggle = (id: string, checked: boolean) =>
     setSelected((current) => (checked ? [...current, id] : current.filter((item) => item !== id)));
@@ -23,24 +31,22 @@ export default function CheckboxPreferencesDemo() {
         <Checkbox
           id="all-topics"
           checked={allState}
-          onCheckedChange={(checked) =>
-            setSelected(checked === true ? TOPICS.map((topic) => topic.id) : [])
-          }
+          onCheckedChange={(checked) => setSelected(checked === true ? [...TOPIC_IDS] : [])}
         />
         <label htmlFor="all-topics" className="text-sm font-medium text-gray-800">
-          همه موضوع‌ها
+          {t.all}
         </label>
       </div>
       <div className="flex flex-col gap-3 ps-7">
-        {TOPICS.map((topic) => (
-          <div key={topic.id} className="flex items-center gap-2">
+        {TOPIC_IDS.map((id) => (
+          <div key={id} className="flex items-center gap-2">
             <Checkbox
-              id={topic.id}
-              checked={selected.includes(topic.id)}
-              onCheckedChange={(checked) => toggle(topic.id, checked === true)}
+              id={id}
+              checked={selected.includes(id)}
+              onCheckedChange={(checked) => toggle(id, checked === true)}
             />
-            <label htmlFor={topic.id} className="text-sm text-gray-700">
-              {topic.label}
+            <label htmlFor={id} className="text-sm text-gray-700">
+              {t.topics[id]}
             </label>
           </div>
         ))}
