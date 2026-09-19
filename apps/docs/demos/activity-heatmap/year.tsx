@@ -1,4 +1,7 @@
+"use client";
+
 import { ActivityHeatmap, type ActivityDay } from "@averoui/react";
+import { useCopy } from "../copy";
 
 /** A deterministic pseudo-random series keeps the demo stable between builds. */
 function year(): ActivityDay[] {
@@ -15,11 +18,16 @@ function year(): ActivityDay[] {
 }
 
 export default function ActivityHeatmapYearDemo() {
+  const t = useCopy({
+    fa: { title: "نقشه فعالیت", range: "۱۲ ماه گذشته" },
+    en: { title: "Activity map", range: "Last 12 months" },
+  });
+
   return (
     <div className="w-full rounded-2xl border border-gray-100 p-3.5 sm:p-5">
       <div className="mb-3 flex flex-col justify-between gap-2 sm:mb-4 sm:flex-row sm:items-center">
-        <h3 className="text-xs font-bold text-gray-800 sm:text-sm">نقشه فعالیت</h3>
-        <span className="text-2xs text-gray-400 sm:text-xs">۱۲ ماه گذشته</span>
+        <h3 className="text-xs font-bold text-gray-800 sm:text-sm">{t.title}</h3>
+        <span className="text-2xs text-gray-400 sm:text-xs">{t.range}</span>
       </div>
       <ActivityHeatmap days={year()} />
     </div>

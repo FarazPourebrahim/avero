@@ -1,14 +1,28 @@
+"use client";
+
 import { Carousel, CarouselDots, CarouselSlide, CarouselViewport } from "@averoui/react";
+import { useCopy } from "../copy";
 
 const SLIDE_COUNT = 4;
 
 export default function CarouselPillDemo() {
+  const t = useCopy({
+    fa: {
+      label: "دوره‌ها",
+      slide: (index: number, total: number) => `${index} از ${total}`,
+    },
+    en: {
+      label: "Courses",
+      slide: (index: number, total: number) => `${index} of ${total}`,
+    },
+  });
+
   return (
     <div className="w-full max-w-3xl">
-      <Carousel aria-label="دوره‌ها">
+      <Carousel aria-label={t.label}>
         <CarouselViewport>
           {Array.from({ length: SLIDE_COUNT }, (_, index) => (
-            <CarouselSlide key={index} aria-label={`${index + 1} از ${SLIDE_COUNT}`}>
+            <CarouselSlide key={index} aria-label={t.slide(index + 1, SLIDE_COUNT)}>
               <div className="flex h-32 items-center justify-center rounded-2xl bg-white text-2xl font-bold text-gray-700">
                 {index + 1}
               </div>

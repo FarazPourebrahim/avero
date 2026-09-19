@@ -1,5 +1,8 @@
+"use client";
+
 import { Button, SplitHero } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 const GROUND = tokens.colorPrimary.value;
@@ -11,25 +14,47 @@ const ARTWORK =
   );
 
 export default function SplitHeroAboutDemo() {
+  const t = useCopy({
+    fa: {
+      eyebrow: "از سال ۱۴۰۰",
+      note: "داستان ما",
+      title: "جایی برای یادگیری ساده و لذت‌بخش",
+      imageAlt: "تصویر معرفی",
+      browse: "مشاهده دوره‌ها",
+      contact: "تماس با پشتیبانی",
+      first:
+        "ما با یک پرسش ساده شروع کردیم: چرا یادگیری مهارت‌های تازه باید دشوار باشد؟ پاسخ ما دوره‌هایی کوتاه، عملی و در دسترس بود.",
+      second: "باور داریم هر کسی، هر جا که باشد، باید بتواند با سرعت خودش پیش برود.",
+    },
+    en: {
+      eyebrow: "Since 2021",
+      note: "Our story",
+      title: "A place to learn simply, and enjoy it",
+      imageAlt: "Introductory illustration",
+      browse: "Browse courses",
+      contact: "Contact support",
+      first:
+        "We started with a simple question: why should picking up a new skill be hard? Our answer was short, practical courses that anyone can reach.",
+      second: "We believe anyone, anywhere, should be able to move at their own pace.",
+    },
+  });
+
   return (
     <SplitHero
-      eyebrow="از سال ۱۴۰۰"
-      note="داستان ما"
-      title="جایی برای یادگیری ساده و لذت‌بخش"
+      eyebrow={t.eyebrow}
+      note={t.note}
+      title={t.title}
       image={ARTWORK}
-      imageAlt="تصویر معرفی"
+      imageAlt={t.imageAlt}
       actions={
         <>
-          <Button elevated>مشاهده دوره‌ها</Button>
-          <Button variant="soft">تماس با پشتیبانی</Button>
+          <Button elevated>{t.browse}</Button>
+          <Button variant="soft">{t.contact}</Button>
         </>
       }
     >
-      <p>
-        ما با یک پرسش ساده شروع کردیم: چرا یادگیری مهارت‌های تازه باید دشوار باشد؟ پاسخ ما دوره‌هایی
-        کوتاه، عملی و در دسترس بود.
-      </p>
-      <p>باور داریم هر کسی، هر جا که باشد، باید بتواند با سرعت خودش پیش برود.</p>
+      <p>{t.first}</p>
+      <p>{t.second}</p>
     </SplitHero>
   );
 }

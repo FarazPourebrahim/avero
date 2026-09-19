@@ -1,5 +1,8 @@
+"use client";
+
 import { PromoBanner } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 const GROUND = tokens.colorPrimary.value;
@@ -11,10 +14,15 @@ const ARTWORK =
   );
 
 export default function PromoBannerSidebarDemo() {
+  const t = useCopy({
+    fa: { newCourses: "دوره‌های تازه", workshop: "ثبت‌نام در کارگاه" },
+    en: { newCourses: "New courses", workshop: "Sign up for the workshop" },
+  });
+
   return (
     <div className="grid w-full gap-6 sm:grid-cols-2">
-      <PromoBanner href="#" image={ARTWORK} label="دوره‌های تازه" />
-      <PromoBanner href="#" image={ARTWORK} label="ثبت‌نام در کارگاه" variant="project" />
+      <PromoBanner href="#" image={ARTWORK} label={t.newCourses} />
+      <PromoBanner href="#" image={ARTWORK} label={t.workshop} variant="project" />
     </div>
   );
 }

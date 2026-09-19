@@ -1,5 +1,8 @@
+"use client";
+
 import { ArticleHeader, CalendarSolidIcon, ClockSolidIcon, MetaItem } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 const GROUND = tokens.colorPrimary.value;
@@ -11,16 +14,31 @@ const COVER =
   );
 
 export default function ArticleHeaderBlogPostDemo() {
+  const t = useCopy({
+    fa: {
+      title: "چطور یک سیستم طراحی بسازیم؟ راهنمای گام‌به‌گام",
+      published: "انتشار:",
+      date: "۱۲ مهر ۱۴۰۵",
+      readTime: "۱۲ دقیقه مطالعه",
+    },
+    en: {
+      title: "How to build a design system: a step-by-step guide",
+      published: "Published:",
+      date: "4 October 2026",
+      readTime: "12 min read",
+    },
+  });
+
   return (
     <ArticleHeader
-      title="چطور یک سیستم طراحی بسازیم؟ راهنمای گام‌به‌گام"
+      title={t.title}
       image={COVER}
       meta={
         <>
-          <MetaItem icon={<CalendarSolidIcon size={14} />} label="انتشار:">
-            <time dateTime="2026-10-04">۱۲ مهر ۱۴۰۵</time>
+          <MetaItem icon={<CalendarSolidIcon size={14} />} label={t.published}>
+            <time dateTime="2026-10-04">{t.date}</time>
           </MetaItem>
-          <MetaItem icon={<ClockSolidIcon size={14} />}>۱۲ دقیقه مطالعه</MetaItem>
+          <MetaItem icon={<ClockSolidIcon size={14} />}>{t.readTime}</MetaItem>
         </>
       }
     />
