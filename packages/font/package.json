@@ -1,6 +1,6 @@
 {
   "name": "@averoui/font",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "module",
   "description": "Lahzeh font faces for Avero (the licence allows redistribution).",
   "sideEffects": [
