@@ -9,8 +9,8 @@ const OPTIONS: ReadonlyArray<{ value: PreviewDirection; label: string }> = [
 ];
 
 /**
- * Switches the direction and locale of every live demo on the site. It sits in the navbar, and the
- * choice persists across pages and reloads.
+ * Switches the direction and locale of every live demo on the site. It sits on each preview rather
+ * than in the site chrome, and the choice persists across pages and reloads.
  *
  * Built on Avero's own SegmentedControl: the documentation uses the library it documents, and this
  * control gets the keyboard behaviour that comes with it.

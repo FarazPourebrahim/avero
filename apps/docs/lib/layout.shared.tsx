@@ -1,5 +1,4 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { DirectionSwitch } from "@/components/DirectionSwitch";
 import { appName, gitConfig } from "./shared";
 
 const repoFile = (path: string) =>
@@ -7,10 +6,10 @@ const repoFile = (path: string) =>
 
 export function baseOptions(): BaseLayoutProps {
   return {
+    // Direction and locale belong to the demos, not to the site chrome: each preview carries its
+    // own switch, and the choice it writes is still shared across every preview on every page.
     nav: {
       title: appName,
-      // Sets the direction and locale of every demo on the site; the choice persists across pages.
-      children: <DirectionSwitch className="ms-auto me-2" />,
     },
     links: [
       {
