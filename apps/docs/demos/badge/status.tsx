@@ -1,16 +1,24 @@
+"use client";
+
 import { Badge } from "@averoui/react";
+import { useCopy } from "../copy";
 
 export default function BadgeStatusDemo() {
+  const t = useCopy({
+    fa: { published: "منتشر شده", seats: "۹ جای خالی", full: "ظرفیت تکمیل شد", online: "آنلاین" },
+    en: { published: "Published", seats: "9 seats left", full: "Fully booked", online: "Online" },
+  });
+
   return (
     <>
-      <Badge tone="success">منتشر شده</Badge>
+      <Badge tone="success">{t.published}</Badge>
       <Badge tone="success" className="py-1">
-        9 جای خالی
+        {t.seats}
       </Badge>
       <Badge tone="danger" className="py-1">
-        ظرفیت تکمیل شد
+        {t.full}
       </Badge>
-      <Badge>آنلاین</Badge>
+      <Badge>{t.online}</Badge>
       <Badge variant="counter">0</Badge>
     </>
   );
