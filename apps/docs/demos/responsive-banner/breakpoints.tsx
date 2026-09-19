@@ -1,5 +1,8 @@
+"use client";
+
 import { ResponsiveBanner } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 function artwork(width: number, height: number, from: string, to: string) {
@@ -15,6 +18,17 @@ const DESKTOP = artwork(1200, 300, tokens.colorPrimary.value, tokens.colorPrimar
 const MOBILE = artwork(600, 400, tokens.colorSecondary.value, tokens.colorWarning.value);
 
 export default function ResponsiveBannerBreakpointsDemo() {
+  const t = useCopy({
+    fa: {
+      wide: "بنری که از ۴۰rem به بعد طرح عریض را نشان می‌دهد",
+      tall: "بنری که تا ۶۴rem طرح بلند را نگه می‌دارد",
+    },
+    en: {
+      wide: "A banner that switches to the wide artwork from 40rem",
+      tall: "A banner that keeps the tall artwork up to 64rem",
+    },
+  });
+
   return (
     <div className="flex w-full max-w-3xl flex-col gap-5">
       <ResponsiveBanner
@@ -22,14 +36,9 @@ export default function ResponsiveBannerBreakpointsDemo() {
         radius="lg"
         desktopSrc={DESKTOP}
         mobileSrc={MOBILE}
-        alt="بنری که از ۴۰rem به بعد طرح عریض را نشان می‌دهد"
+        alt={t.wide}
       />
-      <ResponsiveBanner
-        breakpoint="lg"
-        desktopSrc={DESKTOP}
-        mobileSrc={MOBILE}
-        alt="بنری که تا ۶۴rem طرح بلند را نگه می‌دارد"
-      />
+      <ResponsiveBanner breakpoint="lg" desktopSrc={DESKTOP} mobileSrc={MOBILE} alt={t.tall} />
     </div>
   );
 }

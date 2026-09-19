@@ -1,5 +1,8 @@
+"use client";
+
 import { ResponsiveBanner } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images). The two
 // artworks differ in shape and colour, so the swap is visible when the window is resized.
@@ -13,12 +16,17 @@ function artwork(width: number, height: number, from: string, to: string) {
 }
 
 export default function ResponsiveBannerCampaignDemo() {
+  const t = useCopy({
+    fa: { alt: "جشنواره ثبت‌نام پاییز با تخفیف ویژه" },
+    en: { alt: "Autumn sign-up campaign with a special discount" },
+  });
+
   return (
     <div className="w-full max-w-3xl">
       <ResponsiveBanner
         desktopSrc={artwork(1200, 300, tokens.colorPrimary.value, tokens.colorPrimaryHover.value)}
         mobileSrc={artwork(600, 400, tokens.colorSecondary.value, tokens.colorWarning.value)}
-        alt="جشنواره ثبت‌نام پاییز با تخفیف ویژه"
+        alt={t.alt}
       />
     </div>
   );
