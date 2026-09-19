@@ -1,10 +1,12 @@
 import { HeartSolidIcon, TelegramIcon } from "@averoui/react";
 
+// Measurements, not sample copy: the size scale reads the same in either direction, so the digits
+// stay Latin alongside the Latin unit.
 const SIZES = [
-  { className: "size-3.5", label: "۱۴px" },
-  { className: "size-4", label: "۱۶px" },
-  { className: "size-5", label: "۲۰px" },
-  { className: "size-6", label: "۲۴px" },
+  { className: "size-3.5", label: "14px" },
+  { className: "size-4", label: "16px" },
+  { className: "size-5", label: "20px" },
+  { className: "size-6", label: "24px" },
 ];
 
 export default function IconsSizesDemo() {
