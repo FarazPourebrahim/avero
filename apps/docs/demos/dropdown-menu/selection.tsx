@@ -16,36 +16,63 @@ import {
   DropdownMenuTrigger,
 } from "@averoui/react";
 import { useState } from "react";
+import { useCopy } from "../copy";
 
 export default function DropdownMenuSelectionDemo() {
   const [onlyFree, setOnlyFree] = useState(true);
   const [sort, setSort] = useState("newest");
+  const t = useCopy({
+    fa: {
+      trigger: "نمایش فهرست",
+      filter: "پالایش",
+      freeOnly: "فقط دوره‌های رایگان",
+      sort: "مرتب‌سازی",
+      newest: "جدیدترین",
+      popular: "محبوب‌ترین",
+      export: "برون‌بری",
+      csv: "فایل CSV",
+      pdf: "فایل PDF",
+      clear: "پاک کردن فهرست",
+    },
+    en: {
+      trigger: "List options",
+      filter: "Filter",
+      freeOnly: "Free courses only",
+      sort: "Sort",
+      newest: "Newest",
+      popular: "Most popular",
+      export: "Export",
+      csv: "CSV file",
+      pdf: "PDF file",
+      clear: "Clear the list",
+    },
+  });
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">نمایش فهرست</Button>
+        <Button variant="outline">{t.trigger}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>پالایش</DropdownMenuLabel>
+        <DropdownMenuLabel>{t.filter}</DropdownMenuLabel>
         <DropdownMenuCheckboxItem checked={onlyFree} onCheckedChange={setOnlyFree}>
-          فقط دوره‌های رایگان
+          {t.freeOnly}
         </DropdownMenuCheckboxItem>
         <DropdownMenuSeparator />
-        <DropdownMenuLabel>مرتب‌سازی</DropdownMenuLabel>
+        <DropdownMenuLabel>{t.sort}</DropdownMenuLabel>
         <DropdownMenuRadioGroup value={sort} onValueChange={setSort}>
-          <DropdownMenuRadioItem value="newest">جدیدترین</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="popular">محبوب‌ترین</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="newest">{t.newest}</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="popular">{t.popular}</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>برون‌بری</DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>{t.export}</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
-            <DropdownMenuItem>فایل CSV</DropdownMenuItem>
-            <DropdownMenuItem>فایل PDF</DropdownMenuItem>
+            <DropdownMenuItem>{t.csv}</DropdownMenuItem>
+            <DropdownMenuItem>{t.pdf}</DropdownMenuItem>
           </DropdownMenuSubContent>
         </DropdownMenuSub>
-        <DropdownMenuItem tone="danger">پاک کردن فهرست</DropdownMenuItem>
+        <DropdownMenuItem tone="danger">{t.clear}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

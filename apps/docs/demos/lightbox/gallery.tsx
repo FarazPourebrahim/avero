@@ -3,6 +3,7 @@
 import { Lightbox, ZoomFrame, type LightboxImage } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
 import { useState } from "react";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 function artwork(from: string, to: string) {
@@ -14,26 +15,42 @@ function artwork(from: string, to: string) {
   );
 }
 
-const images: LightboxImage[] = [
-  {
-    src: artwork(tokens.colorPrimary.value, tokens.colorPrimaryHover.value),
-    alt: "صفحه اصلی اپلیکیشن آموزشی",
-    caption: "طراحی صفحه اصلی",
-  },
-  {
-    src: artwork(tokens.colorSecondary.value, tokens.colorWarning.value),
-    alt: "صفحه پروفایل مدرس",
-  },
-  {
-    src: artwork(tokens.colorChartComments.value, tokens.colorChartViews.value),
-    alt: "داشبورد گزارش‌ها",
-    caption: "نمودار فعالیت هفتگی",
-  },
-];
-
 export default function LightboxGalleryDemo() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const t = useCopy({
+    fa: {
+      homeAlt: "صفحه اصلی اپلیکیشن آموزشی",
+      homeCaption: "طراحی صفحه اصلی",
+      profileAlt: "صفحه پروفایل مدرس",
+      reportsAlt: "داشبورد گزارش‌ها",
+      reportsCaption: "نمودار فعالیت هفتگی",
+    },
+    en: {
+      homeAlt: "The learning app's home screen",
+      homeCaption: "Home screen design",
+      profileAlt: "The instructor profile screen",
+      reportsAlt: "The reports dashboard",
+      reportsCaption: "Weekly activity chart",
+    },
+  });
+
+  const images: LightboxImage[] = [
+    {
+      src: artwork(tokens.colorPrimary.value, tokens.colorPrimaryHover.value),
+      alt: t.homeAlt,
+      caption: t.homeCaption,
+    },
+    {
+      src: artwork(tokens.colorSecondary.value, tokens.colorWarning.value),
+      alt: t.profileAlt,
+    },
+    {
+      src: artwork(tokens.colorChartComments.value, tokens.colorChartViews.value),
+      alt: t.reportsAlt,
+      caption: t.reportsCaption,
+    },
+  ];
 
   return (
     <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">

@@ -3,6 +3,7 @@
 import { Button, Lightbox, type LightboxImage } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
 import { useState } from "react";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 function artwork(from: string, to: string) {
@@ -14,28 +15,44 @@ function artwork(from: string, to: string) {
   );
 }
 
-const SHOTS: LightboxImage[] = [
-  {
-    src: artwork(tokens.colorPrimary.value, tokens.colorPrimaryHover.value),
-    alt: "صفحه نخست اپلیکیشن",
-    caption: "صفحه نخست، نسخه نهایی",
-  },
-  {
-    src: artwork(tokens.colorSecondary.value, tokens.colorWarning.value),
-    alt: "صفحه جستجو",
-    caption: "صفحه جستجو با پالایه‌های باز",
-  },
-];
-
 export default function LightboxCaptionsDemo() {
   const [open, setOpen] = useState(false);
+  const t = useCopy({
+    fa: {
+      open: "باز کردن از تصویر دوم",
+      homeAlt: "صفحه نخست اپلیکیشن",
+      homeCaption: "صفحه نخست، نسخه نهایی",
+      searchAlt: "صفحه جستجو",
+      searchCaption: "صفحه جستجو با پالایه‌های باز",
+    },
+    en: {
+      open: "Open on the second image",
+      homeAlt: "The app's home screen",
+      homeCaption: "Home screen, final version",
+      searchAlt: "The search screen",
+      searchCaption: "Search screen with the filters open",
+    },
+  });
+
+  const shots: LightboxImage[] = [
+    {
+      src: artwork(tokens.colorPrimary.value, tokens.colorPrimaryHover.value),
+      alt: t.homeAlt,
+      caption: t.homeCaption,
+    },
+    {
+      src: artwork(tokens.colorSecondary.value, tokens.colorWarning.value),
+      alt: t.searchAlt,
+      caption: t.searchCaption,
+    },
+  ];
 
   return (
     <>
       <Button variant="outline" onClick={() => setOpen(true)}>
-        باز کردن از تصویر دوم
+        {t.open}
       </Button>
-      <Lightbox images={SHOTS} open={open} onOpenChange={setOpen} defaultIndex={1} />
+      <Lightbox images={shots} open={open} onOpenChange={setOpen} defaultIndex={1} />
     </>
   );
 }
