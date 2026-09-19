@@ -2,6 +2,12 @@
  * Lahzeh font faces, weights 100–900.
  * woff2 is listed first so modern browsers never download the larger woff file.
  * Licensed font files live in ../files/ (see files/README.md).
+ *
+ * Every face excludes U+0030–U+0039. Lahzeh carries no Latin digit outlines: those code points are
+ * composite glyphs drawing the Persian numerals, and the lnum/tnum variants are the same outlines
+ * shifted, so no font-feature-settings can produce a Latin digit. Excluding the range lets ASCII
+ * digits fall through to the next family in --font-sans, while Persian digits (U+06F0–U+06F9) keep
+ * rendering in Lahzeh — which is what Avero's formatters emit for a Persian locale.
  */
 
 @font-face {
@@ -12,6 +18,7 @@
   src:
     url("../files/Lahzeh-Thin.woff2") format("woff2"),
     url("../files/Lahzeh-Thin.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -22,6 +29,7 @@
   src:
     url("../files/Lahzeh-ExtraLight.woff2") format("woff2"),
     url("../files/Lahzeh-ExtraLight.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -32,6 +40,7 @@
   src:
     url("../files/Lahzeh-Light.woff2") format("woff2"),
     url("../files/Lahzeh-Light.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -42,6 +51,7 @@
   src:
     url("../files/Lahzeh-Regular.woff2") format("woff2"),
     url("../files/Lahzeh-Regular.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -52,6 +62,7 @@
   src:
     url("../files/Lahzeh-Medium.woff2") format("woff2"),
     url("../files/Lahzeh-Medium.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -62,6 +73,7 @@
   src:
     url("../files/Lahzeh-SemiBold.woff2") format("woff2"),
     url("../files/Lahzeh-SemiBold.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -72,6 +84,7 @@
   src:
     url("../files/Lahzeh-Bold.woff2") format("woff2"),
     url("../files/Lahzeh-Bold.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -82,6 +95,7 @@
   src:
     url("../files/Lahzeh-ExtraBold.woff2") format("woff2"),
     url("../files/Lahzeh-ExtraBold.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
 
 @font-face {
@@ -92,4 +106,5 @@
   src:
     url("../files/Lahzeh-Black.woff2") format("woff2"),
     url("../files/Lahzeh-Black.woff") format("woff");
+  unicode-range: U+0-2F, U+3A-10FFFF;
 }
