@@ -1,19 +1,39 @@
+"use client";
+
 import { Field, FieldControl, FieldDescription, FieldLabel, OtpInput } from "@averoui/react";
+import { useCopy } from "../copy";
 
 export default function OtpInputLengthsDemo() {
+  const t = useCopy({
+    fa: {
+      fourDigit: "کد چهار رقمی",
+      description: "طول کد را با `length` تعیین کنید.",
+      verified: "کد تأییدشده",
+      partial: "۱۲",
+      complete: "۴۸۱۹",
+    },
+    en: {
+      fourDigit: "Four-digit code",
+      description: "Set the length with `length`.",
+      verified: "Verified code",
+      partial: "12",
+      complete: "4819",
+    },
+  });
+
   return (
     <div className="flex flex-col items-center gap-5">
       <Field>
-        <FieldLabel>کد چهار رقمی</FieldLabel>
+        <FieldLabel>{t.fourDigit}</FieldLabel>
         <FieldControl>
-          <OtpInput length={4} defaultValue="۱۲" />
+          <OtpInput key={t.partial} length={4} defaultValue={t.partial} />
         </FieldControl>
-        <FieldDescription>طول کد را با `length` تعیین کنید.</FieldDescription>
+        <FieldDescription>{t.description}</FieldDescription>
       </Field>
       <Field disabled>
-        <FieldLabel>کد تأییدشده</FieldLabel>
+        <FieldLabel>{t.verified}</FieldLabel>
         <FieldControl>
-          <OtpInput length={4} defaultValue="۴۸۱۹" />
+          <OtpInput key={t.complete} length={4} defaultValue={t.complete} />
         </FieldControl>
       </Field>
     </div>
