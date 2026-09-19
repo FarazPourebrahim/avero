@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Tiptap rich-text editor sharing Avero's prose styles.",
   "sideEffects": false,
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "@averoui/source": "./src/index.ts",

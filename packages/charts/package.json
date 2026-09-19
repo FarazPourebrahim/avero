@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Recharts wrappers styled with Avero's chart tokens.",
   "sideEffects": false,
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "@averoui/source": "./src/index.ts",

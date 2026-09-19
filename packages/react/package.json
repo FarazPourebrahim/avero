@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Bidirectional React components for Persian (RTL) and English (LTR), built on Radix UI.",
   "sideEffects": false,
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "@averoui/source": "./src/index.ts",
