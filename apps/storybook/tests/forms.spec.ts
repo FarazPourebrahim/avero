@@ -76,8 +76,11 @@ for (const { dir, locale } of DIRECTIONS) {
 
       const city = page.getByRole("combobox", { name: "شهر" });
       await tabTo(page, city);
-      await page.keyboard.press("ArrowDown");
-      await expect(city).toHaveValue("tehran");
+      await page.keyboard.press("Enter");
+      await expect(page.getByRole("listbox")).toBeVisible();
+      await page.keyboard.press("Enter");
+      await expect(city).toHaveText(/تهران/);
+      await expect(city).toBeFocused();
 
       const level = page.getByRole("combobox", { name: "سطح" });
       await tabTo(page, level);

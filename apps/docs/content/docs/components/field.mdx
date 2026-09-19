@@ -34,7 +34,7 @@ import { Field, FieldControl, FieldDescription, FieldError, FieldLabel } from "@
 </Field>
 ```
 
-`FieldControl` works with every Avero control — `Input`, `Textarea`, `NativeSelect`, a `Select`
+`FieldControl` works with every Avero control — `Input`, `Textarea`, a `Select` or `Combobox`
 trigger — and with your own, because it adds attributes to the child rather than rendering a
 control of its own. It forwards refs, so react-hook-form's `register` works unchanged.
 
@@ -56,7 +56,7 @@ yourself if you also want the browser's own validation.
 ### Any control
 
 `FieldControl` renders no element of its own, so the same wiring works for a `Textarea`, a
-`NativeSelect`, a `Select` trigger or your own control.
+a `Select` trigger or your own control.
 
 <ComponentPreview name="field/controls" />
 

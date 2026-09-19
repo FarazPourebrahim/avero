@@ -3,7 +3,13 @@ import { createRef } from "react";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Input } from "../../components/input/index.js";
-import { NativeSelect } from "../../components/native-select/index.js";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/select/index.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { FilterPanel } from "./FilterPanel.js";
 
@@ -11,10 +17,15 @@ function renderPanel(title?: string) {
   return render(
     <FilterPanel title={title}>
       <Input aria-label="جستجو" placeholder="جستجو..." />
-      <NativeSelect aria-label="مرتب‌سازی" defaultValue="newest">
-        <option value="newest">جدیدترین</option>
-        <option value="popular">محبوب‌ترین</option>
-      </NativeSelect>
+      <Select defaultValue="newest">
+        <SelectTrigger aria-label="مرتب‌سازی">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="newest">جدیدترین</SelectItem>
+          <SelectItem value="popular">محبوب‌ترین</SelectItem>
+        </SelectContent>
+      </Select>
     </FilterPanel>,
   );
 }

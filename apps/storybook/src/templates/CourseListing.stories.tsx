@@ -3,10 +3,14 @@ import {
   Input,
   ListingCard,
   ListingLayout,
-  NativeSelect,
   Pagination,
   PromoBanner,
   SectionHeader,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { bannerArt, coolArt, coverArt, portraitArt, PublicPage, warmArt } from "./templateChrome";
@@ -89,17 +93,27 @@ function CourseListingTemplate() {
           <>
             <FilterPanel>
               <Input aria-label="جستجو در دوره‌ها" placeholder="جستجو..." />
-              <NativeSelect aria-label="دسته‌بندی" defaultValue="all">
-                <option value="all">همه دسته‌ها</option>
-                <option value="design">طراحی</option>
-                <option value="data">داده</option>
-                <option value="code">برنامه‌نویسی</option>
-              </NativeSelect>
-              <NativeSelect aria-label="مرتب‌سازی" defaultValue="newest">
-                <option value="newest">جدیدترین</option>
-                <option value="popular">محبوب‌ترین</option>
-                <option value="price_asc">ارزان‌ترین</option>
-              </NativeSelect>
+              <Select defaultValue="all">
+                <SelectTrigger aria-label="دسته‌بندی">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">همه دسته‌ها</SelectItem>
+                  <SelectItem value="design">طراحی</SelectItem>
+                  <SelectItem value="data">داده</SelectItem>
+                  <SelectItem value="code">برنامه‌نویسی</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select defaultValue="newest">
+                <SelectTrigger aria-label="مرتب‌سازی">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="newest">جدیدترین</SelectItem>
+                  <SelectItem value="popular">محبوب‌ترین</SelectItem>
+                  <SelectItem value="price_asc">ارزان‌ترین</SelectItem>
+                </SelectContent>
+              </Select>
             </FilterPanel>
             <PromoBanner href="#" image={bannerArt} label="تخفیف ثبت‌نام پاییز" />
           </>

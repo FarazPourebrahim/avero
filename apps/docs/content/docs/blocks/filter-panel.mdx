@@ -32,14 +32,19 @@ decision, and each control already carries its own styling:
     </SelectTrigger>
     <SelectContent>…</SelectContent>
   </Select>
-  <NativeSelect aria-label="مرتب‌سازی" value={sort} onChange={…}>…</NativeSelect>
+  <Select value={sort} onValueChange={setSort}>
+    <SelectTrigger aria-label="مرتب‌سازی">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>…</SelectContent>
+  </Select>
 </FilterPanel>
 ```
 
-The panel mixes control styles on purpose: the search box and the sort control are plain
-4px-radius fields, while the category trigger is a 12px-radius custom `Select`. See
-[`Input`](../components/input), [`Select`](../components/select) and
-[`NativeSelect`](../components/native-select) for when each is the right control.
+The controls are the panel's own: a search [`Input`](../components/input) and one
+[`Select`](../components/select) per filter, so every trigger carries the same 12px radius and the
+same listbox. Swap in a [`Combobox`](../components/combobox) where a filter has enough options to
+need searching.
 
 ## Accessibility
 
@@ -62,4 +67,4 @@ The panel mixes control styles on purpose: the search box and the sort control a
 
 ## Related
 
-[ListingCard](./listing-card) · [Input](../components/input) · [Select](../components/select) · [NativeSelect](../components/native-select)
+[ListingCard](./listing-card) · [Input](../components/input) · [Select](../components/select) · [Combobox](../components/combobox)

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input } from "../input/Input.js";
-import { NativeSelect } from "../native-select/NativeSelect.js";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/index.js";
 import { Textarea } from "../textarea/Textarea.js";
 import { Field, FieldControl, FieldDescription, FieldError, FieldLabel } from "./Field.js";
 
@@ -50,11 +50,16 @@ export const States: Story = {
       </Field>
       <Field disabled>
         <FieldLabel>شهر</FieldLabel>
-        <FieldControl>
-          <NativeSelect>
-            <option>تهران</option>
-          </NativeSelect>
-        </FieldControl>
+        <Select>
+          <FieldControl>
+            <SelectTrigger>
+              <SelectValue placeholder="تهران" />
+            </SelectTrigger>
+          </FieldControl>
+          <SelectContent>
+            <SelectItem value="tehran">تهران</SelectItem>
+          </SelectContent>
+        </Select>
       </Field>
     </div>
   ),

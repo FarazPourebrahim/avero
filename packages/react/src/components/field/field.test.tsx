@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { describe, expect, it, vi } from "vitest";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { Input } from "../input/Input.js";
-import { NativeSelect } from "../native-select/NativeSelect.js";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/index.js";
 import { Textarea } from "../textarea/Textarea.js";
 import { Field, FieldControl, FieldDescription, FieldError, FieldLabel } from "./Field.js";
 
@@ -141,11 +141,16 @@ describe("Field", () => {
         <p id="hint">راهنمای بیرونی</p>
         <Field>
           <FieldLabel>شهر</FieldLabel>
-          <FieldControl aria-describedby="hint">
-            <NativeSelect>
-              <option>تهران</option>
-            </NativeSelect>
-          </FieldControl>
+          <Select>
+            <FieldControl aria-describedby="hint">
+              <SelectTrigger>
+                <SelectValue placeholder="تهران" />
+              </SelectTrigger>
+            </FieldControl>
+            <SelectContent>
+              <SelectItem value="tehran">تهران</SelectItem>
+            </SelectContent>
+          </Select>
           <FieldDescription>شهر محل سکونت</FieldDescription>
         </Field>
       </>,

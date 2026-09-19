@@ -3,7 +3,11 @@ import {
   FieldControl,
   FieldDescription,
   FieldLabel,
-  NativeSelect,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   Textarea,
 } from "@averoui/react";
 
@@ -19,13 +23,18 @@ export default function FieldControlsDemo() {
       </Field>
       <Field>
         <FieldLabel>شهر</FieldLabel>
-        <FieldControl>
-          <NativeSelect defaultValue="tehran">
-            <option value="tehran">تهران</option>
-            <option value="shiraz">شیراز</option>
-            <option value="tabriz">تبریز</option>
-          </NativeSelect>
-        </FieldControl>
+        <Select defaultValue="tehran">
+          <FieldControl>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+          </FieldControl>
+          <SelectContent>
+            <SelectItem value="tehran">تهران</SelectItem>
+            <SelectItem value="shiraz">شیراز</SelectItem>
+            <SelectItem value="tabriz">تبریز</SelectItem>
+          </SelectContent>
+        </Select>
       </Field>
     </div>
   );

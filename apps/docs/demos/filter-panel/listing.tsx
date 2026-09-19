@@ -3,7 +3,6 @@
 import {
   FilterPanel,
   Input,
-  NativeSelect,
   Select,
   SelectContent,
   SelectItem,
@@ -26,13 +25,18 @@ export default function FilterPanelListingDemo() {
             <SelectItem value="data">داده</SelectItem>
           </SelectContent>
         </Select>
-        <NativeSelect aria-label="مرتب‌سازی" defaultValue="newest">
-          <option value="newest">جدیدترین</option>
-          <option value="oldest">قدیمی‌ترین</option>
-          <option value="popular">محبوب‌ترین</option>
-          <option value="price_asc">ارزان‌ترین</option>
-          <option value="price_desc">گران‌ترین</option>
-        </NativeSelect>
+        <Select defaultValue="newest">
+          <SelectTrigger aria-label="مرتب‌سازی">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="newest">جدیدترین</SelectItem>
+            <SelectItem value="oldest">قدیمی‌ترین</SelectItem>
+            <SelectItem value="popular">محبوب‌ترین</SelectItem>
+            <SelectItem value="price_asc">ارزان‌ترین</SelectItem>
+            <SelectItem value="price_desc">گران‌ترین</SelectItem>
+          </SelectContent>
+        </Select>
       </FilterPanel>
     </div>
   );

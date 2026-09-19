@@ -17,7 +17,7 @@ export type FilterPanelProps = Omit<HTMLAttributes<HTMLElement>, keyof FilterPan
 
 /**
  * Filter panel for a listing sidebar: a titled card holding a stack of controls, such as a search
- * `Input`, a category `Select` and a sort `NativeSelect`.
+ * `Input` and a category and sort `Select`.
  *
  * The controls are children rather than props: which filters a listing needs is the application's
  * decision, and each control already carries matching styling.

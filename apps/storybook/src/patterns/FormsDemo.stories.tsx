@@ -11,7 +11,6 @@ import {
   FileInput,
   FormActions,
   Input,
-  NativeSelect,
   OtpInput,
   PriceInput,
   RadioGroup,
@@ -159,17 +158,18 @@ function RegistrationForm() {
 
       <Field required invalid={Boolean(errors.city)}>
         <FieldLabel>شهر</FieldLabel>
-        <FieldControl>
-          <NativeSelect
-            value={values.city}
-            onChange={(event) => update("city", event.target.value)}
-          >
-            <option value="">انتخاب شهر</option>
-            <option value="tehran">تهران</option>
-            <option value="shiraz">شیراز</option>
-            <option value="tabriz">تبریز</option>
-          </NativeSelect>
-        </FieldControl>
+        <Select value={values.city} onValueChange={(city) => update("city", city)}>
+          <FieldControl>
+            <SelectTrigger>
+              <SelectValue placeholder="انتخاب شهر" />
+            </SelectTrigger>
+          </FieldControl>
+          <SelectContent>
+            <SelectItem value="tehran">تهران</SelectItem>
+            <SelectItem value="shiraz">شیراز</SelectItem>
+            <SelectItem value="tabriz">تبریز</SelectItem>
+          </SelectContent>
+        </Select>
         <FieldError>{errors.city}</FieldError>
       </Field>
 

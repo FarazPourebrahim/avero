@@ -6,7 +6,7 @@
 | --- | --- |
 | Plan version | 2.0 |
 | Created | 2026-06-19 |
-| Last updated | 2026-09-10 |
+| Last updated | 2026-09-19 |
 | Design source of truth | `@averoui/tokens` and the design system in §4 |
 | Target stack | React 18.2+/19, TypeScript (strict), Tailwind CSS v4.3, Radix UI primitives, pnpm workspace |
 | Default direction / locale | RTL / `fa-IR`, with full LTR / `en` support |
@@ -113,6 +113,7 @@
 | D-28 | Lighthouse and colour contrast | **`color-contrast` is skipped in `lighthouserc.json`**, so the accessibility category is asserted at 1.00 without it. `SegmentedControl` and `ReactionBar`'s idle text moved from `gray-500` to `gray-600` on their `gray-100` track (4.39:1 → 6.87:1), because putting the segmented control in the docs navbar placed that pairing on every page. | Identical to D-19's reasoning for the axe suite: O-04 keeps below-AA pairings in the default palette, so enforcing contrast would contradict it. Every other accessibility audit passes at 1.00 on both pages, so the skip keeps a real gate — a new accessibility regression still fails CI — rather than lowering the threshold to a number that would absorb one. Phase 12's contrast review removes the skip. | User, 2026-09-10 |
 | D-29 | Licence and registry | **MIT**, published to **public npm** with provenance (the scope is `@averoui`, see D-30). The Lahzeh font files keep their own licence, which permits redistribution (O-02). | MIT is what the ecosystem Avero sits in uses — React, Radix, Tailwind — so it adds no friction for anyone evaluating the library, and a public registry matches a library whose components are deliberately domain-neutral and whose documentation is written for an outside reader. | User, 2026-09-19 |
 | D-30 | Package scope | **`@averoui/*`**, because the `avero` organisation was already taken on npm. Every package, workspace filter, import and the `@averoui/source` export condition moved in one change; 692 references across 410 files. | The library keeps the name Avero — only the registry scope differs, which is ordinary when a short name is gone. Renaming the private packages and the custom resolution condition too keeps one scope across the repository rather than a mix that has to be explained. Nothing had been published under the old scope, so 1.0.0 is simply cut under the new one. | User, 2026-09-19 |
+| D-31 | `NativeSelect` | **Removed in 2.0.0.** `Select` is the only select the library ships; every usage in the blocks, templates, stories, tests and documentation moved onto it. | One select keeps one trigger style, one listbox and one keyboard contract across every filter and form, instead of two controls whose difference readers had to be taught. The cost is real and recorded: the library no longer has a select that renders in a Server Component without a client boundary, and a select now joins react-hook-form through `Controller` rather than `register`. | User, 2026-09-19 |
 
 ---
 
@@ -325,7 +326,6 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-01 | `Field` (label, description, error, required) |
 | FM-02 | `Input` (filter, soft and slate treatments; invalid state) |
 | FM-03 | `Textarea` (soft gray and slate variants, indigo focus ring) |
-| FM-04 | `NativeSelect` |
 | FM-05 | `Select` (custom trigger `rounded-xl`, rotating chevron, token-designed listbox) |
 | FM-06 | `Combobox` (searchable select, category variant) |
 | FM-07 | `Checkbox` |
@@ -650,7 +650,7 @@ A component or block counts as **Done** in §9 only when **all** of these hold. 
 **Scope:** FM-01…FM-15.
 
 **DoD:**
-- [x] FM-02 `Input`, FM-03 `Textarea`, FM-04 `NativeSelect` and FM-15 `FormActions` meet the Global DoD
+- [x] FM-02 `Input`, FM-03 `Textarea` and FM-15 `FormActions` meet the Global DoD (FM-04 `NativeSelect` was removed in 2.0.0, see the decision log)
 - [x] FM-05 `Select` (Radix) meets the Global DoD, with the listbox designed from the token system
 - [x] FM-01 `Field` wires label, description and error ids (`aria-describedby`, `aria-invalid`) automatically — `FieldControl` passes `id`, `aria-describedby`, `aria-invalid`, `aria-required` and `disabled` to any child control, including react-hook-form's `register` (CI green)
 - [x] A react-hook-form + zod integration example passes a test for register, validation errors and submit
@@ -878,7 +878,6 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | FM-01 | Field | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-02 | Input | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-03 | Textarea | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| FM-04 | NativeSelect | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-05 | Select | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-06 | Combobox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-07 | Checkbox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |

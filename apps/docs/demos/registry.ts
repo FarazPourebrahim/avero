@@ -80,7 +80,6 @@ import ListProse from "./list/prose";
 import MatchScoreSuggested from "./match-score/suggested";
 import MetaArticle from "./meta/article";
 import MetaContacts from "./meta/contacts";
-import NativeSelectSort from "./native-select/sort";
 import OpportunityCardRelated from "./opportunity-card/related";
 import PillTabsProfile from "./pill-tabs/profile";
 import PostListItemRelated from "./post-list-item/related";
@@ -174,8 +173,6 @@ import FileInputRejections from "./file-input/rejections";
 import FormActionsAlignment from "./form-actions/alignment";
 import InputStates from "./input/states";
 import InputTypes from "./input/types";
-import NativeSelectGrouped from "./native-select/grouped";
-import NativeSelectStates from "./native-select/states";
 import OtpInputLengths from "./otp-input/lengths";
 import PriceInputVariants from "./price-input/variants";
 import RadioGroupValidation from "./radio-group/validation";
@@ -261,7 +258,6 @@ export const demos = {
   "switch/settings": SwitchSettings,
   "input/variants": InputVariants,
   "textarea/variants": TextareaVariants,
-  "native-select/sort": NativeSelectSort,
   "combobox/categories": ComboboxCategories,
   "date-picker/booking": DatePickerBooking,
   "infinite-scroll/feed": InfiniteScrollFeed,
@@ -282,8 +278,6 @@ export const demos = {
   "form-actions/alignment": FormActionsAlignment,
   "input/states": InputStates,
   "input/types": InputTypes,
-  "native-select/grouped": NativeSelectGrouped,
-  "native-select/states": NativeSelectStates,
   "otp-input/lengths": OtpInputLengths,
   "price-input/variants": PriceInputVariants,
   "radio-group/validation": RadioGroupValidation,

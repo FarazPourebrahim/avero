@@ -144,7 +144,6 @@ export * from "./components/field/index.js";
 export * from "./components/file-input/index.js";
 export * from "./components/form-actions/index.js";
 export * from "./components/input/index.js";
-export * from "./components/native-select/index.js";
 export * from "./components/otp-input/index.js";
 export * from "./components/price-input/index.js";
 export * from "./components/radio-group/index.js";

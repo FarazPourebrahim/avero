@@ -18,7 +18,6 @@ import {
   Link,
   List,
   MiniStat,
-  NativeSelect,
   RichContent,
   SectionHeader,
   SkeletonCard,
@@ -68,9 +67,6 @@ export default function Page() {
       <Heading as="h2">Form controls</Heading>
       <Input placeholder="نام" />
       <Textarea placeholder="توضیح" />
-      <NativeSelect>
-        <option>یک</option>
-      </NativeSelect>
 
       <Heading as="h2">Data display</Heading>
       <div className="grid gap-3 sm:grid-cols-2">

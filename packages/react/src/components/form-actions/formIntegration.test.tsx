@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { useForm, type Resolver } from "react-hook-form";
+import { Controller, useForm, type Resolver } from "react-hook-form";
 import { describe, expect, it, vi } from "vitest";
 import { z } from "zod";
 import { Input } from "../input/Input.js";
-import { NativeSelect } from "../native-select/NativeSelect.js";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/index.js";
 import { Textarea } from "../textarea/Textarea.js";
 import { FormActions } from "./FormActions.js";
 
@@ -34,6 +34,7 @@ const resolver: Resolver<Values> = (values) => {
 function CommentForm({ onValid }: { onValid: (values: Values) => void }) {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<Values>({ resolver, defaultValues: { name: "", comment: "", sort: "newest" } });
@@ -48,11 +49,23 @@ function CommentForm({ onValid }: { onValid: (values: Values) => void }) {
       <Textarea id="comment" aria-invalid={Boolean(errors.comment)} {...register("comment")} />
       {errors.comment ? <p role="alert">{errors.comment.message}</p> : null}
 
-      <label htmlFor="sort">مرتب‌سازی</label>
-      <NativeSelect id="sort" {...register("sort")}>
-        <option value="newest">جدیدترین</option>
-        <option value="oldest">قدیمی‌ترین</option>
-      </NativeSelect>
+      {/* Select is not a native form control, so it joins the form through Controller rather than
+          register: the trigger is a button, and the value lives in the form state. */}
+      <Controller
+        name="sort"
+        control={control}
+        render={({ field }) => (
+          <Select value={field.value} onValueChange={field.onChange}>
+            <SelectTrigger ref={field.ref} aria-label="مرتب‌سازی" onBlur={field.onBlur}>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="newest">جدیدترین</SelectItem>
+              <SelectItem value="oldest">قدیمی‌ترین</SelectItem>
+            </SelectContent>
+          </Select>
+        )}
+      />
 
       <FormActions hint="دیدگاه‌ها پس از بررسی منتشر می‌شوند.">
         <button type="submit">ارسال دیدگاه</button>
@@ -79,7 +92,8 @@ describe("form integration (react-hook-form + zod)", () => {
 
     await userEvent.type(screen.getByLabelText("نام"), "سارا");
     await userEvent.type(screen.getByLabelText("دیدگاه"), "مقاله بسیار کاربردی بود، ممنون.");
-    await userEvent.selectOptions(screen.getByLabelText("مرتب‌سازی"), "oldest");
+    await userEvent.click(screen.getByRole("combobox", { name: "مرتب‌سازی" }));
+    await userEvent.click(screen.getByRole("option", { name: "قدیمی‌ترین" }));
     await userEvent.click(screen.getByRole("button", { name: "ارسال دیدگاه" }));
 
     expect(onValid).toHaveBeenCalledTimes(1);
