@@ -1,19 +1,39 @@
+"use client";
+
 import { Avatar, Link, SiteHeader, SiteHeaderMenuButton } from "@averoui/react";
 import { Menu } from "lucide-react";
-
-const NAV = [
-  { label: "خانه", href: "#" },
-  { label: "دوره‌ها", href: "#" },
-  { label: "وبلاگ", href: "#", current: true },
-];
+import { useCopy } from "../copy";
 
 export default function SiteHeaderDefaultDemo() {
+  const t = useCopy({
+    fa: {
+      openMenu: "باز کردن منو",
+      dashboard: "پیشخوان",
+      name: "سارا محمدی",
+      nav: [
+        { label: "خانه", href: "#" },
+        { label: "دوره‌ها", href: "#" },
+        { label: "وبلاگ", href: "#", current: true },
+      ],
+    },
+    en: {
+      openMenu: "Open the menu",
+      dashboard: "Dashboard",
+      name: "Sara Mohammadi",
+      nav: [
+        { label: "Home", href: "#" },
+        { label: "Courses", href: "#" },
+        { label: "Blog", href: "#", current: true },
+      ],
+    },
+  });
+
   return (
     <div className="w-full rounded-2xl bg-gray-50 pb-8">
       <SiteHeader
         sticky={false}
         menu={
-          <SiteHeaderMenuButton aria-label="باز کردن منو">
+          <SiteHeaderMenuButton aria-label={t.openMenu}>
             <Menu className="size-5" />
           </SiteHeaderMenuButton>
         }
@@ -22,7 +42,7 @@ export default function SiteHeaderDefaultDemo() {
             <span className="text-primary text-lg font-black">Avero</span>
           </a>
         }
-        nav={NAV.map((item) => (
+        nav={t.nav.map((item) => (
           <Link
             key={item.label}
             variant="nav"
@@ -34,8 +54,8 @@ export default function SiteHeaderDefaultDemo() {
           </Link>
         ))}
         actions={
-          <a href="#" title="پیشخوان">
-            <Avatar name="سارا محمدی" size="md" />
+          <a href="#" title={t.dashboard}>
+            <Avatar name={t.name} size="md" />
           </a>
         }
       />

@@ -1,13 +1,33 @@
+"use client";
+
 import { Button, Link, SiteHeader, SiteHeaderMenuButton } from "@averoui/react";
 import { Menu } from "lucide-react";
+import { useCopy } from "../copy";
 
 export default function SiteHeaderActionsDemo() {
+  const t = useCopy({
+    fa: {
+      openMenu: "باز کردن منو",
+      courses: "دوره‌ها",
+      blog: "وبلاگ",
+      signIn: "ورود",
+      signUp: "ثبت‌نام",
+    },
+    en: {
+      openMenu: "Open the menu",
+      courses: "Courses",
+      blog: "Blog",
+      signIn: "Sign in",
+      signUp: "Sign up",
+    },
+  });
+
   return (
     <div className="w-full rounded-2xl bg-gray-50 pb-8">
       <SiteHeader
         sticky={false}
         menu={
-          <SiteHeaderMenuButton aria-label="باز کردن منو">
+          <SiteHeaderMenuButton aria-label={t.openMenu}>
             <Menu className="size-5" />
           </SiteHeaderMenuButton>
         }
@@ -19,19 +39,19 @@ export default function SiteHeaderActionsDemo() {
         nav={
           <>
             <Link variant="nav" href="#">
-              دوره‌ها
+              {t.courses}
             </Link>
             <Link variant="nav" href="#">
-              وبلاگ
+              {t.blog}
             </Link>
           </>
         }
         actions={
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm">
-              ورود
+              {t.signIn}
             </Button>
-            <Button size="sm">ثبت‌نام</Button>
+            <Button size="sm">{t.signUp}</Button>
           </div>
         }
       />
