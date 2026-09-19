@@ -15,12 +15,16 @@ export async function ComponentPreview({ name }: { name: DemoName }) {
 
   return (
     <Tabs items={["Preview", "Code"]} className="not-prose">
+      {/* The preview brings its own chrome — the direction switch and the bordered surface — so it
+          spans the panel edge to edge. */}
       <Tab value="Preview" className="p-0">
         <PreviewFrame>
           <Demo />
         </PreviewFrame>
       </Tab>
-      <Tab value="Code" className="p-0">
+      {/* The code tab keeps the panel's own padding: Fumadocs bleeds a lone <figure> back out with
+          `-m-4`, so removing the padding drags the block — and its copy button — past the edge. */}
+      <Tab value="Code">
         <DynamicCodeBlock lang="tsx" code={source.trim()} />
       </Tab>
     </Tabs>
