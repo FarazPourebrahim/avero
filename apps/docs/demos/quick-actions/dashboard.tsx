@@ -1,20 +1,34 @@
-import { ActionTile, PaperPlaneSolidIcon, QuickActions } from "@averoui/react";
+"use client";
 
-const ACTIONS = [
-  { label: "افزودن دوره", tone: "blue" },
-  { label: "افزودن جلسه", tone: "purple" },
-  { label: "ساخت تمرین", tone: "amber" },
-  { label: "ویرایش پروفایل", tone: "emerald" },
-  { label: "پیام‌ها", tone: "rose" },
-  { label: "تنظیمات", tone: "indigo" },
-] as const;
+import { ActionTile, PaperPlaneSolidIcon, QuickActions } from "@averoui/react";
+import { useCopy } from "../copy";
+
+const TONES = ["blue", "purple", "amber", "emerald", "rose", "indigo"] as const;
 
 export default function QuickActionsDashboardDemo() {
+  const t = useCopy({
+    fa: {
+      label: "دسترسی سریع",
+      actions: ["افزودن دوره", "افزودن جلسه", "ساخت تمرین", "ویرایش پروفایل", "پیام‌ها", "تنظیمات"],
+    },
+    en: {
+      label: "Quick actions",
+      actions: [
+        "Add a course",
+        "Add a session",
+        "Create an exercise",
+        "Edit profile",
+        "Messages",
+        "Settings",
+      ],
+    },
+  });
+
   return (
-    <QuickActions label="دسترسی سریع">
-      {ACTIONS.map((action) => (
-        <ActionTile key={action.label} tone={action.tone} icon={<PaperPlaneSolidIcon size={18} />}>
-          {action.label}
+    <QuickActions label={t.label}>
+      {t.actions.map((action, index) => (
+        <ActionTile key={action} tone={TONES[index]} icon={<PaperPlaneSolidIcon size={18} />}>
+          {action}
         </ActionTile>
       ))}
     </QuickActions>
