@@ -1,0 +1,10 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "allow": ["Bash(git fast-export:*)", "Bash(git fast-import:*)", "Bash(node:*)"]
+  }
+}

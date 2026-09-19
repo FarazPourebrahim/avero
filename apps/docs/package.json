@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev --port 3100",
     "build": "next build",
+    "vercel-build": "cd ../.. && pnpm packages-build && cd apps/docs && next build",
     "start": "next start --port 3100",
     "typecheck": "next typegen && tsc --noEmit",
     "check-sections": "node scripts/check-doc-sections.mjs",
