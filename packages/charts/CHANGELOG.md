@@ -1,5 +1,12 @@
 # @averoui/charts
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [0e0c063]
+  - @averoui/react@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes
