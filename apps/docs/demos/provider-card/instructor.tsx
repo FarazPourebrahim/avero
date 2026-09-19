@@ -1,14 +1,32 @@
+"use client";
+
 import { ProviderCard, Rating } from "@averoui/react";
+import { useCopy } from "../copy";
 
 export default function ProviderCardInstructorDemo() {
+  const t = useCopy({
+    fa: {
+      name: "نگار رضایی",
+      headline: "مدرس طراحی رابط کاربری",
+      courses: "تعداد دوره‌ها",
+      rating: "امتیاز شرکت‌کنندگان",
+    },
+    en: {
+      name: "Negar Rezaei",
+      headline: "UI design instructor",
+      courses: "Courses",
+      rating: "Participant rating",
+    },
+  });
+
   return (
     <div className="w-full max-w-sm">
       <ProviderCard
-        name="نگار رضایی"
-        headline="مدرس طراحی رابط کاربری"
+        name={t.name}
+        headline={t.headline}
         stats={[
-          { label: "تعداد دوره‌ها", value: "3" },
-          { label: "امتیاز شرکت‌کنندگان", value: <Rating value={4.8} size="sm" /> },
+          { label: t.courses, value: "3" },
+          { label: t.rating, value: <Rating value={4.8} size="sm" /> },
         ]}
         profileHref="#"
       />
