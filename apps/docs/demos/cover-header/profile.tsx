@@ -1,5 +1,8 @@
+"use client";
+
 import { CoverHeader, MetaBar, MetaItem } from "@averoui/react";
 import { tokens } from "@averoui/tokens";
+import { useCopy } from "../copy";
 
 // Inline SVG artwork keeps the demo deterministic and offline (no remote images).
 const AVATAR =
@@ -9,32 +12,53 @@ const AVATAR =
   );
 
 export default function CoverHeaderProfileDemo() {
+  const t = useCopy({
+    fa: {
+      name: "سارا محمدی",
+      sections: "بخش‌های پروفایل",
+      about: "درباره من",
+      courses: "دوره‌ها (۳)",
+      headline: "مدرس طراحی رابط کاربری",
+      location: "اصفهان (ایران)",
+      joined: "عضویت: ۳ ماه پیش",
+    },
+    en: {
+      name: "Sara Mohammadi",
+      sections: "Profile sections",
+      about: "About me",
+      courses: "Courses (3)",
+      headline: "UI design instructor",
+      location: "Isfahan, Iran",
+      joined: "Joined 3 months ago",
+    },
+  });
+
   return (
     <CoverHeader
       className="w-full"
-      avatar={<img src={AVATAR} alt="سارا محمدی" />}
+      avatar={<img src={AVATAR} alt={t.name} />}
       footer={
-        <nav aria-label="بخش‌های پروفایل">
+        <nav aria-label={t.sections}>
           <ul className="flex min-w-max items-center gap-2 text-xs text-gray-600 sm:gap-3 sm:text-sm">
             <li>
               <span className="flex items-center gap-1.5 rounded-xl bg-blue-600 px-3.5 py-2 font-bold text-white shadow-md sm:px-4 sm:py-2.5">
-                درباره من
+                {t.about}
               </span>
             </li>
             <li>
               <span className="flex items-center gap-1.5 rounded-xl bg-slate-50 px-3.5 py-2 font-bold text-slate-600 sm:px-4 sm:py-2.5">
-                دوره‌ها (3)
+                {t.courses}
               </span>
             </li>
           </ul>
         </nav>
       }
     >
-      <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">سارا محمدی</h3>
-      <p className="mb-3 text-sm font-medium text-gray-600 md:text-base">مدرس طراحی رابط کاربری</p>
+      <h3 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">{t.name}</h3>
+      <p className="mb-3 text-sm font-medium text-gray-600 md:text-base">{t.headline}</p>
       <MetaBar variant="inline" className="justify-center lg:justify-start">
-        <MetaItem variant="pill">اصفهان (ایران)</MetaItem>
-        <MetaItem variant="compact">عضویت: ۳ ماه پیش</MetaItem>
+        <MetaItem variant="pill">{t.location}</MetaItem>
+        <MetaItem variant="compact">{t.joined}</MetaItem>
       </MetaBar>
     </CoverHeader>
   );
