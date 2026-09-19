@@ -1,6 +1,6 @@
 {
   "name": "@averoui/react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Bidirectional React components for Persian (RTL) and English (LTR), built on Radix UI.",
   "sideEffects": false,
