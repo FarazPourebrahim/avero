@@ -23,7 +23,8 @@ import { Textarea } from "@averoui/react";
 
 `outline` is the default and matches [Input](./input), [Select](./select) and the other form
 controls, so a textarea sits in a form without looking like a different family. `soft` is the gray
-comment box and `slate` the bordered one; both take the indigo focus ring.
+comment box, which turns white while you type, and `slate` the bordered one. All three share the
+same 2px outline, the `blue-400` focus outline with its `blue-100` halo, and the red invalid state.
 
 <ComponentPreview name="textarea/variants" />
 
@@ -61,13 +62,13 @@ The box, its placeholder and the resize handle all follow the document direction
 
 ## Theming
 
-| Token                | Used by                                         |
-| -------------------- | ----------------------------------------------- |
-| `--color-gray-300`   | `outline` border                                |
-| `--color-blue-400`   | `outline` Focus outline, with a `blue-100` halo |
-| `--color-gray-50`    | `soft` ground                                   |
-| `--color-slate-200`  | `slate` border                                  |
-| `--color-indigo-500` | `soft` and `slate` focus ring                   |
+| Token               | Used by                                         |
+| ------------------- | ----------------------------------------------- |
+| `--color-gray-300`  | `outline` border                                |
+| `--color-blue-400`  | `outline` Focus outline, with a `blue-100` halo |
+| `--color-gray-50`   | `soft` ground, white while focused              |
+| `--color-gray-200`  | `soft` outline (`gray-300` on hover)            |
+| `--color-slate-200` | `slate` outline (`slate-300` on hover)          |
 
 ## Do and don't
 
