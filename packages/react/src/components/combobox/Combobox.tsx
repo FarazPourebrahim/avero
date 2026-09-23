@@ -15,6 +15,11 @@ import { useControllableState } from "../../hooks/useControllableState.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { ChevronDownIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
+import {
+  formControlAriaInvalid,
+  formControlFocus,
+  formControlSurface,
+} from "../../utils/formControl.js";
 import { mergeRefs } from "../../utils/refs.js";
 import { normalizeSearchText } from "../../utils/search.js";
 
@@ -241,10 +246,11 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(function Com
             value={query ?? selectedOption?.label ?? ""}
             disabled={disabled}
             className={cn(
-              "w-full rounded-xl border border-gray-300 bg-white py-2.5 ps-3.5 pe-10 text-sm font-medium text-gray-900 transition placeholder:font-normal placeholder:text-gray-500",
-              "focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none",
+              "w-full py-2.5 ps-3.5 pe-10 text-sm font-medium text-gray-900 placeholder:font-normal placeholder:text-gray-500",
+              formControlSurface,
+              formControlFocus,
               "disabled:cursor-not-allowed disabled:opacity-60",
-              "aria-invalid:border-red-500 aria-invalid:focus:ring-red-500/20",
+              formControlAriaInvalid,
               className,
             )}
             onChange={(event) => {

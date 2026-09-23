@@ -14,6 +14,11 @@ import { useAvero, type TextDirection } from "../../i18n/AveroProvider.js";
 import { CalendarIcon } from "../../icons/internalIcons.js";
 import { formatDateInput, parseDateInput, todayIsoDate } from "../../utils/calendar.js";
 import { cn } from "../../utils/cn.js";
+import {
+  formControlFocusWithin,
+  formControlInvalidWithin,
+  formControlSurface,
+} from "../../utils/formControl.js";
 import type { CalendarSystem, DigitSystem } from "../../utils/format.js";
 import { mergeRefs } from "../../utils/refs.js";
 import { IconButton } from "../icon-button/IconButton.js";
@@ -79,9 +84,12 @@ export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
 
 const EMPTY_RANGE: DateRange = { from: null, to: null };
 
-const FIELD_CLASSES =
-  "flex w-full items-center gap-1 rounded-xl border border-gray-300 bg-white ps-1.5 pe-1 transition focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20";
-const INVALID_CLASSES = "border-red-500 focus-within:border-red-500 focus-within:ring-red-500/20";
+const FIELD_CLASSES = cn(
+  "flex w-full items-center gap-1 ps-1.5 pe-1",
+  formControlSurface,
+  formControlFocusWithin,
+);
+const INVALID_CLASSES = formControlInvalidWithin;
 const INPUT_CLASSES =
   "min-w-0 flex-1 bg-transparent px-2 py-2.5 text-sm text-gray-900 outline-none placeholder:text-gray-500 disabled:cursor-not-allowed";
 

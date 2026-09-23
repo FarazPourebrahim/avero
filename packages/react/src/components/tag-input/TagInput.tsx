@@ -6,6 +6,11 @@ import { useAvero } from "../../i18n/AveroProvider.js";
 import { formatMessage } from "../../i18n/dictionaries.js";
 import { XIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
+import {
+  formControlFocusWithin,
+  formControlInvalidWithin,
+  formControlSurface,
+} from "../../utils/formControl.js";
 import { mergeRefs } from "../../utils/refs.js";
 import { normalizeSearchText } from "../../utils/search.js";
 import { chipVariants } from "../chip/chip.variants.js";
@@ -116,9 +121,10 @@ export const TagInput = forwardRef<HTMLInputElement, TagInputProps>(function Tag
       data-disabled={disabled ? "" : undefined}
       data-full={full ? "" : undefined}
       className={cn(
-        "flex w-full cursor-text flex-wrap items-center gap-1.5 rounded-xl border border-gray-300 bg-white px-2 py-1.5 transition",
-        "focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20",
-        invalid && "border-red-500 focus-within:border-red-500 focus-within:ring-red-500/20",
+        "flex w-full cursor-text flex-wrap items-center gap-1.5 px-2 py-1.5",
+        formControlSurface,
+        formControlFocusWithin,
+        invalid && formControlInvalidWithin,
         disabled && "cursor-not-allowed opacity-60",
         className,
       )}

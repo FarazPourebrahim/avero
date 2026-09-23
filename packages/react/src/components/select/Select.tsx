@@ -4,6 +4,11 @@ import { Select as SelectPrimitive } from "radix-ui";
 import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { ChevronDownIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
+import {
+  formControlAriaInvalid,
+  formControlFocus,
+  formControlSurface,
+} from "../../utils/formControl.js";
 
 /**
  * Custom select. The trigger matches the other filter panel controls, and the listbox is
@@ -35,11 +40,12 @@ export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
         ref={ref}
         data-slot="select-trigger"
         className={cn(
-          "group flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border border-gray-300 bg-white px-3.5 py-2.5 text-start text-sm font-medium text-gray-900 transition",
-          "focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none",
+          "group flex w-full cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 text-start text-sm font-medium text-gray-900",
+          formControlSurface,
+          formControlFocus,
           "data-[placeholder]:font-normal data-[placeholder]:text-gray-500",
           "disabled:cursor-not-allowed disabled:opacity-60",
-          "aria-invalid:border-red-500 aria-invalid:focus:ring-red-500/20",
+          formControlAriaInvalid,
           className,
         )}
         {...props}

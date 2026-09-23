@@ -13,6 +13,12 @@ describe("Input", () => {
 
     expect(input).toHaveAttribute("type", "text");
     expect(input).toHaveClass("rounded-xl", "border-gray-300", "bg-white", "px-3.5", "py-2.5");
+    expect(input).toHaveClass(
+      "border-2",
+      "hover:border-gray-400",
+      "focus:border-blue-400",
+      "focus:ring-blue-100",
+    );
   });
 
   it.each([

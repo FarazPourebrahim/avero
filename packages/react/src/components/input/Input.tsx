@@ -1,6 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { cn } from "../../utils/cn.js";
+import {
+  formControlAriaInvalid,
+  formControlFocus,
+  formControlSurface,
+} from "../../utils/formControl.js";
 
 /**
  * Text input. `outline` is the standard form control and matches `Select`, `Combobox`,
@@ -12,8 +17,12 @@ export const inputVariants = cva(
   {
     variants: {
       variant: {
-        outline:
-          "rounded-xl border border-gray-300 bg-white px-3.5 py-2.5 text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20",
+        outline: [
+          formControlSurface,
+          formControlFocus,
+          formControlAriaInvalid,
+          "px-3.5 py-2.5 text-gray-900 placeholder:text-gray-500",
+        ],
         filter:
           "rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20",
         soft: "rounded-2xl border border-gray-200 bg-gray-50 p-4 leading-6 focus:border-gray-500 focus:ring-2 focus:ring-indigo-500/20",
