@@ -6,7 +6,7 @@ description: One choice from a short list, with arrow-key navigation in reading 
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/radio-group)
 
 ```tsx
-import { RadioGroup, RadioGroupItem } from "@averoui/react";
+import { RadioCard, RadioGroup, RadioGroupItem } from "@averoui/react";
 ```
 
 <ComponentPreview name="radio-group/delivery" />
@@ -17,7 +17,20 @@ import { RadioGroup, RadioGroupItem } from "@averoui/react";
 | -------------- | ----------------------------------- | -------------------------------------- |
 | RadioGroup     | `data-slot="radio-group"`           | `role="radiogroup"`, a grid of options |
 | RadioGroupItem | `data-slot="radio-group-item"`      | `role="radio"`, a round button         |
-| Indicator      | `data-slot="radio-group-indicator"` | The primary dot of the chosen option   |
+| Indicator      | `data-slot="radio-group-indicator"` | The blue dot of the chosen option      |
+
+An item is 24px with a 2px outline, on the same soft palette as [Checkbox](./checkbox): a light
+gray outline while unselected, and a blue tint with a blue dot once chosen. The dot pops in when an
+option is chosen, and pressing shrinks the item slightly, like a [Button](./button).
+
+`RadioCard` is an item presented as a card:
+
+| Part        | Slot                                 | Notes                                               |
+| ----------- | ------------------------------------ | --------------------------------------------------- |
+| Card        | `data-slot="radio-card"`             | A `<label>`: the whole card chooses the option      |
+| Title       | `data-slot="radio-card-title"`       | Names the radio through `aria-labelledby`           |
+| Description | `data-slot="radio-card-description"` | Describes the radio through `aria-describedby`      |
+| Aside       | `data-slot="radio-card-aside"`       | Optional content at the inline end, such as a price |
 
 ## Examples
 
@@ -29,6 +42,16 @@ group is not a labelable element. Wire the message with `aria-describedby` and m
 
 <ComponentPreview name="radio-group/validation" />
 
+While the group is `aria-invalid`, every option's outline turns red, and so does its focus ring.
+
+### Card options
+
+`RadioCard` presents each option as a bordered card with a title, a line of explanation and an
+optional aside. The whole card is the click target, and the chosen card takes a soft blue tint. Use
+it where each choice needs explaining — shipping, plans, payment methods.
+
+<ComponentPreview name="radio-group/cards" />
+
 ## Right-to-left
 
 `RadioGroup` reads its direction from `AveroProvider`, so in Persian <kbd>←</kbd> moves to the next
@@ -38,6 +61,9 @@ option and in English <kbd>→</kbd> does. Pass `dir` to override it for one gro
 
 - Name the group: give it `aria-labelledby` pointing at a visible heading, or `aria-label`.
 - Give each item its own `<label htmlFor>`; clicking the label selects the option.
+- `RadioCard` goes inside a `RadioGroup` in place of `RadioGroupItem`, takes every item prop, and
+  forwards its ref to the radio, so arrow keys, `value` and form submission are unchanged.
+  `className` styles the card; `radioClassName` styles the radio.
 - Inside a `<form>`, the chosen `value` is submitted under the group's `name`.
 
 ## Accessibility
@@ -49,7 +75,13 @@ option and in English <kbd>→</kbd> does. Pass `dir` to override it for one gro
 | <kbd>Space</kbd>                                    | Selects the focused option                         |
 
 - The group is a single tab stop; disabled options are skipped.
-- The resting border is `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
+- A card's title is the radio's accessible name and its description the accessible description.
+- The dot's pop settles at once under `prefers-reduced-motion`.
+- **Contrast trade-off.** The unselected outline is `gray-300`: 1.47:1 on white and 1.34:1 on the
+  page background, below the 3:1 WCAG asks of a control's boundary — the same deliberate choice as
+  [Checkbox](./checkbox), recorded in `docs/known-debts.md`. Where strict AA matters, pass
+  `className="border-gray-500/80"` to each `RadioGroupItem`. The chosen state passes: the dot is
+  4.82:1 on its tinted fill.
 
 ## API reference
 
@@ -58,12 +90,22 @@ option and in English <kbd>→</kbd> does. Pass `dir` to override it for one gro
 `value`, `defaultValue`, `onValueChange`, `name`, `required`, `disabled`, `orientation` and `dir` on
 the group, and `value` and `disabled` on each item.
 
+`RadioCard` accepts the item props plus:
+
+<PropsTable file="components/radio-group/RadioCard.tsx" name="RadioCardOwnProps" />
+
 ## Theming
 
-| Token              | Used by                      |
-| ------------------ | ---------------------------- |
-| `--color-primary`  | Chosen border and dot, focus |
-| `--color-gray-500` | Resting border               |
+| Token                 | Used by                                    |
+| --------------------- | ------------------------------------------ |
+| `--color-gray-300`    | Resting outline (`gray-400` on hover)      |
+| `--color-blue-50`     | Chosen fill (`blue-100` on hover)          |
+| `--color-blue-200`    | Chosen outline (`blue-300` on hover)       |
+| `--color-blue-600`    | The dot                                    |
+| `--color-primary`     | Focus ring                                 |
+| `--color-red-500`     | Outline and focus ring in an invalid group |
+| `--animate-check-pop` | The dot popping in                         |
+| `--color-gray-200`    | `RadioCard` resting border                 |
 
 ## Do and don't
 

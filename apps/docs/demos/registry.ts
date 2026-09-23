@@ -62,6 +62,7 @@ import CheckboxCards from "./checkbox/cards";
 import CheckboxPreferences from "./checkbox/preferences";
 import FieldProfileForm from "./field/profile-form";
 import OtpInputVerify from "./otp-input/verify";
+import RadioGroupCards from "./radio-group/cards";
 import RadioGroupDelivery from "./radio-group/delivery";
 import SwitchSettings from "./switch/settings";
 import IconButtonChrome from "./icon-button/chrome";
@@ -257,6 +258,7 @@ export const demos = {
   "checkbox/preferences": CheckboxPreferences,
   "field/profile-form": FieldProfileForm,
   "otp-input/verify": OtpInputVerify,
+  "radio-group/cards": RadioGroupCards,
   "radio-group/delivery": RadioGroupDelivery,
   "switch/settings": SwitchSettings,
   "input/variants": InputVariants,
