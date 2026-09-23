@@ -333,7 +333,8 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-07b | `CheckboxCard` (a checkbox as a bordered option: title, description, aside; soft blue border and tint when checked) |
 | FM-08 | `Radio` (24px, 2px `gray-300` outline; chosen is a soft `blue-50` tint with a `blue-600` dot that pops in; Button focus ring and press) |
 | FM-08b | `RadioCard` (a radio option as a bordered card: title, description, aside; soft blue border and tint when chosen) |
-| FM-09 | `Switch` |
+| FM-09 | `Switch` (44x24 track with a 2px `gray-300` outline and `gray-400` thumb; on is a soft `blue-50` tint with a `blue-600` thumb; Button focus ring and press) |
+| FM-09b | `SwitchCard` (a setting as a bordered row: title and description, switch at the inline end; soft blue tint when on) |
 | FM-10 | `FileInput` / upload |
 | FM-11 | `PriceInput` (toman, thousands separators, Persian digit normalisation) |
 | FM-12 | `TagInput` |
@@ -888,6 +889,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | FM-08 | Radio | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-08b | RadioCard | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-09 | Switch | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| FM-09b | SwitchCard | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-10 | FileInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-11 | PriceInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-12 | TagInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |

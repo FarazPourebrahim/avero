@@ -6,7 +6,7 @@ description: An on/off control for settings that take effect immediately, mirror
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/switch)
 
 ```tsx
-import { Switch } from "@averoui/react";
+import { Switch, SwitchCard } from "@averoui/react";
 ```
 
 <ComponentPreview name="switch/settings" />
@@ -20,6 +20,18 @@ import { Switch } from "@averoui/react";
 
 `data-state` is `checked` or `unchecked` on both parts.
 
+The track is 44×24 with a 2px outline, on the soft palette [Checkbox](./checkbox) and
+[RadioGroup](./radio-group) share: a white track with a gray thumb while off, and a blue tint with a
+blue thumb once on. Pressing shrinks it slightly, like a [Button](./button).
+
+`SwitchCard` puts a switch in a settings row:
+
+| Part        | Slot                                  | Notes                                           |
+| ----------- | ------------------------------------- | ----------------------------------------------- |
+| Card        | `data-slot="switch-card"`             | A `<label>`: the whole card toggles the switch  |
+| Title       | `data-slot="switch-card-title"`       | Names the switch through `aria-labelledby`      |
+| Description | `data-slot="switch-card-description"` | Describes the switch through `aria-describedby` |
+
 ## Examples
 
 ### Controlled
@@ -28,6 +40,14 @@ Pass `checked` with `onCheckedChange` when one setting governs another, so both 
 same state.
 
 <ComponentPreview name="switch/controlled" />
+
+### Settings cards
+
+`SwitchCard` presents a setting as a bordered row: the title and description at the inline start,
+the switch at the inline end. The whole card toggles the switch, and it takes a soft blue tint while
+on. Use it for settings pages where each option needs a line of explanation.
+
+<ComponentPreview name="switch/cards" />
 
 ## Right-to-left
 
@@ -38,6 +58,9 @@ left to right in English. Switch the preview direction to compare.
 
 - Label it with a `<label htmlFor>` or [`Field`](./field); a description in `Field` is announced
   with the switch.
+- `SwitchCard` takes every `Switch` prop and forwards its ref to the switch, so it works in a form
+  and inside `FieldControl` exactly as `Switch` does. `className` styles the card;
+  `switchClassName` styles the switch.
 - Inside a `<form>`, a hidden native checkbox submits `on` under the switch's `name`.
 
 ## Accessibility
@@ -48,7 +71,12 @@ left to right in English. Switch the preview direction to compare.
 | <kbd>Space</kbd> / <kbd>Enter</kbd> | Turns it on or off        |
 
 - The state is exposed as `aria-checked`.
-- The off track is `gray-500`, which meets the 3:1 contrast WCAG requires against a white page.
+- A card's title is the switch's accessible name and its description the accessible description.
+- **Contrast trade-off.** The off outline is `gray-300` (1.47:1 on white) and the off thumb
+  `gray-400` (2.6:1), below the 3:1 WCAG asks of controls — the same deliberate choice as
+  [Checkbox](./checkbox), recorded in `docs/known-debts.md`. The thumb's position also carries the
+  state. Where strict AA matters, pass `className="border-gray-500/80"`. The on state passes: the
+  thumb is 4.82:1 on its tinted track.
 
 ## API reference
 
@@ -56,12 +84,22 @@ left to right in English. Switch the preview direction to compare.
 props unchanged: `checked`, `defaultChecked`, `onCheckedChange`, `disabled`, `required`, `name` and
 `value`.
 
+`SwitchCard` accepts all of those plus:
+
+<PropsTable file="components/switch/SwitchCard.tsx" name="SwitchCardOwnProps" />
+
 ## Theming
 
-| Token              | Used by         |
-| ------------------ | --------------- |
-| `--color-primary`  | On track, focus |
-| `--color-gray-500` | Off track       |
+| Token              | Used by                              |
+| ------------------ | ------------------------------------ |
+| `--color-gray-300` | Off outline (`gray-400` on hover)    |
+| `--color-gray-400` | Off thumb                            |
+| `--color-blue-50`  | On track (`blue-100` on hover)       |
+| `--color-blue-200` | On outline (`blue-300` on hover)     |
+| `--color-blue-600` | On thumb                             |
+| `--color-primary`  | Focus ring                           |
+| `--color-red-500`  | Outline and focus ring while invalid |
+| `--color-gray-200` | `SwitchCard` resting border          |
 
 ## Do and don't
 

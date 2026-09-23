@@ -64,6 +64,7 @@ import FieldProfileForm from "./field/profile-form";
 import OtpInputVerify from "./otp-input/verify";
 import RadioGroupCards from "./radio-group/cards";
 import RadioGroupDelivery from "./radio-group/delivery";
+import SwitchCards from "./switch/cards";
 import SwitchSettings from "./switch/settings";
 import IconButtonChrome from "./icon-button/chrome";
 import IconButtonShare from "./icon-button/share";
@@ -260,6 +261,7 @@ export const demos = {
   "otp-input/verify": OtpInputVerify,
   "radio-group/cards": RadioGroupCards,
   "radio-group/delivery": RadioGroupDelivery,
+  "switch/cards": SwitchCards,
   "switch/settings": SwitchSettings,
   "input/variants": InputVariants,
   "textarea/variants": TextareaVariants,
