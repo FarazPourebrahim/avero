@@ -23,7 +23,19 @@ describe("Switch", () => {
 
     expect(control).toHaveAttribute("aria-checked", "false");
     expect(control).toHaveAttribute("data-slot", "switch");
-    expect(control).toHaveClass("h-6", "w-11", "bg-gray-500");
+    expect(control).toHaveClass("h-6", "w-11", "border-2", "border-gray-300", "bg-white");
+  });
+
+  it("uses the soft palette: a gray thumb while off, a blue tint and thumb once on", async () => {
+    render(<Notifications />);
+    const control = screen.getByRole("switch");
+    const thumb = control.querySelector("[data-slot='switch-thumb']");
+
+    expect(thumb).toHaveClass("size-4", "bg-gray-400", "data-[state=checked]:bg-blue-600");
+    expect(control).toHaveClass("data-[state=checked]:bg-blue-50", "active:scale-95");
+
+    await userEvent.click(control);
+    expect(thumb).toHaveAttribute("data-state", "checked");
   });
 
   it("turns on when clicked and reports the new state", async () => {
