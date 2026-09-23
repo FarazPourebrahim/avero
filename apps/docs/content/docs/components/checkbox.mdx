@@ -18,8 +18,11 @@ import { Checkbox, CheckboxCard } from "@averoui/react";
 | Root      | `data-slot="checkbox"`           | Radix Checkbox, a `<button role="checkbox">`      |
 | Indicator | `data-slot="checkbox-indicator"` | A check when checked, a dash when `indeterminate` |
 
-`data-state` is `checked`, `unchecked` or `indeterminate`. Checking pops the box and draws the tick
-in from its short leg; pressing shrinks the box slightly, like a [Button](./button).
+`data-state` is `checked`, `unchecked` or `indeterminate`. The box is 24px with a 2px outline, and
+uses the library's soft palette rather than a solid fill: a light gray outline while unchecked, and
+a blue tint with a blue tick once checked, like [Chip](./chip) and [IconTile](./icon-tile). Checking
+pops the box and draws the tick in from its short leg; pressing shrinks it slightly, like a
+[Button](./button).
 
 `CheckboxCard` adds a card around the same checkbox:
 
@@ -49,7 +52,7 @@ assistive technology. Inside a [Field](./field), invalid and disabled come from 
 ### Card options
 
 `CheckboxCard` presents each choice as a bordered option with a title, a line of explanation and an
-optional aside. The whole card is the click target, and it takes the primary colour while checked.
+optional aside. The whole card is the click target, and it takes a soft blue tint while checked.
 Use it where each option needs explaining — add-ons, notification channels, permissions — and keep
 plain checkboxes for short lists.
 
@@ -83,8 +86,11 @@ to flip.
   description, so a screen reader reads "Mentoring sessions, checkbox, checked" and then the detail,
   rather than one long name.
 - The pop and the tick drawing settle at once under `prefers-reduced-motion`.
-- The resting border is `gray-500` at 80% opacity: as soft as it can be while still meeting the 3:1
-  contrast WCAG requires for form controls — 3.28:1 on white and 3.07:1 on the page background.
+- **Contrast trade-off.** The unchecked outline is `gray-300`: 1.47:1 on white and 1.34:1 on the page
+  background, below the 3:1 WCAG asks of a control's boundary. It is a deliberate choice for the soft
+  look, recorded in `docs/known-debts.md`. Where strict AA matters, pass
+  `className="border-gray-500/80"` (3.28:1 on white, 3.07:1 on the page background). The checked
+  state passes: the tick is 4.82:1 on its tinted fill.
 
 ## API reference
 
@@ -98,18 +104,21 @@ and `value`.
 
 ## Theming
 
-| Token                   | Used by                                    |
-| ----------------------- | ------------------------------------------ |
-| `--color-primary`       | Checked and mixed fill, focus ring         |
-| `--color-primary-hover` | Checked and mixed fill on hover            |
-| `--color-gray-500`      | Resting border at 80%, full on hover       |
-| `--color-red-500`       | Border and focus ring while `aria-invalid` |
-| `--animate-check-pop`   | The box popping in when checked            |
-| `--animate-check-draw`  | The tick drawing itself in                 |
-| `--color-gray-200`      | `CheckboxCard` resting border              |
+| Token                  | Used by                                         |
+| ---------------------- | ----------------------------------------------- |
+| `--color-gray-300`     | Resting outline (`gray-400` on hover)           |
+| `--color-blue-50`      | Checked and mixed fill (`blue-100` on hover)    |
+| `--color-blue-200`     | Checked and mixed outline (`blue-300` on hover) |
+| `--color-blue-600`     | The tick and the dash                           |
+| `--color-primary`      | Focus ring                                      |
+| `--color-red-500`      | Border and focus ring while `aria-invalid`      |
+| `--animate-check-pop`  | The box popping in when checked                 |
+| `--animate-check-draw` | The tick drawing itself in                      |
+| `--color-gray-200`     | `CheckboxCard` resting border                   |
 
-The filled state, its hover, the focus ring and the 200ms timing are the primary
-[Button](./button)'s, so a checkbox and the button that submits it respond the same way.
+The tints are the same `blue-50` / `blue-200` / `blue-600` recipe as [Chip](./chip)'s skill
+variant and [IconTile](./icon-tile)'s soft tone, so a checkbox sits in the same family as the rest of
+the library. The focus ring and the press are the [Button](./button)'s.
 
 ## Do and don't
 
