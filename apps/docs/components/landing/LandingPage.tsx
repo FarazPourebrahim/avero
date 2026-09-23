@@ -9,11 +9,12 @@ import { MirrorSection } from "./MirrorSection";
 import { SectionIntro } from "./SectionIntro";
 import "./landing.css";
 
+// Kept to one short line each, so every figure sits on the same baseline at every width.
 const FACTS = [
-  { value: "70+", label: "components, from buttons to date pickers" },
-  { value: "25", label: "page blocks you can drop in or copy" },
-  { value: "fa · en", label: "dictionaries for every built-in string" },
-  { value: "0", label: "date libraries — calendars come from Intl" },
+  { value: "70+", label: "Components" },
+  { value: "25", label: "Page blocks" },
+  { value: "9", label: "Layout shells" },
+  { value: "2", label: "Directions, one codebase" },
 ] as const;
 
 const FOOTER_LINKS = [
@@ -42,12 +43,12 @@ export function LandingPage() {
           {FACTS.map((fact, index) => (
             <div
               key={fact.label}
-              className={`border-fd-border flex flex-col-reverse gap-1.5 py-7 ${
+              className={`border-fd-border flex flex-col-reverse justify-end gap-1 py-7 ${
                 index % 2 === 1 ? "border-s ps-5 sm:ps-8" : "pe-5 sm:pe-8"
               } ${index >= 2 ? "border-t lg:border-t-0" : ""} ${index === 2 ? "lg:border-s lg:ps-8" : ""}`}
             >
-              <dt className="text-fd-muted-foreground text-sm leading-6">{fact.label}</dt>
-              <dd className="text-fd-foreground text-3xl font-extrabold tracking-tight">
+              <dt className="text-fd-muted-foreground truncate text-sm leading-6">{fact.label}</dt>
+              <dd className="text-fd-foreground text-4xl leading-tight font-extrabold tracking-tight tabular-nums">
                 {fact.value}
               </dd>
             </div>
