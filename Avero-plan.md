@@ -324,9 +324,9 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 ### 5.3 Forms (FM)
 | ID | Component |
 | --- | --- |
-| FM-01 | `Field` (label, description, error, required) |
-| FM-02 | `Input` (filter, soft and slate treatments; invalid state) |
-| FM-03 | `Textarea` (soft gray and slate variants, indigo focus ring) |
+| FM-01 | `Field` (label, description, error with an alert icon, required) |
+| FM-02 | `Input` (`outline` default matching the other form controls; filter, soft and slate treatments; invalid state) |
+| FM-03 | `Textarea` (`outline` default matching the other form controls; soft gray and slate variants) |
 | FM-05 | `Select` (custom trigger `rounded-xl`, rotating chevron, token-designed listbox) |
 | FM-06 | `Combobox` (searchable select, category variant) |
 | FM-07 | `Checkbox` |

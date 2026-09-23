@@ -17,15 +17,18 @@ import { Input } from "@averoui/react";
 | ---- | ------------------- | ------------------------------------------- |
 | Root | `data-slot="input"` | Native `<input>`; `type` defaults to `text` |
 
-`filter` is the compact filter box. `soft` and `slate` mirror the two comment-box treatments, so
-an input can sit beside a [Textarea](./textarea) in the same form.
+`outline` (the default) matches every other form control; `filter`, `soft` and `slate` are the
+alternative treatments.
 
 ## Examples
 
 ### Variants
 
-`filter` is the compact filter box. `soft` and `slate` mirror the two comment-box treatments, so an
-input can sit beside a [Textarea](./textarea) in the same form.
+`outline` is the default and the standard form control: the same 12px corners, gray-300 border,
+white ground and blue focus ring as [Select](./select), [Combobox](./combobox),
+[DatePicker](./date-picker) and [TagInput](./tag-input), so a form made of mixed controls reads as
+one. `filter` is the compact square box. `soft` and `slate` mirror the comment-box treatments of
+[Textarea](./textarea).
 
 <ComponentPreview name="input/variants" />
 
@@ -66,11 +69,12 @@ left-to-right values such as emails, phone numbers or URLs.
 
 ## Theming
 
-| Token                | Used by              |
-| -------------------- | -------------------- |
-| `--color-gray-300`   | `filter` border      |
-| `--color-blue-500`   | `filter` focus ring  |
-| `--color-indigo-500` | `soft`/`slate` focus |
+| Token                | Used by                       |
+| -------------------- | ----------------------------- |
+| `--color-gray-300`   | `outline` and `filter` border |
+| `--color-blue-500`   | `outline` and `filter` focus  |
+| `--color-red-500`    | Border while `aria-invalid`   |
+| `--color-indigo-500` | `soft`/`slate` focus          |
 
 ## Do and don't
 

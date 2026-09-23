@@ -13,13 +13,13 @@ import { Field, FieldControl, FieldDescription, FieldError, FieldLabel } from "@
 
 ## Anatomy
 
-| Part             | Slot                            | Notes                                                         |
-| ---------------- | ------------------------------- | ------------------------------------------------------------- |
-| Field            | `data-slot="field"`             | Holds the ids; `data-invalid` and `data-disabled` mark state  |
-| FieldLabel       | `data-slot="field-label"`       | A `<label>` pointing at the control, with a `*` when required |
-| FieldControl     | —                               | Renders no element: passes ids and ARIA to its only child     |
-| FieldDescription | `data-slot="field-description"` | Help text, always read with the control                       |
-| FieldError       | `data-slot="field-error"`       | Shown only while the field is invalid and has a message       |
+| Part             | Slot                            | Notes                                                          |
+| ---------------- | ------------------------------- | -------------------------------------------------------------- |
+| Field            | `data-slot="field"`             | Holds the ids; `data-invalid` and `data-disabled` mark state   |
+| FieldLabel       | `data-slot="field-label"`       | A `<label>` pointing at the control, with a `*` when required  |
+| FieldControl     | —                               | Renders no element: passes ids and ARIA to its only child      |
+| FieldDescription | `data-slot="field-description"` | Help text, always read with the control                        |
+| FieldError       | `data-slot="field-error"`       | Shown only while invalid and non-empty; an alert icon leads it |
 
 ## Usage
 
@@ -81,6 +81,8 @@ label text, so the field reads correctly in both directions.
 
 - The label names the control, and the description and error are announced as its description.
 - The error renders with `role="alert"` when it appears, so it is read out without moving focus.
+- The error is led by an alert icon, so it is recognisable without relying on its red colour. The
+  icon is `aria-hidden`, so only the message is announced.
 - The asterisk is `aria-hidden`: `aria-required` already tells assistive technology the field is
   required, so it is not announced twice.
 
@@ -95,11 +97,16 @@ label text, so the field reads correctly in both directions.
 
 ## Theming
 
-| Token              | Used by     |
-| ------------------ | ----------- |
-| `--color-gray-700` | Label       |
-| `--color-gray-500` | Description |
-| `--color-red-600`  | Error, `*`  |
+| Token              | Used by                  |
+| ------------------ | ------------------------ |
+| `--color-gray-800` | Label                    |
+| `--color-gray-500` | Description              |
+| `--color-red-600`  | Error text and icon, `*` |
+
+The field adds no box of its own: the control inside it brings the border, radius and focus ring.
+[Input](./input), [Textarea](./textarea), [Select](./select), [Combobox](./combobox),
+[DatePicker](./date-picker), [TagInput](./tag-input) and [PriceInput](./price-input) share one
+default treatment, so a form that mixes them reads as one family.
 
 ## Do and don't
 

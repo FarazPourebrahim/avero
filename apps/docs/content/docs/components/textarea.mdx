@@ -1,6 +1,6 @@
 ---
 title: Textarea
-description: The comment box, in a soft gray and a slate treatment.
+description: Multi-line text, matching the other form controls by default, with soft and slate comment-box treatments.
 ---
 
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/textarea)
@@ -21,7 +21,9 @@ import { Textarea } from "@averoui/react";
 
 ### Variants
 
-`soft` is the gray comment box and `slate` the bordered one; both take the indigo focus ring.
+`outline` is the default and matches [Input](./input), [Select](./select) and the other form
+controls, so a textarea sits in a form without looking like a different family. `soft` is the gray
+comment box and `slate` the bordered one; both take the indigo focus ring.
 
 <ComponentPreview name="textarea/variants" />
 
@@ -42,7 +44,8 @@ The box, its placeholder and the resize handle all follow the document direction
 
 ## Composition
 
-- `soft` has a gray ground; `slate` is white with a slate border.
+- `outline` is white with a gray-300 border and 12px corners; `soft` has a gray ground; `slate` is
+  white with a slate border.
 - Resizing is off by default; pass `resize="vertical"` when a long answer is expected.
 
 ## Accessibility
@@ -58,11 +61,13 @@ The box, its placeholder and the resize handle all follow the document direction
 
 ## Theming
 
-| Token                | Used by        |
-| -------------------- | -------------- |
-| `--color-gray-50`    | `soft` ground  |
-| `--color-slate-200`  | `slate` border |
-| `--color-indigo-500` | Focus ring     |
+| Token                | Used by                       |
+| -------------------- | ----------------------------- |
+| `--color-gray-300`   | `outline` border              |
+| `--color-blue-500`   | `outline` focus ring          |
+| `--color-gray-50`    | `soft` ground                 |
+| `--color-slate-200`  | `slate` border                |
+| `--color-indigo-500` | `soft` and `slate` focus ring |
 
 ## Do and don't
 

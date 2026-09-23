@@ -61,7 +61,8 @@ English. Digits always read left to right inside the grouped amount.
 
 - Label it with [`Field`](./field) or `aria-label`. The unit is added to the input's description.
 - `currency` replaces the unit (for example `ریال`); `currency={null}` hides it.
-- `variant` shares [`Input`](./input)'s `filter`, `soft` and `slate` treatments.
+- `variant` shares [`Input`](./input)'s treatments: `outline` (the default), `filter`, `soft` and
+  `slate`.
 - To display a price rather than edit one, use [PriceTag](./price-tag).
 
 ## Accessibility
@@ -83,11 +84,11 @@ English. Digits always read left to right inside the grouped amount.
 
 ## Theming
 
-| Token              | Used by               |
-| ------------------ | --------------------- |
-| `--color-gray-300` | Border (`filter`)     |
-| `--color-blue-500` | Focus ring (`filter`) |
-| `--color-gray-500` | Unit                  |
+| Token              | Used by                |
+| ------------------ | ---------------------- |
+| `--color-gray-300` | Border (`outline`)     |
+| `--color-blue-500` | Focus ring (`outline`) |
+| `--color-gray-500` | Unit                   |
 
 ## Do and don't
 

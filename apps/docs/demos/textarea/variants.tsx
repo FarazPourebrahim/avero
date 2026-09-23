@@ -6,12 +6,16 @@ import { useCopy } from "../copy";
 export default function TextareaVariantsDemo() {
   const t = useCopy({
     fa: {
+      bioLabel: "درباره من",
+      bioPlaceholder: "چند جمله درباره تجربه و علاقه‌هایتان بنویسید…",
       articleLabel: "دیدگاه مقاله",
       articlePlaceholder: "دیدگاه خود را درباره این مقاله بنویسید…",
       courseLabel: "دیدگاه دوره",
       coursePlaceholder: "دیدگاه خود را درباره این دوره بنویسید…",
     },
     en: {
+      bioLabel: "About me",
+      bioPlaceholder: "A few sentences about your experience and interests…",
       articleLabel: "Article comment",
       articlePlaceholder: "Share what you thought of this article…",
       courseLabel: "Course comment",
@@ -21,7 +25,8 @@ export default function TextareaVariantsDemo() {
 
   return (
     <div className="flex w-full max-w-xl flex-col gap-4">
-      <Textarea aria-label={t.articleLabel} placeholder={t.articlePlaceholder} />
+      <Textarea rows={3} aria-label={t.bioLabel} placeholder={t.bioPlaceholder} />
+      <Textarea variant="soft" aria-label={t.articleLabel} placeholder={t.articlePlaceholder} />
       <Textarea
         variant="slate"
         rows={3}
