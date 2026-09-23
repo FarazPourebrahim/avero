@@ -83,7 +83,8 @@ to flip.
   description, so a screen reader reads "Mentoring sessions, checkbox, checked" and then the detail,
   rather than one long name.
 - The pop and the tick drawing settle at once under `prefers-reduced-motion`.
-- The resting border is `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
+- The resting border is `gray-500` at 80% opacity: as soft as it can be while still meeting the 3:1
+  contrast WCAG requires for form controls — 3.28:1 on white and 3.07:1 on the page background.
 
 ## API reference
 
@@ -101,7 +102,7 @@ and `value`.
 | ----------------------- | ------------------------------------------ |
 | `--color-primary`       | Checked and mixed fill, focus ring         |
 | `--color-primary-hover` | Checked and mixed fill on hover            |
-| `--color-gray-500`      | Resting border (`gray-600` on hover)       |
+| `--color-gray-500`      | Resting border at 80%, full on hover       |
 | `--color-red-500`       | Border and focus ring while `aria-invalid` |
 | `--animate-check-pop`   | The box popping in when checked            |
 | `--animate-check-draw`  | The tick drawing itself in                 |
