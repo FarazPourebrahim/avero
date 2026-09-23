@@ -329,7 +329,8 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-03 | `Textarea` (`outline` default matching the other form controls; soft gray and slate variants) |
 | FM-05 | `Select` (custom trigger `rounded-xl`, rotating chevron, token-designed listbox) |
 | FM-06 | `Combobox` (searchable select, category variant) |
-| FM-07 | `Checkbox` (filled state, hover, focus ring and timing follow the primary `Button`) |
+| FM-07 | `Checkbox` (rounded box; filled state, hover, press, focus ring and timing follow the primary `Button`; animated pop and tick) |
+| FM-07b | `CheckboxCard` (a checkbox as a bordered option: title, description, aside; primary border and tint when checked) |
 | FM-08 | `Radio` |
 | FM-09 | `Switch` |
 | FM-10 | `FileInput` / upload |
@@ -882,6 +883,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | FM-05 | Select | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-06 | Combobox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-07 | Checkbox | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| FM-07b | CheckboxCard | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-08 | Radio | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-09 | Switch | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | FM-10 | FileInput | 4 | ✅ | ✅ | ✅ | ✅ | ✅ |

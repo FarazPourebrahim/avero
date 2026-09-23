@@ -6,7 +6,7 @@ description: Independent on/off choices, with an indeterminate state for "select
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/checkbox)
 
 ```tsx
-import { Checkbox } from "@averoui/react";
+import { Checkbox, CheckboxCard } from "@averoui/react";
 ```
 
 <ComponentPreview name="checkbox/preferences" />
@@ -18,7 +18,17 @@ import { Checkbox } from "@averoui/react";
 | Root      | `data-slot="checkbox"`           | Radix Checkbox, a `<button role="checkbox">`      |
 | Indicator | `data-slot="checkbox-indicator"` | A check when checked, a dash when `indeterminate` |
 
-`data-state` is `checked`, `unchecked` or `indeterminate`.
+`data-state` is `checked`, `unchecked` or `indeterminate`. Checking pops the box and draws the tick
+in from its short leg; pressing shrinks the box slightly, like a [Button](./button).
+
+`CheckboxCard` adds a card around the same checkbox:
+
+| Part        | Slot                                    | Notes                                               |
+| ----------- | --------------------------------------- | --------------------------------------------------- |
+| Card        | `data-slot="checkbox-card"`             | A `<label>`: the whole card toggles the checkbox    |
+| Title       | `data-slot="checkbox-card-title"`       | Names the checkbox through `aria-labelledby`        |
+| Description | `data-slot="checkbox-card-description"` | Describes the checkbox through `aria-describedby`   |
+| Aside       | `data-slot="checkbox-card-aside"`       | Optional content at the inline end, such as a price |
 
 ## Examples
 
@@ -36,6 +46,15 @@ assistive technology. Inside a [Field](./field), invalid and disabled come from 
 
 <ComponentPreview name="checkbox/states" />
 
+### Card options
+
+`CheckboxCard` presents each choice as a bordered option with a title, a line of explanation and an
+optional aside. The whole card is the click target, and it takes the primary colour while checked.
+Use it where each option needs explaining — add-ons, notification channels, permissions — and keep
+plain checkboxes for short lists.
+
+<ComponentPreview name="checkbox/cards" />
+
 ## Right-to-left
 
 The box sits before its label in reading order, and the check glyph is symmetrical, so nothing needs
@@ -44,6 +63,9 @@ to flip.
 ## Composition
 
 - Pair it with a `<label htmlFor>` or wrap it in [`Field`](./field) — clicking the label toggles it.
+- `CheckboxCard` takes every `Checkbox` prop and forwards its ref to the checkbox, so it works in a
+  form, with `Controller`, and inside `FieldControl` exactly as `Checkbox` does. `className` styles
+  the card; `checkboxClassName` styles the checkbox.
 - Inside a `<form>`, a hidden native checkbox carries `name` and `value` (default `on`) to the
   submission.
 - With react-hook-form, use `Controller`: the control is a button, not a native input, so `register`
@@ -57,6 +79,10 @@ to flip.
 | <kbd>Space</kbd> | Toggles it                  |
 
 - The indeterminate state is exposed as `aria-checked="mixed"`.
+- A card's title is the checkbox's accessible name and its description is the accessible
+  description, so a screen reader reads "Mentoring sessions, checkbox, checked" and then the detail,
+  rather than one long name.
+- The pop and the tick drawing settle at once under `prefers-reduced-motion`.
 - The resting border is `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
 
 ## API reference
@@ -64,6 +90,10 @@ to flip.
 `Checkbox` accepts the [Radix Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox)
 root props unchanged: `checked`, `defaultChecked`, `onCheckedChange`, `disabled`, `required`, `name`
 and `value`.
+
+`CheckboxCard` accepts all of those plus:
+
+<PropsTable file="components/checkbox/CheckboxCard.tsx" name="CheckboxCardOwnProps" />
 
 ## Theming
 
@@ -73,6 +103,9 @@ and `value`.
 | `--color-primary-hover` | Checked and mixed fill on hover            |
 | `--color-gray-500`      | Resting border (`gray-600` on hover)       |
 | `--color-red-500`       | Border and focus ring while `aria-invalid` |
+| `--animate-check-pop`   | The box popping in when checked            |
+| `--animate-check-draw`  | The tick drawing itself in                 |
+| `--color-gray-200`      | `CheckboxCard` resting border              |
 
 The filled state, its hover, the focus ring and the 200ms timing are the primary
 [Button](./button)'s, so a checkbox and the button that submits it respond the same way.

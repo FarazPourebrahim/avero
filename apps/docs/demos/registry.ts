@@ -58,6 +58,7 @@ import FeatureGridWhyUs from "./feature-grid/why-us";
 import FilterPanelListing from "./filter-panel/listing";
 import FormActionsCommentForm from "./form-actions/comment-form";
 import FeatureCardGrid from "./feature-card/grid";
+import CheckboxCards from "./checkbox/cards";
 import CheckboxPreferences from "./checkbox/preferences";
 import FieldProfileForm from "./field/profile-form";
 import OtpInputVerify from "./otp-input/verify";
@@ -252,6 +253,7 @@ export const demos = {
   "rich-content/article": RichContentArticle,
   "rich-content/sanitized": RichContentSanitized,
   "activity-heatmap/year": ActivityHeatmapYear,
+  "checkbox/cards": CheckboxCards,
   "checkbox/preferences": CheckboxPreferences,
   "field/profile-form": FieldProfileForm,
   "otp-input/verify": OtpInputVerify,
