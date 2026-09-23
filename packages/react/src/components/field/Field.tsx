@@ -15,6 +15,7 @@ import {
   type LabelHTMLAttributes,
   type SetStateAction,
 } from "react";
+import { CircleAlertIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
 
 type FieldContextValue = {
@@ -123,7 +124,11 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(function
       ref={ref}
       htmlFor={field.controlId}
       data-slot="field-label"
-      className={cn("text-sm font-medium text-gray-700", field.disabled && "opacity-60", className)}
+      className={cn(
+        "text-sm font-semibold text-gray-800",
+        field.disabled && "opacity-60",
+        className,
+      )}
       {...props}
     >
       {children}
@@ -219,10 +224,15 @@ export const FieldError = forwardRef<HTMLParagraphElement, FieldErrorProps>(func
       id={field.errorId}
       role="alert"
       data-slot="field-error"
-      className={cn("text-xs leading-5 text-red-600", className)}
+      className={cn(
+        "flex items-start gap-1.5 text-xs leading-5 font-medium text-red-600",
+        className,
+      )}
       {...props}
     >
-      {children}
+      {/* The icon makes the error recognisable without relying on colour alone. */}
+      <CircleAlertIcon aria-hidden className="mt-0.5 size-4 shrink-0" />
+      <span>{children}</span>
     </p>
   );
 });

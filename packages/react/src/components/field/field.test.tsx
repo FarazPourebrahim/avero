@@ -90,6 +90,22 @@ describe("Field", () => {
     );
   });
 
+  it("pairs the error with a decorative icon, so it does not rely on colour alone", () => {
+    render(
+      <Field invalid>
+        <FieldLabel>نام</FieldLabel>
+        <FieldControl>
+          <Input />
+        </FieldControl>
+        <FieldError>نام الزامی است</FieldError>
+      </Field>,
+    );
+
+    const error = screen.getByRole("alert");
+    expect(error.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
+    expect(screen.getByRole("textbox")).toHaveAccessibleDescription("نام الزامی است");
+  });
+
   it("does not render an empty error", () => {
     render(
       <Field invalid>
