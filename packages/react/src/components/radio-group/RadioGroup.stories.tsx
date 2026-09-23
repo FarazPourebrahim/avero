@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { RadioCard } from "./RadioCard.js";
 import { RadioGroup, RadioGroupItem } from "./RadioGroup.js";
 
 const meta: Meta<typeof RadioGroup> = {
@@ -32,5 +33,20 @@ export const Delivery: Story = {
         ))}
       </RadioGroup>
     </div>
+  ),
+};
+
+export const Cards: Story = {
+  render: () => (
+    <RadioGroup aria-label="روش ارسال" defaultValue="post" className="w-80">
+      <RadioCard value="post" title="پست پیشتاز" description="سه تا پنج روز کاری" aside="رایگان" />
+      <RadioCard
+        value="courier"
+        title="پیک"
+        description="همان روز، فقط تهران"
+        aside="۸۵٬۰۰۰ تومان"
+      />
+      <RadioCard value="pickup" title="تحویل حضوری" description="به‌زودی" disabled />
+    </RadioGroup>
   ),
 };

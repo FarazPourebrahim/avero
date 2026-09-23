@@ -1,3 +1,4 @@
+export { RadioCard, type RadioCardOwnProps, type RadioCardProps } from "./RadioCard.js";
 export {
   RadioGroup,
   RadioGroupItem,
