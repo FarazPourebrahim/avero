@@ -7,12 +7,19 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { Textarea } from "./Textarea.js";
 
 describe("Textarea", () => {
-  it("renders the soft comment box by default", () => {
+  it("renders the outline variant by default", () => {
     render(<Textarea aria-label="دیدگاه" placeholder="دیدگاه خود را بنویسید..." />);
     const textarea = screen.getByRole("textbox", { name: "دیدگاه" });
 
     expect(textarea).toHaveAttribute("rows", "4");
-    expect(textarea).toHaveClass("bg-gray-50", "rounded-2xl", "resize-none");
+    expect(textarea).toHaveClass("rounded-xl", "border-gray-300", "bg-white", "resize-none");
+    expect(textarea).not.toHaveClass("p-4");
+  });
+
+  it("keeps the soft comment box as a variant", () => {
+    render(<Textarea aria-label="دیدگاه" variant="soft" />);
+
+    expect(screen.getByRole("textbox")).toHaveClass("bg-gray-50", "rounded-2xl", "p-4");
   });
 
   it("renders the slate variant with a resizable box", () => {

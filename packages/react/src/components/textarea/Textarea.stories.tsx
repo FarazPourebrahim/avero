@@ -9,7 +9,7 @@ const meta: Meta<typeof Textarea> = {
     placeholder: "دیدگاه خود را درباره این مقاله بنویسید…",
   },
   argTypes: {
-    variant: { control: "inline-radio", options: ["soft", "slate"] },
+    variant: { control: "inline-radio", options: ["outline", "soft", "slate"] },
     resize: { control: "inline-radio", options: ["none", "vertical"] },
   },
   decorators: [

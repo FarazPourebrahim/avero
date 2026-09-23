@@ -7,15 +7,16 @@ import { expectNoAxeViolations } from "../../test/axe.js";
 import { Input } from "./Input.js";
 
 describe("Input", () => {
-  it("renders the filter variant by default", () => {
+  it("renders the outline variant by default", () => {
     render(<Input aria-label="جستجو" placeholder="جستجو..." />);
     const input = screen.getByRole("textbox", { name: "جستجو" });
 
     expect(input).toHaveAttribute("type", "text");
-    expect(input).toHaveClass("border-gray-300", "rounded", "px-3", "py-2");
+    expect(input).toHaveClass("rounded-xl", "border-gray-300", "bg-white", "px-3.5", "py-2.5");
   });
 
   it.each([
+    ["filter", "px-3"],
     ["soft", "bg-gray-50"],
     ["slate", "border-slate-200"],
   ] as const)("renders the %s variant", (variant, expected) => {

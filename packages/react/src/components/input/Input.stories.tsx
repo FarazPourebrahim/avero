@@ -5,7 +5,9 @@ const meta: Meta<typeof Input> = {
   title: "Forms/Input",
   component: Input,
   args: { placeholder: "جستجو...", "aria-label": "جستجو" },
-  argTypes: { variant: { control: "inline-radio", options: ["filter", "soft", "slate"] } },
+  argTypes: {
+    variant: { control: "inline-radio", options: ["outline", "filter", "soft", "slate"] },
+  },
   decorators: [
     (Story) => (
       <div className="max-w-sm">

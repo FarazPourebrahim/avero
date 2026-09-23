@@ -50,7 +50,7 @@ export type PriceInputOwnProps = {
   max?: number;
   /** Unit after the amount; `null` hides it. @defaultValue the dictionary's `currencyToman` */
   currency?: ReactNode;
-  /** Visual style, shared with `Input`. @defaultValue "filter" */
+  /** Visual style, shared with `Input`. @defaultValue "outline" */
   variant?: InputOwnProps["variant"];
   /** Classes for the wrapper around the input and the currency. */
   containerClassName?: string;

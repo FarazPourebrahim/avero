@@ -20,7 +20,7 @@ describe("PriceInput", () => {
     expect(input).toHaveValue("");
     expect(input).toHaveAttribute("inputmode", "numeric");
     expect(input).toHaveAccessibleDescription("تومان");
-    expect(input).toHaveClass("pe-16", "rounded", "border-gray-300");
+    expect(input).toHaveClass("pe-16", "rounded-xl", "border-gray-300");
   });
 
   it("groups Latin digits with the Persian separator and reports a number", async () => {
