@@ -27,7 +27,7 @@ export type CheckboxCardProps = Omit<CheckboxProps, keyof CheckboxCardOwnProps |
 
 /**
  * A checkbox presented as a bordered option: the whole card is the click target, and it takes the
- * primary colour while checked. Use it where each choice needs a title and a line of explanation.
+ * soft blue tint while checked. Use it where each choice needs a title and a line of explanation.
  * The ref and every checkbox prop go to the checkbox, so it works with forms like `Checkbox` does.
  */
 // Annotated rather than inferred: the inferred type reaches into Radix's own props type, which the
@@ -55,8 +55,8 @@ export const CheckboxCard: ForwardRefExoticComponent<
       className={cn(
         "flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 transition-all duration-200",
         "hover:border-gray-300",
-        "has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary/5",
-        "has-[[data-state=indeterminate]]:border-primary has-[[data-state=indeterminate]]:bg-primary/5",
+        "has-[[data-state=checked]]:border-blue-200 has-[[data-state=checked]]:bg-blue-50/60",
+        "has-[[data-state=indeterminate]]:border-blue-200 has-[[data-state=indeterminate]]:bg-blue-50/60",
         "has-[[aria-invalid=true]]:border-red-500",
         "has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-60",
         className,
@@ -68,7 +68,7 @@ export const CheckboxCard: ForwardRefExoticComponent<
         aria-labelledby={titleId}
         {...props}
         aria-describedby={describedBy || undefined}
-        className={cn("mt-0.5", checkboxClassName)}
+        className={cn("-mt-0.5", checkboxClassName)}
       />
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
         <span
