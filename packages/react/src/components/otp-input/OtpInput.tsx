@@ -97,23 +97,26 @@ export const OtpInput = forwardRef<HTMLInputElement, OtpInputProps>(function Otp
             aria-hidden="true"
             data-slot="otp-input-slot"
             data-active={active ? "" : undefined}
+            data-filled={digit ? "" : undefined}
             className={cn(
-              "flex size-10 items-center justify-center rounded-xl border border-gray-500 bg-white text-lg font-semibold text-gray-900 transition sm:size-12",
-              active && "border-primary ring-primary/20 ring-2",
+              // The soft palette the form controls share: empty boxes are a light outline, filled
+              // ones take the blue tint, and the box awaiting the next digit gets the focus halo.
+              "flex size-10 items-center justify-center rounded-xl border-2 border-gray-300 bg-white text-lg font-semibold text-gray-900 transition-all duration-300 sm:size-12",
+              digit && "border-blue-200 bg-blue-50 text-blue-700",
+              active && "border-blue-400 ring-4 ring-blue-100",
               invalid && "border-red-500",
-              invalid && active && "ring-red-500/20",
+              invalid && active && "ring-red-100",
               disabled && "opacity-60",
               slotClassName,
             )}
           >
             {digit ? (
-              digits === "fa" ? (
-                toPersianDigits(digit)
-              ) : (
-                digit
-              )
+              // Keyed by the digit, so each new entry pops in.
+              <span key={digit} className="animate-check-pop">
+                {digits === "fa" ? toPersianDigits(digit) : digit}
+              </span>
             ) : active ? (
-              <span className="animate-blink h-5 w-px bg-gray-900" />
+              <span className="animate-blink h-5 w-0.5 rounded-full bg-blue-600" />
             ) : null}
           </div>
         );
