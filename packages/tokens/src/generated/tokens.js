@@ -342,11 +342,11 @@ export const tokens = {
   },
   "animationCheckDraw": {
     "cssVar": "--animate-check-draw",
-    "value": "check-draw 0.3s ease-out 0.05s both"
+    "value": "check-draw 0.2s ease-out 0.03s both"
   },
   "animationCheckPop": {
     "cssVar": "--animate-check-pop",
-    "value": "check-pop 0.25s ease-out"
+    "value": "check-pop 0.18s ease-out"
   },
   "animationAccordionDown": {
     "cssVar": "--animate-accordion-down",

@@ -9,8 +9,9 @@ export type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Ro
 
 /**
  * A checkbox for independent on/off choices. `checked="indeterminate"` shows the mixed state of a
- * "select all" row. The resting border meets the 3:1 contrast required for form controls; the
- * filled state, hover, press, focus ring and timing follow the primary `Button`. Checking pops the
+ * "select all" row. The resting border, `gray-500` at 80%, is as soft as it can go while
+ * still meeting the 3:1 contrast required for form controls (3.28:1 on white, 3.07:1 on the page
+ * background). The filled state, hover, press, focus ring and timing follow the primary `Button`. Checking pops the
  * box and draws the tick in; `base.css` settles both at once under reduced motion.
  */
 export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(
@@ -22,8 +23,8 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
       ref={ref}
       data-slot="checkbox"
       className={cn(
-        "group inline-flex size-5 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-gray-500 bg-white text-white transition-all duration-200 active:scale-95",
-        "data-[state=unchecked]:shadow-xs data-[state=unchecked]:hover:border-gray-600",
+        "group inline-flex size-5 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-gray-500/80 bg-white text-white transition-all duration-200 active:scale-95",
+        "data-[state=unchecked]:shadow-xs data-[state=unchecked]:hover:border-gray-500",
         "data-[state=checked]:animate-check-pop data-[state=indeterminate]:animate-check-pop",
         "data-[state=checked]:border-primary data-[state=checked]:bg-primary",
         "data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary",

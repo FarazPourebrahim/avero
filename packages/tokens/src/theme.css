@@ -134,8 +134,8 @@
   --animate-spinner-bar: spinner-bar 1s ease-in-out infinite;
   --animate-spinner-spoke: spinner-spoke 1s linear infinite;
   /* Checkbox: the tick draws itself in and the filled box pops, over roughly one Button press. */
-  --animate-check-draw: check-draw 0.3s ease-out 0.05s both;
-  --animate-check-pop: check-pop 0.25s ease-out;
+  --animate-check-draw: check-draw 0.2s ease-out 0.03s both;
+  --animate-check-pop: check-pop 0.18s ease-out;
   /* Accordion open/close: height and opacity animate over 300ms ease-in-out. */
   --animate-accordion-down: accordion-down 0.3s ease-in-out;
   --animate-accordion-up: accordion-up 0.3s ease-in-out;

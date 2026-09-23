@@ -23,7 +23,7 @@ describe("Checkbox", () => {
 
     expect(checkbox).toHaveAttribute("aria-checked", "false");
     expect(checkbox).toHaveAttribute("data-slot", "checkbox");
-    expect(checkbox).toHaveClass("size-5", "rounded-lg", "border-gray-500");
+    expect(checkbox).toHaveClass("size-5", "rounded-lg", "border-gray-500/80");
   });
 
   it("toggles on click and reports the new state", async () => {
