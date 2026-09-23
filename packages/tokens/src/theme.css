@@ -129,6 +129,10 @@
   --animate-sway: sway 3s ease-in-out forwards;
   --animate-shimmer: shimmer 1.6s linear infinite;
   --animate-spin-glow: spin-glow 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  /* Spinner parts. Each part runs the same cycle; the component offsets them with negative delays. */
+  --animate-spinner-dot: spinner-dot 1.2s ease-in-out infinite;
+  --animate-spinner-bar: spinner-bar 1s ease-in-out infinite;
+  --animate-spinner-spoke: spinner-spoke 1s linear infinite;
   /* Accordion open/close: height and opacity animate over 300ms ease-in-out. */
   --animate-accordion-down: accordion-down 0.3s ease-in-out;
   --animate-accordion-up: accordion-up 0.3s ease-in-out;
@@ -234,6 +238,38 @@
     }
     to {
       background-position: 200% 0;
+    }
+  }
+
+  @keyframes spinner-dot {
+    0%,
+    80%,
+    to {
+      opacity: 0.35;
+      transform: scale(0.6);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes spinner-bar {
+    0%,
+    to {
+      transform: scaleY(0.35);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes spinner-spoke {
+    0% {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.15;
     }
   }
 

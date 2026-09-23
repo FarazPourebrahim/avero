@@ -328,6 +328,18 @@ export const tokens = {
     "cssVar": "--animate-spin-glow",
     "value": "spin-glow 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite"
   },
+  "animationSpinnerDot": {
+    "cssVar": "--animate-spinner-dot",
+    "value": "spinner-dot 1.2s ease-in-out infinite"
+  },
+  "animationSpinnerBar": {
+    "cssVar": "--animate-spinner-bar",
+    "value": "spinner-bar 1s ease-in-out infinite"
+  },
+  "animationSpinnerSpoke": {
+    "cssVar": "--animate-spinner-spoke",
+    "value": "spinner-spoke 1s linear infinite"
+  },
   "animationAccordionDown": {
     "cssVar": "--animate-accordion-down",
     "value": "accordion-down 0.3s ease-in-out"
@@ -494,6 +506,9 @@ export const tokenGroups = {
     "sway",
     "shimmer",
     "spin-glow",
+    "spinner-dot",
+    "spinner-bar",
+    "spinner-spoke",
     "accordion-down",
     "accordion-up"
   ],
