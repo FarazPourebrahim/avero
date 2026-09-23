@@ -8,7 +8,7 @@ Remove an entry in the same change that resolves it.
 | Toolchain | Local Node is 22.16; jsdom 30 and size-limit 13 need Node ≥ 22.18/22.22, so they are pinned one major back. | None functionally; slightly older test tooling. | Upgrade local Node to the latest 22.x or 24 LTS, then bump jsdom and size-limit. |
 | Toolchain | TypeScript is pinned to 6.0.x because typescript-eslint doesn't support TypeScript 7 yet. | We can't use the native TypeScript 7 compiler. | Bump when typescript-eslint's peer range includes 7.x. |
 | Overlays | `Dialog` and `ConfirmDialog` return focus only to their own Radix trigger. Opened in controlled mode without one, such as a `ConfirmDialog` started from a `DropdownMenuItem`, focus falls to the page body on close. `Lightbox` already remembers and restores the element that had focus. | Keyboard and screen reader users lose their place after confirming or cancelling a dialog started from a menu. | Apply the `Lightbox` focus-return handling to `DialogContent` and `ConfirmDialog`, with a controlled-mode test for each. |
-| Contrast | 29 of 66 text/background pairings in the default palette are below WCAG AA (`packages/tokens/reports/contrast-report.md`). Reviewed under O-04 on 2026-09-10 and kept; the two `Checkbox` and `RadioGroup` outline pairings were added by a deliberate restyle on 2026-09-23; see [Contrast review](#contrast-review-o-04) below for the override per pairing. The browser axe suite reports them as warnings instead of failing (D-19) and Lighthouse skips `color-contrast` for the same reason (D-28). | Small muted, chrome and soft-tone text is hard to read for low-vision users. 13 pairings can be fixed by a consumer overriding a token; the other 16 are Tailwind palette classes inside components and need a code change. | Keep O-04 for 1.0 and ship the override guide below. Revisit for 2.0: move the 16 hardcoded pairings onto semantic tokens so every failing pairing becomes themeable, then make `color-contrast` blocking in both the axe suite and Lighthouse. |
+| Contrast | 30 of 67 text/background pairings in the default palette are below WCAG AA (`packages/tokens/reports/contrast-report.md`). Reviewed under O-04 on 2026-09-10 and kept; the `Checkbox`, `RadioGroup` and `Switch` outline and off-thumb pairings were added by a deliberate restyle on 2026-09-23; see [Contrast review](#contrast-review-o-04) below for the override per pairing. The browser axe suite reports them as warnings instead of failing (D-19) and Lighthouse skips `color-contrast` for the same reason (D-28). | Small muted, chrome and soft-tone text is hard to read for low-vision users. 13 pairings can be fixed by a consumer overriding a token; the other 17 are Tailwind palette classes inside components and need a code change. | Keep O-04 for 1.0 and ship the override guide below. Revisit for 2.0: move the 17 hardcoded pairings onto semantic tokens so every failing pairing becomes themeable, then make `color-contrast` blocking in both the axe suite and Lighthouse. |
 | Packaging | `@averoui/react` ships no precompiled stylesheet. Plan §6.3 promises `@averoui/react/styles.css` (with a no-preflight option) for consumers who are not on Tailwind v4, but no build step produces it and no export references it. | Avero can only be consumed by Tailwind v4 projects. The Installation page documents the Tailwind path only and says so. | Add a Tailwind CLI step to `@averoui/react`'s build that compiles the classes used by `dist` into `styles.css` plus a no-preflight variant, add the exports and a size budget, then document the second path. Decided 2026-09-10 to keep this out of Phase 11. |
 | Testing | The browser matrix runs one version per engine. Playwright ships a single build of Chromium, Firefox and WebKit, so "the latest two versions of each" cannot be expressed, and WebKit is not Safari proper. | A regression specific to a Safari point release, or to the previous major of a browser, would be missed. | Accept for 1.0. If it matters later, add a hosted device-lab run (BrowserStack or similar) to the nightly `Browser matrix` workflow. |
 
@@ -18,8 +18,8 @@ Decision O-04 keeps Avero's default palette as designed and exposes the tokens s
 needs strict AA can darken them. This is the review Phase 12 asks for: every failing pairing, what
 causes it, and what to do about it.
 
-**The catch worth knowing before you rely on O-04:** only 13 of the 29 failing pairings come from an
-Avero token. The other 16 are Tailwind palette classes written directly into components, so a theme
+**The catch worth knowing before you rely on O-04:** only 13 of the 30 failing pairings come from an
+Avero token. The other 17 are Tailwind palette classes written directly into components, so a theme
 cannot reach them — fixing those needs a change to Avero itself, not a `@theme` block.
 
 ### Overridable by a token (13)
@@ -53,7 +53,7 @@ last column is the ratio it produces at the worst of that token's pairings.
 Overriding `--color-secondary` and `--color-warning` changes the brand, so treat those two as a
 deliberate trade rather than a fix to apply by default.
 
-### Needs a change to Avero (16)
+### Needs a change to Avero (17)
 
 These are palette classes in component source. A consumer cannot theme them; they are listed so the
 gap is not mistaken for something a `@theme` block covers.
@@ -66,7 +66,7 @@ gap is not mistaken for something a `@theme` block covers.
 | Solid danger badge | white on `red-500` | 3.81 | Use `red-600` as the fill (4.87) |
 | Empty state secondary text | `gray-300` on white | 1.47 | Use `gray-500` (4.84); this is the worst pairing in the library |
 | Meta text on the page background | `gray-500` on `background` | 4.40 | Use `gray-600` (6.87) — it already passes on white, so only the tinted background fails |
-| Checkbox and radio outline (unselected), on white and on the page background | `gray-300` on white / `background` (non-text, needs 3:1) | 1.34–1.47 | Chosen on 2026-09-23 for the soft look. Per instance, `className="border-gray-500/80"` on a `Checkbox` or `RadioGroupItem` restores 3:1 (3.28 on white, 3.07 on the background) |
+| Checkbox, radio and switch outline (off), on white and on the page background; switch thumb (off) is `gray-400` on white at 2.6 | `gray-300` on white / `background` (non-text, needs 3:1) | 1.34–1.47 | Chosen on 2026-09-23 for the soft look. Per instance, `className="border-gray-500/80"` on a `Checkbox`, `RadioGroupItem` or `Switch` restores the outline to 3:1 (3.28 on white, 3.07 on the background) |
 
 `Alert`'s tinted variants and `SegmentedControl`'s idle segments were already moved onto darker
 shades for exactly this reason, so the pattern is established.
