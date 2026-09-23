@@ -1,0 +1,149 @@
+/* Motion for the landing page. The hero's headline and stage move on one easing curve so the two
+   read as a single gesture; everything else on the page uses Avero's animation tokens. */
+
+.landing {
+  --landing-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------- Rotating headline phrase */
+
+/* Every phrase shares one grid cell, so the outgoing phrase and the incoming one overlap while they
+   cross instead of pushing each other onto a new line. */
+.landing-rotator {
+  display: inline-grid;
+  white-space: nowrap;
+}
+
+.landing-rotator > * {
+  grid-area: 1 / 1;
+}
+
+.landing-glyph {
+  display: inline-block;
+  animation: landing-glyph-in 900ms var(--landing-ease) both;
+  animation-delay: calc(var(--i, 0) * 34ms);
+}
+
+/* Where each glyph comes from. A phrase about direction travels in the direction it names. */
+.landing-phrase[data-motion="rise"] {
+  --from-x: 0;
+  --from-y: 0.45em;
+}
+
+.landing-phrase[data-motion="leftward"] {
+  --from-x: 0.7em;
+  --from-y: 0;
+}
+
+.landing-phrase[data-motion="rightward"] {
+  --from-x: -0.7em;
+  --from-y: 0;
+}
+
+.landing-phrase[data-leaving] {
+  animation: landing-phrase-out 520ms var(--landing-ease) forwards;
+}
+
+.landing-phrase[data-leaving="rise"] {
+  --to-x: 0;
+  --to-y: -0.4em;
+}
+
+.landing-phrase[data-leaving="leftward"] {
+  --to-x: -0.5em;
+  --to-y: 0;
+}
+
+.landing-phrase[data-leaving="rightward"] {
+  --to-x: 0.5em;
+  --to-y: 0;
+}
+
+@keyframes landing-glyph-in {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translate(var(--from-x), var(--from-y));
+  }
+}
+
+@keyframes landing-phrase-out {
+  to {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translate(var(--to-x), var(--to-y));
+  }
+}
+
+/* ---------------------------------------------------------------- Direction stage */
+
+/* Content arrives travelling the way it reads: from the left in English, from the right in Persian. */
+.landing-stage-enter {
+  animation: landing-stage-in 700ms var(--landing-ease) both;
+}
+
+.landing-stage-enter[dir="ltr"] {
+  --stage-shift: -18px;
+}
+
+.landing-stage-enter[dir="rtl"] {
+  --stage-shift: 18px;
+}
+
+@keyframes landing-stage-in {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateX(var(--stage-shift));
+  }
+}
+
+.landing-float {
+  animation: landing-float 7s ease-in-out infinite;
+}
+
+@keyframes landing-float {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ---------------------------------------------------------------- Backgrounds */
+
+.landing-grid {
+  background-image:
+    linear-gradient(to right, var(--color-fd-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-fd-border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 30%, transparent 100%);
+}
+
+/* ---------------------------------------------------------------- Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-glyph,
+  .landing-stage-enter {
+    animation: landing-fade 300ms linear both;
+    animation-delay: 0ms;
+  }
+
+  .landing-phrase[data-leaving] {
+    animation: landing-fade-out 300ms linear forwards;
+  }
+
+  .landing-float {
+    animation: none;
+  }
+}
+
+@keyframes landing-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes landing-fade-out {
+  to {
+    opacity: 0;
+  }
+}
