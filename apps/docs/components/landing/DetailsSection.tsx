@@ -80,7 +80,7 @@ export function DetailsSection() {
         These are handled inside the components, so they never reach your issue tracker.
       </SectionIntro>
 
-      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+      <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
         <Tile
           className="md:col-span-2 lg:col-span-4"
           title="Set in Lahzeh, nine weights"

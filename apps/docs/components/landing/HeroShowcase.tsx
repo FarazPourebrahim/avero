@@ -61,14 +61,14 @@ export function HeroShowcase() {
   const rendered = leaving === null ? [index] : [leaving, index];
 
   return (
-    <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-10">
+    <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-10">
       <div className="flex flex-col items-start">
         <p className="text-fd-muted-foreground border-fd-border bg-fd-card mb-7 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-xs">
           <span className="bg-secondary size-1.5 rounded-full" aria-hidden />
           React · Radix UI · Tailwind CSS v4
         </p>
 
-        <h1 className="text-fd-foreground text-[2.6rem] leading-[1.08] font-extrabold tracking-tight sm:text-6xl lg:text-[4.1rem]">
+        <h1 className="text-fd-foreground text-4xl leading-[1.08] font-extrabold tracking-tight min-[380px]:text-[2.6rem] sm:text-6xl lg:text-[4.1rem]">
           React components,
           <br />
           fluent in

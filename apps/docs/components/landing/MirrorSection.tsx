@@ -98,7 +98,7 @@ export function MirrorSection() {
       </SectionIntro>
 
       <div className="border-fd-border bg-fd-card mt-12 overflow-hidden rounded-3xl border">
-        <div className="border-fd-border text-fd-muted-foreground hidden border-b font-mono text-xs md:grid md:grid-cols-[1fr_minmax(0,1.1fr)_1fr]">
+        <div className="border-fd-border text-fd-muted-foreground hidden border-b font-mono text-xs md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)]">
           <p className="px-5 py-3">en-US · ltr</p>
           <p className="border-fd-border border-x px-5 py-3 text-center">the JSX</p>
           <p className="px-5 py-3 text-end">fa-IR · rtl</p>
@@ -108,7 +108,7 @@ export function MirrorSection() {
           {ROWS.map((row) => (
             <li
               key={row.caption}
-              className="border-fd-border grid border-b last:border-b-0 md:grid-cols-[1fr_minmax(0,1.1fr)_1fr]"
+              className="border-fd-border grid grid-cols-1 border-b last:border-b-0 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)]"
             >
               <div className="border-fd-border flex flex-col justify-center gap-1.5 border-b px-5 py-4 md:order-2 md:border-x md:border-b-0 md:text-center">
                 <p className="text-fd-foreground text-sm font-semibold">{row.caption}</p>

@@ -50,7 +50,7 @@ export function GetStartedSection() {
         {STEPS.map((step, index) => (
           <li
             key={step.title}
-            className="border-fd-border grid gap-6 border-t py-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12"
+            className="border-fd-border grid grid-cols-1 gap-6 border-t py-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12"
           >
             <div className="flex gap-5">
               <span

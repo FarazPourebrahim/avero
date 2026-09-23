@@ -91,7 +91,7 @@ export function HeroStage({ dir, onDirChange, onInteract, toolbarEnd }: HeroStag
   return (
     <div className="border-fd-border bg-fd-card relative rounded-[1.75rem] border p-1.5 shadow-[0_30px_80px_-30px] shadow-slate-900/25 dark:shadow-black/60">
       <div className="flex items-center justify-between gap-3 px-3 py-2">
-        <code className="text-fd-muted-foreground truncate text-xs" aria-live="polite">
+        <code className="text-fd-muted-foreground min-w-0 truncate text-xs" aria-live="polite">
           <span className="text-fd-foreground/60">&lt;html</span> dir=&quot;
           <span className="text-fd-foreground font-semibold">{dir}</span>&quot; lang=&quot;
           <span className="text-fd-foreground font-semibold">{t.lang}</span>&quot;
@@ -147,7 +147,7 @@ export function HeroStage({ dir, onDirChange, onInteract, toolbarEnd }: HeroStag
 
                 <CapacityMeter label={t.capacity} value={3} max={12} />
 
-                <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
                   <Field>
                     <FieldLabel>{t.start}</FieldLabel>
                     <FieldControl>
