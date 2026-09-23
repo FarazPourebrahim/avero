@@ -112,6 +112,35 @@
   }
 }
 
+/* ---------------------------------------------------------------- Both-ways marquee */
+
+.landing-marquee {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* Two identical copies side by side: moving by exactly half the track width lands the second copy
+   where the first began, so the loop has no visible seam. */
+.landing-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: landing-marquee 70s linear infinite;
+}
+
+.landing-marquee-track[data-reverse] {
+  animation-direction: reverse;
+  animation-duration: 80s;
+}
+
+.landing-marquee:hover .landing-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes landing-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ---------------------------------------------------------------- Backgrounds */
 
 .landing-grid {
@@ -135,7 +164,8 @@
     animation: landing-fade-out 300ms linear forwards;
   }
 
-  .landing-float {
+  .landing-float,
+  .landing-marquee-track {
     animation: none;
   }
 }

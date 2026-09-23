@@ -1,5 +1,6 @@
 import { DirectionSwitch } from "@/components/DirectionSwitch";
 import { gitConfig } from "@/lib/shared";
+import { BothWaysMarquee } from "./BothWaysMarquee";
 import { ClosingSection } from "./ClosingSection";
 import { ComponentGallery } from "./ComponentGallery";
 import { DetailsSection } from "./DetailsSection";
@@ -8,14 +9,6 @@ import { HeroShowcase } from "./HeroShowcase";
 import { MirrorSection } from "./MirrorSection";
 import { SectionIntro } from "./SectionIntro";
 import "./landing.css";
-
-// Kept to one short line each, so every figure sits on the same baseline at every width.
-const FACTS = [
-  { value: "70+", label: "Components" },
-  { value: "25", label: "Page blocks" },
-  { value: "9", label: "Layout shells" },
-  { value: "2", label: "Directions, one codebase" },
-] as const;
 
 const FOOTER_LINKS = [
   { label: "Documentation", href: "/docs" },
@@ -38,23 +31,7 @@ export function LandingPage() {
         <HeroShowcase />
       </section>
 
-      <section aria-label="Avero in numbers" className="border-fd-border relative border-y">
-        <dl className="mx-auto grid w-full max-w-6xl grid-cols-2 px-4 sm:px-6 lg:grid-cols-4">
-          {FACTS.map((fact, index) => (
-            <div
-              key={fact.label}
-              className={`border-fd-border flex flex-col-reverse justify-end gap-1 py-7 ${
-                index % 2 === 1 ? "border-s ps-5 sm:ps-8" : "pe-5 sm:pe-8"
-              } ${index >= 2 ? "border-t lg:border-t-0" : ""} ${index === 2 ? "lg:border-s lg:ps-8" : ""}`}
-            >
-              <dt className="text-fd-muted-foreground truncate text-sm leading-6">{fact.label}</dt>
-              <dd className="text-fd-foreground text-4xl leading-tight font-extrabold tracking-tight tabular-nums">
-                {fact.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+      <BothWaysMarquee />
 
       <div className="flex flex-col gap-28 py-28 sm:gap-36 sm:py-36">
         <MirrorSection />
