@@ -32,5 +32,5 @@ Before every release (Phase 12 and Phase 13), verify every item below and record
 
 ## Fonts and assets
 
-- [x] Redistributed font files match the licence terms (the Lahzeh licence allows redistribution). — Verified 2026-09-10: O-06 confirmed redistribution is permitted, and `packages/font/files/README.md` records the terms next to the files.
+- [x] Redistributed font files match the licence terms (the Lahzeh licence allows redistribution). — Verified 2026-09-10: O-02 confirmed redistribution is permitted, and `packages/font/files/README.md` records the terms next to the files.
 - [x] Brand icons are redistributable, with licences recorded next to the icon source. — Verified 2026-09-10: `packages/react/THIRD_PARTY_NOTICES.md` records Font Awesome Free 5 (CC BY 4.0), Heroicons v1 (MIT) and Ionicons v4 (MIT), each naming the glyphs used and the changes made.

@@ -82,7 +82,7 @@ Where this file and `.claude/CLAUDE.md` differ, this file wins for Avero-specifi
 - **Second digit — everything else that changes the surface**, breaking or additive: removing or renaming a component, prop, variant, token or CSS variable; changing a default that alters rendered output; raising a peer dependency floor; new components, props, variants, tokens or dictionary entries.
 - **Third digit — fixes.** Bug fixes, visual corrections, accessibility fixes that keep the API, dependency bumps with no API effect.
 - This is deliberately not semver: a breaking change normally lands in the second digit, so a consumer on a caret range (`^2.0.0`) can receive one without changing their range. Changesets still calls these levels major/minor/patch, so a routine breaking change is written as a `minor` changeset, and its entry must open by naming the break and the migration.
-- Packages are private until 1.0. The `avero` npm org must be reserved before the first publish.
+- Published to public npm under the `@averoui` scope (the `avero` organisation was taken, D-30), from the Release workflow only, with provenance via npm trusted publishing. Never publish from a developer's machine.
 
 ## Git
 
