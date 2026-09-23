@@ -113,6 +113,26 @@ describe("RadioGroup", () => {
     expect(onSubmit).toHaveReturnedWith("in-person");
   });
 
+  it("uses the soft palette: a light outline, then a blue tint with a popping dot", async () => {
+    render(<Delivery />);
+    const online = screen.getByRole("radio", { name: "آنلاین" });
+
+    expect(online).toHaveClass("size-6", "rounded-full", "border-2", "border-gray-300");
+    expect(online).toHaveClass("data-[state=checked]:bg-blue-50", "active:scale-95");
+
+    await userEvent.click(online);
+    const dot = online.querySelector('[data-slot="radio-group-indicator"]');
+    expect(dot).toHaveClass("bg-blue-600", "animate-check-pop");
+  });
+
+  it("outlines its options in red inside an invalid group", () => {
+    render(<Delivery aria-invalid />);
+
+    expect(screen.getByRole("radio", { name: "آنلاین" })).toHaveClass(
+      "[[aria-invalid=true]_&]:border-red-500",
+    );
+  });
+
   it("forwards refs", () => {
     const groupRef = createRef<HTMLDivElement>();
     const itemRef = createRef<HTMLButtonElement>();
