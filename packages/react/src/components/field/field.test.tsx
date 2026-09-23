@@ -103,6 +103,7 @@ describe("Field", () => {
 
     const error = screen.getByRole("alert");
     expect(error.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
+    expect(error).toHaveClass("bg-red-50", "text-red-700");
     expect(screen.getByRole("textbox")).toHaveAccessibleDescription("نام الزامی است");
   });
 

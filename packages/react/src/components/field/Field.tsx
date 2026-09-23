@@ -225,7 +225,8 @@ export const FieldError = forwardRef<HTMLParagraphElement, FieldErrorProps>(func
       role="alert"
       data-slot="field-error"
       className={cn(
-        "flex items-start gap-1.5 text-xs leading-5 font-medium text-red-600",
+        // A soft tinted note, like the rest of the form family, rather than bare red text.
+        "flex items-start gap-1.5 rounded-lg bg-red-50 px-2.5 py-1.5 text-xs leading-5 font-medium text-red-700",
         className,
       )}
       {...props}
