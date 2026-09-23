@@ -67,10 +67,15 @@ and `value`.
 
 ## Theming
 
-| Token              | Used by             |
-| ------------------ | ------------------- |
-| `--color-primary`  | Checked fill, focus |
-| `--color-gray-500` | Resting border      |
+| Token                   | Used by                                    |
+| ----------------------- | ------------------------------------------ |
+| `--color-primary`       | Checked and mixed fill, focus ring         |
+| `--color-primary-hover` | Checked and mixed fill on hover            |
+| `--color-gray-500`      | Resting border (`gray-600` on hover)       |
+| `--color-red-500`       | Border and focus ring while `aria-invalid` |
+
+The filled state, its hover, the focus ring and the 200ms timing are the primary
+[Button](./button)'s, so a checkbox and the button that submits it respond the same way.
 
 ## Do and don't
 

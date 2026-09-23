@@ -329,7 +329,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-03 | `Textarea` (`outline` default matching the other form controls; soft gray and slate variants) |
 | FM-05 | `Select` (custom trigger `rounded-xl`, rotating chevron, token-designed listbox) |
 | FM-06 | `Combobox` (searchable select, category variant) |
-| FM-07 | `Checkbox` |
+| FM-07 | `Checkbox` (filled state, hover, focus ring and timing follow the primary `Button`) |
 | FM-08 | `Radio` |
 | FM-09 | `Switch` |
 | FM-10 | `FileInput` / upload |
