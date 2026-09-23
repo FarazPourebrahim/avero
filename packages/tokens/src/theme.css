@@ -133,6 +133,9 @@
   --animate-spinner-dot: spinner-dot 1.2s ease-in-out infinite;
   --animate-spinner-bar: spinner-bar 1s ease-in-out infinite;
   --animate-spinner-spoke: spinner-spoke 1s linear infinite;
+  /* Checkbox: the tick draws itself in and the filled box pops, over roughly one Button press. */
+  --animate-check-draw: check-draw 0.3s ease-out 0.05s both;
+  --animate-check-pop: check-pop 0.25s ease-out;
   /* Accordion open/close: height and opacity animate over 300ms ease-in-out. */
   --animate-accordion-down: accordion-down 0.3s ease-in-out;
   --animate-accordion-up: accordion-up 0.3s ease-in-out;
@@ -270,6 +273,32 @@
     }
     to {
       opacity: 0.15;
+    }
+  }
+
+  /* The check path is under 24 units long, so a 24-unit dash covers it. Starting the offset at -24
+     reveals the path from its end, which on the check glyph is the short leg: the order a hand draws
+     it. */
+  @keyframes check-draw {
+    from {
+      stroke-dasharray: 24;
+      stroke-dashoffset: -24;
+    }
+    to {
+      stroke-dasharray: 24;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes check-pop {
+    0% {
+      transform: scale(0.85);
+    }
+    60% {
+      transform: scale(1.06);
+    }
+    to {
+      transform: scale(1);
     }
   }
 

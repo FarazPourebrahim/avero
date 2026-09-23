@@ -340,6 +340,14 @@ export const tokens = {
     "cssVar": "--animate-spinner-spoke",
     "value": "spinner-spoke 1s linear infinite"
   },
+  "animationCheckDraw": {
+    "cssVar": "--animate-check-draw",
+    "value": "check-draw 0.3s ease-out 0.05s both"
+  },
+  "animationCheckPop": {
+    "cssVar": "--animate-check-pop",
+    "value": "check-pop 0.25s ease-out"
+  },
   "animationAccordionDown": {
     "cssVar": "--animate-accordion-down",
     "value": "accordion-down 0.3s ease-in-out"
@@ -509,6 +517,8 @@ export const tokenGroups = {
     "spinner-dot",
     "spinner-bar",
     "spinner-spoke",
+    "check-draw",
+    "check-pop",
     "accordion-down",
     "accordion-up"
   ],

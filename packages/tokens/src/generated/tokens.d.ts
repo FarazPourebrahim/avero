@@ -85,6 +85,8 @@ export type TokenName =
   | "animationSpinnerDot"
   | "animationSpinnerBar"
   | "animationSpinnerSpoke"
+  | "animationCheckDraw"
+  | "animationCheckPop"
   | "animationAccordionDown"
   | "animationAccordionUp"
   | "zIndexRaised"
