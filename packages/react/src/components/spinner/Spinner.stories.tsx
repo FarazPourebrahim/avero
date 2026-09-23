@@ -5,7 +5,10 @@ const meta = {
   title: "Primitives/Spinner",
   component: Spinner,
   argTypes: {
-    variant: { control: "inline-radio", options: ["ring", "glow"] },
+    variant: {
+      control: "inline-radio",
+      options: ["ring", "track", "glow", "dots", "bars", "spokes"],
+    },
     size: { control: "inline-radio", options: ["xs", "sm", "md", "lg", "xl"] },
     tone: { control: "inline-radio", options: ["current", "primary", "muted", "inverse"] },
   },
@@ -49,4 +52,17 @@ export const Tones: Story = {
 
 export const Glow: Story = {
   args: { variant: "glow", size: "xl", labelled: true },
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div className="text-primary flex items-center gap-6">
+      <Spinner variant="ring" size="lg" />
+      <Spinner variant="track" size="lg" />
+      <Spinner variant="glow" size="lg" />
+      <Spinner variant="dots" size="lg" />
+      <Spinner variant="bars" size="lg" />
+      <Spinner variant="spokes" size="lg" />
+    </div>
+  ),
 };
