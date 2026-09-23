@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox } from "./Checkbox.js";
+import { CheckboxCard } from "./CheckboxCard.js";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Forms/Checkbox",
@@ -26,6 +27,21 @@ export const States: Story = {
           </label>
         </div>
       ))}
+    </div>
+  ),
+};
+
+export const Cards: Story = {
+  render: () => (
+    <div className="flex w-80 flex-col gap-3">
+      <CheckboxCard
+        title="جلسه‌های منتورینگ"
+        description="چهار جلسه یک‌به‌یک با مدرس"
+        aside="۱٬۲۰۰٬۰۰۰ تومان"
+        defaultChecked
+      />
+      <CheckboxCard title="گواهی چاپی" description="ارسال با پست پس از پایان دوره" />
+      <CheckboxCard title="دسترسی دائمی" description="برای همه ثبت‌نام‌ها فعال است" disabled />
     </div>
   ),
 };
