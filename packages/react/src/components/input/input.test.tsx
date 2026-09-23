@@ -31,6 +31,18 @@ describe("Input", () => {
     expect(screen.getByRole("textbox")).toHaveClass(expected);
   });
 
+  it.each(["soft", "slate"] as const)("gives the %s variant the shared soft focus", (variant) => {
+    render(<Input aria-label="x" variant={variant} />);
+
+    expect(screen.getByRole("textbox")).toHaveClass(
+      "border-2",
+      "rounded-2xl",
+      "focus:border-blue-400",
+      "focus:ring-blue-100",
+      "aria-invalid:border-red-500",
+    );
+  });
+
   it("accepts typed text", async () => {
     render(<Input aria-label="جستجو" />);
 

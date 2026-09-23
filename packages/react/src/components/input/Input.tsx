@@ -4,6 +4,8 @@ import { cn } from "../../utils/cn.js";
 import {
   formControlAriaInvalid,
   formControlFocus,
+  formControlSlateSurface,
+  formControlSoftSurface,
   formControlSurface,
 } from "../../utils/formControl.js";
 
@@ -25,8 +27,18 @@ export const inputVariants = cva(
         ],
         filter:
           "rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20",
-        soft: "rounded-2xl border border-gray-200 bg-gray-50 p-4 leading-6 focus:border-gray-500 focus:ring-2 focus:ring-indigo-500/20",
-        slate: "rounded-2xl border border-slate-200 p-4 focus:ring-2 focus:ring-indigo-500",
+        soft: [
+          formControlSoftSurface,
+          formControlFocus,
+          formControlAriaInvalid,
+          "p-4 leading-6 text-gray-900 placeholder:text-gray-500",
+        ],
+        slate: [
+          formControlSlateSurface,
+          formControlFocus,
+          formControlAriaInvalid,
+          "p-4 text-gray-900 placeholder:text-gray-500",
+        ],
       },
     },
     defaultVariants: { variant: "outline" },

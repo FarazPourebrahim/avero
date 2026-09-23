@@ -20,6 +20,11 @@ describe("Textarea", () => {
     render(<Textarea aria-label="دیدگاه" variant="soft" />);
 
     expect(screen.getByRole("textbox")).toHaveClass("bg-gray-50", "rounded-2xl", "p-4");
+    expect(screen.getByRole("textbox")).toHaveClass(
+      "border-2",
+      "focus:bg-white",
+      "focus:ring-blue-100",
+    );
   });
 
   it("renders the slate variant with a resizable box", () => {

@@ -7,6 +7,17 @@ export const formControlSurface =
   "rounded-xl border-2 border-gray-300 bg-white transition-all duration-300 hover:border-gray-400";
 
 /**
+ * The `soft` variant of `Input` and `Textarea`: a gray ground that turns white while focused, so the
+ * text being typed sits on the same white as every other focused control.
+ */
+export const formControlSoftSurface =
+  "rounded-2xl border-2 border-gray-200 bg-gray-50 transition-all duration-300 hover:border-gray-300 focus:bg-white";
+
+/** The `slate` variant of `Input` and `Textarea`: white, with the cooler slate outline. */
+export const formControlSlateSurface =
+  "rounded-2xl border-2 border-slate-200 bg-white transition-all duration-300 hover:border-slate-300";
+
+/**
  * Focus on the control itself: a blue outline with a soft halo. `blue-400` rather than a paler blue
  * keeps the focused field easy to find with a keyboard.
  */
