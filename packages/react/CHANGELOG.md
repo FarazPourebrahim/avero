@@ -1,5 +1,45 @@
 # @averoui/react
 
+## 2.1.0
+
+### Minor Changes
+
+- 5d92a48: Adds `CheckboxCard`, a checkbox presented as a bordered option with a `title`, an optional `description` and an optional `aside` such as a price. The whole card toggles the checkbox, and it takes a soft blue border and tint while checked. It accepts every `Checkbox` prop and forwards its ref to the checkbox, so it works in forms, with `Controller` and inside `FieldControl` like `Checkbox` does; the title is the checkbox's accessible name and the description its accessible description.
+
+  `Checkbox` is restyled onto the library's soft palette. The box is now 24px (was 20px) with a 2px `gray-300` outline that darkens to `gray-400` on hover, and a checked or mixed box is a `blue-50` tint with a `blue-200` outline and a `blue-600` tick instead of a solid primary fill. Checking pops the box and draws the tick in, pressing shrinks it slightly, and the focus ring turns red while `aria-invalid`. `base.css` settles the animations at once under reduced motion. The larger box can shift layouts that aligned text to the old 20px size. The unchecked outline is below the 3:1 contrast WCAG asks of control boundaries; where that matters, `className="border-gray-500/80"` restores it. Props and markup are unchanged.
+
+  `@averoui/tokens` adds the two animations behind it: `--animate-check-pop` and `--animate-check-draw`.
+
+- d43be78: Adds `RadioCard`, a `RadioGroup` option presented as a bordered card with a `title`, an optional `description` and an optional `aside` such as a price. It goes inside a `RadioGroup` in place of `RadioGroupItem`: the whole card chooses the option, the chosen card takes a soft blue border and tint, and arrow keys, `value` and form submission work as before. The title is the radio's accessible name and the description its accessible description.
+
+  `RadioGroupItem` is restyled onto the soft palette `Checkbox` now uses. An item is now 24px (was 20px) with a 2px `gray-300` outline that darkens to `gray-400` on hover; the chosen item is a `blue-50` tint with a `blue-200` outline and a `blue-600` dot, instead of a primary outline and dot. The dot pops in when an option is chosen, pressing shrinks the item slightly, and the focus ring sits 2px off the item. Every option's outline and focus ring now turn red while the group is `aria-invalid`, not only when the item itself is. The larger item can shift layouts that aligned text to the old 20px size. The unselected outline is below the 3:1 contrast WCAG asks of control boundaries; where that matters, `className="border-gray-500/80"` on each item restores it. Props and markup are unchanged.
+
+- 536ca2b: `Spinner` gains four variants next to `ring` and `glow`: `track`, an arc turning on a faint full circle; `dots`, three pulsing dots; `bars`, four bars rising and falling; and `spokes`, eight spokes fading in turn. All six follow the same sizes and tones, draw with the current colour (except `glow`), and stay decorative unless `labelled`. `ring` is still the default, so existing spinners and `Button`'s loading state render exactly as before. The root now also carries `data-variant`, and the parts of the new variants carry `data-slot="spinner-part"`.
+
+  `@averoui/tokens` adds the animations behind them: `--animate-spinner-dot`, `--animate-spinner-bar` and `--animate-spinner-spoke`.
+
+- f37694d: Adds `SwitchCard`, a setting presented as a bordered row with a `title` and an optional `description` at the inline start and the switch at the inline end. The whole card toggles the switch and takes a soft blue border and tint while on. It accepts every `Switch` prop and forwards its ref to the switch, so it works in forms and inside `FieldControl` like `Switch` does; the title is the switch's accessible name and the description its accessible description.
+
+  `Switch` is restyled onto the soft palette `Checkbox` and `RadioGroup` now use. The track keeps its 44×24 size but is now white with a 2px `gray-300` outline and a 16px `gray-400` thumb while off (was a solid `gray-500` track with a white 20px thumb), and a `blue-50` tint with a `blue-200` outline and a `blue-600` thumb once on (was a solid primary track). Pressing shrinks it slightly, the focus ring sits 2px off the track, and an `aria-invalid` switch now shows a red outline and focus ring instead of a red ring. The off outline and thumb are below the 3:1 contrast WCAG asks of controls; where that matters, `className="border-gray-500/80"` restores the outline. Props and markup are unchanged.
+
+- 804c42f: **Breaking:** `Input`, `Textarea` and `PriceInput` have a new default look. To keep the previous one, pass the old default explicitly:
+
+  ```tsx
+  <Input variant="filter" />
+  <PriceInput variant="filter" />
+  <Textarea variant="soft" />
+  ```
+
+  The new default, `outline`, is the treatment `Select`, `Combobox`, `DatePicker` and `TagInput` already use: 12px corners, a gray-300 border, a white ground, `py-2.5` and the blue focus ring, turning red while `aria-invalid`. A form that mixes these controls now reads as one family instead of three. `filter`, `soft` and `slate` are unchanged and still available.
+
+  `Field` is restyled to match: `FieldLabel` is `font-semibold` in `gray-800`, and `FieldError` is `font-medium` and led by a decorative alert icon, so an error is recognisable without relying on colour. The error's message is wrapped in a `<span>` next to the icon; its accessible text is unchanged.
+
+### Patch Changes
+
+- Updated dependencies [5d92a48]
+- Updated dependencies [536ca2b]
+  - @averoui/tokens@2.1.0
+
 ## 2.0.0
 
 ### Major Changes

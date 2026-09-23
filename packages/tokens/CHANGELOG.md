@@ -1,5 +1,19 @@
 # @averoui/tokens
 
+## 2.1.0
+
+### Minor Changes
+
+- 5d92a48: Adds `CheckboxCard`, a checkbox presented as a bordered option with a `title`, an optional `description` and an optional `aside` such as a price. The whole card toggles the checkbox, and it takes a soft blue border and tint while checked. It accepts every `Checkbox` prop and forwards its ref to the checkbox, so it works in forms, with `Controller` and inside `FieldControl` like `Checkbox` does; the title is the checkbox's accessible name and the description its accessible description.
+
+  `Checkbox` is restyled onto the library's soft palette. The box is now 24px (was 20px) with a 2px `gray-300` outline that darkens to `gray-400` on hover, and a checked or mixed box is a `blue-50` tint with a `blue-200` outline and a `blue-600` tick instead of a solid primary fill. Checking pops the box and draws the tick in, pressing shrinks it slightly, and the focus ring turns red while `aria-invalid`. `base.css` settles the animations at once under reduced motion. The larger box can shift layouts that aligned text to the old 20px size. The unchecked outline is below the 3:1 contrast WCAG asks of control boundaries; where that matters, `className="border-gray-500/80"` restores it. Props and markup are unchanged.
+
+  `@averoui/tokens` adds the two animations behind it: `--animate-check-pop` and `--animate-check-draw`.
+
+- 536ca2b: `Spinner` gains four variants next to `ring` and `glow`: `track`, an arc turning on a faint full circle; `dots`, three pulsing dots; `bars`, four bars rising and falling; and `spokes`, eight spokes fading in turn. All six follow the same sizes and tones, draw with the current colour (except `glow`), and stay decorative unless `labelled`. `ring` is still the default, so existing spinners and `Button`'s loading state render exactly as before. The root now also carries `data-variant`, and the parts of the new variants carry `data-slot="spinner-part"`.
+
+  `@averoui/tokens` adds the animations behind them: `--animate-spinner-dot`, `--animate-spinner-bar` and `--animate-spinner-spoke`.
+
 ## 1.0.1
 
 ### Patch Changes
