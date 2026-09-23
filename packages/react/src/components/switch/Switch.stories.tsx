@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Switch } from "./Switch.js";
+import { SwitchCard } from "./SwitchCard.js";
 
 const meta: Meta<typeof Switch> = {
   title: "Forms/Switch",
@@ -24,6 +25,16 @@ export const Settings: Story = {
           <Switch id={id} {...props} />
         </div>
       ))}
+    </div>
+  ),
+};
+
+export const Cards: Story = {
+  render: () => (
+    <div className="flex w-80 flex-col gap-3">
+      <SwitchCard title="خلاصه هفتگی" description="هر شنبه صبح" defaultChecked />
+      <SwitchCard title="حالت تمرکز" description="اعلان‌ها تا پایان جلسه بی‌صدا می‌شوند" />
+      <SwitchCard title="اعلان پیامکی" description="به‌زودی" disabled />
     </div>
   ),
 };
