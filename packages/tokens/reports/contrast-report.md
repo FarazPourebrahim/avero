@@ -29,9 +29,9 @@ Avero keeps these pairings in its default palette. Consumers who need strict AA 
 | Stat tile labels | `slate-500` on `white` | normal | 4.76 | 4.5 | ✅ |
 | Social icon buttons, location pill | `slate-600` on `slate-100` | normal | 6.92 | 4.5 | ✅ |
 | Dashboard chrome icon buttons | `zinc-600` on `zinc-50` | ui | 7.40 | 3 | ✅ |
-| Checkbox outline (unchecked) | `gray-300` on `white` | ui | 1.47 | 3 | ❌ |
-| Checkbox outline on the page background | `gray-300` on `background` | ui | 1.34 | 3 | ❌ |
-| Checkbox tick on its tinted fill | `blue-600` on `blue-50` | ui | 4.82 | 3 | ✅ |
+| Checkbox and radio outline (unselected) | `gray-300` on `white` | ui | 1.47 | 3 | ❌ |
+| Checkbox and radio outline on the page background | `gray-300` on `background` | ui | 1.34 | 3 | ❌ |
+| Checkbox tick and radio dot on their tinted fill | `blue-600` on `blue-50` | ui | 4.82 | 3 | ✅ |
 | Dashboard sidebar items | `zinc-600` on `white` | normal | 7.72 | 4.5 | ✅ |
 | Prose links | `indigo-600` on `white` | normal | 6.46 | 4.5 | ✅ |
 | Listing titles, price | `primary` on `white` | normal | 5.69 | 4.5 | ✅ |

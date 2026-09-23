@@ -75,14 +75,19 @@ const PAIRS = [
   { fg: "slate-600", bg: "slate-100", size: "normal", where: "Social icon buttons, location pill" },
   { fg: "zinc-600", bg: "zinc-50", size: "ui", where: "Dashboard chrome icon buttons" },
   // Form controls
-  { fg: "gray-300", bg: "white", size: "ui", where: "Checkbox outline (unchecked)" },
+  { fg: "gray-300", bg: "white", size: "ui", where: "Checkbox and radio outline (unselected)" },
   {
     fg: "gray-300",
     bg: "background",
     size: "ui",
-    where: "Checkbox outline on the page background",
+    where: "Checkbox and radio outline on the page background",
   },
-  { fg: "blue-600", bg: "blue-50", size: "ui", where: "Checkbox tick on its tinted fill" },
+  {
+    fg: "blue-600",
+    bg: "blue-50",
+    size: "ui",
+    where: "Checkbox tick and radio dot on their tinted fill",
+  },
   { fg: "zinc-600", bg: "white", size: "normal", where: "Dashboard sidebar items" },
   { fg: "indigo-600", bg: "white", size: "normal", where: "Prose links" },
   { fg: "primary", bg: "white", size: "normal", where: "Listing titles, price" },
