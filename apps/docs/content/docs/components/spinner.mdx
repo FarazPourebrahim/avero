@@ -1,6 +1,6 @@
 ---
 title: Spinner
-description: A busy indicator — a spinning ring, or the glow ring used while a page loads.
+description: A busy indicator in six styles — ring, track, glow, dots, bars and spokes.
 ---
 
 [View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/spinner)
@@ -9,18 +9,31 @@ description: A busy indicator — a spinning ring, or the glow ring used while a
 import { Spinner } from "@averoui/react";
 ```
 
-<ComponentPreview name="spinner/sizes" />
+<ComponentPreview name="spinner/variants" />
 
 ## Anatomy
 
-| Part | Slot                  | Notes                                           |
-| ---- | --------------------- | ----------------------------------------------- |
-| Root | `data-slot="spinner"` | A `<span>`; `aria-hidden` unless it is labelled |
+| Part  | Slot                       | Notes                                                      |
+| ----- | -------------------------- | ---------------------------------------------------------- |
+| Part  | Slot                       | Notes                                                      |
+| ----- | -------------------------- | ---------------------------------------------------------- |
+| Root  | `data-slot="spinner"`      | A `<span>`; `aria-hidden` unless it is labelled            |
+| Parts | `data-slot="spinner-part"` | `dots`, `bars` and `spokes` only: the dots, bars or spokes |
 
-A spinner has no inner structure: the ring is a border with one transparent side, and the glow
-variant is the `glow-ring` utility.
+`ring`, `track` and `glow` have no inner structure: `ring` is a border with one transparent side,
+`track` is a coloured arc on a faint full circle, and `glow` is the `glow-ring` utility. `dots`,
+`bars` and `spokes` are built from parts sized in percentages of the root, so all six follow the
+same size scale. The root also carries `data-variant`.
 
 ## Examples
+
+### Variants
+
+`ring` is the default and what `Button` shows while loading. `track` keeps the whole path visible,
+which reads calmer on a large surface. `dots` suit inline and conversational waits, `bars` a media
+or data refresh, and `spokes` a system-level wait. `glow` is the indigo spin for a full-page wait.
+
+<ComponentPreview name="spinner/variants" />
 
 ### Sizes
 
@@ -87,30 +100,37 @@ renders `role="status"` with an accessible name from the dictionary's `busy` ent
 
 A spinner that can fail must resolve into an explicit error state. Never leave one running forever.
 
-Under `prefers-reduced-motion` the token layer shortens or disables the animation, leaving a static
-ring.
+Under `prefers-reduced-motion` the token layer's `base.css` shortens every animation to a single
+near-instant cycle, so each variant settles into a still frame instead of moving.
 
 ## API reference
 
 <PropsTable file="components/spinner/Spinner.tsx" name="SpinnerOwnProps" />
 
-The root carries `data-slot="spinner"`.
+The root carries `data-slot="spinner"` and `data-variant`; the parts of `dots`, `bars` and
+`spokes` carry `data-slot="spinner-part"`.
 
 ## Theming
 
-| Token                 | Used for                      |
-| --------------------- | ----------------------------- |
-| `--color-primary`     | The `primary` tone            |
-| `--animate-spin-glow` | The `glow` variant's rotation |
-| `--color-gray-400`    | The `muted` tone              |
+| Token                     | Used for                                  |
+| ------------------------- | ----------------------------------------- |
+| `--color-primary`         | The `primary` tone                        |
+| `--color-gray-400`        | The `muted` tone                          |
+| `--animate-spin`          | The `ring` and `track` rotation           |
+| `--animate-spin-glow`     | The `glow` variant's rotation             |
+| `--animate-spinner-dot`   | Each dot's pulse in the `dots` variant    |
+| `--animate-spinner-bar`   | Each bar's rise and fall in `bars`        |
+| `--animate-spinner-spoke` | Each spoke's fade in the `spokes` variant |
 
-The `ring` variant draws with `currentColor`, so it takes the colour of whatever contains it —
+Every variant except `glow` draws with `currentColor`, so it takes the colour of whatever contains it —
 override with a text colour rather than a spinner prop.
 
 ## Do and don't
 
 - **Do** leave the spinner decorative inside a control that already announces itself busy.
 - **Do** use `tone="current"` inside buttons and links so it follows the label colour.
+- **Do** pick one variant for a product and keep to it; a screen that spins three different ways
+  reads as three different kinds of wait.
 - **Don't** show a bare spinner for a first page load where the shape of the content is known —
   use [`Skeleton`](./skeleton).
 - **Don't** use a spinner for progress you can measure. [`Progress`](./progress) tells the reader

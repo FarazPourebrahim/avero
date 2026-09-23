@@ -315,7 +315,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | P-08 | `Icon` + brand icons | size scale, `aria-hidden` default, `createIcon` |
 | P-09 | `Divider` | `gray-100`, `slate-100`, `gray-200`; horizontal and vertical |
 | P-10 | `Heading`, `Text`, `Eyebrow` | patterns from §4.3 |
-| P-11 | `Spinner` | `animate-spin`, `glow-ring` variant |
+| P-11 | `Spinner` | `ring` (`animate-spin`, default), `track`, `glow` (`glow-ring`), `dots`, `bars`, `spokes`; sizes `xs`–`xl`; tones |
 | P-12 | `Skeleton` | `shimmer`, `pulse`; `SkeletonCard` preset |
 | P-13 | `Progress` | linear `h-2 bg-gray-100 rounded-full`, primary fill, width transition |
 | P-14 | `VisuallyHidden`, `LiveRegion` | `sr-only` content and status announcer |

@@ -197,6 +197,7 @@ import SkeletonShapes from "./skeleton/shapes";
 import SpinnerInContext from "./spinner/in-context";
 import SpinnerSizes from "./spinner/sizes";
 import SpinnerTones from "./spinner/tones";
+import SpinnerVariants from "./spinner/variants";
 
 /** Every live demo, keyed by its file path under `demos/` (without extension). */
 export const demos = {
@@ -398,6 +399,7 @@ export const demos = {
   "spinner/in-context": SpinnerInContext,
   "spinner/sizes": SpinnerSizes,
   "spinner/tones": SpinnerTones,
+  "spinner/variants": SpinnerVariants,
 } satisfies Record<string, ComponentType>;
 
 export type DemoName = keyof typeof demos;
