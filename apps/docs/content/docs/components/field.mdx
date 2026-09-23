@@ -13,13 +13,13 @@ import { Field, FieldControl, FieldDescription, FieldError, FieldLabel } from "@
 
 ## Anatomy
 
-| Part             | Slot                            | Notes                                                          |
-| ---------------- | ------------------------------- | -------------------------------------------------------------- |
-| Field            | `data-slot="field"`             | Holds the ids; `data-invalid` and `data-disabled` mark state   |
-| FieldLabel       | `data-slot="field-label"`       | A `<label>` pointing at the control, with a `*` when required  |
-| FieldControl     | —                               | Renders no element: passes ids and ARIA to its only child      |
-| FieldDescription | `data-slot="field-description"` | Help text, always read with the control                        |
-| FieldError       | `data-slot="field-error"`       | Shown only while invalid and non-empty; an alert icon leads it |
+| Part             | Slot                            | Notes                                                                        |
+| ---------------- | ------------------------------- | ---------------------------------------------------------------------------- |
+| Field            | `data-slot="field"`             | Holds the ids; `data-invalid` and `data-disabled` mark state                 |
+| FieldLabel       | `data-slot="field-label"`       | A `<label>` pointing at the control, with a `*` when required                |
+| FieldControl     | —                               | Renders no element: passes ids and ARIA to its only child                    |
+| FieldDescription | `data-slot="field-description"` | Help text, always read with the control                                      |
+| FieldError       | `data-slot="field-error"`       | Shown only while invalid and non-empty: a soft red note led by an alert icon |
 
 ## Usage
 
@@ -97,11 +97,13 @@ label text, so the field reads correctly in both directions.
 
 ## Theming
 
-| Token              | Used by                  |
-| ------------------ | ------------------------ |
-| `--color-gray-800` | Label                    |
-| `--color-gray-500` | Description              |
-| `--color-red-600`  | Error text and icon, `*` |
+| Token              | Used by             |
+| ------------------ | ------------------- |
+| `--color-gray-800` | Label               |
+| `--color-gray-500` | Description         |
+| `--color-red-50`   | Error background    |
+| `--color-red-700`  | Error text and icon |
+| `--color-red-600`  | Required `*`        |
 
 The field adds no box of its own: the control inside it brings the border, radius and focus ring.
 [Input](./input), [Textarea](./textarea), [Select](./select), [Combobox](./combobox),

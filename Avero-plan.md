@@ -324,8 +324,8 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 ### 5.3 Forms (FM)
 | ID | Component |
 | --- | --- |
-| FM-01 | `Field` (label, description, error with an alert icon, required) |
-| FM-02 | `Input` (`outline` default matching the other form controls; filter, soft and slate treatments; invalid state) |
+| FM-01 | `Field` (label, description, error as a soft red note with an alert icon, required) |
+| FM-02 | `Input` (`outline` default matching the other form controls, from the shared soft treatment in `utils/formControl.ts`; filter, soft and slate treatments; invalid state) |
 | FM-03 | `Textarea` (`outline` default matching the other form controls; soft gray and slate variants) |
 | FM-05 | `Select` (custom trigger `rounded-xl`, rotating chevron, token-designed listbox) |
 | FM-06 | `Combobox` (searchable select, category variant) |
@@ -339,7 +339,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-11 | `PriceInput` (toman, thousands separators, Persian digit normalisation) |
 | FM-12 | `TagInput` |
 | FM-13 | `DatePicker` (Jalali): `single` and `range` modes, ISO `YYYY-MM-DD` values, typed entry in Persian or Latin digits plus a calendar popover (user, 2026-08-18) |
-| FM-14 | `OtpInput` |
+| FM-14 | `OtpInput` (soft palette: empty boxes a 2px `gray-300` outline, filled boxes a `blue-50` tint with `blue-700` digits that pop in, the next box a `blue-400` focus halo) |
 | FM-15 | `FormActions` row (hint text + submit) |
 
 ### 5.4 Navigation and disclosure (N)

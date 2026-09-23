@@ -66,7 +66,7 @@ gap is not mistaken for something a `@theme` block covers.
 | Solid danger badge | white on `red-500` | 3.81 | Use `red-600` as the fill (4.87) |
 | Empty state secondary text | `gray-300` on white | 1.47 | Use `gray-500` (4.84); this is the worst pairing in the library |
 | Meta text on the page background | `gray-500` on `background` | 4.40 | Use `gray-600` (6.87) — it already passes on white, so only the tinted background fails |
-| Checkbox, radio and switch outline (off), on white and on the page background; switch thumb (off) is `gray-400` on white at 2.6 | `gray-300` on white / `background` (non-text, needs 3:1) | 1.34–1.47 | Chosen on 2026-09-23 for the soft look. Per instance, `className="border-gray-500/80"` on a `Checkbox`, `RadioGroupItem` or `Switch` restores the outline to 3:1 (3.28 on white, 3.07 on the background) |
+| Form control outline at rest (checkbox, radio, switch, the text-entry family and OTP boxes), on white and on the page background; switch thumb (off) is `gray-400` on white at 2.6 | `gray-300` on white / `background` (non-text, needs 3:1) | 1.34–1.47 | Chosen on 2026-09-23 for the soft look. Per instance, `className="border-gray-500/80"` on any of these controls (`slotClassName` on `OtpInput`) restores the outline to 3:1 (3.28 on white, 3.07 on the background) |
 
 `Alert`'s tinted variants and `SegmentedControl`'s idle segments were already moved onto darker
 shades for exactly this reason, so the pattern is established.

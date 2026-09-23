@@ -24,7 +24,7 @@ alternative treatments.
 
 ### Variants
 
-`outline` is the default and the standard form control: the same 12px corners, gray-300 border,
+`outline` is the default and the standard form control: the same 12px corners, 2px gray-300 outline,
 white ground and blue focus ring as [Select](./select), [Combobox](./combobox),
 [DatePicker](./date-picker) and [TagInput](./tag-input), so a form made of mixed controls reads as
 one. `filter` is the compact square box. `soft` and `slate` mirror the comment-box treatments of
@@ -69,12 +69,13 @@ left-to-right values such as emails, phone numbers or URLs.
 
 ## Theming
 
-| Token                | Used by                       |
-| -------------------- | ----------------------------- |
-| `--color-gray-300`   | `outline` and `filter` border |
-| `--color-blue-500`   | `outline` and `filter` focus  |
-| `--color-red-500`    | Border while `aria-invalid`   |
-| `--color-indigo-500` | `soft`/`slate` focus          |
+| Token                | Used by                                             |
+| -------------------- | --------------------------------------------------- |
+| `--color-gray-300`   | `outline` and `filter` border (`gray-400` on hover) |
+| `--color-blue-400`   | `outline` Focus outline, with a `blue-100` halo     |
+| `--color-blue-500`   | `filter` focus                                      |
+| `--color-red-500`    | Border while `aria-invalid`                         |
+| `--color-indigo-500` | `soft`/`slate` focus                                |
 
 ## Do and don't
 

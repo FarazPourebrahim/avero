@@ -75,12 +75,17 @@ const PAIRS = [
   { fg: "slate-600", bg: "slate-100", size: "normal", where: "Social icon buttons, location pill" },
   { fg: "zinc-600", bg: "zinc-50", size: "ui", where: "Dashboard chrome icon buttons" },
   // Form controls
-  { fg: "gray-300", bg: "white", size: "ui", where: "Checkbox, radio and switch outline (off)" },
+  {
+    fg: "gray-300",
+    bg: "white",
+    size: "ui",
+    where: "Form control outline at rest (checkbox, radio, switch, text fields, OTP)",
+  },
   {
     fg: "gray-300",
     bg: "background",
     size: "ui",
-    where: "Checkbox, radio and switch outline on the page background",
+    where: "Form control outline at rest, on the page background",
   },
   {
     fg: "blue-600",

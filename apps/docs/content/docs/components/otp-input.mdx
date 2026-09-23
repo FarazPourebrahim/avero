@@ -73,7 +73,10 @@ Codes are read left to right even inside Persian text, so the boxes and the inpu
 
 - The boxes are `aria-hidden`; the input carries the value, name and description.
 - `inputmode="numeric"` opens the number keyboard on phones.
-- The box borders are `gray-500`, which meets the 3:1 contrast WCAG requires for form controls.
+- **Contrast trade-off.** Empty boxes have a `gray-300` outline (1.47:1 on white), below the 3:1
+  WCAG asks of a control's boundary, the same deliberate choice as the other form controls,
+  recorded in `docs/known-debts.md`. Filled boxes pass: the digit is `blue-700` on `blue-50`.
+  Where strict AA matters, `slotClassName="border-gray-500/80"` restores 3:1.
 
 ## API reference
 
@@ -83,11 +86,16 @@ Codes are read left to right even inside Persian text, so the boxes and the inpu
 
 ## Theming
 
-| Token              | Used by                 |
-| ------------------ | ----------------------- |
-| `--color-primary`  | Active box border, ring |
-| `--color-gray-500` | Box borders             |
-| `--animate-blink`  | Caret in the next box   |
+| Token                 | Used by                                                 |
+| --------------------- | ------------------------------------------------------- |
+| `--color-gray-300`    | Empty box outline                                       |
+| `--color-blue-50`     | Filled box fill                                         |
+| `--color-blue-200`    | Filled box outline                                      |
+| `--color-blue-700`    | Digits in filled boxes                                  |
+| `--color-blue-400`    | The box awaiting the next digit, with a `blue-100` halo |
+| `--color-blue-600`    | The caret                                               |
+| `--animate-check-pop` | Each digit popping in                                   |
+| `--animate-blink`     | Caret in the next box                                   |
 
 ## Do and don't
 
