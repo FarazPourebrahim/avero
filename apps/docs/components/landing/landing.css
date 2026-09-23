@@ -14,8 +14,12 @@
   white-space: nowrap;
 }
 
+/* Each phrase shrinks to its own width at the headline's start edge. Stretched to the cell, a
+   right-to-left phrase would align to the far edge while a wider phrase is leaving, then jump back
+   once that phrase is removed. */
 .landing-rotator > * {
   grid-area: 1 / 1;
+  justify-self: start;
 }
 
 .landing-glyph {

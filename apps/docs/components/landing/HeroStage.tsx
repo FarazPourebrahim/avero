@@ -163,7 +163,9 @@ export function HeroStage({ dir, onDirChange, onInteract, toolbarEnd }: HeroStag
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Button block size="lg" elevated>
+                  {/* `flex-1` rather than `block`: the button is `shrink-0`, so a full-width button
+                    would push the icon button out of the card. */}
+                  <Button size="lg" elevated className="min-w-0 flex-1">
                     {t.enrol}
                   </Button>
                   <IconButton
