@@ -23,7 +23,7 @@ describe("Checkbox", () => {
 
     expect(checkbox).toHaveAttribute("aria-checked", "false");
     expect(checkbox).toHaveAttribute("data-slot", "checkbox");
-    expect(checkbox).toHaveClass("size-5", "rounded-md", "border-gray-500");
+    expect(checkbox).toHaveClass("size-5", "rounded-lg", "border-gray-500");
   });
 
   it("toggles on click and reports the new state", async () => {
@@ -137,6 +137,18 @@ describe("Checkbox", () => {
       "aria-invalid:focus-visible:ring-red-500/40",
     );
     expect(checkbox.querySelector("svg")).toHaveAttribute("stroke-width", "3");
+  });
+
+  it("presses, pops when checked and draws its tick in", () => {
+    render(<Checkbox aria-label="خبرنامه" defaultChecked />);
+    const checkbox = screen.getByRole("checkbox");
+
+    expect(checkbox).toHaveClass(
+      "rounded-lg",
+      "active:scale-95",
+      "data-[state=checked]:animate-check-pop",
+    );
+    expect(checkbox.querySelector("svg")).toHaveClass("[&_path]:animate-check-draw");
   });
 
   it("forwards refs", () => {

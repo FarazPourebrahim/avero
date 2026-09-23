@@ -10,7 +10,8 @@ export type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Ro
 /**
  * A checkbox for independent on/off choices. `checked="indeterminate"` shows the mixed state of a
  * "select all" row. The resting border meets the 3:1 contrast required for form controls; the
- * filled state, hover, focus ring and timing follow the primary `Button`.
+ * filled state, hover, press, focus ring and timing follow the primary `Button`. Checking pops the
+ * box and draws the tick in; `base.css` settles both at once under reduced motion.
  */
 export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Checkbox(
   { className, ...props },
@@ -21,8 +22,9 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
       ref={ref}
       data-slot="checkbox"
       className={cn(
-        "group inline-flex size-5 shrink-0 cursor-pointer items-center justify-center rounded-md border border-gray-500 bg-white text-white transition-all duration-200",
-        "data-[state=unchecked]:hover:border-gray-600",
+        "group inline-flex size-5 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-gray-500 bg-white text-white transition-all duration-200 active:scale-95",
+        "data-[state=unchecked]:shadow-xs data-[state=unchecked]:hover:border-gray-600",
+        "data-[state=checked]:animate-check-pop data-[state=indeterminate]:animate-check-pop",
         "data-[state=checked]:border-primary data-[state=checked]:bg-primary",
         "data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary",
         "data-[state=checked]:hover:border-primary-hover data-[state=checked]:hover:bg-primary-hover",
@@ -38,8 +40,12 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(function Ch
         data-slot="checkbox-indicator"
         className="flex items-center justify-center"
       >
-        {/* A 3-unit stroke: the icons' default 2 draws barely more than 1px at this size. */}
-        <CheckIcon strokeWidth={3} className="size-3.5 group-data-[state=indeterminate]:hidden" />
+        {/* A 3-unit stroke: the icons' default 2 draws barely more than 1px at this size. The
+            indicator only mounts once checked, so the tick draws itself in every time. */}
+        <CheckIcon
+          strokeWidth={3}
+          className="[&_path]:animate-check-draw size-3.5 group-data-[state=indeterminate]:hidden"
+        />
         <MinusIcon
           strokeWidth={3}
           className="hidden size-3.5 group-data-[state=indeterminate]:block"
