@@ -1,6 +1,12 @@
 "use client";
 
-import { forwardRef, useId, type ReactNode } from "react";
+import {
+  forwardRef,
+  useId,
+  type ForwardRefExoticComponent,
+  type ReactNode,
+  type RefAttributes,
+} from "react";
 import { cn } from "../../utils/cn.js";
 import { Checkbox, type CheckboxProps } from "./Checkbox.js";
 
@@ -24,7 +30,11 @@ export type CheckboxCardProps = Omit<CheckboxProps, keyof CheckboxCardOwnProps |
  * primary colour while checked. Use it where each choice needs a title and a line of explanation.
  * The ref and every checkbox prop go to the checkbox, so it works with forms like `Checkbox` does.
  */
-export const CheckboxCard = forwardRef<HTMLButtonElement, CheckboxCardProps>(function CheckboxCard(
+// Annotated rather than inferred: the inferred type reaches into Radix's own props type, which the
+// declaration build cannot name from here (TS2883).
+export const CheckboxCard: ForwardRefExoticComponent<
+  CheckboxCardProps & RefAttributes<HTMLButtonElement>
+> = forwardRef<HTMLButtonElement, CheckboxCardProps>(function CheckboxCard(
   { title, description, aside, className, checkboxClassName, id, ...props },
   ref,
 ) {
