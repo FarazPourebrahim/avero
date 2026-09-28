@@ -21,10 +21,11 @@ const SAMPLES: Record<NonNullable<ToastOptions["tone"]>, ToastOptions> = {
       onClick: () => {},
     },
   },
+  loading: { tone: "loading", title: "در حال ارسال…", description: "پیام شما در حال ارسال است." },
 };
 
 function Triggers() {
-  const { toast, dismiss } = useToast();
+  const { toast, dismiss, promise } = useToast();
   return (
     <div className="flex flex-wrap gap-2">
       <Button variant="outline" onClick={() => toast(SAMPLES.info)}>
@@ -38,6 +39,18 @@ function Triggers() {
       </Button>
       <Button variant="outline" onClick={() => toast(SAMPLES.danger)}>
         خطا
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() =>
+          void promise(new Promise((resolve) => setTimeout(resolve, 2000)), {
+            loading: { title: "در حال ارسال…" },
+            success: { title: "پیام ارسال شد" },
+            error: { title: "ارسال نشد" },
+          })
+        }
+      >
+        ارسال (در حال بارگذاری، سپس موفق)
       </Button>
       <Button variant="ghost" onClick={() => dismiss()}>
         بستن همه
@@ -94,6 +107,15 @@ export const WithAction: Story = {
   render: () => (
     <ToastProvider>
       <ShownOnMount tones={["danger"]} />
+    </ToastProvider>
+  ),
+};
+
+export const Loading: Story = {
+  name: "Loading (open)",
+  render: () => (
+    <ToastProvider>
+      <ShownOnMount tones={["loading", "success"]} />
     </ToastProvider>
   ),
 };

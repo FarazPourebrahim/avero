@@ -22,8 +22,9 @@ import {
 import { cn } from "../../utils/cn.js";
 import { alertIconClasses } from "../alert/alert.variants.js";
 import { Button } from "../button/Button.js";
+import { Spinner } from "../spinner/Spinner.js";
 
-export type ToastTone = "info" | "success" | "warning" | "danger";
+export type ToastTone = "info" | "success" | "warning" | "danger" | "loading";
 
 export type ToastAction = {
   /** Visible label of the action button. */
@@ -37,7 +38,10 @@ export type ToastAction = {
 };
 
 export type ToastOptions = {
-  /** Meaning, icon and progress colour. `danger` toasts are announced assertively. @defaultValue "info" */
+  /**
+   * Meaning, icon and progress colour. `danger` toasts are announced assertively. `loading` shows a
+   * spinner and stays open until it is updated or dismissed. @defaultValue "info"
+   */
   tone?: ToastTone;
   /** The message. Keep it short: a toast is read once, in passing. */
   title: ReactNode;
@@ -45,22 +49,51 @@ export type ToastOptions = {
   description?: ReactNode;
   /** One button next to the message. Clicking it also closes the toast. */
   action?: ToastAction;
-  /** Milliseconds before it closes; `Infinity` keeps it open. @defaultValue the provider's `duration` */
+  /**
+   * Milliseconds before it closes; `Infinity` keeps it open. @defaultValue the provider's
+   * `duration`, or `Infinity` for a `loading` toast
+   */
   duration?: number;
+};
+
+/** What `promise()` shows at one stage: the options of a toast, without its tone. */
+export type ToastPromiseStage = Omit<ToastOptions, "tone">;
+
+/** The three stages of `promise()`. `success` and `error` can be computed from the outcome. */
+export type ToastPromiseOptions<T> = {
+  /** Shown while the promise is pending, as a `loading` toast. */
+  loading: ToastPromiseStage;
+  /** Replaces it once the promise resolves, as a `success` toast. */
+  success: ToastPromiseStage | ((value: T) => ToastPromiseStage);
+  /** Replaces it if the promise rejects, as a `danger` toast. */
+  error: ToastPromiseStage | ((error: unknown) => ToastPromiseStage);
 };
 
 export type ToastApi = {
   /** Shows a toast and returns its id. */
   toast: (options: ToastOptions) => number;
+  /**
+   * Changes a toast in place, e.g. a `loading` toast into `success` or `danger`. Omitted options
+   * keep their values, except that `duration` falls back to the new tone's default. The updated
+   * toast is announced again and its timer starts over. Does nothing once the toast has closed.
+   */
+  update: (id: number, options: Partial<ToastOptions>) => void;
   /** Closes one toast by id, or every toast without an id. */
   dismiss: (id?: number) => void;
+  /**
+   * Shows a `loading` toast while `promise` is pending, then turns it into `success` or `danger`.
+   * Returns the same promise, so a rejection still reaches the caller.
+   */
+  promise: <T>(promise: Promise<T>, options: ToastPromiseOptions<T>) => Promise<T>;
 };
 
-type ToastItem = ToastOptions & { id: number };
+// `revision` counts updates. An update remounts the Radix toast, which is what restarts its timer
+// with the new duration and announces the new message; Radix reads both only once per mount.
+type ToastItem = ToastOptions & { id: number; revision: number };
 
 const ToastContext = createContext<ToastApi | null>(null);
 
-/** Returns `toast` and `dismiss` from the nearest `ToastProvider`. */
+/** Returns `toast`, `update`, `dismiss` and `promise` from the nearest `ToastProvider`. */
 export function useToast(): ToastApi {
   const api = useContext(ToastContext);
   if (!api) {
@@ -74,6 +107,12 @@ const toneIcons: Record<ToastTone, ReactNode> = {
   success: <CircleCheckIcon />,
   warning: <TriangleAlertIcon />,
   danger: <CircleAlertIcon />,
+  loading: <Spinner size="md" />,
+};
+
+const iconClasses: Record<ToastTone, string> = {
+  ...alertIconClasses,
+  loading: "text-primary",
 };
 
 const progressClasses: Record<ToastTone, string> = {
@@ -81,6 +120,7 @@ const progressClasses: Record<ToastTone, string> = {
   success: "bg-green-500",
   warning: "bg-amber-500",
   danger: "bg-red-500",
+  loading: "bg-primary",
 };
 
 /** Props of `ToastProvider`. */
@@ -121,13 +161,45 @@ export function ToastProvider({
     (options: ToastOptions) => {
       nextId.current += 1;
       const id = nextId.current;
-      setItems((current) => [...current, { ...options, id }].slice(-limit));
+      setItems((current) => [...current, { ...options, id, revision: 0 }].slice(-limit));
       return id;
     },
     [limit],
   );
 
-  const api = useMemo(() => ({ toast, dismiss }), [toast, dismiss]);
+  const update = useCallback((id: number, options: Partial<ToastOptions>) => {
+    setItems((current) =>
+      current.map((item) =>
+        item.id === id
+          ? { ...item, duration: undefined, ...options, id, revision: item.revision + 1 }
+          : item,
+      ),
+    );
+  }, []);
+
+  const promise = useCallback(
+    <T,>(pending: Promise<T>, options: ToastPromiseOptions<T>) => {
+      const id = toast({ ...options.loading, tone: "loading" });
+      pending.then(
+        (value) => {
+          const stage =
+            typeof options.success === "function" ? options.success(value) : options.success;
+          update(id, { description: undefined, action: undefined, ...stage, tone: "success" });
+        },
+        (error: unknown) => {
+          const stage = typeof options.error === "function" ? options.error(error) : options.error;
+          update(id, { description: undefined, action: undefined, ...stage, tone: "danger" });
+        },
+      );
+      return pending;
+    },
+    [toast, update],
+  );
+
+  const api = useMemo(
+    () => ({ toast, update, dismiss, promise }),
+    [toast, update, dismiss, promise],
+  );
 
   return (
     <ToastContext.Provider value={api}>
@@ -140,9 +212,9 @@ export function ToastProvider({
         {children}
         {items.map((item) => (
           <ToastCard
-            key={item.id}
+            key={`${item.id}:${item.revision}`}
             item={item}
-            duration={item.duration ?? duration}
+            duration={item.duration ?? (item.tone === "loading" ? Infinity : duration)}
             closeLabel={dictionary.close}
             onClose={() => dismiss(item.id)}
           />
@@ -208,14 +280,16 @@ function ToastCard({ item, duration, closeLabel, onClose }: ToastCardProps) {
       data-paused={paused}
       className={cn(
         "shadow-elevated relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border border-gray-100 bg-white p-4 pe-10 text-sm leading-6",
-        "data-[state=open]:animate-slide-up data-[swipe=end]:hidden",
+        // Only a new toast slides in; an updated one is remounted in place and should not.
+        item.revision === 0 && "data-[state=open]:animate-slide-up",
+        "data-[swipe=end]:hidden",
         "data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-transform data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x)",
       )}
     >
       <span
         aria-hidden
         data-slot="toast-icon"
-        className={cn("mt-0.5 flex shrink-0 [&>svg]:size-5", alertIconClasses[tone])}
+        className={cn("mt-0.5 flex shrink-0 [&>svg]:size-5", iconClasses[tone])}
       >
         {toneIcons[tone]}
       </span>

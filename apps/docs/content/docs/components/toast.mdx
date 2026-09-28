@@ -17,7 +17,7 @@ import { ToastProvider, useToast } from "@averoui/react";
 | ----------- | ------------------------------- | ------------------------------------------------------ |
 | Viewport    | `data-slot="toast-viewport"`    | Fixed region on `--z-toast`; `role="region"`           |
 | Toast       | `data-slot="toast"`             | `data-tone`, `data-paused`, `data-state`, `data-swipe` |
-| Icon        | `data-slot="toast-icon"`        | The tone's icon                                        |
+| Icon        | `data-slot="toast-icon"`        | The tone's icon, or a spinner for `loading`            |
 | Title       | `data-slot="toast-title"`       | Bold headline                                          |
 | Description | `data-slot="toast-description"` | The message                                            |
 | Action      | `data-slot="toast-action"`      | Optional button; clicking it also closes the toast     |
@@ -40,17 +40,36 @@ Render one `ToastProvider` near the root, inside `AveroProvider`. Anything insid
 ## Usage
 
 ```tsx
-const { toast, dismiss } = useToast();
+const { toast, update, dismiss, promise } = useToast();
 
 toast({ tone: "success", title: "ذخیره شد", description: "تغییرات پروفایل ذخیره شد." });
 
-const id = toast({ tone: "info", title: "در حال بارگذاری فایل…", duration: Infinity });
+// A loading toast that becomes the result in place.
+const id = toast({ tone: "loading", title: "در حال ارسال…" });
+update(id, { tone: "success", title: "پیام ارسال شد" });
+
+// The same, driven by a promise.
+promise(sendMessage(), {
+  loading: { title: "در حال ارسال…" },
+  success: { title: "پیام ارسال شد" },
+  error: (error) => ({ title: "ارسال نشد", description: describe(error) }),
+});
+
 dismiss(id);
 ```
 
-- **Tones:** `info` (default), `success`, `warning` and `danger`.
+- **Tones:** `info` (default), `success`, `warning`, `danger` and `loading`. A `loading` toast shows
+  a spinner in the brand colour and stays open until it is updated or dismissed.
 - **Duration:** 5 seconds by default; set it per toast or on the provider. `Infinity` keeps a toast
-  open until it is closed.
+  open until it is closed, and is the default for `loading`.
+- **Updating:** `update(id, options)` changes a toast's tone, message, action or duration where it
+  stands. Options you leave out keep their values, except `duration`, which falls back to the new
+  tone's default — so a `loading` toast updated to `success` starts the provider's timer. An update
+  is announced again. Updating a toast that has already closed does nothing.
+- **Promises:** `promise(pending, { loading, success, error })` shows `loading` straight away and
+  turns into a `success` or `danger` toast when `pending` settles; `success` and `error` can be
+  functions of the value or the error. It returns `pending` itself, so a rejection still reaches
+  your own code.
 - **Stacking:** new toasts join the bottom of the stack. With more than `limit` (3 by default), the
   oldest closes.
 - **Pause on hover:** the timer and the progress bar pause while a toast is hovered or focused, and
@@ -70,6 +89,14 @@ tells a screen reader user how to do the same thing without it. `duration: Infin
 until it is dismissed, and the provider's `limit` caps how many stack at once.
 
 <ComponentPreview name="toast/action" />
+
+### Loading, then the result
+
+Use a `loading` toast for work the user started and is waiting on, such as sending a message, and
+turn it into the outcome with `update` or `promise` rather than closing it and opening another. The
+result replaces the spinner in the same place, without sliding in again.
+
+<ComponentPreview name="toast/loading" />
 
 ## Right-to-left
 
@@ -93,7 +120,9 @@ the close button and the progress bar, which drains toward the inline start, all
 | <kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves between toasts and their buttons |
 | <kbd>Escape</kbd>                                  | Closes the focused toast               |
 
-- Toasts are announced by a live region: `danger` toasts assertively, the others politely.
+- Toasts are announced by a live region: `danger` toasts assertively, the others — `loading`
+  included — politely. An updated toast is announced again, with its new politeness, so the outcome
+  of a `loading` toast is heard.
 - Focus is never moved to a toast, so reading or typing isn't interrupted.
 - Anything a toast action does must also be possible elsewhere in the page, since a toast can close
   before a keyboard or screen reader user reaches it. `altText` tells screen reader users where.
@@ -103,23 +132,34 @@ the close button and the progress bar, which drains toward the inline start, all
 
 <PropsTable file="components/toast/Toast.tsx" name="ToastProviderProps" />
 
-`toast()` accepts:
+`useToast()` returns:
+
+<PropsTable file="components/toast/Toast.tsx" name="ToastApi" />
+
+`toast()` accepts, and `update()` accepts any of:
 
 <PropsTable file="components/toast/Toast.tsx" name="ToastOptions" />
 
+`promise()` takes, for each stage, the same options without `tone`:
+
+<PropsTable file="components/toast/Toast.tsx" name="ToastPromiseOptions" />
+
 ## Theming
 
-| Token                                                                           | Used by         |
-| ------------------------------------------------------------------------------- | --------------- |
-| `--shadow-elevated`                                                             | Toast           |
-| `--z-toast`                                                                     | Viewport        |
-| `--animate-slide-up`                                                            | Entering toasts |
-| `--color-blue-500`, `--color-green-500`, `--color-amber-500`, `--color-red-500` | Progress bars   |
+| Token                                                                           | Used by           |
+| ------------------------------------------------------------------------------- | ----------------- |
+| `--shadow-elevated`                                                             | Toast             |
+| `--z-toast`                                                                     | Viewport          |
+| `--animate-slide-up`                                                            | Entering toasts   |
+| `--color-blue-500`, `--color-green-500`, `--color-amber-500`, `--color-red-500` | Progress bars     |
+| `--color-primary`                                                               | `loading` spinner |
 
 ## Do and don't
 
 - **Do** keep toasts to one short sentence about something that just happened.
 - **Don't** put errors that block the task in a toast; show them next to the form or field.
+- **Do** turn a `loading` toast into its result with `update` or `promise`; **don't** dismiss it and
+  open a second toast, which reads as two separate events.
 
 ## Related
 

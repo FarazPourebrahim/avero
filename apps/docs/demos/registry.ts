@@ -148,6 +148,7 @@ import EmptyStateDistinct from "./empty-state/distinct";
 import LightboxCaptions from "./lightbox/captions";
 import PopoverAlignment from "./popover/alignment";
 import ToastAction from "./toast/action";
+import ToastLoading from "./toast/loading";
 import TooltipOptions from "./tooltip/options";
 import AccordionFaq from "./accordion/faq";
 import BackLinkActions from "./back-link/actions";
@@ -324,6 +325,7 @@ export const demos = {
   "lightbox/captions": LightboxCaptions,
   "popover/alignment": PopoverAlignment,
   "toast/action": ToastAction,
+  "toast/loading": ToastLoading,
   "tooltip/options": TooltipOptions,
   "accordion/faq": AccordionFaq,
   "back-link/actions": BackLinkActions,
