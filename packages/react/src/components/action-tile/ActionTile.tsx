@@ -10,7 +10,7 @@ export const actionTileOverlayVariants = cva(
   {
     variants: {
       tone: {
-        primary: "from-blue-500 to-blue-600",
+        primary: "from-primary to-primary-hover",
         blue: "from-blue-500 to-blue-600",
         purple: "from-purple-500 to-purple-600",
         amber: "from-amber-500 to-orange-500",
@@ -20,7 +20,7 @@ export const actionTileOverlayVariants = cva(
         slate: "from-slate-600 to-slate-700",
       },
     },
-    defaultVariants: { tone: "blue" },
+    defaultVariants: { tone: "primary" },
   },
 );
 
@@ -28,7 +28,7 @@ export const actionTileOverlayVariants = cva(
 export type ActionTileOwnProps = {
   /** Icon shown in a gradient tile. */
   icon: ReactNode;
-  /** Gradient color. @defaultValue "blue" */
+  /** Gradient color. `primary` follows `--color-primary`. @defaultValue "primary" */
   tone?: VariantProps<typeof actionTileOverlayVariants>["tone"];
   /** Renders the child element (e.g. a link) with tile styles; put the label inside it. @defaultValue false */
   asChild?: boolean;
@@ -45,7 +45,7 @@ export type ActionTileProps = Omit<
  * fills with the gradient, lifts slightly and the label turns white.
  */
 export const ActionTile = forwardRef<HTMLButtonElement, ActionTileProps>(function ActionTile(
-  { icon, tone = "blue", asChild = false, type, className, children, ...props },
+  { icon, tone = "primary", asChild = false, type, className, children, ...props },
   ref,
 ) {
   const content = (
@@ -54,7 +54,7 @@ export const ActionTile = forwardRef<HTMLButtonElement, ActionTileProps>(functio
       <span className="relative flex flex-col items-center gap-1.5 sm:gap-2">
         <IconTile
           variant="gradient"
-          tone={tone ?? "blue"}
+          tone={tone ?? "primary"}
           size="lg"
           className="transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-lg"
         >

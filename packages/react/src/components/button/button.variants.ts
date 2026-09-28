@@ -33,6 +33,7 @@ export const buttonVariants = cva(
       },
       tone: {
         neutral: "",
+        primary: "",
         slate: "",
         sky: "",
         emerald: "",
@@ -74,6 +75,11 @@ export const buttonVariants = cva(
         variant: "soft",
         tone: "emerald",
         class: "bg-emerald-50 text-emerald-600 hover:bg-emerald-100",
+      },
+      {
+        variant: "soft",
+        tone: "primary",
+        class: "bg-primary-soft text-primary hover:bg-primary-soft-hover",
       },
       { variant: "soft", tone: "blue", class: "bg-blue-50 text-blue-600 hover:bg-blue-100" },
       {

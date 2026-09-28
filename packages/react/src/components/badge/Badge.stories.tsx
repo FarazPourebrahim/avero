@@ -79,7 +79,7 @@ export const OnMedia: Story = {
         <ZoomIn className="size-4" aria-hidden />
         نمایش بزرگ‌تر
       </Badge>
-      <Badge variant="overlay" tone="blue">
+      <Badge variant="overlay" tone="primary">
         مشاهده جزئیات
       </Badge>
       <Badge variant="solid" tone="danger">

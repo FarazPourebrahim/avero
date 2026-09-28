@@ -37,8 +37,8 @@ export default function FeatureCardGridDemo() {
         description={t.payBody}
       />
       <FeatureCard
-        tone="blue"
-        icon={<Users className="text-blue-500" />}
+        tone="primary"
+        icon={<Users className="text-primary" />}
         title={t.teachersTitle}
         description={t.teachersBody}
       />

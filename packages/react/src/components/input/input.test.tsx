@@ -16,8 +16,8 @@ describe("Input", () => {
     expect(input).toHaveClass(
       "border-2",
       "hover:border-gray-400",
-      "focus:border-blue-400",
-      "focus:ring-blue-100",
+      "focus:border-primary/60",
+      "focus:ring-primary-soft-hover",
     );
   });
 
@@ -37,8 +37,8 @@ describe("Input", () => {
     expect(screen.getByRole("textbox")).toHaveClass(
       "border-2",
       "rounded-2xl",
-      "focus:border-blue-400",
-      "focus:ring-blue-100",
+      "focus:border-primary/60",
+      "focus:ring-primary-soft-hover",
       "aria-invalid:border-red-500",
     );
   });

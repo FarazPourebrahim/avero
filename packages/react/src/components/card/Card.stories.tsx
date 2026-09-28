@@ -45,7 +45,7 @@ export const Surfaces: Story = {
       </Card>
       <Card elevation="sm" padding="lg">
         <CardTitle className="mb-4">
-          <Layers className="text-blue-600" />
+          <Layers className="text-primary" />
           تخصص‌ها و مهارت‌ها
         </CardTitle>
         <p className="text-sm text-slate-600">React · طراحی تعاملی</p>

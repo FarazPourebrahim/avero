@@ -99,7 +99,10 @@ export const ReactionBar = forwardRef<HTMLDivElement, ReactionBarProps>(function
       )}
 
       {capacity ? (
-        <span data-slot="reaction-bar-capacity" className={cn(PILL, "bg-blue-50 text-blue-600")}>
+        <span
+          data-slot="reaction-bar-capacity"
+          className={cn(PILL, "bg-primary-soft text-primary")}
+        >
           <UserIcon />
           {capacity}
         </span>

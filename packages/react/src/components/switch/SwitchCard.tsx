@@ -53,7 +53,7 @@ export const SwitchCard: ForwardRefExoticComponent<
       className={cn(
         "flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 transition-all duration-200",
         "hover:border-gray-300",
-        "has-[[data-state=checked]]:border-blue-200 has-[[data-state=checked]]:bg-blue-50/60",
+        "has-[[data-state=checked]]:border-primary-border has-[[data-state=checked]]:bg-primary-soft/60",
         "has-[[aria-invalid=true]]:border-red-500",
         "has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-60",
         className,

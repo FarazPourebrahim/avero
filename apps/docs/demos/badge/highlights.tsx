@@ -38,7 +38,7 @@ export default function BadgeHighlightsDemo() {
           <ZoomIn className="size-4" aria-hidden />
           {t.zoom}
         </Badge>
-        <Badge variant="overlay" tone="blue">
+        <Badge variant="overlay" tone="primary">
           {t.details}
         </Badge>
         <Badge variant="solid" tone="danger">

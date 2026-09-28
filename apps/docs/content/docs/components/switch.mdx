@@ -21,8 +21,8 @@ import { Switch, SwitchCard } from "@averoui/react";
 `data-state` is `checked` or `unchecked` on both parts.
 
 The track is 44×24 with a 2px outline, on the soft palette [Checkbox](./checkbox) and
-[RadioGroup](./radio-group) share: a white track with a gray thumb while off, and a blue tint with a
-blue thumb once on. Pressing shrinks it slightly, like a [Button](./button).
+[RadioGroup](./radio-group) share: a white track with a gray thumb while off, and a brand tint with a
+brand-coloured thumb once on. Pressing shrinks it slightly, like a [Button](./button).
 
 `SwitchCard` puts a switch in a settings row:
 
@@ -44,7 +44,7 @@ same state.
 ### Settings cards
 
 `SwitchCard` presents a setting as a bordered row: the title and description at the inline start,
-the switch at the inline end. The whole card toggles the switch, and it takes a soft blue tint while
+the switch at the inline end. The whole card toggles the switch, and it takes a soft brand tint while
 on. Use it for settings pages where each option needs a line of explanation.
 
 <ComponentPreview name="switch/cards" />
@@ -90,16 +90,16 @@ props unchanged: `checked`, `defaultChecked`, `onCheckedChange`, `disabled`, `re
 
 ## Theming
 
-| Token              | Used by                              |
-| ------------------ | ------------------------------------ |
-| `--color-gray-300` | Off outline (`gray-400` on hover)    |
-| `--color-gray-400` | Off thumb                            |
-| `--color-blue-50`  | On track (`blue-100` on hover)       |
-| `--color-blue-200` | On outline (`blue-300` on hover)     |
-| `--color-blue-600` | On thumb                             |
-| `--color-primary`  | Focus ring                           |
-| `--color-red-500`  | Outline and focus ring while invalid |
-| `--color-gray-200` | `SwitchCard` resting border          |
+| Token                    | Used by                                      |
+| ------------------------ | -------------------------------------------- |
+| `--color-gray-300`       | Off outline (`gray-400` on hover)            |
+| `--color-gray-400`       | Off thumb                                    |
+| `--color-primary-soft`   | On track (`primary-soft-hover` on hover)     |
+| `--color-primary-border` | On outline (`primary-border-hover` on hover) |
+| `--color-primary`        | On thumb                                     |
+| `--color-primary`        | Focus ring                                   |
+| `--color-red-500`        | Outline and focus ring while invalid         |
+| `--color-gray-200`       | `SwitchCard` resting border                  |
 
 ## Do and don't
 

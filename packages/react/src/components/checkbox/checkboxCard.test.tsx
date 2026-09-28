@@ -45,7 +45,7 @@ describe("CheckboxCard", () => {
     const { container } = render(<CheckboxCard title="ایمیل هفتگی" defaultChecked />);
 
     expect(container.querySelector('[data-slot="checkbox-card"]')).toHaveClass(
-      "has-[[data-state=checked]]:border-blue-200",
+      "has-[[data-state=checked]]:border-primary-border",
     );
   });
 

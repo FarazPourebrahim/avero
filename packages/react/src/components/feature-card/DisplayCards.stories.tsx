@@ -35,8 +35,8 @@ export const FeatureGrid: Story = {
           description="پرداخت آنلاین امن، با امکان بازگشت وجه تا هفت روز پس از ثبت‌نام."
         />
         <FeatureCard
-          tone="blue"
-          icon={<Users className="text-blue-500" />}
+          tone="primary"
+          icon={<Users className="text-primary" />}
           title="مدرس‌های باتجربه"
           description="هر دوره را متخصصی تدریس می‌کند که سال‌ها در همان حوزه کار کرده است."
         />
@@ -62,7 +62,7 @@ const actionIcon = "size-4 sm:size-5";
 export const QuickActions: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
-      <ActionTile tone="blue" icon={<Briefcase className={actionIcon} />}>
+      <ActionTile tone="primary" icon={<Briefcase className={actionIcon} />}>
         افزودن دوره
       </ActionTile>
       <ActionTile tone="purple" icon={<Eye className={actionIcon} />}>

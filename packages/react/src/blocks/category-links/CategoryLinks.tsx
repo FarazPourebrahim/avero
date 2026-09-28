@@ -38,7 +38,7 @@ export const CategoryLinks = forwardRef<HTMLDivElement, CategoryLinksProps>(func
     >
       <div className="flex items-center gap-2.5">
         {icon ? (
-          <div className="text-primary flex size-8 shrink-0 items-center justify-center rounded-xl bg-blue-50 [&>svg]:size-[18px]">
+          <div className="text-primary bg-primary-soft flex size-8 shrink-0 items-center justify-center rounded-xl [&>svg]:size-[18px]">
             {icon}
           </div>
         ) : null}

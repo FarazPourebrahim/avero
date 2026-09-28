@@ -26,7 +26,7 @@ const small = "size-4 sm:size-[18px]";
 export const DashboardCounters: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5">
-      <StatCard label="دوره‌ها" value="0" icon={<Briefcase className={small} />} tone="blue" />
+      <StatCard label="دوره‌ها" value="0" icon={<Briefcase className={small} />} tone="primary" />
       <StatCard label="جلسات" value="0" icon={<Eye className={small} />} tone="purple" />
       <StatCard label="تمرین فعال" value="0" icon={<Zap className={small} />} tone="amber" />
       <StatCard label="گواهی‌ها" value="0" icon={<Award className={small} />} tone="emerald" />

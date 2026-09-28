@@ -29,7 +29,7 @@ export default function AchievementsPanelRankDemo() {
         <HighlightPanel label={t.rank} value="-" />
         <InfoRow label={t.certificates} value={t.count} tone="emerald" />
         <InfoRow label={t.badges} value={t.count} tone="purple" />
-        <InfoRow label={t.tests} value={t.count} tone="blue" />
+        <InfoRow label={t.tests} value={t.count} tone="primary" />
       </AchievementsPanel>
     </div>
   );

@@ -72,7 +72,7 @@ describe("RadioCard", () => {
     const { container } = render(<Shipping defaultValue="post" />);
 
     expect(container.querySelector('[data-slot="radio-card"]')).toHaveClass(
-      "has-[[data-state=checked]]:border-blue-200",
+      "has-[[data-state=checked]]:border-primary-border",
     );
     expect(screen.getByText("رایگان")).toHaveAttribute("data-slot", "radio-card-aside");
   });

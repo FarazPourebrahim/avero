@@ -32,6 +32,8 @@ Use `danger` only for destructive actions such as deleting, usually as the confi
 ### Soft tones
 
 The `soft` variant takes its color from `tone`. Use them for share, report and similar secondary actions.
+`primary` follows `--color-primary`, so it rebrands with the theme; the other tones are fixed palette
+hues, so `blue` stays blue whatever the brand is.
 
 <ComponentPreview name="button/tones" />
 
@@ -84,6 +86,7 @@ as in the first example. Use the RTL/LTR switch above each preview to compare.
 | Token                                       | Used by                          |
 | ------------------------------------------- | -------------------------------- |
 | `--color-primary` / `--color-primary-hover` | `primary`, `inverse`, focus ring |
+| `--color-primary-soft` / `-soft-hover`      | `soft` `primary` tone            |
 | `--color-secondary`                         | `secondary`                      |
 | `--color-warning` / `--color-warning-hover` | `warning`                        |
 | `--color-red-600` / `--color-red-700`       | `danger`                         |

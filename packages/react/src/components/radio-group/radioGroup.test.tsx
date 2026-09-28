@@ -118,11 +118,11 @@ describe("RadioGroup", () => {
     const online = screen.getByRole("radio", { name: "آنلاین" });
 
     expect(online).toHaveClass("size-6", "rounded-full", "border-2", "border-gray-300");
-    expect(online).toHaveClass("data-[state=checked]:bg-blue-50", "active:scale-95");
+    expect(online).toHaveClass("data-[state=checked]:bg-primary-soft", "active:scale-95");
 
     await userEvent.click(online);
     const dot = online.querySelector('[data-slot="radio-group-indicator"]');
-    expect(dot).toHaveClass("bg-blue-600", "animate-check-pop");
+    expect(dot).toHaveClass("bg-primary", "animate-check-pop");
   });
 
   it("outlines its options in red inside an invalid group", () => {

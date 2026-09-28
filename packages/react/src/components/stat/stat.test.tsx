@@ -69,6 +69,7 @@ describe("InfoRow", () => {
     ["emerald", "bg-emerald-50/50", "bg-emerald-100"],
     ["purple", "bg-purple-50/50", "bg-purple-100"],
     ["blue", "bg-blue-50/50", "bg-blue-100"],
+    ["primary", "bg-primary-soft/50", "bg-primary-soft-hover"],
   ] as const)("renders the %s tone", (tone, row, tile) => {
     const { container } = render(
       <InfoRow label="گواهی‌ها" value="0 عدد" icon={icon} tone={tone} />,

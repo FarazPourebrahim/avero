@@ -44,7 +44,7 @@ describe("SwitchCard", () => {
     const { container } = render(<SwitchCard title="پیامک" defaultChecked />);
 
     expect(container.querySelector('[data-slot="switch-card"]')).toHaveClass(
-      "has-[[data-state=checked]]:border-blue-200",
+      "has-[[data-state=checked]]:border-primary-border",
     );
     expect(container.querySelector('[data-slot="switch-card-description"]')).toBeNull();
     expect(screen.getByRole("switch")).not.toHaveAttribute("aria-describedby");

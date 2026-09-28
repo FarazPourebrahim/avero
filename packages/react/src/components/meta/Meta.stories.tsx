@@ -49,7 +49,7 @@ export const CompactAndProfileMeta: Story = {
         </MetaItem>
       </MetaBar>
       <MetaBar variant="inline">
-        <MetaItem variant="pill" icon={<MapPin className="text-blue-600" />}>
+        <MetaItem variant="pill" icon={<MapPin className="text-primary" />}>
           اصفهان (ایران)
         </MetaItem>
         <MetaItem

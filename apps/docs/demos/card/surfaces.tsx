@@ -53,7 +53,7 @@ export default function CardSurfacesDemo() {
       </Card>
       <Card elevation="sm">
         <CardTitle className="mb-4">
-          <Layers className="text-blue-600" />
+          <Layers className="text-primary" />
           {t.topics}
         </CardTitle>
         <p className="text-sm text-slate-600">{t.skills}</p>

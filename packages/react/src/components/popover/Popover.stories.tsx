@@ -39,7 +39,7 @@ function NotificationMenu({ defaultOpen }: { defaultOpen?: boolean }) {
           {NOTIFICATIONS.map((item) => (
             <li
               key={item.id}
-              className="flex items-start gap-3 px-4 py-3 data-[unread=true]:bg-blue-50/50"
+              className="data-[unread=true]:bg-primary-soft/50 flex items-start gap-3 px-4 py-3"
               data-unread={item.unread}
             >
               <Avatar name={item.name} size="sm" />

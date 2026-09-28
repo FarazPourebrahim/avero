@@ -40,7 +40,7 @@ export const iconTileVariants = cva(
     },
     compoundVariants: [
       // soft
-      { variant: "soft", tone: "primary", class: "text-primary bg-blue-50" },
+      { variant: "soft", tone: "primary", class: "bg-primary-soft text-primary" },
       { variant: "soft", tone: "blue", class: "bg-blue-50 text-blue-600" },
       { variant: "soft", tone: "purple", class: "bg-purple-50 text-purple-600" },
       { variant: "soft", tone: "amber", class: "bg-amber-50 text-amber-600" },
@@ -49,7 +49,8 @@ export const iconTileVariants = cva(
       { variant: "soft", tone: "indigo", class: "bg-indigo-50 text-indigo-600" },
       { variant: "soft", tone: "slate", class: "bg-slate-50 text-slate-600" },
       // muted
-      { variant: "muted", tone: ["primary", "blue"], class: "bg-blue-100 text-blue-600" },
+      { variant: "muted", tone: "primary", class: "bg-primary-soft-hover text-primary" },
+      { variant: "muted", tone: "blue", class: "bg-blue-100 text-blue-600" },
       { variant: "muted", tone: "purple", class: "bg-purple-100 text-purple-600" },
       { variant: "muted", tone: "amber", class: "bg-amber-100 text-amber-600" },
       { variant: "muted", tone: "emerald", class: "bg-emerald-100 text-emerald-600" },
@@ -57,7 +58,8 @@ export const iconTileVariants = cva(
       { variant: "muted", tone: "indigo", class: "bg-indigo-100 text-indigo-600" },
       { variant: "muted", tone: "slate", class: "bg-slate-100 text-slate-600" },
       // tint
-      { variant: "tint", tone: ["primary", "blue"], class: "bg-blue-600/10 text-blue-600" },
+      { variant: "tint", tone: "primary", class: "bg-primary/10 text-primary" },
+      { variant: "tint", tone: "blue", class: "bg-blue-600/10 text-blue-600" },
       { variant: "tint", tone: "purple", class: "bg-purple-600/10 text-purple-600" },
       { variant: "tint", tone: "amber", class: "bg-amber-500/10 text-amber-500" },
       { variant: "tint", tone: "emerald", class: "bg-emerald-600/10 text-emerald-600" },
@@ -65,7 +67,8 @@ export const iconTileVariants = cva(
       { variant: "tint", tone: "indigo", class: "bg-indigo-600/10 text-indigo-600" },
       { variant: "tint", tone: "slate", class: "bg-slate-600/10 text-slate-600" },
       // gradient
-      { variant: "gradient", tone: ["primary", "blue"], class: "from-blue-500 to-blue-600" },
+      { variant: "gradient", tone: "primary", class: "from-primary to-primary-hover" },
+      { variant: "gradient", tone: "blue", class: "from-blue-500 to-blue-600" },
       { variant: "gradient", tone: "purple", class: "from-purple-500 to-purple-600" },
       { variant: "gradient", tone: "amber", class: "from-amber-500 to-orange-500" },
       { variant: "gradient", tone: "emerald", class: "from-emerald-500 to-emerald-600" },
@@ -75,7 +78,7 @@ export const iconTileVariants = cva(
     ],
     defaultVariants: {
       variant: "soft",
-      tone: "blue",
+      tone: "primary",
       size: "xs",
     },
   },
@@ -87,7 +90,7 @@ type IconTileVariantProps = VariantProps<typeof iconTileVariants>;
 export type IconTileOwnProps = {
   /** Fill style: `soft` (-50), `muted` (-100), `tint` (translucent -600) or `gradient`. @defaultValue "soft" */
   variant?: IconTileVariantProps["variant"];
-  /** Color family. @defaultValue "blue" */
+  /** Color family. `primary` follows `--color-primary`; the others are fixed palette hues. @defaultValue "primary" */
   tone?: IconTileVariantProps["tone"];
   /** Tile size, growing one step from `sm` up; `padded` wraps the icon with 12px padding. @defaultValue "xs" */
   size?: IconTileVariantProps["size"];

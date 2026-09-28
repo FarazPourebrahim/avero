@@ -35,6 +35,7 @@ describe("IconButton", () => {
 
   it.each([
     ["neutral", "bg-gray-50"],
+    ["primary", "bg-primary-soft"],
     ["blue", "bg-blue-50"],
     ["sky", "bg-sky-50"],
     ["green", "bg-green-50"],

@@ -232,7 +232,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(function F
         className={cn(
           "relative flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50 px-6 py-8 text-center transition",
           "hover:border-primary/60 focus-within:border-primary focus-within:ring-primary/20 focus-within:ring-2",
-          "data-[dragging]:border-primary data-[dragging]:bg-blue-50",
+          "data-[dragging]:border-primary data-[dragging]:bg-primary-soft",
           "data-[invalid]:border-red-500 data-[invalid]:focus-within:ring-red-500/20",
           "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60 data-[disabled]:hover:border-gray-300",
           className,

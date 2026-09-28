@@ -2,6 +2,7 @@ import { Button } from "@averoui/react";
 
 const TONES = [
   "neutral",
+  "primary",
   "sky",
   "emerald",
   "blue",

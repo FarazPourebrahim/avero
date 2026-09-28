@@ -28,7 +28,7 @@ export default function ActionTilesDemo() {
 
   return (
     <div className="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-      <ActionTile tone="blue" icon={<BookOpen className={icon} />}>
+      <ActionTile tone="primary" icon={<BookOpen className={icon} />}>
         {t.addCourse}
       </ActionTile>
       <ActionTile tone="purple" icon={<CalendarPlus className={icon} />}>

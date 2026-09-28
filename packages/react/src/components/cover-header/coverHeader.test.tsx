@@ -15,9 +15,8 @@ describe("CoverHeader", () => {
     expect(cover).toHaveClass(
       "rtl:bg-gradient-to-r",
       "ltr:bg-gradient-to-l",
-      "from-blue-600",
-      "via-indigo-600",
-      "to-purple-700",
+      "from-primary",
+      "to-primary-hover",
     );
     expect(cover).toHaveClass("h-36", "md:h-52", "lg:h-72");
     expect(cover?.firstElementChild).toHaveClass("from-black/40", "pointer-events-none");

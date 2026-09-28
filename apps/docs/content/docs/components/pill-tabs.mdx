@@ -16,7 +16,7 @@ import { PillTab, PillTabs } from "@averoui/react";
 | Part     | Slot                    | Notes                                                            |
 | -------- | ----------------------- | ---------------------------------------------------------------- |
 | PillTabs | `data-slot="pill-tabs"` | A labelled `<nav>`; scrolls horizontally with a hidden scrollbar |
-| PillTab  | `data-slot="pill-tab"`  | A link; `current` fills it blue                                  |
+| PillTab  | `data-slot="pill-tab"`  | A link; `current` fills it with the primary colour               |
 
 ## Examples
 
@@ -55,7 +55,7 @@ Tabs flow from the inline start; the scroll-into-view logic works in both direct
 
 ## Theming
 
-Uses `blue-600` for the current tab and `slate-50` / `slate-100` for idle tabs.
+Uses `--color-primary` for the current tab (and its hover text) and `slate-50` / `slate-100` for idle tabs.
 
 ## Do and don't
 

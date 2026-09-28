@@ -82,7 +82,7 @@ export const ShowcaseCard = forwardRef<HTMLDivElement, ShowcaseCardProps>(functi
       <div className="relative h-52 overflow-hidden bg-slate-100">
         <Image src={image} alt="" zoom="group" className="h-full w-full" />
         <div className="absolute inset-0 flex items-end justify-between bg-gradient-to-t from-black/60 via-transparent to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100">
-          <span className="rounded-xl bg-blue-600/90 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-xs">
+          <span className="bg-primary/90 rounded-xl px-3 py-1.5 text-xs font-bold text-white backdrop-blur-xs">
             {overlayLabel ?? dictionary.viewDetails}
           </span>
         </div>
@@ -92,7 +92,7 @@ export const ShowcaseCard = forwardRef<HTMLDivElement, ShowcaseCardProps>(functi
         <div>
           <h4
             data-slot="showcase-card-title"
-            className="line-clamp-1 text-base font-bold text-gray-900 transition-colors group-hover:text-blue-600"
+            className="group-hover:text-primary line-clamp-1 text-base font-bold text-gray-900 transition-colors"
           >
             {href ? <a href={href}>{title}</a> : title}
           </h4>

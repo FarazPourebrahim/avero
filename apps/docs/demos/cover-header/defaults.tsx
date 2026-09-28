@@ -7,7 +7,7 @@ export default function CoverHeaderDefaultsDemo() {
   const t = useCopy({
     fa: {
       noCover: "بدون تصویر جلد",
-      noCoverBody: "جلد پیش‌فرض یک گرادیان آبی به بنفش است و جای آواتار خالی می‌ماند.",
+      noCoverBody: "جلد پیش‌فرض گرادیانی از رنگ اصلی برند است و جای آواتار خالی می‌ماند.",
       initials: "س‌م",
       custom: "جلد و آواتار دلخواه",
       customBody: "هر دو جایگاه هر محتوایی را می‌پذیرند.",
@@ -15,7 +15,7 @@ export default function CoverHeaderDefaultsDemo() {
     en: {
       noCover: "Without a cover image",
       noCoverBody:
-        "The default cover is a blue-to-purple gradient, and the avatar slot stays empty.",
+        "The default cover is a gradient in the brand colour, and the avatar slot stays empty.",
       initials: "SM",
       custom: "Your own cover and avatar",
       customBody: "Both slots accept any content.",

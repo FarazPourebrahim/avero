@@ -44,7 +44,7 @@ export const WithFooter: Story = {
         <nav aria-label="بخش‌های پروفایل">
           <ul className="flex min-w-max items-center gap-2 text-xs text-gray-600 sm:gap-3 sm:text-sm">
             <li>
-              <span className="flex items-center gap-1.5 rounded-xl bg-blue-600 px-3.5 py-2 font-bold text-white shadow-md sm:px-4 sm:py-2.5">
+              <span className="bg-primary flex items-center gap-1.5 rounded-xl px-3.5 py-2 font-bold text-white shadow-md sm:px-4 sm:py-2.5">
                 درباره من
               </span>
             </li>

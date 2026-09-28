@@ -107,7 +107,7 @@ function LearnerDashboardTemplate() {
               />
             </div>
             <QuickActions label="دسترسی سریع" columns={4}>
-              <ActionTile tone="blue" icon={<PaperPlaneSolidIcon size={18} />}>
+              <ActionTile tone="primary" icon={<PaperPlaneSolidIcon size={18} />}>
                 ارسال تمرین
               </ActionTile>
               <ActionTile tone="purple" icon={<FolderSolidIcon size={18} />}>
@@ -145,7 +145,7 @@ function LearnerDashboardTemplate() {
                 <HighlightPanel label="رتبه در جدول امتیازها" value="۱۲" />
                 <InfoRow label="گواهی‌ها" value="۲ عدد" tone="emerald" />
                 <InfoRow label="نشان‌ها" value="۵ عدد" tone="purple" />
-                <InfoRow label="آزمون‌ها" value="۸ عدد" tone="blue" />
+                <InfoRow label="آزمون‌ها" value="۸ عدد" tone="primary" />
               </AchievementsPanel>
             </div>
           </div>

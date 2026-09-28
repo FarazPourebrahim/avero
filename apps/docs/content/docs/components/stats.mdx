@@ -13,14 +13,14 @@ import { HighlightPanel, InfoRow, MiniStat, StatCard, StatStrip, StatTile } from
 
 ## Anatomy
 
-| Part           | Slot                          | Notes                                                    |
-| -------------- | ----------------------------- | -------------------------------------------------------- |
-| StatCard       | `data-slot="stat-card"`       | Label + icon tile, big value below                       |
-| StatTile       | `data-slot="stat-tile"`       | Translucent icon tile, big value, small label            |
-| StatStrip      | `data-slot="stat-strip"`      | White strip of tiles with blue accent bars on both edges |
-| MiniStat       | `data-slot="mini-stat"`       | Centered label over a bold value                         |
-| InfoRow        | `data-slot="info-row"`        | Tinted row with an icon tile                             |
-| HighlightPanel | `data-slot="highlight-panel"` | Amber gradient panel for a headline figure               |
+| Part           | Slot                          | Notes                                                       |
+| -------------- | ----------------------------- | ----------------------------------------------------------- |
+| StatCard       | `data-slot="stat-card"`       | Label + icon tile, big value below                          |
+| StatTile       | `data-slot="stat-tile"`       | Translucent icon tile, big value, small label               |
+| StatStrip      | `data-slot="stat-strip"`      | White strip of tiles with primary accent bars on both edges |
+| MiniStat       | `data-slot="mini-stat"`       | Centered label over a bold value                            |
+| InfoRow        | `data-slot="info-row"`        | Tinted row with an icon tile                                |
+| HighlightPanel | `data-slot="highlight-panel"` | Amber gradient panel for a headline figure                  |
 
 ## Examples
 
@@ -60,7 +60,9 @@ The strip's accent bars sit at the inline start and end; the highlight panel's g
 
 ## Theming
 
-Tones use the Tailwind palette families shared with [IconTile](./icon-tile).
+Tones are shared with [IconTile](./icon-tile). `primary`, the default, follows `--color-primary`
+(`InfoRow` tints with `--color-primary-soft` and `--color-primary-border`), as do the `StatStrip`
+accent bars; the other tones are fixed Tailwind palette families.
 
 ## Do and don't
 

@@ -149,7 +149,7 @@ export const TagInput = forwardRef<HTMLInputElement, TagInputProps>(function Tag
                 size="sm"
                 label={formatMessage(dictionary.tagInputRemove, { tag })}
                 disabled={disabled}
-                className="rounded-full p-0.5 text-blue-600 hover:bg-blue-100 hover:text-blue-800"
+                className="text-primary hover:bg-primary-soft-hover hover:text-primary-hover rounded-full p-0.5"
                 onClick={() => removeTag(index)}
               >
                 <XIcon className="size-3.5" />

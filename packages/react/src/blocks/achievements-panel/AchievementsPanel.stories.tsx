@@ -27,7 +27,7 @@ export const RankAndAchievements: Story = {
       <HighlightPanel label="رتبه در جدول امتیازها" value="-" />
       <InfoRow label="گواهی‌ها" value="0 عدد" tone="emerald" icon={<StarIcon />} />
       <InfoRow label="نشان‌ها" value="0 عدد" tone="purple" icon={<StarIcon />} />
-      <InfoRow label="آزمون‌ها" value="0 عدد" tone="blue" icon={<StarIcon />} />
+      <InfoRow label="آزمون‌ها" value="0 عدد" tone="primary" icon={<StarIcon />} />
     </AchievementsPanel>
   ),
 };

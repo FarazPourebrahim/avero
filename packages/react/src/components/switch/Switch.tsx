@@ -27,8 +27,8 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
         // 44x24 with a 2px outline and 2px padding leaves a 16px thumb 20px of travel.
         "inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-gray-300 bg-white p-0.5 transition-all duration-300 active:scale-95",
         "data-[state=unchecked]:hover:border-gray-400",
-        "data-[state=checked]:border-blue-200 data-[state=checked]:bg-blue-50",
-        "data-[state=checked]:hover:border-blue-300 data-[state=checked]:hover:bg-blue-100",
+        "data-[state=checked]:border-primary-border data-[state=checked]:bg-primary-soft",
+        "data-[state=checked]:hover:border-primary-border-hover data-[state=checked]:hover:bg-primary-soft-hover",
         "focus-visible:ring-primary/40 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
         "disabled:cursor-not-allowed disabled:opacity-60",
         "aria-invalid:border-red-500 aria-invalid:focus-visible:ring-red-500/40",
@@ -40,7 +40,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
         data-slot="switch-thumb"
         className={cn(
           "pointer-events-none block size-4 rounded-full bg-gray-400 shadow-xs transition-all duration-300",
-          "data-[state=checked]:translate-x-5 data-[state=checked]:bg-blue-600 rtl:data-[state=checked]:-translate-x-5",
+          "data-[state=checked]:bg-primary data-[state=checked]:translate-x-5 rtl:data-[state=checked]:-translate-x-5",
         )}
       />
     </SwitchPrimitive.Root>

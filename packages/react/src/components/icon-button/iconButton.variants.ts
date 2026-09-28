@@ -26,11 +26,12 @@ export const iconButtonVariants = cva(
         soft: "rounded-xl",
         circle: "rounded-full border border-gray-200 hover:bg-gray-50",
         social:
-          "size-9 rounded-xl bg-slate-100 text-slate-600 shadow-xs hover:bg-blue-600 hover:text-white",
+          "hover:bg-primary size-9 rounded-xl bg-slate-100 text-slate-600 shadow-xs hover:text-white",
         tile: "bg-surface-muted text-icon-muted hover:text-accent-social size-10 rounded-md",
       },
       tone: {
         neutral: "",
+        primary: "",
         blue: "",
         sky: "",
         green: "",
@@ -45,6 +46,11 @@ export const iconButtonVariants = cva(
     },
     compoundVariants: [
       { variant: "soft", tone: "neutral", class: "bg-gray-50 text-gray-600 hover:bg-gray-100" },
+      {
+        variant: "soft",
+        tone: "primary",
+        class: "bg-primary-soft text-primary hover:bg-primary-soft-hover",
+      },
       { variant: "soft", tone: "blue", class: "bg-blue-50 text-blue-600 hover:bg-blue-100" },
       { variant: "soft", tone: "sky", class: "bg-sky-50 text-sky-600 hover:bg-sky-100" },
       { variant: "soft", tone: "green", class: "bg-green-50 text-green-600 hover:bg-green-100" },
@@ -56,7 +62,7 @@ export const iconButtonVariants = cva(
       {
         variant: "soft",
         tone: "slate",
-        class: "bg-slate-50 text-slate-500 hover:bg-blue-50 hover:text-blue-600",
+        class: "hover:bg-primary-soft hover:text-primary bg-slate-50 text-slate-500",
       },
       // Fixed-size variants ignore the padding scale.
       { variant: ["social", "tile"], class: "p-0" },

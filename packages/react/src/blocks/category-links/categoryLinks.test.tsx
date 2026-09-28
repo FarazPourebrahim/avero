@@ -45,14 +45,14 @@ describe("CategoryLinks", () => {
     const { container, rerender } = render(
       <CategoryLinks title="دسته‌ها">{links()}</CategoryLinks>,
     );
-    expect(container.querySelector(".bg-blue-50")).toBeNull();
+    expect(container.querySelector(".bg-primary-soft")).toBeNull();
 
     rerender(
       <CategoryLinks title="دسته‌ها" icon={<svg aria-hidden="true" />}>
         {links()}
       </CategoryLinks>,
     );
-    expect(container.querySelector(".bg-blue-50")).not.toBeNull();
+    expect(container.querySelector(".bg-primary-soft")).not.toBeNull();
   });
 
   it("forwards refs", () => {

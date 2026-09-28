@@ -45,6 +45,7 @@ describe("Button", () => {
     ["neutral", "bg-slate-100"],
     ["sky", "bg-sky-50"],
     ["emerald", "bg-emerald-50"],
+    ["primary", "bg-primary-soft"],
     ["blue", "bg-blue-50"],
     ["indigo", "bg-indigo-50"],
     ["purple", "bg-purple-50"],

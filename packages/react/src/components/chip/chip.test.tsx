@@ -26,7 +26,7 @@ describe("Chip", () => {
     ["tag", "border-slate-200/90"],
     ["footer", "border-text-chrome/15"],
     ["mini", "text-3xs"],
-    ["skill", "bg-blue-50"],
+    ["skill", "bg-primary-soft"],
   ] as const)("applies the %s variant", (variant, expected) => {
     render(<Chip variant={variant}>chip</Chip>);
 
@@ -58,7 +58,7 @@ describe("Chip", () => {
   });
 
   it("renders on the server", () => {
-    expect(renderToString(<Chip variant="skill">React</Chip>)).toContain("bg-blue-50");
+    expect(renderToString(<Chip variant="skill">React</Chip>)).toContain("bg-primary-soft");
   });
 
   it("has no accessibility violations", async () => {

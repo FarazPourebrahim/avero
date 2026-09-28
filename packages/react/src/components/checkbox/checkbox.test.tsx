@@ -131,9 +131,9 @@ describe("Checkbox", () => {
     const checkbox = screen.getByRole("checkbox");
 
     expect(checkbox).toHaveClass(
-      "data-[state=checked]:bg-blue-50",
-      "data-[state=checked]:text-blue-600",
-      "data-[state=checked]:hover:bg-blue-100",
+      "data-[state=checked]:bg-primary-soft",
+      "data-[state=checked]:text-primary",
+      "data-[state=checked]:hover:bg-primary-soft-hover",
       "focus-visible:ring-offset-2",
       "duration-300",
       "aria-invalid:focus-visible:ring-red-500/40",

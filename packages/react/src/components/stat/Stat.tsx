@@ -17,7 +17,7 @@ export type StatCardOwnProps = {
   value: ReactNode;
   /** Icon shown in a tinted tile beside the label. */
   icon?: ReactNode;
-  /** Icon tile color. @defaultValue "blue" */
+  /** Icon tile color. @defaultValue "primary" */
   tone?: Tone;
 };
 
@@ -25,7 +25,7 @@ export type StatCardProps = Omit<HTMLAttributes<HTMLDivElement>, keyof StatCardO
   StatCardOwnProps;
 
 export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(function StatCard(
-  { label, value, icon, tone = "blue", className, ...props },
+  { label, value, icon, tone = "primary", className, ...props },
   ref,
 ) {
   return (
@@ -67,7 +67,7 @@ export type StatTileOwnProps = {
   value: ReactNode;
   /** Icon shown in a translucent tile. */
   icon?: ReactNode;
-  /** Icon tile color. @defaultValue "blue" */
+  /** Icon tile color. @defaultValue "primary" */
   tone?: Tone;
 };
 
@@ -75,7 +75,7 @@ export type StatTileProps = Omit<HTMLAttributes<HTMLDivElement>, keyof StatTileO
   StatTileOwnProps;
 
 export const StatTile = forwardRef<HTMLDivElement, StatTileProps>(function StatTile(
-  { label, value, icon, tone = "blue", className, ...props },
+  { label, value, icon, tone = "primary", className, ...props },
   ref,
 ) {
   return (
@@ -109,7 +109,7 @@ StatTile.displayName = "StatTile";
 
 export type StatStripProps = HTMLAttributes<HTMLDivElement>;
 
-/** A white strip of `StatTile`s with blue accent bars on both edges. */
+/** A white strip of `StatTile`s with brand accent bars on both edges. */
 export const StatStrip = forwardRef<HTMLDivElement, StatStripProps>(function StatStrip(
   { className, children, ...props },
   ref,
@@ -126,14 +126,14 @@ export const StatStrip = forwardRef<HTMLDivElement, StatStripProps>(function Sta
     >
       <span
         aria-hidden="true"
-        className="absolute start-0 top-1/2 hidden h-12 w-1.5 -translate-y-1/2 rounded-e-full bg-blue-600 sm:flex"
+        className="bg-primary absolute start-0 top-1/2 hidden h-12 w-1.5 -translate-y-1/2 rounded-e-full sm:flex"
       />
       <div className="grid grid-cols-2 gap-3 text-slate-700 sm:gap-4 lg:grid-cols-4 lg:gap-6">
         {children}
       </div>
       <span
         aria-hidden="true"
-        className="absolute end-0 top-1/2 hidden h-12 w-1.5 -translate-y-1/2 rounded-s-full bg-blue-600 sm:flex"
+        className="bg-primary absolute end-0 top-1/2 hidden h-12 w-1.5 -translate-y-1/2 rounded-s-full sm:flex"
       />
     </div>
   );
@@ -189,7 +189,7 @@ export const infoRowVariants = cva(
   {
     variants: {
       tone: {
-        primary: "border-blue-100 bg-blue-50/50",
+        primary: "border-primary-border bg-primary-soft/50",
         blue: "border-blue-100 bg-blue-50/50",
         purple: "border-purple-100 bg-purple-50/50",
         amber: "border-amber-100 bg-amber-50/50",
@@ -199,7 +199,7 @@ export const infoRowVariants = cva(
         slate: "border-slate-100 bg-slate-50/50",
       },
     },
-    defaultVariants: { tone: "blue" },
+    defaultVariants: { tone: "primary" },
   },
 );
 
@@ -211,7 +211,7 @@ export type InfoRowOwnProps = {
   value: ReactNode;
   /** Icon shown in a tinted tile before the label. */
   icon?: ReactNode;
-  /** Row and icon tile color. @defaultValue "blue" */
+  /** Row and icon tile color. @defaultValue "primary" */
   tone?: VariantProps<typeof infoRowVariants>["tone"];
 };
 
@@ -219,7 +219,7 @@ export type InfoRowProps = Omit<HTMLAttributes<HTMLDivElement>, keyof InfoRowOwn
   InfoRowOwnProps;
 
 export const InfoRow = forwardRef<HTMLDivElement, InfoRowProps>(function InfoRow(
-  { label, value, icon, tone = "blue", className, ...props },
+  { label, value, icon, tone = "primary", className, ...props },
   ref,
 ) {
   return (
@@ -230,7 +230,7 @@ export const InfoRow = forwardRef<HTMLDivElement, InfoRowProps>(function InfoRow
       {...props}
     >
       {icon ? (
-        <IconTile variant="muted" tone={tone ?? "blue"} size="md">
+        <IconTile variant="muted" tone={tone ?? "primary"} size="md">
           {icon}
         </IconTile>
       ) : null}

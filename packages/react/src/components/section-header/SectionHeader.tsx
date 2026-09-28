@@ -13,7 +13,7 @@ export const sectionHeaderTitleVariants = cva("min-w-0 wrap-anywhere", {
   variants: {
     variant: {
       accentBar: "text-xl font-extrabold text-slate-900 md:text-3xl",
-      dot: "text-xl font-bold text-blue-600",
+      dot: "text-primary text-xl font-bold",
       icon: "text-lg font-bold text-slate-800 md:text-xl",
       plain: "text-xl font-bold text-slate-900 md:text-2xl",
     },
@@ -74,7 +74,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(func
         className={cn("mb-4 flex items-center gap-2", className)}
         {...props}
       >
-        <span aria-hidden="true" className="size-2.5 rounded-full bg-blue-600" />
+        <span aria-hidden="true" className="bg-primary size-2.5 rounded-full" />
         {heading}
         {actions ? <div className="ms-auto shrink-0">{actions}</div> : null}
       </div>

@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn.js";
 
 /** Props specific to `CoverHeader`. It also accepts every native `<div>` attribute. */
 export type CoverHeaderOwnProps = {
-  /** Cover content, e.g. an `<img>`. Defaults to a blue-to-purple gradient. */
+  /** Cover content, e.g. an `<img>`. Defaults to a brand gradient, `primary` to `primary-hover`. */
   cover?: ReactNode;
   /** Avatar content, e.g. an `<img>`, placed in the white ring that overlaps the cover. */
   avatar?: ReactNode;
@@ -35,7 +35,7 @@ export const CoverHeader = forwardRef<HTMLDivElement, CoverHeaderProps>(function
     >
       <div
         data-slot="cover-header-cover"
-        className="relative h-36 w-full overflow-hidden rounded-2xl from-blue-600 via-indigo-600 to-purple-700 md:h-52 lg:h-72 ltr:bg-gradient-to-l rtl:bg-gradient-to-r [&>img]:size-full [&>img]:object-cover"
+        className="from-primary to-primary-hover relative h-36 w-full overflow-hidden rounded-2xl md:h-52 lg:h-72 ltr:bg-gradient-to-l rtl:bg-gradient-to-r [&>img]:size-full [&>img]:object-cover"
       >
         {cover}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

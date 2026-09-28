@@ -117,7 +117,7 @@ describe("OtpInput", () => {
     await userEvent.click(screen.getByRole("textbox"));
 
     expect(slots[2]).toHaveAttribute("data-active");
-    expect(slots[2]).toHaveClass("border-blue-400", "ring-blue-100");
+    expect(slots[2]).toHaveClass("border-primary/60", "ring-primary-soft-hover");
   });
 
   it("tints filled boxes and pops each digit in", () => {
@@ -125,7 +125,7 @@ describe("OtpInput", () => {
     const slots = container.querySelectorAll("[data-slot='otp-input-slot']");
 
     expect(slots[0]).toHaveAttribute("data-filled");
-    expect(slots[0]).toHaveClass("border-blue-200", "bg-blue-50", "text-blue-700");
+    expect(slots[0]).toHaveClass("border-primary-border", "bg-primary-soft", "text-primary-hover");
     expect(slots[0]!.querySelector(".animate-check-pop")).toHaveTextContent("۱");
     expect(slots[2]).not.toHaveAttribute("data-filled");
     expect(slots[2]).toHaveClass("border-2", "border-gray-300", "bg-white");

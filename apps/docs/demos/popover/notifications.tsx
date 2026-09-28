@@ -64,7 +64,7 @@ export default function PopoverNotificationsDemo() {
             <li
               key={item.id}
               data-unread={unreadIds.includes(item.id)}
-              className="flex items-start gap-3 px-4 py-3 data-[unread=true]:bg-blue-50/50"
+              className="data-[unread=true]:bg-primary-soft/50 flex items-start gap-3 px-4 py-3"
             >
               <Avatar name={item.name} size="sm" />
               <div className="flex flex-col gap-0.5">

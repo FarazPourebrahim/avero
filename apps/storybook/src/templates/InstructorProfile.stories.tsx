@@ -157,7 +157,7 @@ function InstructorProfileTemplate() {
             <HighlightPanel label="رتبه در میان مدرس‌ها" value="۳" />
             <InfoRow label="گواهی‌های صادرشده" value="۸۴۰ عدد" tone="emerald" />
             <InfoRow label="نشان‌ها" value="۱۲ عدد" tone="purple" />
-            <InfoRow label="پرسش‌های پاسخ‌داده" value="۱٬۶۰۰ عدد" tone="blue" />
+            <InfoRow label="پرسش‌های پاسخ‌داده" value="۱٬۶۰۰ عدد" tone="primary" />
           </AchievementsPanel>
         </div>
       </ProfileLayout>

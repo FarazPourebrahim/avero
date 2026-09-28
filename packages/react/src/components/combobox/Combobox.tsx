@@ -351,8 +351,8 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(function Com
                       data-disabled={option.disabled ? "" : undefined}
                       className={cn(
                         "cursor-pointer rounded-lg px-3 py-2 text-sm text-gray-700 select-none",
-                        "data-[highlighted]:bg-blue-50 data-[highlighted]:text-blue-700",
-                        "data-[state=checked]:font-medium data-[state=checked]:text-blue-600",
+                        "data-[highlighted]:bg-primary-soft data-[highlighted]:text-primary-hover",
+                        "data-[state=checked]:text-primary data-[state=checked]:font-medium",
                         "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
                       )}
                       onMouseMove={() => {

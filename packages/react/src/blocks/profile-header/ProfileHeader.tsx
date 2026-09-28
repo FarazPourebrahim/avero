@@ -13,7 +13,7 @@ export type ProfileHeaderOwnProps = {
   image?: string;
   /** Alternative text for the avatar. @defaultValue the name, when it is a string */
   imageAlt?: string;
-  /** Cover artwork. Without one a blue-to-purple gradient shows. */
+  /** Cover artwork. Without one a brand gradient (`primary` to `primary-hover`) shows. */
   cover?: ReactNode;
   /** Badge beside the name, e.g. a premium `Badge`. */
   badge?: ReactNode;

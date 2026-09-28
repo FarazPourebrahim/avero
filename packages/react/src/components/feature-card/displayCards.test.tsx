@@ -118,8 +118,8 @@ describe("SectionHeader", () => {
       <SectionHeader variant="dot" as="h3" title="درباره من" actions={<span>x</span>} />,
     );
 
-    expect(screen.getByRole("heading", { level: 3 })).toHaveClass("text-blue-600");
-    expect(container.querySelector(".rounded-full.bg-blue-600")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3 })).toHaveClass("text-primary");
+    expect(container.querySelector(".rounded-full.bg-primary")).toBeInTheDocument();
   });
 
   it("renders the icon variant", () => {

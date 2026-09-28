@@ -26,8 +26,8 @@ export const pillTabVariants = cva(
   {
     variants: {
       current: {
-        true: "bg-blue-600 text-white shadow-md shadow-blue-500/20",
-        false: "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-blue-600",
+        true: "bg-primary shadow-primary/20 text-white shadow-md",
+        false: "hover:text-primary bg-slate-50 text-slate-600 hover:bg-slate-100",
       },
     },
     defaultVariants: { current: false },

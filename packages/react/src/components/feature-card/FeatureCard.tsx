@@ -10,7 +10,7 @@ export type FeatureCardOwnProps = {
   description: ReactNode;
   /** Icon shown in a padded, tinted tile. */
   icon?: ReactNode;
-  /** Icon tile color. @defaultValue "blue" */
+  /** Icon tile color. @defaultValue "primary" */
   tone?: IconTileOwnProps["tone"];
   /** Heading level of the title. @defaultValue "h4" */
   titleAs?: "h2" | "h3" | "h4";
@@ -24,7 +24,7 @@ export type FeatureCardProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Featur
  * border tints with the primary color on hover.
  */
 export const FeatureCard = forwardRef<HTMLDivElement, FeatureCardProps>(function FeatureCard(
-  { title, description, icon, tone = "blue", titleAs: Title = "h4", className, ...props },
+  { title, description, icon, tone = "primary", titleAs: Title = "h4", className, ...props },
   ref,
 ) {
   return (

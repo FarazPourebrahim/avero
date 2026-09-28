@@ -100,10 +100,10 @@ export const OtpInput = forwardRef<HTMLInputElement, OtpInputProps>(function Otp
             data-filled={digit ? "" : undefined}
             className={cn(
               // The soft palette the form controls share: empty boxes are a light outline, filled
-              // ones take the blue tint, and the box awaiting the next digit gets the focus halo.
+              // ones take the brand tint, and the box awaiting the next digit gets the focus halo.
               "flex size-10 items-center justify-center rounded-xl border-2 border-gray-300 bg-white text-lg font-semibold text-gray-900 transition-all duration-300 sm:size-12",
-              digit && "border-blue-200 bg-blue-50 text-blue-700",
-              active && "border-blue-400 ring-4 ring-blue-100",
+              digit && "border-primary-border bg-primary-soft text-primary-hover",
+              active && "border-primary/60 ring-primary-soft-hover ring-4",
               invalid && "border-red-500",
               invalid && active && "ring-red-100",
               disabled && "opacity-60",
@@ -116,7 +116,7 @@ export const OtpInput = forwardRef<HTMLInputElement, OtpInputProps>(function Otp
                 {digits === "fa" ? toPersianDigits(digit) : digit}
               </span>
             ) : active ? (
-              <span className="animate-blink h-5 w-0.5 rounded-full bg-blue-600" />
+              <span className="animate-blink bg-primary h-5 w-0.5 rounded-full" />
             ) : null}
           </div>
         );

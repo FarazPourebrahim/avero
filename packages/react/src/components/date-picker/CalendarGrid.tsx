@@ -227,9 +227,10 @@ export function CalendarGrid({
                   aria-label={formats.long.format(toDate(date))}
                   className={cn(
                     "mx-auto flex size-9 cursor-pointer items-center justify-center rounded-xl text-sm text-gray-700 transition outline-none",
-                    "focus-visible:ring-primary/40 hover:bg-blue-50 hover:text-blue-700 focus-visible:ring-2",
+                    "focus-visible:ring-primary/40 hover:bg-primary-soft hover:text-primary-hover focus-visible:ring-2",
                     isToday && "text-primary font-bold",
-                    position === "middle" && "w-full rounded-none bg-blue-50 text-blue-700",
+                    position === "middle" &&
+                      "bg-primary-soft text-primary-hover w-full rounded-none",
                     selected && "bg-primary hover:bg-primary-hover text-white hover:text-white",
                     unavailable &&
                       "cursor-not-allowed text-gray-400 line-through hover:bg-transparent hover:text-gray-400",

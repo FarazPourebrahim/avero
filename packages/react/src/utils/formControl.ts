@@ -18,15 +18,16 @@ export const formControlSlateSurface =
   "rounded-2xl border-2 border-slate-200 bg-white transition-all duration-300 hover:border-slate-300";
 
 /**
- * Focus on the control itself: a blue outline with a soft halo. `blue-400` rather than a paler blue
- * keeps the focused field easy to find with a keyboard.
+ * Focus on the control itself: a brand outline with a soft halo, both following `--color-primary`.
+ * The outline is the primary at 60% rather than a pale tint, so the focused field stays easy to find
+ * with a keyboard.
  */
 export const formControlFocus =
-  "focus:border-blue-400 focus:ring-4 focus:ring-blue-100 focus:outline-none";
+  "focus:border-primary/60 focus:ring-4 focus:ring-primary-soft-hover focus:outline-none";
 
 /** The same focus for a wrapper around the real input, such as `DatePicker` or `TagInput`. */
 export const formControlFocusWithin =
-  "focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-100";
+  "focus-within:border-primary/60 focus-within:ring-4 focus-within:ring-primary-soft-hover";
 
 /** Invalid state for a control that carries `aria-invalid` itself. */
 export const formControlAriaInvalid =

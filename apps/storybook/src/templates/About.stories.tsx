@@ -82,7 +82,7 @@ function AboutTemplate() {
           />
           <FeatureCard
             titleAs="h3"
-            tone="blue"
+            tone="primary"
             icon={<UsersIcon />}
             title="مدرس‌های باتجربه"
             description="همه مدرس‌ها سال‌ها در همان حوزه کار کرده‌اند."

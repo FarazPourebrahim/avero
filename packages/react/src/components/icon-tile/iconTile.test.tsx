@@ -14,15 +14,19 @@ describe("IconTile", () => {
     const { container } = render(<IconTile>★</IconTile>);
 
     expect(tile(container)).toHaveAttribute("aria-hidden", "true");
-    expect(tile(container)).toHaveClass("bg-blue-50", "text-blue-600", "size-7", "sm:size-8");
+    expect(tile(container)).toHaveClass("bg-primary-soft", "text-primary", "size-7", "sm:size-8");
   });
 
   it.each([
     ["soft", "purple", ["bg-purple-50", "text-purple-600"]],
-    ["soft", "primary", ["bg-blue-50", "text-primary"]],
+    ["soft", "primary", ["bg-primary-soft", "text-primary"]],
     ["muted", "emerald", ["bg-emerald-100", "text-emerald-600"]],
     ["tint", "amber", ["bg-amber-500/10", "text-amber-500"]],
+    ["muted", "primary", ["bg-primary-soft-hover", "text-primary"]],
+    ["tint", "primary", ["bg-primary/10", "text-primary"]],
     ["tint", "blue", ["bg-blue-600/10"]],
+    ["gradient", "primary", ["from-primary", "to-primary-hover"]],
+    ["gradient", "blue", ["from-blue-500", "to-blue-600"]],
     ["gradient", "rose", ["bg-gradient-to-br", "from-rose-500", "to-pink-600", "text-white"]],
     ["gradient", "amber", ["from-amber-500", "to-orange-500"]],
     ["gradient", "slate", ["from-slate-600", "to-slate-700"]],

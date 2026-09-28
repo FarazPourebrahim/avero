@@ -24,6 +24,7 @@ describe("Badge", () => {
     ["outline", "amber", ["border-amber-100", "text-amber-700"]],
     ["overlay", "neutral", ["bg-black/60", "backdrop-blur-sm"]],
     ["overlay", "dark", ["bg-black/60"]],
+    ["overlay", "primary", ["bg-primary/90", "rounded-xl"]],
     ["overlay", "blue", ["bg-blue-600/90", "rounded-xl"]],
     ["solid", "danger", ["bg-red-500", "text-white"]],
     ["solid", "success", ["bg-green-600"]],

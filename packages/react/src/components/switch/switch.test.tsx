@@ -31,8 +31,8 @@ describe("Switch", () => {
     const control = screen.getByRole("switch");
     const thumb = control.querySelector("[data-slot='switch-thumb']");
 
-    expect(thumb).toHaveClass("size-4", "bg-gray-400", "data-[state=checked]:bg-blue-600");
-    expect(control).toHaveClass("data-[state=checked]:bg-blue-50", "active:scale-95");
+    expect(thumb).toHaveClass("size-4", "bg-gray-400", "data-[state=checked]:bg-primary");
+    expect(control).toHaveClass("data-[state=checked]:bg-primary-soft", "active:scale-95");
 
     await userEvent.click(control);
     expect(thumb).toHaveAttribute("data-state", "checked");

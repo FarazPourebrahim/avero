@@ -13,14 +13,14 @@ import { RadioCard, RadioGroup, RadioGroupItem } from "@averoui/react";
 
 ## Anatomy
 
-| Part           | Slot                                | Notes                                  |
-| -------------- | ----------------------------------- | -------------------------------------- |
-| RadioGroup     | `data-slot="radio-group"`           | `role="radiogroup"`, a grid of options |
-| RadioGroupItem | `data-slot="radio-group-item"`      | `role="radio"`, a round button         |
-| Indicator      | `data-slot="radio-group-indicator"` | The blue dot of the chosen option      |
+| Part           | Slot                                | Notes                                       |
+| -------------- | ----------------------------------- | ------------------------------------------- |
+| RadioGroup     | `data-slot="radio-group"`           | `role="radiogroup"`, a grid of options      |
+| RadioGroupItem | `data-slot="radio-group-item"`      | `role="radio"`, a round button              |
+| Indicator      | `data-slot="radio-group-indicator"` | The brand-coloured dot of the chosen option |
 
 An item is 24px with a 2px outline, on the same soft palette as [Checkbox](./checkbox): a light
-gray outline while unselected, and a blue tint with a blue dot once chosen. The dot pops in when an
+gray outline while unselected, and a brand tint with a brand-coloured dot once chosen. The dot pops in when an
 option is chosen, and pressing shrinks the item slightly, like a [Button](./button).
 
 `RadioCard` is an item presented as a card:
@@ -47,7 +47,7 @@ While the group is `aria-invalid`, every option's outline turns red, and so does
 ### Card options
 
 `RadioCard` presents each option as a bordered card with a title, a line of explanation and an
-optional aside. The whole card is the click target, and the chosen card takes a soft blue tint. Use
+optional aside. The whole card is the click target, and the chosen card takes a soft brand tint. Use
 it where each choice needs explaining — shipping, plans, payment methods.
 
 <ComponentPreview name="radio-group/cards" />
@@ -96,16 +96,16 @@ the group, and `value` and `disabled` on each item.
 
 ## Theming
 
-| Token                 | Used by                                    |
-| --------------------- | ------------------------------------------ |
-| `--color-gray-300`    | Resting outline (`gray-400` on hover)      |
-| `--color-blue-50`     | Chosen fill (`blue-100` on hover)          |
-| `--color-blue-200`    | Chosen outline (`blue-300` on hover)       |
-| `--color-blue-600`    | The dot                                    |
-| `--color-primary`     | Focus ring                                 |
-| `--color-red-500`     | Outline and focus ring in an invalid group |
-| `--animate-check-pop` | The dot popping in                         |
-| `--color-gray-200`    | `RadioCard` resting border                 |
+| Token                    | Used by                                          |
+| ------------------------ | ------------------------------------------------ |
+| `--color-gray-300`       | Resting outline (`gray-400` on hover)            |
+| `--color-primary-soft`   | Chosen fill (`primary-soft-hover` on hover)      |
+| `--color-primary-border` | Chosen outline (`primary-border-hover` on hover) |
+| `--color-primary`        | The dot                                          |
+| `--color-primary`        | Focus ring                                       |
+| `--color-red-500`        | Outline and focus ring in an invalid group       |
+| `--animate-check-pop`    | The dot popping in                               |
+| `--color-gray-200`       | `RadioCard` resting border                       |
 
 ## Do and don't
 

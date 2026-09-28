@@ -49,8 +49,8 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
         className={cn(
           "inline-flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-gray-300 bg-white transition-all duration-300 active:scale-95",
           "data-[state=unchecked]:hover:border-gray-400",
-          "data-[state=checked]:border-blue-200 data-[state=checked]:bg-blue-50",
-          "data-[state=checked]:hover:border-blue-300 data-[state=checked]:hover:bg-blue-100",
+          "data-[state=checked]:border-primary-border data-[state=checked]:bg-primary-soft",
+          "data-[state=checked]:hover:border-primary-border-hover data-[state=checked]:hover:bg-primary-soft-hover",
           "focus-visible:ring-primary/40 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
           "disabled:cursor-not-allowed disabled:opacity-60",
           "aria-invalid:border-red-500 aria-invalid:focus-visible:ring-red-500/40",
@@ -62,7 +62,7 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
         {/* The indicator only mounts once chosen, so the dot pops in every time. */}
         <RadioGroupPrimitive.Indicator
           data-slot="radio-group-indicator"
-          className="animate-check-pop size-2.5 rounded-full bg-blue-600"
+          className="animate-check-pop bg-primary size-2.5 rounded-full"
         />
       </RadioGroupPrimitive.Item>
     );

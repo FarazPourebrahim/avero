@@ -187,7 +187,7 @@ export const ContactMethod = forwardRef<HTMLAnchorElement, ContactMethodProps>(
         data-slot="contact-method"
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={cn(
-          "inline-flex max-w-full items-center gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50 [&>svg]:size-4",
+          "hover:border-primary-border hover:bg-primary-soft inline-flex max-w-full items-center gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-800 transition [&>svg]:size-4",
           "focus-visible:ring-primary/40 focus-visible:ring-2 focus-visible:outline-none",
           className,
         )}

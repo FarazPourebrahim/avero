@@ -25,7 +25,7 @@ import { CoverHeader } from "@averoui/react";
 
 ### Cover and avatar
 
-Both slots are optional: without a `cover` the header falls back to the blue-to-purple gradient, and
+Both slots are optional: without a `cover` the header falls back to a brand gradient, `primary` to `primary-hover`, and
 the avatar ring takes any content, including initials.
 
 <ComponentPreview name="cover-header/defaults" />
@@ -33,7 +33,7 @@ the avatar ring takes any content, including initials.
 ## Right-to-left
 
 The avatar sits at the inline start from `lg` up and is centred below it; the default gradient
-flips with direction, so it runs blue → purple along the reading direction.
+flips with direction, so it runs from `primary` to `primary-hover` along the reading direction.
 
 ## Composition
 
@@ -54,10 +54,10 @@ flips with direction, so it runs blue → purple along the reading direction.
 
 ## Theming
 
-| Token                   | Used by          |
-| ----------------------- | ---------------- |
-| `--shadow-card-ambient` | Card shadow      |
-| `--color-blue-600`      | Default gradient |
+| Token                                      | Used by          |
+| ------------------------------------------ | ---------------- |
+| `--shadow-card-ambient`                    | Card shadow      |
+| `--color-primary`, `--color-primary-hover` | Default gradient |
 
 ## Do and don't
 

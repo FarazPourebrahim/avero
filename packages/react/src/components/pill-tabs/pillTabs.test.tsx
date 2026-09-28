@@ -52,7 +52,7 @@ describe("PillTabs", () => {
     const current = screen.getByRole("link", { name: "گواهی‌ها (2)" });
 
     expect(current).toHaveAttribute("aria-current", "page");
-    expect(current).toHaveClass("bg-blue-600", "text-white");
+    expect(current).toHaveClass("bg-primary", "text-white");
     expect(screen.getByRole("link", { name: "درباره من" })).toHaveClass("bg-slate-50");
   });
 

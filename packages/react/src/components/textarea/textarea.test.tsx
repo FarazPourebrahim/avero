@@ -23,7 +23,7 @@ describe("Textarea", () => {
     expect(screen.getByRole("textbox")).toHaveClass(
       "border-2",
       "focus:bg-white",
-      "focus:ring-blue-100",
+      "focus:ring-primary-soft-hover",
     );
   });
 
