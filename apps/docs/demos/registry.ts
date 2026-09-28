@@ -142,6 +142,8 @@ import AlertVariants from "./alert/variants";
 import ConfirmDialogTones from "./confirm-dialog/tones";
 import ContextMenuMessageActions from "./context-menu/message-actions";
 import ContextMenuWithDialog from "./context-menu/with-dialog";
+import DialogControlled from "./dialog/controlled";
+import DialogMandatory from "./dialog/mandatory";
 import DialogSizes from "./dialog/sizes";
 import DisabledOverlayTones from "./disabled-overlay/tones";
 import DrawerSides from "./drawer/sides";
@@ -321,6 +323,8 @@ export const demos = {
   "confirm-dialog/tones": ConfirmDialogTones,
   "context-menu/message-actions": ContextMenuMessageActions,
   "context-menu/with-dialog": ContextMenuWithDialog,
+  "dialog/controlled": DialogControlled,
+  "dialog/mandatory": DialogMandatory,
   "dialog/sizes": DialogSizes,
   "disabled-overlay/tones": DisabledOverlayTones,
   "drawer/sides": DrawerSides,

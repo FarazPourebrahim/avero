@@ -48,6 +48,51 @@ a preview. The panel never grows past `90vh`; its body scrolls instead.
 
 <ComponentPreview name="dialog/sizes" />
 
+### Controlled
+
+To open a dialog from code, a menu item or a keyboard shortcut, leave out `DialogTrigger` and control
+it: `open` and `onOpenChange` go on **`Dialog`**, the root. `DialogContent` is the panel and doesn't
+know whether it is open; props it doesn't recognise are passed on to the panel element, so a
+controlled `open` put there silently does nothing.
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Dialog open={open} onOpenChange={setOpen}>
+  <DialogContent>…</DialogContent>
+</Dialog>;
+```
+
+Closing returns focus to whatever had it when the dialog opened, trigger or not. A dialog opened
+from a [DropdownMenu](./dropdown-menu) or [ContextMenu](./context-menu) item returns focus to the
+menu's trigger or area, because the item itself is gone by then.
+
+<ComponentPreview name="dialog/controlled" />
+
+### Mandatory dialogs
+
+A dialog the user has to answer, such as a consent or onboarding gate, drops every way of
+dismissing it: `showClose={false}` removes the close button, and calling `event.preventDefault()` in
+`onEscapeKeyDown` and `onInteractOutside` keeps <kbd>Escape</kbd> and a click on the scrim from
+closing it. Pass `open` without `onOpenChange`, so only your own action closes it.
+
+```tsx
+<Dialog open={!accepted}>
+  <DialogContent
+    showClose={false}
+    onEscapeKeyDown={(event) => event.preventDefault()}
+    onInteractOutside={(event) => event.preventDefault()}
+  >
+    …<Button onClick={accept}>ادامه</Button>
+  </DialogContent>
+</Dialog>
+```
+
+The focus trap still holds, so the page behind stays unreachable until the dialog is answered. Keep
+the way forward obvious and always enabled once its condition is met; a gate with no exit is a trap.
+
+<ComponentPreview name="dialog/mandatory" />
+
 ## Right-to-left
 
 The panel is centred with logical insets, the close button sits at the inline end, and footer
@@ -58,8 +103,8 @@ both directions.
 ## Composition
 
 - Wrap buttons in `DialogClose asChild` to close the dialog from the footer.
-- Use `DialogTrigger asChild` with a [`Button`](./button), or control `open` and `onOpenChange`
-  yourself.
+- Use `DialogTrigger asChild` with a [`Button`](./button), or control `open` and `onOpenChange` on
+  `Dialog` yourself (see [Controlled](#controlled)).
 - To confirm an action, use [ConfirmDialog](./confirm-dialog). For side panels, use
   [Drawer](./drawer).
 
@@ -72,7 +117,10 @@ both directions.
 | <kbd>Escape</kbd>                                  | Closes the dialog                            |
 
 - Opening moves focus to the first focusable element in the content; closing returns it to the
-  trigger. The page behind is inert and doesn't scroll.
+  element that had focus when the dialog opened — the trigger, or the button, menu or shortcut
+  target that opened it from code. The page behind is inert and doesn't scroll.
+- A [mandatory dialog](#mandatory-dialogs) ignores <kbd>Escape</kbd> and clicks outside; it must
+  offer its own way forward.
 - Every dialog needs a `DialogTitle`. Without a `DialogDescription`, pass
   `aria-describedby={undefined}` to `DialogContent`.
 
@@ -98,7 +146,8 @@ accept native `<div>` attributes.
 
 - **Do** keep dialogs short and focused on one task.
 - **Don't** open a dialog from inside another dialog.
+- **Don't** make a dialog mandatory unless the user truly cannot continue without answering it.
 
 ## Related
 
-[ConfirmDialog](./confirm-dialog) · [Drawer](./drawer)
+[ConfirmDialog](./confirm-dialog) · [Drawer](./drawer) · [ContextMenu](./context-menu)
