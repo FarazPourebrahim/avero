@@ -1,0 +1,120 @@
+---
+title: ContextMenu
+description: A menu of actions opened by right-clicking or long-pressing an area, styled exactly like DropdownMenu.
+---
+
+[View source](https://github.com/FarazPourebrahim/avero/tree/dev/packages/react/src/components/context-menu)
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from "@averoui/react";
+```
+
+<ComponentPreview name="context-menu/message-actions" />
+
+## Anatomy
+
+| Part          | Slot                                     | Notes                                                 |
+| ------------- | ---------------------------------------- | ----------------------------------------------------- |
+| Trigger       | `data-slot="context-menu-trigger"`       | The area that opens the menu; a `<span>` by default   |
+| Content       | `data-slot="context-menu-content"`       | `role="menu"`; opens at the pointer, on `--z-popover` |
+| Item          | `data-slot="context-menu-item"`          | `data-tone` is `default` or `danger`                  |
+| Checkbox item | `data-slot="context-menu-checkbox-item"` | Check at the inline start                             |
+| Radio item    | `data-slot="context-menu-radio-item"`    | Dot at the inline start                               |
+| Label         | `data-slot="context-menu-label"`         | Heading for a group of items                          |
+| Separator     | `data-slot="context-menu-separator"`     | Divides groups                                        |
+| Sub trigger   | `data-slot="context-menu-sub-trigger"`   | Chevron points toward the submenu                     |
+| Sub content   | `data-slot="context-menu-sub-content"`   | The submenu panel                                     |
+
+Every part takes its classes from the same source as the matching [DropdownMenu](./dropdown-menu)
+part, so the two menus cannot drift apart.
+
+## Tones
+
+`tone="danger"` colours an item red for destructive actions such as deleting a message.
+
+## Examples
+
+### Opening a dialog from an item
+
+Control the dialog with `open` and set it from the item's `onSelect`. The item is gone once the
+menu closes, so when the dialog closes, focus returns to the area the menu was opened on: here, the
+message.
+
+<ComponentPreview name="context-menu/with-dialog" />
+
+## Right-to-left
+
+`ContextMenu` reads the direction from `AveroProvider`. The menu opens at the pointer and stays on
+screen, submenus open toward the reading direction, the arrow key that opens them follows it
+(<kbd>←</kbd> in Persian, <kbd>→</kbd> in English), and the sub-trigger chevron mirrors.
+
+## Composition
+
+- **Message actions:** make the message itself the trigger with `ContextMenuTrigger asChild`, and
+  give it `tabIndex={0}` so keyboard users can reach it and open the menu with the menu key.
+- Checkbox, radio and submenu items work as in [DropdownMenu](./dropdown-menu), controlled with
+  `checked` / `onCheckedChange` and `value` / `onValueChange`.
+- A context menu is a shortcut, not the only way in: offer the same actions from a visible
+  [DropdownMenu](./dropdown-menu) or buttons as well.
+
+## Accessibility
+
+| Key                                              | Action                                                     |
+| ------------------------------------------------ | ---------------------------------------------------------- |
+| Secondary click / long-press                     | Opens the menu at the pointer                              |
+| <kbd>Shift</kbd> + <kbd>F10</kbd> / the menu key | On the focused area, opens the menu                        |
+| <kbd>↓</kbd> / <kbd>↑</kbd>                      | Moves between items                                        |
+| <kbd>←</kbd> / <kbd>→</kbd>                      | Opens or closes a submenu, following the reading direction |
+| <kbd>Enter</kbd> / <kbd>Space</kbd>              | Selects the focused item                                   |
+| Type a letter                                    | Moves to the next item starting with it                    |
+| <kbd>Escape</kbd>                                | Closes the menu                                            |
+
+- Items are `menuitem`, `menuitemcheckbox` or `menuitemradio` with `aria-checked`; disabled items
+  keep `aria-disabled="true"` and are skipped by the arrow keys.
+- Touch and screen reader users often cannot open a context menu at all. Never make it the only way
+  to reach an action.
+
+## API reference
+
+`ContextMenuContent` accepts every Radix context menu content prop plus:
+
+<PropsTable file="components/context-menu/ContextMenu.tsx" name="ContextMenuContentOwnProps" />
+
+`ContextMenuItem` accepts every Radix menu item prop plus:
+
+<PropsTable file="components/context-menu/ContextMenu.tsx" name="ContextMenuItemOwnProps" />
+
+The other parts accept their Radix props unchanged.
+
+## Theming
+
+| Token               | Used by                   |
+| ------------------- | ------------------------- |
+| `--shadow-pop-wide` | Menu and submenu panels   |
+| `--z-popover`       | Menu and submenu panels   |
+| `--color-primary`   | Check and radio indicator |
+| `--color-red-600`   | `danger` items            |
+
+## Do and don't
+
+- **Do** mirror every context-menu action somewhere visible.
+- **Do** keep destructive items last, after a separator.
+- **Don't** use a context menu for an area's primary action; a click or a button is easier to find.
+
+## Related
+
+[DropdownMenu](./dropdown-menu) · [ConfirmDialog](./confirm-dialog) · [Dialog](./dialog)

@@ -127,6 +127,7 @@ export * from "./components/site-header/index.js";
 export * from "./components/alert/index.js";
 export * from "./components/disabled-overlay/index.js";
 export * from "./components/confirm-dialog/index.js";
+export * from "./components/context-menu/index.js";
 export * from "./components/dialog/index.js";
 export * from "./components/drawer/index.js";
 export * from "./components/dropdown-menu/index.js";

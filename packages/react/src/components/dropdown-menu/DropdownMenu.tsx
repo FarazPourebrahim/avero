@@ -5,6 +5,19 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { CheckIcon, ChevronRightIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
+import {
+  menuCheckClasses,
+  menuContentClasses,
+  menuDangerItemClasses,
+  menuIndicatorItemClasses,
+  menuIndicatorSlotClasses,
+  menuItemClasses,
+  menuLabelClasses,
+  menuRadioDotClasses,
+  menuSeparatorClasses,
+  menuSubChevronClasses,
+  menuSubTriggerOpenClasses,
+} from "../../utils/menu.js";
 
 /**
  * A menu of actions opened from a button, such as a user menu. Radix supplies the WAI-ARIA menu
@@ -36,14 +49,9 @@ export type DropdownMenuRadioGroupProps = ComponentPropsWithoutRef<
 >;
 export type DropdownMenuSubProps = ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub>;
 
-const contentClasses =
-  "shadow-pop-wide z-(--z-popover) max-h-(--radix-dropdown-menu-content-available-height) min-w-48 overflow-y-auto rounded-xl border border-gray-200 bg-white p-1.5 outline-none";
-
-const itemClasses = [
-  "relative flex cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-gray-700 outline-none select-none",
-  "data-[highlighted]:bg-gray-100 data-[highlighted]:text-gray-900",
-  "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-  "[&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-gray-500",
+const contentClasses = [
+  menuContentClasses,
+  "max-h-(--radix-dropdown-menu-content-available-height)",
 ];
 
 /** Props specific to `DropdownMenuContent`. It also accepts every Radix menu content prop. */
@@ -102,12 +110,7 @@ export const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps
         ref={ref}
         data-slot="dropdown-menu-item"
         data-tone={tone}
-        className={cn(
-          itemClasses,
-          tone === "danger" &&
-            "text-red-600 data-[highlighted]:bg-red-50 data-[highlighted]:text-red-700 [&>svg]:text-red-600",
-          className,
-        )}
+        className={cn(menuItemClasses, tone === "danger" && menuDangerItemClasses, className)}
         {...props}
       />
     );
@@ -127,12 +130,12 @@ export const DropdownMenuCheckboxItem = forwardRef<HTMLDivElement, DropdownMenuC
       <DropdownMenuPrimitive.CheckboxItem
         ref={ref}
         data-slot="dropdown-menu-checkbox-item"
-        className={cn(itemClasses, "ps-9", className)}
+        className={cn(menuItemClasses, menuIndicatorItemClasses, className)}
         {...props}
       >
-        <span className="absolute start-3 flex size-4 items-center justify-center">
+        <span className={menuIndicatorSlotClasses}>
           <DropdownMenuPrimitive.ItemIndicator>
-            <CheckIcon className="text-primary size-4" />
+            <CheckIcon className={menuCheckClasses} />
           </DropdownMenuPrimitive.ItemIndicator>
         </span>
         {children}
@@ -154,12 +157,12 @@ export const DropdownMenuRadioItem = forwardRef<HTMLDivElement, DropdownMenuRadi
       <DropdownMenuPrimitive.RadioItem
         ref={ref}
         data-slot="dropdown-menu-radio-item"
-        className={cn(itemClasses, "ps-9", className)}
+        className={cn(menuItemClasses, menuIndicatorItemClasses, className)}
         {...props}
       >
-        <span className="absolute start-3 flex size-4 items-center justify-center">
+        <span className={menuIndicatorSlotClasses}>
           <DropdownMenuPrimitive.ItemIndicator>
-            <span className="bg-primary block size-2 rounded-full" />
+            <span className={menuRadioDotClasses} />
           </DropdownMenuPrimitive.ItemIndicator>
         </span>
         {children}
@@ -179,7 +182,7 @@ export const DropdownMenuLabel = forwardRef<HTMLDivElement, DropdownMenuLabelPro
       <DropdownMenuPrimitive.Label
         ref={ref}
         data-slot="dropdown-menu-label"
-        className={cn("px-3 py-1.5 text-xs font-bold text-gray-500", className)}
+        className={cn(menuLabelClasses, className)}
         {...props}
       />
     );
@@ -198,7 +201,7 @@ export const DropdownMenuSeparator = forwardRef<HTMLDivElement, DropdownMenuSepa
       <DropdownMenuPrimitive.Separator
         ref={ref}
         data-slot="dropdown-menu-separator"
-        className={cn("-mx-1.5 my-1.5 h-px bg-gray-100", className)}
+        className={cn(menuSeparatorClasses, className)}
         {...props}
       />
     );
@@ -218,11 +221,11 @@ export const DropdownMenuSubTrigger = forwardRef<HTMLDivElement, DropdownMenuSub
       <DropdownMenuPrimitive.SubTrigger
         ref={ref}
         data-slot="dropdown-menu-sub-trigger"
-        className={cn(itemClasses, "data-[state=open]:bg-gray-100", className)}
+        className={cn(menuItemClasses, menuSubTriggerOpenClasses, className)}
         {...props}
       >
         {children}
-        <ChevronRightIcon className="ms-auto rtl:-scale-x-100" />
+        <ChevronRightIcon className={menuSubChevronClasses} />
       </DropdownMenuPrimitive.SubTrigger>
     );
   },

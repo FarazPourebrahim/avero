@@ -62,6 +62,7 @@
     "drawer",
     "popover",
     "dropdown-menu",
+    "context-menu",
     "lightbox",
     "toast",
     "tooltip",
