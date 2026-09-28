@@ -1,5 +1,41 @@
 # @averoui/react
 
+## 2.2.0
+
+### Minor Changes
+
+- 89232a2: **Breaking (rendered output):** brand accents now follow `--color-primary` instead of Tailwind's `blue-*`. If you relied on them staying blue under a custom primary, pass `tone="blue"` where a component offers it, or add the old `blue-*` classes through `className`.
+
+  `@averoui/tokens` adds four tokens derived from the primary at runtime, so overriding `--color-primary` alone rebrands every tint and border:
+
+  - `--color-primary-soft`: `color-mix(in oklab, var(--color-primary) 8%, white)`
+  - `--color-primary-soft-hover`: 15%
+  - `--color-primary-border`: 25%
+  - `--color-primary-border-hover`: 40%
+
+  They sit in the plain `@theme` block, not `@theme inline`, so the `var()` stays live in the browser and a consumer's override reaches them.
+
+  `@averoui/react` moves every brand tint, border, focus halo and selected state onto them: the checked, chosen and on states of `Checkbox`, `CheckboxCard`, `RadioGroup`, `RadioCard`, `Switch` and `SwitchCard`; highlighted and checked options in `Select` and `Combobox`; the range and hover days of `DatePicker`; `FileInput`'s drop state; `TagInput`'s remove button; the `filter` focus of `Input`; the current `PillTabs` tab; `SectionHeader`'s dot; the `StatStrip` accent bars; the `Chip` skill and tag hover; the `Meta` pill hover; the `IconButton` `social` and `slate` hovers; the `CategoryLinks`, `ReactionBar` and `ShowcaseCard` accents; and `CoverHeader`'s default cover, now a `primary` → `primary-hover` gradient. With the default theme these move from Tailwind's `blue-600` to Avero's `#0a66c2`, a slightly deeper blue; every brand pairing in the contrast report measures the same or better.
+
+  Named hues keep their hue: `tone="blue"` stays blue whatever the brand is, and the `info` tone of `Alert` and `Toast` stays blue because it means information. A `primary` tone follows the brand instead. `Button` and `IconButton` gain a `soft` `primary` tone and `Badge` an `overlay` `primary` tone, and `primary` is now the default tone of `IconTile`, `ActionTile`, `FeatureCard`, `StatCard`, `StatTile` and `InfoRow` (it was `blue`), with its own tint, muted, tint and gradient values instead of sharing `blue`'s.
+
+- f9366cc: Adds `ContextMenu`, a menu opened by right-clicking, long-pressing or pressing the context-menu key on an area, such as the actions on a message. It wraps Radix Context Menu with the same parts as `DropdownMenu` (`ContextMenuTrigger`, `ContextMenuContent`, `ContextMenuItem` with a `danger` tone, checkbox and radio items, labels, separators, groups and submenus), reads its direction from `AveroProvider`, and opens on the `--z-popover` layer. Both menus now take their classes from one shared source, so they look identical; `DropdownMenu`'s rendered classes are unchanged.
+- 9d43656: The text-entry controls move onto the soft palette `Checkbox`, `RadioGroup` and `Switch` use. `Input` and `Textarea` (`outline`), `PriceInput`, `Select`, `Combobox`, `DatePicker` and `TagInput` now share one treatment: a 2px `gray-300` outline on white that darkens to `gray-400` on hover, and on focus a brand outline (`primary` at 60%) with a soft `primary-soft-hover` halo instead of the `blue-500` border and ring. Invalid controls keep a red outline with a `red-100` halo. The thicker outline makes each control 2px taller. The `soft` and `slate` variants of `Input` and `Textarea` join it: they keep their grounds, 16px corners and padding, but take a 2px outline (`gray-200` and `slate-200`, darker on hover) and the same brand focus outline and halo instead of the indigo ring, and `soft` turns white while focused. The compact `filter` variant is unchanged.
+
+  `OtpInput` follows the same palette: empty boxes have a 2px `gray-300` outline, filled boxes turn to a `primary-soft` tint with a `primary-border` outline and `primary-hover` digits that pop in as they are typed, and the box awaiting the next digit shows the focus outline and halo with a brand caret. All of it follows `--color-primary`. Each box now carries `data-filled` once it holds a digit.
+
+  `FieldError` renders as a soft red note, `red-700` text on `red-50` led by the alert icon, instead of bare red text.
+
+  The resting outline is below the 3:1 contrast WCAG asks of control boundaries, the same deliberate choice as the other controls; `className="border-gray-500/80"` (`slotClassName` on `OtpInput`) restores it where strict AA matters.
+
+- dfe95b7: `Toast` gains a `loading` tone and in-place updates. A `loading` toast shows a spinner in the brand colour, stays open until it is updated or dismissed, and is announced politely. `useToast()` now also returns `update(id, options)`, which changes a toast's tone, message, action or duration where it stands (omitted options keep their values, except `duration`, which falls back to the new tone's default), and `promise(pending, { loading, success, error })`, which shows a `loading` toast and turns it into `success` or `danger` when the promise settles, returning the same promise. An updated toast is announced again and its timer starts over. `ToastTone` includes `loading`, and `ToastPromiseOptions` and `ToastPromiseStage` are exported.
+
+### Patch Changes
+
+- bbbf853: `Dialog`, `Drawer` and `ConfirmDialog` return focus to whatever opened them when they close, even without a `DialogTrigger`, `DrawerTrigger` or `trigger`. Radix only refocuses its own trigger, so a dialog opened from code or from a menu used to drop focus to `<body>`. When the opener was a `DropdownMenu` or `ContextMenu` item, which is gone by the time the dialog closes, focus goes to the menu's trigger or area instead. Your own `onCloseAutoFocus` runs first, and calling `event.preventDefault()` there still opts out. `Lightbox` uses the same handling.
+- Updated dependencies [89232a2]
+  - @averoui/tokens@2.2.0
+
 ## 2.1.0
 
 ### Minor Changes
