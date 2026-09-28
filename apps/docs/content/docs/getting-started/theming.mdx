@@ -37,8 +37,32 @@ Add your own `@theme` block **after** the Avero import. Later declarations win.
 }
 ```
 
-Every primary button, active tab, focus accent and brand gradient follows. No component code
-changes, and no class overrides are needed.
+Every primary button, active tab, focus ring, selected checkbox, radio and switch, highlighted
+option, brand tint and brand gradient follows. No component code changes, and no class overrides
+are needed.
+
+### Derived brand tokens
+
+The light tints and borders around the brand colour are not separate colours to keep in sync. They
+are mixed from `--color-primary` at runtime:
+
+| Token                          | Value                                                  | Used for                                       |
+| ------------------------------ | ------------------------------------------------------ | ---------------------------------------------- |
+| `--color-primary-soft`         | `color-mix(in oklab, var(--color-primary) 8%, white)`  | Selected and highlighted fills, soft tiles     |
+| `--color-primary-soft-hover`   | `color-mix(in oklab, var(--color-primary) 15%, white)` | Their hover, the form-control focus halo       |
+| `--color-primary-border`       | `color-mix(in oklab, var(--color-primary) 25%, white)` | Outlines of selected controls, chips and cards |
+| `--color-primary-border-hover` | `color-mix(in oklab, var(--color-primary) 40%, white)` | Their hover                                    |
+
+Overriding `--color-primary` alone moves all four. They live in a plain `@theme` block, not
+`@theme inline`, precisely so the `var()` is resolved in the browser: an inline theme would bake
+the default blue into every class, and your override would never reach them. You can still set any
+of them yourself, for instance to make the tints warmer than a straight mix.
+
+Colours named after a hue stay that hue. `tone="blue"` on a button or icon tile is blue whatever the
+brand is, and the `info` tone of [Alert](../components/alert) and [Toast](../components/toast) keeps
+its blue because it means "information", not "brand". Use `tone="primary"` — the default for
+[IconTile](../components/icon-tile), [ActionTile](../blocks/quick-actions), the stat cards and
+[FeatureCard](../components/feature-card) — where you want the brand.
 
 ## Which tokens to reach for
 
@@ -62,8 +86,8 @@ See [Foundations](../foundations/colors) for every token with its live value.
 
 ## Branding with a single hue
 
-Most rebrands only need the primary pair. Pick a hue, then a darker step for the hover and gradient
-end:
+Most rebrands only need the primary pair; the tints and borders are derived from it. Pick a hue,
+then a darker step for the hover and gradient end:
 
 ```css
 @theme {

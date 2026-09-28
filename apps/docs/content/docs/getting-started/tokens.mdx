@@ -42,8 +42,8 @@ The z-index layers are used this way deliberately — they are not classes:
 
 ## As typed data
 
-`@averoui/tokens` has a default export with all 98 tokens, each carrying its CSS variable name and
-resolved value. Use it when a value must reach JavaScript rather than CSS — most often a third-party
+`@averoui/tokens` exports every token, each carrying its CSS variable name and its value as written
+in `theme.css`. Use it when a value must reach JavaScript rather than CSS — most often a third-party
 library that takes colours as props.
 
 ```ts
@@ -54,6 +54,23 @@ tokens.colorPrimary.value; // "#0a66c2"
 ```
 
 `TokenName` is a union of every token key, so a typo is a type error.
+
+### Derived tokens
+
+Four brand tokens are mixed from `--color-primary` rather than given a value of their own, so a
+consumer's `--color-primary` override moves them too (see [Theming](./theming#derived-brand-tokens)):
+
+| Token                          | Class                            | `value` in the token data                              |
+| ------------------------------ | -------------------------------- | ------------------------------------------------------ |
+| `--color-primary-soft`         | `bg-primary-soft`, …             | `color-mix(in oklab, var(--color-primary) 8%, white)`  |
+| `--color-primary-soft-hover`   | `bg-primary-soft-hover`, …       | `color-mix(in oklab, var(--color-primary) 15%, white)` |
+| `--color-primary-border`       | `border-primary-border`, …       | `color-mix(in oklab, var(--color-primary) 25%, white)` |
+| `--color-primary-border-hover` | `border-primary-border-hover`, … | `color-mix(in oklab, var(--color-primary) 40%, white)` |
+
+Their `value` is that expression, not a hex, because the actual colour depends on the theme the
+page loads. Code that needs a concrete colour in JavaScript should read the computed style
+(`getComputedStyle(element).getPropertyValue("--color-primary-soft")`) or use `tokenVar()` where a
+CSS value is accepted.
 
 This is how `@averoui/charts` colours its series: Recharts takes colours as props that end up as SVG
 attributes, where a utility class cannot reach and a bare `var()` reference would depend on Tailwind
