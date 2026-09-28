@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from "vitest";
 import { AveroProvider } from "../../i18n/AveroProvider.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { Button } from "../button/Button.js";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../dropdown-menu/DropdownMenu.js";
 import { ConfirmDialog } from "./ConfirmDialog.js";
 
 function deferred() {
@@ -29,6 +35,45 @@ function DeleteCourse(props: Partial<React.ComponentProps<typeof ConfirmDialog>>
       onConfirm={() => {}}
       {...props}
     />
+  );
+}
+
+function ControlledConfirm() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>حذف پیام</Button>
+      <ConfirmDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="پیام حذف شود؟"
+        onConfirm={() => {}}
+      />
+    </>
+  );
+}
+
+function ConfirmFromMenu() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button>گزینه‌ها</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem tone="danger" onSelect={() => setOpen(true)}>
+            حذف
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <ConfirmDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="پیام حذف شود؟"
+        onConfirm={() => {}}
+      />
+    </>
   );
 }
 
@@ -172,5 +217,31 @@ describe("ConfirmDialog", () => {
     render(<DeleteCourse defaultOpen />);
 
     await expectNoAxeViolations(screen.getByRole("alertdialog"));
+  });
+
+  it("returns focus to the element that opened it without a trigger", async () => {
+    const user = userEvent.setup();
+    render(<ControlledConfirm />);
+    const opener = screen.getByRole("button", { name: "حذف پیام" });
+
+    await user.click(opener);
+    expect(screen.getByRole("alertdialog", { name: "پیام حذف شود؟" })).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "انصراف" }));
+
+    expect(screen.queryByRole("alertdialog")).toBeNull();
+    expect(opener).toHaveFocus();
+  });
+
+  it("returns focus to the menu's trigger when started from a menu item", async () => {
+    const user = userEvent.setup();
+    render(<ConfirmFromMenu />);
+    const menuTrigger = screen.getByRole("button", { name: "گزینه‌ها" });
+
+    await user.click(menuTrigger);
+    await user.click(screen.getByRole("menuitem", { name: "حذف" }));
+    await user.click(screen.getByRole("button", { name: "تأیید" }));
+
+    expect(screen.queryByRole("alertdialog")).toBeNull();
+    expect(menuTrigger).toHaveFocus();
   });
 });

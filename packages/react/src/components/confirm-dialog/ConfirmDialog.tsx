@@ -3,6 +3,7 @@
 import { AlertDialog } from "radix-ui";
 import { forwardRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { useControllableState } from "../../hooks/useControllableState.js";
+import { useReturnFocus } from "../../hooks/useReturnFocus.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { cn } from "../../utils/cn.js";
 import { Button } from "../button/Button.js";
@@ -46,7 +47,8 @@ export type ConfirmDialogProps = Omit<
 
 /**
  * Asks before an action goes ahead. Built on Radix AlertDialog: it can't be dismissed by clicking
- * outside, and focus starts on the cancel button so a stray Enter never confirms.
+ * outside, focus starts on the cancel button so a stray Enter never confirms, and closing returns
+ * focus to whatever opened it, even without a `trigger`.
  */
 export const ConfirmDialog = forwardRef<HTMLDivElement, ConfirmDialogProps>(function ConfirmDialog(
   {
@@ -63,11 +65,14 @@ export const ConfirmDialog = forwardRef<HTMLDivElement, ConfirmDialogProps>(func
     children,
     className,
     onEscapeKeyDown,
+    onOpenAutoFocus,
+    onCloseAutoFocus,
     ...props
   },
   ref,
 ) {
   const { dictionary } = useAvero();
+  const focusReturn = useReturnFocus(onOpenAutoFocus, onCloseAutoFocus);
   const [isOpen, setOpen] = useControllableState({
     value: open,
     defaultValue: defaultOpen,
@@ -113,6 +118,8 @@ export const ConfirmDialog = forwardRef<HTMLDivElement, ConfirmDialogProps>(func
             onEscapeKeyDown?.(event);
             if (pending) event.preventDefault();
           }}
+          onOpenAutoFocus={focusReturn.onOpenAutoFocus}
+          onCloseAutoFocus={focusReturn.onCloseAutoFocus}
           {...props}
         >
           <div className="flex flex-col gap-2">

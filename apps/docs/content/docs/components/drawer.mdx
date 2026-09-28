@@ -54,7 +54,10 @@ from the left in LTR without any extra work.
 
 ## Accessibility
 
-- Radix Dialog supplies the focus trap, `Esc` to close, scroll lock and focus return.
+- Radix Dialog supplies the focus trap, `Esc` to close and scroll lock.
+- Closing returns focus to whatever had it when the drawer opened, so a drawer opened with
+  `open` / `onOpenChange` and no `DrawerTrigger` — from a shortcut or a menu, say — still hands focus
+  back.
 - The close button is labelled from the dictionary (`closeMenu`), so it reads correctly in both
   languages.
 - The scrim covers the page behind the drawer, so nothing there can be clicked by accident while

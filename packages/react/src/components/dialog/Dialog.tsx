@@ -2,6 +2,7 @@
 
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { forwardRef, type ComponentPropsWithoutRef, type HTMLAttributes } from "react";
+import { useReturnFocus } from "../../hooks/useReturnFocus.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { XIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
@@ -12,8 +13,9 @@ import {
 } from "./dialog.variants.js";
 
 /**
- * A modal dialog. Radix Dialog supplies the focus trap, `Esc`, scroll lock and focus return; Avero
- * adds the blurred scrim, the rounded panel and the header, body and footer layout.
+ * A modal dialog. Radix Dialog supplies the focus trap, `Esc` and scroll lock; Avero adds the
+ * blurred scrim, the rounded panel, the header, body and footer layout, and returns focus to
+ * whatever opened the dialog, even without a `DialogTrigger`.
  */
 export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;
@@ -52,11 +54,14 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
     container,
     className,
     children,
+    onOpenAutoFocus,
+    onCloseAutoFocus,
     ...props
   },
   ref,
 ) {
   const { dictionary } = useAvero();
+  const focusReturn = useReturnFocus(onOpenAutoFocus, onCloseAutoFocus);
 
   return (
     <DialogPrimitive.Portal container={container}>
@@ -68,6 +73,8 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(func
         ref={ref}
         data-slot="dialog-content"
         className={cn(dialogContentVariants({ size }), className)}
+        onOpenAutoFocus={focusReturn.onOpenAutoFocus}
+        onCloseAutoFocus={focusReturn.onCloseAutoFocus}
         {...props}
       >
         {children}

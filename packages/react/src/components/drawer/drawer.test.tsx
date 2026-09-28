@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { createRef } from "react";
+import { createRef, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { AveroProvider } from "../../i18n/AveroProvider.js";
@@ -29,6 +29,24 @@ function Menu(props: DrawerContentOwnProps & { defaultOpen?: boolean }) {
         </DrawerBody>
       </DrawerContent>
     </Drawer>
+  );
+}
+
+function ControlledDrawer() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)}>
+        منوی کناری
+      </button>
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerContent aria-describedby={undefined}>
+          <DrawerHeader>
+            <DrawerTitle>منوی کناری</DrawerTitle>
+          </DrawerHeader>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 }
 
@@ -123,5 +141,18 @@ describe("Drawer", () => {
     render(<Menu defaultOpen />);
 
     await expectNoAxeViolations(screen.getByRole("dialog"));
+  });
+
+  it("returns focus to the element that opened it without a trigger", async () => {
+    const user = userEvent.setup();
+    render(<ControlledDrawer />);
+    const opener = screen.getByRole("button", { name: "منوی کناری" });
+
+    await user.click(opener);
+    expect(screen.getByRole("dialog", { name: "منوی کناری" })).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(opener).toHaveFocus();
   });
 });

@@ -3,13 +3,13 @@
 import { Dialog as DialogPrimitive } from "radix-ui";
 import {
   forwardRef,
-  useRef,
   useState,
   type ComponentPropsWithoutRef,
   type KeyboardEvent,
   type ReactNode,
 } from "react";
 import { useControllableState } from "../../hooks/useControllableState.js";
+import { useReturnFocus } from "../../hooks/useReturnFocus.js";
 import { useAvero, useAveroFormatter } from "../../i18n/AveroProvider.js";
 import { formatMessage } from "../../i18n/dictionaries.js";
 import { ChevronLeftIcon, ChevronRightIcon, XIcon, ZoomInIcon } from "../../icons/internalIcons.js";
@@ -90,7 +90,7 @@ export const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(function Light
     onChange: onIndexChange,
   });
   const [zoomed, setZoomed] = useState(false);
-  const returnFocus = useRef<HTMLElement | null>(null);
+  const focusReturn = useReturnFocus(onOpenAutoFocus, onCloseAutoFocus);
 
   const last = Math.max(images.length - 1, 0);
   const current = Math.min(Math.max(requestedIndex, 0), last);
@@ -142,20 +142,10 @@ export const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(function Light
           aria-describedby={undefined}
           data-slot="lightbox"
           onKeyDown={handleKeyDown}
-          onOpenAutoFocus={(event) => {
-            // Radix returns focus only to its own trigger, and a lightbox is opened from outside,
-            // usually a ZoomFrame, so remember what had focus.
-            returnFocus.current =
-              document.activeElement instanceof HTMLElement ? document.activeElement : null;
-            onOpenAutoFocus?.(event);
-          }}
-          onCloseAutoFocus={(event) => {
-            onCloseAutoFocus?.(event);
-            const target = returnFocus.current;
-            if (event.defaultPrevented || !target?.isConnected) return;
-            event.preventDefault();
-            target.focus();
-          }}
+          // A lightbox has no Radix trigger (it is usually opened from a ZoomFrame), so focus is
+          // returned to whatever opened it.
+          onOpenAutoFocus={focusReturn.onOpenAutoFocus}
+          onCloseAutoFocus={focusReturn.onCloseAutoFocus}
           className={cn(
             "fixed inset-0 z-(--z-modal-content) flex flex-col items-center gap-4 p-4 outline-none sm:p-8",
             className,

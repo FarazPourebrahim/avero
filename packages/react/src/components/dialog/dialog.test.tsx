@@ -1,11 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { createRef } from "react";
+import { createRef, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { AveroProvider } from "../../i18n/AveroProvider.js";
 import { expectNoAxeViolations } from "../../test/axe.js";
 import { Button } from "../button/Button.js";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../dropdown-menu/DropdownMenu.js";
 import { Input } from "../input/Input.js";
 import {
   Dialog,
@@ -44,6 +50,44 @@ function EditProfile(props: DialogContentOwnProps & { defaultOpen?: boolean }) {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function ControlledDialog({ preventReturn = false }: { preventReturn?: boolean }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>باز کردن از کد</Button>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
+          aria-describedby={undefined}
+          onCloseAutoFocus={preventReturn ? (event) => event.preventDefault() : undefined}
+        >
+          <DialogTitle>پیام</DialogTitle>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
+
+function DialogFromMenu() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button>گزینه‌ها</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem onSelect={() => setOpen(true)}>ویرایش</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent aria-describedby={undefined}>
+          <DialogTitle>ویرایش پیام</DialogTitle>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
@@ -179,5 +223,43 @@ describe("Dialog", () => {
     render(<EditProfile defaultOpen />);
 
     await expectNoAxeViolations(screen.getByRole("dialog"));
+  });
+
+  it("returns focus to the element that opened it without a trigger", async () => {
+    const user = userEvent.setup();
+    render(<ControlledDialog />);
+    const opener = screen.getByRole("button", { name: "باز کردن از کد" });
+
+    await user.click(opener);
+    expect(screen.getByRole("dialog", { name: "پیام" })).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(opener).toHaveFocus();
+  });
+
+  it("returns focus to the menu's trigger when opened from a menu item", async () => {
+    const user = userEvent.setup();
+    render(<DialogFromMenu />);
+    const menuTrigger = screen.getByRole("button", { name: "گزینه‌ها" });
+
+    await user.click(menuTrigger);
+    await user.click(screen.getByRole("menuitem", { name: "ویرایش" }));
+    expect(screen.getByRole("dialog", { name: "ویرایش پیام" })).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(menuTrigger).toHaveFocus();
+  });
+
+  it("leaves focus alone when onCloseAutoFocus prevents the default", async () => {
+    const user = userEvent.setup();
+    render(<ControlledDialog preventReturn />);
+    const opener = screen.getByRole("button", { name: "باز کردن از کد" });
+
+    await user.click(opener);
+    await user.keyboard("{Escape}");
+
+    expect(opener).not.toHaveFocus();
   });
 });

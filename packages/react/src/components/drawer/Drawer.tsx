@@ -3,6 +3,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { useReturnFocus } from "../../hooks/useReturnFocus.js";
 import { useAvero } from "../../i18n/AveroProvider.js";
 import { XIcon } from "../../icons/internalIcons.js";
 import { cn } from "../../utils/cn.js";
@@ -10,7 +11,8 @@ import { cn } from "../../utils/cn.js";
 /**
  * Slide-in panel in two sizes: `wide` for a site header menu and `panel` for a dashboard
  * menu. Radix Dialog supplies the focus trap, `Esc` and scroll lock, and a dimmed scrim keeps the
- * page behind it from being clicked.
+ * page behind it from being clicked. Closing returns focus to whatever opened it, even without a
+ * `DrawerTrigger`.
  */
 export const Drawer = DialogPrimitive.Root;
 export const DrawerTrigger = DialogPrimitive.Trigger;
@@ -62,9 +64,21 @@ export type DrawerContentProps = Omit<
   DrawerContentOwnProps;
 
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(function DrawerContent(
-  { side, size, overlayClassName, container, className, children, ...props },
+  {
+    side,
+    size,
+    overlayClassName,
+    container,
+    className,
+    children,
+    onOpenAutoFocus,
+    onCloseAutoFocus,
+    ...props
+  },
   ref,
 ) {
+  const focusReturn = useReturnFocus(onOpenAutoFocus, onCloseAutoFocus);
+
   return (
     <DialogPrimitive.Portal container={container}>
       <DialogPrimitive.Overlay
@@ -75,6 +89,8 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(func
         ref={ref}
         data-slot="drawer-content"
         className={cn(drawerVariants({ side, size }), className)}
+        onOpenAutoFocus={focusReturn.onOpenAutoFocus}
+        onCloseAutoFocus={focusReturn.onCloseAutoFocus}
         {...props}
       >
         {children}
