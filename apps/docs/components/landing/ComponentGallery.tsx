@@ -231,7 +231,7 @@ export function ComponentGallery() {
 
           <Tile name="Skeleton & Spinner" href={docs("skeleton")}>
             <div className="flex w-full max-w-52 items-center gap-4">
-              <Spinner variant="bars" size="lg" tone="muted"/>
+              <Spinner variant="bars" size="lg" tone="muted" />
               <SkeletonText lines={3} className="flex-1" />
             </div>
           </Tile>
