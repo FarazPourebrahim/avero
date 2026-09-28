@@ -6,7 +6,7 @@
 | --- | --- |
 | Plan version | 2.0 |
 | Created | 2026-06-19 |
-| Last updated | 2026-09-23 |
+| Last updated | 2026-09-28 |
 | Design source of truth | `@averoui/tokens` and the design system in §4 |
 | Target stack | React 18.2+/19, TypeScript (strict), Tailwind CSS v4.3, Radix UI primitives, pnpm workspace |
 | Default direction / locale | RTL / `fa-IR`, with full LTR / `en` support |
@@ -115,6 +115,9 @@
 | D-30 | Package scope | **`@averoui/*`**, because the `avero` organisation was already taken on npm. Every package, workspace filter, import and the `@averoui/source` export condition moved in one change; 692 references across 410 files. | The library keeps the name Avero — only the registry scope differs, which is ordinary when a short name is gone. Renaming the private packages and the custom resolution condition too keeps one scope across the repository rather than a mix that has to be explained. Nothing had been published under the old scope, so 1.0.0 is simply cut under the new one. | User, 2026-09-19 |
 | D-31 | `NativeSelect` | **Removed in 2.0.0.** `Select` is the only select the library ships; every usage in the blocks, templates, stories, tests and documentation moved onto it. | One select keeps one trigger style, one listbox and one keyboard contract across every filter and form, instead of two controls whose difference readers had to be taught. The cost is real and recorded: the library no longer has a select that renders in a Server Component without a client boundary, and a select now joins react-hook-form through `Controller` rather than `register`. | User, 2026-09-19 |
 | D-32 | Version numbering | **Not semver.** The first digit is reserved for big updates — a redesign or an architecture change. Routine surface changes, breaking or additive, move the second digit; fixes move the third. | A major per removed prop turns the first digit into noise and tells a reader nothing about how much the library has actually moved. The cost is that a caret range can take a breaking change, so the docs say to pin two digits, every breaking entry opens with the migration, and a routine break is written as a `minor` changeset. | User, 2026-09-19 |
+| D-33 | Brand accents follow `--color-primary` | **Four derived tokens** — `--color-primary-soft` (8%), `-soft-hover` (15%), `-border` (25%), `-border-hover` (40%) — are `color-mix(in oklab, var(--color-primary) N%, white)` in the plain `@theme` block, and every brand tint, border, focus halo and selected state uses them instead of `blue-*`. A categorical `tone="blue"` stays literally blue; a `primary` tone (added to `Button`, `IconButton` and `Badge`) follows the brand, and becomes the default of `IconTile`, `ActionTile`, `FeatureCard` and the stat components. `CoverHeader`'s default cover is `primary` → `primary-hover`. The `info` tone of `Alert` and `Toast` stays blue. | A consumer app (SpeakLens) set a violet primary and every soft accent stayed blue. Plain `@theme` (not `inline`) keeps the `var()` live in the browser, so one override reaches all four; Tailwind still emits an sRGB fallback computed from the final theme. Keeping named hues literal means `tone="blue"` never renders violet. The default palette shifts slightly (Tailwind's `blue-600` → `#0a66c2`); every brand pairing in the contrast report measures the same or better. | User, 2026-09-28 |
+| D-34 | Dialog focus return without a trigger | `Dialog`, `Drawer`, `ConfirmDialog` and `Lightbox` share `useReturnFocus`: record the focused element on open and restore it on close, after the consumer's `onCloseAutoFocus`. If that element is removed while the dialog is open — a menu item, whose menu then refocuses its own trigger — the next element focused outside the dialog becomes the target. | Radix returns focus only to its own `Trigger`, so a dialog opened from code or a menu dropped focus to `<body>` (formerly in `docs/known-debts.md`). A menu item is gone before the dialog can record it, and the menu restores its trigger a task after the dialog mounts, which is why the hook watches rather than records once. | User, 2026-09-28 |
+| D-35 | Toast updates | `update(id, options)` and `promise()` join `toast()`/`dismiss()`, and a `loading` tone (spinner, no timeout, polite). An update **remounts** the Radix toast (keyed by a revision) without replaying the entry animation. | Radix reads the duration for its pause/resume path and the announcement text once per mount: updated in place, a `loading` toast turned `success` never closed after a hover and its outcome was never announced. The remount costs an updated toast moving to the newest position in a stack. | User, 2026-09-28 |
 
 ---
 
@@ -128,6 +131,8 @@ The values below are defined in `packages/tokens/src/theme.css`, `utilities.css`
 | --- | --- | --- |
 | `--color-primary` | `#0a66c2` | Brand primary |
 | `--color-primary-hover` | `#004182` | Primary hover / gradient end |
+| `--color-primary-soft` / `-soft-hover` | `color-mix(in oklab, var(--color-primary) 8%` / `15%, white)` | Brand tint for selected and highlighted states, and its hover; form-control focus halo (D-33) |
+| `--color-primary-border` / `-border-hover` | `color-mix(in oklab, var(--color-primary) 25%` / `40%, white)` | Brand outline for selected controls, chips and cards, and its hover (D-33) |
 | `--color-secondary` | `#f15928` | Secondary call to action, typing caret |
 | `--color-background` | `#f4f4f4` | Page background |
 | `--color-foreground` | `#464646` | Default body text |
@@ -157,10 +162,10 @@ Avero keeps the full default Tailwind v4 palette and gives families consistent r
 | `slate` | Neutral for profile, detail and about surfaces |
 | `zinc` | Neutral for dashboard chrome (icon buttons, nav items) |
 | `indigo` | Accent: focus rings, active table-of-contents entry, section icons, prose links |
-| `blue` | Info and active states: profile tabs, tags, soft buttons |
+| `blue` | The `info` tone and the literal `blue` tone; brand accents use the `primary` tokens instead (D-33) |
 | `emerald`, `amber`, `purple`, `rose`, `red`, `green`, `sky`, `cyan`, `teal`, `orange`, `pink`, `yellow`, `violet` | Categorical icon tiles, status and charts: tints (`-50/-100`) + text (`-500/-600/-700`) |
 
-**Semantic aliases:** `success` = green-100/green-700, `danger` = red-100/red-700 and red-500, `warning` = amber-50/amber-700, `info` = blue-50/blue-600, `accent` = indigo-600, focus rings indigo-500/20 and blue-500/20.
+**Semantic aliases:** `success` = green-100/green-700, `danger` = red-100/red-700 and red-500, `warning` = amber-50/amber-700, `info` = blue-50/blue-600, `accent` = indigo-600, focus rings indigo-500/20 and `primary/20`; brand tints and borders are the derived `primary-soft` / `primary-border` tokens (D-33).
 
 **Categorical tile palette:** `blue`, `purple`, `amber`, `emerald`, `rose`, `indigo`, `slate`, each as `bg-{c}-50 text-{c}-600` (soft tile) or a gradient pair (blue 500→600, purple 500→600, amber-500→orange-500, emerald 500→600, rose-500→pink-600, slate 600→700).
 
@@ -218,7 +223,7 @@ Avero keeps the full default Tailwind v4 palette and gives families consistent r
 | `shadow-pop` / `-wide` | `0 4px 15px -3px rgba(0,0,0,.1)`, `0 8px 40px rgba(0,0,0,.08)` | Dropdowns and popovers |
 | `shadow-modal` / `shadow-lightbox` | `0 25px 80px rgba(15,23,42,.2)` / `0 25px 70px rgba(0,0,0,.35)` | Dialogs and lightbox |
 | `drop-shadow-soft` / `-amber-sm` / `-amber-md` | soft drop, amber glows | Illustrations, star and badge glow |
-| Coloured | `shadow-md shadow-primary/20`, `shadow-blue-500/20` | Primary buttons, active tabs |
+| Coloured | `shadow-md shadow-primary/20` | Primary buttons, active tabs |
 
 **Blur tokens:** `--blur-hair` 1px, `--blur-thin` 2px, `--blur-mist` 50px, `--blur-orb` 70px, `--blur-haze` 200px.
 
@@ -329,17 +334,17 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | FM-03 | `Textarea` (`outline` default matching the other form controls; soft gray and slate variants) |
 | FM-05 | `Select` (custom trigger `rounded-xl`, rotating chevron, token-designed listbox) |
 | FM-06 | `Combobox` (searchable select, category variant) |
-| FM-07 | `Checkbox` (24px, 2px `gray-300` outline; checked is a soft `blue-50` tint with a `blue-600` tick; Button focus ring and press; animated pop and tick) |
-| FM-07b | `CheckboxCard` (a checkbox as a bordered option: title, description, aside; soft blue border and tint when checked) |
-| FM-08 | `Radio` (24px, 2px `gray-300` outline; chosen is a soft `blue-50` tint with a `blue-600` dot that pops in; Button focus ring and press) |
-| FM-08b | `RadioCard` (a radio option as a bordered card: title, description, aside; soft blue border and tint when chosen) |
-| FM-09 | `Switch` (44x24 track with a 2px `gray-300` outline and `gray-400` thumb; on is a soft `blue-50` tint with a `blue-600` thumb; Button focus ring and press) |
-| FM-09b | `SwitchCard` (a setting as a bordered row: title and description, switch at the inline end; soft blue tint when on) |
+| FM-07 | `Checkbox` (24px, 2px `gray-300` outline; checked is a soft `primary-soft` tint with a `primary` tick; Button focus ring and press; animated pop and tick) |
+| FM-07b | `CheckboxCard` (a checkbox as a bordered option: title, description, aside; soft brand border and tint when checked) |
+| FM-08 | `Radio` (24px, 2px `gray-300` outline; chosen is a soft `primary-soft` tint with a `primary` dot that pops in; Button focus ring and press) |
+| FM-08b | `RadioCard` (a radio option as a bordered card: title, description, aside; soft brand border and tint when chosen) |
+| FM-09 | `Switch` (44x24 track with a 2px `gray-300` outline and `gray-400` thumb; on is a soft `primary-soft` tint with a `primary` thumb; Button focus ring and press) |
+| FM-09b | `SwitchCard` (a setting as a bordered row: title and description, switch at the inline end; soft brand tint when on) |
 | FM-10 | `FileInput` / upload |
 | FM-11 | `PriceInput` (toman, thousands separators, Persian digit normalisation) |
 | FM-12 | `TagInput` |
 | FM-13 | `DatePicker` (Jalali): `single` and `range` modes, ISO `YYYY-MM-DD` values, typed entry in Persian or Latin digits plus a calendar popover (user, 2026-08-18) |
-| FM-14 | `OtpInput` (soft palette: empty boxes a 2px `gray-300` outline, filled boxes a `blue-50` tint with `blue-700` digits that pop in, the next box a `blue-400` focus halo) |
+| FM-14 | `OtpInput` (soft palette: empty boxes a 2px `gray-300` outline, filled boxes a `primary-soft` tint with `primary-hover` digits that pop in, the next box the brand focus outline and halo) |
 | FM-15 | `FormActions` row (hint text + submit) |
 
 ### 5.4 Navigation and disclosure (N)
@@ -348,7 +353,7 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | N-01 | `NavLink` (header and drawer with icon; provided by `Link` variants) |
 | N-02 | `SidebarNav` + `SidebarNavItem` (`current`: primary fill + white + shadow-md; idle: zinc-600 → primary/10; `danger`) |
 | N-03 | `BackLink` (three styles) |
-| N-04 | `PillTabs` (link tabs, horizontally scrollable, icon + count; current blue-600) |
+| N-04 | `PillTabs` (link tabs, horizontally scrollable, icon + count; current `primary`) |
 | N-05 | `SegmentedControl` (gray-100 track, white checked, indigo text) |
 | N-06 | `ToggleChipGroup` (chart metric toggles, coloured when pressed) |
 | N-07 | `TableOfContents` (active `border-s-2 indigo-500`, nested level indent, scroll spy) |
@@ -364,8 +369,9 @@ Named layers are plain custom properties used as `z-(--z-modal)`: `--z-raised` 1
 | O-02 | `Dialog` / `Modal` (`bg-black/50` scrim with blur, `max-h-[90vh]`, `rounded-3xl`, `shadow-modal`) |
 | O-03 | `ConfirmDialog` |
 | O-04 | `Popover` / `DropdownMenu` (notification and user menus) |
+| O-04b | `ContextMenu` (right-click / long-press menu on an area, such as message actions; shares every part's styles with `DropdownMenu`) |
 | O-05 | `Tooltip` (generic) + chart tooltip |
-| O-06 | `Toast` / `Toaster` |
+| O-06 | `Toast` / `Toaster` (`info`, `success`, `warning`, `danger` and `loading` tones; `update` in place and `promise`, D-35) |
 | O-07 | `Lightbox` (gallery zoom, `cursor-zoom-in`/`-out`, dark scrim) |
 | O-08 | `EmptyState` (inline text, slate text, icon + text, icon in a circle) |
 | O-09 | `Alert` / `Callout` (tinted, bordered) |
@@ -911,6 +917,7 @@ Columns follow the Global DoD: **Impl** (API + design review), **Test** (unit + 
 | O-02 | Dialog | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-03 | ConfirmDialog | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-04 | Popover / DropdownMenu | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| O-04b | ContextMenu | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-05 | Tooltip | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-06 | Toast | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | O-07 | Lightbox | 6 | ✅ | ✅ | ✅ | ✅ | ✅ |
