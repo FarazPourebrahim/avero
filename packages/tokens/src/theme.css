@@ -28,6 +28,13 @@
   /* ---------------------------------------------------------------- Brand and semantic colors */
   --color-primary: #0a66c2;
   --color-primary-hover: #004182;
+  /* Brand tints and borders, derived from --color-primary so overriding it rebrands every accent.
+     They reference the variable at runtime, which is why this is a plain @theme block: @theme
+     inline would bake in the default blue and a consumer's --color-primary would never reach them. */
+  --color-primary-soft: color-mix(in oklab, var(--color-primary) 8%, white);
+  --color-primary-soft-hover: color-mix(in oklab, var(--color-primary) 15%, white);
+  --color-primary-border: color-mix(in oklab, var(--color-primary) 25%, white);
+  --color-primary-border-hover: color-mix(in oklab, var(--color-primary) 40%, white);
   --color-secondary: #f15928;
 
   --color-background: #f4f4f4;

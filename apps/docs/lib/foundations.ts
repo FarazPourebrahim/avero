@@ -107,6 +107,53 @@ function parseOklch(value: string): Rgba | null {
   };
 }
 
+const WHITE: Rgba = { r: 255, g: 255, b: 255, a: 1 };
+const BLACK: Rgba = { r: 0, g: 0, b: 0, a: 1 };
+
+function toOklab({ r, g, b }: Rgba): [number, number, number] {
+  const linear = (channel: number) => {
+    const srgb = channel / 255;
+    return srgb <= 0.04045 ? srgb / 12.92 : ((srgb + 0.055) / 1.055) ** 2.4;
+  };
+  const [lr, lg, lb] = [linear(r), linear(g), linear(b)];
+  const l = Math.cbrt(0.4122214708 * lr + 0.5363325363 * lg + 0.0514459929 * lb);
+  const m = Math.cbrt(0.2119034982 * lr + 0.6806995451 * lg + 0.1073969566 * lb);
+  const s = Math.cbrt(0.0883024619 * lr + 0.2817188376 * lg + 0.6299787005 * lb);
+  return [
+    0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+    1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+  ];
+}
+
+/** Resolves `color-mix(in oklab, <color> N%, <color>)`, the form of the derived brand tokens. */
+function parseColorMix(value: string): Rgba | null {
+  const match = value.match(/^color-mix\(in oklab, (.+?) (\d+(?:\.\d+)?)%, (.+)\)$/);
+  if (!match) return null;
+  const first = resolveColor(match[1]!);
+  const second = resolveColor(match[3]!);
+  if (!first || !second) return null;
+  const weight = Number(match[2]) / 100;
+  const [a, b] = [toOklab(first), toOklab(second)];
+  const [lightness, green, blue] = a.map(
+    (channel, index) => channel * weight + b[index]! * (1 - weight),
+  );
+  const l = (lightness! + 0.3963377774 * green! + 0.2158037573 * blue!) ** 3;
+  const m = (lightness! - 0.1055613458 * green! - 0.0638541728 * blue!) ** 3;
+  const s = (lightness! - 0.0894841775 * green! - 1.291485548 * blue!) ** 3;
+  const toSrgb = (linear: number) => {
+    const clamped = Math.min(1, Math.max(0, linear));
+    const encoded = clamped <= 0.0031308 ? 12.92 * clamped : 1.055 * clamped ** (1 / 2.4) - 0.055;
+    return Math.round(encoded * 255);
+  };
+  return {
+    r: toSrgb(4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s),
+    g: toSrgb(-1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s),
+    b: toSrgb(-0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s),
+    a: 1,
+  };
+}
+
 const tailwindColors = new Map(tailwindVariables("color").map((color) => [color.cssVar, color]));
 const averoColors = averoVariables("color");
 
@@ -117,6 +164,9 @@ function resolveColor(value: string): Rgba | null {
     return target ? resolveColor(target.value) : null;
   }
   if (value.startsWith("#")) return parseHex(value);
+  if (value === "white") return WHITE;
+  if (value === "black") return BLACK;
+  if (value.startsWith("color-mix(")) return parseColorMix(value);
   return parseOklch(value);
 }
 

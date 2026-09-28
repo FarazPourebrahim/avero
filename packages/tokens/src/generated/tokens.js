@@ -48,6 +48,22 @@ export const tokens = {
     "cssVar": "--color-primary-hover",
     "value": "#004182"
   },
+  "colorPrimarySoft": {
+    "cssVar": "--color-primary-soft",
+    "value": "color-mix(in oklab, var(--color-primary) 8%, white)"
+  },
+  "colorPrimarySoftHover": {
+    "cssVar": "--color-primary-soft-hover",
+    "value": "color-mix(in oklab, var(--color-primary) 15%, white)"
+  },
+  "colorPrimaryBorder": {
+    "cssVar": "--color-primary-border",
+    "value": "color-mix(in oklab, var(--color-primary) 25%, white)"
+  },
+  "colorPrimaryBorderHover": {
+    "cssVar": "--color-primary-border-hover",
+    "value": "color-mix(in oklab, var(--color-primary) 40%, white)"
+  },
   "colorSecondary": {
     "cssVar": "--color-secondary",
     "value": "#f15928"
@@ -418,6 +434,10 @@ export const tokenGroups = {
   "color": [
     "primary",
     "primary-hover",
+    "primary-soft",
+    "primary-soft-hover",
+    "primary-border",
+    "primary-border-hover",
     "secondary",
     "background",
     "foreground",

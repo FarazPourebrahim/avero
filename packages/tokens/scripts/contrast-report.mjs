@@ -88,8 +88,8 @@ const PAIRS = [
     where: "Form control outline at rest, on the page background",
   },
   {
-    fg: "blue-600",
-    bg: "blue-50",
+    fg: "primary",
+    bg: "primary-soft",
     size: "ui",
     where: "Checkbox tick, radio dot and switch thumb on their tinted fill",
   },
@@ -121,11 +121,12 @@ const PAIRS = [
   { fg: "slate-700", bg: "slate-100", size: "normal", where: "Soft neutral button" },
   { fg: "sky-600", bg: "sky-50", size: "normal", where: "Soft sky button (Telegram)" },
   { fg: "emerald-600", bg: "emerald-50", size: "normal", where: "Soft emerald button (WhatsApp)" },
+  { fg: "primary", bg: "primary-soft", size: "normal", where: "Soft primary button / icon tile" },
   { fg: "blue-600", bg: "blue-50", size: "normal", where: "Soft blue button / icon tile" },
   { fg: "rose-600", bg: "rose-50", size: "normal", where: "Soft rose button (report)" },
   { fg: "red-600", bg: "red-50", size: "normal", where: "Soft red button (like)" },
   { fg: "purple-700", bg: "purple-50", size: "normal", where: "Soft purple button (certificate)" },
-  { fg: "white", bg: "blue-600", size: "normal", where: "Active profile tab" },
+  { fg: "white", bg: "primary", size: "normal", where: "Active profile tab" },
   // Found by the in-browser axe suite (apps/storybook/tests/a11y.spec.ts)
   {
     fg: "gray-500",
@@ -181,7 +182,12 @@ const PAIRS = [
   { fg: "indigo-600", bg: "indigo-50", size: "normal", where: "Outline indigo badge" },
   { fg: "emerald-700", bg: "emerald-50", size: "normal", where: "Outline emerald badge" },
   { fg: "amber-700", bg: "amber-50", size: "normal", where: "Outline amber badge" },
-  { fg: "blue-700", bg: "blue-50", size: "normal", where: "Skill chip" },
+  {
+    fg: "primary-hover",
+    bg: "primary-soft",
+    size: "normal",
+    where: "Skill chip, highlighted select option",
+  },
   { fg: "slate-600", bg: "slate-100", size: "normal", where: "Mini technology chip" },
   { fg: "white", bg: "red-500", size: "normal", where: "Solid danger badge" },
   // Dark surfaces
@@ -204,7 +210,51 @@ function resolveColor(name) {
   if (!value) throw new Error(`Unknown color: ${name}`);
   const alias = value.match(/^var\((--color-[\w-]+)\)$/)?.[1];
   if (alias) value = resolveColor(alias.slice("--color-".length));
+  const mix = value.match(/^color-mix\(in oklab, var\(--color-([\w-]+)\) (\d+)%, (\w+)\)$/);
+  if (mix) value = mixOklab(resolveColor(mix[1]), resolveColor(mix[3]), Number(mix[2]) / 100);
   return alpha ? withAlpha(value, Number(alpha) / 100) : value;
+}
+
+// The derived brand tokens are `color-mix(in oklab, …)`, so they are measured by mixing the same way
+// the browser does: sRGB → linear → OKLab, interpolate, and back.
+function toLinear(channel) {
+  const value = channel / 255;
+  return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+}
+
+function fromLinear(value) {
+  const srgb = value <= 0.0031308 ? value * 12.92 : 1.055 * value ** (1 / 2.4) - 0.055;
+  return Math.min(255, Math.max(0, srgb * 255));
+}
+
+function toOklab(hex) {
+  const { r, g, b } = parseHex(hex);
+  const [lr, lg, lb] = [r, g, b].map(toLinear);
+  const l = Math.cbrt(0.4122214708 * lr + 0.5363325363 * lg + 0.0514459929 * lb);
+  const m = Math.cbrt(0.2119034982 * lr + 0.6806995451 * lg + 0.1073969566 * lb);
+  const s = Math.cbrt(0.0883024619 * lr + 0.2817188376 * lg + 0.6299787005 * lb);
+  return [
+    0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+    1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+  ];
+}
+
+function fromOklab([L, a, b]) {
+  const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
+  const m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
+  const s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
+  const channels = [
+    4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
+    -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+    -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s,
+  ];
+  return `#${channels.map((value) => Math.round(fromLinear(value)).toString(16).padStart(2, "0")).join("")}`;
+}
+
+function mixOklab(first, second, weight) {
+  const [a, b] = [toOklab(first), toOklab(second)];
+  return fromOklab(a.map((value, index) => value * weight + b[index] * (1 - weight)));
 }
 
 function parseHex(hex) {
