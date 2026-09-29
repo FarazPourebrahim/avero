@@ -24,10 +24,11 @@ import {
 } from "@averoui/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-// Used by tests/scroll-lock.spec.ts: a page taller than the viewport, so there is a scrollbar for
-// the overlays to hide, and two bars whose edges show any sideways shift. Every overlay here locks
-// scrolling through react-remove-scroll, which is what D-22 compensates for.
-function ScrollLockPage() {
+// Used by tests/scroll-lock.spec.ts: two bars whose edges show any sideways shift, on a page taller
+// than the viewport (so there is a scrollbar for the overlays to hide) or, with `scrollable` off,
+// one that fits (so there is none, and no gutter may appear). Every overlay here locks scrolling
+// through react-remove-scroll, which is what D-22 and D-36 compensate for.
+function ScrollLockPage({ scrollable = true }: { scrollable?: boolean }) {
   return (
     <div className="flex flex-col gap-4">
       {/* In flow: moves if the page itself is narrowed or offset while the scrollbar is hidden. */}
@@ -80,7 +81,7 @@ function ScrollLockPage() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="h-[300vh]" />
+      {scrollable ? <div className="h-[300vh]" /> : null}
       {/* Fixed: sized to the viewport, so it widens the moment the scrollbar's space is given up. */}
       <div data-testid="scroll-lock-fixed" className="bg-secondary fixed inset-x-0 bottom-0 h-3" />
     </div>
@@ -96,3 +97,5 @@ const meta = {
 export default meta;
 
 export const Default: StoryObj<typeof meta> = {};
+
+export const NoScrollbar: StoryObj<typeof meta> = { args: { scrollable: false } };

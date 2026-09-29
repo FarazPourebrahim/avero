@@ -16,6 +16,14 @@ const STORY: StoryEntry = {
   type: "story",
 };
 
+// The same page, short enough that it never had a scrollbar (D-36).
+const SHORT_STORY: StoryEntry = {
+  id: "internal-scroll-lock--no-scrollbar",
+  title: "Internal/Scroll Lock",
+  name: "No Scrollbar",
+  type: "story",
+};
+
 // Every overlay that takes a scroll lock: the two modal panels, and the floating panels of D-21.
 const OVERLAYS = [
   { name: "dialog", trigger: "dialog-trigger", panel: '[data-slot="dialog-content"]' },
@@ -89,6 +97,7 @@ async function openStory(page: Page, dir: string, locale: string) {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(storyUrl(STORY, dir, locale));
   await expect(page.getByTestId("scroll-lock-bar")).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("data-avero-scrollbar", "visible");
 
   const scrollbarWidth = await page.evaluate(
     () => window.innerWidth - document.documentElement.clientWidth,
@@ -156,5 +165,40 @@ for (const { dir, locale } of DIRECTIONS) {
         before.scrollY,
       );
     });
+  });
+}
+
+// A page that never had a scrollbar has no space to keep: reserving a gutter there would push the
+// content aside and leave an empty strip at the edge (D-36).
+for (const { dir, locale } of DIRECTIONS) {
+  test.describe(`scroll lock without a scrollbar (${dir})`, () => {
+    test.beforeEach(async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      await page.goto(storyUrl(SHORT_STORY, dir, locale));
+      await expect(page.getByTestId("scroll-lock-bar")).toBeVisible();
+      const scrollbarWidth = await page.evaluate(
+        () => window.innerWidth - document.documentElement.clientWidth,
+      );
+      expect(scrollbarWidth, "the page must fit without a scrollbar").toBe(0);
+      await expect(page.locator("html")).toHaveAttribute("data-avero-scrollbar", "none");
+    });
+
+    for (const overlay of OVERLAYS) {
+      test(`opening a ${overlay.name} adds no gutter and doesn't shift the page`, async ({
+        page,
+      }) => {
+        const before = await readLayout(page);
+
+        await page.getByTestId(overlay.trigger).click();
+        await expect(page.locator(overlay.panel)).toBeVisible();
+        await expect(page.locator("body")).toHaveAttribute("data-scroll-locked", /\d+/);
+
+        const gutter = await page.evaluate(
+          () => window.innerWidth - document.documentElement.clientWidth,
+        );
+        expect(gutter, `with the ${overlay.name} open: no reserved gutter`).toBe(0);
+        expectUnmoved(await readLayout(page), before, `with the ${overlay.name} open`);
+      });
+    }
   });
 }

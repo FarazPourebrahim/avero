@@ -44,8 +44,11 @@
      up for the hidden scrollbar with a margin on the physical right. Browsers put a right-to-left
      page's scrollbar on different sides, so instead the viewport keeps the scrollbar's space on
      whichever side it is, and the margin is dropped: the page doesn't move in either direction.
-     Important declarations in a layer outrank the library's unlayered ones. */
-  html:has(body[data-scroll-locked]) {
+     Important declarations in a layer outrank the library's unlayered ones.
+     A page with no scrollbar has no space to keep: a gutter there would appear from nowhere and
+     push the content aside. AveroProvider marks <html> data-avero-scrollbar="none" in that case;
+     without a provider the attribute is absent and the gutter is always kept, as before. */
+  html:not([data-avero-scrollbar="none"]):has(body[data-scroll-locked]) {
     scrollbar-gutter: stable;
   }
 

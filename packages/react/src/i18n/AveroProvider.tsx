@@ -1,7 +1,7 @@
 "use client";
 
 import { Direction } from "radix-ui";
-import { createContext, useContext, useMemo, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, type ReactNode } from "react";
 import {
   formatDate,
   formatNumber,
@@ -12,6 +12,7 @@ import {
   type FormatNumberOptions,
   type FormatRelativeTimeOptions,
 } from "../utils/format.js";
+import { trackScrollbar } from "../utils/scrollbar.js";
 import { getDictionary, type AveroDictionary } from "./dictionaries.js";
 
 export type TextDirection = "rtl" | "ltr";
@@ -64,6 +65,9 @@ const AveroContext = createContext<AveroSettings>(resolveAveroSettings());
 /**
  * Supplies direction, locale, number/date formatting and built-in strings to Avero components.
  * Components also work without a provider, using the Persian defaults (RTL, `fa-IR`, Jalali).
+ *
+ * It also marks `<html>` with `data-avero-scrollbar` (`visible` or `none`), so `base.css` keeps the
+ * scrollbar's space during an overlay's scroll lock only on a page that had a scrollbar.
  */
 export function AveroProvider({
   children,
@@ -77,6 +81,8 @@ export function AveroProvider({
     () => resolveAveroSettings({ dir, locale, digits, calendar, dictionary }),
     [dir, locale, digits, calendar, dictionary],
   );
+
+  useEffect(() => trackScrollbar(), []);
 
   return (
     <AveroContext.Provider value={settings}>
