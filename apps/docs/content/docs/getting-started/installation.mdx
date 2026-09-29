@@ -113,7 +113,11 @@ What each line does:
 - **`theme.css`** — required. Every Avero token, as Tailwind `@theme` variables.
 - **`base.css`** — optional. Document defaults on `html`/`body`: page background, text colour, font,
   `min-width: 320px`, reduced-motion handling and the overlay scroll-lock gutter. Import it in an
-  app built on Avero end to end; leave it out if the host already owns its page chrome.
+  app built on Avero end to end; leave it out if the host already owns its page chrome. The gutter
+  keeps the page still while a dialog, drawer, select or menu locks scrolling. It is only reserved
+  on a page that had a scrollbar, which `AveroProvider` detects and marks on `<html>` as
+  `data-avero-scrollbar`; without the provider the gutter is always reserved, so render
+  `AveroProvider` at the root, especially if your app scrolls inside a shell rather than the page.
 - **`utilities.css`** — import when you use the named utilities: `scrollbar-fancy`,
   `skeleton-shimmer`, `glow-ring`, `typing-caret` and the gradient utilities.
 - **`lahzeh.css`** — optional, and covered in [Fonts](./fonts).
